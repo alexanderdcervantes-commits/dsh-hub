@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const route = useRoute()
+const localePath = useLocalePath()
+const config = useRuntimeConfig()
 const { query, categories } = usePlugins()
 
 const q = ref((route.query.q as string) ?? '')
@@ -12,6 +14,21 @@ const cats = computed(() => categories(locale.value))
 const results = computed(() =>
   query({ q: q.value, categoryKey: cat.value, sort: sort.value }))
 
+// ItemList 结构化数据：与渲染列表共用 usePlugins() 同一份数据，
+// 按默认渲染顺序（star 降序）列出全部插件，绝对 URL 走 runtimeConfig.siteUrl + localePath。
+const siteUrl = config.public.siteUrl as string
+const listPlugins = query({ q: '', categoryKey: 'all', sort: 'stars' })
+const listItemJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: listPlugins.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.name,
+    url: `${siteUrl}${localePath(`/plugins/${p.slug}`)}`,
+  })),
+})
+
 useHead({
   title: locale.value === 'zh'
     ? '全部 dsh 插件目录 — DSH Meme Hub'
@@ -21,6 +38,10 @@ useHead({
     content: locale.value === 'zh'
       ? '已收录的全部 DeepSeek Harness (dsh) 社区插件：搜索、分类筛选、按 star 或最近推送排序，附一键安装命令。'
       : 'Every catalogued DeepSeek Harness (dsh) community plugin: search, filter by category, sort by stars or recency, with one-click install commands.',
+  }],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: listItemJson,
   }],
 })
 </script>
