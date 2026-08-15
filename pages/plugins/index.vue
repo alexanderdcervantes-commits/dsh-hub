@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const route = useRoute()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
@@ -35,8 +36,8 @@ const listItemJson = JSON.stringify({
 
 useHead({
   title: locale.value === 'zh'
-    ? '全部 dsh 插件目录 — DSH Meme Hub'
-    : 'All dsh Plugins — DSH Meme Hub',
+    ? 'DeepSeek Harness (dsh) 插件目录 — 全部收录 | DSH Meme Hub'
+    : 'All DeepSeek Harness (dsh) Plugins — DSH Meme Hub',
   meta: [{
     name: 'description',
     content: locale.value === 'zh'
@@ -55,6 +56,7 @@ useHead({
     <div class="page-head">
       <h1>{{ t('plugins.title') }}</h1>
       <p class="sub">{{ t('plugins.sub') }}</p>
+      <p class="sub" style="margin:0 0 6px"><NuxtLink :to="localePath('/install')">{{ t('plugins.installGuide') }}</NuxtLink></p>
     </div>
 
     <div class="search-wrap" style="margin-bottom:14px">

@@ -520,6 +520,13 @@ img { max-width: 100%; display: block; }
 .page-head h1 { font-size: clamp(24px, 4vw, 34px); margin: 0 0 8px; font-weight: 800; }
 .page-head .sub { color: var(--text-2); margin: 0 0 10px; max-width: 720px; }
 
+/* ---------- install guide (prose with headings / lists / command bars) ---------- */
+.prose h2 { font-size: 21px; font-weight: 800; margin: 36px 0 8px; }
+.prose h3 { font-size: 16px; font-weight: 700; margin: 22px 0 4px; }
+.prose .install-cmd { margin: 10px 0 16px; }
+.prose ul { margin: 8px 0 0; padding-left: 22px; }
+.prose li { margin: 7px 0; }
+
 /* toast */
 .toast {
   position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);

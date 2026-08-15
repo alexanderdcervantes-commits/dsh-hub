@@ -7,7 +7,7 @@ import { join } from 'node:path'
 const data = JSON.parse(readFileSync('public/data/plugins.json', 'utf8'))
 const pluginSlugs = data.plugins.map(p => p.slug)
 const memeSlugs = data.plugins.filter(p => p.is_meme).map(p => p.slug)
-const topPages = ['', 'plugins', 'meme', 'submit', 'about']
+const topPages = ['', 'plugins', 'meme', 'submit', 'about', 'install']
 const locales = ['en', 'zh']
 
 const expected = locales.flatMap(lang => {
