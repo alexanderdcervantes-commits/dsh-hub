@@ -2,7 +2,6 @@
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const { query, categories } = usePlugins()
 
