@@ -23,6 +23,11 @@ const prerenderSeed = LOCALES.flatMap((lang) => {
   ]
 })
 
+// DSH Dojo（雪藏教程区）：只有中文一套、不走 i18n 前缀（页面里 defineI18nRoute(false)
+// 关掉了本地化路由），所以单独列出，绝不并入 TOP_PAGES——那会被 LOCALES flatMap 出 /zh/dojo。
+// 与 scripts/check-prerender.mjs 的 expected 追加项保持同步。
+const DOJO_PAGES = ['dojo', 'dojo/step-01'].map((p) => `/${p}`)
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   ssr: true,
@@ -99,7 +104,7 @@ gtag('config', 'G-TXHJ840HJ3');`,
   nitro: {
     prerender: {
       crawlLinks: false,
-      routes: [...prerenderSeed, '/sitemap.xml', '/robots.txt'],
+      routes: [...prerenderSeed, ...DOJO_PAGES, '/sitemap.xml', '/robots.txt'],
     },
   },
 

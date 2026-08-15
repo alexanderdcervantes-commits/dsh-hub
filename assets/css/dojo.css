@@ -1,0 +1,122 @@
+/* DSH Dojo 设计系统 — DeepSeek 官网色板（浅色主题）。
+   只给 dojo 布局下的页面用：类名一律 dojo- 前缀，变量一律 --dojo- 前缀，
+   与主站 main.css 完全隔离，互不污染。 */
+
+:root {
+  --dojo-brand: #4d6bfe;            /* 品牌蓝主色 */
+  --dojo-brand-deep: #3a65c2;
+  --dojo-brand-50: #edf3fe;         /* 最浅：hover 底/选中底 */
+  --dojo-brand-100: #e4edfd;
+  --dojo-brand-450: #5686fe;        /* hover */
+  --dojo-brand-500: #3964fe;        /* 强调按钮 */
+  --dojo-bg-page: #f9f8f8;          /* 页面底 */
+  --dojo-text-primary: #1e232c;
+  --dojo-text-secondary: rgba(0, 0, 0, 0.7);
+  --dojo-text-desc: rgba(0, 0, 0, 0.65);
+  --dojo-success: #22c55e;
+  --dojo-error: #ec1313;
+  --dojo-border: rgba(0, 0, 0, 0.1);
+  --dojo-card: #fff;
+  --dojo-btn-dark: #1a1615;         /* 主按钮黑底 */
+  --dojo-btn-dark-hover: #000;
+
+  --dojo-font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --dojo-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  --dojo-radius: 8px;
+  --dojo-radius-lg: 12px;
+  --dojo-shadow: 0 1px 3px rgba(30, 35, 44, 0.06);
+  --dojo-shadow-hover: 0 6px 20px rgba(30, 35, 44, 0.12);
+}
+
+/* ---------- 按钮 ---------- */
+.dojo-btn-primary,
+.dojo-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--dojo-radius);
+  padding: 12px 26px;
+  font-family: var(--dojo-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+.dojo-btn-primary:active,
+.dojo-btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* 主按钮：黑底白字，hover 加深 */
+.dojo-btn-primary {
+  background: var(--dojo-btn-dark);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.dojo-btn-primary:hover,
+.dojo-btn-primary:focus-visible {
+  background: var(--dojo-btn-dark-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 次要按钮：白底 + 深蓝灰描边 */
+.dojo-btn-secondary {
+  background: #fff;
+  color: var(--dojo-text-primary);
+  border: 1px solid rgba(9, 45, 78, 0.18);
+}
+.dojo-btn-secondary:hover,
+.dojo-btn-secondary:focus-visible {
+  border-color: rgba(9, 45, 78, 0.38);
+  background: var(--dojo-brand-50);
+  color: var(--dojo-text-primary);
+  text-decoration: none;
+}
+
+/* ---------- 卡片 ---------- */
+.dojo-card {
+  background: var(--dojo-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--dojo-radius-lg);
+  box-shadow: var(--dojo-shadow);
+}
+
+/* ---------- 徽标（步号：品牌蓝圆角方块） ---------- */
+.dojo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: var(--dojo-radius);
+  background: var(--dojo-brand);
+  color: #fff;
+  font-family: var(--dojo-font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- 进度条 ---------- */
+.dojo-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--dojo-brand-100);
+  overflow: hidden;
+}
+.dojo-progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--dojo-brand-deep), var(--dojo-brand));
+  transition: width 0.4s ease;
+}

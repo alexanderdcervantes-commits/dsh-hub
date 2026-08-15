@@ -10,14 +10,18 @@ const memeSlugs = data.plugins.filter(p => p.is_meme).map(p => p.slug)
 const topPages = ['', 'plugins', 'meme', 'submit', 'about', 'install']
 const locales = ['en', 'zh']
 
-const expected = locales.flatMap(lang => {
-  const prefix = lang === 'en' ? '' : `/${lang}`
-  return [
-    ...topPages.map(p => (p === '' ? (prefix || '/') : `${prefix}/${p}`)),
-    ...pluginSlugs.map(s => `${prefix}/plugins/${s}`),
-    ...memeSlugs.map(s => `${prefix}/meme/${s}`),
-  ]
-})
+const expected = [
+  ...locales.flatMap(lang => {
+    const prefix = lang === 'en' ? '' : `/${lang}`
+    return [
+      ...topPages.map(p => (p === '' ? (prefix || '/') : `${prefix}/${p}`)),
+      ...pluginSlugs.map(s => `${prefix}/plugins/${s}`),
+      ...memeSlugs.map(s => `${prefix}/meme/${s}`),
+    ]
+  }),
+  // DSH Dojo 雪藏教程区：仅中文、无 i18n 前缀，与 nuxt.config.ts 的 DOJO_PAGES 同步
+  ...['dojo', 'dojo/step-01'].map(p => `/${p}`),
+]
 
 const outDir = '.output/public'
 if (!existsSync(outDir)) {
