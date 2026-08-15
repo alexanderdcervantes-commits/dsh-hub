@@ -49,6 +49,8 @@ const bodyEl = ref<HTMLElement | null>(null)
 const inputEl = ref<HTMLInputElement | null>(null)
 
 onMounted(() => {
+  // stepKey 为空（如 playground 练习场）：不参与进度，读也跳过
+  if (!props.stepKey) return
   // 回访且已完成过：直接亮横幅（读进度也是客户端才做的事）
   try {
     const raw = localStorage.getItem('dsh-dojo-progress')
@@ -109,6 +111,8 @@ function printOutput(entry: TerminalCommand) {
 }
 
 function completeCheckpoint() {
+  // stepKey 为空（如 playground 练习场）：不计进度、不落盘，也不亮「检查点完成」横幅
+  if (!props.stepKey) return
   banner.value = 'done'
   try {
     const raw = localStorage.getItem('dsh-dojo-progress')

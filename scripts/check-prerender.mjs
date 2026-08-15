@@ -20,7 +20,7 @@ const expected = [
     ]
   }),
   // DSH Dojo 雪藏教程区：仅中文、无 i18n 前缀，与 nuxt.config.ts 的 DOJO_PAGES 同步
-  ...['dojo', 'dojo/step-01', 'dojo/step-02', 'dojo/step-03', 'dojo/step-04', 'dojo/step-05', 'dojo/step-07', 'dojo/step-08', 'dojo/step-09', 'dojo/step-10'].map(p => `/${p}`),
+  ...['dojo', 'dojo/step-01', 'dojo/step-02', 'dojo/step-03', 'dojo/step-04', 'dojo/step-05', 'dojo/step-06', 'dojo/step-07', 'dojo/step-08', 'dojo/step-09', 'dojo/step-10', 'dojo/catalog', 'dojo/playground'].map(p => `/${p}`),
 ]
 
 const outDir = '.output/public'
