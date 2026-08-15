@@ -75,6 +75,7 @@ const rel = computed(() => related(plugin, 4))
         <span class="chip">{{ emojiOf(plugin) }} {{ catOf(plugin, locale) }}</span>
         <span v-if="plugin.is_meme" class="chip orange">🔥 meme</span>
         <a class="btn" :href="plugin.url" target="_blank" rel="noopener">{{ t('plugin.viewOnGithub') }} ↗</a>
+        <a v-if="plugin.video_url" class="btn" :href="plugin.video_url" target="_blank" rel="noopener">📺 {{ t('plugin.watchDemo') }} ↗</a>
       </div>
     </div>
 

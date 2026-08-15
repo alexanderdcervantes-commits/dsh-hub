@@ -216,6 +216,32 @@ TAG_CATEGORY = {
     'slackoff':  ('摸鱼游戏', 'Slack-Off Zone'),
 }
 
+# 社区投稿收录（2026-08-16）：不在老站 87 条目录里的新插件。
+# video: B 站演示视频（可选），详情页显示按钮。
+EXTRA = [
+  dict(slug='dsh-dafeiyu', name='dsh-dafeiyu', repo='QCYTSN/dsh-dafeiyu', section='pets',
+       image='/images/dsh-dafeiyu.png',
+       video='https://www.bilibili.com/video/BV1JAbC6wEWW',
+       desc_zh='住在 Windows 桌面的大肥鱼：DSH 插件启用后跟随本体启停，透明置顶原生窗口实时显示真实 Agent 状态——思考、修改、测试、等待还是完成，切到别的软件也看得到',
+       desc_en='A big fish living on your Windows desktop: enabled as a DSH plugin, it starts and stops with DSH itself, and a transparent always-on-top native window shows real agent status — thinking, editing, testing, waiting or done — even while you work in other apps',
+       caption_zh='不读屏幕、不编进度——状态卡上全是真实 agent 事件',
+       caption_en="No screen reading, no fake percentages — the status card runs on real agent events"),
+  dict(slug='touhou-hakurei', name='touhou-hakurei', repo='xiake595/touhou-hakurei', section='skins',
+       image='/images/touhou-hakurei.webp',
+       video='https://www.bilibili.com/video/BV1NRbk6BEys',
+       desc_zh='东方 Project 博丽神社主题皮肤：昼夜实景背景按亮暗主题切换，灵梦站姿/飞行双立绘，朱红纸白金色神社装饰面板，纯展示层不触达模型',
+       desc_en='Touhou Project Hakurei Shrine theme: day/night scenic backgrounds that follow light/dark mode, Reimu standing and flying sprites, vermillion-paper-white-gold shrine panels — a pure presentation layer that never touches the model',
+       caption_zh='幻想乡搬进工作台：巫女在侧栏看你跑 agent',
+       caption_en='Gensokyo moves into your workbench — the shrine maiden watches your agent run'),
+  dict(slug='depharness', name='DEEPHARNESS', repo='NANTI34/DEEPHARNESS', section=None,
+       category=('开发与运行时', 'Development & Runtime'),
+       image='/images/depharness.png',
+       video='https://www.bilibili.com/video/BV1qXbC6oE38',
+       desc_zh='把 DeepSeek Harness 变成 Windows 原生桌面应用：桌面快捷方式一键启动，Electron 独立窗口不开浏览器，文件树/终端/费用估算/品牌外观等增强常驻，数据全存本地',
+       desc_en='DeepSeek Harness as a native Windows desktop app: one-click start from a desktop shortcut, an Electron window instead of a browser tab, persistent extras (file tree, terminal, cost estimator, branded appearance), all data stays local',
+       install_cmd='git clone https://github.com/NANTI34/DEEPHARNESS.git && cd DEEPHARNESS && powershell -ExecutionPolicy Bypass -File .\\install.ps1'),
+]
+
 
 def gh_api(path):
     """GET a GitHub API path via gh; return parsed JSON or None."""
@@ -274,7 +300,7 @@ def main():
             'slug': p['slug'],
             'name': p['name'],
             'repo': p['repo'],
-            'url': p['url'],
+            'url': p.get('url') or f"https://github.com/{p['repo']}",
             'description_zh': p.get('desc_zh', ''),
             'description_en': p.get('desc_en', ''),
             'stars': p.get('stars', 0),
@@ -322,6 +348,50 @@ def main():
         }
         if existing:
             entries = [e for e in entries if e['repo'] != m['repo'] and e['slug'] != m['slug']]
+        entries.append(merged)
+
+    # 3) community submissions (EXTRA): meme picks get a section, non-meme get an explicit category
+    for x in EXTRA:
+        existing = by_repo.get(x['repo']) or by_slug.get(x['slug'])
+        if x['section']:
+            cat_zh, cat_en = SECTION_CATEGORY[x['section']]
+            merged = {
+                'slug': x['slug'], 'name': x['name'], 'repo': x['repo'],
+                'url': f"https://github.com/{x['repo']}",
+                'description_zh': x['desc_zh'], 'description_en': x['desc_en'],
+                'stars': existing.get('stars', 0) if existing else 0,
+                'forks': existing.get('forks', 0) if existing else 0,
+                'category_zh': cat_zh, 'category_en': cat_en,
+                'is_meme': True, 'meme_section': x['section'],
+                'meme_caption_zh': x.get('caption_zh'), 'meme_caption_en': x.get('caption_en'),
+                'image': x['image'] or (existing.get('image') if existing else None),
+                'install_cmd': x.get('install_cmd') or f"dsh plugin add github:{x['repo']}",
+                'pushed_at': existing.get('updated', '') if existing else '',
+                'license': existing.get('license') if existing else None,
+                'language': existing.get('language') if existing else None,
+                'has_manifest': False, 'topics': [],
+            }
+        else:
+            cat_zh, cat_en = x['category']
+            merged = {
+                'slug': x['slug'], 'name': x['name'], 'repo': x['repo'],
+                'url': f"https://github.com/{x['repo']}",
+                'description_zh': x['desc_zh'], 'description_en': x['desc_en'],
+                'stars': existing.get('stars', 0) if existing else 0,
+                'forks': existing.get('forks', 0) if existing else 0,
+                'category_zh': cat_zh, 'category_en': cat_en,
+                'is_meme': False,
+                'image': x['image'] or (existing.get('image') if existing else None),
+                'install_cmd': x.get('install_cmd') or f"dsh plugin add github:{x['repo']}",
+                'pushed_at': existing.get('updated', '') if existing else '',
+                'license': existing.get('license') if existing else None,
+                'language': existing.get('language') if existing else None,
+                'has_manifest': False, 'topics': [],
+            }
+        if x.get('video'):
+            merged['video_url'] = x['video']
+        if existing:
+            entries = [e for e in entries if e['repo'] != x['repo'] and e['slug'] != x['slug']]
         entries.append(merged)
 
     entries.sort(key=lambda e: -e['stars'])

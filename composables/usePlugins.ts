@@ -17,6 +17,7 @@ export interface DshPlugin {
   meme_caption_en?: string
   image: string | null
   install_cmd: string
+  video_url?: string
   pushed_at: string
   license?: string | null
   language?: string | null
