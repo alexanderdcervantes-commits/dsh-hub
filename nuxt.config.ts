@@ -52,6 +52,17 @@ export default defineNuxtConfig({
       ],
       script: [
         {
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-TXHJ840HJ3',
+        },
+        {
+          type: 'text/javascript',
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TXHJ840HJ3');`,
+        },
+        {
           type: 'text/javascript',
           innerHTML: `(function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
