@@ -15,6 +15,8 @@ concurrency:
 
 jobs:
   mirror:
+    # 只在旧仓库运行；被 mirror 同步到新仓库后自动跳过
+    if: github.repository == 'the-beating-light-of-the-nail/dsh-meme-hub-site'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
