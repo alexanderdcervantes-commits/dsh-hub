@@ -164,7 +164,8 @@ function submit() {
   }
 
   if (entry.setFlag) flags.value.add(entry.setFlag)
-  const success = isSuccess(cmd)
+  // 条目可显式覆盖完成判定（step-02：同一条命令，报错那次不算过、装好后的那次才算）
+  const success = entry.success ?? isSuccess(cmd)
   if (entry.ask) {
     pushLine(entry.ask, 'plain')
     askPending.value = entry

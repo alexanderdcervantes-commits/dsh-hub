@@ -32,4 +32,10 @@ export interface TerminalCommand {
   emptyNote?: string
   /** 只认完全相等，不做前缀匹配（仅 string match 有意义） */
   exact?: boolean
+  /**
+   * 显式覆盖「本条命中算不算完成检查点」：true 算 / false 不算 / 不设置则走
+   * successMatches 的文本匹配。给「同一条命令两种结局」的剧情用（见 step-02 的
+   * node --version：报错的那次必须不算过——报错本身就是教学点）。
+   */
+  success?: boolean
 }
