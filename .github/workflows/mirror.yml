@@ -15,8 +15,6 @@ concurrency:
 
 jobs:
   mirror:
-    # 镜像仓库里没有 MIRROR_PAT 时自动跳过，避免被镜像过去后产生失败记录
-    if: ${{ secrets.MIRROR_PAT != '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -29,5 +27,9 @@ jobs:
         env:
           MIRROR_PAT: ${{ secrets.MIRROR_PAT }}
         run: |
+          if [ -z "$MIRROR_PAT" ]; then
+            echo "MIRROR_PAT is not set, skipping mirror"
+            exit 0
+          fi
           git remote add mirror "https://x-access-token:${MIRROR_PAT}@github.com/alexanderdcervantes-commits/dsh-hub.git"
           git push --force --mirror mirror
