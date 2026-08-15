@@ -68,6 +68,13 @@ export default defineNuxtConfig({
     },
   },
 
+  // dev 下允许通过 Cloudflare Tunnel 域名访问本地 Vite/Nuxt dev server
+  vite: {
+    server: {
+      allowedHosts: ['.cdqyfdbymn.me'],
+    },
+  },
+
   nitro: {
     prerender: {
       crawlLinks: false,
