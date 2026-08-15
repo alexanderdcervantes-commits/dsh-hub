@@ -1,33 +1,16 @@
 #!/usr/bin/env node
-// IndexNow 提交：把全站 URL（或指定路径）提交给 Bing。
+// IndexNow 提交：把全站 URL（或指定路径）提交给 IndexNow（Bing/Yandex 等共用入口）。
 // 用法：
-//   node scripts/indexnow-submit.mjs keyfile    # 仅把 key 文件写入构建产物（部署前调用）
-//   node scripts/indexnow-submit.mjs sitemap    # 抓取 sitemap 并提交全部 URL
-//   node scripts/indexnow-submit.mjs url <path> # 提交单个路径（自动带 2 语种）
-// 需要 env：INDEXNOW_KEY（Bing IndexNow key）。
-// key 文件优先写入 .output/public/<key>.txt（prebuilt 部署会带上线）；
-// 若 .output/public 不存在（本地调用），则写入 public/<key>.txt。
-import { writeFileSync, existsSync, mkdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+//   node scripts/indexnow.mjs sitemap    # 抓取线上 sitemap 并提交全部 URL（默认）
+//   node scripts/indexnow.mjs url <path> # 提交单个路径（自动带 2 语种）
+// 可选 env：INDEXNOW_KEY（默认用下方 DEFAULT_KEY，即 public/<key>.txt 里的公开 key）。
+// key 文件 public/<key>.txt 已随仓库部署，无需再本地生成；INDEXNOW_KEY 仅在换 key 时覆盖。
+const DEFAULT_KEY = 'ef62d6639e0847f4bf285feb71e2b366'
 
 const site = (process.env.NUXT_PUBLIC_SITE_URL || 'https://dsh-meme-hub.cdqyfdbymn.me').replace(/\/$/, '')
-const key = process.env.INDEXNOW_KEY
-if (!key) {
-  console.error('✗ 缺少 INDEXNOW_KEY 环境变量')
-  process.exit(1)
-}
-
-// 让 Bing 能验证 key：<key>.txt 内容即 key
-const outputDir = resolve('.output/public')
-const targetDir = existsSync(outputDir) ? outputDir : resolve('public')
-mkdirSync(targetDir, { recursive: true })
-writeFileSync(resolve(targetDir, `${key}.txt`), key)
-console.log(`key 文件已写入 ${targetDir}/${key}.txt`)
+const key = process.env.INDEXNOW_KEY || DEFAULT_KEY
 
 const mode = process.argv[2] ?? 'sitemap'
-if (mode === 'keyfile') {
-  process.exit(0)
-}
 
 /** 从 sitemap.xml 提取全部 <loc> URL */
 async function collectSitemapUrls() {
@@ -45,19 +28,28 @@ async function collectSitemapUrls() {
 }
 
 let body
+let submittedCount
 if (mode === 'url' && process.argv[3]) {
   const p = process.argv[3]
+  submittedCount = 2
   body = JSON.stringify({ host: new URL(site).host, key, keyLocation: `${site}/${key}.txt`, urlList: [site + p, `${site}/zh${p}`] })
 } else {
   const urls = await collectSitemapUrls()
+  if (urls.length > 10000) {
+    // 协议上限：单次请求最多 10000 个 URL；当前全站 ~121 个，正常情况到不了这里
+    throw new Error(`URL 数 ${urls.length} 超过单次请求上限 10000，请分批`)
+  }
+  submittedCount = urls.length
   body = JSON.stringify({ host: new URL(site).host, key, keyLocation: `${site}/${key}.txt`, urlList: urls })
 }
 
-const res = await fetch('https://api.indexnow.org/indexnow', {
+console.log(`提交 ${submittedCount} 个 URL 到 https://api.indexnow.org/IndexNow ...`)
+// 单次请求，不重试（收到 429 直接停，避免轰炸）
+const res = await fetch('https://api.indexnow.org/IndexNow', {
   method: 'POST',
   headers: { 'content-type': 'application/json; charset=utf-8' },
   body,
 })
-console.log(`IndexNow HTTP ${res.status} ${res.status === 200 || res.status === 202 ? '✓ 成功' : '✗ 失败'}`)
+console.log(`共提交 ${submittedCount} 个 URL，IndexNow HTTP ${res.status} ${res.status === 200 || res.status === 202 ? '✓ 成功' : '✗ 失败'}`)
 if (!res.ok) console.error(await res.text().catch(() => ''))
 process.exit(res.ok ? 0 : 1)

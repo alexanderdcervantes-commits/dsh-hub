@@ -27,4 +27,4 @@ npm run build:data
    - `NODE_OPTIONS` = `--max-old-space-size=4096`
 3. Node 版本：Vercel 设置里选 **22.x**（仓库有 `.nvmrc`）。
 4. 域名：Vercel → Settings → Domains 添加 `dsh-meme-hub.cdqyfdbymn.me`，然后到 Cloudflare 把 `dsh-meme-hub` 的 CNAME 指向 `cname.vercel-dns.com`（DNS only）。
-5. 可选：`INDEXNOW_KEY` 环境变量用于 `scripts/indexnow-submit.mjs`，可在部署后手动执行提交。
+5. 可选：`node scripts/indexnow.mjs` 抓取线上 sitemap 全量提交 IndexNow（key 已内置于脚本默认值，`INDEXNOW_KEY` 仅换 key 时覆盖）。
