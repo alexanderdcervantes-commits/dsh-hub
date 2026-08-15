@@ -11,6 +11,8 @@ concurrency:
 
 jobs:
   deploy:
+    # 配好 VERCEL_* secrets 后，把 repo variable VERCEL_ENABLED 设为 true 才会跑
+    if: ${{ vars.VERCEL_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
