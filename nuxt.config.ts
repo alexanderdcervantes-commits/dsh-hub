@@ -1,0 +1,82 @@
+import { readFileSync } from 'node:fs'
+
+// DSH Meme Hub — Nuxt 3 SSG
+// 站点域名绝不硬编码在页面里：canonical / og:url / sitemap 一律读
+// runtimeConfig.public.siteUrl（默认正式域名；过渡期通过 NUXT_PUBLIC_SITE_URL
+// 覆盖为 Vercel 子域名，迁移时只改一处——CI 的 env 或这里的默认值）。
+
+// 预渲染种子：全部页面 × 2 语种，显式列出，不依赖 crawlLinks
+const PLUGINS = (JSON.parse(readFileSync('./public/data/plugins.json', 'utf8')) as {
+  plugins: Array<{ slug: string; is_meme: boolean }>
+}).plugins
+const PLUGIN_SLUGS = PLUGINS.map((p) => p.slug)
+const MEME_SLUGS = PLUGINS.filter((p) => p.is_meme).map((p) => p.slug)
+const TOP_PAGES = ['', 'plugins', 'meme', 'submit', 'about']
+const LOCALES = ['en', 'zh']
+
+const prerenderSeed = LOCALES.flatMap((lang) => {
+  const prefix = lang === 'en' ? '' : `/${lang}`
+  return [
+    ...TOP_PAGES.map((p) => (p === '' ? prefix || '/' : `${prefix}/${p}`)),
+    ...PLUGIN_SLUGS.map((s) => `${prefix}/plugins/${s}`),
+    ...MEME_SLUGS.map((s) => `${prefix}/meme/${s}`),
+  ]
+})
+
+export default defineNuxtConfig({
+  compatibilityDate: '2024-11-01',
+  ssr: true,
+  modules: ['@nuxtjs/i18n'],
+
+  css: ['~/assets/css/main.css'],
+
+  runtimeConfig: {
+    public: {
+      // 正式域名；过渡期在 CI 用 NUXT_PUBLIC_SITE_URL 覆盖
+      siteUrl: 'https://dsh-meme-hub.cdqyfdbymn.me',
+      siteName: 'DSH Meme Hub',
+      githubRepo: 'the-beating-light-of-the-nail/dsh-meme-hub-site',
+    },
+  },
+
+  app: {
+    head: {
+      htmlAttrs: { lang: 'en' },
+      titleTemplate: '%s',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'theme-color', content: '#f6f8fa' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/gif', href: '/images/dsh-ui-whale.gif' },
+      ],
+    },
+  },
+
+  i18n: {
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://dsh-meme-hub.cdqyfdbymn.me',
+    locales: [
+      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'zh', iso: 'zh-CN', name: '简体中文', file: 'zh.json' },
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    seo: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'dshmeme_i18n',
+      redirectOn: 'root',
+    },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: false,
+      routes: [...prerenderSeed, '/sitemap.xml', '/robots.txt'],
+    },
+  },
+
+  experimental: {
+    payloadExtraction: false,
+  },
+})

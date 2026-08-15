@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "meme": "🤪 Meme Zone",
+    "plugins": "🧩 All Plugins",
+    "submit": "➕ Submit",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Everything is a Plugin —",
+    "titleAccent": "so go tinker with anything.",
+    "sub": "The curated guide to the DeepSeek Harness (dsh) plugin wilds: hand-picked gems, desktop whale pets, and the funniest things the community shipped this week.",
+    "placeholder": "Search 87 plugins… (try: whale, skin, gomoku)",
+    "cta": "Browse the meme zone"
+  },
+  "home": {
+    "memeTitle": "🔥 Today's Memes",
+    "memeSub": "The fun stuff, front and center — because a whale-girl desktop pet is a legitimate productivity tool.",
+    "hotTitle": "📈 Trending",
+    "hotSub": "Top 10 by stars",
+    "catsTitle": "🏷️ Browse by Category",
+    "newTitle": "🆕 Freshly Listed",
+    "newSub": "Pushed within the last 7 days",
+    "statsTitle": "📊 The Board",
+    "statTotal": "Plugins listed",
+    "statMeme": "Meme-worthy",
+    "statStars": "Stars combined",
+    "statCats": "Categories"
+  },
+  "plugin": {
+    "install": "Install",
+    "viewOnGithub": "View on GitHub",
+    "related": "More in this category",
+    "evidence": "Signals",
+    "manifestYes": "plugin manifest found",
+    "manifestNo": "no manifest at root",
+    "pushed": "Last push",
+    "license": "License",
+    "language": "Language",
+    "stars": "stars",
+    "forks": "forks",
+    "topics": "Topics",
+    "daysAgo": "d ago",
+    "today": "today",
+    "descEn": "English",
+    "descZh": "中文"
+  },
+  "meme": {
+    "title": "Meme Zone",
+    "sub": "They list everything. We pick the good stuff — and the fun stuff. Warning: meme density may cause lost afternoons.",
+    "like": "Like",
+    "liked": "Liked",
+    "share": "Share",
+    "shareCopied": "Link copied — paste it to a friend who needs this",
+    "likeCount": "{n} likes",
+    "submitCta": "Found something funnier?",
+    "submitCtaBtn": "Submit it",
+    "all": "All",
+    "sections": {
+      "absurd": "🤯 Peak Absurdity",
+      "skins": "🎨 Reskin Crew",
+      "pets": "🐳 Cyber Pets",
+      "slackoff": "🎮 Slack-Off Zone",
+      "useful": "🛠️ Actually Useful",
+      "textclub": "📝 No-Screenshot Club"
+    }
+  },
+  "plugins": {
+    "title": "All Plugins",
+    "sub": "Every dsh plugin we've catalogued — searchable, filterable, sortable.",
+    "searchPlaceholder": "Search name, description, repo…",
+    "sortStars": "Most stars",
+    "sortRecent": "Recently pushed",
+    "sortName": "Name A–Z",
+    "allCats": "All categories",
+    "results": "{n} plugins",
+    "noResults": "Nothing matched. Try another keyword?"
+  },
+  "submit": {
+    "title": "Submit a Plugin",
+    "sub": "Built something for dsh — useful, beautiful, or gloriously stupid? Get it listed.",
+    "repoUrl": "GitHub repo URL",
+    "oneLiner": "One-line intro",
+    "category": "Category",
+    "screenshot": "Screenshot URL (optional)",
+    "screenshotHint": "A direct image URL. No screenshot? It goes to the No-Screenshot Club.",
+    "generate": "Generate submission issue",
+    "openIssue": "Open the issue on GitHub →",
+    "hint": "This form builds a pre-filled GitHub issue — no account on our side, no backend, no tracking."
+  },
+  "about": {
+    "title": "About DSH Meme Hub",
+    "p1": "On Aug 13, 2026, DeepSeek open-sourced DeepSeek Harness (dsh) with the slogan \"Everything is a Plugin\". 96k stars later, the dsh-plugin topic holds thousands of repositories — and somewhere between the file managers and the TDD frameworks, the community built whale-girl desktop pets, QQ2006 skins, and a knockoff web-game ad network for your terminal.",
+    "p2": "Other directories list everything, with trust scores and manifest checks. We do something different: we pick the good stuff — and the fun stuff. Every entry here was looked at by a human, has a working install command, and the meme section only contains things that made us actually laugh.",
+    "p3": "Data (stars, last push, license, manifest presence) is refreshed from the GitHub API. This site is a static, fully prerendered, bilingual (EN/中文) guide — fast on any connection.",
+    "disclaimer": "All screenshots are excerpted from the respective open-source projects' READMEs and belong to their original authors. Navigation and promotion only — no source or assets are redistributed. File an issue if any inclusion infringes your rights and it will be removed promptly."
+  },
+  "footer": {
+    "about": "About",
+    "submit": "Submit a plugin",
+    "official": "Official links",
+    "dshRepo": "deepseek-harness",
+    "pluginTopic": "dsh-plugin topic",
+    "legal": "DSH Meme Hub is an independent community project, not affiliated with DeepSeek. Screenshots belong to their respective authors."
+  },
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied!",
+    "notFound": "Page not found",
+    "backHome": "Back to home",
+    "updated": "Data updated"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "meme": "🤪 整活专区",
+    "plugins": "🧩 全部插件",
+    "submit": "➕ 投稿",
+    "about": "关于"
+  },
+  "hero": {
+    "title": "一切皆插件——",
+    "titleAccent": "所以，万物皆可整活。",
+    "sub": "DeepSeek Harness (dsh) 插件丛林的策展导航：人工精选的好东西、桌面鲸鱼娘，以及社区这周整出的最欢乐的活。",
+    "placeholder": "搜索 87 个插件…（试试：鲸鱼、皮肤、五子棋）",
+    "cta": "先去整活专区看看"
+  },
+  "home": {
+    "memeTitle": "🔥 今日整活",
+    "memeSub": "好玩的放最前面——鲸鱼娘桌宠当然是正当生产力工具。",
+    "hotTitle": "📈 热门排行",
+    "hotSub": "按 star 数的 Top 10",
+    "catsTitle": "🏷️ 按分类逛",
+    "newTitle": "🆕 最新收录",
+    "newSub": "最近 7 天内有推送",
+    "statsTitle": "📊 数据看板",
+    "statTotal": "收录插件",
+    "statMeme": "整活精选",
+    "statStars": "star 总和",
+    "statCats": "分类数"
+  },
+  "plugin": {
+    "install": "安装",
+    "viewOnGithub": "去 GitHub 看看",
+    "related": "同分类的其他插件",
+    "evidence": "信号",
+    "manifestYes": "发现插件 manifest",
+    "manifestNo": "根目录无 manifest",
+    "pushed": "最近推送",
+    "license": "许可证",
+    "language": "语言",
+    "stars": "stars",
+    "forks": "forks",
+    "topics": "Topics",
+    "daysAgo": "天前",
+    "today": "今天",
+    "descEn": "English",
+    "descZh": "中文"
+  },
+  "meme": {
+    "title": "整活专区",
+    "sub": "别人罗列一切，我们只挑好东西——还有好玩的。警告：整活浓度可能导致一下午没了。",
+    "like": "喜欢",
+    "liked": "已喜欢",
+    "share": "分享",
+    "shareCopied": "链接已复制——发给那个需要这个的朋友",
+    "likeCount": "{n} 人喜欢",
+    "submitCta": "你发现了更好笑的？",
+    "submitCtaBtn": "来投稿",
+    "all": "全部",
+    "sections": {
+      "absurd": "🤯 巅峰离谱",
+      "skins": "🎨 换皮组",
+      "pets": "🐳 赛博宠物",
+      "slackoff": "🎮 摸鱼区",
+      "useful": "🛠️ 认真干活",
+      "textclub": "📝 文字选手"
+    }
+  },
+  "plugins": {
+    "title": "全部插件",
+    "sub": "已收录的全部 dsh 插件——可搜索、可筛选、可排序。",
+    "searchPlaceholder": "搜索名称、描述、仓库…",
+    "sortStars": "star 最多",
+    "sortRecent": "最近推送",
+    "sortName": "名称 A–Z",
+    "allCats": "全部分类",
+    "results": "{n} 个插件",
+    "noResults": "没有匹配的结果，换个关键词试试？"
+  },
+  "submit": {
+    "title": "投稿插件",
+    "sub": "给 dsh 做了东西——好用、好看、还是离谱到笑出声？都欢迎来收录。",
+    "repoUrl": "GitHub 仓库 URL",
+    "oneLiner": "一句话介绍",
+    "category": "分类",
+    "screenshot": "截图 URL（可选）",
+    "screenshotHint": "可直接访问的图片链接。没有截图的项目会先委屈在文字选手区。",
+    "generate": "生成投稿 issue",
+    "openIssue": "去 GitHub 提交 issue →",
+    "hint": "这个表单会生成一个预填好的 GitHub issue——我们这边没有账号系统、没有后端、没有追踪。"
+  },
+  "about": {
+    "title": "关于 DSH Meme Hub",
+    "p1": "2026 年 8 月 13 日，DeepSeek 开源了 DeepSeek Harness (dsh)，口号是「Everything is a Plugin」。96k star 之后，dsh-plugin topic 下已经有几千个仓库——在文件管理器和 TDD 框架之间，社区顺手做出了鲸鱼娘桌宠、QQ2006 皮肤，和一套给你终端用的贪玩蓝鲸广告网络。",
+    "p2": "其他导航站罗列一切，配信任分和 manifest 检查。我们做的不一样：只挑好东西——和好玩的。这里的每个条目都被人看过一眼、安装命令可用，整活区里只有真正把我们逗笑的东西。",
+    "p3": "数据（star、最近推送、许可证、manifest 存在性）从 GitHub API 定期刷新。本站是纯静态全量预渲染的双语（EN/中文）导航——任何网络环境下都够快。",
+    "disclaimer": "本站所有截图摘录自各开源项目的 README，版权归原作者所有。仅做导航与宣传，不分发任何源码或素材。如有侵权请提 issue，我们会第一时间撤下。"
+  },
+  "footer": {
+    "about": "关于",
+    "submit": "投稿插件",
+    "official": "官方链接",
+    "dshRepo": "deepseek-harness",
+    "pluginTopic": "dsh-plugin topic",
+    "legal": "DSH Meme Hub 是独立社区项目，与 DeepSeek 无官方关联。截图版权归各自作者。"
+  },
+  "common": {
+    "copy": "复制",
+    "copied": "已复制！",
+    "notFound": "页面不存在",
+    "backHome": "回首页",
+    "updated": "数据更新于"
+  }
+}

@@ -1,0 +1,79 @@
+<script setup lang="ts">
+const { locale, t } = useI18n()
+const route = useRoute()
+const head = useLocaleHead({ dir: true, lang: true, seo: true })
+const switchLocalePath = useSwitchLocalePath()
+useHead(() => ({
+  htmlAttrs: { lang: head.value.htmlAttrs?.lang ?? 'en' },
+  link: [...(head.value.link ?? [])],
+  meta: [...(head.value.meta ?? [])],
+}))
+
+const other = computed(() => (locale.value === 'en' ? 'zh' : 'en'))
+
+function switchLang() {
+  navigateTo(switchLocalePath(other.value))
+}
+
+const navActive = (prefix: string) =>
+  route.path === prefix || route.path.startsWith(`${prefix}/`)
+
+const toast = useState<string | null>('toast', () => null)
+</script>
+
+<template>
+  <div>
+    <header class="site-header">
+      <div class="container inner">
+        <NuxtLink to="/" class="brand" aria-label="DSH Meme Hub">
+          <img class="whale" src="/images/dsh-ui-whale.gif" alt="whale">
+          DSH<em>Meme</em>Hub
+        </NuxtLink>
+        <nav class="main-nav">
+          <NuxtLink to="/meme" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
+          <NuxtLink to="/plugins" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
+          <NuxtLink to="/submit" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
+          <NuxtLink to="/about" :class="{ active: navActive('/about') }">{{ t('nav.about') }}</NuxtLink>
+        </nav>
+        <button class="lang-switch" @click="switchLang">
+          {{ other === 'zh' ? '中文' : 'EN' }}
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="inner">
+          <div class="col">
+            <h4>DSH Meme Hub</h4>
+            <ul>
+              <li><NuxtLink to="/about">{{ t('footer.about') }}</NuxtLink></li>
+              <li><NuxtLink to="/submit">{{ t('footer.submit') }}</NuxtLink></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>{{ t('footer.official') }}</h4>
+            <ul>
+              <li><a href="https://github.com/deepseek-ai/deepseek-harness" target="_blank" rel="noopener">{{ t('footer.dshRepo') }}</a></li>
+              <li><a href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">{{ t('footer.pluginTopic') }}</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h4>GitHub</h4>
+            <ul>
+              <li><a href="https://github.com/the-beating-light-of-the-nail/dsh-meme-hub-site" target="_blank" rel="noopener">dsh-meme-hub-site</a></li>
+              <li><a href="https://github.com/the-beating-light-of-the-nail/dsh-meme-hub" target="_blank" rel="noopener">dsh-meme-hub</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="legal">{{ t('footer.legal') }}</p>
+      </div>
+    </footer>
+
+    <div v-if="toast" class="toast">{{ toast }}</div>
+  </div>
+</template>
