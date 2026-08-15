@@ -52,6 +52,13 @@ jobs:
       - name: Verify prerender coverage
         run: node scripts/check-prerender.mjs
 
+      - name: Write IndexNow key into build output
+        if: ${{ secrets.INDEXNOW_KEY != '' }}
+        run: node scripts/indexnow-submit.mjs keyfile
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          NUXT_PUBLIC_SITE_URL: ${{ env.NUXT_PUBLIC_SITE_URL }}
+
       - name: Deploy prebuilt output
         run: vercel deploy --prebuilt --prod --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
         env:
@@ -63,3 +70,4 @@ jobs:
         run: node scripts/indexnow-submit.mjs sitemap
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          NUXT_PUBLIC_SITE_URL: ${{ env.NUXT_PUBLIC_SITE_URL }}
