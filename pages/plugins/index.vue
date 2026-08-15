@@ -5,9 +5,13 @@ const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const { query, categories } = usePlugins()
 
+// 列表默认 UI 状态（ItemList 结构化数据也用同一组常量，保证两边永不漂移）
+const DEFAULT_CAT = 'all'
+const DEFAULT_SORT: 'stars' | 'recent' | 'name' = 'stars'
+
 const q = ref((route.query.q as string) ?? '')
-const cat = ref((route.query.cat as string) ?? 'all')
-const sort = ref<'stars' | 'recent' | 'name'>('stars')
+const cat = ref((route.query.cat as string) ?? DEFAULT_CAT)
+const sort = ref<'stars' | 'recent' | 'name'>(DEFAULT_SORT)
 
 const cats = computed(() => categories(locale.value))
 
@@ -17,7 +21,7 @@ const results = computed(() =>
 // ItemList 结构化数据：与渲染列表共用 usePlugins() 同一份数据，
 // 按默认渲染顺序（star 降序）列出全部插件，绝对 URL 走 runtimeConfig.siteUrl + localePath。
 const siteUrl = config.public.siteUrl as string
-const listPlugins = query({ q: '', categoryKey: 'all', sort: 'stars' })
+const listPlugins = query({ q: '', categoryKey: DEFAULT_CAT, sort: DEFAULT_SORT })
 const listItemJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
