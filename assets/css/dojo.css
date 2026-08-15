@@ -120,3 +120,149 @@
   background: linear-gradient(90deg, var(--dojo-brand-deep), var(--dojo-brand));
   transition: width 0.4s ease;
 }
+
+/* ============================================================
+   以下为 B2 追加：步骤页（step-01/step-03…）共用骨架。
+   只追加，不改上面任何已有规则。
+   ============================================================ */
+
+/* ---------- 步骤页骨架 ---------- */
+.dojo-step-page {
+  max-width: 680px;
+  padding-top: 24px;
+}
+.dojo-step-badge {
+  margin-bottom: 18px;
+}
+.dojo-step-h1 {
+  margin: 0 0 14px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dojo-text-primary);
+}
+.dojo-step-p {
+  margin: 0 0 18px;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--dojo-text-secondary);
+}
+/* 行内代码（命令名、URL 等） */
+.dojo-step-page code {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+  font-family: var(--dojo-font-mono);
+  font-size: 0.9em;
+  color: var(--dojo-text-primary);
+}
+
+/* ---------- 步骤内小节标题 ---------- */
+.dojo-sub-h2 {
+  margin: 36px 0 10px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dojo-text-primary);
+}
+
+/* ---------- 键位 ---------- */
+.dojo-kbd {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid var(--dojo-border);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: #fff;
+  font-family: var(--dojo-font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--dojo-text-primary);
+  white-space: nowrap;
+}
+
+/* ---------- 提示块（品牌蓝最浅底） ---------- */
+.dojo-callout {
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  border: 1px solid var(--dojo-brand-100);
+  border-radius: var(--dojo-radius);
+  background: var(--dojo-brand-50);
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--dojo-text-secondary);
+}
+
+/* ---------- 检查点卡片（绿色左边条） ---------- */
+.dojo-checkpoint {
+  margin-top: 28px;
+  padding: 16px 20px;
+  border-left: 3px solid var(--dojo-success);
+}
+.dojo-checkpoint-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dojo-text-primary);
+}
+.dojo-checkpoint-p {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--dojo-text-secondary);
+}
+.dojo-checkpoint-list {
+  margin: 4px 0 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--dojo-text-secondary);
+}
+.dojo-checkpoint-list li {
+  margin: 6px 0;
+}
+.dojo-checkpoint-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--dojo-text-desc);
+}
+
+/* ---------- 步骤页底部翻页 ---------- */
+.dojo-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}
+
+/* ---------- 教程截图 ---------- */
+.dojo-shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 18px 0 0;
+}
+@media (max-width: 720px) {
+  .dojo-shots {
+    grid-template-columns: 1fr;
+  }
+}
+.dojo-shot {
+  margin: 0;
+}
+.dojo-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--dojo-radius);
+  box-shadow: var(--dojo-shadow);
+}
+.dojo-shot figcaption {
+  margin-top: 8px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--dojo-text-desc);
+  text-align: center;
+}
