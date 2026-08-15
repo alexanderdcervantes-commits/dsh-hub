@@ -48,7 +48,7 @@ useHead({
       aggregateRating: plugin.stars > 0
         ? {
             '@type': 'AggregateRating',
-            ratingValue: Math.min(5, 3.5 + Math.log10(plugin.stars + 1) / 2).toFixed(1),
+            ratingValue: Number(Math.min(5, 3.5 + Math.log10(plugin.stars + 1) / 2).toFixed(1)),
             bestRating: '5',
             ratingCount: plugin.stars,
           }

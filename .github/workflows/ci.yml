@@ -23,5 +23,6 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm ci
+      - run: npx nuxi typecheck
       - run: npx nuxi generate
       - run: node scripts/check-prerender.mjs

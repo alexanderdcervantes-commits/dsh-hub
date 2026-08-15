@@ -18,7 +18,7 @@ async function share() {
   const url = `${config.public.siteUrl}${localePath(`/meme/${props.plugin.slug}`)}`
   try {
     if (navigator.share) {
-      await navigator.share({ title: props.plugin.name, text: captionOf(props.plugin, locale), url })
+      await navigator.share({ title: props.plugin.name, text: captionOf(props.plugin, locale.value), url })
       return
     }
   }
