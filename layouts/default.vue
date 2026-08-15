@@ -2,6 +2,7 @@
 const { locale, t } = useI18n()
 const route = useRoute()
 const head = useLocaleHead({ dir: true, lang: true, seo: true })
+const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 useHead(() => ({
   htmlAttrs: { lang: head.value.htmlAttrs?.lang ?? 'en' },
@@ -15,8 +16,10 @@ function switchLang() {
   navigateTo(switchLocalePath(other.value))
 }
 
-const navActive = (prefix: string) =>
-  route.path === prefix || route.path.startsWith(`${prefix}/`)
+const navActive = (path: string) => {
+  const localized = localePath(path)
+  return route.path === localized || route.path.startsWith(`${localized}/`)
+}
 
 const toast = useState<string | null>('toast', () => null)
 </script>
@@ -25,15 +28,15 @@ const toast = useState<string | null>('toast', () => null)
   <div>
     <header class="site-header">
       <div class="container inner">
-        <NuxtLink to="/" class="brand" aria-label="DSH Meme Hub">
+        <NuxtLink :to="localePath('/')" class="brand" aria-label="DSH Meme Hub">
           <img class="whale" src="/images/dsh-ui-whale.gif" alt="whale">
           DSH<em>Meme</em>Hub
         </NuxtLink>
         <nav class="main-nav">
-          <NuxtLink to="/meme" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
-          <NuxtLink to="/plugins" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
-          <NuxtLink to="/submit" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
-          <NuxtLink to="/about" :class="{ active: navActive('/about') }">{{ t('nav.about') }}</NuxtLink>
+          <NuxtLink :to="localePath('/meme')" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
+          <NuxtLink :to="localePath('/plugins')" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
+          <NuxtLink :to="localePath('/submit')" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
+          <NuxtLink :to="localePath('/about')" :class="{ active: navActive('/about') }">{{ t('nav.about') }}</NuxtLink>
         </nav>
         <button class="lang-switch" @click="switchLang">
           {{ other === 'zh' ? '中文' : 'EN' }}
@@ -51,8 +54,8 @@ const toast = useState<string | null>('toast', () => null)
           <div class="col">
             <h4>DSH Meme Hub</h4>
             <ul>
-              <li><NuxtLink to="/about">{{ t('footer.about') }}</NuxtLink></li>
-              <li><NuxtLink to="/submit">{{ t('footer.submit') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/about')">{{ t('footer.about') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/submit')">{{ t('footer.submit') }}</NuxtLink></li>
             </ul>
           </div>
           <div class="col">

@@ -2,10 +2,13 @@
 import type { NuxtError } from '#app'
 import { useI18n } from '#imports'
 
-const props = defineProps<{ error: NuxtError }>()
+defineProps<{ error: NuxtError }>()
 const { t, locale } = useI18n()
 
-useHead({ title: t('common.notFound') })
+useHead({
+  title: t('common.notFound'),
+  htmlAttrs: { lang: locale.value === 'zh' ? 'zh-CN' : 'en' },
+})
 </script>
 
 <template>

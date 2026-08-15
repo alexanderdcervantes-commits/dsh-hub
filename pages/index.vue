@@ -35,7 +35,7 @@ useHead({
     { property: 'og:description', content: heroSub },
     { property: 'og:image', content: `${siteUrl}/images/dsh-deep-whale.webp` },
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: siteUrl },
+    { property: 'og:url', content: `${siteUrl}${localePath('/')}` },
   ],
   script: [{
     type: 'application/ld+json',
@@ -69,7 +69,7 @@ useHead({
           <input
             v-model="q"
             type="search"
-            :placeholder="isZh ? '搜索 87 个插件…（试试：鲸鱼、皮肤、五子棋）' : 'Search 87 plugins… (try: whale, skin, gomoku)'"
+            :placeholder="isZh ? `搜索 ${plugins.length} 个插件…（试试：鲸鱼、皮肤、五子棋）` : `Search ${plugins.length} plugins… (try: whale, skin, gomoku)`"
             aria-label="search"
           >
         </form>

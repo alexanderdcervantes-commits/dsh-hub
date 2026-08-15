@@ -56,12 +56,11 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://dsh-meme-hub.cdqyfdbymn.me',
     locales: [
-      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' },
-      { code: 'zh', iso: 'zh-CN', name: '简体中文', file: 'zh.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'zh', language: 'zh-CN', name: '简体中文', file: 'zh.json' },
     ],
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
-    seo: true,
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'dshmeme_i18n',
