@@ -59,7 +59,11 @@ export function usePlugins() {
 
   const memes = () => plugins.filter((p) => p.is_meme)
 
-  /** 最近 7 天内有推送的，按 pushed_at 倒序 */
+  /**
+   * 最近 N 天内有推送的，按 pushed_at 倒序。
+   * 以数据更新日期（updatedAt）为基准，保证 SSR/客户端预渲染水合一致；
+   * 数据久未刷新时该区块可能长期显示同一批，需通过 build:data 刷新。
+   */
   const fresh = (days = 7) => {
     const cutoff = new Date(pluginData.updatedAt)
     cutoff.setDate(cutoff.getDate() - days)
@@ -99,8 +103,8 @@ export function usePlugins() {
     sort?: 'stars' | 'recent' | 'name'
   }): DshPlugin[] {
     let list = [...plugins]
-    if (opts.memeSection && opts.memeSection !== 'all') {
-      list = list.filter((p) => p.is_meme && p.meme_section === opts.memeSection)
+    if (opts.memeSection) {
+      list = list.filter((p) => p.is_meme && (opts.memeSection === 'all' || p.meme_section === opts.memeSection))
     }
     if (opts.categoryKey && opts.categoryKey !== 'all') {
       list = list.filter((p) => p.category_zh === opts.categoryKey)
