@@ -1,0 +1,500 @@
+{
+  "updatedAt": "2026-08-16",
+  "count": 19,
+  "_note": "DSH 桌面化/一键启动器收录。全部经 GitHub API 实时核实（star/license/平台/最近推送）。数据抓取自各项目 README，未编造。无 license 声明者如实标注 null。这不是 dsh 插件目录——它们是桌面壳/启动器，把 dsh web 装进原生窗口方便小白。",
+  "launchers": [
+    {
+      "slug": "deepseek-harness-desktop-anywhere",
+      "name": "DeepSeek Harness Desktop",
+      "repo": "anywhere-labs/deepseek-harness-desktop",
+      "url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
+      "description_zh": "为 DSH 插件生态打造的现代化桌面端，macOS + Windows 双平台，官方 Discord 社区",
+      "description_en": "A modern desktop client built for the DSH plugin ecosystem, on macOS and Windows, with an official Discord community",
+      "stars": 8011,
+      "platforms": [
+        "macOS",
+        "Windows"
+      ],
+      "stack": "Electron",
+      "language": "TypeScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "现代化 UI",
+        "插件生态深度整合",
+        "社区活跃"
+      ],
+      "highlights_en": [
+        "Modern UI",
+        "Deep plugin-ecosystem integration",
+        "Active community"
+      ],
+      "pushed_at": "2026-08-16T12:22:14Z"
+    },
+    {
+      "slug": "deepseek-harness-eac",
+      "name": "DeepSeek Harness EAC「揽尽万象」",
+      "repo": "zouyuxuan122/Deepseek-Harness-EAC",
+      "url": "https://github.com/zouyuxuan122/Deepseek-Harness-EAC",
+      "description_zh": "揽尽万象：Windows 10/11 + Linux（pacman/deb/rpm/AppImage）全覆盖的桌面端，Linux 发行格式最全",
+      "description_en": "EAC (Embracing All Creation): desktop client covering Windows 10/11 plus the widest range of Linux formats — pacman, deb, rpm, AppImage",
+      "stars": 448,
+      "platforms": [
+        "Windows",
+        "Linux"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": null,
+      "highlights_zh": [
+        "Linux 格式最全",
+        "Windows/Linux 双端"
+      ],
+      "highlights_en": [
+        "Widest Linux formats",
+        "Windows + Linux"
+      ],
+      "pushed_at": "2026-08-16T11:05:59Z"
+    },
+    {
+      "slug": "dsh-desktop-dataelement",
+      "name": "DSH Desktop",
+      "repo": "dataelement/dsh-desktop",
+      "url": "https://github.com/dataelement/dsh-desktop",
+      "description_zh": "local-first 跨平台桌面壳，除官方 DeepSeek 模型外还支持主流第三方模型提供商",
+      "description_en": "A local-first, cross-platform desktop shell that supports mainstream third-party model providers beyond the official DeepSeek models",
+      "stars": 433,
+      "platforms": [
+        "macOS",
+        "Windows"
+      ],
+      "stack": "Electron",
+      "language": "TypeScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "local-first",
+        "第三方模型支持"
+      ],
+      "highlights_en": [
+        "Local-first",
+        "Third-party model support"
+      ],
+      "pushed_at": "2026-08-16T10:24:22Z"
+    },
+    {
+      "slug": "dsh-desktop-yangyunfan",
+      "name": "DSH Desktop",
+      "repo": "myYangyunfan/dsh_desktop",
+      "url": "https://github.com/myYangyunfan/dsh_desktop",
+      "description_zh": "把 @deepseek-ai/dsh 封装成开箱即用的 Windows 客户端，内置 Node.js + dsh，便携版可放 U 盘，国内提供 Gitee 分片下载",
+      "description_en": "Wraps @deepseek-ai/dsh into a ready-to-use Windows client with Node.js + dsh bundled in. A portable build fits on a USB stick; Gitee split downloads provided for users in China",
+      "stars": 347,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "内置运行环境",
+        "便携版可放 U 盘",
+        "国内 Gitee 下载"
+      ],
+      "highlights_en": [
+        "Runtime bundled",
+        "Portable build for USB",
+        "Gitee downloads for China"
+      ],
+      "pushed_at": "2026-08-16T12:12:19Z"
+    },
+    {
+      "slug": "deepseek-harness-desktop-hairyf",
+      "name": "DeepSeek Harness Desktop",
+      "repo": "hairyf/deepseek-harness-desktop",
+      "url": "https://github.com/hairyf/deepseek-harness-desktop",
+      "description_zh": "Tauri 桌面版，仅约 5MB，零环境配置：不用装 Node.js/pnpm/Docker，下载安装即用。Windows/macOS/Linux",
+      "description_en": "A Tauri desktop build of only ~5MB with zero environment setup — no Node.js, pnpm or Docker needed. Download, install, go. Windows/macOS/Linux",
+      "stars": 263,
+      "platforms": [
+        "Windows",
+        "macOS",
+        "Linux"
+      ],
+      "stack": "Tauri",
+      "language": "Rust",
+      "license": "MIT",
+      "highlights_zh": [
+        "约 5MB 极小",
+        "零环境配置",
+        "三平台"
+      ],
+      "highlights_en": [
+        "~5MB tiny",
+        "Zero setup",
+        "Three platforms"
+      ],
+      "pushed_at": "2026-08-16T12:01:54Z"
+    },
+    {
+      "slug": "oh-dsh",
+      "name": "Oh-DSH",
+      "repo": "hust-open-atom-club/oh-dsh",
+      "url": "https://github.com/hust-open-atom-club/oh-dsh",
+      "description_zh": "一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验，把 AI Agent、工作区、本地工具与插件生态带到你习惯的界面",
+      "description_en": "One DSH runtime powering three experiences — Desktop, Web and TUI — bringing AI agents, workspaces, local tools and the plugin ecosystem to the interface you prefer",
+      "stars": 210,
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "stack": "Electron",
+      "language": "TypeScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "一套 runtime 三种形态",
+        "Desktop/Web/TUI"
+      ],
+      "highlights_en": [
+        "One runtime, three forms",
+        "Desktop/Web/TUI"
+      ],
+      "pushed_at": "2026-08-16T08:58:07Z"
+    },
+    {
+      "slug": "deepseek-harness-desktop-app-vibe",
+      "name": "DeepSeek Harness Desktop App",
+      "repo": "vibeinging/deepseek-harness-desktop-app",
+      "url": "https://github.com/vibeinging/deepseek-harness-desktop-app",
+      "description_zh": "建立在 DSH 之上的本地 AI 工作桌面，把 Session/Agent/Tool/Skill/MCP/插件 与项目、文件、Git Worktree、Canvas、Office 产物组织在同一个应用，另附二次元看板娘主题",
+      "description_en": "A local AI work desktop on top of DSH, organizing Sessions, Agents, Tools, Skills, MCP and plugins alongside projects, files, Git worktrees, Canvas and Office artifacts — plus an anime waifu theme",
+      "stars": 209,
+      "platforms": [
+        "macOS"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "完整工作台",
+        "二次元看板娘主题"
+      ],
+      "highlights_en": [
+        "Full workspace",
+        "Anime waifu theme"
+      ],
+      "pushed_at": "2026-08-15T08:56:28Z"
+    },
+    {
+      "slug": "deepseek-harness-desktop-steven",
+      "name": "DeepSeek Harness Desktop",
+      "repo": "steven-kid/deepseek-harness-desktop",
+      "url": "https://github.com/steven-kid/deepseek-harness-desktop",
+      "description_zh": "极简、local-first 的跨平台桌面壳，提供官网与全平台安装包（dmg/exe/deb/AppImage）",
+      "description_en": "A minimal, local-first, cross-platform desktop shell with an official website and installers for all platforms (dmg/exe/deb/AppImage)",
+      "stars": 171,
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "极简",
+        "全平台安装包",
+        "有官网"
+      ],
+      "highlights_en": [
+        "Minimal",
+        "All-platform installers",
+        "Official website"
+      ],
+      "pushed_at": "2026-08-16T03:51:49Z"
+    },
+    {
+      "slug": "dsh-launcher-ruler",
+      "name": "dsh-launcher",
+      "repo": "Ruler4396/dsh-launcher",
+      "url": "https://github.com/Ruler4396/dsh-launcher",
+      "description_zh": "Windows 原生轻量启动器：双击即用不用敲命令，安装包仅约 1.4MB，不内置 dsh、缺失依赖按需补齐、不改动系统环境。克制——不加文件面板/内置终端，一切交给 dsh 插件",
+      "description_en": "A lightweight native Windows launcher: double-click to use, no commands. The installer is only ~1.4MB; it doesn't bundle dsh, installs missing dependencies on demand and never touches your system environment. Deliberately minimal — no file panel or built-in terminal, left to dsh plugins",
+      "stars": 121,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "原生 (C#)",
+      "language": "C#",
+      "license": "MIT",
+      "highlights_zh": [
+        "仅 1.4MB",
+        "双击即用",
+        "克制设计"
+      ],
+      "highlights_en": [
+        "Only 1.4MB",
+        "Double-click to use",
+        "Deliberately minimal"
+      ],
+      "pushed_at": "2026-08-16T11:33:23Z"
+    },
+    {
+      "slug": "deepseek-harness-desktop-chisa",
+      "name": "Deepseek-Harness-Desktop",
+      "repo": "ChisaAlter/Deepseek-Harness-Desktop",
+      "url": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
+      "description_zh": "基于官方 Web UI 的 Electron 桌面壳：不重做聊天界面，负责窗口/托盘/工作区/API Key/启动编排，支持第三方模型思考强度、自定义主题背景图、内置插件市场",
+      "description_en": "An Electron shell over the official Web UI — it doesn't rebuild the chat, but handles window, tray, workspaces, API keys and launch orchestration. Adds reasoning-strength control for third-party models, custom themes/backgrounds and a built-in plugin market",
+      "stars": 95,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "官方 Web UI 外壳",
+        "自定义主题",
+        "内置插件市场"
+      ],
+      "highlights_en": [
+        "Official Web UI shell",
+        "Custom themes",
+        "Built-in plugin market"
+      ],
+      "pushed_at": "2026-08-16T01:30:11Z"
+    },
+    {
+      "slug": "dsha-android",
+      "name": "DSHA（安卓启动器）",
+      "repo": "qiannianhuanxiang/DSHA",
+      "url": "https://github.com/qiannianhuanxiang/DSHA",
+      "description_zh": "在安卓手机上跑 deepseek-harness 的一体化方案：内置 proot + Ubuntu rootfs，免 ROOT 免 Termux，分步安装、多源测速自选、内嵌 WebView 直接用 Web UI",
+      "description_en": "An all-in-one way to run deepseek-harness on Android: built-in proot + Ubuntu rootfs, no ROOT and no Termux. Step-by-step install with multi-mirror speed tests, and an embedded WebView for the Web UI",
+      "stars": 59,
+      "platforms": [
+        "Android"
+      ],
+      "stack": "Android 原生 (proot)",
+      "language": "Java",
+      "license": "MIT",
+      "highlights_zh": [
+        "安卓也能跑",
+        "免 ROOT 免 Termux",
+        "多源测速"
+      ],
+      "highlights_en": [
+        "Runs on Android",
+        "No ROOT/Termux",
+        "Multi-mirror speed tests"
+      ],
+      "pushed_at": "2026-08-16T10:44:53Z"
+    },
+    {
+      "slug": "dsh-desktop-xingj404",
+      "name": "dsh-desktop",
+      "repo": "xingj404-lab/dsh-desktop",
+      "url": "https://github.com/xingj404-lab/dsh-desktop",
+      "description_zh": "Tauri v2 原生桌面应用：本地启动 dsh web 后端，自带 node + dsh 用户什么都不用装，含菜单栏/系统托盘/窗口记忆/崩溃自愈/自动更新，后端仅绑定 127.0.0.1",
+      "description_en": "A native Tauri v2 desktop app: starts the dsh web backend locally and bundles its own node + dsh so end users install nothing. Menu bar, system tray, window-state memory, self-healing backend and in-app auto-update; the backend binds to 127.0.0.1 only",
+      "stars": 58,
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Linux"
+      ],
+      "stack": "Tauri v2",
+      "language": "Rust",
+      "license": null,
+      "highlights_zh": [
+        "自带 node+dsh",
+        "崩溃自愈",
+        "local-only"
+      ],
+      "highlights_en": [
+        "Bundles node+dsh",
+        "Self-healing backend",
+        "Local-only"
+      ],
+      "pushed_at": "2026-08-16T11:07:35Z"
+    },
+    {
+      "slug": "dsh-launcher-wep56",
+      "name": "DSH Launcher",
+      "repo": "WEP-56/DSH-Launcher",
+      "url": "https://github.com/WEP-56/DSH-Launcher",
+      "description_zh": "Tauri 2 桌面启动器：浏览器式标签页承载 dsh WebUI，支持多标签/拖拽分屏/跨窗并入，集成插件商店目录与配置编辑，端口被占用时自动沿用已有服务",
+      "description_en": "A Tauri 2 launcher hosting dsh WebUI in browser-style tabs: multi-tab, drag-to-split and cross-window merging. Integrates the plugin-store catalog and config editing, and reuses an already-running dsh service when the port is taken",
+      "stars": 13,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "Tauri 2",
+      "language": "Rust",
+      "license": null,
+      "highlights_zh": [
+        "浏览器式标签页",
+        "插件商店集成"
+      ],
+      "highlights_en": [
+        "Browser-style tabs",
+        "Plugin-store integration"
+      ],
+      "platform_note_zh": "release 现仅提供 Windows 安装包（Tauri 源码本身跨平台）",
+      "platform_note_en": "Release currently ships Windows installers only (the Tauri source itself is cross-platform)",
+      "pushed_at": "2026-08-16T12:15:39Z"
+    },
+    {
+      "slug": "dsh-launcher-marcog",
+      "name": "DSH Launcher",
+      "repo": "MarcoG-h/DSH-Launcher",
+      "url": "https://github.com/MarcoG-h/DSH-Launcher",
+      "description_zh": "最方便的 DSH 启动器兼第三方插件管理：Electron + React + Tailwind，一键安装运行环境、快捷 API 切换（类 cc-switch）、客户端内嵌 Web、插件市场与余额小部件，可离线部署",
+      "description_en": "The most convenient DSH launcher and third-party plugin manager: Electron + React + Tailwind. One-click environment install, quick API switching (cc-switch style), in-app Web, a plugin market and a balance widget; offline deployment supported",
+      "stars": 14,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "Electron + React",
+      "language": "TypeScript",
+      "license": null,
+      "highlights_zh": [
+        "插件管理 + 市场",
+        "API 切换",
+        "余额小部件"
+      ],
+      "highlights_en": [
+        "Plugin manager + market",
+        "API switching",
+        "Balance widget"
+      ],
+      "pushed_at": "2026-08-16T10:31:39Z"
+    },
+    {
+      "slug": "dsh-launcher-loudmore",
+      "name": "dsh-launcher",
+      "repo": "loudMore/dsh-launcher",
+      "url": "https://github.com/loudMore/dsh-launcher",
+      "description_zh": "给小白用的傻瓜式 DSH 管理工具：图形化管理插件（安装/更新/修复依赖/启停），三维更新看板，自动装 Node.js，环境检测一目了然，README 提供 5 种语言",
+      "description_en": "A beginner-friendly, no-CLI DSH manager: visually manage plugins (install/update/fix-deps/toggle), a 3-way update board, auto Node.js install, at-a-glance environment detection. README in 5 languages",
+      "stars": 12,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "C#",
+      "language": "C#",
+      "license": "MIT",
+      "highlights_zh": [
+        "小白友好",
+        "环境自动检测",
+        "5 语言 README"
+      ],
+      "highlights_en": [
+        "Beginner-friendly",
+        "Auto env detection",
+        "5-language README"
+      ],
+      "pushed_at": "2026-08-16T11:39:42Z"
+    },
+    {
+      "slug": "dsh-web-desktop",
+      "name": "DSH-Web Desktop",
+      "repo": "ding7015869-alt/dsh-web-desktop",
+      "url": "https://github.com/ding7015869-alt/dsh-web-desktop",
+      "description_zh": "双击即用：把 DeepSeek Harness Web UI 装进原生 Windows 窗口，从源码到工作台一步到位",
+      "description_en": "One double-click from DeepSeek Harness source to a native Windows workspace — wraps the Web UI in a native window",
+      "stars": 10,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "C# / WebView2",
+      "language": "C#",
+      "license": "MIT",
+      "highlights_zh": [
+        "双击即用",
+        "原生窗口"
+      ],
+      "highlights_en": [
+        "Double-click to use",
+        "Native window"
+      ],
+      "pushed_at": "2026-08-14T04:20:49Z"
+    },
+    {
+      "slug": "dsh-melody-launcher",
+      "name": "dsh-旋律启动器",
+      "repo": "rirko/dsh-melody-launcher",
+      "url": "https://github.com/rirko/dsh-melody-launcher",
+      "description_zh": "面向 DeepSeek Harness 的 Windows 桌面启动器与插件管理器：下载即用，管理 DSH 本体、插件、API Key 与运行配置，无需预装 Node.js。Electron + React + TypeScript + Vite",
+      "description_en": "A Windows desktop launcher and plugin manager for DeepSeek Harness: download and use, managing the DSH core, plugins, API keys and runtime config without pre-installed Node.js. Electron + React + TypeScript + Vite",
+      "stars": 9,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "Electron + React",
+      "language": "TypeScript",
+      "license": null,
+      "highlights_zh": [
+        "下载即用",
+        "无需预装 Node.js"
+      ],
+      "highlights_en": [
+        "Download and use",
+        "No pre-installed Node.js"
+      ],
+      "pushed_at": "2026-08-16T11:19:56Z"
+    },
+    {
+      "slug": "dsh-launcher-zhanweipan",
+      "name": "DSH Launcher",
+      "repo": "zhanweipan/dsh-launcher",
+      "url": "https://github.com/zhanweipan/dsh-launcher",
+      "description_zh": "一键部署与管理 DSH 的 Windows 桌面工具：开箱即用、免管理员权限、卸载零残留，向导式安装 Node.js 与 DSH，图形化启停/端口/日志，版本一键升降级",
+      "description_en": "A Windows desktop tool to deploy and manage DSH with one click: ready out of the box, no admin privileges, zero-residue uninstall. Wizard-style Node.js + DSH install, graphical start/stop/port/logs, one-click version up/downgrade",
+      "stars": 7,
+      "platforms": [
+        "Windows"
+      ],
+      "stack": "TypeScript",
+      "language": "TypeScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "免管理员",
+        "卸载零残留",
+        "向导式安装"
+      ],
+      "highlights_en": [
+        "No admin needed",
+        "Zero-residue uninstall",
+        "Wizard install"
+      ],
+      "pushed_at": "2026-08-13T23:12:57Z"
+    },
+    {
+      "slug": "dsh-desktop-linux-quan",
+      "name": "DSH Desktop for Linux",
+      "repo": "Quan-Robin/DSH-desktop-for-Linux",
+      "url": "https://github.com/Quan-Robin/DSH-desktop-for-Linux",
+      "description_zh": "Linux 用户的桌面版启动器：Electron 窗口内嵌 dsh Web UI，自动管理 dsh 服务进程，提供系统托盘、设置面板与更新检测，支持 deb/AppImage 安装",
+      "description_en": "A Linux desktop launcher: an Electron window embedding the dsh Web UI. Auto-manages the dsh service process, with system tray, settings panel and update detection; installable as deb/AppImage",
+      "stars": 6,
+      "platforms": [
+        "Linux"
+      ],
+      "stack": "Electron",
+      "language": "JavaScript",
+      "license": "MIT",
+      "highlights_zh": [
+        "Linux 专属",
+        "托盘 + 进程管理",
+        "deb/AppImage"
+      ],
+      "highlights_en": [
+        "Linux-focused",
+        "Tray + process management",
+        "deb/AppImage"
+      ],
+      "pushed_at": "2026-08-16T09:21:55Z"
+    }
+  ]
+}

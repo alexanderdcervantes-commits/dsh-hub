@@ -3,6 +3,7 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const { plugins, byStars, memes, fresh, categories, totalStars, updatedAt } = usePlugins()
+const { launchers } = useLaunchers()
 
 const q = ref('')
 const router = useRouter()
@@ -141,6 +142,17 @@ useHead({
         <div class="grid cols-4">
           <PluginCard v-for="p in freshPicks" :key="p.slug" :plugin="p" />
         </div>
+      </section>
+
+      <!-- 一键启动器 -->
+      <section class="section">
+        <div class="section-head">
+          <h2>{{ t('launcher.homeTitle') }}</h2>
+          <span class="count-note">{{ t('launcher.homeSub') }}</span>
+          <NuxtLink class="more" :to="localePath('/launcher')">{{ t('nav.launchers') }} →</NuxtLink>
+        </div>
+        <p style="color:var(--text-2);font-size:14.5px;margin:0 0 14px">{{ t('launcher.homeDesc', { n: launchers.length }) }}</p>
+        <NuxtLink class="btn green" :to="localePath('/launcher')">{{ t('launcher.homeCta') }} →</NuxtLink>
       </section>
 
       <!-- 数据看板 -->

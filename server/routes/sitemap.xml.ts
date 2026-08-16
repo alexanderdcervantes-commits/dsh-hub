@@ -10,7 +10,7 @@ export default defineEventHandler((event) => {
   const site = (config.public.siteUrl as string).replace(/\/$/, '')
   const plugins = (pluginsData as { plugins: Slug[] }).plugins
 
-  const top = ['', 'plugins', 'meme', 'submit', 'about', 'install']
+  const top = ['', 'plugins', 'meme', 'submit', 'about', 'install', 'launcher']
   const urls: string[] = []
 
   const emit = (path: string, altPath: string) => {

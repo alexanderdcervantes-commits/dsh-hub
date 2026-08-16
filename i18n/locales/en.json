@@ -3,6 +3,7 @@
     "meme": "🤪 Meme Zone",
     "plugins": "🧩 All Plugins",
     "install": "🚀 Install",
+    "launchers": "🖥️ Launchers",
     "submit": "➕ Submit",
     "about": "About"
   },
@@ -76,6 +77,30 @@
     "results": "{n} plugins",
     "noResults": "Nothing matched. Try another keyword?",
     "installGuide": "How to install dsh and plugins →"
+  },
+  "launcher": {
+    "title": "Desktop Launchers",
+    "sub": "Don't want to touch a terminal? These community projects wrap DSH in a native desktop window or turn it into a one-click launcher — download, install, double-click.",
+    "note": "They are not dsh plugins: they are standalone desktop apps and launchers, built for people who would rather never open a terminal.",
+    "allPlatforms": "All platforms",
+    "pf": {
+      "windows": "Windows",
+      "macos": "macOS",
+      "linux": "Linux",
+      "android": "Android"
+    },
+    "sortStars": "Most stars",
+    "sortName": "Name A–Z",
+    "results": "{n} launchers",
+    "noResults": "Nothing here for this platform yet.",
+    "licenseUndeclared": "no license declared",
+    "disclaimerTitle": "Honesty note",
+    "disclaimer": "Everything listed above is a third-party community project, not affiliated with DeepSeek or this site, and being listed is not an endorsement. Stars and licenses are transcribed as-is from GitHub (data updated {date}). Desktop apps can reach your API keys and system permissions: review the code before installing, and skip repos you don't trust.",
+    "homeTitle": "🖥️ One-Click Launchers",
+    "homeSub": "DSH without the command line",
+    "homeDesc": "{n} community projects wrap DSH in a native desktop window or a one-click launcher — download, install, double-click. One even runs it on Android.",
+    "homeCta": "Browse the launchers",
+    "sortRecent": "Recently updated"
   },
   "install": {
     "title": "Install DSH",
@@ -213,6 +238,7 @@
   "footer": {
     "about": "About",
     "install": "Install DSH",
+    "launchers": "Desktop launchers",
     "submit": "Submit a plugin",
     "official": "Official links",
     "dshRepo": "deepseek-harness",
