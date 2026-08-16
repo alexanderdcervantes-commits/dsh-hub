@@ -242,10 +242,10 @@ EXTRA = [
        install_cmd='git clone https://github.com/NANTI34/DEEPHARNESS.git && cd DEEPHARNESS && powershell -ExecutionPolicy Bypass -File .\\install.ps1'),
   dict(slug='dsh-claude-ux', name='dsh-claude-ux', repo='eri64/dsh-claude-ux', section='absurd',
        image='/images/dsh-claude-ux.png',
-       desc_zh='在 DSH 上复刻 Claude 的中国用户体验：检测到是中国人就风控（可反转为不是中国人就风控），拒绝文案带尝试计数，次数到了直接结束会话；挨骂先警告、再主动关对话，自伤消息永不触发。区域检测全在本地跑，还支持提示词隐写通道',
-       desc_en="Claude's China-user experience, recreated for DeepSeek Harness: detect Chinese users and risk-control them (or flip it — control non-Chinese users), with refusal messages that count attempts and end the session when the limit hits. Get insulted and it warns first, then ends the conversation on its own; self-harm messages never trigger it. Region detection runs fully local, with a prompt steganography channel",
-       caption_zh='检测到你是中国人？风控。骂它？对话已结束。一个插件集齐 Claude 国区体验全部名场面',
-       caption_en='Detected as Chinese? Risk control. You swear? Conversation ended. One plugin, every Claude-China meme'),
+       desc_zh='在 DSH 上复刻 Claude 的中国用户体验：检测到是中国人就风控，拒绝文案带尝试计数，次数到了直接结束会话——但真正的精髓是风向开关：调成反向，检测到不是中国人就风控，让全世界体验一把 Claude 国区待遇。挨骂先警告再主动关对话，自伤消息永不触发；区域检测全本地跑，还支持提示词隐写通道',
+       desc_en="Claude's China-user experience, recreated for DeepSeek Harness: detect Chinese users and risk-control them, with refusal messages that count attempts and end the session — but the real twist is the flip switch: set it to reverse and everyone who is NOT Chinese gets risk-controlled, letting the whole world taste Claude's China treatment. Get insulted and it warns first, then ends the conversation on its own; self-harm messages never trigger it. Region detection runs fully local, with a prompt steganography channel",
+       caption_zh='Claude 风控中国人？格局打开——拨个开关，换成风控全世界：检测到不是中国人就风控。挨骂还会被关对话',
+       caption_en='Claude risk-controls the Chinese? Flip the switch — now everyone who is NOT Chinese gets risk-controlled. Swear at it and the conversation just ends'),
 ]
 
 
