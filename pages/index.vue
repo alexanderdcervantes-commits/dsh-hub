@@ -2,7 +2,7 @@
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
-const { plugins, byStars, memes, fresh, categories, totalStars, updatedAt } = usePlugins()
+const { plugins, byStars, memes, fresh, categories, totalStars, updatedAt, descOf } = usePlugins()
 const { launchers } = useLaunchers()
 
 const q = ref('')
@@ -21,19 +21,14 @@ const cats = computed(() => categories(locale.value).slice(0, 8))
 const freshPicks = computed(() => fresh(7).slice(0, 8))
 
 const siteUrl = config.public.siteUrl as string
-const isZh = computed(() => locale.value === 'zh')
-const heroSub = isZh.value
-  ? 'DeepSeek Harness (dsh) 插件丛林的策展导航：人工精选的好东西、桌面鲸鱼娘，以及社区这周整出的最欢乐的活。'
-  : 'The curated guide to the DeepSeek Harness (dsh) plugin wilds: hand-picked gems, desktop whale pets, and the funniest things the community shipped this week.'
+const heroSub = computed(() => t('hero.sub'))
 
 useHead({
-  title: isZh.value
-    ? 'DSH Meme Hub — DeepSeek Harness 插件整活精选导航'
-    : 'DSH Meme Hub — curated & fun DeepSeek Harness (dsh) plugins',
+  title: computed(() => t('meta.homeTitle')),
   meta: [
-    { name: 'description', content: heroSub },
+    { name: 'description', content: heroSub.value },
     { property: 'og:title', content: 'DSH Meme Hub' },
-    { property: 'og:description', content: heroSub },
+    { property: 'og:description', content: heroSub.value },
     { property: 'og:image', content: `${siteUrl}/images/dsh-deep-whale.webp` },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: `${siteUrl}${localePath('/')}` },
@@ -45,11 +40,11 @@ useHead({
       '@type': 'WebSite',
       name: 'DSH Meme Hub',
       url: siteUrl,
-      description: heroSub,
+      description: heroSub.value,
       inLanguage: locale.value,
       potentialAction: {
         '@type': 'SearchAction',
-        target: `${siteUrl}${locale.value === 'zh' ? '/zh' : ''}/plugins?q={search_term_string}`,
+        target: `${siteUrl}${localePath('/plugins')}?q={search_term_string}`,
         'query-input': 'required name=search_term_string',
       },
     }),
@@ -63,12 +58,11 @@ useHead({
     <section class="hero">
       <div class="container">
         <img class="whale-mascot" src="/images/dsh-deep-whale-hero.webp" alt="whale girl" width="480" height="259" decoding="async" fetchpriority="high">
-        <h1><template v-if="!isZh">Everything is a Plugin — <em>so go tinker with anything.</em></template><template v-else>一切皆插件——<em>所以，万物皆可整活。</em></template></h1>
+        <h1>{{ t('hero.title') }} <em>{{ t('hero.titleAccent') }}</em></h1>
         <p class="sub">{{ heroSub }}</p>
         <p style="margin:0 0 22px">
           <NuxtLink class="btn green" :to="localePath('/install')">
-            <template v-if="!isZh">New here? Install dsh in one command →</template>
-            <template v-else>第一次用？一条命令装好 dsh →</template>
+            {{ t('hero.installCta') }}
           </NuxtLink>
         </p>
         <form class="search-wrap" @submit.prevent="goSearch">
@@ -76,7 +70,7 @@ useHead({
           <input
             v-model="q"
             type="search"
-            :placeholder="isZh ? `搜索 ${plugins.length} 个插件…（试试：鲸鱼、皮肤、五子棋）` : `Search ${plugins.length} plugins… (try: whale, skin, gomoku)`"
+            :placeholder="t('meta.homeSearchPh', { n: plugins.length })"
             aria-label="search"
           >
         </form>
@@ -109,7 +103,7 @@ useHead({
           <NuxtLink v-for="(p, i) in top10" :key="p.slug" :to="localePath(`/plugins/${p.slug}`)" class="row">
             <span class="rank" :class="`r${i + 1}`">{{ i + 1 }}</span>
             <span class="name">{{ p.name }}</span>
-            <span class="one-liner">{{ isZh ? p.description_zh : p.description_en }}</span>
+            <span class="one-liner">{{ descOf(p, locale) }}</span>
             <span class="stars">{{ p.stars.toLocaleString() }}</span>
           </NuxtLink>
         </div>

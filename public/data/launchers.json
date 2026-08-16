@@ -31,7 +31,13 @@
       "pushed_at": "2026-08-16T12:22:14Z",
       "image": "/images/launchers/deepseek-harness-desktop-anywhere.webp",
       "image_w": 960,
-      "image_h": 664
+      "image_h": 664,
+      "description_zh_TW": "為 DSH 外掛生態打造的現代化桌面端，macOS + Windows 雙平臺，官方 Discord 社群",
+      "highlights_zh_TW": [
+        "現代化 UI",
+        "外掛生態深度整合",
+        "社群活躍"
+      ]
     },
     {
       "slug": "deepseek-harness-eac",
@@ -59,7 +65,12 @@
       "pushed_at": "2026-08-16T11:05:59Z",
       "image": "/images/launchers/deepseek-harness-eac.webp",
       "image_w": 960,
-      "image_h": 558
+      "image_h": 558,
+      "description_zh_TW": "攬盡永珍：Windows 10/11 + Linux（pacman/deb/rpm/AppImage）全覆蓋的桌面端，Linux 發行格式最全",
+      "highlights_zh_TW": [
+        "Linux 格式最全",
+        "Windows/Linux 雙端"
+      ]
     },
     {
       "slug": "dsh-desktop-dataelement",
@@ -87,7 +98,12 @@
       "pushed_at": "2026-08-16T10:24:22Z",
       "image": "/images/launchers/dsh-desktop-dataelement.webp",
       "image_w": 960,
-      "image_h": 611
+      "image_h": 611,
+      "description_zh_TW": "local-first 跨平臺桌面殼，除官方 DeepSeek 模型外還支援主流第三方模型提供商",
+      "highlights_zh_TW": [
+        "local-first",
+        "第三方模型支援"
+      ]
     },
     {
       "slug": "dsh-desktop-yangyunfan",
@@ -114,7 +130,13 @@
         "Gitee downloads for China"
       ],
       "pushed_at": "2026-08-16T12:12:19Z",
-      "image": null
+      "image": null,
+      "description_zh_TW": "把 @deepseek-ai/dsh 封裝成開箱即用的 Windows 客戶端，內建 Node.js + dsh，便攜版可放 U 盤，國內提供 Gitee 分片下載",
+      "highlights_zh_TW": [
+        "內建執行環境",
+        "便攜版可放 U 盤",
+        "國內 Gitee 下載"
+      ]
     },
     {
       "slug": "deepseek-harness-desktop-hairyf",
@@ -145,7 +167,13 @@
       "pushed_at": "2026-08-16T12:01:54Z",
       "image": "/images/launchers/deepseek-harness-desktop-hairyf.webp",
       "image_w": 960,
-      "image_h": 646
+      "image_h": 646,
+      "description_zh_TW": "Tauri 桌面版，僅約 5MB，零環境配置：不用裝 Node.js/pnpm/Docker，下載安裝即用。Windows/macOS/Linux",
+      "highlights_zh_TW": [
+        "約 5MB 極小",
+        "零環境配置",
+        "三平臺"
+      ]
     },
     {
       "slug": "oh-dsh",
@@ -174,7 +202,12 @@
       "pushed_at": "2026-08-16T08:58:07Z",
       "image": "/images/launchers/oh-dsh.webp",
       "image_w": 960,
-      "image_h": 602
+      "image_h": 602,
+      "description_zh_TW": "一套 DSH runtime，Desktop、Web 與 TUI 三種開發體驗，把 AI Agent、工作區、本地工具與外掛生態帶到你習慣的介面",
+      "highlights_zh_TW": [
+        "一套 runtime 三種形態",
+        "Desktop/Web/TUI"
+      ]
     },
     {
       "slug": "deepseek-harness-desktop-app-vibe",
@@ -201,7 +234,12 @@
       "pushed_at": "2026-08-15T08:56:28Z",
       "image": "/images/launchers/deepseek-harness-desktop-app-vibe.webp",
       "image_w": 960,
-      "image_h": 617
+      "image_h": 617,
+      "description_zh_TW": "建立在 DSH 之上的本地 AI 工作桌面，把 Session/Agent/Tool/Skill/MCP/外掛 與專案、檔案、Git Worktree、Canvas、Office 產物組織在同一個應用，另附二次元看板娘主題",
+      "highlights_zh_TW": [
+        "完整工作臺",
+        "二次元看板娘主題"
+      ]
     },
     {
       "slug": "deepseek-harness-desktop-steven",
@@ -230,7 +268,13 @@
         "Official website"
       ],
       "pushed_at": "2026-08-16T03:51:49Z",
-      "image": null
+      "image": null,
+      "description_zh_TW": "極簡、local-first 的跨平臺桌面殼，提供官網與全平臺安裝包（dmg/exe/deb/AppImage）",
+      "highlights_zh_TW": [
+        "極簡",
+        "全平臺安裝包",
+        "有官網"
+      ]
     },
     {
       "slug": "dsh-launcher-ruler",
@@ -259,7 +303,13 @@
       "pushed_at": "2026-08-16T11:33:23Z",
       "image": "/images/launchers/dsh-launcher-ruler.webp",
       "image_w": 960,
-      "image_h": 630
+      "image_h": 630,
+      "description_zh_TW": "Windows 原生輕量啟動器：雙擊即用不用敲命令，安裝包僅約 1.4MB，不內建 dsh、缺失依賴按需補齊、不改動系統環境。剋制——不加檔案面板/內建終端，一切交給 dsh 外掛",
+      "highlights_zh_TW": [
+        "僅 1.4MB",
+        "雙擊即用",
+        "剋制設計"
+      ]
     },
     {
       "slug": "deepseek-harness-desktop-chisa",
@@ -288,7 +338,13 @@
       "pushed_at": "2026-08-16T01:30:11Z",
       "image": "/images/launchers/deepseek-harness-desktop-chisa.webp",
       "image_w": 960,
-      "image_h": 613
+      "image_h": 613,
+      "description_zh_TW": "基於官方 Web UI 的 Electron 桌面殼：不重做聊天介面，負責視窗/托盤/工作區/API Key/啟動編排，支援第三方模型思考強度、自定義主題背景圖、內建外掛市場",
+      "highlights_zh_TW": [
+        "官方 Web UI 外殼",
+        "自定義主題",
+        "內建外掛市場"
+      ]
     },
     {
       "slug": "dsha-android",
@@ -315,7 +371,13 @@
         "Multi-mirror speed tests"
       ],
       "pushed_at": "2026-08-16T10:44:53Z",
-      "image": null
+      "image": null,
+      "description_zh_TW": "在安卓手機上跑 deepseek-harness 的一體化方案：內建 proot + Ubuntu rootfs，免 ROOT 免 Termux，分步安裝、多源測速自選、內嵌 WebView 直接用 Web UI",
+      "highlights_zh_TW": [
+        "安卓也能跑",
+        "免 ROOT 免 Termux",
+        "多源測速"
+      ]
     },
     {
       "slug": "dsh-desktop-xingj404",
@@ -344,7 +406,13 @@
         "Local-only"
       ],
       "pushed_at": "2026-08-16T11:07:35Z",
-      "image": null
+      "image": null,
+      "description_zh_TW": "Tauri v2 原生桌面應用：本地啟動 dsh web 後端，自帶 node + dsh 使用者什麼都不用裝，含選單欄/系統托盤/視窗記憶/崩潰自愈/自動更新，後端僅繫結 127.0.0.1",
+      "highlights_zh_TW": [
+        "自帶 node+dsh",
+        "崩潰自愈",
+        "local-only"
+      ]
     },
     {
       "slug": "dsh-launcher-wep56",
@@ -373,7 +441,13 @@
       "pushed_at": "2026-08-16T12:15:39Z",
       "image": "/images/launchers/dsh-launcher-wep56.webp",
       "image_w": 960,
-      "image_h": 623
+      "image_h": 623,
+      "description_zh_TW": "Tauri 2 桌面啟動器：瀏覽器式標籤頁承載 dsh WebUI，支援多標籤/拖拽分屏/跨窗併入，整合外掛商店目錄與配置編輯，埠被佔用時自動沿用已有服務",
+      "highlights_zh_TW": [
+        "瀏覽器式標籤頁",
+        "外掛商店整合"
+      ],
+      "platform_note_zh_TW": "release 現僅提供 Windows 安裝包（Tauri 原始碼本身跨平臺）"
     },
     {
       "slug": "dsh-launcher-marcog",
@@ -402,7 +476,13 @@
       "pushed_at": "2026-08-16T10:31:39Z",
       "image": "/images/launchers/dsh-launcher-marcog.webp",
       "image_w": 960,
-      "image_h": 619
+      "image_h": 619,
+      "description_zh_TW": "最方便的 DSH 啟動器兼第三方外掛管理：Electron + React + Tailwind，一鍵安裝執行環境、快捷 API 切換（類 cc-switch）、客戶端內嵌 Web、外掛市場與餘額小部件，可離線部署",
+      "highlights_zh_TW": [
+        "外掛管理 + 市場",
+        "API 切換",
+        "餘額小部件"
+      ]
     },
     {
       "slug": "dsh-launcher-loudmore",
@@ -431,7 +511,13 @@
       "pushed_at": "2026-08-16T11:39:42Z",
       "image": "/images/launchers/dsh-launcher-loudmore.webp",
       "image_w": 960,
-      "image_h": 640
+      "image_h": 640,
+      "description_zh_TW": "給小白用的傻瓜式 DSH 管理工具：圖形化管理外掛（安裝/更新/修復依賴/啟停），三維更新看板，自動裝 Node.js，環境檢測一目瞭然，README 提供 5 種語言",
+      "highlights_zh_TW": [
+        "小白友好",
+        "環境自動檢測",
+        "5 語言 README"
+      ]
     },
     {
       "slug": "dsh-web-desktop",
@@ -458,7 +544,12 @@
       "pushed_at": "2026-08-14T04:20:49Z",
       "image": "/images/launchers/dsh-web-desktop.svg",
       "image_w": 1440,
-      "image_h": 860
+      "image_h": 860,
+      "description_zh_TW": "雙擊即用：把 DeepSeek Harness Web UI 裝進原生 Windows 視窗，從原始碼到工作臺一步到位",
+      "highlights_zh_TW": [
+        "雙擊即用",
+        "原生視窗"
+      ]
     },
     {
       "slug": "dsh-melody-launcher",
@@ -485,7 +576,12 @@
       "pushed_at": "2026-08-16T11:19:56Z",
       "image": "/images/launchers/dsh-melody-launcher.webp",
       "image_w": 960,
-      "image_h": 645
+      "image_h": 645,
+      "description_zh_TW": "面向 DeepSeek Harness 的 Windows 桌面啟動器與外掛管理器：下載即用，管理 DSH 本體、外掛、API Key 與執行配置，無需預裝 Node.js。Electron + React + TypeScript + Vite",
+      "highlights_zh_TW": [
+        "下載即用",
+        "無需預裝 Node.js"
+      ]
     },
     {
       "slug": "dsh-launcher-zhanweipan",
@@ -514,7 +610,13 @@
       "pushed_at": "2026-08-13T23:12:57Z",
       "image": "/images/launchers/dsh-launcher-zhanweipan.webp",
       "image_w": 960,
-      "image_h": 615
+      "image_h": 615,
+      "description_zh_TW": "一鍵部署與管理 DSH 的 Windows 桌面工具：開箱即用、免管理員許可權、解除安裝零殘留，嚮導式安裝 Node.js 與 DSH，圖形化啟停/埠/日誌，版本一鍵升降級",
+      "highlights_zh_TW": [
+        "免管理員",
+        "解除安裝零殘留",
+        "嚮導式安裝"
+      ]
     },
     {
       "slug": "dsh-desktop-linux-quan",
@@ -541,7 +643,13 @@
         "deb/AppImage"
       ],
       "pushed_at": "2026-08-16T09:21:55Z",
-      "image": null
+      "image": null,
+      "description_zh_TW": "Linux 使用者的桌面版啟動器：Electron 視窗內嵌 dsh Web UI，自動管理 dsh 服務程序，提供系統托盤、設定面板與更新檢測，支援 deb/AppImage 安裝",
+      "highlights_zh_TW": [
+        "Linux 專屬",
+        "托盤 + 程序管理",
+        "deb/AppImage"
+      ]
     }
   ]
 }

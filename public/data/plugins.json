@@ -30,7 +30,10 @@
     "web-ui"
    ],
    "image_w": 1280,
-   "image_h": 400
+   "image_h": 400,
+   "description_zh_TW": "DSH Web UI 外掛與皮膚大禮包。任務看板、Git 圖譜、右側面板、手機掃碼遠端接管、遠端連線、鯨魚娘桌寵、即時 token 統計、皮膚中心，可單獨安裝也可聚合安裝",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "任務看板支援 cron 定時執行，手機掃碼就能遠端接管工作區"
   },
   {
    "slug": "modlens",
@@ -71,7 +74,9 @@
     "text-only-llm",
     "vision",
     "vision-transformer"
-   ]
+   ],
+   "description_zh_TW": "為純文本模型架起視覺橋樑: 貼上圖片，輸出結構化 JSON 證據（OCR、版面、語義）。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-better-sidebar",
@@ -101,7 +106,10 @@
     "dsh-better-sidebar",
     "dsh-plugin",
     "sidebar"
-   ]
+   ],
+   "description_zh_TW": "一個外掛一套完整工作臺：檔案管理、編輯預覽、內嵌瀏覽器、真實終端、Git 面板、後臺任務全都有，還支援三方拓展註冊新 Tab",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "官方側邊欄看哭：這才叫工作臺"
   },
   {
    "slug": "dsh-cc-tui",
@@ -136,7 +144,10 @@
     "tui"
    ],
    "image_w": 1600,
-   "image_h": 875
+   "image_h": 875,
+   "description_zh_TW": "官方還沒出 TUI？社群先造了一個：Claude Code 風格全屏終端，畫素鯨魚頂欄、即時工作狀態行、思考流式展開、雙擊 Esc 時間回溯，被官方公眾號收錄",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "藍白上下文進度條 + TPS 儀表，純外掛掛載，零核心改動"
   },
   {
    "slug": "dsh-deep-whale",
@@ -164,7 +175,10 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 862
+   "image_h": 862,
+   "description_zh_TW": "鯨魚娘皮膚系列「深海女僕工坊 maid-atelier」：雙女僕看店、深海藍蕾絲介面 + Q 版側欄，CC BY-NC-SA 4.0",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "亮暗雙模式，蕾絲邊深海藍——鯨魚孃的排面"
   },
   {
    "slug": "dsh-vision-toolkit",
@@ -202,7 +216,9 @@
     "ui-restoration",
     "vision-language-model",
     "vision-tools"
-   ]
+   ],
+   "description_zh_TW": "讓純文本模型更好地做視覺任務: 帶意圖的圖片問答、長截圖 OCR、UI 還原等。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-ads",
@@ -232,7 +248,10 @@
     "web-ui"
    ],
    "image_w": 1400,
-   "image_h": 785
+   "image_h": 785,
+   "description_zh_TW": "把 DSH 變成 2005 年的中文入口網站：貪玩藍鯨、財神鯨抽獎、假防毒、角落彈窗全套，關閉叉的熱區還比看起來小得多",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "側欄、對話、角落全塞滿——但模型一直在後臺幹活，只是回答前得先看廣告"
   },
   {
    "slug": "dsh-agent-teams",
@@ -258,7 +277,9 @@
     "dsh",
     "dsh-agent-teams",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "AgentTeams 多智慧體團隊。",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "oh-dsh",
@@ -284,7 +305,9 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
-   ]
+   ],
+   "description_zh_TW": "社群發行版: TUI、桌面端與 Web UI 統一體驗，分層安裝、一步到位。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "notes",
@@ -308,7 +331,9 @@
     "dsh-plugin",
     "notes",
     "smartisan"
-   ]
+   ],
+   "description_zh_TW": "將 DSH 對話匯出為錘子便籤風格 PNG，或在配置的賬號工作區中新建和更新 Markdown 便籤。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-tianshu-tui",
@@ -340,7 +365,10 @@
     "tui"
    ],
    "image_w": 1024,
-   "image_h": 550
+   "image_h": 550,
+   "description_zh_TW": "在官方 TUI 擴充套件之上做 harness 級定製：TDD 驅動的 agent 工作流、證據門交付、影像/視覺橋接、語義程式碼檢索。渲染核心演化自 Tianshu-Tui，純表現層設計",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "只看不碰：agent 該幹嘛幹嘛，介面負責好看"
   },
   {
    "slug": "whale-girl",
@@ -371,7 +399,10 @@
     "pet"
    ],
    "image_w": 128,
-   "image_h": 128
+   "image_h": 128,
+   "description_zh_TW": "QQ 寵物形態的鯨魚娘：可拖拽、投餵、玩耍，完成任務攢資歷、升稱號、存回憶；任務失敗還會失落",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "15 種狀態全套：眨眼、散步、打盹、歡呼、受驚——她真的在陪你上班"
   },
   {
    "slug": "dsh-at-file",
@@ -394,7 +425,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "Codex 風格的 @file 檔案引用，輸入框裡直接搜尋並引用工作區檔案。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "modsearch",
@@ -434,7 +467,9 @@
     "pi-agent",
     "web-fetch",
     "web-search"
-   ]
+   ],
+   "description_zh_TW": "純文本 agent 的聯網搜尋橋: 搜尋網頁與 X，返回結構化 JSON 證據（search/fetch/引用）。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-browser",
@@ -463,7 +498,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "Chrome 側邊欄擴充套件，讓 DSH 直接操控你的瀏覽器，無需視覺能力。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "forkprobe",
@@ -494,7 +531,9 @@
     "research-writing",
     "skill-comparison",
     "skills"
-   ]
+   ],
+   "description_zh_TW": "同一任務並行試跑多個技能，對比結果選出最優。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "argo",
@@ -517,7 +556,9 @@
    "topics": [
     "dsh-ecosystem",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "專為 agent 打造的搜尋工具: 多語言，覆蓋中文/英文/學術/程式碼/購物/金融/新聞/百科。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-visualize",
@@ -547,7 +588,10 @@
     "interactive-visualization"
    ],
    "image_w": 452,
-   "image_h": 638
+   "image_h": 638,
+   "description_zh_TW": "DSH 不必只用文字回答：模型呼叫 visualize，互動式 HTML 卡片直接畫進會話流，模擬器、圖表、UI 原型都行",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "dsh-ads 作者唯一一條正經廣告"
   },
   {
    "slug": "dsh-openpencil",
@@ -576,7 +620,9 @@
     "ppt",
     "ui",
     "ui-design"
-   ]
+   ],
+   "description_zh_TW": "OpenPencil 設計預覽與編輯外掛。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-genui",
@@ -599,7 +645,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "助手回覆內渲染互動式 UI 元件: 佈局、圖表、表單、測驗、mermaid、3D 場景與回傳事件迴圈。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-workflow",
@@ -627,7 +675,9 @@
     "dshtopic",
     "multi-agent",
     "workflow"
-   ]
+   ],
+   "description_zh_TW": "把 UltraCode 式多 Agent 排程帶給 DSH: 可生成、可儲存、可治理、可觀察、可恢復的 Workflow 層。",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "mstar-harness",
@@ -657,7 +707,9 @@
     "sdd",
     "spec-driven",
     "subagents"
-   ]
+   ],
+   "description_zh_TW": "技能驅動的 harness/loop 工程化工作流外掛。",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "dsh-open-in-vscode",
@@ -680,7 +732,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "從 Web GUI 一鍵在 VS Code 中開啟工作區目錄。",
+   "category_zh_TW": "通知與整合"
   },
   {
    "slug": "dsh-vision-router",
@@ -706,7 +760,9 @@
     "dsh-plugin",
     "multimodal",
     "vision"
-   ]
+   ],
+   "description_zh_TW": "Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screenshots). One-command install, no Python, image turns work like ordinary tool-calling turns.",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "dsh-turn-rewind",
@@ -736,7 +792,9 @@
     "restore-point",
     "turn-rewind",
     "workspace-safety"
-   ]
+   ],
+   "description_zh_TW": "對話回退: 基於持久 Change Ledger 回滾會話與工作區狀態。",
+   "category_zh_TW": "會話與訊息"
   },
   {
    "slug": "dsh-notification",
@@ -759,7 +817,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "回合完成桌面通知，按結果分控 + 關鍵詞過濾。",
+   "category_zh_TW": "通知與整合"
   },
   {
    "slug": "dsh-annotation",
@@ -782,7 +842,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "選中文字→批註→隨訊息傳送，回覆按批註逐條對照。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "plugin-registry",
@@ -810,7 +872,9 @@
     "dsh-repository-plugin",
     "plugin-management",
     "ui"
-   ]
+   ],
+   "description_zh_TW": "外掛生態基建: 瀏覽器面板管理官方 repository 外掛（0 patch）+ make-dsh-plugin 外掛開發引導技能。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "ui-status-label",
@@ -836,7 +900,10 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "把你鯨魚娘思考時的 deep diving 自定義成任意你想要的樣子，一行設定搞定",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "deep diving？不，現在她是「潛入深海尋找答案中」"
   },
   {
    "slug": "dsh-automation",
@@ -865,7 +932,9 @@
     "dsh-bundle",
     "dsh-plugin",
     "scheduled-tasks"
-   ]
+   ],
+   "description_zh_TW": "定時任務: 讓 Coding 任務按計劃在全新 Agent Session 中執行，保留可審計歷史。",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "dsh-interconnect",
@@ -890,7 +959,9 @@
     "dsh",
     "dsh-plugin",
     "interconnect"
-   ]
+   ],
+   "description_zh_TW": "跨例項互聯: 經 interconnect 服務在多個 DSH 例項間轉發訊息與事件。",
+   "category_zh_TW": "會話與訊息"
   },
   {
    "slug": "dsh-custom-tool",
@@ -913,7 +984,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "用 Monaco 編輯器建立和管理沙箱化的自定義 JavaScript 工具。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-message-edit",
@@ -936,7 +1009,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "基於分支的訊息編輯、reroll、重試與版本時間線。",
+   "category_zh_TW": "會話與訊息"
   },
   {
    "slug": "dsh-ui-whale",
@@ -964,7 +1039,10 @@
     "dsh-plugin"
    ],
    "image_w": 348,
-   "image_h": 220
+   "image_h": 220,
+   "description_zh_TW": "會話標題欄常駐一隻全手繪畫素鯨魚：眨眼、擺尾、思考流動畫、回合完成噴水、點選冒愛心，零核心改動",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "空閒 10 秒還會打瞌睡，尾巴一幀一幀擺"
   },
   {
    "slug": "dsh-side-panel",
@@ -987,7 +1065,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "側邊欄整合檔案瀏覽器、終端和 Git 審查，方便預覽檔案。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-computer-use",
@@ -1023,7 +1103,9 @@
     "macos",
     "native-apps",
     "typescript"
-   ]
+   ],
+   "description_zh_TW": "macOS 電腦控制: Accessibility 觀測、過期狀態拒絕、作用域許可權與安全輸入。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-share",
@@ -1046,7 +1128,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "一鍵分享你的對話。",
+   "category_zh_TW": "會話與訊息"
   },
   {
    "slug": "dsh-chat-import",
@@ -1087,7 +1171,9 @@
     "plugin",
     "sessions",
     "transcript"
-   ]
+   ],
+   "description_zh_TW": "把 Claude Code / Codex / ChatGPT / Cursor / Gemini / Reasonix / opencode 的聊天記錄全保真匯入為可續聊的 DSH 會話。",
+   "category_zh_TW": "會話與訊息"
   },
   {
    "slug": "distill",
@@ -1109,7 +1195,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "自動對話蒸餾: 後臺 subagent 反省 + 技能 create/update。",
+   "category_zh_TW": "記憶"
   },
   {
    "slug": "dsh-toolkit",
@@ -1135,7 +1223,9 @@
     "dsh-plugin",
     "toolkit",
     "zero-dependency"
-   ]
+   ],
+   "description_zh_TW": "零依賴工具包: time / encoding / json / calculator / csv / regex / markdown / diff / stat / schema 十件套一鍵安裝。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-plugin-check",
@@ -1161,7 +1251,9 @@
     "dsh-plugin",
     "linting",
     "plugin-health"
-   ]
+   ],
+   "description_zh_TW": "外掛健康檢查: 掃描清單協議/patch 格式/構建陷阱，零依賴只讀。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "gal-view",
@@ -1190,7 +1282,10 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 838
+   "image_h": 838,
+   "description_zh_TW": "把會話介面一鍵切成 Galgame：16:9 舞臺 + 鯨魚娘女僕立繪 + 華麗對話方塊 + 打字機臺詞，還自帶場景視覺化編輯器，拖拽換圖層即時同步迴游戲模式",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "DeepSeek 化身藍髮鯨魚女僕，「所以主人要多對我說話才好」"
   },
   {
    "slug": "dsh-group-photo",
@@ -1219,7 +1314,10 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 900
+   "image_h": 900,
+   "description_zh_TW": "DSH 內測收官之夜的拍立得合影牆：GitHub 零許可權登入 + 凍結白名單校驗，入鏡一次，常駐牆上",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "內測最後一晚的紀念作品：每人一張拍立得，附一句留言"
   },
   {
    "slug": "dsh-navbar",
@@ -1244,7 +1342,9 @@
     "dsh-plugin",
     "plugin",
     "ui"
-   ]
+   ],
+   "description_zh_TW": "對話節點導航條，右緣節點串快速跳轉 user 訊息。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-data-agent",
@@ -1269,7 +1369,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "讓 AI 幫你連資料庫、寫 SQL。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-focus-chat",
@@ -1297,7 +1399,10 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 1275
+   "image_h": 1275,
+   "description_zh_TW": "給 dsh 加一個「聚焦會話」檢視：遮蔽過程噪音，只看最終產出",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "左邊是日常，右邊是專注——只看結果的極簡模式"
   },
   {
    "slug": "dsh-minigames",
@@ -1323,7 +1428,10 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "右側小遊戲面板，18 款離線遊戲全 Canvas 手繪：恐龍跳一跳、俄羅斯方塊、坦克大戰（帶 AI）、掃雷、2048、數獨、吃豆人……",
+   "category_zh_TW": "摸魚遊戲",
+   "meme_caption_zh_TW": "等了 18 款遊戲的人不該沒有圖"
   },
   {
    "slug": "dsh-acp-for-bitfun",
@@ -1347,7 +1455,9 @@
     "bitfun",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "BitFun 與 DSH 的 ACP 互動對接。",
+   "category_zh_TW": "通知與整合"
   },
   {
    "slug": "fabric",
@@ -1370,7 +1480,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "類似 MC Fabric 的 hook 處理器。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-security-audit",
@@ -1396,7 +1508,9 @@
     "dsh-plugin",
     "secret-scanning",
     "security"
-   ]
+   ],
+   "description_zh_TW": "本機安全審計: 配置/外掛來源/會話/網路暴露面，只讀脫敏風險報告。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-stock-market",
@@ -1418,7 +1532,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "有效解決了寫程式碼的時候賬戶不能同時虧錢的 BUG。",
+   "category_zh_TW": "娛樂"
   },
   {
    "slug": "dsh-emoji",
@@ -1442,7 +1558,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "為 AI 回覆自動新增表情。",
+   "category_zh_TW": "娛樂"
   },
   {
    "slug": "dsh-stickers",
@@ -1465,7 +1583,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "使用者與 agent 雙向表情貼紙互動。",
+   "category_zh_TW": "娛樂"
   },
   {
    "slug": "dsh-gomoku",
@@ -1494,7 +1614,10 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 820
+   "image_h": 820,
+   "description_zh_TW": "在 DSH 側邊欄和 AI 殺一盤 15×15 五子棋：沒有任何搜尋演算法，每步都是純 LLM 推理；雙 AI 對戰還能圍觀兩個模型互相廝殺",
+   "category_zh_TW": "摸魚遊戲",
+   "meme_caption_zh_TW": "黑白雙方的模型和思考檔位可以分開調教，棋盤隨手開關，摸魚正事兩不誤"
   },
   {
    "slug": "dsh-balance-meter",
@@ -1526,7 +1649,10 @@
     "dsh-plugin",
     "dsh-web-ui",
     "plugin"
-   ]
+   ],
+   "description_zh_TW": "作曲欄即時顯示 DeepSeek 賬戶餘額 + 本會話花費，每 6 小時自動拉官方價目表，峰谷調價也不慌",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "看著餘額往下掉，打字都謹慎了"
   },
   {
    "slug": "deepseek-harness-tui",
@@ -1553,7 +1679,9 @@
     "dsh-plugins",
     "tui",
     "tui-rs"
-   ]
+   ],
+   "description_zh_TW": "Rust/ratatui 終端客戶端，直接使用 DSH SDK JSON-RPC 協議，支援獨立執行或作為 profile bundle 載入。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-scholar",
@@ -1576,7 +1704,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "學術助手外掛。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-session-health",
@@ -1602,7 +1732,9 @@
     "dsh-plugin",
     "health-check",
     "zstd"
-   ]
+   ],
+   "description_zh_TW": "會話檔案幀級掃描診斷（torn/損壞/空會話檢測）。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-client-auto-continue",
@@ -1631,7 +1763,9 @@
     "dsh-plugin",
     "plugin",
     "web-ui"
-   ]
+   ],
+   "description_zh_TW": "DSH Web UI plugin: automatically sends \"繼續\" (continue) when a request is interrupted by network errors or other non-human causes",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-task-status",
@@ -1656,7 +1790,9 @@
     "dsh-plugin",
     "plugin",
     "ui"
-   ]
+   ],
+   "description_zh_TW": "後臺任務狀態條: 對話頁任務進度 + 即時輸出 tail。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-plugin-mineru",
@@ -1678,7 +1814,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "向模型暴露 MineRU 文件解析工具。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-find-plugin",
@@ -1702,7 +1840,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "會話內直接找外掛: 按關鍵詞/分類搜尋本精選 registry，返回描述與可直接執行的安裝命令。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-git-identity",
@@ -1724,7 +1864,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "git 提交固定使用環境自身作者身份，環境變數注入壓過一切 git config 設定。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-web-review",
@@ -1754,7 +1896,10 @@
     "human-in-the-loop"
    ],
    "image_w": 1280,
-   "image_h": 720
+   "image_h": 720,
+   "description_zh_TW": "像設計工具一樣在內建瀏覽器裡圈選元素、寫批註、臨時調視覺，確認後 Agent 照著批註直接改前端原始碼",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "設計師式提需求：圈哪裡改哪裡"
   },
   {
    "slug": "ds-api-usage",
@@ -1776,7 +1921,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "在設定頁展示 DeepSeek API 餘額與最近 24 小時用量，包括估算消費、Token、請求次數和按小時時間線。",
+   "category_zh_TW": "UI 增強"
   },
   {
    "slug": "dsh-recommend",
@@ -1802,7 +1949,9 @@
     "plugin",
     "rankings",
     "recommendations"
-   ]
+   ],
+   "description_zh_TW": "DSH 外掛透明排行與推薦: 每日自動抓取 dsh-plugin 話題生態，公開評分模型，提供 rank/search/recommend 工具與設定頁榜單。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-deep-research",
@@ -1824,7 +1973,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "自適應深度研究編排器（基於官方 workflow 引擎）。",
+   "category_zh_TW": "工作流與自動化"
   },
   {
    "slug": "telegram",
@@ -1846,7 +1997,9 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "Telegram Bot API 橋接: 長輪詢、per-chat 會話、HTML 格式化。",
+   "category_zh_TW": "通知與整合"
   },
   {
    "slug": "dsh-web-ui-notify",
@@ -1869,7 +2022,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "桌面通知提醒。",
+   "category_zh_TW": "通知與整合"
   },
   {
    "slug": "dsh-context-doctor",
@@ -1896,7 +2051,9 @@
     "dsh-plugin",
     "tool",
     "ui"
-   ]
+   ],
+   "description_zh_TW": "上下文注入審計: 統計指令鏈/技能目錄/工具 schema 的 token 成本，檢測重複與衝突。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-reasoning-effort",
@@ -1921,7 +2078,9 @@
     "deepseek-harness",
     "dsh-plugin",
     "reasoning-effort"
-   ]
+   ],
+   "description_zh_TW": "Codex 風格模型+推理強度滑塊進 DSH，附贈大肥魚模式：拖動八幀奔跑的大肥魚調思考強度，off/high/max 三檔與 /model 命令同步",
+   "category_zh_TW": "抽象整活"
   },
   {
    "slug": "dsh-milestone",
@@ -1950,7 +2109,10 @@
     "dsh-plugin",
     "milestone",
     "navigation"
-   ]
+   ],
+   "description_zh_TW": "會話里程碑導航條：右側點狀時間線，像看 Git 提交圖一樣一眼定位每次提問，一鍵跳轉任何位置",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "會話越長越香：每次提問都是一個可跳轉的節點"
   },
   {
    "slug": "dsh-mnemon",
@@ -1991,7 +2153,9 @@
     "semantic-recall",
     "shared-agent-memory",
     "workspace-memory"
-   ]
+   ],
+   "description_zh_TW": "Mnemon 深度整合: 本地三層記憶（Runtime Memory、可檢索 Documents、受監督 Memory Spaces）。",
+   "category_zh_TW": "記憶"
   },
   {
    "slug": "dsh-openmaic",
@@ -2015,7 +2179,9 @@
     "deepseek-harness",
     "dsh-plugin",
     "openmaic"
-   ]
+   ],
+   "description_zh_TW": "OpenMAIC 教學: 課堂、幻燈片、互動元件與蘇格拉底式教學。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "dsh-market",
@@ -2039,7 +2205,9 @@
     "deepseek-harness",
     "dsh-plugin",
     "marketplace"
-   ]
+   ],
+   "description_zh_TW": "裝在 DSH 裡的外掛市場: 設定頁內逛/搜全部社群外掛，按分類篩選，確認後一鍵安裝，已裝外掛一目瞭然。",
+   "category_zh_TW": "工具與能力"
   },
   {
    "slug": "plugin-template",
@@ -2062,7 +2230,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "外掛模板倉庫（基於 turtle-ui 官方倉庫）。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-user-experience",
@@ -2087,7 +2257,9 @@
     "deepseek-harness",
     "dsh-plugin",
     "ux"
-   ]
+   ],
+   "description_zh_TW": "幫你發現專案中可能存在的使用者體驗問題: 自動走查 React/TypeScript 原始碼，定位問題並給出具體最佳化建議。",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-web-archive",
@@ -2114,7 +2286,10 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "Deep Sleeping... 把會話裡 Think 推理和工具卡片全部收攏成同款小卡，世界瞬間清淨",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "世界瞬間清淨，資訊密度歸零（褒義）"
   },
   {
    "slug": "dsh-qq2006",
@@ -2145,7 +2320,10 @@
     "theme"
    ],
    "image_w": 560,
-   "image_h": 904
+   "image_h": 904,
+   "description_zh_TW": "把 DSH Web UI 完整改造成 QQ2006 客戶端：357 份騰訊原版素材，換膚、音效、登入窗全真實，1561 個測試全綠",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "一秒鐘夢迴 2006——你的童年 DNA 動了嗎"
   },
   {
    "slug": "dsh-deepcel",
@@ -2173,7 +2351,10 @@
     "dsh-plugin"
    ],
    "image_w": 1920,
-   "image_h": 1032
+   "image_h": 1032,
+   "description_zh_TW": "把 DSH 變成 Deepcel 工作簿：會話、工具、設定全部重構成可互動單元格，模型這次是真的在填表",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "亮色暗色雙模式，單元格互動拉滿——老闆看了直呼內行"
   },
   {
    "slug": "dsh-plugin-background",
@@ -2202,7 +2383,10 @@
     "dsh-plugins"
    ],
    "image_w": 1416,
-   "image_h": 808
+   "image_h": 808,
+   "description_zh_TW": "VSCode background 外掛的 DSH 版：對話區 / 軌跡區 / 側邊欄 / 設定頁四區域各自配背景，支援 GIF 與靜音影片輪播",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "每張圖獨立配置透明度、模糊和輪播，切圖還帶交叉淡入"
   },
   {
    "slug": "dsh-sticky-note",
@@ -2230,7 +2414,10 @@
     "dsh-plugin"
    ],
    "image_w": 680,
-   "image_h": 495
+   "image_h": 495,
+   "description_zh_TW": "編輯框工具欄上的便籤：隨手記點子，自動儲存為 Markdown，一鍵傳送到對話",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "靈感比會話跑得快，先記下來再說"
   },
   {
    "slug": "dsh-skin",
@@ -2261,7 +2448,10 @@
     "skin",
     "theme",
     "wallpaper"
-   ]
+   ],
+   "description_zh_TW": "Codex 精神續作款皮膚切換器：7 套精選配色 + 自定義桌布，設定裡多兩行就完事",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "設定裡多兩行就完事，皮膚黨的極簡浪漫"
   },
   {
    "slug": "dsh-spotlight",
@@ -2286,7 +2476,10 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "鍵盤優先的命令面板：斜槓命令、最近會話、介面操作、外掛設定，一個面板全都有",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": "Mac 使用者狂喜：dsh 也有 Spotlight 了"
   },
   {
    "slug": "deepseek-harness-pet",
@@ -2306,7 +2499,9 @@
    "license": "MIT",
    "language": "Python",
    "has_manifest": false,
-   "topics": []
+   "topics": [],
+   "description_zh_TW": "Windows 桌寵：只讀本機 DSH 會話日誌，把待辦任務進度和狀態顯示在桌面小寵物裡；獨立 exe，免 Python/Node，只讀不上傳",
+   "category_zh_TW": "賽博寵物"
   },
   {
    "slug": "dsh-pet",
@@ -2339,7 +2534,10 @@
     "pet"
    ],
    "image_w": 1600,
-   "image_h": 389
+   "image_h": 389,
+   "description_zh_TW": "macOS 有聲桌寵小鯨魚：懸浮窗常駐置頂、跨全屏可見，不開啟 DSH 也能即時感知會話狀態",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "會話在跑、等你審批、任務做完——餘光即得，還帶聲音"
   },
   {
    "slug": "dsh-plugin-pet-rs",
@@ -2366,7 +2564,10 @@
     "dsh-plugin"
    ],
    "image_w": 1024,
-   "image_h": 1024
+   "image_h": 1024,
+   "description_zh_TW": "同一只鯨魚的 Rust 重寫：從約 100MB 幹到目標 10MB 以內，Windows / macOS / Linux 三端通吃",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "5 態畫素鯨魚 + 狀態氣泡；作者 CI 額度跑不起了，請自行構建"
   },
   {
    "slug": "deepseek-harness-themes",
@@ -2393,7 +2594,10 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "description_zh_TW": "社群維護的主題合集：只動顏色和外觀，不碰模型與 agent —— One harness. Multiple styles.",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "One harness, multiple styles，多少有點信仰了"
   },
   {
    "slug": "dsh-web-attention-badge",
@@ -2426,7 +2630,10 @@
     "dsh-plugins",
     "notification",
     "web"
-   ]
+   ],
+   "description_zh_TW": "會話需要你時三處同時亮：邊框徽標、標籤頁標題計數、鯨魚 favicon 變琥珀色",
+   "category_zh_TW": "生產力工具",
+   "meme_caption_zh_TW": " favicon 都替你著急，你說 agent 有多需要你"
   },
   {
    "slug": "dsh-dafeiyu",
@@ -2458,7 +2665,10 @@
    ],
    "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW",
    "image_w": 1600,
-   "image_h": 856
+   "image_h": 856,
+   "description_zh_TW": "住在 Windows 桌面的大肥魚：DSH 外掛啟用後跟隨本體啟停，透明置頂原生視窗即時顯示真實 Agent 狀態——思考、修改、測試、等待還是完成，切到別的軟體也看得到",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "不讀螢幕、不編進度——狀態卡上全是真實 agent 事件"
   },
   {
    "slug": "touhou-hakurei",
@@ -2492,7 +2702,10 @@
    ],
    "video_url": "https://www.bilibili.com/video/BV1NRbk6BEys",
    "image_w": 1600,
-   "image_h": 881
+   "image_h": 881,
+   "description_zh_TW": "東方 Project 博麗神社主題皮膚：晝夜實景背景按亮暗主題切換，靈夢站姿/飛行雙立繪，硃紅紙白金色神社裝飾面板，純展示層不觸達模型",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "幻想鄉搬進工作臺：巫女在側欄看你跑 agent"
   },
   {
    "slug": "depharness",
@@ -2515,7 +2728,9 @@
    "topics": [],
    "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38",
    "image_w": 512,
-   "image_h": 512
+   "image_h": 512,
+   "description_zh_TW": "把 DeepSeek Harness 變成 Windows 原生桌面應用：桌面快捷方式一鍵啟動，Electron 獨立視窗不開瀏覽器，檔案樹/終端/費用估算/品牌外觀等增強常駐，資料全存本地",
+   "category_zh_TW": "開發與執行時"
   },
   {
    "slug": "dsh-claude-ux",
@@ -2544,7 +2759,10 @@
     "dsh-plugin"
    ],
    "image_w": 804,
-   "image_h": 703
+   "image_h": 703,
+   "description_zh_TW": "在 DSH 上覆刻 Claude 的中國使用者體驗：檢測到是中國人就風控，拒絕文案帶嘗試計數，次數到了直接結束會話——但真正的精髓是風向開關：調成反向，檢測到不是中國人就風控，讓全世界體驗一把 Claude 國區待遇。捱罵先警告再主動關對話，自傷訊息永不觸發；區域檢測全本地跑，還支援提示詞隱寫通道",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "Claude 風控中國人？格局開啟——撥個開關，換成風控全世界：檢測到不是中國人就風控。捱罵還會被關對話"
   },
   {
    "slug": "dsh-client-ui-pet",
@@ -2570,7 +2788,10 @@
    "topics": [],
    "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y",
    "image_w": 960,
-   "image_h": 540
+   "image_h": 540,
+   "description_zh_TW": "住在 DSH Web GUI 角落的 Q 版藍髮女僕鯨魚娘：可拖動多吸附點，能吸到螢幕四角也能坐在聊天輸入框頂上晃腿陪你打字；23 個動作序列幀，開心蹦跳、揮手、乾飯、睡覺、思考、生氣、害羞、跳舞、游泳一應俱全；單擊摸頭會害羞「嗚…好舒服~」，agent 跑著它托腮晃腿，任務出錯還會哭給你看。動畫素材用 MiniMax H3 + chromakey 摳像生成",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "會害羞、會打瞌睡、任務出錯還會哭給你看的鯨魚娘，坐在輸入框頂上陪你打工"
   },
   {
    "slug": "deepseek-harness-gui",
@@ -2596,7 +2817,10 @@
    "topics": [],
    "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ",
    "image_w": 960,
-   "image_h": 1430
+   "image_h": 1430,
+   "description_zh_TW": "DeepSeek Harness 的 Windows 原生桌面 GUI 安裝包，體積僅 144MB：把 dsh 裝進獨立視窗免開瀏覽器，內建大肥魚桌寵皮膚，還帶 DeepSeek 餘額小元件、任務完成通知、逐輪 zstd 回滾和一鍵回滾檢查點選擇器；安裝器預設裝到本地 Program Files 避免雲盤同步衝突。皮膚與增強均為純展示層，不觸碰模型",
+   "category_zh_TW": "換皮膚色",
+   "meme_caption_zh_TW": "144MB 裝一個帶大肥魚皮膚的原生視窗，餘額小元件和逐輪迴滾都是送的"
   },
   {
    "slug": "deepseek-fat-fish-codex-pet",
@@ -2622,7 +2846,10 @@
    "topics": [],
    "video_url": "https://www.bilibili.com/video/BV1PggV6gEor",
    "image_w": 384,
-   "image_h": 416
+   "image_h": 416,
+   "description_zh_TW": "給 Codex（非 DSH）的藍色大肥魚女僕桌寵：待機、懸停、思考工作、任務成功慶祝四套動畫，把 deepseek-fat-fish 資料夾拷進 .codex/pets 重啟 Codex 就能在寵物設定裡選「DeepSeek 大肥魚」。作者還配套開源了自用桌寵製作規範與引導檔案 codex-pet-creation-guide，直接把連結丟給 Codex 就能照著部署一隻新桌寵",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "大肥魚不只在 DSH 打工——Codex 版連製作規範都開源了，丟給 Codex 自己就能再捏一隻"
   }
  ]
 }

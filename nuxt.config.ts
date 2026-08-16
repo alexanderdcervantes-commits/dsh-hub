@@ -12,7 +12,8 @@ const PLUGINS = (JSON.parse(readFileSync('./public/data/plugins.json', 'utf8')) 
 const PLUGIN_SLUGS = PLUGINS.map((p) => p.slug)
 const MEME_SLUGS = PLUGINS.filter((p) => p.is_meme).map((p) => p.slug)
 const TOP_PAGES = ['', 'plugins', 'meme', 'submit', 'about', 'install', 'launcher']
-const LOCALES = ['en', 'zh']
+// 与 scripts/check-prerender.mjs 的 locales 保持同步
+const LOCALES = ['en', 'zh', 'zh-TW', 'de']
 
 const prerenderSeed = LOCALES.flatMap((lang) => {
   const prefix = lang === 'en' ? '' : `/${lang}`
@@ -84,6 +85,9 @@ gtag('config', 'G-TXHJ840HJ3');`,
     locales: [
       { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
       { code: 'zh', language: 'zh-CN', name: '简体中文', file: 'zh.json' },
+      // zh-TW：繁體中文（台/港/澳），UI 与数据由 scripts/gen-zh-tw.mjs 从 zh 自动转换
+      { code: 'zh-TW', language: 'zh-Hant', name: '繁體中文', file: 'zh-TW.json' },
+      { code: 'de', language: 'de-DE', name: 'Deutsch', file: 'de.json' },
     ],
     defaultLocale: 'en',
     strategy: 'prefix_except_default',

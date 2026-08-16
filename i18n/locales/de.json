@@ -1,0 +1,299 @@
+{
+  "nav": {
+    "meme": "🤪 Meme-Zone",
+    "plugins": "🧩 Alle Plugins",
+    "install": "🚀 Installation",
+    "launchers": "🖥️ Launcher",
+    "submit": "➕ Einreichen",
+    "about": "Über uns"
+  },
+  "hero": {
+    "title": "Alles ist ein Plugin —",
+    "titleAccent": "also bastel ruhig an allem herum.",
+    "sub": "Der kuratierte Guide durch den Plugin-Dschungel von DeepSeek Harness (dsh): handverlesene Perlen, Desktop-Walf-Maskottchen und die lustigsten Dinge, die die Community diese Woche gebaut hat.",
+    "cta": "Zur Meme-Zone",
+    "installCta": "Neu hier? dsh mit einem Befehl installieren →"
+  },
+  "home": {
+    "memeTitle": "🔥 Memes des Tages",
+    "memeSub": "Das Lustige ganz nach vorn — ein Walf-Mädchen als Desktop-Haustier ist schließlich ein legitimes Produktivitätstool.",
+    "hotTitle": "📈 Im Trend",
+    "hotSub": "Top 10 nach Sternen",
+    "catsTitle": "🏷️ Nach Kategorie stöbern",
+    "newTitle": "🆕 Frisch gelistet",
+    "newSub": "In den letzten 7 Tagen gepusht",
+    "statsTitle": "📊 Das Board",
+    "statTotal": "Gelistete Plugins",
+    "statMeme": "Meme-würdig",
+    "statStars": "Sterne gesamt",
+    "statCats": "Kategorien"
+  },
+  "plugin": {
+    "install": "Installieren",
+    "viewOnGithub": "Auf GitHub ansehen",
+    "related": "Mehr aus dieser Kategorie",
+    "evidence": "Signale",
+    "manifestYes": "Plugin-Manifest gefunden",
+    "manifestNo": "kein Manifest im Root-Verzeichnis",
+    "pushed": "Letzter Push",
+    "license": "Lizenz",
+    "language": "Sprache",
+    "stars": "Sterne",
+    "forks": "Forks",
+    "topics": "Topics",
+    "daysAgo": "T. her",
+    "today": "heute",
+    "descEn": "English",
+    "descZh": "中文",
+    "watchDemo": "Demo auf Bilibili ansehen"
+  },
+  "meme": {
+    "title": "Meme-Zone",
+    "sub": "Andere listen alles auf. Wir picken das Gute — und das Lustige. Warnung: Die Meme-Dichte kann Nachmittage kosten.",
+    "like": "Gefällt mir",
+    "liked": "Gemerkt",
+    "share": "Teilen",
+    "shareCopied": "Link kopiert — schick ihn einem Freund, der das braucht",
+    "likeCount": "{n} Mal gemocht",
+    "submitCta": "Etwas Lustigeres gefunden?",
+    "submitCtaBtn": "Reich es ein",
+    "all": "Alle",
+    "sections": {
+      "absurd": "🤯 Maximale Absurdität",
+      "skins": "🎨 Reskin-Crew",
+      "pets": "🐳 Cyber-Haustiere",
+      "slackoff": "🎮 Faulpelz-Zone",
+      "useful": "🛠️ Wirklich nützlich",
+      "textclub": "📝 Ohne-Screenshot-Club"
+    }
+  },
+  "plugins": {
+    "title": "Alle Plugins",
+    "sub": "Jedes dsh-Plugin, das wir katalogisiert haben — durchsuchbar, filterbar, sortierbar.",
+    "searchPlaceholder": "Name, Beschreibung, Repo suchen…",
+    "sortStars": "Meiste Sterne",
+    "sortRecent": "Zuletzt gepusht",
+    "sortName": "Name A–Z",
+    "allCats": "Alle Kategorien",
+    "results": "{n} Plugins",
+    "noResults": "Nichts gefunden. Anderes Stichwort probieren?",
+    "installGuide": "Anleitung: dsh und Plugins installieren →"
+  },
+  "launcher": {
+    "title": "Desktop-Launcher",
+    "sub": "Keine Lust aufs Terminal? Diese Community-Projekte packen DSH in ein natives Desktop-Fenster oder machen einen Ein-Klick-Launcher daraus — herunterladen, installieren, doppelklicken.",
+    "note": "Es sind keine dsh-Plugins, sondern eigenständige Desktop-Apps und Launcher — gebaut für Menschen, die niemals ein Terminal öffnen wollen.",
+    "allPlatforms": "Alle Plattformen",
+    "pf": {
+      "windows": "Windows",
+      "macos": "macOS",
+      "linux": "Linux",
+      "android": "Android"
+    },
+    "sortStars": "Meiste Sterne",
+    "sortName": "Name A–Z",
+    "results": "{n} Launcher",
+    "noResults": "Für diese Plattform noch nichts gelistet.",
+    "licenseUndeclared": "keine Lizenz angegeben",
+    "disclaimerTitle": "Ehrlicher Hinweis",
+    "disclaimer": "Alles oben Gelistete sind Community-Drittanbieter-Projekte, weder mit DeepSeek noch mit dieser Seite affiliiert; eine Listung ist keine Empfehlung. Sterne und Lizenzen werden 1:1 von GitHub übernommen (Datenstand {date}). Desktop-Apps können an deine API-Keys und Systemrechte kommen: Prüfe den Code, bevor du installierst, und überspringe Repos, denen du nicht vertraust.",
+    "homeTitle": "🖥️ Ein-Klick-Launcher",
+    "homeSub": "DSH ohne Kommandozeile",
+    "homeDesc": "{n} Community-Projekte packen DSH in ein natives Desktop-Fenster oder einen Ein-Klick-Launcher — herunterladen, installieren, doppelklicken. Eines läuft sogar auf Android.",
+    "homeCta": "Launcher ansehen",
+    "sortRecent": "Zuletzt aktualisiert"
+  },
+  "install": {
+    "title": "DSH installieren",
+    "sub": "Von null auf laufendem DeepSeek Harness, entlang der Checkpoints: Terminal öffnen, Node.js installieren, dsh starten, dann ein paar Community-Plugins dazu. Dauert etwa 5 Minuten — keine Programmierkenntnisse nötig.",
+    "whatH": "Was ist DeepSeek Harness?",
+    "whatP": "DeepSeek Harness ist das Agent-Framework, das DeepSeek im August 2026 open-sourced hat. Der Name war der Community zu lang — man nennt es einfach dsh, genau wie das npm-Paket {'@'}deepseek-ai/dsh. Die Grundidee: Alles ist ein Plugin. UI, Tools und Skins stecken alle an einem kleinen Kern.",
+    "needH": "Was du brauchst",
+    "needP": "Du brauchst Node.js auf deinem Rechner — sowohl npx als auch pnpm können es starten. Tippe node -v ins Terminal; eine Versionsnummer bedeutet: bereit. Wenn nichts erscheint, hol dir den LTS-Build von der Node.js-Website.",
+    "startH": "DSH installieren und starten",
+    "startP1": "Der einfachste Weg ist ein einziger npx-Befehl: keine globale Installation, und es bootet direkt in die Web-UI.",
+    "startP2": "Wenn du schon Claude Code oder Codex installiert hast, kennst du das Prinzip — ein npx-Befehl und du bist drin.",
+    "startP3": "Wer lieber Quellcode liest oder herumbastelt, klont einfach das offizielle Repo.",
+    "pluginH": "Plugins installieren",
+    "pluginP": "Läuft DSH erst einmal, bleibt die Plugin-Installation ein einziger Befehl. Tausche unten owner/repo gegen das gewünschte Plugin aus, füge es ins Terminal ein und aktiviere das Plugin dann auf der Plugin-Seite der DSH-Web-UI. Alle {n} Plugin-Seiten dieses Hubs haben einen Ein-Klick-Copy-Button — kein Abtippen nötig.",
+    "faqH": "FAQ",
+    "faq": {
+      "q1": "Wie installiere ich DeepSeek Harness?",
+      "a1": "Stelle sicher, dass Node.js installiert ist, führe npx {'@'}deepseek-ai/dsh web im Terminal aus, und die Web-UI öffnet sich im Browser. Alternativ funktioniert auch das Klonen des offiziellen Repos und lokales Ausführen.",
+      "q2": "Wie installiere ich ein DSH-Plugin?",
+      "a2": "Führe dsh plugin add github:owner/repo im Terminal aus, wobei owner/repo auf das Plugin-Repo zeigt, und aktiviere es dann auf der Plugin-Seite der Web-UI. Jede Plugin-Seite dieses Hubs hat einen Ein-Klick-Copy-Button für den exakten Befehl.",
+      "q3": "Sind DSH-Plugins sicher?",
+      "a3": "Ehrlich gesagt: Es sind Community-Projekte, die Qualität variiert. Lies zwei Minuten den Code, bevor du installierst, und bedenke: Plugins können an deinen API-Key kommen — Repos, denen du nicht vertraust, lieber auslassen.",
+      "q4": "Wie reiche ich mein eigenes Plugin ein?",
+      "a4": "Nutze die Einreichungs-Seite dieser Seite mit deinem Repo-Link — jede Einreichung wird von Hand geprüft.",
+      "q5": "Sind dsh und DeepSeek Harness dasselbe?",
+      "a5": "Ja. DeepSeek Harness ist der vollständige Name, dsh der Name der Community, und das npm-Paket heißt {'@'}deepseek-ai/dsh."
+    },
+    "typoH": "Verschrieben? Kommt ständig vor",
+    "typoP": "Ein guter Teil der Besucher landet hier durch Tippfehler. deepseekharness ohne Leerzeichen, deepseek hardness mit extra d, deepseek herness ohne a — alle meinen dasselbe Projekt. Richtig ist DeepSeek Harness, zwei Wörter, kurz dsh. Die Befehle oben funktionieren unabhängig davon, wie du es geschrieben hast.",
+    "relatedH": "Verwandte Links",
+    "relatedPlugins": "Alle Plugins",
+    "relatedMeme": "Meme-Zone",
+    "relatedSubmit": "Plugin einreichen",
+    "relatedWebUi": "dsh-web-ui — das Web-UI- und Skins-Bundle",
+    "relatedGithub": "DeepSeek Harness auf GitHub",
+    "overviewTitle": "Drei Dinge vor dem Start",
+    "overview1": "dsh ist ein Kommandozeilen-Programm — alles passiert im Terminal.",
+    "overview2": "Es braucht Node.js v20 oder neuer.",
+    "overview3": "Der offizielle Quick Start läuft über npx; die Web-UI liegt standardmäßig unter http://127.0.0.1:3080.",
+    "step1": {
+      "title": "Schritt 1: Terminal öffnen",
+      "intro": "DSH wird von der Kommandozeile gestartet. Ein Terminal ist nur ein Fenster, in das man Textbefehle tippt — nichts Beängstigendes.",
+      "os": "So öffnest du es auf deinem System:",
+      "macos": "macOS: Command + Leertaste drücken, „Terminal“ eingeben, Enter drücken.",
+      "windows": "Windows: Win-Taste drücken, „PowerShell“ eingeben, Enter drücken.",
+      "linux": "Linux: Strg + Alt + T drücken.",
+      "look": "Du siehst jetzt ein schwarzes oder weißes Fenster mit einer Textzeile und einem blinkenden Cursor am Ende. Genau richtig.",
+      "pasteNote": "Jeder Befehl, der unten mit $ beginnt oder in einem Codeblock steht, gehört in dieses Fenster eingefügt — dann Enter drücken.",
+      "pasteShortcuts": "Einfügen: Command + V auf macOS; Strg + V oder Rechtsklick im Windows Terminal."
+    },
+    "checkpoint1": {
+      "title": "✅ Checkpoint 1",
+      "desc": "Tippe diese Zeile ins Terminal und drücke Enter:",
+      "expectedLabel": "Du musst sehen:",
+      "fail": "Siehst du es, geht es weiter. Wenn nicht, hast du das Terminal noch nicht wirklich geöffnet — zurück zum Anfang dieses Schritts."
+    },
+    "step2": {
+      "title": "Schritt 2: Node.js installieren",
+      "intro": "DSH ist in JavaScript geschrieben und braucht die Node.js-Laufzeit.",
+      "checkLabel": "Prüfe zuerst, ob du sie schon hast:",
+      "haveIt": "Erscheint eine Versionsnummer (z. B. v22.11.0), springe direkt zum Checkpoint unten.",
+      "notFound": "Meldet es command not found, musst du installieren:",
+      "install1": "Öffne https://nodejs.org",
+      "install2": "Klicke auf die große grüne LTS-Schaltfläche zum Herunterladen",
+      "install3": "Doppelklicke auf die heruntergeladene Datei und klicke immer weiter auf „Weiter“",
+      "lts": "LTS steht für Long-Term Support — die stabile Version für normale Nutzer.",
+      "reopen": "Nach der Installation musst du das Terminalfenster schließen und neu öffnen, sonst greift die Installation nicht."
+    },
+    "checkpoint2": {
+      "title": "✅ Checkpoint 2",
+      "desc": "Noch einmal ausführen:",
+      "expectedLabel": "Du musst eine Versionsnummer sehen, zum Beispiel:",
+      "versionOk": "v20 oder höher passt.",
+      "fail": "Erscheint command not found, weitermachen verboten — neu installieren und daran denken, das Terminal neu zu öffnen."
+    },
+    "step3": {
+      "title": "Schritt 3: DSH starten",
+      "intro": "Ist die Umgebung fertig, starte DeepSeek Harness mit dieser Zeile. Der erste Lauf lädt Abhängigkeiten herunter — etwas Geduld.",
+      "cmdNote": "Fragt npx, ob {'@'}deepseek-ai/dsh installiert werden soll, tippe y und drücke Enter.",
+      "optionalTitle": "Optional: den dsh-Befehl global verfügbar machen",
+      "optionalDesc": "Der offizielle Quick Start nutzt npx; wenn du dsh direkt nutzen willst wie auf unseren Plugin-Seiten, führe zusätzlich das hier aus:",
+      "optionalNote": "Danach funktionieren dsh web und dsh plugin add … direkt.",
+      "result": "Nach dem erfolgreichen Start zeigt das Terminal eine lokale Adresse. Öffne sie im Browser:"
+    },
+    "checkpoint3": {
+      "title": "✅ Checkpoint 3",
+      "desc": "Öffnet der Browser die Adresse oben und zeigt die DSH-Web-UI, ist alles gut."
+    },
+    "step4": {
+      "title": "Schritt 4: Dein erstes Plugin installieren",
+      "intro": "In DSH ist alles ein Plugin. Einmal installiert, kannst du jedes hier gelistete Plugin direkt per Befehl nachladen:",
+      "cmdNote": "Ersetze your-name/your-plugin durch das konkrete Plugin. Am einfachsten kopierst du den fertigen Befehl von einer Plugin-Seite.",
+      "browse": "Alle Plugins durchstöbern"
+    },
+    "next": {
+      "title": "Bereit? Los geht's",
+      "sub": "Die Installation war nur der Anfang — das sind die besten Stellen zum Stöbern:",
+      "plugins": {
+        "title": "🧩 Alle Plugins",
+        "desc": "Jedes dsh-Plugin nach Sternen, Kategorie oder frischen Pushes durchstöbern"
+      },
+      "meme": {
+        "title": "🤪 Meme-Zone",
+        "desc": "Walf-Mädchen-Haustiere, QQ2006-Skins, ein Fake-Werbenetzwerk für Web-Games…"
+      },
+      "submit": {
+        "title": "➕ Einreichen",
+        "desc": "Etwas Lustiges gebaut? Einreichen und nach menschlicher Prüfung gelistet werden"
+      },
+      "about": {
+        "title": "📖 Über uns",
+        "desc": "Erfahre, wie DSH Meme Hub auswählt, was gelistet wird"
+      }
+    }
+  },
+  "submit": {
+    "title": "Plugin einreichen",
+    "sub": "Etwas für dsh gebaut — nützlich, schön oder herrlich bescheuert? Bring es in die Liste.",
+    "repoUrl": "GitHub-Repo-URL",
+    "oneLiner": "Einzeiler",
+    "category": "Kategorie",
+    "screenshot": "Screenshot-URL (optional)",
+    "screenshotHint": "Eine direkte Bild-URL. Kein Screenshot? Dann geht's in den Ohne-Screenshot-Club.",
+    "generate": "Einreichungs-Issue generieren",
+    "openIssue": "Issue auf GitHub eröffnen →",
+    "hint": "Dieses Formular baut ein vorausgefülltes GitHub-Issue — kein Account bei uns, kein Backend, kein Tracking."
+  },
+  "about": {
+    "title": "Über DSH Meme Hub",
+    "p1": "Am 13. August 2026 hat DeepSeek DeepSeek Harness (dsh) unter dem Slogan „Everything is a Plugin“ open-sourced. 96k Sterne später versammelt das dsh-plugin-Topic tausende Repos — und irgendwo zwischen Dateimanagern und TDD-Frameworks hat die Community Walf-Mädchen-Desktop-Haustiere, QQ2006-Skins und ein Fake-Werbenetzwerk für Web-Games in deinem Terminal gebaut.",
+    "p2": "Andere Verzeichnisse listen alles auf, mit Trust-Scores und Manifest-Checks. Wir machen etwas anderes: Wir picken das Gute — und das Lustige. Jeder Eintrag hier wurde von einem Menschen angeschaut, hat einen funktionierenden Installationsbefehl, und die Meme-Sektion enthält nur Dinge, über die wir wirklich gelacht haben.",
+    "p3": "Daten (Sterne, letzter Push, Lizenz, Manifest-Vorhandensein) werden über die GitHub-API aufgefrischt. Diese Seite ist ein statischer, vollständig vorgerenderter, viersprachiger Guide (EN / 简体中文 / 繁體中文 / DE) — schnell auf jeder Verbindung.",
+    "disclaimer": "Alle Screenshots sind den READMEs der jeweiligen Open-Source-Projekte entnommen und gehören ihren Urhebern. Nur Navigation und Werbung — kein Quellcode und keine Assets werden weiterverbreitet. Falls eine Listung deine Rechte verletzt, eröffne ein Issue und sie wird umgehend entfernt."
+  },
+  "footer": {
+    "about": "Über uns",
+    "install": "DSH installieren",
+    "launchers": "Desktop-Launcher",
+    "submit": "Plugin einreichen",
+    "official": "Offizielle Links",
+    "dshRepo": "deepseek-harness",
+    "pluginTopic": "dsh-plugin-Topic",
+    "legal": "DSH Meme Hub ist ein unabhängiges Community-Projekt, nicht mit DeepSeek affiliiert. Screenshots gehören ihren jeweiligen Urhebern."
+  },
+  "common": {
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "notFound": "Seite nicht gefunden",
+    "backHome": "Zur Startseite",
+    "updated": "Datenstand",
+    "whaleLine": "Der Wal konnte diese Seite nicht finden."
+  },
+  "meta": {
+    "homeTitle": "DSH Meme Hub — kuratierte & lustige DeepSeek-Harness-Plugins (dsh)",
+    "homeSearchPh": "{n} Plugins durchsuchen… (versuch: Wal, Skin, Vier gewinnt)",
+    "pluginsTitle": "Alle DeepSeek-Harness-Plugins (dsh) — DSH Meme Hub",
+    "pluginsDesc": "Jedes katalogisierte Community-Plugin für DeepSeek Harness (dsh): suchen, nach Kategorie filtern, nach Sternen oder Aktualität sortieren — mit Ein-Klick-Installationsbefehlen.",
+    "memeTitle": "Meme-Zone — die lustigsten DeepSeek-Harness-Plugins (dsh) | DSH Meme Hub",
+    "memeDesc": "Walf-Mädchen-Haustiere, QQ2006-Skins, ein Fake-Werbenetzwerk fürs Terminal — die lustigsten Community-Picks für DeepSeek Harness, einen Klick von der Installation entfernt.",
+    "installTitle": "DSH installieren — DSH Meme Hub",
+    "installDesc": "DSH-Installationsguide Schritt für Schritt: Terminal öffnen, Node.js prüfen, mit npx starten, Plugins hinzufügen — plus FAQ und häufige Tippfehler.",
+    "launcherTitle": "DSH Desktop-Launcher — ohne Terminal | DSH Meme Hub",
+    "launcherDesc": "Keine Lust aufs Terminal? Diese Community-Projekte packen DSH in ein natives Desktop-Fenster oder einen Ein-Klick-Launcher — herunterladen, installieren, doppelklicken. Windows/macOS/Linux/Android.",
+    "launcherCollectionName": "DSH Desktop-Launcher — DSH Meme Hub",
+    "launcherCollectionDesc": "Community-Ein-Klick-Launcher, die DSH in ein natives Desktop-Fenster packen: nach Plattform filtern, nach Sternen sortieren. Gebaut für Menschen, die nie ein Terminal öffnen wollen.",
+    "submitTitle": "Plugin einreichen — DSH Meme Hub",
+    "submitDesc": "Reiche ein dsh-Plugin bei DSH Meme Hub ein: Repo-URL und Einzeiler ausfüllen, ein vorausgefülltes Issue eröffnen — wir prüfen von Hand.",
+    "submitOneLinerPh": "Eine Zeile: was es tut und warum es großartig (oder urkomisch) ist",
+    "aboutTitle": "Über uns — DSH Meme Hub",
+    "aboutDesc": "DSH Meme Hub: der kuratierte Guide zu DeepSeek-Harness-Plugins (dsh). Andere listen alles; wir picken das Gute — und das Lustige.",
+    "pluginDetailTitle": "{name} — {category}-Plugin für DeepSeek Harness (dsh)",
+    "memeDetailTitle": "{name} — {caption} | dsh Meme-Picks",
+    "breadcrumbHome": "Startseite",
+    "breadcrumbInstall": "Installation",
+    "howto": {
+      "name": "DeepSeek Harness und seine Plugins installieren",
+      "s1": {
+        "name": "Terminal öffnen",
+        "text": "Unter macOS Command + Leertaste drücken und das Terminal öffnen; unter Windows PowerShell nutzen; unter Linux Strg + Alt + T drücken."
+      },
+      "s2": {
+        "name": "Node.js installieren",
+        "text": "Den LTS-Build von der Node.js-Website holen; node --version sollte v20 oder neuer ausgeben."
+      },
+      "s3": {
+        "name": "DSH starten",
+        "text": "npx {'@'}deepseek-ai/dsh web ausführen, und die Web-UI öffnet sich im Browser."
+      },
+      "s4": {
+        "name": "Plugin hinzufügen",
+        "text": "dsh plugin add github:owner/repo mit dem gewünschten Plugin ausführen und es dann in der Web-UI aktivieren."
+      }
+    }
+  }
+}

@@ -89,7 +89,45 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   color: var(--text-2);
   cursor: pointer;
+  white-space: nowrap;
 }
+
+/* 语言下拉：菜单项来自 i18n 配置，所有语言共用 */
+.lang-menu { position: relative; }
+
+.lang-backdrop { position: fixed; inset: 0; z-index: 50; }
+
+.lang-list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 60;
+  min-width: 128px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-hover);
+}
+
+.lang-list button {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-align: left;
+  cursor: pointer;
+}
+
+.lang-list button:hover { background: var(--border-soft); }
+.lang-list button.current { color: var(--accent-strong); background: var(--accent-soft); }
 
 /* ---------- hero ---------- */
 .hero {

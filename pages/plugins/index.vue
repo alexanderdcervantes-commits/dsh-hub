@@ -43,14 +43,10 @@ const listItemJson = JSON.stringify({
 })
 
 useHead({
-  title: locale.value === 'zh'
-    ? 'DeepSeek Harness (dsh) 插件目录 — 全部收录 | DSH Meme Hub'
-    : 'All DeepSeek Harness (dsh) Plugins — DSH Meme Hub',
+  title: t('meta.pluginsTitle'),
   meta: [{
     name: 'description',
-    content: locale.value === 'zh'
-      ? '已收录的全部 DeepSeek Harness (dsh) 社区插件：搜索、分类筛选、按 star 或最近推送排序，附一键安装命令。'
-      : 'Every catalogued DeepSeek Harness (dsh) community plugin: search, filter by category, sort by stars or recency, with one-click install commands.',
+    content: t('meta.pluginsDesc'),
   }],
   script: [{
     type: 'application/ld+json',

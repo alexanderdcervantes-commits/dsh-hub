@@ -3,7 +3,7 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
-const { bySlug, related, catOf, emojiOf } = usePlugins()
+const { bySlug, related, catOf, emojiOf, descOf } = usePlugins()
 
 const plugin = bySlug(route.params.slug as string)
 if (!plugin) {
@@ -11,14 +11,12 @@ if (!plugin) {
 }
 
 const siteUrl = config.public.siteUrl as string
-const isZh = computed(() => locale.value === 'zh')
-const desc = computed(() => (isZh.value ? plugin.description_zh : plugin.description_en))
+const desc = computed(() => descOf(plugin, locale.value))
 const pageUrl = computed(() => `${siteUrl}${localePath(`/plugins/${plugin.slug}`)}`)
 const ogImage = computed(() => `${siteUrl}${plugin.image ?? '/images/dsh-deep-whale.webp'}`)
 
-const title = isZh.value
-  ? `${plugin.name} — ${plugin.category_zh}插件 | DeepSeek Harness (dsh)`
-  : `${plugin.name} — ${plugin.category_en} Plugin for DeepSeek Harness (dsh)`
+const title = computed(() =>
+  t('meta.pluginDetailTitle', { name: plugin.name, category: catOf(plugin, locale.value) }))
 
 useHead({
   title,

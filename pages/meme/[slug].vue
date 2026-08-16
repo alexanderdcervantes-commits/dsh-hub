@@ -3,7 +3,7 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
-const { bySlug, captionOf, memes } = usePlugins()
+const { bySlug, captionOf, descOf, memes } = usePlugins()
 
 const plugin = bySlug(route.params.slug as string)
 if (!plugin || !plugin.is_meme) {
@@ -14,13 +14,11 @@ const likes = useLikes()
 onMounted(() => likes.load())
 
 const siteUrl = config.public.siteUrl as string
-const isZh = computed(() => locale.value === 'zh')
-const desc = computed(() => (isZh.value ? plugin.description_zh : plugin.description_en))
+const desc = computed(() => descOf(plugin, locale.value))
 const caption = captionOf(plugin, locale.value)
 const pageUrl = computed(() => `${siteUrl}${localePath(`/meme/${plugin.slug}`)}`)
-const title = isZh.value
-  ? `${plugin.name} — ${plugin.meme_caption_zh ?? ''} | DSH 整活精选`
-  : `${plugin.name} — ${plugin.meme_caption_en ?? ''} | dsh Meme Picks`
+const title = computed(() =>
+  t('meta.memeDetailTitle', { name: plugin.name, caption }))
 
 useHead({
   title,

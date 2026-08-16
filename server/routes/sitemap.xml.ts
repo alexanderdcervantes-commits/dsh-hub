@@ -3,7 +3,8 @@ import pluginsData from '~/public/data/plugins.json'
 
 interface Slug { slug: string; is_meme: boolean }
 
-// 全量 sitemap：顶层页 + 全部插件详情 + 整活详情，× 2 语种（en 根路径 / zh 前缀）
+// 全量 sitemap：顶层页 + 全部插件详情 + 整活详情，× 4 语种（en 根路径，其余前缀）
+// hreflang 用 i18n.locales 的 language 值，与 useLocaleHead 生成的页面级 alternate 保持一致
 // siteUrl 来自 runtimeConfig（构建时 NUXT_PUBLIC_SITE_URL 注入），域名迁移只改一处
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
@@ -13,23 +14,29 @@ export default defineEventHandler((event) => {
   const top = ['', 'plugins', 'meme', 'submit', 'about', 'install', 'launcher']
   const urls: string[] = []
 
-  const emit = (path: string, altPath: string) => {
+  const LANGS = [
+    { code: 'en', hreflang: 'en-US', prefix: '' },
+    { code: 'zh', hreflang: 'zh-CN', prefix: '/zh' },
+    { code: 'zh-TW', hreflang: 'zh-Hant', prefix: '/zh-TW' },
+    { code: 'de', hreflang: 'de-DE', prefix: '/de' },
+  ]
+
+  /** path: 无前缀路由（'' | 'plugins' | 'plugins/xxx'…），为每语种发 alternate */
+  const emit = (path: string) => {
+    const links = LANGS.map(l =>
+      `    <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site}${l.prefix}${path ? `/${path}` : ''}"/>`,
+    )
     urls.push(
-      `  <url>\n    <loc>${site}${path || '/'}</loc>\n`
-      + `    <xhtml:link rel="alternate" hreflang="en" href="${site}${path || '/'}"/>\n`
-      + `    <xhtml:link rel="alternate" hreflang="zh" href="${site}${altPath || '/zh'}"/>\n`
-      + `    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${path || '/'}"/>\n  </url>`,
+      `  <url>\n    <loc>${site}${path ? `/${path}` : '/'}</loc>\n`
+      + links.join('\n')
+      + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${path ? `/${path}` : '/'}"/>\n  </url>`,
     )
   }
 
-  for (const p of top) {
-    const en = p === '' ? '' : `/${p}`
-    const zh = p === '' ? '/zh' : `/zh/${p}`
-    emit(en, zh)
-  }
+  for (const p of top) emit(p)
   for (const plug of plugins) {
-    emit(`/plugins/${plug.slug}`, `/zh/plugins/${plug.slug}`)
-    if (plug.is_meme) emit(`/meme/${plug.slug}`, `/zh/meme/${plug.slug}`)
+    emit(`plugins/${plug.slug}`)
+    if (plug.is_meme) emit(`meme/${plug.slug}`)
   }
 
   event.node.res.setHeader('content-type', 'application/xml')

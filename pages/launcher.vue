@@ -24,10 +24,8 @@ const listLaunchers = query({ platform: DEFAULT_PLATFORM, sort: DEFAULT_SORT })
 const collectionJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: locale.value === 'zh' ? 'DSH 桌面启动器目录 — DSH Meme Hub' : 'DSH Desktop Launchers — DSH Meme Hub',
-  description: locale.value === 'zh'
-    ? '把 DSH 装进原生桌面窗口的一键启动器收录：按平台筛选，按 star 排序，面向不想敲命令行的新手。'
-    : 'Community one-click launchers that wrap DSH in a native desktop window: filter by platform, sort by stars. Built for people who never want to open a terminal.',
+  name: t('meta.launcherCollectionName'),
+  description: t('meta.launcherCollectionDesc'),
   url: `${siteUrl}${localePath('/launcher')}`,
   inLanguage: locale.value,
   isPartOf: { '@type': 'WebSite', name: 'DSH Meme Hub', url: siteUrl },
@@ -43,21 +41,17 @@ const collectionJson = JSON.stringify({
   },
 })
 
-const pageTitle = locale.value === 'zh'
-  ? 'DSH 桌面启动器 — 不敲命令行也能用 | DSH Meme Hub'
-  : 'DSH Desktop Launchers — no terminal required | DSH Meme Hub'
-const pageDesc = locale.value === 'zh'
-  ? '不想敲命令行？这些社区项目把 DSH 装进原生桌面窗口、做成一键启动器——下载安装、双击即用，覆盖 Windows/macOS/Linux/安卓。'
-  : 'Don\'t want to touch a terminal? These community projects wrap DSH in a native desktop window or a one-click launcher — download, install, double-click. Windows/macOS/Linux/Android.'
+const pageTitle = computed(() => t('meta.launcherTitle'))
+const pageDesc = computed(() => t('meta.launcherDesc'))
 const ogUrl = `${siteUrl}${localePath('/launcher')}`
 const ogImage = `${siteUrl}/images/dsh-deep-whale.webp`
 
 useHead({
-  title: pageTitle,
+  title: pageTitle.value,
   meta: [
-    { name: 'description', content: pageDesc },
-    { property: 'og:title', content: pageTitle },
-    { property: 'og:description', content: pageDesc },
+    { name: 'description', content: pageDesc.value },
+    { property: 'og:title', content: pageTitle.value },
+    { property: 'og:description', content: pageDesc.value },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: ogImage },
     { property: 'og:url', content: ogUrl },

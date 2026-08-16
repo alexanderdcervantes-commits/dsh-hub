@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const { memes, query } = usePlugins()
@@ -11,12 +11,8 @@ const list = computed(() =>
   query({ memeSection: tab.value, sort: 'stars' }))
 
 const siteUrl = config.public.siteUrl as string
-const title = locale.value === 'zh'
-  ? '整活专区 — DSH 社区最欢乐的插件 | DSH Meme Hub'
-  : 'Meme Zone — the funniest DeepSeek Harness (dsh) plugins | DSH Meme Hub'
-const sub = locale.value === 'zh'
-  ? '鲸鱼娘桌宠、QQ2006 皮肤、贪玩蓝鲸广告网络……DeepSeek Harness 社区整活精选，附一键安装。'
-  : 'Whale-girl pets, QQ2006 skins, a knockoff ad network for your terminal — the funniest DeepSeek Harness community picks, one click to install.'
+const title = computed(() => t('meta.memeTitle'))
+const sub = computed(() => t('meta.memeDesc'))
 
 useHead({
   title,

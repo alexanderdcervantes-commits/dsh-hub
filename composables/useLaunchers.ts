@@ -12,6 +12,8 @@ export interface DshLauncher {
   image_h?: number
   description_zh: string
   description_en: string
+  /** 繁體版（scripts/gen-zh-tw.mjs 由 *_zh 转换注入，缺省回退简体） */
+  description_zh_TW?: string
   stars: number
   platforms: string[]
   stack: string
@@ -19,8 +21,10 @@ export interface DshLauncher {
   license: string | null
   highlights_zh: string[]
   highlights_en: string[]
+  highlights_zh_TW?: string[]
   platform_note_zh?: string
   platform_note_en?: string
+  platform_note_zh_TW?: string
   /** GitHub pushed_at（ISO 字符串），用于"最近更新"排序 */
   pushed_at?: string
 }
@@ -47,15 +51,24 @@ export const PLATFORM_FILTERS = ['windows', 'macos', 'linux', 'android'] as cons
 export function useLaunchers() {
   const launchers: DshLauncher[] = launcherData.launchers
 
-  /** 当前 locale 下字段选择器 */
-  const descOf = (l: DshLauncher, locale: string) =>
-    locale === 'zh' ? l.description_zh : l.description_en
+  /** 当前 locale 下字段选择器（zh-TW 走繁體字段并回退简体，de 及其他走英文） */
+  const descOf = (l: DshLauncher, locale: string) => {
+    if (locale === 'zh-TW') return l.description_zh_TW ?? l.description_zh
+    if (locale === 'zh') return l.description_zh
+    return l.description_en
+  }
 
-  const highlightsOf = (l: DshLauncher, locale: string) =>
-    (locale === 'zh' ? l.highlights_zh : l.highlights_en) ?? []
+  const highlightsOf = (l: DshLauncher, locale: string) => {
+    if (locale === 'zh-TW') return l.highlights_zh_TW ?? l.highlights_zh ?? []
+    if (locale === 'zh') return l.highlights_zh ?? []
+    return l.highlights_en ?? []
+  }
 
-  const noteOf = (l: DshLauncher, locale: string) =>
-    (locale === 'zh' ? l.platform_note_zh : l.platform_note_en) ?? ''
+  const noteOf = (l: DshLauncher, locale: string) => {
+    if (locale === 'zh-TW') return l.platform_note_zh_TW ?? l.platform_note_zh ?? ''
+    if (locale === 'zh') return l.platform_note_zh ?? ''
+    return l.platform_note_en ?? ''
+  }
 
   /** 各筛选项的收录数（'all' 返回总数），数据驱动、不硬编码 */
   const platformCounts = (key: string) =>

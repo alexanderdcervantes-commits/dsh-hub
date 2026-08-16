@@ -1,13 +1,10 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
-const title = locale.value === 'zh' ? '关于 — DSH Meme Hub' : 'About — DSH Meme Hub'
+const { t } = useI18n()
 useHead({
-  title,
+  title: t('meta.aboutTitle'),
   meta: [{
     name: 'description',
-    content: locale.value === 'zh'
-      ? 'DSH Meme Hub：DeepSeek Harness (dsh) 插件的策展导航。别人罗列一切，我们只挑好东西——和好玩的。'
-      : 'DSH Meme Hub: the curated guide to DeepSeek Harness (dsh) plugins. They list everything; we pick the good stuff — and the fun stuff.',
+    content: t('meta.aboutDesc'),
   }],
 })
 </script>

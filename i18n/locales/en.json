@@ -11,7 +11,8 @@
     "title": "Everything is a Plugin —",
     "titleAccent": "so go tinker with anything.",
     "sub": "The curated guide to the DeepSeek Harness (dsh) plugin wilds: hand-picked gems, desktop whale pets, and the funniest things the community shipped this week.",
-    "cta": "Browse the meme zone"
+    "cta": "Browse the meme zone",
+    "installCta": "New here? Install dsh in one command →"
   },
   "home": {
     "memeTitle": "🔥 Today's Memes",
@@ -232,7 +233,7 @@
     "title": "About DSH Meme Hub",
     "p1": "On Aug 13, 2026, DeepSeek open-sourced DeepSeek Harness (dsh) with the slogan \"Everything is a Plugin\". 96k stars later, the dsh-plugin topic holds thousands of repositories — and somewhere between the file managers and the TDD frameworks, the community built whale-girl desktop pets, QQ2006 skins, and a knockoff web-game ad network for your terminal.",
     "p2": "Other directories list everything, with trust scores and manifest checks. We do something different: we pick the good stuff — and the fun stuff. Every entry here was looked at by a human, has a working install command, and the meme section only contains things that made us actually laugh.",
-    "p3": "Data (stars, last push, license, manifest presence) is refreshed from the GitHub API. This site is a static, fully prerendered, bilingual (EN/中文) guide — fast on any connection.",
+    "p3": "Data (stars, last push, license, manifest presence) is refreshed from the GitHub API. This site is a static, fully prerendered, multilingual (EN / 简体中文 / 繁體中文 / DE) guide — fast on any connection.",
     "disclaimer": "All screenshots are excerpted from the respective open-source projects' READMEs and belong to their original authors. Navigation and promotion only — no source or assets are redistributed. File an issue if any inclusion infringes your rights and it will be removed promptly."
   },
   "footer": {
@@ -250,6 +251,49 @@
     "copied": "Copied!",
     "notFound": "Page not found",
     "backHome": "Back to home",
-    "updated": "Data updated"
+    "updated": "Data updated",
+    "whaleLine": "The whale could not find that page."
+  },
+  "meta": {
+    "homeTitle": "DSH Meme Hub — curated & fun DeepSeek Harness (dsh) plugins",
+    "homeSearchPh": "Search {n} plugins… (try: whale, skin, gomoku)",
+    "pluginsTitle": "All DeepSeek Harness (dsh) Plugins — DSH Meme Hub",
+    "pluginsDesc": "Every catalogued DeepSeek Harness (dsh) community plugin: search, filter by category, sort by stars or recency, with one-click install commands.",
+    "memeTitle": "Meme Zone — the funniest DeepSeek Harness (dsh) plugins | DSH Meme Hub",
+    "memeDesc": "Whale-girl pets, QQ2006 skins, a knockoff ad network for your terminal — the funniest DeepSeek Harness community picks, one click to install.",
+    "installTitle": "Install DSH — DSH Meme Hub",
+    "installDesc": "Step-by-step DSH install guide: open a terminal, check Node.js, start with npx, add plugins, plus FAQ and common misspellings.",
+    "launcherTitle": "DSH Desktop Launchers — no terminal required | DSH Meme Hub",
+    "launcherDesc": "Don't want to touch a terminal? These community projects wrap DSH in a native desktop window or a one-click launcher — download, install, double-click. Windows/macOS/Linux/Android.",
+    "launcherCollectionName": "DSH Desktop Launchers — DSH Meme Hub",
+    "launcherCollectionDesc": "Community one-click launchers that wrap DSH in a native desktop window: filter by platform, sort by stars. Built for people who never want to open a terminal.",
+    "submitTitle": "Submit a Plugin — DSH Meme Hub",
+    "submitDesc": "Submit a dsh plugin to DSH Meme Hub: fill in the repo URL and a one-liner, open a pre-filled issue, and we review it by hand.",
+    "submitOneLinerPh": "One line: what it does, and why it is great (or hilarious)",
+    "aboutTitle": "About — DSH Meme Hub",
+    "aboutDesc": "DSH Meme Hub: the curated guide to DeepSeek Harness (dsh) plugins. They list everything; we pick the good stuff — and the fun stuff.",
+    "pluginDetailTitle": "{name} — {category} Plugin for DeepSeek Harness (dsh)",
+    "memeDetailTitle": "{name} — {caption} | dsh Meme Picks",
+    "breadcrumbHome": "Home",
+    "breadcrumbInstall": "Install",
+    "howto": {
+      "name": "Install DeepSeek Harness and its plugins",
+      "s1": {
+        "name": "Open a terminal",
+        "text": "On macOS press Command + Space and open Terminal; on Windows use PowerShell; on Linux press Ctrl + Alt + T."
+      },
+      "s2": {
+        "name": "Install Node.js",
+        "text": "Get the LTS build from the Node.js website; node --version should print v20 or later."
+      },
+      "s3": {
+        "name": "Start DSH",
+        "text": "Run npx {'@'}deepseek-ai/dsh web and the web UI opens in your browser."
+      },
+      "s4": {
+        "name": "Add a plugin",
+        "text": "Run dsh plugin add github:owner/repo with the plugin you want, then enable it in the web UI."
+      }
+    }
   }
 }

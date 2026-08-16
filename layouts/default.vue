@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { locale, t } = useI18n()
+const { locale, t, locales } = useI18n()
 const route = useRoute()
 const head = useLocaleHead({ dir: true, lang: true, seo: true })
 const localePath = useLocalePath()
@@ -10,10 +10,16 @@ useHead(() => ({
   meta: [...(head.value.meta ?? [])],
 }))
 
-const other = computed(() => (locale.value === 'en' ? 'zh' : 'en'))
+// 语言菜单直接读 i18n 配置（nuxt.config.ts locales），新增语言不用改这里
+const localeOptions = computed(() =>
+  (locales.value as Array<{ code: string; name: string }>).map(l => ({ code: l.code, name: l.name })))
+const menuOpen = ref(false)
+const currentName = computed(() =>
+  localeOptions.value.find(l => l.code === locale.value)?.name ?? locale.value)
 
-function switchLang() {
-  navigateTo(switchLocalePath(other.value))
+function pick(code: string) {
+  menuOpen.value = false
+  if (code !== locale.value) navigateTo(switchLocalePath(code))
 }
 
 const navActive = (path: string) => {
@@ -40,9 +46,29 @@ const toast = useState<string | null>('toast', () => null)
           <NuxtLink :to="localePath('/submit')" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
           <NuxtLink :to="localePath('/about')" :class="{ active: navActive('/about') }">{{ t('nav.about') }}</NuxtLink>
         </nav>
-        <button class="lang-switch" @click="switchLang">
-          {{ other === 'zh' ? '中文' : 'EN' }}
-        </button>
+        <div class="lang-menu">
+          <div v-if="menuOpen" class="lang-backdrop" @click="menuOpen = false" />
+          <button
+            class="lang-switch"
+            aria-haspopup="listbox"
+            :aria-expanded="menuOpen"
+            @click="menuOpen = !menuOpen"
+          >
+            🌐 {{ currentName }} ▾
+          </button>
+          <ul v-if="menuOpen" class="lang-list" role="listbox" aria-label="language">
+            <li v-for="l in localeOptions" :key="l.code">
+              <button
+                role="option"
+                :aria-selected="l.code === locale"
+                :class="{ current: l.code === locale }"
+                @click="pick(l.code)"
+              >
+                {{ l.name }}<span v-if="l.code === locale" class="check"> ✓</span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
 

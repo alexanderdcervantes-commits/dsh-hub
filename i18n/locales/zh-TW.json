@@ -1,0 +1,299 @@
+{
+  "nav": {
+    "meme": "🤪 整活專區",
+    "plugins": "🧩 全部外掛",
+    "install": "🚀 安裝",
+    "launchers": "🖥️ 啟動器",
+    "submit": "➕ 投稿",
+    "about": "關於"
+  },
+  "hero": {
+    "title": "一切皆外掛——",
+    "titleAccent": "所以，萬物皆可整活。",
+    "sub": "DeepSeek Harness (dsh) 外掛叢林的策展導航：人工精選的好東西、桌面鯨魚娘，以及社群這週整出的最歡樂的活。",
+    "cta": "先去整活專區看看",
+    "installCta": "第一次用？一條命令裝好 dsh →"
+  },
+  "home": {
+    "memeTitle": "🔥 今日整活",
+    "memeSub": "好玩的放最前面——鯨魚娘桌寵當然是正當生產力工具。",
+    "hotTitle": "📈 熱門排行",
+    "hotSub": "按 star 數的 Top 10",
+    "catsTitle": "🏷️ 按分類逛",
+    "newTitle": "🆕 最新收錄",
+    "newSub": "最近 7 天內有推送",
+    "statsTitle": "📊 資料看板",
+    "statTotal": "收錄外掛",
+    "statMeme": "整活精選",
+    "statStars": "star 總和",
+    "statCats": "分類數"
+  },
+  "plugin": {
+    "install": "安裝",
+    "viewOnGithub": "去 GitHub 看看",
+    "related": "同分類的其他外掛",
+    "evidence": "訊號",
+    "manifestYes": "發現外掛 manifest",
+    "manifestNo": "根目錄無 manifest",
+    "pushed": "最近推送",
+    "license": "許可證",
+    "language": "語言",
+    "stars": "stars",
+    "forks": "forks",
+    "topics": "Topics",
+    "daysAgo": "天前",
+    "today": "今天",
+    "descEn": "English",
+    "descZh": "中文",
+    "watchDemo": "B站演示影片"
+  },
+  "meme": {
+    "title": "整活專區",
+    "sub": "別人羅列一切，我們只挑好東西——還有好玩的。警告：整活濃度可能導致一下午沒了。",
+    "like": "喜歡",
+    "liked": "已喜歡",
+    "share": "分享",
+    "shareCopied": "連結已複製——發給那個需要這個的朋友",
+    "likeCount": "{n} 人喜歡",
+    "submitCta": "你發現了更好笑的？",
+    "submitCtaBtn": "來投稿",
+    "all": "全部",
+    "sections": {
+      "absurd": "🤯 巔峰離譜",
+      "skins": "🎨 換皮組",
+      "pets": "🐳 賽博寵物",
+      "slackoff": "🎮 摸魚區",
+      "useful": "🛠️ 認真幹活",
+      "textclub": "📝 文字選手"
+    }
+  },
+  "plugins": {
+    "title": "全部外掛",
+    "sub": "已收錄的全部 dsh 外掛——可搜尋、可篩選、可排序。",
+    "searchPlaceholder": "搜尋名稱、描述、倉庫…",
+    "sortStars": "star 最多",
+    "sortRecent": "最近推送",
+    "sortName": "名稱 A–Z",
+    "allCats": "全部分類",
+    "results": "{n} 個外掛",
+    "noResults": "沒有匹配的結果，換個關鍵詞試試？",
+    "installGuide": "安裝指南 →"
+  },
+  "launcher": {
+    "title": "桌面啟動器",
+    "sub": "不想敲命令列？這些社群專案把 DSH 裝進原生桌面視窗、做成一鍵啟動器——下載、安裝、雙擊即用。",
+    "note": "它們不是 dsh 外掛，而是獨立的桌面應用和啟動器，專門照顧不想碰終端的人。",
+    "allPlatforms": "全部平臺",
+    "pf": {
+      "windows": "Windows",
+      "macos": "macOS",
+      "linux": "Linux",
+      "android": "安卓"
+    },
+    "sortStars": "star 最多",
+    "sortName": "名稱 A–Z",
+    "results": "{n} 個啟動器",
+    "noResults": "這個平臺暫時沒有收錄。",
+    "licenseUndeclared": "license 未宣告",
+    "disclaimerTitle": "誠實宣告",
+    "disclaimer": "以上都是社群第三方專案，與 DeepSeek 官方及本站無關，收錄也不等於背書。star 數與 license 如實轉錄自 GitHub（資料更新於 {date}）。桌面應用能接觸到你的 API Key 和系統許可權：安裝前請自行審查程式碼，不信任的倉庫不要裝。",
+    "homeTitle": "🖥️ 一鍵啟動器",
+    "homeSub": "不會敲命令也能用 DSH",
+    "homeDesc": "{n} 個社群專案把 DSH 裝進原生桌面視窗或做成一鍵啟動器——下載、安裝、雙擊即用，還有一個能在安卓手機上跑。",
+    "homeCta": "去看看啟動器",
+    "sortRecent": "最近更新"
+  },
+  "install": {
+    "title": "安裝 DSH",
+    "sub": "從零開始，跟著檢查點一步步來：開啟終端、裝 Node.js、啟動 dsh，再裝幾個社群精選外掛。全程大約 5 分鐘，不需要程式設計基礎。",
+    "whatH": "DeepSeek Harness 是什麼？",
+    "whatP": "DeepSeek Harness 是 DeepSeek 在 2026 年 8 月開源的 agent 框架。名字太長，社群懶得念全稱，直接叫它 dsh——npm 包名也是 {'@'}deepseek-ai/dsh。它的思路就一句話：一切皆外掛。UI、工具、皮膚，全都插在一個小核心上。",
+    "needH": "先確認環境",
+    "needP": "機器上得有 Node.js，npx 和 pnpm 都能啟動它。終端裡敲 node -v，能打印出版本號就說明環境沒問題。什麼都沒列印？去 Node.js 官網下一個 LTS 版本。",
+    "startH": "安裝並啟動 DSH",
+    "startP1": "最省事的方式是一條 npx 命令：不用全域性安裝，跑起來直接進 Web UI。",
+    "startP2": "裝過 Claude Code 或者 Codex 的話應該很眼熟——同一條 npx 命令，回車就進。",
+    "startP3": "想讀原始碼、想自己動手改的，直接 clone 官方倉庫也一樣。",
+    "pluginH": "安裝外掛",
+    "pluginP": "dsh 跑起來之後，裝外掛還是一條命令。把下面的 owner/repo 換成你想裝的外掛，粘進終端，再到 DSH Web UI 的外掛頁啟用它。本站收錄的 {n} 個外掛，詳情頁全都帶一鍵複製按鈕，不用手敲。",
+    "faqH": "常見問題",
+    "faq": {
+      "q1": "怎麼安裝 DeepSeek Harness？",
+      "a1": "先裝好 Node.js，終端裡執行 npx {'@'}deepseek-ai/dsh web，瀏覽器會自動開啟 Web UI。也可以 clone 官方倉庫，在本地跑。",
+      "q2": "怎麼安裝 dsh 外掛？",
+      "a2": "終端裡執行 dsh plugin add github:owner/repo，owner/repo 換成外掛倉庫，然後去 Web UI 的外掛頁啟用。本站每個外掛的詳情頁都有一鍵複製按鈕，命令直接抄。",
+      "q3": "dsh 外掛安全嗎？",
+      "a3": "說實話，都是社群專案，質量參差。裝之前花兩分鐘讀讀程式碼。另外外掛能碰到你的 API key，不信任的倉庫就別裝。",
+      "q4": "怎麼投稿自己的外掛？",
+      "a4": "用本站的投稿頁，貼上倉庫連結就行。每一條投稿都是人工稽核的。",
+      "q5": "dsh 和 DeepSeek Harness 是同一個東西嗎？",
+      "a5": "是。DeepSeek Harness 是全稱，dsh 是社群叫出來的簡稱，npm 包名是 {'@'}deepseek-ai/dsh。"
+    },
+    "typoH": "拼錯了？太正常了",
+    "typoP": "相當一部分訪客是拼錯了才搜進來的。deepseekharness 不帶空格、deepseek hardness 多個 d、deepseek herness 少個 a，搜的都是同一個東西。正確寫法是 DeepSeek Harness，兩個詞，社群簡稱 dsh。不管你當初是怎麼拼的，上面的命令照用不誤。",
+    "relatedH": "相關連結",
+    "relatedPlugins": "全部外掛",
+    "relatedMeme": "整活專區",
+    "relatedSubmit": "投稿外掛",
+    "relatedWebUi": "dsh-web-ui — Web UI 和皮膚大禮包",
+    "relatedGithub": "DeepSeek Harness 的 GitHub 倉庫",
+    "overviewTitle": "安裝前先記住三件事",
+    "overview1": "dsh 是命令列程式，所有操作都在終端裡完成；",
+    "overview2": "它需要 Node.js v20 或更高版本；",
+    "overview3": "官方推薦用 npx 啟動，網頁介面預設在 http://127.0.0.1:3080。",
+    "step1": {
+      "title": "第 1 步：開啟終端",
+      "intro": "DSH 需要用命令列啟動。命令列就是一個可以輸入文字命令的視窗，不可怕。",
+      "os": "你的系統怎麼開啟：",
+      "macos": "macOS：按 Command + 空格，輸入「終端」，回車。",
+      "windows": "Windows：按 Win 鍵，輸入「PowerShell」，回車。",
+      "linux": "Linux：按 Ctrl + Alt + T。",
+      "look": "開啟後你會看到一個黑色或白色的視窗，裡面有一行字，末尾有個閃爍的游標。這就對了。",
+      "pasteNote": "後面所有以 $ 或程式碼塊開頭的命令，都是複製貼上到這個窗口裡，然後按回車。",
+      "pasteShortcuts": "貼上的快捷鍵：macOS 是 Command + V，Windows 終端是 Ctrl + V 或右鍵。"
+    },
+    "checkpoint1": {
+      "title": "✅ 檢查點 1",
+      "desc": "在終端裡輸入這行，按回車：",
+      "expectedLabel": "必須看到：",
+      "fail": "看到了就繼續。沒看到說明還沒真正開啟終端，回到本節開頭。"
+    },
+    "step2": {
+      "title": "第 2 步：裝 Node.js",
+      "intro": "DSH 是用 JavaScript 寫的，需要 Node.js 這個執行環境。",
+      "checkLabel": "先看你有沒有：",
+      "haveIt": "如果輸出了一個版本號（比如 v22.11.0），直接跳到下面的檢查點。",
+      "notFound": "如果提示 command not found，說明還沒裝：",
+      "install1": "開啟 https://nodejs.org",
+      "install2": "點頁面上那個寫著 LTS 的綠色大按鈕下載",
+      "install3": "雙擊下載好的檔案，一路點「繼續」",
+      "lts": "LTS = 長期支援版，是給普通使用者的穩定版本。",
+      "reopen": "裝完之後必須關掉終端視窗再重新開啟，否則新裝的東西不會生效。"
+    },
+    "checkpoint2": {
+      "title": "✅ 檢查點 2",
+      "desc": "再執行一次：",
+      "expectedLabel": "必須看到一個版本號，比如：",
+      "versionOk": "版本號是 v20 或更高就行。",
+      "fail": "看到 command not found 就不能往下走——回到上面重灌，注意裝完要重開終端。"
+    },
+    "step3": {
+      "title": "第 3 步：啟動 DSH",
+      "intro": "環境就緒後，用下面這一行啟動 DeepSeek Harness。第一次執行會自動下載依賴，耐心等一會兒。",
+      "cmdNote": "如果 npx 詢問是否安裝 {'@'}deepseek-ai/dsh，輸入 y 回車。",
+      "optionalTitle": "可選：讓 dsh 命令全域性可用",
+      "optionalDesc": "官方推薦用 npx 一行啟動；如果你希望像本站外掛頁那樣直接使用 dsh 命令，可以再執行下面這行：",
+      "optionalNote": "裝完後，dsh web 和 dsh plugin add … 都能直接用。",
+      "result": "啟動成功後，終端會顯示本地地址。用瀏覽器開啟："
+    },
+    "checkpoint3": {
+      "title": "✅ 檢查點 3",
+      "desc": "瀏覽器能開啟上面的地址並看到 DSH 的 Web 介面，就說明安裝成功。"
+    },
+    "step4": {
+      "title": "第 4 步：裝第一個外掛",
+      "intro": "DSH 的一切都是外掛。裝好之後，可以直接用命令安裝本站收錄的外掛：",
+      "cmdNote": "把 your-name/your-plugin 換成具體外掛；到外掛詳情頁複製現成命令最方便。",
+      "browse": "去全部外掛看看"
+    },
+    "next": {
+      "title": "裝好了？去逛逛",
+      "sub": "安裝只是開始——本站還有這些地方可以逛：",
+      "plugins": {
+        "title": "🧩 全部外掛",
+        "desc": "按 star、分類、最近推送瀏覽所有 dsh 外掛"
+      },
+      "meme": {
+        "title": "🤪 整活專區",
+        "desc": "鯨魚娘桌寵、QQ2006 皮膚、終端貪玩藍鯨……"
+      },
+      "submit": {
+        "title": "➕ 投稿",
+        "desc": "做了好玩的外掛？提交後人工稽核收錄"
+      },
+      "about": {
+        "title": "📖 關於本站",
+        "desc": "瞭解 DSH Meme Hub 是怎麼選東西的"
+      }
+    }
+  },
+  "submit": {
+    "title": "投稿外掛",
+    "sub": "給 dsh 做了東西——好用、好看、還是離譜到笑出聲？都歡迎來收錄。",
+    "repoUrl": "GitHub 倉庫 URL",
+    "oneLiner": "一句話介紹",
+    "category": "分類",
+    "screenshot": "截圖 URL（可選）",
+    "screenshotHint": "可直接訪問的圖片連結。沒有截圖的專案會先委屈在文字選手區。",
+    "generate": "生成投稿 issue",
+    "openIssue": "去 GitHub 提交 issue →",
+    "hint": "這個表單會生成一個預填好的 GitHub issue——我們這邊沒有賬號系統、沒有後端、沒有追蹤。"
+  },
+  "about": {
+    "title": "關於 DSH Meme Hub",
+    "p1": "2026 年 8 月 13 日，DeepSeek 開源了 DeepSeek Harness (dsh)，口號是「Everything is a Plugin」。96k star 之後，dsh-plugin topic 下已經有幾千個倉庫——在檔案管理器和 TDD 框架之間，社群順手做出了鯨魚娘桌寵、QQ2006 皮膚，和一套給你終端用的貪玩藍鯨廣告網路。",
+    "p2": "其他導航站羅列一切，配信任分和 manifest 檢查。我們做的不一樣：只挑好東西——和好玩的。這裡的每個條目都被人看過一眼、安裝命令可用，整活區裡只有真正把我們逗笑的東西。",
+    "p3": "資料（star、最近推送、許可證、manifest 存在性）從 GitHub API 定期重新整理。本站是純靜態全量預渲染的多語言（EN / 簡體中文 / 繁體中文 / DE）導航——任何網路環境下都夠快。",
+    "disclaimer": "本站所有截圖摘錄自各開源專案的 README，版權歸原作者所有。僅做導航與宣傳，不分發任何原始碼或素材。如有侵權請提 issue，我們會第一時間撤下。"
+  },
+  "footer": {
+    "about": "關於",
+    "install": "安裝 DSH",
+    "launchers": "桌面啟動器",
+    "submit": "投稿外掛",
+    "official": "官方連結",
+    "dshRepo": "deepseek-harness",
+    "pluginTopic": "dsh-plugin topic",
+    "legal": "DSH Meme Hub 是獨立社群專案，與 DeepSeek 無官方關聯。截圖版權歸各自作者。"
+  },
+  "common": {
+    "copy": "複製",
+    "copied": "已複製！",
+    "notFound": "頁面不存在",
+    "backHome": "回首頁",
+    "updated": "資料更新於",
+    "whaleLine": "這隻鯨魚沒找到你要的頁面。"
+  },
+  "meta": {
+    "homeTitle": "DSH Meme Hub — DeepSeek Harness 外掛整活精選導航",
+    "homeSearchPh": "搜尋 {n} 個外掛…（試試：鯨魚、皮膚、五子棋）",
+    "pluginsTitle": "DeepSeek Harness (dsh) 外掛目錄 — 全部收錄 | DSH Meme Hub",
+    "pluginsDesc": "已收錄的全部 DeepSeek Harness (dsh) 社群外掛：搜尋、分類篩選、按 star 或最近推送排序，附一鍵安裝命令。",
+    "memeTitle": "整活專區 — DSH 社群最歡樂的外掛 | DSH Meme Hub",
+    "memeDesc": "鯨魚娘桌寵、QQ2006 皮膚、貪玩藍鯨廣告網路……DeepSeek Harness 社群整活精選，附一鍵安裝。",
+    "installTitle": "安裝 DSH — DSH Meme Hub",
+    "installDesc": "從開啟終端到裝好第一個外掛：DSH 安裝教程包含 Node.js 檢查、npx 啟動、外掛安裝、FAQ 和常見拼寫錯誤。",
+    "launcherTitle": "DSH 桌面啟動器 — 不敲命令列也能用 | DSH Meme Hub",
+    "launcherDesc": "不想敲命令列？這些社群專案把 DSH 裝進原生桌面視窗、做成一鍵啟動器——下載安裝、雙擊即用，覆蓋 Windows/macOS/Linux/安卓。",
+    "launcherCollectionName": "DSH 桌面啟動器目錄 — DSH Meme Hub",
+    "launcherCollectionDesc": "把 DSH 裝進原生桌面視窗的一鍵啟動器收錄：按平臺篩選，按 star 排序，面向不想敲命令列的新手。",
+    "submitTitle": "投稿外掛 — DSH Meme Hub",
+    "submitDesc": "給 DSH Meme Hub 投稿一個 dsh 外掛：填倉庫地址和一句話介紹，生成預填 issue，人工稽核後收錄。",
+    "submitOneLinerPh": "一句話說清它幹了啥、為什麼好笑/好用",
+    "aboutTitle": "關於 — DSH Meme Hub",
+    "aboutDesc": "DSH Meme Hub：DeepSeek Harness (dsh) 外掛的策展導航。別人羅列一切，我們只挑好東西——和好玩的。",
+    "pluginDetailTitle": "{name} — {category}外掛 | DeepSeek Harness (dsh)",
+    "memeDetailTitle": "{name} — {caption} | DSH 整活精選",
+    "breadcrumbHome": "首頁",
+    "breadcrumbInstall": "安裝指南",
+    "howto": {
+      "name": "安裝 DeepSeek Harness 和它的外掛",
+      "s1": {
+        "name": "開啟終端",
+        "text": "macOS 按 Command + 空格開啟終端，Windows 用 PowerShell，Linux 按 Ctrl + Alt + T。"
+      },
+      "s2": {
+        "name": "安裝 Node.js",
+        "text": "去 Node.js 官網裝 LTS 版本，終端裡 node --version 能打印出 v20 或更高版本就對了。"
+      },
+      "s3": {
+        "name": "啟動 DSH",
+        "text": "執行 npx {'@'}deepseek-ai/dsh web，瀏覽器會開啟 Web UI。"
+      },
+      "s4": {
+        "name": "新增外掛",
+        "text": "執行 dsh plugin add github:owner/repo，owner/repo 換成你想裝的外掛，然後去 Web UI 啟用。"
+      }
+    }
+  }
+}

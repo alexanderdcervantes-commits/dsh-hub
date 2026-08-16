@@ -31,14 +31,11 @@ const issueUrl = computed(() => {
     + `&body=${encodeURIComponent(issueBody.value)}`
 })
 
-const title = locale.value === 'zh' ? '投稿插件 — DSH Meme Hub' : 'Submit a Plugin — DSH Meme Hub'
 useHead({
-  title,
+  title: t('meta.submitTitle'),
   meta: [{
     name: 'description',
-    content: locale.value === 'zh'
-      ? '给 DSH Meme Hub 投稿一个 dsh 插件：填仓库地址和一句话介绍，生成预填 issue，人工审核后收录。'
-      : 'Submit a dsh plugin to DSH Meme Hub: fill in the repo URL and a one-liner, open a pre-filled issue, and we review it by hand.',
+    content: t('meta.submitDesc'),
   }],
 })
 </script>
@@ -55,7 +52,7 @@ useHead({
       <input v-model="repoUrl" type="url" placeholder="https://github.com/you/your-dsh-plugin" required>
 
       <label>{{ t('submit.oneLiner') }} <span class="req">*</span></label>
-      <input v-model="oneLiner" type="text" maxlength="200" :placeholder="locale === 'zh' ? '一句话说清它干了啥、为什么好笑/好用' : 'One line: what it does, and why it is great (or hilarious)'">
+      <input v-model="oneLiner" type="text" maxlength="200" :placeholder="t('meta.submitOneLinerPh')">
 
       <label>{{ t('submit.category') }}</label>
       <select v-model="category">

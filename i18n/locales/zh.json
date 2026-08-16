@@ -11,7 +11,8 @@
     "title": "一切皆插件——",
     "titleAccent": "所以，万物皆可整活。",
     "sub": "DeepSeek Harness (dsh) 插件丛林的策展导航：人工精选的好东西、桌面鲸鱼娘，以及社区这周整出的最欢乐的活。",
-    "cta": "先去整活专区看看"
+    "cta": "先去整活专区看看",
+    "installCta": "第一次用？一条命令装好 dsh →"
   },
   "home": {
     "memeTitle": "🔥 今日整活",
@@ -232,7 +233,7 @@
     "title": "关于 DSH Meme Hub",
     "p1": "2026 年 8 月 13 日，DeepSeek 开源了 DeepSeek Harness (dsh)，口号是「Everything is a Plugin」。96k star 之后，dsh-plugin topic 下已经有几千个仓库——在文件管理器和 TDD 框架之间，社区顺手做出了鲸鱼娘桌宠、QQ2006 皮肤，和一套给你终端用的贪玩蓝鲸广告网络。",
     "p2": "其他导航站罗列一切，配信任分和 manifest 检查。我们做的不一样：只挑好东西——和好玩的。这里的每个条目都被人看过一眼、安装命令可用，整活区里只有真正把我们逗笑的东西。",
-    "p3": "数据（star、最近推送、许可证、manifest 存在性）从 GitHub API 定期刷新。本站是纯静态全量预渲染的双语（EN/中文）导航——任何网络环境下都够快。",
+    "p3": "数据（star、最近推送、许可证、manifest 存在性）从 GitHub API 定期刷新。本站是纯静态全量预渲染的多语言（EN / 简体中文 / 繁體中文 / DE）导航——任何网络环境下都够快。",
     "disclaimer": "本站所有截图摘录自各开源项目的 README，版权归原作者所有。仅做导航与宣传，不分发任何源码或素材。如有侵权请提 issue，我们会第一时间撤下。"
   },
   "footer": {
@@ -250,6 +251,49 @@
     "copied": "已复制！",
     "notFound": "页面不存在",
     "backHome": "回首页",
-    "updated": "数据更新于"
+    "updated": "数据更新于",
+    "whaleLine": "这只鲸鱼没找到你要的页面。"
+  },
+  "meta": {
+    "homeTitle": "DSH Meme Hub — DeepSeek Harness 插件整活精选导航",
+    "homeSearchPh": "搜索 {n} 个插件…（试试：鲸鱼、皮肤、五子棋）",
+    "pluginsTitle": "DeepSeek Harness (dsh) 插件目录 — 全部收录 | DSH Meme Hub",
+    "pluginsDesc": "已收录的全部 DeepSeek Harness (dsh) 社区插件：搜索、分类筛选、按 star 或最近推送排序，附一键安装命令。",
+    "memeTitle": "整活专区 — DSH 社区最欢乐的插件 | DSH Meme Hub",
+    "memeDesc": "鲸鱼娘桌宠、QQ2006 皮肤、贪玩蓝鲸广告网络……DeepSeek Harness 社区整活精选，附一键安装。",
+    "installTitle": "安装 DSH — DSH Meme Hub",
+    "installDesc": "从打开终端到装好第一个插件：DSH 安装教程包含 Node.js 检查、npx 启动、插件安装、FAQ 和常见拼写错误。",
+    "launcherTitle": "DSH 桌面启动器 — 不敲命令行也能用 | DSH Meme Hub",
+    "launcherDesc": "不想敲命令行？这些社区项目把 DSH 装进原生桌面窗口、做成一键启动器——下载安装、双击即用，覆盖 Windows/macOS/Linux/安卓。",
+    "launcherCollectionName": "DSH 桌面启动器目录 — DSH Meme Hub",
+    "launcherCollectionDesc": "把 DSH 装进原生桌面窗口的一键启动器收录：按平台筛选，按 star 排序，面向不想敲命令行的新手。",
+    "submitTitle": "投稿插件 — DSH Meme Hub",
+    "submitDesc": "给 DSH Meme Hub 投稿一个 dsh 插件：填仓库地址和一句话介绍，生成预填 issue，人工审核后收录。",
+    "submitOneLinerPh": "一句话说清它干了啥、为什么好笑/好用",
+    "aboutTitle": "关于 — DSH Meme Hub",
+    "aboutDesc": "DSH Meme Hub：DeepSeek Harness (dsh) 插件的策展导航。别人罗列一切，我们只挑好东西——和好玩的。",
+    "pluginDetailTitle": "{name} — {category}插件 | DeepSeek Harness (dsh)",
+    "memeDetailTitle": "{name} — {caption} | DSH 整活精选",
+    "breadcrumbHome": "首页",
+    "breadcrumbInstall": "安装指南",
+    "howto": {
+      "name": "安装 DeepSeek Harness 和它的插件",
+      "s1": {
+        "name": "打开终端",
+        "text": "macOS 按 Command + 空格打开终端，Windows 用 PowerShell，Linux 按 Ctrl + Alt + T。"
+      },
+      "s2": {
+        "name": "安装 Node.js",
+        "text": "去 Node.js 官网装 LTS 版本，终端里 node --version 能打印出 v20 或更高版本就对了。"
+      },
+      "s3": {
+        "name": "启动 DSH",
+        "text": "运行 npx {'@'}deepseek-ai/dsh web，浏览器会打开 Web UI。"
+      },
+      "s4": {
+        "name": "添加插件",
+        "text": "运行 dsh plugin add github:owner/repo，owner/repo 换成你想装的插件，然后去 Web UI 启用。"
+      }
+    }
   }
 }

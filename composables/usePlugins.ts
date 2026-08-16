@@ -7,14 +7,18 @@ export interface DshPlugin {
   url: string
   description_zh: string
   description_en: string
+  /** 繁體版（scripts/gen-zh-tw.mjs 由 *_zh 转换注入，缺省回退简体） */
+  description_zh_TW?: string
   stars: number
   forks?: number
   category_zh: string
   category_en: string
+  category_zh_TW?: string
   is_meme: boolean
   meme_section?: 'absurd' | 'skins' | 'pets' | 'slackoff' | 'useful' | 'textclub'
   meme_caption_zh?: string
   meme_caption_en?: string
+  meme_caption_zh_TW?: string
   image: string | null
   /** 图片真实像素宽高(scripts/set-image-dims.mjs 回填,<img> 预留布局防 CLS) */
   image_w?: number
@@ -47,15 +51,27 @@ const CATEGORY_EMOJI: Record<string, string> = {
 export function usePlugins() {
   const plugins: DshPlugin[] = pluginData.plugins
 
-  /** 当前 locale 下分类字段选择器 */
-  const catOf = (p: DshPlugin, locale: string) =>
-    locale === 'zh' ? p.category_zh : p.category_en
+  /**
+   * 当前 locale 下分类字段选择器。
+   * zh-TW：繁體字段（gen-zh-tw 注入）→ 简体回退；de 及其他：英文。
+   */
+  const catOf = (p: DshPlugin, locale: string) => {
+    if (locale === 'zh-TW') return p.category_zh_TW ?? p.category_zh
+    if (locale === 'zh') return p.category_zh
+    return p.category_en
+  }
 
-  const descOf = (p: DshPlugin, locale: string) =>
-    locale === 'zh' ? p.description_zh : p.description_en
+  const descOf = (p: DshPlugin, locale: string) => {
+    if (locale === 'zh-TW') return p.description_zh_TW ?? p.description_zh
+    if (locale === 'zh') return p.description_zh
+    return p.description_en
+  }
 
-  const captionOf = (p: DshPlugin, locale: string) =>
-    (locale === 'zh' ? p.meme_caption_zh : p.meme_caption_en) ?? ''
+  const captionOf = (p: DshPlugin, locale: string) => {
+    if (locale === 'zh-TW') return p.meme_caption_zh_TW ?? p.meme_caption_zh ?? ''
+    if (locale === 'zh') return p.meme_caption_zh ?? ''
+    return p.meme_caption_en ?? ''
+  }
 
   const emojiOf = (p: DshPlugin) => CATEGORY_EMOJI[p.category_zh] ?? '🧩'
 

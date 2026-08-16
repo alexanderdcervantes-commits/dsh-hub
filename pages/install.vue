@@ -1,45 +1,27 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const { plugins } = usePlugins()
 
 const siteUrl = (config.public.siteUrl as string).replace(/\/$/, '')
-const isZh = computed(() => locale.value === 'zh')
 
-const title = computed(() =>
-  isZh.value ? '安装 DSH — DSH Meme Hub' : 'Install DSH — DSH Meme Hub')
-const description = computed(() =>
-  isZh.value
-    ? '从打开终端到装好第一个插件：DSH 安装教程包含 Node.js 检查、npx 启动、插件安装、FAQ 和常见拼写错误。'
-    : 'Step-by-step DSH install guide: open a terminal, check Node.js, start with npx, add plugins, plus FAQ and common misspellings.')
+const title = computed(() => t('meta.installTitle'))
+const description = computed(() => t('meta.installDesc'))
 
 const pageUrl = `${siteUrl}${localePath('/install')}`
 
-// 三块 JSON-LD：HowTo / FAQPage / BreadcrumbList，文案与正文同源（locale JSON），中英各自成套
-const howtoLd = computed(() => isZh.value
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      name: '安装 DeepSeek Harness 和它的插件',
-      step: [
-        { '@type': 'HowToStep', name: '打开终端', text: 'macOS 按 Command + 空格打开终端，Windows 用 PowerShell，Linux 按 Ctrl + Alt + T。' },
-        { '@type': 'HowToStep', name: '安装 Node.js', text: '去 Node.js 官网装 LTS 版本，终端里 node --version 能打印出 v20 或更高版本就对了。' },
-        { '@type': 'HowToStep', name: '启动 DSH', text: '运行 npx @deepseek-ai/dsh web，浏览器会打开 Web UI。' },
-        { '@type': 'HowToStep', name: '添加插件', text: '运行 dsh plugin add github:owner/repo，owner/repo 换成你想装的插件，然后去 Web UI 启用。' },
-      ],
-    }
-  : {
-      '@context': 'https://schema.org',
-      '@type': 'HowTo',
-      name: 'Install DeepSeek Harness and its plugins',
-      step: [
-        { '@type': 'HowToStep', name: 'Open a terminal', text: 'On macOS press Command + Space and open Terminal; on Windows use PowerShell; on Linux press Ctrl + Alt + T.' },
-        { '@type': 'HowToStep', name: 'Install Node.js', text: 'Get the LTS build from the Node.js website; node --version should print v20 or later.' },
-        { '@type': 'HowToStep', name: 'Start DSH', text: 'Run npx @deepseek-ai/dsh web and the web UI opens in your browser.' },
-        { '@type': 'HowToStep', name: 'Add a plugin', text: 'Run dsh plugin add github:owner/repo with the plugin you want, then enable it in the web UI.' },
-      ],
-    })
+// 三块 JSON-LD：HowTo / FAQPage / BreadcrumbList，文案与正文同源（locale JSON），各语言各自成套
+const howtoLd = computed(() => ({
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: t('meta.howto.name'),
+  step: ([1, 2, 3, 4] as const).map(i => ({
+    '@type': 'HowToStep',
+    name: t(`meta.howto.s${i}.name`),
+    text: t(`meta.howto.s${i}.text`),
+  })),
+}))
 
 const faqLd = computed(() => ({
   '@context': 'https://schema.org',
@@ -55,8 +37,8 @@ const breadcrumbLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: isZh.value ? '首页' : 'Home', item: `${siteUrl}${isZh.value ? '/zh' : ''}` },
-    { '@type': 'ListItem', position: 2, name: isZh.value ? '安装指南' : 'Install', item: pageUrl },
+    { '@type': 'ListItem', position: 1, name: t('meta.breadcrumbHome'), item: `${siteUrl}${localePath('/')}` },
+    { '@type': 'ListItem', position: 2, name: t('meta.breadcrumbInstall'), item: pageUrl },
   ],
 }))
 
