@@ -2,6 +2,7 @@
   "nav": {
     "meme": "🤪 整活专区",
     "plugins": "🧩 全部插件",
+    "install": "🚀 安装",
     "submit": "➕ 投稿",
     "about": "关于"
   },
@@ -77,8 +78,8 @@
     "installGuide": "安装指南 →"
   },
   "install": {
-    "title": "DeepSeek Harness (dsh) 安装指南 — 两条命令装好本体和插件",
-    "sub": "总共两条命令：一条启动 dsh 本体，一条装插件。",
+    "title": "安装 DSH",
+    "sub": "从零开始，跟着检查点一步步来：打开终端、装 Node.js、启动 dsh，再装几个社区精选插件。全程大约 5 分钟，不需要编程基础。",
     "whatH": "DeepSeek Harness 是什么？",
     "whatP": "DeepSeek Harness 是 DeepSeek 在 2026 年 8 月开源的 agent 框架。名字太长，社区懒得念全称，直接叫它 dsh——npm 包名也是 {'@'}deepseek-ai/dsh。它的思路就一句话：一切皆插件。UI、工具、皮肤，全都插在一个小内核上。",
     "needH": "先确认环境",
@@ -109,7 +110,86 @@
     "relatedMeme": "整活专区",
     "relatedSubmit": "投稿插件",
     "relatedWebUi": "dsh-web-ui — Web UI 和皮肤大礼包",
-    "relatedGithub": "DeepSeek Harness 的 GitHub 仓库"
+    "relatedGithub": "DeepSeek Harness 的 GitHub 仓库",
+    "overviewTitle": "安装前先记住三件事",
+    "overview1": "dsh 是命令行程序，所有操作都在终端里完成；",
+    "overview2": "它需要 Node.js v20 或更高版本；",
+    "overview3": "官方推荐用 npx 启动，网页界面默认在 http://127.0.0.1:3080。",
+    "step1": {
+      "title": "第 1 步：打开终端",
+      "intro": "DSH 需要用命令行启动。命令行就是一个可以输入文字命令的窗口，不可怕。",
+      "os": "你的系统怎么打开：",
+      "macos": "macOS：按 Command + 空格，输入「终端」，回车。",
+      "windows": "Windows：按 Win 键，输入「PowerShell」，回车。",
+      "linux": "Linux：按 Ctrl + Alt + T。",
+      "look": "打开后你会看到一个黑色或白色的窗口，里面有一行字，末尾有个闪烁的光标。这就对了。",
+      "pasteNote": "后面所有以 $ 或代码块开头的命令，都是复制粘贴到这个窗口里，然后按回车。",
+      "pasteShortcuts": "粘贴的快捷键：macOS 是 Command + V，Windows 终端是 Ctrl + V 或右键。"
+    },
+    "checkpoint1": {
+      "title": "✅ 检查点 1",
+      "desc": "在终端里输入这行，按回车：",
+      "expectedLabel": "必须看到：",
+      "fail": "看到了就继续。没看到说明还没真正打开终端，回到本节开头。"
+    },
+    "step2": {
+      "title": "第 2 步：装 Node.js",
+      "intro": "DSH 是用 JavaScript 写的，需要 Node.js 这个运行环境。",
+      "checkLabel": "先看你有没有：",
+      "haveIt": "如果输出了一个版本号（比如 v22.11.0），直接跳到下面的检查点。",
+      "notFound": "如果提示 command not found，说明还没装：",
+      "install1": "打开 https://nodejs.org",
+      "install2": "点页面上那个写着 LTS 的绿色大按钮下载",
+      "install3": "双击下载好的文件，一路点「继续」",
+      "lts": "LTS = 长期支持版，是给普通用户的稳定版本。",
+      "reopen": "装完之后必须关掉终端窗口再重新打开，否则新装的东西不会生效。"
+    },
+    "checkpoint2": {
+      "title": "✅ 检查点 2",
+      "desc": "再运行一次：",
+      "expectedLabel": "必须看到一个版本号，比如：",
+      "versionOk": "版本号是 v20 或更高就行。",
+      "fail": "看到 command not found 就不能往下走——回到上面重装，注意装完要重开终端。"
+    },
+    "step3": {
+      "title": "第 3 步：启动 DSH",
+      "intro": "环境就绪后，用下面这一行启动 DeepSeek Harness。第一次运行会自动下载依赖，耐心等一会儿。",
+      "cmdNote": "如果 npx 询问是否安装 @deepseek-ai/dsh，输入 y 回车。",
+      "optionalTitle": "可选：让 dsh 命令全局可用",
+      "optionalDesc": "官方推荐用 npx 一行启动；如果你希望像本站插件页那样直接使用 dsh 命令，可以再执行下面这行：",
+      "optionalNote": "装完后，dsh web 和 dsh plugin add … 都能直接用。",
+      "result": "启动成功后，终端会显示本地地址。用浏览器打开："
+    },
+    "checkpoint3": {
+      "title": "✅ 检查点 3",
+      "desc": "浏览器能打开上面的地址并看到 DSH 的 Web 界面，就说明安装成功。"
+    },
+    "step4": {
+      "title": "第 4 步：装第一个插件",
+      "intro": "DSH 的一切都是插件。装好之后，可以直接用命令安装本站收录的插件：",
+      "cmdNote": "把 your-name/your-plugin 换成具体插件；到插件详情页复制现成命令最方便。",
+      "browse": "去全部插件看看"
+    },
+    "next": {
+      "title": "装好了？去逛逛",
+      "sub": "安装只是开始——本站还有这些地方可以逛：",
+      "plugins": {
+        "title": "🧩 全部插件",
+        "desc": "按 star、分类、最近推送浏览所有 dsh 插件"
+      },
+      "meme": {
+        "title": "🤪 整活专区",
+        "desc": "鲸鱼娘桌宠、QQ2006 皮肤、终端贪玩蓝鲸……"
+      },
+      "submit": {
+        "title": "➕ 投稿",
+        "desc": "做了好玩的插件？提交后人工审核收录"
+      },
+      "about": {
+        "title": "📖 关于本站",
+        "desc": "了解 DSH Meme Hub 是怎么选东西的"
+      }
+    }
   },
   "submit": {
     "title": "投稿插件",
@@ -132,6 +212,7 @@
   },
   "footer": {
     "about": "关于",
+    "install": "安装 DSH",
     "submit": "投稿插件",
     "official": "官方链接",
     "dshRepo": "deepseek-harness",

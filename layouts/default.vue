@@ -35,6 +35,7 @@ const toast = useState<string | null>('toast', () => null)
         <nav class="main-nav">
           <NuxtLink :to="localePath('/meme')" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
           <NuxtLink :to="localePath('/plugins')" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
+          <NuxtLink :to="localePath('/install')" :class="{ active: navActive('/install') }">{{ t('nav.install') }}</NuxtLink>
           <NuxtLink :to="localePath('/submit')" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
           <NuxtLink :to="localePath('/about')" :class="{ active: navActive('/about') }">{{ t('nav.about') }}</NuxtLink>
         </nav>
@@ -55,6 +56,7 @@ const toast = useState<string | null>('toast', () => null)
             <h4>DSH Meme Hub</h4>
             <ul>
               <li><NuxtLink :to="localePath('/about')">{{ t('footer.about') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/install')">{{ t('footer.install') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/submit')">{{ t('footer.submit') }}</NuxtLink></li>
             </ul>
           </div>

@@ -2,6 +2,7 @@
   "nav": {
     "meme": "🤪 Meme Zone",
     "plugins": "🧩 All Plugins",
+    "install": "🚀 Install",
     "submit": "➕ Submit",
     "about": "About"
   },
@@ -77,8 +78,8 @@
     "installGuide": "How to install dsh and plugins →"
   },
   "install": {
-    "title": "How to Install DeepSeek Harness (dsh) and Its Plugins",
-    "sub": "Two commands in total: one to start DSH, one to add a plugin.",
+    "title": "Install DSH",
+    "sub": "From zero to running DeepSeek Harness, following the checkpoints: open a terminal, install Node.js, start dsh, then add a few community plugins. It takes about 5 minutes — no programming background required.",
     "whatH": "What is DeepSeek Harness?",
     "whatP": "DeepSeek Harness is the agent framework DeepSeek open-sourced in August 2026. The community found the name a mouthful and just calls it dsh, same as the npm package {'@'}deepseek-ai/dsh. Its whole idea is that everything is a plugin: the UI, tools and skins all plug into a small core.",
     "needH": "What you need",
@@ -109,7 +110,86 @@
     "relatedMeme": "Meme Zone",
     "relatedSubmit": "Submit a plugin",
     "relatedWebUi": "dsh-web-ui — the Web UI and skins bundle",
-    "relatedGithub": "DeepSeek Harness on GitHub"
+    "relatedGithub": "DeepSeek Harness on GitHub",
+    "overviewTitle": "Three things before you start",
+    "overview1": "dsh is a command-line program — everything happens in a terminal.",
+    "overview2": "It needs Node.js v20 or later.",
+    "overview3": "The official quick start is via npx; the web UI defaults to http://127.0.0.1:3080.",
+    "step1": {
+      "title": "Step 1: Open a terminal",
+      "intro": "DSH is started from the command line. A terminal is just a window where you type text commands — nothing scary.",
+      "os": "How to open it on your system:",
+      "macos": "macOS: press Command + Space, type “Terminal”, press Enter.",
+      "windows": "Windows: press the Win key, type “PowerShell”, press Enter.",
+      "linux": "Linux: press Ctrl + Alt + T.",
+      "look": "You should now see a black or white window with a line of text and a blinking cursor at the end. That’s it.",
+      "pasteNote": "Every command starting with $ or shown in a code block below is meant to be pasted into that window, then press Enter.",
+      "pasteShortcuts": "Paste shortcuts: Command + V on macOS; Ctrl + V or right-click in Windows Terminal."
+    },
+    "checkpoint1": {
+      "title": "✅ Checkpoint 1",
+      "desc": "Type this line into the terminal and press Enter:",
+      "expectedLabel": "You must see:",
+      "fail": "If you see it, continue. If not, you haven’t really opened a terminal yet — go back to the start of this step."
+    },
+    "step2": {
+      "title": "Step 2: Install Node.js",
+      "intro": "DSH is written in JavaScript and needs the Node.js runtime.",
+      "checkLabel": "First check if you already have it:",
+      "haveIt": "If a version number appears (for example v22.11.0), skip straight to the checkpoint below.",
+      "notFound": "If it says command not found, you need to install it:",
+      "install1": "Open https://nodejs.org",
+      "install2": "Click the big green LTS button to download",
+      "install3": "Double-click the downloaded file and keep clicking Continue",
+      "lts": "LTS stands for Long-Term Support — the stable version meant for regular users.",
+      "reopen": "After installing, you must close the terminal window and reopen it, otherwise the new install won’t take effect."
+    },
+    "checkpoint2": {
+      "title": "✅ Checkpoint 2",
+      "desc": "Run it again:",
+      "expectedLabel": "You must see a version number, for example:",
+      "versionOk": "v20 or higher is fine.",
+      "fail": "If you see command not found, don’t continue — reinstall it, and remember to reopen the terminal."
+    },
+    "step3": {
+      "title": "Step 3: Start DSH",
+      "intro": "With the environment ready, start DeepSeek Harness with this line. The first run downloads dependencies, so be patient.",
+      "cmdNote": "If npx asks whether to install @deepseek-ai/dsh, type y and press Enter.",
+      "optionalTitle": "Optional: make the dsh command globally available",
+      "optionalDesc": "The official quick start uses npx; if you want to use dsh directly like on our plugin pages, run this too:",
+      "optionalNote": "After that, dsh web and dsh plugin add … both work directly.",
+      "result": "When it starts successfully, the terminal shows a local address. Open it in your browser:"
+    },
+    "checkpoint3": {
+      "title": "✅ Checkpoint 3",
+      "desc": "If the browser opens the address above and shows the DSH web UI, you’re all set."
+    },
+    "step4": {
+      "title": "Step 4: Install your first plugin",
+      "intro": "In DSH, everything is a plugin. Once installed, you can add any plugin listed here directly with a command:",
+      "cmdNote": "Replace your-name/your-plugin with the actual plugin. The easiest way is to copy the ready-made command from a plugin page.",
+      "browse": "Browse all plugins"
+    },
+    "next": {
+      "title": "Ready? Go explore",
+      "sub": "Installing is just the start — here are the best places to explore:",
+      "plugins": {
+        "title": "🧩 All Plugins",
+        "desc": "Browse every dsh plugin by stars, category, or recent pushes"
+      },
+      "meme": {
+        "title": "🤪 Meme Zone",
+        "desc": "Whale-girl pets, QQ2006 skins, a knockoff web-game ad network…"
+      },
+      "submit": {
+        "title": "➕ Submit",
+        "desc": "Built something fun? Submit it and get it listed after a human review"
+      },
+      "about": {
+        "title": "📖 About",
+        "desc": "Learn how DSH Meme Hub picks what gets listed"
+      }
+    }
   },
   "submit": {
     "title": "Submit a Plugin",
@@ -132,6 +212,7 @@
   },
   "footer": {
     "about": "About",
+    "install": "Install DSH",
     "submit": "Submit a plugin",
     "official": "Official links",
     "dshRepo": "deepseek-harness",
