@@ -29,7 +29,9 @@
         "Active community"
       ],
       "pushed_at": "2026-08-16T12:22:14Z",
-      "image": "/images/launchers/deepseek-harness-desktop-anywhere.jpg"
+      "image": "/images/launchers/deepseek-harness-desktop-anywhere.webp",
+      "image_w": 960,
+      "image_h": 664
     },
     {
       "slug": "deepseek-harness-eac",
@@ -55,7 +57,9 @@
         "Windows + Linux"
       ],
       "pushed_at": "2026-08-16T11:05:59Z",
-      "image": "/images/launchers/deepseek-harness-eac.jpg"
+      "image": "/images/launchers/deepseek-harness-eac.webp",
+      "image_w": 960,
+      "image_h": 558
     },
     {
       "slug": "dsh-desktop-dataelement",
@@ -81,7 +85,9 @@
         "Third-party model support"
       ],
       "pushed_at": "2026-08-16T10:24:22Z",
-      "image": "/images/launchers/dsh-desktop-dataelement.jpg"
+      "image": "/images/launchers/dsh-desktop-dataelement.webp",
+      "image_w": 960,
+      "image_h": 611
     },
     {
       "slug": "dsh-desktop-yangyunfan",
@@ -137,7 +143,9 @@
         "Three platforms"
       ],
       "pushed_at": "2026-08-16T12:01:54Z",
-      "image": "/images/launchers/deepseek-harness-desktop-hairyf.jpg"
+      "image": "/images/launchers/deepseek-harness-desktop-hairyf.webp",
+      "image_w": 960,
+      "image_h": 646
     },
     {
       "slug": "oh-dsh",
@@ -164,7 +172,9 @@
         "Desktop/Web/TUI"
       ],
       "pushed_at": "2026-08-16T08:58:07Z",
-      "image": "/images/launchers/oh-dsh.jpg"
+      "image": "/images/launchers/oh-dsh.webp",
+      "image_w": 960,
+      "image_h": 602
     },
     {
       "slug": "deepseek-harness-desktop-app-vibe",
@@ -189,7 +199,9 @@
         "Anime waifu theme"
       ],
       "pushed_at": "2026-08-15T08:56:28Z",
-      "image": "/images/launchers/deepseek-harness-desktop-app-vibe.jpg"
+      "image": "/images/launchers/deepseek-harness-desktop-app-vibe.webp",
+      "image_w": 960,
+      "image_h": 617
     },
     {
       "slug": "deepseek-harness-desktop-steven",
@@ -245,7 +257,9 @@
         "Deliberately minimal"
       ],
       "pushed_at": "2026-08-16T11:33:23Z",
-      "image": "/images/launchers/dsh-launcher-ruler.jpg"
+      "image": "/images/launchers/dsh-launcher-ruler.webp",
+      "image_w": 960,
+      "image_h": 630
     },
     {
       "slug": "deepseek-harness-desktop-chisa",
@@ -272,7 +286,9 @@
         "Built-in plugin market"
       ],
       "pushed_at": "2026-08-16T01:30:11Z",
-      "image": "/images/launchers/deepseek-harness-desktop-chisa.jpg"
+      "image": "/images/launchers/deepseek-harness-desktop-chisa.webp",
+      "image_w": 960,
+      "image_h": 613
     },
     {
       "slug": "dsha-android",
@@ -355,7 +371,9 @@
       "platform_note_zh": "release 现仅提供 Windows 安装包（Tauri 源码本身跨平台）",
       "platform_note_en": "Release currently ships Windows installers only (the Tauri source itself is cross-platform)",
       "pushed_at": "2026-08-16T12:15:39Z",
-      "image": "/images/launchers/dsh-launcher-wep56.jpg"
+      "image": "/images/launchers/dsh-launcher-wep56.webp",
+      "image_w": 960,
+      "image_h": 623
     },
     {
       "slug": "dsh-launcher-marcog",
@@ -382,7 +400,9 @@
         "Balance widget"
       ],
       "pushed_at": "2026-08-16T10:31:39Z",
-      "image": "/images/launchers/dsh-launcher-marcog.jpg"
+      "image": "/images/launchers/dsh-launcher-marcog.webp",
+      "image_w": 960,
+      "image_h": 619
     },
     {
       "slug": "dsh-launcher-loudmore",
@@ -409,7 +429,9 @@
         "5-language README"
       ],
       "pushed_at": "2026-08-16T11:39:42Z",
-      "image": "/images/launchers/dsh-launcher-loudmore.jpg"
+      "image": "/images/launchers/dsh-launcher-loudmore.webp",
+      "image_w": 960,
+      "image_h": 640
     },
     {
       "slug": "dsh-web-desktop",
@@ -434,7 +456,9 @@
         "Native window"
       ],
       "pushed_at": "2026-08-14T04:20:49Z",
-      "image": "/images/launchers/dsh-web-desktop.svg"
+      "image": "/images/launchers/dsh-web-desktop.svg",
+      "image_w": 1440,
+      "image_h": 860
     },
     {
       "slug": "dsh-melody-launcher",
@@ -459,7 +483,9 @@
         "No pre-installed Node.js"
       ],
       "pushed_at": "2026-08-16T11:19:56Z",
-      "image": "/images/launchers/dsh-melody-launcher.jpg"
+      "image": "/images/launchers/dsh-melody-launcher.webp",
+      "image_w": 960,
+      "image_h": 645
     },
     {
       "slug": "dsh-launcher-zhanweipan",
@@ -486,7 +512,9 @@
         "Wizard install"
       ],
       "pushed_at": "2026-08-13T23:12:57Z",
-      "image": "/images/launchers/dsh-launcher-zhanweipan.jpg"
+      "image": "/images/launchers/dsh-launcher-zhanweipan.webp",
+      "image_w": 960,
+      "image_h": 615
     },
     {
       "slug": "dsh-desktop-linux-quan",

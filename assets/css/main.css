@@ -115,6 +115,7 @@ img { max-width: 100%; display: block; }
 }
 .hero .whale-mascot {
   width: clamp(120px, 20vw, 190px);
+  height: auto; /* 让 width/height 属性推算宽高比,加载前占位防 CLS */
   margin: 0 auto 16px;
   border-radius: 16px;
   box-shadow: var(--shadow-hover);
@@ -188,6 +189,12 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 .plugin-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+/* 长列表性能:屏外卡片跳过布局与绘制(记住渲染过的实际高度),
+   /plugins、/meme 首屏渲染与筛选/切 tab 重渲的开销大幅下降 */
+.plugin-card, .meme-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
 .plugin-card .title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .plugin-card h3 { margin: 0; font-size: 16.5px; }
 .plugin-card h3 a { color: var(--text); }
@@ -477,7 +484,8 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-soft);
   box-shadow: var(--shadow); background: var(--card); margin-bottom: 20px;
 }
-.detail-main .shot img { width: 100%; }
+/* height:auto 让 <img> 的 width/height 属性推算宽高比,加载前即占位,消灭 CLS */
+.detail-main .shot img { width: 100%; height: auto; }
 .detail-main .shot .fallback-strip {
   padding: 48px 20px; text-align: center; font-size: 56px;
   background: linear-gradient(135deg, #dafbe1, #ddf1ff);

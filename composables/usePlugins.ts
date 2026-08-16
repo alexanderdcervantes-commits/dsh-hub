@@ -16,6 +16,9 @@ export interface DshPlugin {
   meme_caption_zh?: string
   meme_caption_en?: string
   image: string | null
+  /** 图片真实像素宽高(scripts/set-image-dims.mjs 回填,<img> 预留布局防 CLS) */
+  image_w?: number
+  image_h?: number
   install_cmd: string
   video_url?: string
   pushed_at: string

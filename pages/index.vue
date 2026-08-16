@@ -62,7 +62,7 @@ useHead({
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <img class="whale-mascot" src="/images/dsh-deep-whale.webp" alt="whale girl">
+        <img class="whale-mascot" src="/images/dsh-deep-whale-hero.webp" alt="whale girl" width="480" height="259" decoding="async" fetchpriority="high">
         <h1><template v-if="!isZh">Everything is a Plugin — <em>so go tinker with anything.</em></template><template v-else>一切皆插件——<em>所以，万物皆可整活。</em></template></h1>
         <p class="sub">{{ heroSub }}</p>
         <p style="margin:0 0 22px">

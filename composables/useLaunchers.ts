@@ -5,8 +5,11 @@ export interface DshLauncher {
   name: string
   repo: string
   url: string
-  /** 仓库截图（/images/launchers/xxx.jpg），原仓库无截图时为 null */
+  /** 仓库截图(/images/launchers/xxx.jpg),原仓库无截图时为 null */
   image?: string | null
+  /** 图片真实像素宽高(scripts/set-image-dims.mjs 回填) */
+  image_w?: number
+  image_h?: number
   description_zh: string
   description_en: string
   stars: number

@@ -24,7 +24,7 @@ useHead({
     { name: 'description', content: sub },
     { property: 'og:title', content: title },
     { property: 'og:description', content: sub },
-    { property: 'og:image', content: `${siteUrl}/images/dsh-qq2006.gif` },
+    { property: 'og:image', content: `${siteUrl}/images/dsh-qq2006.webp` },
     { property: 'og:url', content: `${siteUrl}${localePath('/meme')}` },
   ],
 })

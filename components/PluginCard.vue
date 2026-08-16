@@ -15,7 +15,11 @@ const localePath = useLocalePath()
       <span v-if="plugin.is_meme" class="chip orange">🔥 meme</span>
     </div>
     <div v-if="plugin.image" class="card-thumb">
-      <img :src="plugin.image" :alt="plugin.name" loading="lazy">
+      <img
+        :src="plugin.image" :alt="plugin.name"
+        :width="plugin.image_w" :height="plugin.image_h"
+        loading="lazy" decoding="async"
+      >
     </div>
     <p class="desc">{{ descOf(plugin, locale) }}</p>
     <div class="meta-row">

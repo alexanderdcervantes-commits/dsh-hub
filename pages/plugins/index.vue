@@ -9,7 +9,16 @@ const { query, categories } = usePlugins()
 const DEFAULT_CAT = 'all'
 const DEFAULT_SORT: 'stars' | 'recent' | 'name' = 'stars'
 
-const q = ref((route.query.q as string) ?? '')
+// 搜索防抖:输入框即时回显,但过滤延迟 180ms —— 否则每次击键都同步重渲
+// 整页插件卡(近 100 张,每张含 i18n/链接/复制条),慢设备上 INP 轻松破秒
+const qInput = ref((route.query.q as string) ?? '')
+const q = ref(qInput.value)
+let qTimer: ReturnType<typeof setTimeout> | undefined
+watch(qInput, (v) => {
+  clearTimeout(qTimer)
+  qTimer = setTimeout(() => (q.value = v), 180)
+})
+onBeforeUnmount(() => clearTimeout(qTimer))
 const cat = ref((route.query.cat as string) ?? DEFAULT_CAT)
 const sort = ref<'stars' | 'recent' | 'name'>(DEFAULT_SORT)
 
@@ -60,7 +69,7 @@ useHead({
 
     <div class="search-wrap" style="margin-bottom:14px">
       <span class="icon">🔍</span>
-      <input v-model="q" type="search" :placeholder="t('plugins.searchPlaceholder')" aria-label="search">
+      <input v-model="qInput" type="search" :placeholder="t('plugins.searchPlaceholder')" aria-label="search">
     </div>
 
     <div class="filter-bar">

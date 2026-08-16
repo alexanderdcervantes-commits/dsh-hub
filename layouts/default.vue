@@ -29,7 +29,7 @@ const toast = useState<string | null>('toast', () => null)
     <header class="site-header">
       <div class="container inner">
         <NuxtLink :to="localePath('/')" class="brand" aria-label="DSH Meme Hub">
-          <img class="whale" src="/images/dsh-ui-whale.gif" alt="whale">
+          <img class="whale" src="/images/dsh-ui-whale.webp" alt="whale" width="348" height="220" decoding="async">
           DSH<em>Meme</em>Hub
         </NuxtLink>
         <nav class="main-nav">

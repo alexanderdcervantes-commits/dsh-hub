@@ -36,7 +36,11 @@ async function share() {
 <template>
   <article class="meme-card">
     <NuxtLink :to="localePath(`/meme/${plugin.slug}`)" class="thumb" :aria-label="plugin.name">
-      <img v-if="plugin.image" :src="plugin.image" :alt="plugin.name" loading="lazy">
+      <img
+        v-if="plugin.image" :src="plugin.image" :alt="plugin.name"
+        :width="plugin.image_w" :height="plugin.image_h"
+        loading="lazy" decoding="async"
+      >
       <div v-else class="fallback">🐋</div>
     </NuxtLink>
     <div class="body">

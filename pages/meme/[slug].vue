@@ -74,7 +74,11 @@ const rel = computed(() =>
     <div class="detail-layout">
       <div class="detail-main">
         <div class="shot">
-          <img v-if="plugin.image" :src="plugin.image" :alt="plugin.name">
+          <img
+            v-if="plugin.image" :src="plugin.image" :alt="plugin.name"
+            :width="plugin.image_w" :height="plugin.image_h"
+            decoding="async" fetchpriority="high"
+          >
           <div v-else class="fallback-strip">🐋</div>
         </div>
 

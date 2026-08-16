@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "build:data": "python3 scripts/build-data.py --enrich",
+    "build:data": "python3 scripts/build-data.py --enrich && node scripts/set-image-dims.mjs",
     "check:prerender": "node scripts/check-prerender.mjs"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
+    "sharp": "^0.35.3",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.10"
   }

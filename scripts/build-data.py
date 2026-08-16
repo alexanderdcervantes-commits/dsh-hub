@@ -423,6 +423,13 @@ def main():
 
     entries.sort(key=lambda e: -e['stars'])
 
+    # 引用的截图在仓库里不存在时直接置空,避免生成死链 <img>(卡片走 emoji 兜底);
+    # build:data 链尾的 scripts/set-image-dims.mjs 会再回填 image_w / image_h
+    for e in entries:
+        img = e.get('image')
+        if img and not (ROOT / 'public' / img.lstrip('/')).exists():
+            e['image'] = None
+
     if args.enrich:
         entries = enrich(entries)
 

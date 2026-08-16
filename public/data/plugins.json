@@ -17,7 +17,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "任务看板支持 cron 定时执行，手机扫码就能远程接管工作区",
    "meme_caption_en": "The task board runs on cron schedules; scan a QR code from your phone to take over the workspace",
-   "image": "/images/dsh-web-ui.png",
+   "image": "/images/dsh-web-ui.webp",
    "install_cmd": "dsh plugin add github:zhu1090093659/dsh-web-ui",
    "pushed_at": "2026-08-16",
    "license": "Apache-2.0",
@@ -28,7 +28,9 @@
     "dsh",
     "dsh-plugin",
     "web-ui"
-   ]
+   ],
+   "image_w": 1280,
+   "image_h": 400
   },
   {
    "slug": "modlens",
@@ -116,7 +118,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "蓝白上下文进度条 + TPS 仪表，纯插件挂载，零核心改动",
    "meme_caption_en": "Blue-and-white context progress bar + TPS gauge; mounts as a pure plugin, zero core changes",
-   "image": "/images/dsh-cc-tui.png",
+   "image": "/images/dsh-cc-tui.webp",
    "install_cmd": "dsh plugin add github:ccch1mneyyy/dsh-cc-tui",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -132,7 +134,9 @@
     "react",
     "terminal",
     "tui"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 875
   },
   {
    "slug": "dsh-deep-whale",
@@ -158,7 +162,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 862
   },
   {
    "slug": "dsh-vision-toolkit",
@@ -224,7 +230,9 @@
     "dsh-plugin",
     "trolling",
     "web-ui"
-   ]
+   ],
+   "image_w": 1400,
+   "image_h": 785
   },
   {
    "slug": "dsh-agent-teams",
@@ -317,7 +325,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "只看不碰：agent 该干嘛干嘛，界面负责好看",
    "meme_caption_en": "Look, don't touch: the agent does its thing, the interface looks good doing nothing",
-   "image": "/images/dsh-tianshu-tui.jpg",
+   "image": "/images/dsh-tianshu-tui.webp",
    "install_cmd": "dsh plugin add github:huiliyi37/dsh-tianshu-tui",
    "pushed_at": "2026-08-16",
    "license": "Apache-2.0",
@@ -330,7 +338,9 @@
     "harness",
     "harness-engineering",
     "tui"
-   ]
+   ],
+   "image_w": 1024,
+   "image_h": 550
   },
   {
    "slug": "whale-girl",
@@ -347,7 +357,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "15 种状态全套：眨眼、散步、打盹、欢呼、受惊——她真的在陪你上班",
    "meme_caption_en": "15 states: blinking, wandering, napping, cheering, startled — she really is working alongside you",
-   "image": "/images/whale-girl.gif",
+   "image": "/images/whale-girl.webp",
    "install_cmd": "dsh plugin add github:vlln/whale-girl",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -359,7 +369,9 @@
     "dsh-plugin",
     "dsh-repository-plugin",
     "pet"
-   ]
+   ],
+   "image_w": 128,
+   "image_h": 128
   },
   {
    "slug": "dsh-at-file",
@@ -533,7 +545,9 @@
     "deepseek-harness",
     "dsh-plugin",
     "interactive-visualization"
-   ]
+   ],
+   "image_w": 452,
+   "image_h": 638
   },
   {
    "slug": "dsh-openpencil",
@@ -939,7 +953,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "空闲 10 秒还会打瞌睡，尾巴一帧一帧摆",
    "meme_caption_en": "Dozes off after 10 idle seconds, tail swishing frame by frame",
-   "image": "/images/dsh-ui-whale.gif",
+   "image": "/images/dsh-ui-whale.webp",
    "install_cmd": "dsh plugin add github:lhh010/dsh-ui-whale",
    "pushed_at": "2026-08-13",
    "license": "BSD-3-Clause",
@@ -948,7 +962,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 348,
+   "image_h": 220
   },
   {
    "slug": "dsh-side-panel",
@@ -1162,7 +1178,7 @@
    "meme_section": "skins",
    "meme_caption_zh": "DeepSeek 化身蓝发鲸鱼女仆，「所以主人要多对我说话才好」",
    "meme_caption_en": "DeepSeek as a blue-haired whale maid: \"Please talk to me more, master\"",
-   "image": "/images/gal-view.jpg",
+   "image": "/images/gal-view.webp",
    "install_cmd": "dsh plugin add github:Ayase34/gal-view",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -1172,7 +1188,9 @@
     "deepseek",
     "deepseek-harness",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 838
   },
   {
    "slug": "dsh-group-photo",
@@ -1189,7 +1207,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "内测最后一晚的纪念作品：每人一张拍立得，附一句留言",
    "meme_caption_en": "One Polaroid per person, one parting note each — the last night of the beta",
-   "image": "/images/dsh-group-photo.jpg",
+   "image": "/images/dsh-group-photo.webp",
    "install_cmd": "dsh plugin add github:SenmuuuuW/dsh-group-photo",
    "pushed_at": "2026-08-14",
    "license": "MIT",
@@ -1199,7 +1217,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 900
   },
   {
    "slug": "dsh-navbar",
@@ -1266,7 +1286,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "左边是日常，右边是专注——只看结果的极简模式",
    "meme_caption_en": "Everyday on the left, focused on the right — a minimal mode for results-only readers",
-   "image": "/images/dsh-focus-chat.png",
+   "image": "/images/dsh-focus-chat.webp",
    "install_cmd": "dsh plugin add github:dingyi222666/dsh-focus-chat",
    "pushed_at": "2026-08-16",
    "license": null,
@@ -1275,7 +1295,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 1275
   },
   {
    "slug": "dsh-minigames",
@@ -1460,7 +1482,7 @@
    "meme_section": "slackoff",
    "meme_caption_zh": "黑白双方的模型和思考档位可以分开调教，棋盘随手开关，摸鱼正事两不误",
    "meme_caption_en": "Models and thinking budgets configurable per side; the board toggles in and out — slack off and stay productive, both at once",
-   "image": "/images/dsh-gomoku.png",
+   "image": "/images/dsh-gomoku.webp",
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-gomoku",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -1470,7 +1492,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 820
   },
   {
    "slug": "dsh-balance-meter",
@@ -1717,7 +1741,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "设计师式提需求：圈哪里改哪里",
    "meme_caption_en": "Give feedback like a designer: circle it, change it",
-   "image": "/images/dsh-web-review.jpg",
+   "image": "/images/dsh-web-review.webp",
    "install_cmd": "dsh plugin add github:CanglongCl/dsh-web-review",
    "pushed_at": "2026-08-16",
    "license": null,
@@ -1728,7 +1752,9 @@
     "dsh",
     "dsh-plugin",
     "human-in-the-loop"
-   ]
+   ],
+   "image_w": 1280,
+   "image_h": 720
   },
   {
    "slug": "ds-api-usage",
@@ -1884,7 +1910,7 @@
    "category_zh": "抽象整活",
    "category_en": "Absurdity",
    "is_meme": false,
-   "image": "/images/dsh-hub/dsh-reasoning-effort.jpg",
+   "image": null,
    "install_cmd": "dsh plugin add github:HanaAyane/dsh-reasoning-effort",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -2105,7 +2131,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "一秒钟梦回 2006——你的童年 DNA 动了吗",
    "meme_caption_en": "One second and you're back in 2006. Childhood DNA, activate",
-   "image": "/images/dsh-qq2006.gif",
+   "image": "/images/dsh-qq2006.webp",
    "install_cmd": "dsh plugin add github:LaplaceYoung/dsh-qq2006",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2117,7 +2143,9 @@
     "dsh-skin",
     "qq2006",
     "theme"
-   ]
+   ],
+   "image_w": 560,
+   "image_h": 904
   },
   {
    "slug": "dsh-deepcel",
@@ -2143,7 +2171,9 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1920,
+   "image_h": 1032
   },
   {
    "slug": "dsh-plugin-background",
@@ -2160,7 +2190,7 @@
    "meme_section": "skins",
    "meme_caption_zh": "每张图独立配置透明度、模糊和轮播，切图还带交叉淡入",
    "meme_caption_en": "Per-image opacity, blur and rotation; crossfade transitions included",
-   "image": "/images/dsh-plugin-background.png",
+   "image": "/images/dsh-plugin-background.webp",
    "install_cmd": "dsh plugin add github:gameswu/dsh-plugin-background",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2170,7 +2200,9 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
-   ]
+   ],
+   "image_w": 1416,
+   "image_h": 808
   },
   {
    "slug": "dsh-sticky-note",
@@ -2187,7 +2219,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "灵感比会话跑得快，先记下来再说",
    "meme_caption_en": "Inspiration runs faster than the session — write it down first",
-   "image": "/images/dsh-sticky-note.png",
+   "image": "/images/dsh-sticky-note.webp",
    "install_cmd": "dsh plugin add github:Meredith2328/dsh-sticky-note",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -2196,7 +2228,9 @@
    "topics": [
     "dsh-external",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 680,
+   "image_h": 495
   },
   {
    "slug": "dsh-skin",
@@ -2266,7 +2300,7 @@
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
    "is_meme": false,
-   "image": "/images/dsh-hub/dsh-harness-pet.jpg",
+   "image": null,
    "install_cmd": "dsh plugin add github:wraven68/deepseek-harness-pet",
    "pushed_at": "2026-08-14",
    "license": "MIT",
@@ -2289,7 +2323,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "会话在跑、等你审批、任务做完——余光即得，还带声音",
    "meme_caption_en": "Running, awaiting approval, task done — peripheral vision is enough, and it comes with sound",
-   "image": "/images/dsh-pet.png",
+   "image": "/images/dsh-pet.webp",
    "install_cmd": "dsh plugin add github:FlytoMAYDAY80/dsh-pet",
    "pushed_at": "2026-08-13",
    "license": "MIT",
@@ -2303,7 +2337,9 @@
     "electron",
     "macos",
     "pet"
-   ]
+   ],
+   "image_w": 1600,
+   "image_h": 389
   },
   {
    "slug": "dsh-plugin-pet-rs",
@@ -2328,7 +2364,9 @@
    "has_manifest": false,
    "topics": [
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 1024,
+   "image_h": 1024
   },
   {
    "slug": "deepseek-harness-themes",
@@ -2405,7 +2443,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "不读屏幕、不编进度——状态卡上全是真实 agent 事件",
    "meme_caption_en": "No screen reading, no fake percentages — the status card runs on real agent events",
-   "image": "/images/dsh-dafeiyu.png",
+   "image": "/images/dsh-dafeiyu.webp",
    "install_cmd": "dsh plugin add github:QCYTSN/dsh-dafeiyu",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -2418,7 +2456,9 @@
     "dsh-plugin",
     "windows"
    ],
-   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW"
+   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW",
+   "image_w": 1600,
+   "image_h": 856
   },
   {
    "slug": "touhou-hakurei",
@@ -2450,7 +2490,9 @@
     "skin",
     "touhou"
    ],
-   "video_url": "https://www.bilibili.com/video/BV1NRbk6BEys"
+   "video_url": "https://www.bilibili.com/video/BV1NRbk6BEys",
+   "image_w": 1600,
+   "image_h": 881
   },
   {
    "slug": "depharness",
@@ -2464,14 +2506,16 @@
    "category_zh": "开发与运行时",
    "category_en": "Development & Runtime",
    "is_meme": false,
-   "image": "/images/depharness.png",
+   "image": "/images/depharness.webp",
    "install_cmd": "git clone https://github.com/NANTI34/DEEPHARNESS.git && cd DEEPHARNESS && powershell -ExecutionPolicy Bypass -File .\\install.ps1",
    "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "JavaScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38"
+   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38",
+   "image_w": 512,
+   "image_h": 512
   },
   {
    "slug": "dsh-claude-ux",
@@ -2488,7 +2532,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "Claude 风控中国人？格局打开——拨个开关，换成风控全世界：检测到不是中国人就风控。挨骂还会被关对话",
    "meme_caption_en": "Claude risk-controls the Chinese? Flip the switch — now everyone who is NOT Chinese gets risk-controlled. Swear at it and the conversation just ends",
-   "image": "/images/dsh-claude-ux.png",
+   "image": "/images/dsh-claude-ux.webp",
    "install_cmd": "dsh plugin add github:eri64/dsh-claude-ux",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2498,7 +2542,9 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ]
+   ],
+   "image_w": 804,
+   "image_h": 703
   },
   {
    "slug": "dsh-client-ui-pet",
@@ -2515,14 +2561,16 @@
    "meme_section": "pets",
    "meme_caption_zh": "会害羞、会打瞌睡、任务出错还会哭给你看的鲸鱼娘，坐在输入框顶上陪你打工",
    "meme_caption_en": "A whale girl who blushes, dozes off and cries when your task fails — she sits on the input box and works alongside you",
-   "image": "/images/dsh-client-ui-pet.jpg",
+   "image": "/images/dsh-client-ui-pet.webp",
    "install_cmd": "dsh plugin add github:xituisuany-max/dsh-client-ui-pet",
    "pushed_at": "2026-08-15",
    "license": null,
    "language": "JavaScript",
    "has_manifest": true,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y"
+   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y",
+   "image_w": 960,
+   "image_h": 540
   },
   {
    "slug": "deepseek-harness-gui",
@@ -2539,14 +2587,16 @@
    "meme_section": "skins",
    "meme_caption_zh": "144MB 装一个带大肥鱼皮肤的原生窗口，余额小组件和逐轮回滚都是送的",
    "meme_caption_en": "A 144MB native window with the Fat Fish skin — balance widget and per-turn rollback thrown in free",
-   "image": "/images/deepseek-harness-gui.jpg",
+   "image": "/images/deepseek-harness-gui.webp",
    "install_cmd": "dsh plugin add github:yuanqiyibiansheng/DeepSeek-Harness-GUI",
    "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ"
+   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ",
+   "image_w": 960,
+   "image_h": 1430
   },
   {
    "slug": "deepseek-fat-fish-codex-pet",
@@ -2563,14 +2613,16 @@
    "meme_section": "pets",
    "meme_caption_zh": "大肥鱼不只在 DSH 打工——Codex 版连制作规范都开源了，丢给 Codex 自己就能再捏一只",
    "meme_caption_en": "The Fat Fish works beyond DSH — the Codex edition even open-sources its authoring guide, so Codex can mint another pet itself",
-   "image": "/images/deepseek-fat-fish-codex-pet.gif",
+   "image": "/images/deepseek-fat-fish-codex-pet.webp",
    "install_cmd": "dsh plugin add github:gmskywalker/deepseek-fat-fish-codex-pet",
    "pushed_at": "2026-08-12",
    "license": null,
    "language": null,
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor"
+   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor",
+   "image_w": 384,
+   "image_h": 416
   }
  ]
 }
