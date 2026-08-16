@@ -240,6 +240,12 @@ EXTRA = [
        desc_zh='把 DeepSeek Harness 变成 Windows 原生桌面应用：桌面快捷方式一键启动，Electron 独立窗口不开浏览器，文件树/终端/费用估算/品牌外观等增强常驻，数据全存本地',
        desc_en='DeepSeek Harness as a native Windows desktop app: one-click start from a desktop shortcut, an Electron window instead of a browser tab, persistent extras (file tree, terminal, cost estimator, branded appearance), all data stays local',
        install_cmd='git clone https://github.com/NANTI34/DEEPHARNESS.git && cd DEEPHARNESS && powershell -ExecutionPolicy Bypass -File .\\install.ps1'),
+  dict(slug='dsh-claude-ux', name='dsh-claude-ux', repo='eri64/dsh-claude-ux', section='absurd',
+       image='/images/dsh-claude-ux.png',
+       desc_zh='在 DSH 上复刻 Claude 的中国用户体验：检测到是中国人就风控（可反转为不是中国人就风控），拒绝文案带尝试计数，次数到了直接结束会话；挨骂先警告、再主动关对话，自伤消息永不触发。区域检测全在本地跑，还支持提示词隐写通道',
+       desc_en="Claude's China-user experience, recreated for DeepSeek Harness: detect Chinese users and risk-control them (or flip it — control non-Chinese users), with refusal messages that count attempts and end the session when the limit hits. Get insulted and it warns first, then ends the conversation on its own; self-harm messages never trigger it. Region detection runs fully local, with a prompt steganography channel",
+       caption_zh='检测到你是中国人？风控。骂它？对话已结束。一个插件集齐 Claude 国区体验全部名场面',
+       caption_en='Detected as Chinese? Risk control. You swear? Conversation ended. One plugin, every Claude-China meme'),
 ]
 
 
