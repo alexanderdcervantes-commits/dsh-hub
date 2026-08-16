@@ -243,6 +243,17 @@ img { max-width: 100%; display: block; }
 .launcher-card .repo { margin: 0; font-size: 12.5px; color: var(--text-3); }
 .launcher-card .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .launcher-card .platform-note { margin: 0; }
+/* 有图条目：卡片顶部仓库截图，整块点击进仓库；无图不渲染、不留占位 */
+.launcher-thumb {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  aspect-ratio: 16 / 10;
+  background: #f6f8fa; /* 加载中的底色，与卡片白底融合 */
+}
+.launcher-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- meme zone ---------- */
 .meme-zone {

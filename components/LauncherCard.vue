@@ -8,6 +8,9 @@ const { descOf, highlightsOf, noteOf } = useLaunchers()
 
 <template>
   <article class="plugin-card launcher-card">
+    <a v-if="launcher.image" class="launcher-thumb" :href="launcher.url" target="_blank" rel="noopener">
+      <img :src="launcher.image" :alt="launcher.name" loading="lazy">
+    </a>
     <div class="title-row">
       <h3><a :href="launcher.url" target="_blank" rel="noopener">{{ launcher.name }}</a></h3>
       <span class="chip purple">{{ launcher.stack }}</span>
