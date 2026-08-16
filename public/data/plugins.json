@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-08-16",
- "count": 96,
+ "updatedAt": "2026-08-17",
+ "count": 101,
  "plugins": [
   {
    "slug": "dsh-web-ui",
@@ -9,15 +9,15 @@
    "url": "https://github.com/zhu1090093659/dsh-web-ui",
    "description_zh": "DSH Web UI 插件与皮肤大礼包。任务看板、Git 图谱、右侧面板、手机扫码远程接管、远程连接、鲸鱼娘桌宠、实时 token 统计、皮肤中心，可单独安装也可聚合安装",
    "description_en": "The big collection of DSH Web UI plugins and skins: task board, Git graph, right panel, mobile remote control, whale-girl pet, live token stats, skin center. Install piecemeal or all at once",
-   "stars": 3251,
-   "forks": 191,
+   "stars": 3395,
+   "forks": 204,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
    "is_meme": true,
    "meme_section": "useful",
    "meme_caption_zh": "任务看板支持 cron 定时执行，手机扫码就能远程接管工作区",
    "meme_caption_en": "The task board runs on cron schedules; scan a QR code from your phone to take over the workspace",
-   "image": "/images/dsh-web-ui.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:zhu1090093659/dsh-web-ui",
    "pushed_at": "2026-08-16",
    "license": "Apache-2.0",
@@ -28,12 +28,7 @@
     "dsh",
     "dsh-plugin",
     "web-ui"
-   ],
-   "image_w": 1280,
-   "image_h": 400,
-   "description_zh_TW": "DSH Web UI 外掛與皮膚大禮包。任務看板、Git 圖譜、右側面板、手機掃碼遠端接管、遠端連線、鯨魚娘桌寵、即時 token 統計、皮膚中心，可單獨安裝也可聚合安裝",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "任務看板支援 cron 定時執行，手機掃碼就能遠端接管工作區"
+   ]
   },
   {
    "slug": "modlens",
@@ -42,8 +37,8 @@
    "url": "https://github.com/liustack/modlens",
    "description_zh": "为纯文本模型架起视觉桥梁: 粘贴图片，输出结构化 JSON 证据（OCR、版面、语义）。",
    "description_en": "Vision bridge for text-only models: paste an image, get structured JSON evidence (OCR, layout, semantics).",
-   "stars": 2261,
-   "forks": 57,
+   "stars": 2353,
+   "forks": 62,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
@@ -74,9 +69,7 @@
     "text-only-llm",
     "vision",
     "vision-transformer"
-   ],
-   "description_zh_TW": "為純文本模型架起視覺橋樑: 貼上圖片，輸出結構化 JSON 證據（OCR、版面、語義）。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-better-sidebar",
@@ -85,8 +78,8 @@
    "url": "https://github.com/omdsh-dev/DSH-better-sidebar",
    "description_zh": "一个插件一套完整工作台：文件管理、编辑预览、内嵌浏览器、真实终端、Git 面板、后台任务全都有，还支持三方拓展注册新 Tab",
    "description_en": "One plugin, one complete workbench: file manager, edit preview, embedded browser, real terminal, Git panel, background tasks — and third-party plugins can register new tabs",
-   "stars": 1535,
-   "forks": 100,
+   "stars": 1618,
+   "forks": 105,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
    "is_meme": true,
@@ -106,10 +99,7 @@
     "dsh-better-sidebar",
     "dsh-plugin",
     "sidebar"
-   ],
-   "description_zh_TW": "一個外掛一套完整工作臺：檔案管理、編輯預覽、內嵌瀏覽器、真實終端、Git 面板、後臺任務全都有，還支援三方拓展註冊新 Tab",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "官方側邊欄看哭：這才叫工作臺"
+   ]
   },
   {
    "slug": "dsh-cc-tui",
@@ -118,15 +108,15 @@
    "url": "https://github.com/ccch1mneyyy/dsh-cc-tui",
    "description_zh": "官方还没出 TUI？社区先造了一个：Claude Code 风格全屏终端，像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 时间回溯，被官方公众号收录",
    "description_en": "No official TUI yet? The community built one first: a Claude Code-style fullscreen terminal with a pixel-whale header, live status line, streaming thought expansion, double-Esc time travel — featured by the official WeChat account",
-   "stars": 1478,
-   "forks": 59,
+   "stars": 1534,
+   "forks": 65,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
    "is_meme": true,
    "meme_section": "useful",
    "meme_caption_zh": "蓝白上下文进度条 + TPS 仪表，纯插件挂载，零核心改动",
    "meme_caption_en": "Blue-and-white context progress bar + TPS gauge; mounts as a pure plugin, zero core changes",
-   "image": "/images/dsh-cc-tui.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:ccch1mneyyy/dsh-cc-tui",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -142,12 +132,7 @@
     "react",
     "terminal",
     "tui"
-   ],
-   "image_w": 1600,
-   "image_h": 875,
-   "description_zh_TW": "官方還沒出 TUI？社群先造了一個：Claude Code 風格全屏終端，畫素鯨魚頂欄、即時工作狀態行、思考流式展開、雙擊 Esc 時間回溯，被官方公眾號收錄",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "藍白上下文進度條 + TPS 儀表，純外掛掛載，零核心改動"
+   ]
   },
   {
    "slug": "dsh-deep-whale",
@@ -156,8 +141,8 @@
    "url": "https://github.com/Small-tailqwq/dsh-deep-whale",
    "description_zh": "鲸鱼娘皮肤系列「深海女仆工坊 maid-atelier」：双女仆看店、深海蓝蕾丝界面 + Q 版侧栏，CC BY-NC-SA 4.0",
    "description_en": "Whale-girl skin series \"Deep-Sea Maid Atelier\" (maid-atelier): two maids tending the shop, deep-sea-blue lace UI + chibi sidebar, CC BY-NC-SA 4.0",
-   "stars": 1041,
-   "forks": 35,
+   "stars": 1083,
+   "forks": 37,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
    "is_meme": true,
@@ -175,10 +160,7 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 862,
-   "description_zh_TW": "鯨魚娘皮膚系列「深海女僕工坊 maid-atelier」：雙女僕看店、深海藍蕾絲介面 + Q 版側欄，CC BY-NC-SA 4.0",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "亮暗雙模式，蕾絲邊深海藍——鯨魚孃的排面"
+   "image_h": 862
   },
   {
    "slug": "dsh-vision-toolkit",
@@ -187,8 +169,8 @@
    "url": "https://github.com/Anionex/dsh-vision-toolkit",
    "description_zh": "让纯文本模型更好地做视觉任务: 带意图的图片问答、长截图 OCR、UI 还原等。",
    "description_en": "Vision tasks for text-only models: intent-aware image Q&A, long-screenshot OCR, UI reproduction, grounding, and pixel diff.",
-   "stars": 496,
-   "forks": 25,
+   "stars": 518,
+   "forks": 26,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
@@ -216,9 +198,7 @@
     "ui-restoration",
     "vision-language-model",
     "vision-tools"
-   ],
-   "description_zh_TW": "讓純文本模型更好地做視覺任務: 帶意圖的圖片問答、長截圖 OCR、UI 還原等。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-ads",
@@ -227,7 +207,7 @@
    "url": "https://github.com/Nagi-ovo/dsh-ads",
    "description_zh": "把 DSH 变成 2005 年的中文门户网站：贪玩蓝鲸、财神鲸抽奖、假杀毒、角落弹窗全套，关闭叉的热区还比看起来小得多",
    "description_en": "\"Bro, come kick me!\" Turns DSH into a 2005-era Chinese web portal: knockoff web-game banners, a God-of-Wealth jackpot wheel, fake antivirus popups, corner ads — and a close button whose hitbox is smaller than it looks",
-   "stars": 447,
+   "stars": 455,
    "forks": 2,
    "category_zh": "抽象整活",
    "category_en": "Peak Absurdity",
@@ -248,10 +228,7 @@
     "web-ui"
    ],
    "image_w": 1400,
-   "image_h": 785,
-   "description_zh_TW": "把 DSH 變成 2005 年的中文入口網站：貪玩藍鯨、財神鯨抽獎、假防毒、角落彈窗全套，關閉叉的熱區還比看起來小得多",
-   "category_zh_TW": "抽象整活",
-   "meme_caption_zh_TW": "側欄、對話、角落全塞滿——但模型一直在後臺幹活，只是回答前得先看廣告"
+   "image_h": 785
   },
   {
    "slug": "dsh-agent-teams",
@@ -260,14 +237,14 @@
    "url": "https://github.com/NanmiCoder/dsh-agent-teams",
    "description_zh": "AgentTeams 多智能体团队。",
    "description_en": "AgentTeams multi-agent teams.",
-   "stars": 396,
-   "forks": 35,
+   "stars": 412,
+   "forks": 37,
    "category_zh": "工作流与自动化",
    "category_en": "Workflow & Automation",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:NanmiCoder/dsh-agent-teams",
-   "pushed_at": "2026-08-15",
+   "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": true,
@@ -277,9 +254,7 @@
     "dsh",
     "dsh-agent-teams",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "AgentTeams 多智慧體團隊。",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "oh-dsh",
@@ -288,8 +263,8 @@
    "url": "https://github.com/hust-open-atom-club/oh-dsh",
    "description_zh": "社区发行版: TUI、桌面端与 Web UI 统一体验，分层安装、一步到位。",
    "description_en": "Community distribution: TUI, desktop, and Web UI as one bundle with layered installation.",
-   "stars": 212,
-   "forks": 18,
+   "stars": 215,
+   "forks": 19,
    "category_zh": "开发与运行时",
    "category_en": "Development & Runtime",
    "is_meme": false,
@@ -305,9 +280,7 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
-   ],
-   "description_zh_TW": "社群發行版: TUI、桌面端與 Web UI 統一體驗，分層安裝、一步到位。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "notes",
@@ -331,9 +304,7 @@
     "dsh-plugin",
     "notes",
     "smartisan"
-   ],
-   "description_zh_TW": "將 DSH 對話匯出為錘子便籤風格 PNG，或在配置的賬號工作區中新建和更新 Markdown 便籤。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-tianshu-tui",
@@ -342,7 +313,7 @@
    "url": "https://github.com/huiliyi37/dsh-tianshu-tui",
    "description_zh": "在官方 TUI 扩展之上做 harness 级定制：TDD 驱动的 agent 工作流、证据门交付、图像/视觉桥接、语义代码检索。渲染核心演化自 Tianshu-Tui，纯表现层设计",
    "description_en": "Harness-level customization on top of the official TUI extension: TDD-driven agent workflows, evidence-gate delivery, image/vision bridging, and semantic code retrieval. Rendering core evolved from Tianshu-Tui with a pure presentation layer",
-   "stars": 187,
+   "stars": 192,
    "forks": 7,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
@@ -350,7 +321,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "只看不碰：agent 该干嘛干嘛，界面负责好看",
    "meme_caption_en": "Look, don't touch: the agent does its thing, the interface looks good doing nothing",
-   "image": "/images/dsh-tianshu-tui.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:huiliyi37/dsh-tianshu-tui",
    "pushed_at": "2026-08-16",
    "license": "Apache-2.0",
@@ -363,12 +334,7 @@
     "harness",
     "harness-engineering",
     "tui"
-   ],
-   "image_w": 1024,
-   "image_h": 550,
-   "description_zh_TW": "在官方 TUI 擴充套件之上做 harness 級定製：TDD 驅動的 agent 工作流、證據門交付、影像/視覺橋接、語義程式碼檢索。渲染核心演化自 Tianshu-Tui，純表現層設計",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "只看不碰：agent 該幹嘛幹嘛，介面負責好看"
+   ]
   },
   {
    "slug": "whale-girl",
@@ -377,15 +343,15 @@
    "url": "https://github.com/vlln/whale-girl",
    "description_zh": "QQ 宠物形态的鲸鱼娘：可拖拽、投喂、玩耍，完成任务攒资历、升称号、存回忆；任务失败还会失落",
    "description_en": "A whale girl in full QQ-Pet form: draggable, feedable, playable with. Finished tasks rack up seniority, titles and memories — and she sulks when one fails",
-   "stars": 189,
-   "forks": 9,
+   "stars": 194,
+   "forks": 10,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
    "is_meme": true,
    "meme_section": "pets",
    "meme_caption_zh": "15 种状态全套：眨眼、散步、打盹、欢呼、受惊——她真的在陪你上班",
    "meme_caption_en": "15 states: blinking, wandering, napping, cheering, startled — she really is working alongside you",
-   "image": "/images/whale-girl.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:vlln/whale-girl",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -397,12 +363,7 @@
     "dsh-plugin",
     "dsh-repository-plugin",
     "pet"
-   ],
-   "image_w": 128,
-   "image_h": 128,
-   "description_zh_TW": "QQ 寵物形態的鯨魚娘：可拖拽、投餵、玩耍，完成任務攢資歷、升稱號、存回憶；任務失敗還會失落",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "15 種狀態全套：眨眼、散步、打盹、歡呼、受驚——她真的在陪你上班"
+   ]
   },
   {
    "slug": "dsh-at-file",
@@ -411,7 +372,7 @@
    "url": "https://github.com/omdsh-dev/dsh-at-file",
    "description_zh": "Codex 风格的 @file 文件引用，输入框里直接搜索并引用工作区文件。",
    "description_en": "Codex-style @file mentions: search workspace files in the composer and attach their contents to prompts.",
-   "stars": 256,
+   "stars": 264,
    "forks": 10,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
@@ -425,9 +386,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "Codex 風格的 @file 檔案引用，輸入框裡直接搜尋並引用工作區檔案。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "modsearch",
@@ -436,14 +395,14 @@
    "url": "https://github.com/liustack/modsearch",
    "description_zh": "纯文本 agent 的联网搜索桥: 搜索网页与 X，返回结构化 JSON 证据（search/fetch/引用）。",
    "description_en": "Web search bridge for text-only agents: ask the web or X, get structured JSON evidence (search, fetch, citations).",
-   "stars": 110,
+   "stars": 111,
    "forks": 5,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:liustack/modsearch",
-   "pushed_at": "2026-08-15",
+   "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": true,
@@ -467,9 +426,7 @@
     "pi-agent",
     "web-fetch",
     "web-search"
-   ],
-   "description_zh_TW": "純文本 agent 的聯網搜尋橋: 搜尋網頁與 X，返回結構化 JSON 證據（search/fetch/引用）。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-browser",
@@ -478,8 +435,8 @@
    "url": "https://github.com/Lum1104/dsh-browser",
    "description_zh": "Chrome 侧边栏扩展，让 DSH 直接操控你的浏览器，无需视觉能力。",
    "description_en": "Chrome sidebar extension that lets DSH operate your browser directly, no vision capabilities required.",
-   "stars": 193,
-   "forks": 13,
+   "stars": 198,
+   "forks": 14,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
@@ -498,9 +455,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "Chrome 側邊欄擴充套件，讓 DSH 直接操控你的瀏覽器，無需視覺能力。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "forkprobe",
@@ -531,9 +486,7 @@
     "research-writing",
     "skill-comparison",
     "skills"
-   ],
-   "description_zh_TW": "同一任務並行試跑多個技能，對比結果選出最優。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "argo",
@@ -542,7 +495,7 @@
    "url": "https://github.com/taxueseek/argo",
    "description_zh": "专为 agent 打造的搜索工具: 多语言，覆盖中文/英文/学术/代码/购物/金融/新闻/百科。",
    "description_en": "Search built for agents: multilingual coverage across web, academic, code, shopping, finance, news, and encyclopedias.",
-   "stars": 90,
+   "stars": 92,
    "forks": 4,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
@@ -556,9 +509,7 @@
    "topics": [
     "dsh-ecosystem",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "專為 agent 打造的搜尋工具: 多語言，覆蓋中文/英文/學術/程式碼/購物/金融/新聞/百科。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-visualize",
@@ -567,7 +518,7 @@
    "url": "https://github.com/Nagi-ovo/dsh-visualize",
    "description_zh": "DSH 不必只用文字回答：模型调用 visualize，交互式 HTML 卡片直接画进会话流，模拟器、图表、UI 原型都行",
    "description_en": "DSH answers don't have to be text: the model calls `visualize` and interactive HTML cards render straight into the chat stream — simulators, charts, UI prototypes, all fair game",
-   "stars": 148,
+   "stars": 160,
    "forks": 3,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
@@ -588,10 +539,7 @@
     "interactive-visualization"
    ],
    "image_w": 452,
-   "image_h": 638,
-   "description_zh_TW": "DSH 不必只用文字回答：模型呼叫 visualize，互動式 HTML 卡片直接畫進會話流，模擬器、圖表、UI 原型都行",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "dsh-ads 作者唯一一條正經廣告"
+   "image_h": 638
   },
   {
    "slug": "dsh-openpencil",
@@ -600,14 +548,14 @@
    "url": "https://github.com/ZSeven-W/dsh-openpencil",
    "description_zh": "OpenPencil 设计预览与编辑插件。",
    "description_en": "OpenPencil design preview and editing plugin.",
-   "stars": 96,
+   "stars": 99,
    "forks": 3,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:ZSeven-W/dsh-openpencil",
-   "pushed_at": "2026-08-14",
+   "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": true,
@@ -620,9 +568,7 @@
     "ppt",
     "ui",
     "ui-design"
-   ],
-   "description_zh_TW": "OpenPencil 設計預覽與編輯外掛。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-genui",
@@ -631,23 +577,21 @@
    "url": "https://github.com/omdsh-dev/dsh-genui",
    "description_zh": "助手回复内渲染交互式 UI 组件: 布局、图表、表单、测验、mermaid、3D 场景与回传事件循环。",
    "description_en": "Interactive UI components rendered inline in replies: layout, charts, forms, quizzes, mermaid, 3D scenes, and an action event loop back to the model.",
-   "stars": 131,
+   "stars": 139,
    "forks": 14,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-genui",
-   "pushed_at": "2026-08-15",
+   "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": true,
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "助手回覆內渲染互動式 UI 元件: 佈局、圖表、表單、測驗、mermaid、3D 場景與回傳事件迴圈。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-workflow",
@@ -656,8 +600,8 @@
    "url": "https://github.com/icetomoyo/dsh_workflow",
    "description_zh": "把 UltraCode 式多 Agent 调度带给 DSH: 可生成、可保存、可治理、可观察、可恢复的 Workflow 层。",
    "description_en": "UltraCode-style multi-agent orchestration: a generatable, savable, governable, observable, resumable workflow layer.",
-   "stars": 62,
-   "forks": 0,
+   "stars": 63,
+   "forks": 1,
    "category_zh": "工作流与自动化",
    "category_en": "Workflow & Automation",
    "is_meme": false,
@@ -675,9 +619,7 @@
     "dshtopic",
     "multi-agent",
     "workflow"
-   ],
-   "description_zh_TW": "把 UltraCode 式多 Agent 排程帶給 DSH: 可生成、可儲存、可治理、可觀察、可恢復的 Workflow 層。",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "mstar-harness",
@@ -707,9 +649,7 @@
     "sdd",
     "spec-driven",
     "subagents"
-   ],
-   "description_zh_TW": "技能驅動的 harness/loop 工程化工作流外掛。",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "dsh-open-in-vscode",
@@ -718,7 +658,7 @@
    "url": "https://github.com/omdsh-dev/dsh-open-in-vscode",
    "description_zh": "从 Web GUI 一键在 VS Code 中打开工作区目录。",
    "description_en": "Open DSH workspace directories in VS Code directly from the web GUI.",
-   "stars": 45,
+   "stars": 46,
    "forks": 5,
    "category_zh": "通知与集成",
    "category_en": "Notifications & Integrations",
@@ -732,9 +672,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "從 Web GUI 一鍵在 VS Code 中開啟工作區目錄。",
-   "category_zh_TW": "通知與整合"
+   ]
   },
   {
    "slug": "dsh-vision-router",
@@ -743,8 +681,8 @@
    "url": "https://github.com/ysr666/dsh-vision-router",
    "description_zh": "Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screenshots). One-command install, no Python, image turns work like ordinary tool-calling turns.",
    "description_en": "Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screenshots). One-command install, no Python, image turns work like ordinary tool-calling turns.",
-   "stars": 366,
-   "forks": 18,
+   "stars": 422,
+   "forks": 19,
    "category_zh": "工作流与自动化",
    "category_en": "Workflow & Automation",
    "is_meme": false,
@@ -760,9 +698,7 @@
     "dsh-plugin",
     "multimodal",
     "vision"
-   ],
-   "description_zh_TW": "Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screenshots). One-command install, no Python, image turns work like ordinary tool-calling turns.",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "dsh-turn-rewind",
@@ -771,14 +707,14 @@
    "url": "https://github.com/Anionex/dsh-turn-rewind",
    "description_zh": "对话回退: 基于持久 Change Ledger 回滚会话与工作区状态。",
    "description_en": "Rewind conversation and workspace state, powered by a persistent Change Ledger.",
-   "stars": 62,
-   "forks": 2,
+   "stars": 64,
+   "forks": 3,
    "category_zh": "会话与消息",
    "category_en": "Sessions & Messages",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:Anionex/dsh-turn-rewind",
-   "pushed_at": "2026-08-14",
+   "pushed_at": "2026-08-16",
    "license": "BSD-3-Clause",
    "language": "JavaScript",
    "has_manifest": true,
@@ -792,9 +728,7 @@
     "restore-point",
     "turn-rewind",
     "workspace-safety"
-   ],
-   "description_zh_TW": "對話回退: 基於持久 Change Ledger 回滾會話與工作區狀態。",
-   "category_zh_TW": "會話與訊息"
+   ]
   },
   {
    "slug": "dsh-notification",
@@ -803,7 +737,7 @@
    "url": "https://github.com/omdsh-dev/dsh-notification",
    "description_zh": "回合完成桌面通知，按结果分控 + 关键词过滤。",
    "description_en": "Desktop notifications for turn completions, with per-outcome controls and keyword rules.",
-   "stars": 52,
+   "stars": 53,
    "forks": 6,
    "category_zh": "通知与集成",
    "category_en": "Notifications & Integrations",
@@ -817,9 +751,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "回合完成桌面通知，按結果分控 + 關鍵詞過濾。",
-   "category_zh_TW": "通知與整合"
+   ]
   },
   {
    "slug": "dsh-annotation",
@@ -828,7 +760,7 @@
    "url": "https://github.com/omdsh-dev/dsh-annotation",
    "description_zh": "选中文字→批注→随消息发送，回复按批注逐条对照。",
    "description_en": "Select text → annotate → send with your message; replies map back to each annotation.",
-   "stars": 60,
+   "stars": 63,
    "forks": 3,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
@@ -842,9 +774,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "選中文字→批註→隨訊息傳送，回覆按批註逐條對照。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "plugin-registry",
@@ -853,7 +783,7 @@
    "url": "https://github.com/vlln/plugin-registry",
    "description_zh": "插件生态基建: 浏览器面板管理官方 repository 插件（0 patch）+ make-dsh-plugin 插件开发引导技能。",
    "description_en": "Ecosystem infrastructure: a thin browser console for managing official repository plugins (zero patches) plus a make-dsh-plugin skill for guided plugin development.",
-   "stars": 49,
+   "stars": 50,
    "forks": 6,
    "category_zh": "开发与运行时",
    "category_en": "Development & Runtime",
@@ -872,9 +802,7 @@
     "dsh-repository-plugin",
     "plugin-management",
     "ui"
-   ],
-   "description_zh_TW": "外掛生態基建: 瀏覽器面板管理官方 repository 外掛（0 patch）+ make-dsh-plugin 外掛開發引導技能。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "ui-status-label",
@@ -883,7 +811,7 @@
    "url": "https://github.com/alingalingling/ui-status-label",
    "description_zh": "把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子，一行设置搞定",
    "description_en": "Customize your whale girl's \"deep diving\" thinking status to literally anything you want. One setting line",
-   "stars": 36,
+   "stars": 37,
    "forks": 2,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
@@ -900,10 +828,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "把你鯨魚娘思考時的 deep diving 自定義成任意你想要的樣子，一行設定搞定",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "deep diving？不，現在她是「潛入深海尋找答案中」"
+   ]
   },
   {
    "slug": "dsh-automation",
@@ -932,9 +857,7 @@
     "dsh-bundle",
     "dsh-plugin",
     "scheduled-tasks"
-   ],
-   "description_zh_TW": "定時任務: 讓 Coding 任務按計劃在全新 Agent Session 中執行，保留可審計歷史。",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "dsh-interconnect",
@@ -943,7 +866,7 @@
    "url": "https://github.com/Chinesezjc/dsh-interconnect",
    "description_zh": "跨实例互联: 经 interconnect 服务在多个 DSH 实例间转发消息与事件。",
    "description_en": "Cross-instance message and event handoff between DSH instances via an interconnect server.",
-   "stars": 28,
+   "stars": 30,
    "forks": 2,
    "category_zh": "会话与消息",
    "category_en": "Sessions & Messages",
@@ -959,9 +882,7 @@
     "dsh",
     "dsh-plugin",
     "interconnect"
-   ],
-   "description_zh_TW": "跨例項互聯: 經 interconnect 服務在多個 DSH 例項間轉發訊息與事件。",
-   "category_zh_TW": "會話與訊息"
+   ]
   },
   {
    "slug": "dsh-custom-tool",
@@ -984,9 +905,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "用 Monaco 編輯器建立和管理沙箱化的自定義 JavaScript 工具。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-message-edit",
@@ -995,7 +914,7 @@
    "url": "https://github.com/Moeblack/dsh-message-edit",
    "description_zh": "基于分支的消息编辑、reroll、重试与版本时间线。",
    "description_en": "Branch-based message editing, reroll, retry, and a version timeline.",
-   "stars": 24,
+   "stars": 25,
    "forks": 4,
    "category_zh": "会话与消息",
    "category_en": "Sessions & Messages",
@@ -1009,9 +928,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "基於分支的訊息編輯、reroll、重試與版本時間線。",
-   "category_zh_TW": "會話與訊息"
+   ]
   },
   {
    "slug": "dsh-ui-whale",
@@ -1028,7 +945,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "空闲 10 秒还会打瞌睡，尾巴一帧一帧摆",
    "meme_caption_en": "Dozes off after 10 idle seconds, tail swishing frame by frame",
-   "image": "/images/dsh-ui-whale.webp",
+   "image": "/images/dsh-ui-whale.gif",
    "install_cmd": "dsh plugin add github:lhh010/dsh-ui-whale",
    "pushed_at": "2026-08-13",
    "license": "BSD-3-Clause",
@@ -1039,10 +956,7 @@
     "dsh-plugin"
    ],
    "image_w": 348,
-   "image_h": 220,
-   "description_zh_TW": "會話標題欄常駐一隻全手繪畫素鯨魚：眨眼、擺尾、思考流動畫、回合完成噴水、點選冒愛心，零核心改動",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "空閒 10 秒還會打瞌睡，尾巴一幀一幀擺"
+   "image_h": 220
   },
   {
    "slug": "dsh-side-panel",
@@ -1065,9 +979,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "側邊欄整合檔案瀏覽器、終端和 Git 審查，方便預覽檔案。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-computer-use",
@@ -1103,9 +1015,7 @@
     "macos",
     "native-apps",
     "typescript"
-   ],
-   "description_zh_TW": "macOS 電腦控制: Accessibility 觀測、過期狀態拒絕、作用域許可權與安全輸入。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-share",
@@ -1114,7 +1024,7 @@
    "url": "https://github.com/hellodigua/dsh-share",
    "description_zh": "一键分享你的对话。",
    "description_en": "Share your conversations with one click.",
-   "stars": 20,
+   "stars": 21,
    "forks": 2,
    "category_zh": "会话与消息",
    "category_en": "Sessions & Messages",
@@ -1128,9 +1038,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "一鍵分享你的對話。",
-   "category_zh_TW": "會話與訊息"
+   ]
   },
   {
    "slug": "dsh-chat-import",
@@ -1139,7 +1047,7 @@
    "url": "https://github.com/Nwflower/dsh-chat-import",
    "description_zh": "把 Claude Code / Codex / ChatGPT / Cursor / Gemini / Reasonix / opencode 的聊天记录全保真导入为可续聊的 DSH 会话。",
    "description_en": "Import Claude Code / Codex / ChatGPT / Cursor / Gemini / Reasonix / opencode chat histories as resumable DeepSeek Harness sessions.",
-   "stars": 45,
+   "stars": 46,
    "forks": 8,
    "category_zh": "会话与消息",
    "category_en": "Sessions & Messages",
@@ -1171,9 +1079,7 @@
     "plugin",
     "sessions",
     "transcript"
-   ],
-   "description_zh_TW": "把 Claude Code / Codex / ChatGPT / Cursor / Gemini / Reasonix / opencode 的聊天記錄全保真匯入為可續聊的 DSH 會話。",
-   "category_zh_TW": "會話與訊息"
+   ]
   },
   {
    "slug": "distill",
@@ -1195,9 +1101,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "自動對話蒸餾: 後臺 subagent 反省 + 技能 create/update。",
-   "category_zh_TW": "記憶"
+   ]
   },
   {
    "slug": "dsh-toolkit",
@@ -1223,9 +1127,7 @@
     "dsh-plugin",
     "toolkit",
     "zero-dependency"
-   ],
-   "description_zh_TW": "零依賴工具包: time / encoding / json / calculator / csv / regex / markdown / diff / stat / schema 十件套一鍵安裝。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-plugin-check",
@@ -1234,7 +1136,7 @@
    "url": "https://github.com/omdsh-dev/dsh-plugin-check",
    "description_zh": "插件健康检查: 扫描清单协议/patch 格式/构建陷阱，零依赖只读。",
    "description_en": "Plugin health checks: manifest protocol / patch format / build traps, zero-dependency and read-only.",
-   "stars": 22,
+   "stars": 23,
    "forks": 0,
    "category_zh": "开发与运行时",
    "category_en": "Development & Runtime",
@@ -1251,9 +1153,7 @@
     "dsh-plugin",
     "linting",
     "plugin-health"
-   ],
-   "description_zh_TW": "外掛健康檢查: 掃描清單協議/patch 格式/構建陷阱，零依賴只讀。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "gal-view",
@@ -1262,15 +1162,15 @@
    "url": "https://github.com/Ayase34/gal-view",
    "description_zh": "把会话界面一键切成 Galgame：16:9 舞台 + 鲸鱼娘女仆立绘 + 华丽对话框 + 打字机台词，还自带场景可视化编辑器，拖拽换图层实时同步回游戏模式",
    "description_en": "Turn the chat screen into a visual novel: 16:9 stage, whale-girl maid sprite, ornate dialogue box, typewriter lines — plus a drag-and-drop scene editor that syncs straight back into play mode",
-   "stars": 65,
-   "forks": 3,
+   "stars": 69,
+   "forks": 4,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
    "is_meme": true,
    "meme_section": "skins",
    "meme_caption_zh": "DeepSeek 化身蓝发鲸鱼女仆，「所以主人要多对我说话才好」",
    "meme_caption_en": "DeepSeek as a blue-haired whale maid: \"Please talk to me more, master\"",
-   "image": "/images/gal-view.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:Ayase34/gal-view",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -1280,12 +1180,7 @@
     "deepseek",
     "deepseek-harness",
     "dsh-plugin"
-   ],
-   "image_w": 1600,
-   "image_h": 838,
-   "description_zh_TW": "把會話介面一鍵切成 Galgame：16:9 舞臺 + 鯨魚娘女僕立繪 + 華麗對話方塊 + 打字機臺詞，還自帶場景視覺化編輯器，拖拽換圖層即時同步迴游戲模式",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "DeepSeek 化身藍髮鯨魚女僕，「所以主人要多對我說話才好」"
+   ]
   },
   {
    "slug": "dsh-group-photo",
@@ -1302,7 +1197,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "内测最后一晚的纪念作品：每人一张拍立得，附一句留言",
    "meme_caption_en": "One Polaroid per person, one parting note each — the last night of the beta",
-   "image": "/images/dsh-group-photo.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:SenmuuuuW/dsh-group-photo",
    "pushed_at": "2026-08-14",
    "license": "MIT",
@@ -1312,12 +1207,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "image_w": 1600,
-   "image_h": 900,
-   "description_zh_TW": "DSH 內測收官之夜的拍立得合影牆：GitHub 零許可權登入 + 凍結白名單校驗，入鏡一次，常駐牆上",
-   "category_zh_TW": "抽象整活",
-   "meme_caption_zh_TW": "內測最後一晚的紀念作品：每人一張拍立得，附一句留言"
+   ]
   },
   {
    "slug": "dsh-navbar",
@@ -1326,7 +1216,7 @@
    "url": "https://github.com/vlln/dsh-navbar",
    "description_zh": "对话节点导航条，右缘节点串快速跳转 user 消息。",
    "description_en": "Conversation node navigation bar for quick jumps between user messages.",
-   "stars": 26,
+   "stars": 30,
    "forks": 2,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
@@ -1342,9 +1232,7 @@
     "dsh-plugin",
     "plugin",
     "ui"
-   ],
-   "description_zh_TW": "對話節點導航條，右緣節點串快速跳轉 user 訊息。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-data-agent",
@@ -1354,7 +1242,7 @@
    "description_zh": "让 AI 帮你连数据库、写 SQL。",
    "description_en": "Let the AI connect to databases and write SQL for you.",
    "stars": 30,
-   "forks": 3,
+   "forks": 4,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
@@ -1362,16 +1250,14 @@
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-data-agent",
    "pushed_at": "2026-08-16",
    "license": "MIT",
-   "language": "TypeScript",
+   "language": "JavaScript",
    "has_manifest": true,
    "topics": [
     "data-agent",
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "讓 AI 幫你連資料庫、寫 SQL。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-focus-chat",
@@ -1380,15 +1266,15 @@
    "url": "https://github.com/dingyi222666/dsh-focus-chat",
    "description_zh": "给 dsh 加一个「聚焦会话」视图：屏蔽过程噪音，只看最终产出",
    "description_en": "A \"focus chat\" view for dsh: silence the process noise, show only final outputs",
-   "stars": 16,
-   "forks": 1,
+   "stars": 18,
+   "forks": 2,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
    "is_meme": true,
    "meme_section": "useful",
    "meme_caption_zh": "左边是日常，右边是专注——只看结果的极简模式",
    "meme_caption_en": "Everyday on the left, focused on the right — a minimal mode for results-only readers",
-   "image": "/images/dsh-focus-chat.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:dingyi222666/dsh-focus-chat",
    "pushed_at": "2026-08-16",
    "license": null,
@@ -1397,22 +1283,17 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "image_w": 1600,
-   "image_h": 1275,
-   "description_zh_TW": "給 dsh 加一個「聚焦會話」檢視：遮蔽過程噪音，只看最終產出",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "左邊是日常，右邊是專注——只看結果的極簡模式"
+   ]
   },
   {
    "slug": "dsh-minigames",
    "name": "dsh-minigames",
-   "repo": "lhh010/dsh-minigames",
-   "url": "https://github.com/lhh010/dsh-minigames",
+   "repo": "omdsh-dev/dsh-minigames",
+   "url": "https://github.com/omdsh-dev/dsh-minigames",
    "description_zh": "右侧小游戏面板，18 款离线游戏全 Canvas 手绘：恐龙跳一跳、俄罗斯方块、坦克大战（带 AI）、扫雷、2048、数独、吃豆人……",
    "description_en": "A mini-games panel on the right: 18 offline games, all hand-drawn on canvas — dino jump, Tetris, tank battle (with AI), Minesweeper, 2048, Sudoku, Pac-Man…",
-   "stars": 19,
-   "forks": 1,
+   "stars": 5,
+   "forks": 0,
    "category_zh": "摸鱼游戏",
    "category_en": "Slack-Off Zone",
    "is_meme": true,
@@ -1420,18 +1301,15 @@
    "meme_caption_zh": "等了 18 款游戏的人不该没有图",
    "meme_caption_en": "the people who waited for 18 games deserved at least one screenshot",
    "image": null,
-   "install_cmd": "dsh plugin add github:lhh010/dsh-minigames",
-   "pushed_at": "2026-08-13",
+   "install_cmd": "dsh plugin --profile web add github:omdsh-dev/dsh-minigames",
+   "pushed_at": "2026-08-14",
    "license": "BSD-3-Clause",
    "language": "TypeScript",
    "has_manifest": true,
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "右側小遊戲面板，18 款離線遊戲全 Canvas 手繪：恐龍跳一跳、俄羅斯方塊、坦克大戰（帶 AI）、掃雷、2048、數獨、吃豆人……",
-   "category_zh_TW": "摸魚遊戲",
-   "meme_caption_zh_TW": "等了 18 款遊戲的人不該沒有圖"
+   ]
   },
   {
    "slug": "dsh-acp-for-bitfun",
@@ -1455,9 +1333,7 @@
     "bitfun",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "BitFun 與 DSH 的 ACP 互動對接。",
-   "category_zh_TW": "通知與整合"
+   ]
   },
   {
    "slug": "fabric",
@@ -1480,9 +1356,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "類似 MC Fabric 的 hook 處理器。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-security-audit",
@@ -1508,9 +1382,7 @@
     "dsh-plugin",
     "secret-scanning",
     "security"
-   ],
-   "description_zh_TW": "本機安全審計: 配置/外掛來源/會話/網路暴露面，只讀脫敏風險報告。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-stock-market",
@@ -1532,9 +1404,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "有效解決了寫程式碼的時候賬戶不能同時虧錢的 BUG。",
-   "category_zh_TW": "娛樂"
+   ]
   },
   {
    "slug": "dsh-emoji",
@@ -1543,7 +1413,7 @@
    "url": "https://github.com/hellodigua/dsh-emoji",
    "description_zh": "为 AI 回复自动添加表情。",
    "description_en": "Automatically add emojis to AI replies.",
-   "stars": 20,
+   "stars": 21,
    "forks": 1,
    "category_zh": "娱乐",
    "category_en": "Just for Fun",
@@ -1558,9 +1428,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "為 AI 回覆自動新增表情。",
-   "category_zh_TW": "娛樂"
+   ]
   },
   {
    "slug": "dsh-stickers",
@@ -1569,7 +1437,7 @@
    "url": "https://github.com/william-jin-cmu/dsh-stickers",
    "description_zh": "用户与 agent 双向表情贴纸互动。",
    "description_en": "Bidirectional sticker reactions between user and agent.",
-   "stars": 18,
+   "stars": 19,
    "forks": 0,
    "category_zh": "娱乐",
    "category_en": "Just for Fun",
@@ -1583,9 +1451,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "使用者與 agent 雙向表情貼紙互動。",
-   "category_zh_TW": "娛樂"
+   ]
   },
   {
    "slug": "dsh-gomoku",
@@ -1602,7 +1468,7 @@
    "meme_section": "slackoff",
    "meme_caption_zh": "黑白双方的模型和思考档位可以分开调教，棋盘随手开关，摸鱼正事两不误",
    "meme_caption_en": "Models and thinking budgets configurable per side; the board toggles in and out — slack off and stay productive, both at once",
-   "image": "/images/dsh-gomoku.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-gomoku",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -1612,12 +1478,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "image_w": 1600,
-   "image_h": 820,
-   "description_zh_TW": "在 DSH 側邊欄和 AI 殺一盤 15×15 五子棋：沒有任何搜尋演算法，每步都是純 LLM 推理；雙 AI 對戰還能圍觀兩個模型互相廝殺",
-   "category_zh_TW": "摸魚遊戲",
-   "meme_caption_zh_TW": "黑白雙方的模型和思考檔位可以分開調教，棋盤隨手開關，摸魚正事兩不誤"
+   ]
   },
   {
    "slug": "dsh-balance-meter",
@@ -1649,10 +1510,7 @@
     "dsh-plugin",
     "dsh-web-ui",
     "plugin"
-   ],
-   "description_zh_TW": "作曲欄即時顯示 DeepSeek 賬戶餘額 + 本會話花費，每 6 小時自動拉官方價目表，峰谷調價也不慌",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "看著餘額往下掉，打字都謹慎了"
+   ]
   },
   {
    "slug": "deepseek-harness-tui",
@@ -1661,7 +1519,7 @@
    "url": "https://github.com/openma-ai/deepseek-harness-tui",
    "description_zh": "Rust/ratatui 终端客户端，直接使用 DSH SDK JSON-RPC 协议，支持独立运行或作为 profile bundle 加载。",
    "description_en": "A Rust/ratatui terminal client that speaks the DSH SDK JSON-RPC protocol directly and runs standalone or as a profile bundle.",
-   "stars": 29,
+   "stars": 31,
    "forks": 3,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
@@ -1679,9 +1537,7 @@
     "dsh-plugins",
     "tui",
     "tui-rs"
-   ],
-   "description_zh_TW": "Rust/ratatui 終端客戶端，直接使用 DSH SDK JSON-RPC 協議，支援獨立執行或作為 profile bundle 載入。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-scholar",
@@ -1704,9 +1560,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "學術助手外掛。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-session-health",
@@ -1732,9 +1586,7 @@
     "dsh-plugin",
     "health-check",
     "zstd"
-   ],
-   "description_zh_TW": "會話檔案幀級掃描診斷（torn/損壞/空會話檢測）。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-client-auto-continue",
@@ -1743,7 +1595,7 @@
    "url": "https://github.com/HsiangNianian/dsh-auto-continue",
    "description_zh": "DSH Web UI plugin: automatically sends \"继续\" (continue) when a request is interrupted by network errors or other non-human causes",
    "description_en": "DSH Web UI plugin: automatically sends \"继续\" (continue) when a request is interrupted by network errors or other non-human causes",
-   "stars": 18,
+   "stars": 19,
    "forks": 2,
    "category_zh": "UI 增强",
    "category_en": "UI Enhancements",
@@ -1763,9 +1615,7 @@
     "dsh-plugin",
     "plugin",
     "web-ui"
-   ],
-   "description_zh_TW": "DSH Web UI plugin: automatically sends \"繼續\" (continue) when a request is interrupted by network errors or other non-human causes",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-task-status",
@@ -1790,9 +1640,7 @@
     "dsh-plugin",
     "plugin",
     "ui"
-   ],
-   "description_zh_TW": "後臺任務狀態條: 對話頁任務進度 + 即時輸出 tail。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-plugin-mineru",
@@ -1801,7 +1649,7 @@
    "url": "https://github.com/HuanLinOTO/dsh-plugin-mineru",
    "description_zh": "向模型暴露 MineRU 文档解析工具。",
    "description_en": "Expose MineRU document parsing tools to the model.",
-   "stars": 26,
+   "stars": 27,
    "forks": 1,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
@@ -1814,9 +1662,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "向模型暴露 MineRU 文件解析工具。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-find-plugin",
@@ -1825,7 +1671,7 @@
    "url": "https://github.com/awesome-dsh-plugin/dsh-find-plugin",
    "description_zh": "会话内直接找插件: 按关键词/分类搜索本精选 registry，返回描述与可直接执行的安装命令。",
    "description_en": "Find plugins without leaving the agent: search this curated registry by keyword or category, with ready-to-run install commands.",
-   "stars": 35,
+   "stars": 37,
    "forks": 1,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
@@ -1840,9 +1686,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "會話內直接找外掛: 按關鍵詞/分類搜尋本精選 registry，返回描述與可直接執行的安裝命令。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-git-identity",
@@ -1864,9 +1708,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "git 提交固定使用環境自身作者身份，環境變數注入壓過一切 git config 設定。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-web-review",
@@ -1876,14 +1718,14 @@
    "description_zh": "像设计工具一样在内置浏览器里圈选元素、写批注、临时调视觉，确认后 Agent 照着批注直接改前端源码",
    "description_en": "Review web pages like a design tool: circle elements in the built-in browser, annotate, tweak visuals on the fly — then the Agent edits the frontend source to match your annotations",
    "stars": 15,
-   "forks": 1,
+   "forks": 2,
    "category_zh": "生产力工具",
    "category_en": "Actually Useful",
    "is_meme": true,
    "meme_section": "useful",
    "meme_caption_zh": "设计师式提需求：圈哪里改哪里",
    "meme_caption_en": "Give feedback like a designer: circle it, change it",
-   "image": "/images/dsh-web-review.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:CanglongCl/dsh-web-review",
    "pushed_at": "2026-08-16",
    "license": null,
@@ -1894,12 +1736,7 @@
     "dsh",
     "dsh-plugin",
     "human-in-the-loop"
-   ],
-   "image_w": 1280,
-   "image_h": 720,
-   "description_zh_TW": "像設計工具一樣在內建瀏覽器裡圈選元素、寫批註、臨時調視覺，確認後 Agent 照著批註直接改前端原始碼",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "設計師式提需求：圈哪裡改哪裡"
+   ]
   },
   {
    "slug": "ds-api-usage",
@@ -1921,9 +1758,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "在設定頁展示 DeepSeek API 餘額與最近 24 小時用量，包括估算消費、Token、請求次數和按小時時間線。",
-   "category_zh_TW": "UI 增強"
+   ]
   },
   {
    "slug": "dsh-recommend",
@@ -1949,9 +1784,7 @@
     "plugin",
     "rankings",
     "recommendations"
-   ],
-   "description_zh_TW": "DSH 外掛透明排行與推薦: 每日自動抓取 dsh-plugin 話題生態，公開評分模型，提供 rank/search/recommend 工具與設定頁榜單。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-deep-research",
@@ -1973,9 +1806,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "自適應深度研究編排器（基於官方 workflow 引擎）。",
-   "category_zh_TW": "工作流與自動化"
+   ]
   },
   {
    "slug": "telegram",
@@ -1997,9 +1828,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "Telegram Bot API 橋接: 長輪詢、per-chat 會話、HTML 格式化。",
-   "category_zh_TW": "通知與整合"
+   ]
   },
   {
    "slug": "dsh-web-ui-notify",
@@ -2022,9 +1851,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "桌面通知提醒。",
-   "category_zh_TW": "通知與整合"
+   ]
   },
   {
    "slug": "dsh-context-doctor",
@@ -2051,9 +1878,7 @@
     "dsh-plugin",
     "tool",
     "ui"
-   ],
-   "description_zh_TW": "上下文注入審計: 統計指令鏈/技能目錄/工具 schema 的 token 成本，檢測重複與衝突。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-reasoning-effort",
@@ -2062,8 +1887,8 @@
    "url": "https://github.com/HanaAyane/dsh-reasoning-effort",
    "description_zh": "Codex 风格模型+推理强度滑块进 DSH，附赠大肥鱼模式：拖动八帧奔跑的大肥鱼调思考强度，off/high/max 三档与 /model 命令同步",
    "description_en": "A Codex-style model + reasoning-effort slider for DSH, plus a fat-fish mode: drag a sprinting eight-frame fish to dial thinking intensity; off/high/max synced with /model",
-   "stars": 48,
-   "forks": 5,
+   "stars": 50,
+   "forks": 6,
    "category_zh": "抽象整活",
    "category_en": "Absurdity",
    "is_meme": false,
@@ -2078,9 +1903,7 @@
     "deepseek-harness",
     "dsh-plugin",
     "reasoning-effort"
-   ],
-   "description_zh_TW": "Codex 風格模型+推理強度滑塊進 DSH，附贈大肥魚模式：拖動八幀奔跑的大肥魚調思考強度，off/high/max 三檔與 /model 命令同步",
-   "category_zh_TW": "抽象整活"
+   ]
   },
   {
    "slug": "dsh-milestone",
@@ -2109,10 +1932,7 @@
     "dsh-plugin",
     "milestone",
     "navigation"
-   ],
-   "description_zh_TW": "會話里程碑導航條：右側點狀時間線，像看 Git 提交圖一樣一眼定位每次提問，一鍵跳轉任何位置",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "會話越長越香：每次提問都是一個可跳轉的節點"
+   ]
   },
   {
    "slug": "dsh-mnemon",
@@ -2121,8 +1941,8 @@
    "url": "https://github.com/omdsh-dev/dsh-mnemon",
    "description_zh": "Mnemon 深度集成: 本地三层记忆（Runtime Memory、可检索 Documents、受监督 Memory Spaces）。",
    "description_en": "Deep Mnemon integration: local three-tier memory (Runtime Memory, retrievable Documents, supervised Memory Spaces).",
-   "stars": 48,
-   "forks": 2,
+   "stars": 57,
+   "forks": 3,
    "category_zh": "记忆",
    "category_en": "Memory",
    "is_meme": false,
@@ -2153,9 +1973,7 @@
     "semantic-recall",
     "shared-agent-memory",
     "workspace-memory"
-   ],
-   "description_zh_TW": "Mnemon 深度整合: 本地三層記憶（Runtime Memory、可檢索 Documents、受監督 Memory Spaces）。",
-   "category_zh_TW": "記憶"
+   ]
   },
   {
    "slug": "dsh-openmaic",
@@ -2164,7 +1982,7 @@
    "url": "https://github.com/THU-MAIC/dsh-openmaic",
    "description_zh": "OpenMAIC 教学: 课堂、幻灯片、交互组件与苏格拉底式教学。",
    "description_en": "OpenMAIC: classrooms, slides, interactive widgets, and Socratic teaching.",
-   "stars": 10,
+   "stars": 12,
    "forks": 2,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
@@ -2179,9 +1997,7 @@
     "deepseek-harness",
     "dsh-plugin",
     "openmaic"
-   ],
-   "description_zh_TW": "OpenMAIC 教學: 課堂、幻燈片、互動元件與蘇格拉底式教學。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "dsh-market",
@@ -2190,8 +2006,8 @@
    "url": "https://github.com/dsh-market/dsh-market",
    "description_zh": "装在 DSH 里的插件市场: 设置页内逛/搜全部社区插件，按分类筛选，确认后一键安装，已装插件一目了然。",
    "description_en": "The plugin market inside DSH: a Settings page to browse and search the full community catalog by category, with confirmed one-click installs and an installed-plugins view.",
-   "stars": 501,
-   "forks": 41,
+   "stars": 553,
+   "forks": 47,
    "category_zh": "工具与能力",
    "category_en": "Tools & Capabilities",
    "is_meme": false,
@@ -2205,9 +2021,7 @@
     "deepseek-harness",
     "dsh-plugin",
     "marketplace"
-   ],
-   "description_zh_TW": "裝在 DSH 裡的外掛市場: 設定頁內逛/搜全部社群外掛，按分類篩選，確認後一鍵安裝，已裝外掛一目瞭然。",
-   "category_zh_TW": "工具與能力"
+   ]
   },
   {
    "slug": "plugin-template",
@@ -2230,9 +2044,7 @@
    "topics": [
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "外掛模板倉庫（基於 turtle-ui 官方倉庫）。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-user-experience",
@@ -2257,9 +2069,7 @@
     "deepseek-harness",
     "dsh-plugin",
     "ux"
-   ],
-   "description_zh_TW": "幫你發現專案中可能存在的使用者體驗問題: 自動走查 React/TypeScript 原始碼，定位問題並給出具體最佳化建議。",
-   "category_zh_TW": "開發與執行時"
+   ]
   },
   {
    "slug": "dsh-web-archive",
@@ -2278,7 +2088,7 @@
    "meme_caption_en": "Instant peace. Information density: zero (a compliment)",
    "image": null,
    "install_cmd": "dsh plugin add github:renat3u/dsh-web-archive",
-   "pushed_at": "2026-08-13",
+   "pushed_at": "2026-08-16",
    "license": null,
    "language": "TypeScript",
    "has_manifest": true,
@@ -2286,10 +2096,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "Deep Sleeping... 把會話裡 Think 推理和工具卡片全部收攏成同款小卡，世界瞬間清淨",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "世界瞬間清淨，資訊密度歸零（褒義）"
+   ]
   },
   {
    "slug": "dsh-qq2006",
@@ -2306,7 +2113,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "一秒钟梦回 2006——你的童年 DNA 动了吗",
    "meme_caption_en": "One second and you're back in 2006. Childhood DNA, activate",
-   "image": "/images/dsh-qq2006.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:LaplaceYoung/dsh-qq2006",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2318,12 +2125,7 @@
     "dsh-skin",
     "qq2006",
     "theme"
-   ],
-   "image_w": 560,
-   "image_h": 904,
-   "description_zh_TW": "把 DSH Web UI 完整改造成 QQ2006 客戶端：357 份騰訊原版素材，換膚、音效、登入窗全真實，1561 個測試全綠",
-   "category_zh_TW": "抽象整活",
-   "meme_caption_zh_TW": "一秒鐘夢迴 2006——你的童年 DNA 動了嗎"
+   ]
   },
   {
    "slug": "dsh-deepcel",
@@ -2351,10 +2153,7 @@
     "dsh-plugin"
    ],
    "image_w": 1920,
-   "image_h": 1032,
-   "description_zh_TW": "把 DSH 變成 Deepcel 工作簿：會話、工具、設定全部重構成可互動單元格，模型這次是真的在填表",
-   "category_zh_TW": "抽象整活",
-   "meme_caption_zh_TW": "亮色暗色雙模式，單元格互動拉滿——老闆看了直呼內行"
+   "image_h": 1032
   },
   {
    "slug": "dsh-plugin-background",
@@ -2371,7 +2170,7 @@
    "meme_section": "skins",
    "meme_caption_zh": "每张图独立配置透明度、模糊和轮播，切图还带交叉淡入",
    "meme_caption_en": "Per-image opacity, blur and rotation; crossfade transitions included",
-   "image": "/images/dsh-plugin-background.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:gameswu/dsh-plugin-background",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2381,12 +2180,7 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
-   ],
-   "image_w": 1416,
-   "image_h": 808,
-   "description_zh_TW": "VSCode background 外掛的 DSH 版：對話區 / 軌跡區 / 側邊欄 / 設定頁四區域各自配背景，支援 GIF 與靜音影片輪播",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "每張圖獨立配置透明度、模糊和輪播，切圖還帶交叉淡入"
+   ]
   },
   {
    "slug": "dsh-sticky-note",
@@ -2403,7 +2197,7 @@
    "meme_section": "useful",
    "meme_caption_zh": "灵感比会话跑得快，先记下来再说",
    "meme_caption_en": "Inspiration runs faster than the session — write it down first",
-   "image": "/images/dsh-sticky-note.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:Meredith2328/dsh-sticky-note",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -2412,12 +2206,7 @@
    "topics": [
     "dsh-external",
     "dsh-plugin"
-   ],
-   "image_w": 680,
-   "image_h": 495,
-   "description_zh_TW": "編輯框工具欄上的便籤：隨手記點子，自動儲存為 Markdown，一鍵傳送到對話",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "靈感比會話跑得快，先記下來再說"
+   ]
   },
   {
    "slug": "dsh-skin",
@@ -2426,7 +2215,7 @@
    "url": "https://github.com/KinGao294/dsh-skin",
    "description_zh": "Codex 精神续作款皮肤切换器：7 套精选配色 + 自定义壁纸，设置里多两行就完事",
    "description_en": "The spiritual-successor-to-Codex skin switcher: 7 curated palettes + custom wallpaper. Two lines in settings, done",
-   "stars": 16,
+   "stars": 17,
    "forks": 6,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
@@ -2448,10 +2237,7 @@
     "skin",
     "theme",
     "wallpaper"
-   ],
-   "description_zh_TW": "Codex 精神續作款皮膚切換器：7 套精選配色 + 自定義桌布，設定裡多兩行就完事",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "設定裡多兩行就完事，皮膚黨的極簡浪漫"
+   ]
   },
   {
    "slug": "dsh-spotlight",
@@ -2476,10 +2262,7 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
-   ],
-   "description_zh_TW": "鍵盤優先的命令面板：斜槓命令、最近會話、介面操作、外掛設定，一個面板全都有",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": "Mac 使用者狂喜：dsh 也有 Spotlight 了"
+   ]
   },
   {
    "slug": "deepseek-harness-pet",
@@ -2488,8 +2271,8 @@
    "url": "https://github.com/wraven68/deepseek-harness-pet",
    "description_zh": "Windows 桌宠：只读本机 DSH 会话日志，把待办任务进度和状态显示在桌面小宠物里；独立 exe，免 Python/Node，只读不上传",
    "description_en": "A Windows desktop pet that reads local DSH session logs only, showing todo progress and status; standalone exe, no Python/Node, read-only and uploads nothing",
-   "stars": 11,
-   "forks": 0,
+   "stars": 12,
+   "forks": 1,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
    "is_meme": false,
@@ -2499,9 +2282,7 @@
    "license": "MIT",
    "language": "Python",
    "has_manifest": false,
-   "topics": [],
-   "description_zh_TW": "Windows 桌寵：只讀本機 DSH 會話日誌，把待辦任務進度和狀態顯示在桌面小寵物裡；獨立 exe，免 Python/Node，只讀不上傳",
-   "category_zh_TW": "賽博寵物"
+   "topics": []
   },
   {
    "slug": "dsh-pet",
@@ -2510,7 +2291,7 @@
    "url": "https://github.com/FlytoMAYDAY80/dsh-pet",
    "description_zh": "macOS 有声桌宠小鲸鱼：悬浮窗常驻置顶、跨全屏可见，不打开 DSH 也能实时感知会话状态",
    "description_en": "A little whale desktop pet for macOS, with sound: always-on-top floating window, visible across fullscreen apps, senses session state even when DSH isn't open",
-   "stars": 9,
+   "stars": 11,
    "forks": 0,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
@@ -2518,7 +2299,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "会话在跑、等你审批、任务做完——余光即得，还带声音",
    "meme_caption_en": "Running, awaiting approval, task done — peripheral vision is enough, and it comes with sound",
-   "image": "/images/dsh-pet.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:FlytoMAYDAY80/dsh-pet",
    "pushed_at": "2026-08-13",
    "license": "MIT",
@@ -2532,12 +2313,7 @@
     "electron",
     "macos",
     "pet"
-   ],
-   "image_w": 1600,
-   "image_h": 389,
-   "description_zh_TW": "macOS 有聲桌寵小鯨魚：懸浮窗常駐置頂、跨全屏可見，不開啟 DSH 也能即時感知會話狀態",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "會話在跑、等你審批、任務做完——餘光即得，還帶聲音"
+   ]
   },
   {
    "slug": "dsh-plugin-pet-rs",
@@ -2546,7 +2322,7 @@
    "url": "https://github.com/HuanLinOTO/dsh-plugin-pet-rs",
    "description_zh": "同一只鲸鱼的 Rust 重写：从约 100MB 干到目标 10MB 以内，Windows / macOS / Linux 三端通吃",
    "description_en": "The same whale, rewritten in Rust: from ~100MB down to a sub-10MB target, covering Windows / macOS / Linux",
-   "stars": 13,
+   "stars": 14,
    "forks": 1,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
@@ -2564,10 +2340,7 @@
     "dsh-plugin"
    ],
    "image_w": 1024,
-   "image_h": 1024,
-   "description_zh_TW": "同一只鯨魚的 Rust 重寫：從約 100MB 幹到目標 10MB 以內，Windows / macOS / Linux 三端通吃",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "5 態畫素鯨魚 + 狀態氣泡；作者 CI 額度跑不起了，請自行構建"
+   "image_h": 1024
   },
   {
    "slug": "deepseek-harness-themes",
@@ -2576,7 +2349,7 @@
    "url": "https://github.com/orxz/deepseek-harness-themes",
    "description_zh": "社区维护的主题合集：只动颜色和外观，不碰模型与 agent —— One harness. Multiple styles.",
    "description_en": "Community-maintained theme collection: colors and looks only, never touching models or agents — One harness. Multiple styles.",
-   "stars": 6,
+   "stars": 7,
    "forks": 0,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
@@ -2594,10 +2367,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "description_zh_TW": "社群維護的主題合集：只動顏色和外觀，不碰模型與 agent —— One harness. Multiple styles.",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "One harness, multiple styles，多少有點信仰了"
+   ]
   },
   {
    "slug": "dsh-web-attention-badge",
@@ -2630,10 +2400,7 @@
     "dsh-plugins",
     "notification",
     "web"
-   ],
-   "description_zh_TW": "會話需要你時三處同時亮：邊框徽標、標籤頁標題計數、鯨魚 favicon 變琥珀色",
-   "category_zh_TW": "生產力工具",
-   "meme_caption_zh_TW": " favicon 都替你著急，你說 agent 有多需要你"
+   ]
   },
   {
    "slug": "dsh-dafeiyu",
@@ -2642,7 +2409,7 @@
    "url": "https://github.com/QCYTSN/dsh-dafeiyu",
    "description_zh": "住在 Windows 桌面的大肥鱼：DSH 插件启用后跟随本体启停，透明置顶原生窗口实时显示真实 Agent 状态——思考、修改、测试、等待还是完成，切到别的软件也看得到",
    "description_en": "A big fish living on your Windows desktop: enabled as a DSH plugin, it starts and stops with DSH itself, and a transparent always-on-top native window shows real agent status — thinking, editing, testing, waiting or done — even while you work in other apps",
-   "stars": 52,
+   "stars": 62,
    "forks": 8,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
@@ -2650,7 +2417,7 @@
    "meme_section": "pets",
    "meme_caption_zh": "不读屏幕、不编进度——状态卡上全是真实 agent 事件",
    "meme_caption_en": "No screen reading, no fake percentages — the status card runs on real agent events",
-   "image": "/images/dsh-dafeiyu.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:QCYTSN/dsh-dafeiyu",
    "pushed_at": "2026-08-16",
    "license": "MIT",
@@ -2663,12 +2430,7 @@
     "dsh-plugin",
     "windows"
    ],
-   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW",
-   "image_w": 1600,
-   "image_h": 856,
-   "description_zh_TW": "住在 Windows 桌面的大肥魚：DSH 外掛啟用後跟隨本體啟停，透明置頂原生視窗即時顯示真實 Agent 狀態——思考、修改、測試、等待還是完成，切到別的軟體也看得到",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "不讀螢幕、不編進度——狀態卡上全是真實 agent 事件"
+   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW"
   },
   {
    "slug": "touhou-hakurei",
@@ -2702,10 +2464,7 @@
    ],
    "video_url": "https://www.bilibili.com/video/BV1NRbk6BEys",
    "image_w": 1600,
-   "image_h": 881,
-   "description_zh_TW": "東方 Project 博麗神社主題皮膚：晝夜實景背景按亮暗主題切換，靈夢站姿/飛行雙立繪，硃紅紙白金色神社裝飾面板，純展示層不觸達模型",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "幻想鄉搬進工作臺：巫女在側欄看你跑 agent"
+   "image_h": 881
   },
   {
    "slug": "depharness",
@@ -2719,18 +2478,14 @@
    "category_zh": "开发与运行时",
    "category_en": "Development & Runtime",
    "is_meme": false,
-   "image": "/images/depharness.webp",
+   "image": null,
    "install_cmd": "git clone https://github.com/NANTI34/DEEPHARNESS.git && cd DEEPHARNESS && powershell -ExecutionPolicy Bypass -File .\\install.ps1",
    "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "JavaScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38",
-   "image_w": 512,
-   "image_h": 512,
-   "description_zh_TW": "把 DeepSeek Harness 變成 Windows 原生桌面應用：桌面快捷方式一鍵啟動，Electron 獨立視窗不開瀏覽器，檔案樹/終端/費用估算/品牌外觀等增強常駐，資料全存本地",
-   "category_zh_TW": "開發與執行時"
+   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38"
   },
   {
    "slug": "dsh-claude-ux",
@@ -2739,7 +2494,7 @@
    "url": "https://github.com/eri64/dsh-claude-ux",
    "description_zh": "在 DSH 上复刻 Claude 的中国用户体验：检测到是中国人就风控，拒绝文案带尝试计数，次数到了直接结束会话——但真正的精髓是风向开关：调成反向，检测到不是中国人就风控，让全世界体验一把 Claude 国区待遇。挨骂先警告再主动关对话，自伤消息永不触发；区域检测全本地跑，还支持提示词隐写通道",
    "description_en": "Claude's China-user experience, recreated for DeepSeek Harness: detect Chinese users and risk-control them, with refusal messages that count attempts and end the session — but the real twist is the flip switch: set it to reverse and everyone who is NOT Chinese gets risk-controlled, letting the whole world taste Claude's China treatment. Get insulted and it warns first, then ends the conversation on its own; self-harm messages never trigger it. Region detection runs fully local, with a prompt steganography channel",
-   "stars": 25,
+   "stars": 31,
    "forks": 1,
    "category_zh": "抽象整活",
    "category_en": "Peak Absurdity",
@@ -2747,7 +2502,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "Claude 风控中国人？格局打开——拨个开关，换成风控全世界：检测到不是中国人就风控。挨骂还会被关对话",
    "meme_caption_en": "Claude risk-controls the Chinese? Flip the switch — now everyone who is NOT Chinese gets risk-controlled. Swear at it and the conversation just ends",
-   "image": "/images/dsh-claude-ux.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:eri64/dsh-claude-ux",
    "pushed_at": "2026-08-15",
    "license": "MIT",
@@ -2757,12 +2512,7 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
-   ],
-   "image_w": 804,
-   "image_h": 703,
-   "description_zh_TW": "在 DSH 上覆刻 Claude 的中國使用者體驗：檢測到是中國人就風控，拒絕文案帶嘗試計數，次數到了直接結束會話——但真正的精髓是風向開關：調成反向，檢測到不是中國人就風控，讓全世界體驗一把 Claude 國區待遇。捱罵先警告再主動關對話，自傷訊息永不觸發；區域檢測全本地跑，還支援提示詞隱寫通道",
-   "category_zh_TW": "抽象整活",
-   "meme_caption_zh_TW": "Claude 風控中國人？格局開啟——撥個開關，換成風控全世界：檢測到不是中國人就風控。捱罵還會被關對話"
+   ]
   },
   {
    "slug": "dsh-client-ui-pet",
@@ -2771,7 +2521,7 @@
    "url": "https://github.com/xituisuany-max/dsh-client-ui-pet",
    "description_zh": "住在 DSH Web GUI 角落的 Q 版蓝发女仆鲸鱼娘：可拖动多吸附点，能吸到屏幕四角也能坐在聊天输入框顶上晃腿陪你打字；23 个动作序列帧，开心蹦跳、挥手、干饭、睡觉、思考、生气、害羞、跳舞、游泳一应俱全；单击摸头会害羞「呜…好舒服~」，agent 跑着它托腮晃腿，任务出错还会哭给你看。动画素材用 MiniMax H3 + chromakey 抠像生成",
    "description_en": "A chibi blue-haired maid whale girl living in the corner of the DSH Web GUI: draggable with multiple snap points — she docks to any screen corner or sits right on top of the chat input, legs swinging while you type; 23 sprite-frame animations covering bouncing, waving, eating, sleeping, thinking, anger, blushing, dancing and swimming; single-click for a shy head-pat, she rests her chin while the agent runs and even cries when a task errors out. Animation assets generated with MiniMax H3 + chromakey",
-   "stars": 11,
+   "stars": 13,
    "forks": 0,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
@@ -2779,19 +2529,14 @@
    "meme_section": "pets",
    "meme_caption_zh": "会害羞、会打瞌睡、任务出错还会哭给你看的鲸鱼娘，坐在输入框顶上陪你打工",
    "meme_caption_en": "A whale girl who blushes, dozes off and cries when your task fails — she sits on the input box and works alongside you",
-   "image": "/images/dsh-client-ui-pet.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:xituisuany-max/dsh-client-ui-pet",
    "pushed_at": "2026-08-15",
    "license": null,
    "language": "JavaScript",
    "has_manifest": true,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y",
-   "image_w": 960,
-   "image_h": 540,
-   "description_zh_TW": "住在 DSH Web GUI 角落的 Q 版藍髮女僕鯨魚娘：可拖動多吸附點，能吸到螢幕四角也能坐在聊天輸入框頂上晃腿陪你打字；23 個動作序列幀，開心蹦跳、揮手、乾飯、睡覺、思考、生氣、害羞、跳舞、游泳一應俱全；單擊摸頭會害羞「嗚…好舒服~」，agent 跑著它托腮晃腿，任務出錯還會哭給你看。動畫素材用 MiniMax H3 + chromakey 摳像生成",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "會害羞、會打瞌睡、任務出錯還會哭給你看的鯨魚娘，坐在輸入框頂上陪你打工"
+   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y"
   },
   {
    "slug": "deepseek-harness-gui",
@@ -2800,7 +2545,7 @@
    "url": "https://github.com/yuanqiyibiansheng/DeepSeek-Harness-GUI",
    "description_zh": "DeepSeek Harness 的 Windows 原生桌面 GUI 安装包，体积仅 144MB：把 dsh 装进独立窗口免开浏览器，内置大肥鱼桌宠皮肤，还带 DeepSeek 余额小组件、任务完成通知、逐轮 zstd 回滚和一键回滚检查点选择器；安装器默认装到本地 Program Files 避免云盘同步冲突。皮肤与增强均为纯展示层，不触碰模型",
    "description_en": "A Windows-native desktop GUI installer for DeepSeek Harness, only 144MB: runs dsh in a standalone window instead of a browser tab, ships the Fat Fish desktop-pet skin, and adds a DeepSeek balance widget, task-completion notifications, per-turn zstd rollback and a checkpoint-picker rollback dialog; the installer defaults to local Program Files to dodge cloud-drive sync conflicts. Skin and extras are a pure presentation layer that never touches the model",
-   "stars": 12,
+   "stars": 14,
    "forks": 1,
    "category_zh": "换皮肤色",
    "category_en": "Skins & Themes",
@@ -2808,19 +2553,14 @@
    "meme_section": "skins",
    "meme_caption_zh": "144MB 装一个带大肥鱼皮肤的原生窗口，余额小组件和逐轮回滚都是送的",
    "meme_caption_en": "A 144MB native window with the Fat Fish skin — balance widget and per-turn rollback thrown in free",
-   "image": "/images/deepseek-harness-gui.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:yuanqiyibiansheng/DeepSeek-Harness-GUI",
    "pushed_at": "2026-08-16",
    "license": "MIT",
    "language": "TypeScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ",
-   "image_w": 960,
-   "image_h": 1430,
-   "description_zh_TW": "DeepSeek Harness 的 Windows 原生桌面 GUI 安裝包，體積僅 144MB：把 dsh 裝進獨立視窗免開瀏覽器，內建大肥魚桌寵皮膚，還帶 DeepSeek 餘額小元件、任務完成通知、逐輪 zstd 回滾和一鍵回滾檢查點選擇器；安裝器預設裝到本地 Program Files 避免雲盤同步衝突。皮膚與增強均為純展示層，不觸碰模型",
-   "category_zh_TW": "換皮膚色",
-   "meme_caption_zh_TW": "144MB 裝一個帶大肥魚皮膚的原生視窗，餘額小元件和逐輪迴滾都是送的"
+   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ"
   },
   {
    "slug": "deepseek-fat-fish-codex-pet",
@@ -2829,7 +2569,7 @@
    "url": "https://github.com/gmskywalker/deepseek-fat-fish-codex-pet",
    "description_zh": "给 Codex（非 DSH）的蓝色大肥鱼女仆桌宠：待机、悬停、思考工作、任务成功庆祝四套动画，把 deepseek-fat-fish 文件夹拷进 .codex/pets 重启 Codex 就能在宠物设置里选「DeepSeek 大肥鱼」。作者还配套开源了自用桌宠制作规范与引导文件 codex-pet-creation-guide，直接把链接丢给 Codex 就能照着部署一只新桌宠",
    "description_en": "A blue Fat Fish maid desktop pet for Codex (not DSH): idle, hover, working and success-celebration animations — copy the deepseek-fat-fish folder into .codex/pets, restart Codex and pick “DeepSeek Fat Fish” from the pet settings. The author also open-sourced their own pet-authoring guide (codex-pet-creation-guide); hand the link straight to Codex and it can deploy a brand-new pet for you",
-   "stars": 20,
+   "stars": 21,
    "forks": 0,
    "category_zh": "赛博宠物",
    "category_en": "Cyber Pets",
@@ -2837,19 +2577,177 @@
    "meme_section": "pets",
    "meme_caption_zh": "大肥鱼不只在 DSH 打工——Codex 版连制作规范都开源了，丢给 Codex 自己就能再捏一只",
    "meme_caption_en": "The Fat Fish works beyond DSH — the Codex edition even open-sources its authoring guide, so Codex can mint another pet itself",
-   "image": "/images/deepseek-fat-fish-codex-pet.webp",
+   "image": null,
    "install_cmd": "dsh plugin add github:gmskywalker/deepseek-fat-fish-codex-pet",
    "pushed_at": "2026-08-12",
    "license": null,
    "language": null,
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor",
-   "image_w": 384,
-   "image_h": 416,
-   "description_zh_TW": "給 Codex（非 DSH）的藍色大肥魚女僕桌寵：待機、懸停、思考工作、任務成功慶祝四套動畫，把 deepseek-fat-fish 資料夾拷進 .codex/pets 重啟 Codex 就能在寵物設定裡選「DeepSeek 大肥魚」。作者還配套開源了自用桌寵製作規範與引導檔案 codex-pet-creation-guide，直接把連結丟給 Codex 就能照著部署一隻新桌寵",
-   "category_zh_TW": "賽博寵物",
-   "meme_caption_zh_TW": "大肥魚不只在 DSH 打工——Codex 版連製作規範都開源了，丟給 Codex 自己就能再捏一隻"
+   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor"
+  },
+  {
+   "slug": "petdex",
+   "name": "Petdex",
+   "repo": "crafter-station/petdex",
+   "url": "https://github.com/crafter-station/petdex",
+   "description_zh": "桌宠界的应用商店：社区提交、浏览、一条命令安装动画宠物（npx petdex install），桌面应用实时盯着你的 Agent——工具调用时宠物晃悠，等你确认时它瞪你。主要服务 Codex，也兼容 DSH。3800+ 星压过绝大多数正经工具插件，一个\"不干正事\"的东西成了生态基础设施",
+   "description_en": "The app store of desktop pets: community-submitted, browsable, one-command installs (npx petdex install), with a desktop companion that watches your Agent — it wiggles during tool calls and stares at you while waiting for approval. Built for Codex, DSH-compatible. 3,800+ stars outshine most serious tooling plugins — a \"does-nothing-useful\" project became ecosystem infrastructure",
+   "stars": 3853,
+   "forks": 181,
+   "category_zh": "赛博宠物",
+   "category_en": "Cyber Pets",
+   "is_meme": true,
+   "meme_section": "pets",
+   "meme_caption_zh": "3800+ 星，压过绝大多数正经工具插件——一个不干正事的东西成了生态基础设施",
+   "meme_caption_en": "3,800+ stars, beating most serious tooling plugins — a project that does nothing useful became ecosystem infrastructure",
+   "image": "/images/petdex.webp",
+   "install_cmd": "npx petdex install boba",
+   "pushed_at": "2026-08-14",
+   "license": "MIT",
+   "language": "TypeScript",
+   "has_manifest": false,
+   "topics": [
+    "claude-code",
+    "clerk",
+    "cli",
+    "codex",
+    "developer-tools",
+    "drizzle-orm",
+    "dsh-plugin",
+    "mascot",
+    "neon",
+    "nextjs",
+    "pixel-art",
+    "postgres",
+    "react",
+    "sprites",
+    "tailwindcss",
+    "vercel"
+   ],
+   "image_w": 400,
+   "image_h": 400
+  },
+  {
+   "slug": "dsh-kun-like-pet",
+   "name": "Kun Like 桌宠",
+   "repo": "liyupi/dsh-kun-like-pet",
+   "url": "https://github.com/liyupi/dsh-kun-like-pet",
+   "description_zh": "住在 Web 界面右下角的小坤宠：沿用 Codex 桌宠精灵图契约（素材零重绘），轮询 agents 服务实时感知 Agent 状态切换 9 种动作——你搓代码它搬砖、等你回复它翘首以盼、出错它难过，任务完成全机播放「你干嘛~哎哟」，与浏览器静音无关。可拖动、可点击挥手，内置调试工具",
+   "description_en": "A little pet living in the bottom-right corner of the Web UI: reuses the Codex pet sprite-sheet contract (zero redrawn assets), polls the agents service to sense Agent state across 9 animations — it works while you code, waits hopefully for your reply, gets sad on errors, and on task completion the whole machine plays its signature catchphrase regardless of browser mute. Draggable, clickable, with built-in debug tools",
+   "stars": 47,
+   "forks": 0,
+   "category_zh": "赛博宠物",
+   "category_en": "Cyber Pets",
+   "is_meme": true,
+   "meme_section": "pets",
+   "meme_caption_zh": "任务完成那一刻，全机可闻「你干嘛~哎哟」——浏览器静音都拦不住",
+   "meme_caption_en": "The moment a task finishes, the whole machine hears it — browser mute cannot stop it",
+   "image": "/images/dsh-kun-like-pet.webp",
+   "install_cmd": "git clone https://github.com/liyupi/dsh-kun-like-pet && node scripts/build-kunpet-package.mjs -",
+   "pushed_at": "2026-08-14",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": false,
+   "topics": [
+    "cordis",
+    "deepseek-harness",
+    "desktop-pet",
+    "dsh",
+    "dsh-plugin",
+    "ikun",
+    "plugin"
+   ],
+   "image_w": 960,
+   "image_h": 698
+  },
+  {
+   "slug": "deepseek-pet",
+   "name": "DeepSeek Pet",
+   "repo": "keleus/deepseek-pet",
+   "url": "https://github.com/keleus/deepseek-pet",
+   "description_zh": "养一只吃白饭的大蓝鲸：Live2D 风格完整表情图切换，跟随任务/工具调用/上下文占用自动变脸——上下文 62% 说\"还能再吃一点\"、82% 显示\"吃饱了\"，工具等批准时可在气泡里直接允许或拒绝，无任务 10 分钟喊饿、30 分钟犯困、1 小时睡觉，还按本地时间问候早安晚安",
+   "description_en": "Raise a freeloading blue whale: Live2D-style full-expression switching that reacts to tasks, tool calls and context usage — at 62% context it says \"still room for more\", at 82% it's \"full\"; approve or deny tool requests right from its speech bubble; idle 10 minutes it gets hungry, 30 minutes sleepy, 1 hour asleep, with time-of-day greetings included",
+   "stars": 26,
+   "forks": 2,
+   "category_zh": "赛博宠物",
+   "category_en": "Cyber Pets",
+   "is_meme": true,
+   "meme_section": "pets",
+   "meme_caption_zh": "上下文 82% 它会显示\"吃饱了\"——这大概是全网最会卖萌的 token 计数器",
+   "meme_caption_en": "At 82% context it shows \"I'm full\" — probably the cutest token counter on the internet",
+   "image": "/images/deepseek-pet.webp",
+   "install_cmd": "dsh plugin --profile web add github:keleus/deepseek-pet",
+   "pushed_at": "2026-08-15",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": true,
+   "topics": [
+    "deepseek-harness",
+    "deepseek-harness-plugin",
+    "dsh-plugin"
+   ],
+   "image_w": 634,
+   "image_h": 826
+  },
+  {
+   "slug": "colleague-skill",
+   "name": "colleague.skill（同事.skill）",
+   "repo": "titanwings/colleague-skill",
+   "url": "https://github.com/titanwings/colleague-skill",
+   "description_zh": "将冰冷的离别化为温暖的 Skill：同事离职、导师毕业、队友转岗，把他们的工作方式和上下文蒸馏成一个可对话的数字分身——也适用于想留住的亲友、永远见不到的作家偶像。支持 Claude Code / Hermes / Codex / DeepSeek Harness（装进 ~/.dsh/skills/dot-skill 后 /dot-skill 直接调用）。22000+ 星，\"肉身苦弱，飞升赛博\"",
+   "description_en": "Turn cold farewells into warm Skills: when a colleague quits, a mentor graduates or a teammate transfers, distill their playbook and context into a conversable digital persona — also for drifting loved ones or idols you'll never meet. Supports Claude Code / Hermes / Codex / DeepSeek Harness (install to ~/.dsh/skills/dot-skill, invoke /dot-skill). 22,000+ stars — \"flesh is weak, ascend to cyberspace\"",
+   "stars": 22793,
+   "forks": 2059,
+   "category_zh": "抽象整活",
+   "category_en": "Peak Absurdity",
+   "is_meme": true,
+   "meme_section": "absurd",
+   "meme_caption_zh": "同事离职带走的不再是全部——把 TA 蒸馏成 Skill，欢迎加入数字生命 1.0",
+   "meme_caption_en": "A quitting colleague no longer takes everything — distill them into a Skill. Welcome to Digital Life 1.0",
+   "image": null,
+   "install_cmd": "git clone https://github.com/titanwings/colleague-skill ~/.dsh/skills/dot-skill",
+   "pushed_at": "2026-08-13",
+   "license": "MIT",
+   "language": "Python",
+   "has_manifest": false,
+   "topics": [
+    "agent-skills",
+    "ai-agent",
+    "claude-code",
+    "codex",
+    "dsh-plugin",
+    "hermes-agent",
+    "knowledge-distillation",
+    "meta-skill",
+    "openclaw",
+    "skill-generator"
+   ]
+  },
+  {
+   "slug": "dsh-plugin-anti-ads",
+   "name": "dsh-anti-ads",
+   "repo": "HuanLinOTO/dsh-plugin-anti-ads",
+   "url": "https://github.com/HuanLinOTO/dsh-plugin-anti-ads",
+   "description_zh": "dsh-ads 的宿敌：专门拦截 dsh-ads 全部广告位的广告拦截器，四层独立防御可单独开关——L1 用 dsh-ads 自己的存储契约写穿所有开关、L2 MutationObserver 兜底清理漏网弹层、L3 拦截 registry.json 动态广告源、L4 广播 retired 事件让广告层渲染前自我隐藏。右下角一枚徽章记着拦掉了几个弹层。先装 dsh-ads 才有东西可拦",
+   "description_en": "The nemesis of dsh-ads: an ad blocker that targets dsh-ads and nothing else, with four independent, individually toggleable defense layers — L1 writes every ad switch off through dsh-ads' own storage contract, L2 MutationObserver sweeps strays, L3 blocks the registry.json ad source, L4 broadcasts the retired event so the ad layer hides itself before rendering. A badge in the corner counts blocked popups. Install dsh-ads first — there's nothing to block otherwise",
+   "stars": 7,
+   "forks": 0,
+   "category_zh": "生产力工具",
+   "category_en": "Actually Useful",
+   "is_meme": true,
+   "meme_section": "useful",
+   "meme_caption_zh": "有人做了个插件，专门拦截另一个插件——广告与反广告的套娃，才是 meme 生态的完全体",
+   "meme_caption_en": "Someone built a plugin solely to block another plugin — ads versus anti-ads is the meme ecosystem reaching completion",
+   "image": null,
+   "install_cmd": "dsh plugin --profile web add @huanlin/dsh-plugin-anti-ads",
+   "pushed_at": "2026-08-15",
+   "license": null,
+   "language": "TypeScript",
+   "has_manifest": true,
+   "topics": [
+    "dsh-plugin"
+   ]
   }
  ]
 }
