@@ -154,7 +154,7 @@
     "step3": {
       "title": "第 3 步：启动 DSH",
       "intro": "环境就绪后，用下面这一行启动 DeepSeek Harness。第一次运行会自动下载依赖，耐心等一会儿。",
-      "cmdNote": "如果 npx 询问是否安装 @deepseek-ai/dsh，输入 y 回车。",
+      "cmdNote": "如果 npx 询问是否安装 {'@'}deepseek-ai/dsh，输入 y 回车。",
       "optionalTitle": "可选：让 dsh 命令全局可用",
       "optionalDesc": "官方推荐用 npx 一行启动；如果你希望像本站插件页那样直接使用 dsh 命令，可以再执行下面这行：",
       "optionalNote": "装完后，dsh web 和 dsh plugin add … 都能直接用。",

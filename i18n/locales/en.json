@@ -154,7 +154,7 @@
     "step3": {
       "title": "Step 3: Start DSH",
       "intro": "With the environment ready, start DeepSeek Harness with this line. The first run downloads dependencies, so be patient.",
-      "cmdNote": "If npx asks whether to install @deepseek-ai/dsh, type y and press Enter.",
+      "cmdNote": "If npx asks whether to install {'@'}deepseek-ai/dsh, type y and press Enter.",
       "optionalTitle": "Optional: make the dsh command globally available",
       "optionalDesc": "The official quick start uses npx; if you want to use dsh directly like on our plugin pages, run this too:",
       "optionalNote": "After that, dsh web and dsh plugin add … both work directly.",

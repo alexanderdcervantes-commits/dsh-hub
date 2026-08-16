@@ -60,7 +60,7 @@ const breadcrumbLd = computed(() => ({
   ],
 }))
 
-useHead(() => ({
+useHead({
   title: title.value,
   meta: [
     { name: 'description', content: description.value },
@@ -73,7 +73,7 @@ useHead(() => ({
     { type: 'application/ld+json', innerHTML: JSON.stringify(faqLd.value) },
     { type: 'application/ld+json', innerHTML: JSON.stringify(breadcrumbLd.value) },
   ],
-}))
+})
 </script>
 
 <template>
