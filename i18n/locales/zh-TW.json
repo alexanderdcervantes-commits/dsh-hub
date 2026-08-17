@@ -8,7 +8,8 @@
     "launchers": "🖥️ 啟動器",
     "submit": "➕ 投稿",
     "about": "關於",
-    "compare": "對比評測"
+    "compare": "對比評測",
+    "best": "外掛排行榜"
   },
   "hero": {
     "title": "一切皆外掛——",
@@ -22,6 +23,7 @@
     "memeSub": "好玩的放最前面——鯨魚娘桌寵當然是正當生產力工具。",
     "hotTitle": "📈 熱門排行",
     "hotSub": "按 star 數的 Top 10",
+    "viewBest": "查看完整榜單 →",
     "catsTitle": "🏷️ 按分類逛",
     "newTitle": "🆕 最新收錄",
     "newSub": "最近 7 天內有推送",
@@ -94,6 +96,25 @@
     "results": "{n} 個外掛",
     "noResults": "沒有匹配的結果，換個關鍵詞試試？",
     "installGuide": "安裝指南 →"
+  },
+  "best": {
+    "title": "DeepSeek Harness (dsh) 外掛排行榜",
+    "sub": "本站人工精選的 {n} 個 dsh 外掛，三張榜單看全生態：社群用 star 投出來的總榜、最近還在更新的活躍榜，和我們真的裝過、真笑過的編輯精選。",
+    "updatedNote": "資料更新於 {date}，star 數與推送時間每日自動從 GitHub 重新整理",
+    "tabStars": "🏆 Star 總榜",
+    "tabRecent": "🔥 近期活躍",
+    "tabPicks": "👑 編輯精選",
+    "starsH": "Star 總榜 Top {n}",
+    "starsSub": "按 GitHub star 數由高到低，全站前 {n} 名",
+    "recentH": "近期活躍榜",
+    "recentSub": "最近 {d} 天內有推送的 {n} 個外掛，按 star 數排序",
+    "picksH": "編輯精選榜",
+    "picksSub": "整活區裡 star 最高的 {n} 個——每條都配一句我們自己的點評",
+    "howH": "榜單怎麼讀",
+    "howP1": "三張榜單同一份資料、三種切法：總榜看社群用腳投票的結果；活躍榜看哪些外掛還活著——最近 {d} 天內有過推送才算數（資料更新於 {date}）；編輯精選看我們真的裝過、而且願意再裝一遍的東西。",
+    "howP2": "數字只認 GitHub 實抓：star 數、最近推送、授權、manifest 存在性全部來自 GitHub API，本站不手動調分、不搞加權——你看到的就是倉庫現在的樣子。排名會隨每日重新整理變化，今天的第一名不代表永遠。",
+    "allCta": "逛全部 {n} 個外掛 →",
+    "submitCta": "覺得該有誰上榜？來投稿 →"
   },
   "skins": {
     "title": "🎨 DeepSeek Harness 皮膚與換膚外掛",
@@ -412,6 +433,8 @@
     "homeSearchPh": "搜尋 {n} 個外掛…（試試：鯨魚、皮膚、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 外掛大全 — 推薦/必備外掛導航 {'|'} DSH Meme Hub",
     "pluginsDesc": "deepseek harness 外掛去哪找？人工精選的 dsh 外掛大全與推薦目錄：全分類可搜尋、按 star 或最近推送排序，每個都帶一鍵安裝命令。",
+    "bestTitle": "DeepSeek Harness (dsh) 外掛排行榜 — Top {n} 與必備精選 {'|'} DSH Meme Hub",
+    "bestDesc": "想找 dsh 必備外掛？本站從 {total} 個精選外掛裡排出三張榜：GitHub star 總榜 Top {top}、近 {d} 天活躍榜、{picks} 個編輯精選推薦，資料每日自動重新整理，每個外掛附一鍵安裝命令。",
     "memeTitle": "整活專區 — DSH 社群最歡樂的外掛 {'|'} DSH Meme Hub",
     "memeDesc": "鯨魚娘桌寵、QQ2006 皮膚、貪玩藍鯨廣告網路……DeepSeek Harness 社群整活精選，附一鍵安裝。",
     "skinsTitle": "DeepSeek Harness (dsh) 皮膚外掛精選 — 怎麼換皮膚/主題推薦 {'|'} DSH Meme Hub",

@@ -1,11 +1,14 @@
 name: Update Screenshots & Discovery
 
-# 每天定时两件事:
+# 每天定时三件事:
 #   ① 重跑 fetch-screenshots.mjs,刷新 public/data/plugins.json 的 screenshots 字段
-#   ② 跑 discover-plugins.mjs,生成新插件「提名」清单 data/discovery/candidates.json
+#   ② 跑 refresh-stars.py,原地刷新 stars/pushed_at/license/topics 等仓库元数据
+#      (注意:不能用 build-data.py --enrich —— 它从 /root/china-ai-arbitrage 外部源
+#       整体重建文件,runner 上无此路径必崩,且会丢 screenshots/image_w 等下游字段)
+#   ③ 跑 discover-plugins.mjs,生成新插件「提名」清单 data/discovery/candidates.json
 #      (提名 ≠ 收录:候选仅供人工/AI 审核,收录仍走既有数据源流程)
-# 两个脚本都幂等 —— git diff 有变化才 commit 回 master(→ 触发 mirror 同步 →
-# Vercel 重新部署),无变化不产生空提交。
+# 三个脚本都幂等/失败不写文件 —— git diff 有变化才 commit 回 master(→ 触发
+# mirror 同步 → Vercel 重新部署),无变化不产生空提交。
 
 on:
   schedule:
@@ -43,6 +46,13 @@ jobs:
       - name: Refresh screenshots (fetch-screenshots.mjs)
         run: node scripts/fetch-screenshots.mjs
         # 只用 git ls-remote + raw.githubusercontent,不占 API 配额,无需 token
+
+      - name: Refresh stars & repo metadata (refresh-stars.py, in-place)
+        run: python3 scripts/refresh-stars.py
+        # 原地刷新已提交的 plugins.json(101 仓 × 2 次 API 调用,带 token 走 5000/h 配额);
+        # 整体失败 exit 1 不写文件 → 本 job 失败、不 commit,数据不会被清空
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Discover plugin candidates (discover-plugins.mjs, nomination only)
         run: node scripts/discover-plugins.mjs

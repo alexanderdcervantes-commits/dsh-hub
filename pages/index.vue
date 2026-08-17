@@ -99,6 +99,7 @@ useHead({
         <div class="section-head">
           <h2>{{ t('home.hotTitle') }}</h2>
           <span class="count-note">{{ t('home.hotSub') }}</span>
+          <NuxtLink class="more" :to="localePath('/best')">{{ t('home.viewBest') }}</NuxtLink>
           <NuxtLink class="more" :to="localePath('/plugins')">{{ t('nav.plugins') }} →</NuxtLink>
         </div>
         <div class="top-list">

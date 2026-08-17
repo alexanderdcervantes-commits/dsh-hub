@@ -8,7 +8,8 @@
     "launchers": "🖥️ Launcher",
     "submit": "➕ Einreichen",
     "about": "Über uns",
-    "compare": "Vergleiche"
+    "compare": "Vergleiche",
+    "best": "Plugin-Ranglisten"
   },
   "hero": {
     "title": "Alles ist ein Plugin —",
@@ -22,6 +23,7 @@
     "memeSub": "Das Lustige ganz nach vorn — ein Walf-Mädchen als Desktop-Haustier ist schließlich ein legitimes Produktivitätstool.",
     "hotTitle": "📈 Im Trend",
     "hotSub": "Top 10 nach Sternen",
+    "viewBest": "Zur kompletten Rangliste →",
     "catsTitle": "🏷️ Nach Kategorie stöbern",
     "newTitle": "🆕 Frisch gelistet",
     "newSub": "In den letzten 7 Tagen gepusht",
@@ -94,6 +96,25 @@
     "results": "{n} Plugins",
     "noResults": "Nichts gefunden. Anderes Stichwort probieren?",
     "installGuide": "Anleitung: dsh und Plugins installieren →"
+  },
+  "best": {
+    "title": "Die besten DeepSeek-Harness-Plugins (dsh) — die Ranglisten",
+    "sub": "Alle {n} handverlesenen dsh-Plugins dieser Seite in drei Ranglisten: die ewige Bestenliste, für die die Community mit Sternen gestimmt hat, was noch aktiv weiterentwickelt wird — und unsere Redaktionsfavoriten: das, was wir wirklich installiert haben und dabei lachen mussten.",
+    "updatedNote": "Datenstand {date}; Sterne und letzte Pushes werden täglich automatisch von GitHub aktualisiert",
+    "tabStars": "🏆 Sterne-Bestenliste",
+    "tabRecent": "🔥 Zuletzt aktiv",
+    "tabPicks": "👑 Redaktionsfavoriten",
+    "starsH": "Sterne-Bestenliste — Top {n}",
+    "starsSub": "Alle Plugins nach GitHub-Sternen, die Top {n}",
+    "recentH": "Zuletzt aktiv",
+    "recentSub": "{n} Plugins mit Push in den letzten {d} Tagen, nach Sternen sortiert",
+    "picksH": "Redaktionsfavoriten",
+    "picksSub": "Die {n} sternstärksten Plugins aus der Meme-Zone — jedes mit einem Kommentar von uns",
+    "howH": "Wie man diese Ranglisten liest",
+    "howP1": "Drei Ranglisten, ein Datensatz, drei Blickwinkel: Die Sterne-Bestenliste zeigt, wofür die Community stimmt; die Aktivitätsliste zeigt, welche Plugins noch leben — ein Push in den letzten {d} Tagen ist die Eintrittskarte (Datenstand {date}); die Redaktionsfavoriten sind Dinge, die wir wirklich installiert haben — und wieder installieren würden.",
+    "howP2": "Alle Zahlen kommen direkt von GitHub: Sterne, letzter Push, Lizenz und Manifest-Prüfung stammen aus der GitHub-API. Nichts von Hand justiert, nichts gewichtet — was du siehst, ist der aktuelle Stand der Repos. Die Ränge verschieben sich mit dem täglichen Update; die Nummer eins von heute bleibt es nicht ewig.",
+    "allCta": "Alle {n} Plugins ansehen →",
+    "submitCta": "Fehlt hier was? Reiche es ein →"
   },
   "skins": {
     "title": "🎨 DeepSeek-Harness-Skins & Themes",
@@ -412,6 +433,8 @@
     "homeSearchPh": "{n} Plugins durchsuchen… (versuch: Wal, Skin, Vier gewinnt)",
     "pluginsTitle": "Beste DeepSeek-Harness-Plugins (dsh) — Empfehlungen {'|'} DSH Meme Hub",
     "pluginsDesc": "Wo findet man die besten DeepSeek-Harness-Plugins (dsh)? Ein handverlesenes Verzeichnis mit Empfehlungen aus der dsh-Community: nach Kategorie durchsuchen, nach Sternen oder Aktualität sortieren — jeder Eintrag mit Ein-Klick-Installationsbefehl.",
+    "bestTitle": "Beste DeepSeek-Harness-Plugins (dsh) — Top {n} & Redaktionsfavoriten {'|'} DSH Meme Hub",
+    "bestDesc": "Du suchst die besten dsh-Plugins? Drei Ranglisten aus unseren {total} handverlesenen Plugins: die Top {top} nach GitHub-Sternen, zuletzt aktive Plugins der letzten {d} Tage und {picks} Redaktionsfavoriten — täglich aktualisiert, jeder Eintrag mit Ein-Klick-Installation.",
     "memeTitle": "Meme-Zone — die lustigsten DeepSeek-Harness-Plugins (dsh) {'|'} DSH Meme Hub",
     "memeDesc": "Walf-Mädchen-Haustiere, QQ2006-Skins, ein Fake-Werbenetzwerk fürs Terminal — die lustigsten Community-Picks für DeepSeek Harness, einen Klick von der Installation entfernt.",
     "skinsTitle": "DeepSeek-Harness-Skins (dsh) — Themes wechseln & beste Skin-Plugins {'|'} DSH Meme Hub",

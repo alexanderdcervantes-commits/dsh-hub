@@ -96,6 +96,7 @@ const toast = useState<string | null>('toast', () => null)
               <li><NuxtLink :to="localePath('/plugins/skins')">{{ t('nav.skins') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/pets')">{{ t('nav.pets') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/compare')">{{ t('nav.compare') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/best')">{{ t('nav.best') }}</NuxtLink></li>
             </ul>
           </div>
           <div class="col">

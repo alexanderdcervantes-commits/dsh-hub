@@ -11,7 +11,7 @@ const PLUGINS = (JSON.parse(readFileSync('./public/data/plugins.json', 'utf8')) 
 }).plugins
 const PLUGIN_SLUGS = PLUGINS.map((p) => p.slug)
 const MEME_SLUGS = PLUGINS.filter((p) => p.is_meme).map((p) => p.slug)
-const TOP_PAGES = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
+const TOP_PAGES = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
 // 与 scripts/check-prerender.mjs 的 locales 保持同步
 const LOCALES = ['en', 'zh', 'zh-TW', 'de']
 

@@ -8,7 +8,8 @@
     "launchers": "🖥️ 启动器",
     "submit": "➕ 投稿",
     "about": "关于",
-    "compare": "对比评测"
+    "compare": "对比评测",
+    "best": "插件排行榜"
   },
   "hero": {
     "title": "一切皆插件——",
@@ -22,6 +23,7 @@
     "memeSub": "好玩的放最前面——鲸鱼娘桌宠当然是正当生产力工具。",
     "hotTitle": "📈 热门排行",
     "hotSub": "按 star 数的 Top 10",
+    "viewBest": "查看完整榜单 →",
     "catsTitle": "🏷️ 按分类逛",
     "newTitle": "🆕 最新收录",
     "newSub": "最近 7 天内有推送",
@@ -94,6 +96,25 @@
     "results": "{n} 个插件",
     "noResults": "没有匹配的结果，换个关键词试试？",
     "installGuide": "安装指南 →"
+  },
+  "best": {
+    "title": "DeepSeek Harness (dsh) 插件排行榜",
+    "sub": "本站人工精选的 {n} 个 dsh 插件，三张榜单看全生态：社区用 star 投出来的总榜、最近还在更新的活跃榜，和我们真的装过、真笑过的编辑精选。",
+    "updatedNote": "数据更新于 {date}，star 数与推送时间每日自动从 GitHub 刷新",
+    "tabStars": "🏆 Star 总榜",
+    "tabRecent": "🔥 近期活跃",
+    "tabPicks": "👑 编辑精选",
+    "starsH": "Star 总榜 Top {n}",
+    "starsSub": "按 GitHub star 数从高到低，全站前 {n} 名",
+    "recentH": "近期活跃榜",
+    "recentSub": "最近 {d} 天内有推送的 {n} 个插件，按 star 数排序",
+    "picksH": "编辑精选榜",
+    "picksSub": "整活区里 star 最高的 {n} 个——每条都配一句我们自己的点评",
+    "howH": "榜单怎么读",
+    "howP1": "三张榜单同一份数据、三种切法：总榜看社区用脚投票的结果；活跃榜看哪些插件还活着——最近 {d} 天内有过推送才算数（数据更新于 {date}）；编辑精选看我们真的装过、而且愿意再装一遍的东西。",
+    "howP2": "数字只认 GitHub 实抓：star 数、最近推送、许可证、manifest 存在性全部来自 GitHub API，本站不手动调分、不搞加权——你看到的就是仓库现在的样子。排名随每日刷新变化，今天的第一名不代表永远。",
+    "allCta": "逛全部 {n} 个插件 →",
+    "submitCta": "觉得该有谁上榜？来投稿 →"
   },
   "skins": {
     "title": "🎨 DeepSeek Harness 皮肤与换肤插件",
@@ -412,6 +433,8 @@
     "homeSearchPh": "搜索 {n} 个插件…（试试：鲸鱼、皮肤、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 插件大全 — 推荐/必备插件导航 {'|'} DSH Meme Hub",
     "pluginsDesc": "deepseek harness 插件去哪找？人工精选的 dsh 插件大全与推荐目录：桌宠、皮肤、摸鱼游戏、生产力工具全分类，可搜索、按 star 排序，每个都带一键安装命令。",
+    "bestTitle": "DeepSeek Harness (dsh) 插件排行榜 — Top {n} 与必备精选 {'|'} DSH Meme Hub",
+    "bestDesc": "想找 dsh 必备插件？本站从 {total} 个精选插件里排出三张榜：GitHub star 总榜 Top {top}、近 {d} 天活跃榜、{picks} 个编辑精选推荐，数据每日自动刷新，每个插件附一键安装命令。",
     "memeTitle": "整活专区 — DSH 社区最欢乐的插件 {'|'} DSH Meme Hub",
     "memeDesc": "鲸鱼娘桌宠、QQ2006 皮肤、贪玩蓝鲸广告网络……DeepSeek Harness 社区整活精选，附一键安装。",
     "skinsTitle": "DeepSeek Harness (dsh) 皮肤插件精选 — 怎么换皮肤/主题推荐 {'|'} DSH Meme Hub",
