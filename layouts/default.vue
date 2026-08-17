@@ -76,6 +76,8 @@ const toast = useState<string | null>('toast', () => null)
       <slot />
     </main>
 
+    <AdBanner />
+
     <footer class="site-footer">
       <div class="container">
         <div class="inner">
