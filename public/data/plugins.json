@@ -28,6 +28,38 @@
     "dsh",
     "dsh-plugin",
     "web-ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/screenshots/13-hero-main.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/images/liangshen-mode.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/screenshots/09-task-board.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/screenshots/10-task-board-detail-cron.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/screenshots/04-git-graph.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/f57b766a50f262cd459ac228fb8e4a26d990066d/docs/screenshots/19-right-panel.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -69,6 +101,38 @@
     "text-only-llm",
     "vision",
     "vision-transformer"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/demo-dsh-paste.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/demo-codex-app.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/demo-codex-batch.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/demo-codex-chart.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/demo-claude-paste-recovery.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modlens/2b71582435ff34a548efbefb74178ed133659ccb/assets/banner.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -99,6 +163,23 @@
     "dsh-better-sidebar",
     "dsh-plugin",
     "sidebar"
+   ],
+   "screenshots": [
+    {
+     "url": "https://github.com/user-attachments/assets/dfdb875e-a1a8-4d4b-8340-353736b1708f",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://github.com/user-attachments/assets/946f7028-4967-461e-a750-d1b5056b62d0",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://github.com/user-attachments/assets/d4385b7e-aab4-425d-a5c4-2da5da81a34e",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -132,6 +213,38 @@
     "react",
     "terminal",
     "tui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/741569ad7f9c1cd712924911ad16b0a9b9e5fe3d/screenshots/splash.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/741569ad7f9c1cd712924911ad16b0a9b9e5fe3d/screenshots/working-line.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ccch1mneyyy/dsh-TUI/bot-star-history/assets/star-history/star-history.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/741569ad7f9c1cd712924911ad16b0a9b9e5fe3d/screenshots/wechat-official.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://dshfind.com/api/card/ccch1mneyyy/dsh-TUI?lang=zh",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/741569ad7f9c1cd712924911ad16b0a9b9e5fe3d/screenshots/wechat-group.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -160,7 +273,19 @@
     "dsh-plugin"
    ],
    "image_w": 1600,
-   "image_h": 862
+   "image_h": 862,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/873f5c6d7f52aa4e4283a5ffd5598229595184da/maid-atelier/preview/light.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/873f5c6d7f52aa4e4283a5ffd5598229595184da/maid-atelier/preview/dark.webp",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-vision-toolkit",
@@ -198,6 +323,38 @@
     "ui-restoration",
     "vision-language-model",
     "vision-tools"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/hero-v2.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/dsh-view-example.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/upstream/infographic-reference.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/upstream/infographic-result.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/upstream/ui-sketch.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/a987362678c6fc6eaf2c4083a938c20c1e293d1a/assets/upstream/ui-result.webp",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -228,7 +385,39 @@
     "web-ui"
    ],
    "image_w": 1400,
-   "image_h": 785
+   "image_h": 785,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/social-preview.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/screenshot.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/reward-gate.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/english-mode.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/settings.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-ads/fbd58579e4f3601b2c38ccbf3f7f854c9f3a9cd6/assets/visualize-demo.webp",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-agent-teams",
@@ -254,6 +443,13 @@
     "dsh",
     "dsh-agent-teams",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/00857a1f1a8559f860286ca082e43f796b5e9389/assets/ui.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -280,6 +476,28 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/hust-open-atom-club/oh-dsh/aa883987d3b49f29bffd8eb1fee53234a10823a8/assets/oh-dsh-plugin-marketplace.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hust-open-atom-club/oh-dsh/aa883987d3b49f29bffd8eb1fee53234a10823a8/assets/oh-dsh-desktop-skins.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hust-open-atom-club/oh-dsh/aa883987d3b49f29bffd8eb1fee53234a10823a8/assets/dsh-whale.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hust-open-atom-club/oh-dsh/aa883987d3b49f29bffd8eb1fee53234a10823a8/assets/oh-dsh-desktop-readme.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -304,6 +522,38 @@
     "dsh-plugin",
     "notes",
     "smartisan"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/aab7c89dace491a0c90f98d04f53ab503e755968249ea9a89521f56b69eedeac.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/e99a408cc01fdffd81fca6dcafc4152b171f0be7d7003032338443197f9e23da.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/fdf4b92e91f316425ce457400a9219fe91afbd8d87668c32a2c488579f2ac116.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/a1cc07be6396cb67288b2cebacc26b6746aa0409d976f230b762fcc467706ccc.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/ef2ef8e599f5afb747e1c78f8bbb38bc4ce8209070cb699552607507dac63b6b.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zhaoolee/notes/7f17349e1b38ebf0bd50109c44cbff54690310bd/README.assets/b66a25f62ae0f1ab7f0ef0f71540594ac5c2a4c57b63bbfa4e693693fafb61dc.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -334,6 +584,13 @@
     "harness",
     "harness-engineering",
     "tui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/huiliyi37/dsh-tianshu-tui/0bd5bcb29e9c1dc9a59f72e2168895d45d28252b/docs/tui-screenshot.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -363,6 +620,38 @@
     "dsh-plugin",
     "dsh-repository-plugin",
     "pet"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/idle.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/working.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/celebrate.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/error.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/disappointed.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/vlln/whale-girl/d8203296eb598cf616be76e0ebdd8eba51c7c54c/docs/preview/joy.gif",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -386,6 +675,23 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/e0db46f643ceceed5a9001e1a643b08855672b0d/assets/screenshots/workspace-path-picker.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/e0db46f643ceceed5a9001e1a643b08855672b0d/assets/screenshots/file-mention-composer.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/e0db46f643ceceed5a9001e1a643b08855672b0d/assets/screenshots/file-mention-settings.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -426,6 +732,23 @@
     "pi-agent",
     "web-fetch",
     "web-search"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modsearch/1182522c0300373b155ff289ecffb477fe46c0c6/assets/demo-codex-fetch.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modsearch/1182522c0300373b155ff289ecffb477fe46c0c6/assets/demo-codex-search.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liustack/modsearch/1182522c0300373b155ff289ecffb477fe46c0c6/assets/banner.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -455,6 +778,13 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://github.com/user-attachments/assets/3b1f3a25-f962-4e02-a9ef-d23e0d01fc8e",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -486,6 +816,13 @@
     "research-writing",
     "skill-comparison",
     "skills"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/defe0b47e0d69c12ce586d4d85bfe4f3ec34edd3/Jayden-X-L/forkprobe",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -509,6 +846,13 @@
    "topics": [
     "dsh-ecosystem",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/49f8a80302b17bae970851979a57e79ad7bae3e0/taxueseek/argo",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -539,7 +883,24 @@
     "interactive-visualization"
    ],
    "image_w": 452,
-   "image_h": 638
+   "image_h": 638,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-visualize/dd41b388db67f146c928772c6242c0acdb5bbeae/assets/social-preview.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Nagi-ovo/dsh-visualize/dd41b388db67f146c928772c6242c0acdb5bbeae/assets/demo.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://dshfind.com/api/card/Nagi-ovo/dsh-visualize?lang=zh",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-openpencil",
@@ -568,6 +929,18 @@
     "ppt",
     "ui",
     "ui-design"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/5cfadc511f08dbc5c09f76e6943b709e846d1cae/docs/images/dsh-openpencil-logo.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/5cfadc511f08dbc5c09f76e6943b709e846d1cae/docs/images/dsh-openpencil-overview.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -591,6 +964,18 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-genui/2187fa48dfb05126850d3a1516be910718afdc79/assets/showcase-panel.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-genui/2187fa48dfb05126850d3a1516be910718afdc79/assets/showcase-plot.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -619,6 +1004,13 @@
     "dshtopic",
     "multi-agent",
     "workflow"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/44b83c182aa02d1be8a0803e8446cb495f93cd8f/icetomoyo/dsh_workflow",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -649,6 +1041,13 @@
     "sdd",
     "spec-driven",
     "subagents"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/515438fc2d5fcadc971f213af10ade4b18ecdfbd/btspoony/mstar-harness",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -672,6 +1071,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/8aed144abdc158a332aa73bce42fc217d962f751/omdsh-dev/dsh-open-in-vscode",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -698,6 +1104,38 @@
     "dsh-plugin",
     "multimodal",
     "vision"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/pixel-loop.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/vision-demo.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/dsh-conversation-image-qa.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/dsh-conversation-image-qa-result.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/vision-settings.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/ysr666/dsh-vision-router/7c0ac17a252a9b56a3d363a0a26f33709e277309/assets/pixel-loop-zh.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -728,6 +1166,18 @@
     "restore-point",
     "turn-rewind",
     "workspace-safety"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-turn-rewind/b1b85f18aaaaf71d76c84613429ce04d71f69620/docs/assets/turn-rewind-action.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-turn-rewind/b1b85f18aaaaf71d76c84613429ce04d71f69620/docs/assets/turn-rewind-dialog.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -751,6 +1201,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/2399457a1f96ed86f761f3bc771539d131eb684f/omdsh-dev/dsh-notification",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -774,6 +1231,28 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://github.com/user-attachments/assets/c3186efc-44d3-4e7f-9523-1902d9d037e9",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://github.com/user-attachments/assets/0b48ac02-4648-4b94-8d8f-344f8b7c25b4",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://github.com/user-attachments/assets/8b2610d0-3d00-41be-b314-bac2fe616787",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://github.com/user-attachments/assets/9b66deea-3786-4296-9b0d-52873a15f5e1",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -802,6 +1281,13 @@
     "dsh-repository-plugin",
     "plugin-management",
     "ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/vlln/plugin-registry/6dab4de27cde6d63094ead94ec3c98a8b2332a89/screenshots/console-panel.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -828,6 +1314,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/a1621413a4700cb489655ad3ebf7fa8484c3645f/alingalingling/ui-status-label",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -857,6 +1350,28 @@
     "dsh-bundle",
     "dsh-plugin",
     "scheduled-tasks"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/dsh-automation/a622b1b1758c6dc6bd476dc66d74a20a4b6762a3/docs/social-preview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/dsh-automation/a622b1b1758c6dc6bd476dc66d74a20a4b6762a3/docs/01-dashboard-en.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/dsh-automation/a622b1b1758c6dc6bd476dc66d74a20a4b6762a3/docs/02-create-en.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/dsh-automation/a622b1b1758c6dc6bd476dc66d74a20a4b6762a3/docs/03-run-history-en.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -882,6 +1397,13 @@
     "dsh",
     "dsh-plugin",
     "interconnect"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/75488fbc4cbfef180e3f36a24438b42f00f43c5c/Chinesezjc/dsh-interconnect",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -905,6 +1427,18 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-custom-tool/7cb95649dca9b380c9a30af96bdbef87a76a2259/assets/screenshots/settings-section.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-custom-tool/7cb95649dca9b380c9a30af96bdbef87a76a2259/assets/screenshots/tool-editor.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -928,6 +1462,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/b78a167064ca612f1c400060d2bfc1dc9bc46436/Moeblack/dsh-message-edit",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -956,7 +1497,39 @@
     "dsh-plugin"
    ],
    "image_w": 348,
-   "image_h": 220
+   "image_h": 220,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/dsh-ui-whale-demo.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E7%9C%A8%E7%9C%BC.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E6%91%86%E5%B0%BE%E5%B7%B4.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E6%91%86%E8%85%B9%E9%B3%8D.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E5%96%B7%E6%B0%B4%E8%8A%B1.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E5%86%92%E7%88%B1%E5%BF%83.gif",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-side-panel",
@@ -979,6 +1552,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/ccq1/dsh-side-panel/baca7806714ac577ac529647f105d58a2a10b228/assets/overview.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1015,6 +1595,13 @@
     "macos",
     "native-apps",
     "typescript"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Anionex/dsh-computer-use/76bfe8607f61945c1cbb84e73976e601100c13a2/assets/computer-use-fixture.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1038,6 +1625,18 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-share/3f4cbcf2148d0d3cdd86c83b9f3bd48068b1c179/assets/readme/share-selection.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-share/3f4cbcf2148d0d3cdd86c83b9f3bd48068b1c179/assets/readme/share-dialog.webp",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1079,6 +1678,13 @@
     "plugin",
     "sessions",
     "transcript"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Nwflower/dsh-chat-import/cd476356bcc6e4192aed8bec6211bd68a529e061/assets/image-20260814205401839.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1101,6 +1707,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/d2aaa395adeffe88e429be796c12d829752cbad1/LoserFox/distill",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1127,6 +1740,13 @@
     "dsh-plugin",
     "toolkit",
     "zero-dependency"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/5d4628929aa2695cab7b4534670c0ca3c9cd7652/omdsh-dev/dsh-toolkit",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1153,6 +1773,13 @@
     "dsh-plugin",
     "linting",
     "plugin-health"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/397aa26df241aca530aa65a08484a664f7d555ad/omdsh-dev/dsh-plugin-check",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1180,6 +1807,13 @@
     "deepseek",
     "deepseek-harness",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Ayase34/gal-view/d002fe0e7051c618a2665af3c653f9838cd6aa8a/image.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1207,6 +1841,13 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/9093b96be3390719c427b0fabb598a506c956124/SenmuuuuW/dsh-group-photo",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1232,6 +1873,13 @@
     "dsh-plugin",
     "plugin",
     "ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/vlln/dsh-navbar/10e9d1546db28c499687d66a369e548cd3f52237/docs/preview/navbar.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1257,6 +1905,38 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/844e3589c1ded9880d9d12bd3f800eb8705bc502/assets/connection.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/844e3589c1ded9880d9d12bd3f800eb8705bc502/assets/tables.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/844e3589c1ded9880d9d12bd3f800eb8705bc502/assets/settings.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/844e3589c1ded9880d9d12bd3f800eb8705bc502/assets/tui.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/844e3589c1ded9880d9d12bd3f800eb8705bc502/assets/dsh-data-agent-banner.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://dshfind.com/api/card/omdsh-dev/dsh-data-agent?lang=zh",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1283,6 +1963,18 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/dingyi222666/dsh-focus-chat/e05d2d095471b49ec45612869eb0c9cfafa429ec/screenshots/before.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/dingyi222666/dsh-focus-chat/e05d2d095471b49ec45612869eb0c9cfafa429ec/screenshots/after.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1309,6 +2001,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/16e1342ab232e7d1e995b42ef90b47e7890eed69/omdsh-dev/dsh-minigames",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1333,6 +2032,13 @@
     "bitfun",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/8dedce1ee1a463cfb21e2ac0d8518a8d3c67c5aa/bobleer/dsh-acp-for-bitfun",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1356,6 +2062,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/1807ade62c031e3526082dd72003f98fbf900c0f/omdsh-dev/fabric",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1382,6 +2095,13 @@
     "dsh-plugin",
     "secret-scanning",
     "security"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/b1974e1ac18c5dfd83eef414ea0b1187d076e431/omdsh-dev/dsh-security-audit",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1404,6 +2124,23 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/AnacondaKC/dsh-stock-market/02278af12330102c534c843a668d1c8407dbde1b/assets/screenshots/stock-market-overview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/AnacondaKC/dsh-stock-market/02278af12330102c534c843a668d1c8407dbde1b/assets/screenshots/stock-market-analysis.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/AnacondaKC/dsh-stock-market/02278af12330102c534c843a668d1c8407dbde1b/assets/screenshots/stock-market-report.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1428,6 +2165,28 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-emoji/2caa1987504a24f1c6f531566e8b959383569410/assets/readme/banner.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-emoji/2caa1987504a24f1c6f531566e8b959383569410/assets/readme/chat-preview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-emoji/2caa1987504a24f1c6f531566e8b959383569410/assets/readme/chat-preview.tieba.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/hellodigua/dsh-emoji/2caa1987504a24f1c6f531566e8b959383569410/assets/readme/chat-preview.bilibili.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1451,6 +2210,38 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/screenshots/webui-real-conversation-v2.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/sticker-thumbnails-v2/01-daily-chat.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/sticker-thumbnails-v2/02-human-questions.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/sticker-thumbnails-v2/03-use-ai-for-this.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/sticker-thumbnails-v2/04-fish-philosophy.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/william-jin-cmu/dsh-stickers/1703f09915db1058b6031b31e52fd404560e0a78/docs/sticker-thumbnails-v2/05-enough.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1478,6 +2269,13 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-gomoku/5b27af9808f5bd8f2d753dfdf6157d86a54a4947/assets/screenshot.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1510,6 +2308,13 @@
     "dsh-plugin",
     "dsh-web-ui",
     "plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/db97c0ea49767d7e73166d8d57a13e54970533e4/Ghost011118/dsh-balance-meter",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1537,6 +2342,33 @@
     "dsh-plugins",
     "tui",
     "tui-rs"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/90ce0e86d798399eb79c817b10465ff91aaacce8/assets/screenshots/banner-v020.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/90ce0e86d798399eb79c817b10465ff91aaacce8/assets/screenshots/agent-turn.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/90ce0e86d798399eb79c817b10465ff91aaacce8/assets/screenshots/skills-menu.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/90ce0e86d798399eb79c817b10465ff91aaacce8/assets/screenshots/image-preview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/90ce0e86d798399eb79c817b10465ff91aaacce8/assets/screenshots/liang.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1560,6 +2392,38 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/dsh-scholar-home-zh.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/dsh-scholar-plugin-config-zh.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/cnn-mnist-overview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/cnn-mnist-chat.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/cnn-mnist-gates.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/lzszq/dsh-scholar/4487e5ac62f2fa832a44b351deb4c1b75a76f651/docs/assets/cnn-mnist-runs.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1586,6 +2450,13 @@
     "dsh-plugin",
     "health-check",
     "zstd"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/72065059cec89c5577b19ee8aaa26ebc2c34fbbf/omdsh-dev/dsh-session-health",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1615,6 +2486,13 @@
     "dsh-plugin",
     "plugin",
     "web-ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/98181b0e5e0afd33ca89b314fc3957a2634602e4/docs/screenshots/07-card-panels.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1640,6 +2518,13 @@
     "dsh-plugin",
     "plugin",
     "ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/vlln/dsh-task-status/97591e016cbd23722d6743040ca0f526570f6196/docs/preview/task-status.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1662,6 +2547,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/79809aa57bd19be0ca548be52b76161514d02e11/HuanLinOTO/dsh-plugin-mineru",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1686,6 +2578,18 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/awesome-dsh-plugin/dsh-find-plugin/e75dc2e865c3cfbfd336f7b4bb753fec25d373e1/assets/demo-en.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/awesome-dsh-plugin/dsh-find-plugin/e75dc2e865c3cfbfd336f7b4bb753fec25d373e1/assets/demo-zh.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1708,6 +2612,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/39c608ca8e0779c93c66648ad457decffdf61903/LoserFox/dsh-git-identity",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1736,6 +2647,23 @@
     "dsh",
     "dsh-plugin",
     "human-in-the-loop"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/CanglongCl/dsh-web-review/6765e07347f5925a61eeca7a2abe8db6270c42ab/docs/assets/web-review-demo.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/CanglongCl/dsh-web-review/6765e07347f5925a61eeca7a2abe8db6270c42ab/docs/assets/web-review-preview.jpg",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/CanglongCl/dsh-web-review/6765e07347f5925a61eeca7a2abe8db6270c42ab/docs/assets/web-review-annotation-editor.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1758,6 +2686,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/d7644200ed0530f60794a1b081b7176cb3ac93fd/Sev7een/ds-api-usage",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1784,6 +2719,18 @@
     "plugin",
     "rankings",
     "recommendations"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/zp-home/dsh-recommend/31d0d7dd0da22d9f3d167f8319adacb2a2c0d4e8/docs/images/site-1.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/zp-home/dsh-recommend/31d0d7dd0da22d9f3d167f8319adacb2a2c0d4e8/docs/images/site-2.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1806,6 +2753,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/c0b329e02cd0195f810a7c3608cb58701a7fe0f1/omdsh-dev/dsh-deep-research",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1828,6 +2782,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/a0a9ca11e427b62217250e2e561f6ad3c49d13f2/LoserFox/telegram",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1851,6 +2812,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/865d2f6fc93f2e0d051d53df772646cb831a43ed/bill9109/dsh-web-ui-notify",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1878,6 +2846,13 @@
     "dsh-plugin",
     "tool",
     "ui"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Zhenyu98/dsh-context-doctor/4a91502c106f7fed86981421c740566abf309977/docs/assets/context-doctor-preview.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1903,6 +2878,23 @@
     "deepseek-harness",
     "dsh-plugin",
     "reasoning-effort"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/HanaAyane/dsh-reasoning-effort/f94622b46078ac8c064f91bdc10ab27e8cf32270/assets/readme/hero.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/HanaAyane/dsh-reasoning-effort/f94622b46078ac8c064f91bdc10ab27e8cf32270/assets/readme/themes.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/HanaAyane/dsh-reasoning-effort/f94622b46078ac8c064f91bdc10ab27e8cf32270/assets/readme/settings.webp",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1932,6 +2924,13 @@
     "dsh-plugin",
     "milestone",
     "navigation"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/c238f8c5d4afe153ede8559e5f7e3d1a652b6327/SnowCrescenter-tech/dsh-milestone",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1973,6 +2972,28 @@
     "semantic-recall",
     "shared-agent-memory",
     "workspace-memory"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-mnemon/e91be82be0e6467379db7abe8ab70a300562202b/docs/assets/media/dsh-mnemon-memory-system-demo.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-mnemon/e91be82be0e6467379db7abe8ab70a300562202b/docs/assets/screenshots/conversation-turn-memory.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-mnemon/e91be82be0e6467379db7abe8ab70a300562202b/docs/assets/screenshots/conversation-save-dialog.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/omdsh-dev/dsh-mnemon/e91be82be0e6467379db7abe8ab70a300562202b/docs/assets/media/dsh-mnemon-memory-system-demo-poster.jpg",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -1997,6 +3018,13 @@
     "deepseek-harness",
     "dsh-plugin",
     "openmaic"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/09c1693cfe83224db89fdd4abd245ac9174d3a05/THU-MAIC/dsh-openmaic",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2021,6 +3049,28 @@
     "deepseek-harness",
     "dsh-plugin",
     "marketplace"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/dsh-market/dsh-market/07c47af3558eab7c0c4d43e97c1a9d244e08d562/assets/demo-en.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/dsh-market/dsh-market/07c47af3558eab7c0c4d43e97c1a9d244e08d562/assets/themes-en.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/dsh-market/dsh-market/07c47af3558eab7c0c4d43e97c1a9d244e08d562/assets/demo-zh.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/dsh-market/dsh-market/07c47af3558eab7c0c4d43e97c1a9d244e08d562/assets/themes-zh.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2044,6 +3094,13 @@
    "topics": [
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/25c09fc2b06cabed7ac1fd9a6169f19fa370f11d/omdsh-dev/plugin-template",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2069,6 +3126,28 @@
     "deepseek-harness",
     "dsh-plugin",
     "ux"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/DietCokewithSugar/dsh-user-experience/c6fd7766234ae341d066f0bcf18cfd57a452ae6c/docs/images/ux-report-card.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/DietCokewithSugar/dsh-user-experience/c6fd7766234ae341d066f0bcf18cfd57a452ae6c/docs/images/ux-confirmed-prompt.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/DietCokewithSugar/dsh-user-experience/c6fd7766234ae341d066f0bcf18cfd57a452ae6c/docs/images/ux-multi-evidence.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/DietCokewithSugar/dsh-user-experience/c6fd7766234ae341d066f0bcf18cfd57a452ae6c/docs/images/ux-english-report.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2096,6 +3175,13 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/777ae5ec25d391dee8ea2087b6db67cb89e8a378/renat3u/dsh-web-archive",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2125,6 +3211,23 @@
     "dsh-skin",
     "qq2006",
     "theme"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/LaplaceYoung/dsh-qq2006/fa3493ceb748171728113aba1aaf606d733790a0/assets/screenshots/qq2006-window-view.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/LaplaceYoung/dsh-qq2006/fa3493ceb748171728113aba1aaf606d733790a0/assets/screenshots/qq2006-window-chrome.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/LaplaceYoung/dsh-qq2006/fa3493ceb748171728113aba1aaf606d733790a0/assets/screenshots/qq2006-message-flow.webp",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2153,7 +3256,19 @@
     "dsh-plugin"
    ],
    "image_w": 1920,
-   "image_h": 1032
+   "image_h": 1032,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Small-tailqwq/dsh-deepcel/d2af0efa1c1c8d68ee1cd5d99ac776426f9fb142/deepcel/preview/light.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/Small-tailqwq/dsh-deepcel/d2af0efa1c1c8d68ee1cd5d99ac776426f9fb142/deepcel/preview/dark.webp",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-plugin-background",
@@ -2180,6 +3295,13 @@
     "dsh",
     "dsh-plugin",
     "dsh-plugins"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/f8a45fedf33c6481e931629d81073699190530f6/gameswu/dsh-plugin-background",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2206,6 +3328,13 @@
    "topics": [
     "dsh-external",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/Meredith2328/dsh-sticky-note/ebabb6c746b1495c5f077e440d98b6665d7a61b9/assets/screenshot.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2237,6 +3366,13 @@
     "skin",
     "theme",
     "wallpaper"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/65c79b09d4c5f23e72076ff6b6b6b26c883f935c/KinGao294/dsh-skin",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2262,6 +3398,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/dd7ef5ed160aa1a624559de16eafd4ea9406d7ed/0xsline/dsh-spotlight",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2282,7 +3425,14 @@
    "license": "MIT",
    "language": "Python",
    "has_manifest": false,
-   "topics": []
+   "topics": [],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/727554719360d58c49a16d3f4a4cc736ec95b4d8/wraven68/deepseek-harness-pet",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-pet",
@@ -2313,6 +3463,18 @@
     "electron",
     "macos",
     "pet"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/FlytoMAYDAY80/dsh-pet/de673dd23908c69c928f3d095966bcd6b5b8128f/docs/contact-sheet.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/FlytoMAYDAY80/dsh-pet/de673dd23908c69c928f3d095966bcd6b5b8128f/assets/icon.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2340,7 +3502,14 @@
     "dsh-plugin"
    ],
    "image_w": 1024,
-   "image_h": 1024
+   "image_h": 1024,
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/81605ef83947c28799369a4456605c4a17513430/HuanLinOTO/dsh-plugin-pet-rs",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "deepseek-harness-themes",
@@ -2367,6 +3536,13 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/orxz/deepseek-harness-themes/f83ad9980be8b8e47d02e1c3cf8443ab6a02bee3/screenshots/settings.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2400,7 +3576,8 @@
     "dsh-plugins",
     "notification",
     "web"
-   ]
+   ],
+   "screenshots": []
   },
   {
    "slug": "dsh-dafeiyu",
@@ -2430,7 +3607,39 @@
     "dsh-plugin",
     "windows"
    ],
-   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW"
+   "video_url": "https://www.bilibili.com/video/BV1JAbC6wEWW",
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/dsh-bigfish-running.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/status-thinking.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/status-working.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/status-waiting.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/status-success.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/QCYTSN/dsh-dafeiyu/fba38c18da2d275333691986763b4914e533b6b3/docs/images/status-error.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "touhou-hakurei",
@@ -2464,7 +3673,39 @@
    ],
    "video_url": "https://www.bilibili.com/video/BV1NRbk6BEys",
    "image_w": 1600,
-   "image_h": 881
+   "image_h": 881,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/preview/light.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/preview/dark.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/screenshots/shot-dark-1.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/screenshots/shot-dark-2.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/screenshots/shot-light-1.webp",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/xiake595/touhou-hakurei/dae71e3b063f2051c590abbabaa1462cf2cd54ea/screenshots/shot-light-2.webp",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "depharness",
@@ -2485,7 +3726,19 @@
    "language": "JavaScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38"
+   "video_url": "https://www.bilibili.com/video/BV1qXbC6oE38",
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/NANTI34/DEEPHARNESS/a7a908dcde1169c6e6f7d865a2a37b088d740f8a/tools/logo.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/NANTI34/DEEPHARNESS/a7a908dcde1169c6e6f7d865a2a37b088d740f8a/assets/screenshots/screenshot-overview.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-claude-ux",
@@ -2512,6 +3765,28 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/eri64/dsh-claude-ux/5cb3d4973ca627288df2ae2e99a87ede5c6759d5/docs/assets/settings-page.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/eri64/dsh-claude-ux/5cb3d4973ca627288df2ae2e99a87ede5c6759d5/docs/assets/region-ladder.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/eri64/dsh-claude-ux/5cb3d4973ca627288df2ae2e99a87ede5c6759d5/docs/assets/abuse-end.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/eri64/dsh-claude-ux/5cb3d4973ca627288df2ae2e99a87ede5c6759d5/docs/assets/harmful-end.png",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2536,7 +3811,14 @@
    "language": "JavaScript",
    "has_manifest": true,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y"
+   "video_url": "https://www.bilibili.com/video/BV1UGb26QE1y",
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/d65e5b3bc81d8be87459ddb773b0b4b759c2088f/xituisuany-max/dsh-client-ui-pet",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "deepseek-harness-gui",
@@ -2560,7 +3842,24 @@
    "language": "TypeScript",
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ"
+   "video_url": "https://www.bilibili.com/video/BV1nmgT6SEuJ",
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/yuanqiyibiansheng/DeepSeek-Harness-GUI/07527cfa310db491b5b1fdf168b4110f13cb0155/assets/community-wecom-assistant.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/yuanqiyibiansheng/DeepSeek-Harness-GUI/07527cfa310db491b5b1fdf168b4110f13cb0155/assets/community-wecom-survey.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/yuanqiyibiansheng/DeepSeek-Harness-GUI/07527cfa310db491b5b1fdf168b4110f13cb0155/assets/community-wechat-official-account.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "deepseek-fat-fish-codex-pet",
@@ -2584,7 +3883,29 @@
    "language": null,
    "has_manifest": false,
    "topics": [],
-   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor"
+   "video_url": "https://www.bilibili.com/video/BV1PggV6gEor",
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/gmskywalker/deepseek-fat-fish-codex-pet/277403bcc97e4c23e612c84a27ac4ee81fab99d8/assets/idle.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/gmskywalker/deepseek-fat-fish-codex-pet/277403bcc97e4c23e612c84a27ac4ee81fab99d8/assets/hover.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/gmskywalker/deepseek-fat-fish-codex-pet/277403bcc97e4c23e612c84a27ac4ee81fab99d8/assets/working.gif",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/gmskywalker/deepseek-fat-fish-codex-pet/277403bcc97e4c23e612c84a27ac4ee81fab99d8/assets/success.gif",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "petdex",
@@ -2626,7 +3947,14 @@
     "vercel"
    ],
    "image_w": 400,
-   "image_h": 400
+   "image_h": 400,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/crafter-station/petdex/0243af614f30eee31913ff3e3839467615c1c744/public/brand/petdex-desktop-icon.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "dsh-kun-like-pet",
@@ -2659,7 +3987,19 @@
     "plugin"
    ],
    "image_w": 960,
-   "image_h": 698
+   "image_h": 698,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/liyupi/dsh-kun-like-pet/87bb6e1762618dd7727d285ffeeadd86a3799425/docs/screenshot-working.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/liyupi/dsh-kun-like-pet/87bb6e1762618dd7727d285ffeeadd86a3799425/docs/screenshot-wave.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "deepseek-pet",
@@ -2688,7 +4028,14 @@
     "dsh-plugin"
    ],
    "image_w": 634,
-   "image_h": 826
+   "image_h": 826,
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/keleus/deepseek-pet/287414d31c9a8fe4122109e85d8fe9dc0299cdc4/docs/deepseek-pet-preview.png",
+     "w": null,
+     "h": null
+    }
+   ]
   },
   {
    "slug": "colleague-skill",
@@ -2722,6 +4069,23 @@
     "meta-skill",
     "openclaw",
     "skill-generator"
+   ],
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/colleague-skill/22d96a76e05b91939493f604a0a46198d0d7f978/docs/social-preview.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://raw.githubusercontent.com/titanwings/colleague-skill/22d96a76e05b91939493f604a0a46198d0d7f978/docs/assets/wechat-group-qr-12.png",
+     "w": null,
+     "h": null
+    },
+    {
+     "url": "https://star-history.dera.page/svg?repos=titanwings%2Fcolleague-skill&type=date&legend=top-left",
+     "w": null,
+     "h": null
+    }
    ]
   },
   {
@@ -2747,6 +4111,13 @@
    "has_manifest": true,
    "topics": [
     "dsh-plugin"
+   ],
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/4c812d2f78f8f54f68f4d826a21b22155ca04c54/HuanLinOTO/dsh-plugin-anti-ads",
+     "w": null,
+     "h": null
+    }
    ]
   }
  ]
