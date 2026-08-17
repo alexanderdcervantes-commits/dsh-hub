@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSH Meme Hub · SEO 战线图</title>
+<style>
+  :root {
+    --bg: #f6f8fa; --card: #fff; --border: #d8dee4;
+    --text: #1f2328; --text-2: #57606a; --text-3: #8b949e;
+    --accent: #2ea44f; --accent-soft: #dafbe1;
+    --amber: #bf8700; --amber-soft: #fff8c5;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(31,35,40,.08);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; padding: 32px 20px; line-height: 1.6; }
+  .wrap { max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 24px; text-align: center; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { text-align: center; color: var(--text-2); font-size: 14px; margin: 6px 0 28px; }
+  .row { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 18px; flex: 1; min-width: 260px; }
+  .card h3 { font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .card p { font-size: 13px; color: var(--text-2); }
+  .done { background: var(--accent-soft); border-color: #aceebb; }
+  .done h3 { color: #1a7f37; }
+  .next { background: var(--amber-soft); border-color: #eac54f; }
+  .watch { background: #f6f8fa; border-style: dashed; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 999px; margin-left: auto; }
+  .tag.done { background: #1a7f37; color: #fff; margin-left: auto; }
+  .tag.next { background: var(--amber); color: #fff; }
+  .tag.wait { background: var(--text-3); color: #fff; }
+  .flow { text-align: center; color: var(--text-3); font-size: 18px; margin: 2px 0; }
+  ul { font-size: 13px; color: var(--text-2); padding-left: 18px; }
+  ul li { margin: 3px 0; }
+  .num { color: var(--accent); font-weight: 700; }
+  .order { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-top: 20px; box-shadow: var(--shadow); }
+  .order h3 { font-size: 15px; margin-bottom: 10px; }
+  .step { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; padding: 5px 0; }
+  .step b { color: var(--accent); min-width: 22px; }
+  .step .why { color: var(--text-3); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DSH Meme Hub · <em>SEO 战线图</em></h1>
+  <p class="sub">一天打下 5 个阵地（629 页全站）· 下面是剩余阵地与打法顺序 · 2026-08-17</p>
+
+  <!-- 已拿下 -->
+  <div class="row">
+    <div class="card done"><h3>✅ S1 分类锚点页</h3><p>/plugins/skins（9）+ /plugins/pets（11）+ 首页"是什么"段</p></div>
+    <div class="card done"><h3>✅ S2 TDK 扩容</h3><p>5 页文案 + 修复管道符全站 bug（40 处 title）</p></div>
+    <div class="card done"><h3>✅ S3 对比页群</h3><p>vs Claude Code / OpenCode / Codex · 16 URL · 全实数</p></div>
+    <div class="card done"><h3>✅ Meme 轨对齐</h3><p>图片回退 + 画廊 + Schema 判重修复</p></div>
+  </div>
+
+  <div class="flow">▼ 剩余阵地 ▼</div>
+
+  <!-- 近期要打 -->
+  <div class="row">
+    <div class="card next"><h3>🟡 A1 榜单页 /best <span class="tag next">半天 · 零维护</span></h3>
+      <p>按 stars 程序化自动生成 Top N</p>
+      <ul><li>承接「best dsh plugins 2026 / 必备插件」</li><li>与目录页意图互补（搜"哪个好"的人）</li><li>可写推荐点评，比干目录好点</li></ul>
+    </div>
+    <div class="card next"><h3>🟡 A2 信任词 <span class="tag next">1 天</span></h3>
+      <p>/about 补强「dsh 靠谱吗 / is it safe」</p>
+      <ul><li>新工具爆发期信任词量大</li><li>/guides 教程集群 → 缓，等 install 流量起来</li></ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card"><h3>🔧 小修 ×2 <span class="tag next">15 分钟</span></h3>
+      <ul><li>清存量 compare.* 死键（含"Codex 闭源"错误旧数据）</li><li>/zh/plugins 补 canonical（全站就它漏了）</li></ul>
+    </div>
+    <div class="card watch"><h3>🟢 B 观察区 <span class="tag wait">不打 · 等信号</span></h3>
+      <ul><li>troubleshooting 页：报错词联想量=0，等 GSC 出现报错查询</li><li>13 个功能词页（vision/mcp…）：先用话题筛选顶着，起量再建页</li></ul>
+    </div>
+    <div class="card"><h3>🔵 供血线：候选收录 <span class="tag next">持续</span></h3>
+      <p><span class="num">66</span> 个新插件待审（dsh-TUI ★1551、Aegis ★1027…）</p>
+      <ul><li>每收录 1 个 = 多 1 个详情页 = 多 1 个单品词入口</li><li>GSC 已实锤单品词有搜索（dsh-better-sidebar 6 展示）</li></ul>
+    </div>
+  </div>
+
+  <!-- 建议顺序 -->
+  <div class="order">
+    <h3>📌 建议打击顺序</h3>
+    <div class="step"><b>①</b> A1 榜单页 <span class="why">— 半天、零维护、意图互补，性价比最高</span></div>
+    <div class="step"><b>②</b> 两个小修 <span class="why">— 15 分钟顺手清掉，排雷</span></div>
+    <div class="step"><b>③</b> A2 只打 /about 信任词 <span class="why">— guides 缓一缓</span></div>
+    <div class="step"><b>④</b> 候选插件审核收录 <span class="why">— 持续供血管道，边际收益比再建页面高</span></div>
+    <div class="step"><b>⑤</b> 一周后回看 GSC <span class="why">— 验证 S2 疗效（dsh desktop 的 CTR）+ S1/S3 收录情况</span></div>
+  </div>
+</div>
+</body>
+</html>
