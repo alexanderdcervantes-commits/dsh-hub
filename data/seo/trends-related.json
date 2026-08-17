@@ -1,0 +1,258 @@
+{
+ "deepseek harness": {
+  "top": [
+   {
+    "query": "github",
+    "value": 100
+   },
+   {
+    "query": "harness github",
+    "value": 100
+   },
+   {
+    "query": "github deepseek",
+    "value": 99
+   },
+   {
+    "query": "github deepseek harness",
+    "value": 98
+   },
+   {
+    "query": "deepseek github",
+    "value": 97
+   },
+   {
+    "query": "agent harness",
+    "value": 91
+   },
+   {
+    "query": "deepseek agent",
+    "value": 89
+   },
+   {
+    "query": "harness ai",
+    "value": 65
+   },
+   {
+    "query": "deepseek ai harness",
+    "value": 65
+   },
+   {
+    "query": "deepseek ai",
+    "value": 65
+   },
+   {
+    "query": "deepseek v4",
+    "value": 61
+   },
+   {
+    "query": "deepseek code",
+    "value": 53
+   },
+   {
+    "query": "deepseek pro",
+    "value": 40
+   },
+   {
+    "query": "deepseek api",
+    "value": 36
+   },
+   {
+    "query": "deepseek harness 招聘",
+    "value": 34
+   },
+   {
+    "query": "claude code",
+    "value": 28
+   },
+   {
+    "query": "deepseek v4 pro",
+    "value": 26
+   },
+   {
+    "query": "codex",
+    "value": 25
+   },
+   {
+    "query": "deepseek codex",
+    "value": 24
+   },
+   {
+    "query": "opencode harness",
+    "value": 23
+   },
+   {
+    "query": "opencode",
+    "value": 22
+   },
+   {
+    "query": "deepseek flash",
+    "value": 22
+   },
+   {
+    "query": "deepseek dsh",
+    "value": 19
+   },
+   {
+    "query": "deepseek harness 是 什么",
+    "value": 9
+   },
+   {
+    "query": "deepseek desktop",
+    "value": 9
+   }
+  ],
+  "rising": [
+   {
+    "query": "deepseek dsh",
+    "value": 250400
+   },
+   {
+    "query": "deepseek harness 是 什么",
+    "value": 123700
+   },
+   {
+    "query": "deepseek desktop",
+    "value": 120200
+   },
+   {
+    "query": "deepseek harness 团队",
+    "value": 116950
+   },
+   {
+    "query": "pi agent harness",
+    "value": 111300
+   },
+   {
+    "query": "pi agent",
+    "value": 105750
+   },
+   {
+    "query": "deepseek harness 安装",
+    "value": 98150
+   },
+   {
+    "query": "cordis",
+    "value": 86900
+   },
+   {
+    "query": "npm",
+    "value": 70750
+   },
+   {
+    "query": "reasonix",
+    "value": 68550
+   },
+   {
+    "query": "reasonix deepseek",
+    "value": 65150
+   },
+   {
+    "query": "dsh github",
+    "value": 61500
+   },
+   {
+    "query": "deepseek harness 下载",
+    "value": 60600
+   },
+   {
+    "query": "codex cli",
+    "value": 48150
+   },
+   {
+    "query": "deepseek 官网",
+    "value": 46350
+   },
+   {
+    "query": "npx",
+    "value": 45950
+   },
+   {
+    "query": "node js",
+    "value": 45100
+   },
+   {
+    "query": "node",
+    "value": 43300
+   },
+   {
+    "query": "git",
+    "value": 39550
+   },
+   {
+    "query": "pi github",
+    "value": 39250
+   },
+   {
+    "query": "deepseek v4 pro 0813",
+    "value": 38050
+   },
+   {
+    "query": "deepseek v4 flash 0731",
+    "value": 37000
+   },
+   {
+    "query": "deepseek harness 招聘",
+    "value": 190
+   },
+   {
+    "query": "github deepseek",
+    "value": 70
+   }
+  ]
+ },
+ "deepseek harness plugin": {
+  "top": [
+   {
+    "query": "deepseek harness github",
+    "value": 100
+   },
+   {
+    "query": "github",
+    "value": 99
+   },
+   {
+    "query": "cordis",
+    "value": 46
+   },
+   {
+    "query": "deepseek harness 插件",
+    "value": 22
+   },
+   {
+    "query": "awesome dsh plugin",
+    "value": 11
+   },
+   {
+    "query": "deepseek-harness",
+    "value": 7
+   }
+  ],
+  "rising": [
+   {
+    "query": "deepseek harness github",
+    "value": 2111250
+   },
+   {
+    "query": "github",
+    "value": 2082600
+   },
+   {
+    "query": "deepseek harness 插件",
+    "value": 463200
+   },
+   {
+    "query": "awesome dsh plugin",
+    "value": 222750
+   },
+   {
+    "query": "deepseek-harness",
+    "value": 152100
+   }
+  ]
+ },
+ "deepseek harness skin": {
+  "top": [],
+  "rising": []
+ }
+}
