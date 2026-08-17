@@ -5,6 +5,12 @@ const props = defineProps<{ plugin: DshPlugin }>()
 const { locale } = useI18n()
 const { catOf, descOf, emojiOf } = usePlugins()
 const localePath = useLocalePath()
+
+/** 缩略图回退：无本地精修封面时用仓库截图首图（无已知宽高，比例交给 CSS） */
+const fallbackShot = computed(() =>
+  props.plugin.image ? null : (props.plugin.screenshots?.[0]?.url ?? null))
+/** 截图首图加载失败（commit 被删/图床失效）→ 整个缩略图块消失，不留破图 */
+const shotFailed = ref(false)
 </script>
 
 <template>
@@ -21,6 +27,13 @@ const localePath = useLocalePath()
         loading="lazy" decoding="async"
       >
     </div>
+    <div v-else-if="fallbackShot && !shotFailed" class="card-thumb card-thumb--auto">
+      <img
+        :src="fallbackShot" :alt="plugin.name"
+        loading="lazy" decoding="async"
+        @error="shotFailed = true"
+      >
+    </div>
     <p class="desc">{{ descOf(plugin, locale) }}</p>
     <div class="meta-row">
       <span class="stars">{{ plugin.stars.toLocaleString() }}</span>
@@ -30,3 +43,8 @@ const localePath = useLocalePath()
     <AppCopyCmd :cmd="plugin.install_cmd" />
   </article>
 </template>
+
+<style scoped>
+/* 截图首图回退：无已知宽高，容器定 16/10 比例配合全局 .card-thumb img 的 cover 裁切防拉伸 */
+.card-thumb--auto { aspect-ratio: 16 / 10; }
+</style>
