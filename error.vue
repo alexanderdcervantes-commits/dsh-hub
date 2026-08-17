@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
-import { useI18n } from '#imports'
+import { useI18n, useLocalePath } from '#imports'
 
 defineProps<{ error: NuxtError }>()
-const { t, locale, localeProperties, localePath } = useI18n()
+const { t, locale, localeProperties } = useI18n()
+// localePath 不在 Composer 的类型上（TS2339），改用独立的 useLocalePath()——与 layouts/default.vue 同源
+const localePath = useLocalePath()
 
 useHead({
   title: t('common.notFound'),

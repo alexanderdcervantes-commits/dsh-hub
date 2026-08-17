@@ -11,7 +11,7 @@ useHead(() => ({
 }))
 
 // 语言菜单直接读 i18n 配置（nuxt.config.ts locales），新增语言不用改这里
-const localeOptions = computed(() =>
+const localeOptions = computed<Array<{ code: string; name: string }>>(() =>
   (locales.value as Array<{ code: string; name: string }>).map(l => ({ code: l.code, name: l.name })))
 const menuOpen = ref(false)
 const currentName = computed(() =>
@@ -19,7 +19,8 @@ const currentName = computed(() =>
 
 function pick(code: string) {
   menuOpen.value = false
-  if (code !== locale.value) navigateTo(switchLocalePath(code))
+  // switchLocalePath 参数是 locale code 联合类型（不接受 string），从函数签名取类型，加语言自动跟随
+  if (code !== locale.value) navigateTo(switchLocalePath(code as Parameters<typeof switchLocalePath>[0]))
 }
 
 const navActive = (path: string) => {

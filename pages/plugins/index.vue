@@ -14,7 +14,7 @@ const DEFAULT_SORT: 'stars' | 'recent' | 'name' = 'stars'
 const qInput = ref((route.query.q as string) ?? '')
 const q = ref(qInput.value)
 let qTimer: ReturnType<typeof setTimeout> | undefined
-watch(qInput, (v) => {
+watch(qInput, (v: string) => {
   clearTimeout(qTimer)
   qTimer = setTimeout(() => (q.value = v), 180)
 })
