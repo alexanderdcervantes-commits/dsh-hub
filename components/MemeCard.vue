@@ -11,6 +11,12 @@ const config = useRuntimeConfig()
 const toast = useState<string | null>('toast', () => null)
 let toastTimer: ReturnType<typeof setTimeout> | undefined
 
+/** 缩略图回退：无本地精修封面时用仓库截图首图（同 PluginCard；容器 .thumb 已定 16/10 + cover 裁切防拉伸） */
+const fallbackShot = computed(() =>
+  props.plugin.image ? null : (props.plugin.screenshots?.[0]?.url ?? null))
+/** 截图首图加载失败（commit 被删/图床失效）→ 回退 🐋 占位，不留破图 */
+const shotFailed = ref(false)
+
 onMounted(() => likes.load())
 onBeforeUnmount(() => clearTimeout(toastTimer))
 
@@ -40,6 +46,12 @@ async function share() {
         v-if="plugin.image" :src="plugin.image" :alt="plugin.name"
         :width="plugin.image_w" :height="plugin.image_h"
         loading="lazy" decoding="async"
+      >
+      <img
+        v-else-if="fallbackShot && !shotFailed"
+        :src="fallbackShot" :alt="plugin.name"
+        loading="lazy" decoding="async"
+        @error="shotFailed = true"
       >
       <div v-else class="fallback">🐋</div>
     </NuxtLink>

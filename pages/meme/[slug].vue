@@ -33,15 +33,15 @@ useHead({
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
+      /* 整活内容身份用 CreativeWork，与 plugins 轨的 SoftwareApplication 区分，避免双轨同类型判重复 */
+      '@type': 'CreativeWork',
       name: plugin.name,
       description: caption,
       url: pageUrl.value,
-      applicationCategory: 'DeveloperApplication',
-      operatingSystem: 'Cross-platform',
+      inLanguage: locale.value,
+      genre: 'meme',
+      about: plugin.name,
       author: { '@type': 'Person', name: plugin.repo.split('/')[0] },
-      codeRepository: plugin.url,
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     }),
   }],
 })
@@ -71,14 +71,13 @@ const rel = computed(() =>
 
     <div class="detail-layout">
       <div class="detail-main">
-        <div class="shot">
-          <img
-            v-if="plugin.image" :src="plugin.image" :alt="plugin.name"
-            :width="plugin.image_w" :height="plugin.image_h"
-            decoding="async" fetchpriority="high"
-          >
-          <div v-else class="fallback-strip">🐋</div>
-        </div>
+        <PluginGallery
+          :image="plugin.image"
+          :image-w="plugin.image_w"
+          :image-h="plugin.image_h"
+          :screenshots="plugin.screenshots"
+          :name="plugin.name"
+        />
 
         <div class="prose">
           <div class="lang-label">{{ t('plugin.descEn') }}</div>

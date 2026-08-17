@@ -53,7 +53,13 @@
     "today": "heute",
     "descEn": "English",
     "descZh": "中文",
-    "watchDemo": "Demo auf Bilibili ansehen"
+    "watchDemo": "Demo auf Bilibili ansehen",
+    "galleryOpen": "Bild in voller Größe ansehen",
+    "galleryClose": "Schließen",
+    "galleryPrev": "Vorheriges Bild",
+    "galleryNext": "Nächstes Bild",
+    "galleryThumb": "Screenshot {n} ansehen",
+    "imageUnavailable": "Bild nicht verfügbar"
   },
   "meme": {
     "title": "Meme-Zone",
