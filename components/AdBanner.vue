@@ -40,13 +40,15 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <!-- ⚠ 不要包 <ClientOnly>：ClientOnly 的 slot 在它自己的 onMounted 才渲染，
+       而本组件 onMounted 先触发 → frame.value 为 null → iframe 注入被跳过，广告永远空白。
+       onMounted 只在客户端执行，SSR 不会跑广告逻辑，无需 ClientOnly
+       （china-ai-arbitrage ADS_SYSTEM.md Pitfall #1，同一根因）。 -->
   <div ref="root" class="ad-banner" data-ad-banner :style="{ height: `${frameHeight}px` }">
-    <ClientOnly>
-      <div class="ad-scale" :style="{ transform: `scale(${scale})` }">
-        <div ref="frame" class="ad-frame" />
-      </div>
-      <span class="ad-tag">Ad</span>
-    </ClientOnly>
+    <div class="ad-scale" :style="{ transform: `scale(${scale})` }">
+      <div ref="frame" class="ad-frame" />
+    </div>
+    <span class="ad-tag">Ad</span>
   </div>
 </template>
 
