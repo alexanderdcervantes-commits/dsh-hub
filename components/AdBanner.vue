@@ -1,10 +1,16 @@
 <script setup lang="ts">
-// 底部广告横幅（728x90 iframe，highperformanceformat）。
-// 纯客户端组件：根容器随 SSR 输出（稳定挂载点），广告脚本只在 onMounted 注入。
+// 底部/顶部广告横幅（728x90 iframe，highperformanceformat）。
+// 纯客户端组件：根容器随 SSR 输出（稳定挂载点），广告只在 onMounted 注入。
 // 小于 728px 的视口用 transform scale 等比缩小，高度同步修正，不裁切不塌陷。
+//
+// ⚠ iframe 隔离（2026-08-17，照搬 china-ai-arbitrage ADS_SYSTEM.md 的成熟方案）：
+// 页面上有多个 banner（顶部 + 底部）时，若都在宿主页写全局 window.atOptions，
+// 各组件 onMounted 同步覆盖同一个全局对象，invoke.js 异步加载完读到的总是最后写入的值，
+// 导致除最后一个位外全部填充失败。因此每个广告位用独立 iframe 加载 /ads/728x90.html，
+// iframe 各有独立 window，atOptions 彻底隔离。同 key 也隔离——防 Adsterra 端行为不确定。
 const AD_WIDTH = 728
 const AD_HEIGHT = 90
-const INVOKE_SRC = 'https://www.highperformanceformat.com/b0df5aed2571e457d256b6cc20556ded/invoke.js'
+const AD_SRC = '/ads/728x90.html'
 
 const root = ref<HTMLElement | null>(null)
 const frame = ref<HTMLElement | null>(null)
@@ -20,19 +26,12 @@ onMounted(() => {
   measure()
   window.addEventListener('resize', measure)
 
-  // 先写 atOptions 再 append invoke.js，保证脚本执行时配置已就位
-  const w = window as Window & { atOptions?: Record<string, unknown> }
-  w.atOptions = {
-    key: 'b0df5aed2571e457d256b6cc20556ded',
-    format: 'iframe',
-    height: AD_HEIGHT,
-    width: AD_WIDTH,
-    params: {},
-  }
-  const s = document.createElement('script')
-  s.src = INVOKE_SRC
-  s.async = true
-  frame.value?.appendChild(s)
+  if (!frame.value || frame.value.querySelector('iframe')) return
+  const iframe = document.createElement('iframe')
+  iframe.title = 'advertisement'
+  iframe.setAttribute('scrolling', 'no')
+  iframe.src = AD_SRC
+  frame.value.appendChild(iframe)
 })
 
 onBeforeUnmount(() => {

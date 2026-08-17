@@ -72,6 +72,10 @@ const toast = useState<string | null>('toast', () => null)
       </div>
     </header>
 
+    <div class="container">
+      <AdBanner />
+    </div>
+
     <main>
       <slot />
     </main>

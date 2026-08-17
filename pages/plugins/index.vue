@@ -63,7 +63,9 @@ useHead({
       <p class="sub" style="margin:0 0 6px"><NuxtLink :to="localePath('/install')">{{ t('plugins.installGuide') }}</NuxtLink></p>
     </div>
 
-    <div class="search-wrap" style="margin-bottom:14px">
+    <!-- 全局 .search-wrap 是 margin:0 auto 居中（首页 hero 用），这里必须左对齐
+         与标题/下拉框/计数保持同一视觉线，否则动线断裂 -->
+    <div class="search-wrap" style="margin:0 0 14px">
       <span class="icon">🔍</span>
       <input v-model="qInput" type="search" :placeholder="t('plugins.searchPlaceholder')" aria-label="search">
     </div>
