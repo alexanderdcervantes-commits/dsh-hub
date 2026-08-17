@@ -162,6 +162,20 @@ useHead({
           <div class="stat-tile"><div class="num">{{ categories(locale).length }}</div><div class="label">{{ t('home.statCats') }}</div></div>
         </div>
       </section>
+
+      <!-- DeepSeek Harness 是什么（认知词承接：deepseek harness 是什么/what is） -->
+      <section class="section" style="padding-bottom:50px">
+        <div class="prose">
+          <h2>{{ t('home.whatTitle') }}</h2>
+          <p>{{ t('home.whatP1') }}</p>
+          <p>{{ t('home.whatP2') }}</p>
+          <p>{{ t('home.whatP3') }}</p>
+          <p>
+            <NuxtLink class="btn green" :to="localePath('/install')" style="margin-right:10px">{{ t('home.whatCta') }}</NuxtLink>
+            <NuxtLink :to="localePath('/plugins')">{{ t('home.whatCta2') }}</NuxtLink>
+          </p>
+        </div>
+      </section>
     </div>
   </div>
 </template>

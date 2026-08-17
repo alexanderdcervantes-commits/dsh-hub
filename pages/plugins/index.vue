@@ -3,7 +3,7 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const config = useRuntimeConfig()
-const { query, categories } = usePlugins()
+const { plugins, query, categories } = usePlugins()
 
 // 列表默认 UI 状态（ItemList 结构化数据也用同一组常量，保证两边永不漂移）
 const DEFAULT_CAT = 'all'
@@ -59,8 +59,14 @@ useHead({
   <div class="container">
     <div class="page-head">
       <h1>{{ t('plugins.title') }}</h1>
-      <p class="sub">{{ t('plugins.sub') }}</p>
+      <p class="sub">{{ t('plugins.sub', { n: plugins.length }) }}</p>
       <p class="sub" style="margin:0 0 6px"><NuxtLink :to="localePath('/install')">{{ t('plugins.installGuide') }}</NuxtLink></p>
+    </div>
+
+    <!-- 分类锚点页入口（内链：skins/pets 承接皮肤/桌宠搜索意图） -->
+    <div class="filter-bar" style="margin-bottom:12px">
+      <NuxtLink class="btn" :to="localePath('/plugins/skins')">🎨 {{ t('nav.skins') }}</NuxtLink>
+      <NuxtLink class="btn" :to="localePath('/plugins/pets')">🐳 {{ t('nav.pets') }}</NuxtLink>
     </div>
 
     <!-- 全局 .search-wrap 是 margin:0 auto 居中（首页 hero 用），这里必须左对齐

@@ -2,6 +2,8 @@
   "nav": {
     "meme": "🤪 Meme-Zone",
     "plugins": "🧩 Alle Plugins",
+    "skins": "Skins",
+    "pets": "Desktop-Pets",
     "install": "🚀 Installation",
     "launchers": "🖥️ Launcher",
     "submit": "➕ Einreichen",
@@ -26,7 +28,13 @@
     "statTotal": "Gelistete Plugins",
     "statMeme": "Meme-würdig",
     "statStars": "Sterne gesamt",
-    "statCats": "Kategorien"
+    "statCats": "Kategorien",
+    "whatTitle": "Was ist DeepSeek Harness (dsh)?",
+    "whatP1": "DeepSeek Harness ist das AI-Agent-Harness, das DeepSeek am 13. August 2026 unter der MIT-Lizenz open-sourced hat; das offizielle README stuft es weiterhin als Developer Preview ein. Der Name ist der Community zu lang — sie sagt einfach dsh, genau wie das npm-Paket {'@'}deepseek-ai/dsh.",
+    "whatP2": "Die ganze Idee passt in eine Zeile: Alles ist ein Plugin. Der Kern ist ein winziger Scheduler (die Cordis-Architektur), und UI, Tools, Skins und Desktop-Haustiere stecken alle als Plugin daran — so landeten ein Task-Board und ein Walf-Mädchen-Haustier im selben Ökosystem.",
+    "whatP3": "Selbst ansehen? Ein Befehl — npx {'@'}deepseek-ai/dsh web — und die Oberfläche öffnet sich im Browser. Zum ersten Mal hier? Folge der Installationsanleitung, das dauert etwa fünf Minuten.",
+    "whatCta": "Zur Installationsanleitung →",
+    "whatCta2": "Alle Plugins durchstöbern →"
   },
   "plugin": {
     "install": "Installieren",
@@ -69,7 +77,7 @@
   },
   "plugins": {
     "title": "Alle Plugins",
-    "sub": "Jedes dsh-Plugin, das wir katalogisiert haben — durchsuchbar, filterbar, sortierbar.",
+    "sub": "Handverlesen und katalogisiert: bisher {n} dsh-Plugins auf dieser Seite — durchsuchbar, filterbar, sortierbar, jedes mit Ein-Klick-Installationsbefehl.",
     "searchPlaceholder": "Name, Beschreibung, Repo suchen…",
     "sortStars": "Meiste Sterne",
     "sortRecent": "Zuletzt gepusht",
@@ -78,6 +86,35 @@
     "results": "{n} Plugins",
     "noResults": "Nichts gefunden. Anderes Stichwort probieren?",
     "installGuide": "Anleitung: dsh und Plugins installieren →"
+  },
+  "skins": {
+    "title": "🎨 DeepSeek-Harness-Skins & Themes",
+    "sub": "Wie wechselt man dsh-Skins? Jedes Skin- und Theme-Plugin, das wir katalogisiert haben, nach Sternen sortiert — aussuchen, mit einem Befehl eintauschen.",
+    "count": "{n} Skin-/Theme-Plugins",
+    "whatH": "Was ein Skin ist: Wie das dsh-Theming funktioniert",
+    "whatP1": "DeepSeek Harness läuft mit einer Web-UI als Oberfläche (die Seite, die sich nach dem npx-Start im Browser öffnet), und weil alles ein Plugin ist, ist ein Skin kein Konfigurationsflag — er ist ein Plugin. Installieren, aktivieren, und die Oberfläche ändert sich; deaktivieren für den Standard, oder mehrere stapeln für einen Remix.",
+    "whatP2": "Deshalb decken die Community-Reskins das ganze Spektrum ab: komplette Walf-Mädchen-Maid-Oberflächen, ein Klick auf Galgame-Stil für die Konversationsansicht und kleine Eingriffe wie Hintergrund oder Statusleistentext. Unterschiedlicher Aufwand, gleicher Mechanismus.",
+    "howH": "Skin wechseln: drei allgemeine Schritte",
+    "howP1": "Schritt eins: Bring dsh zum Laufen — wer es noch nicht installiert hat, ist mit der Installationsanleitung in etwa fünf Minuten dabei. Schritt zwei: Wähle unten einen Skin, öffne seine Seite, kopiere den Installationsbefehl und füge ihn ins Terminal ein. Schritt drei: Aktiviere das Plugin auf der Plugin-Seite der Web-UI und lade neu — neuer Skin.",
+    "howP2": "Zwei Hinweise: Skin-Plugins zielen auf unterschiedliche dsh-Versionen, also vorher kurz ins Repo-README schauen; und Skins sind Community-Code — bei allem, was die UI tiefgreifend umschreibt, gilt: vorher den Code lesen.",
+    "howCta": "Noch kein dsh? Erst die Installationsanleitung →",
+    "picksH": "Handverlesene Skins",
+    "picksP1": "Nach Sternen sortiert, von der Reskin-Crew der Meme-Zone bis zu ernsthaften Theme-Engines. Unentschlossen? Fang mit der Walf-Mädchen-Serie ganz oben an — derselben, die unser Maskottchen trägt.",
+    "picksTop": "Die zwei sternstärksten direkt zu ihren Seiten:"
+  },
+  "pets": {
+    "title": "🐳 DeepSeek-Harness-Desktop-Haustiere",
+    "sub": "Wie schaltest du ein dsh-Desktop-Haustier ein? Walf-Mädchen, Desktop-Fische und ein ganzer Haustierladen leben auf dieser Seite — ein Befehl, und dein Desktop hat einen neuen Bewohner.",
+    "count": "{n} Desktop-Haustier-Plugins",
+    "cultureH": "Haustier-Kultur: eine Woche nach dem Release schwammen die Wale zuerst",
+    "cultureP1": "Kaum war DeepSeek Harness draußen, gehörten Desktop-Haustiere zu den ersten Breakout-Plugins der Community: ein Walf-Mädchen im QQ-Haustier-Stil, das man ziehen, füttern und per Aufgaben leveln kann; ein dicker Fisch auf dem Windows-Desktop, der mit dsh startet und stoppt; und jemand hat gleich einen ganzen Haustierladen gebaut — ein Befehl zum Stöbern und Installieren der von der Community eingereichten Animations-Haustiere.",
+    "cultureP2": "Das Maskottchen dieser Seite — der Wal, der durch unsere 404-Seite paddelt — stammt aus demselben Ökosystem. Das Walf-Mädchen ist zugleich Haustier und Skin-Serie, so etwas wie das inoffizielle Totem der dsh-Community.",
+    "howH": "So schaltest du ein Desktop-Haustier ein",
+    "howP1": "Ein Haustier ist keine eigenständige App: Es ist ein dsh-Plugin wie jedes andere. Erst dsh zum Laufen bringen (siehe Installationsanleitung), dann unten ein Haustier wählen, seinen Installationsbefehl ins Terminal einfügen und es auf der Plugin-Seite der Web-UI aktivieren. Wie das Haustier aussieht, ob es interaktiv ist und in welchem Fenster es lebt, unterscheidet sich pro Plugin — das Repo-README ist die Quelle der Wahrheit.",
+    "howCta": "Erst die Installationsanleitung →",
+    "picksH": "Handverlesene Haustiere",
+    "picksP1": "Nach Sternen sortiert. Petdex ganz oben ist der App-Store der Desktop-Haustier-Welt — ein guter Ort, um zuerst den ganzen Katalog zu stöbern.",
+    "picksTop": "Das Walf-Mädchen selbst lebt auf diesen zwei Seiten:"
   },
   "launcher": {
     "title": "Desktop-Launcher",
@@ -127,7 +164,11 @@
       "q4": "Wie reiche ich mein eigenes Plugin ein?",
       "a4": "Nutze die Einreichungs-Seite dieser Seite mit deinem Repo-Link — jede Einreichung wird von Hand geprüft.",
       "q5": "Sind dsh und DeepSeek Harness dasselbe?",
-      "a5": "Ja. DeepSeek Harness ist der vollständige Name, dsh der Name der Community, und das npm-Paket heißt {'@'}deepseek-ai/dsh."
+      "a5": "Ja. DeepSeek Harness ist der vollständige Name, dsh der Name der Community, und das npm-Paket heißt {'@'}deepseek-ai/dsh.",
+      "q6": "Die Installation schlägt fehl, wirft einen Fehler oder öffnet sich nicht — was nun?",
+      "a6": "dsh ist noch eine Developer Preview, Fehler passieren also. Der verlässliche Move: Fehlertext exakt kopieren und zuerst in den Discussions des offiziellen GitHub-Repos suchen, dann fragen — höchstwahrscheinlich hatte jemand dieselbe Wand schon. Diese Seite reicht keine mysteriösen „Lösungen“ weiter und erfindet auch keine.",
+      "q7": "Läuft es auf Windows, macOS und Linux?",
+      "a7": "Ja. dsh ist ein Node.js-Programm und läuft auf allen drei Desktop-Systemen: PowerShell auf Windows, Terminal auf macOS, was auch immer deine Linux-Distro mitbringt. Sobald Node.js v20+ installiert ist, sind die Befehle identisch. Neugierig auf Handys? Sieh dir das Community-Android-Projekt auf der Launcher-Seite an."
     },
     "typoH": "Verschrieben? Kommt ständig vor",
     "typoP": "Ein guter Teil der Besucher landet hier durch Tippfehler. deepseekharness ohne Leerzeichen, deepseek hardness mit extra d, deepseek herness ohne a — alle meinen dasselbe Projekt. Richtig ist DeepSeek Harness, zwei Wörter, kurz dsh. Die Befehle oben funktionieren unabhängig davon, wie du es geschrieben hast.",
@@ -227,7 +268,11 @@
     "screenshotHint": "Eine direkte Bild-URL. Kein Screenshot? Dann geht's in den Ohne-Screenshot-Club.",
     "generate": "Einreichungs-Issue generieren",
     "openIssue": "Issue auf GitHub eröffnen →",
-    "hint": "Dieses Formular baut ein vorausgefülltes GitHub-Issue — kein Account bei uns, kein Backend, kein Tracking."
+    "hint": "Dieses Formular baut ein vorausgefülltes GitHub-Issue — kein Account bei uns, kein Backend, kein Tracking.",
+    "devH": "Entwickler-Guide: Wie man ein dsh-Plugin schreibt",
+    "devP1": "Das offizielle Repo ist die Dokumentation aus erster Hand: Plugin-Entwicklung steht in docs/development.md, der Gesamt-Beitragsfluss in CONTRIBUTING.md — beides im DeepSeek-Harness-GitHub-Repo.",
+    "devP2": "Gib deinem Repo außerdem das dsh-plugin-Topic — darüber finden die Verzeichnisse des Ökosystems (dieses eingeschlossen) die Plugins, und es ist die Listing-Konvention der Community.",
+    "devP3": "Fertig gebaut? Reich es über das Formular oben ein, mit einem Einzeiler in deinen eigenen Worten. Jede Einreichung wird von Hand geprüft, und angenommene Plugins landen in der Liste aller Plugins."
   },
   "about": {
     "title": "Über DSH Meme Hub",
@@ -254,13 +299,122 @@
     "updated": "Datenstand",
     "whaleLine": "Der Wal konnte diese Seite nicht finden."
   },
+  "compare": {
+    "title": "DeepSeek Harness vs Claude Code / Codex / OpenCode: Was ist besser?",
+    "sub": "Sechs übliche Konkurrenten — eine Übersichtstabelle plus je ein Abschnitt. Nur öffentlich überprüfbare Fakten; Sternzahlen und Preise ändern sich, deshalb lassen wir sie bewusst weg.",
+    "introP": "DeepSeek Harness — für die Community dsh — ist das Agent-Harness, das DeepSeek im August 2026 unter der MIT-Lizenz open-sourced hat; das offizielle README nennt es weiterhin einen Developer Preview. Es wird mit Terminal-Agents wie Claude Code und Codex verglichen, und es gibt Community-Projekte im DeepSeek-Orbit. Diese Seite deckt Positionierung, Anbieter und Open-Source-Status, Installationsmethode und Zielgruppe ab — damit du dir Umwege sparst.",
+    "vs": "vs",
+    "tableH": "Die Übersicht auf einen Blick",
+    "th": {
+      "tool": "Werkzeug",
+      "vendor": "Anbieter / Lizenz",
+      "pos": "Positionierung",
+      "install": "Installation",
+      "who": "Passt zu"
+    },
+    "dshRow": {
+      "vendor": "DeepSeek · MIT, Open Source",
+      "pos": "Agent-Harness, alles ist ein Plugin",
+      "install": "eine npx-Zeile",
+      "who": "Tüftler, die Open Source wollen"
+    },
+    "rows": {
+      "cc": {
+        "vendor": "Anthropic · geschlossen, kommerziell",
+        "pos": "Terminal-Coding-Agent",
+        "install": "via npm",
+        "who": "Heavy-Claude-Ecosystem-Nutzer"
+      },
+      "codex": {
+        "vendor": "OpenAI · geschlossen, kommerziell",
+        "pos": "Terminal-Coding-Agent",
+        "install": "via npm",
+        "who": "Heavy-OpenAI-Ecosystem-Nutzer"
+      },
+      "opencode": {
+        "vendor": "Community · Open Source",
+        "pos": "Terminal-Coding-Agent",
+        "install": "npm / Installationsskript",
+        "who": "Fans offener Terminal-Agents"
+      },
+      "reasonix": {
+        "vendor": "Community · Open Source",
+        "pos": "DeepSeek-nativer Terminal-Agent",
+        "install": "siehe Repo-README",
+        "who": "Terminal-first-DeepSeek-Nutzer"
+      },
+      "pi": {
+        "vendor": "Community · Open Source",
+        "pos": "DeepSeek-nativer Terminal-Agent",
+        "install": "siehe Repo-README",
+        "who": "DeepSeek-Nutzer auf Abwechslung"
+      },
+      "omnigent": {
+        "vendor": "Community-Projekt",
+        "pos": "Meta-Harness zur Agent-Orchestrierung",
+        "install": "siehe Repo-README",
+        "who": "Bauer von Multi-Agent-Workflows"
+      }
+    },
+    "sections": {
+      "cc": {
+        "p1": "Claude Code ist Anthropics geschlossener, kommerzieller Terminal-Agent, eng an die Claude-Modelle gekoppelt. DeepSeek Harness ist DeepSeeks eigene Version: MIT-lizenziert und offen, mit winzigem Kern, und UI, Tools und Skins stecken alle über die Cordis-Architektur daran.",
+        "p2": "Auch die Ökosysteme fühlen sich anders an: Claude Code lehnt sich an Anthropics kommerzielles Ökosystem und MCP-Erweiterungen; dsh zählt trotz jungen Alters bereits 5000+ Repos unter topic:dsh-plugin auf GitHub, täglich kommen mehr hinzu (aktuelle Zahlen: GitHub) — von Produktivitätstools bis zum Walf-Mädchen-Haustier. Beide installieren sich in einer Zeile, beide auszuprobieren kostet kaum Zeit."
+      },
+      "codex": {
+        "p1": "Codex ist OpenAIs geschlossener, kommerzieller Coding-Agent — dieselbe Schule aus Terminal plus ein Befehl, gebunden an OpenAIs Modelle und Dienste.",
+        "p2": "Der dsh-Unterschied ist wieder dieselbe Zeile: MIT Open Source, alles ist ein Plugin. Quellcode lesen, den Kern patchen oder eine eigene Plugin-Distribution shipping — das bieten geschlossene Tools nicht. Aber Achtung: noch Developer Preview, schnelllebig und stellenweise holprig; wer heute felsige Produktivität braucht, beobachtet es noch ein, zwei Releases."
+      },
+      "opencode": {
+        "p1": "OpenCode ist ein Community-eigener, offener Terminal-Agent. Gemeinsam mit dsh: Open Source, Ein-Befehl-Start und kein Lock-in in ein einzelnes kommerzielles Produkt.",
+        "p2": "Der Unterschied ist die Philosophie: OpenCode will das Terminal-Coding-Erlebnis gut machen; dsh macht „alles ist ein Plugin“ zum Verkaufsargument — Haustiere und Skins inklusive —, wächst deshalb wilder. Wer ruhig im Terminal coden will, tendiert zu OpenCode; wer ein Haus voller Plugins will, zu dsh."
+      },
+      "reasonix": {
+        "p1": "Reasonix ist ein Community-eigener, DeepSeek-nativer Terminal-Agent, Open Source auf GitHub. Es bedient dieselbe Zielgruppe wie dsh — Entwickler, die Agents auf DeepSeek-Modellen fahren —, aber die beiden haben keine offizielle Beziehung.",
+        "p2": "Die Wahl ist Geschmackssache: Das offizielle Harness mit dem Everything-is-a-Plugin-Ökosystem spricht für dsh; ein leichteres, unabhängiges Projekt, das auf den Terminal-Agent selbst fokussiert, ist Reasonix’ Pitch. Beide leben auf GitHub — je zehn Minuten verraten dir, was in der Hand liegt."
+      },
+      "pi": {
+        "p1": "Pi Agent ist ein weiterer Community-DeepSeek-nativer Terminal-Agent, Open Source auf GitHub, ohne offizielle Bindung an dsh.",
+        "p2": "Es sitzt im selben Spot wie Reasonix: Es setzt auf die Spur „Terminal-Agent, spezialisiert auf DeepSeek-Modelle“. Für das Plugin-Ökosystem und offizielle Rückendeckung nimm dsh; für ein leichtes, unabhängiges Tool nimm es in die engere Auswahl und probier sie nebeneinander."
+      },
+      "omnigent": {
+        "p1": "Omnigent ist ein Meta-Harness, der mehrere Agents orchestriert — seine Ebene ist „wie mehrere Agents zusammenarbeiten“. dsh arbeitet auf einer anderen Ebene: Innerhalb eines Agents ist alles ein Plugin.",
+        "p2": "Es ist also weniger ein Entweder-oder, als es aussieht, und beide lassen sich wohl kombinieren (dsh ist MIT-lizenziert — remixen ausdrücklich erlaubt). Wie genau, steht in den offiziellen Docs der Projekte — nicht in zweiter Hand weitererzählt, auch nicht auf dieser Seite."
+      }
+    },
+    "pickH": "Wie wählen: vier ehrliche Zeilen",
+    "pick1": "Open Source unter eigener Kontrolle, Plugin-Tüfteln, ein meme-freundliches Ökosystem — DeepSeek Harness. Starte mit der Installationsanleitung.",
+    "pick2": "Dein Workflow klebt schon am Claude- oder OpenAI-Paket — bleib vorerst beim jeweiligen offiziellen Tool und schau wieder vorbei, wenn dsh ein stabiles Release hat.",
+    "pick3": "Du willst einfach kein Terminal — halt dich mit der Wahl zurück und schau dir erst die GUI-Launcher an; Doppelklick und los.",
+    "pick4": "Eine letzte ehrliche Zeile: dsh ist Beta. Wenn etwas bricht, in den offiziellen GitHub Discussions suchen oder posten — das schlägt jede Hausmittelkur.",
+    "faqH": "FAQ",
+    "faq": {
+      "q1": "DeepSeek Harness oder Claude Code — was ist besser?",
+      "a1": "Keins gewinnt insgesamt: Wer Open Source, Hackbarkeit und ein explodierendes Plugin-Ökosystem will, nimmt dsh; wer Reife im Claude-Ökosystem braucht, Claude Code. dsh ist noch Developer Preview — Stabilität entsprechend einordnen.",
+      "q2": "Ist DeepSeek Harness kostenlos?",
+      "a2": "Das Framework selbst ist MIT-lizenziert und kostenlos. Die Modellaufrufe beim Agentenbetrieb verrechnet der Modelldienst deiner Wahl — das ist von der Lizenz unabhängig.",
+      "q3": "Hängen dsh, Reasonix und Pi Agent zusammen?",
+      "a3": "Sie alle umkreisen DeepSeek, haben aber keine offizielle Beziehung: dsh ist DeepSeeks eigenes Harness; Reasonix und Pi Agent sind unabhängige Community-Terminal-Agents. Den aktuellen Stand liefern die jeweiligen GitHub-Repos."
+    },
+    "moreH": "Entschieden? Weiter geht's",
+    "moreSub": "Drei weitere Stationen auf dieser Seite:",
+    "mInstallD": "DeepSeek Harness in fünf Minuten zum Laufen bringen, dann die ersten Plugins dazu",
+    "mLauncherD": "GUI-Desktop-Launcher — ganz ohne Terminal"
+  },
   "meta": {
     "homeTitle": "DSH Meme Hub — kuratierte & lustige DeepSeek-Harness-Plugins (dsh)",
+    "homeDesc": "Was ist DeepSeek Harness (dsh)? Das Agent-Harness, das DeepSeek im August 2026 open-sourced hat — alles ist ein Plugin. Diese Seite ist dessen Plugin-Verzeichnis: wo das offizielle Repo liegt, Installation mit einem Befehl, handverlesene Plugins und die Meme-Picks.",
     "homeSearchPh": "{n} Plugins durchsuchen… (versuch: Wal, Skin, Vier gewinnt)",
     "pluginsTitle": "Alle DeepSeek-Harness-Plugins (dsh) — DSH Meme Hub",
     "pluginsDesc": "Jedes katalogisierte Community-Plugin für DeepSeek Harness (dsh): suchen, nach Kategorie filtern, nach Sternen oder Aktualität sortieren — mit Ein-Klick-Installationsbefehlen.",
     "memeTitle": "Meme-Zone — die lustigsten DeepSeek-Harness-Plugins (dsh) | DSH Meme Hub",
     "memeDesc": "Walf-Mädchen-Haustiere, QQ2006-Skins, ein Fake-Werbenetzwerk fürs Terminal — die lustigsten Community-Picks für DeepSeek Harness, einen Klick von der Installation entfernt.",
+    "skinsTitle": "DeepSeek-Harness-Skins (dsh) — Themes wechseln & beste Skin-Plugins | DSH Meme Hub",
+    "skinsDesc": "Wie wechselt man dsh-Skins? Alle Skin- und Theme-Plugins für DeepSeek Harness: die Walf-Mädchen-Serie, Galgame-Oberflächen, Web-UI-Theme-Engines — Drei-Schritte-Anleitung plus nach Sternen sortierte Empfehlungen, jeweils mit Ein-Klick-Installationsbefehl.",
+    "petsTitle": "DeepSeek-Harness-Desktop-Haustiere (dsh) — Walf-Mädchen & Pet-Plugins | DSH Meme Hub",
+    "petsDesc": "Wie schaltet man ein dsh-Desktop-Haustier ein? Alle Haustier-Plugins für DeepSeek Harness: Walf-Mädchen, Desktop-Fisch und der Petdex-Haustierladen — ein Befehl pro Haustier, plus Installationsguide und sortierte Empfehlungen.",
+    "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — was ist besser? Vergleich | DSH Meme Hub",
+    "compareDesc": "DeepSeek Harness (dsh) vs Claude Code, Codex, OpenCode, Reasonix, Pi Agent und Omnigent: Positionierung, Lizenz, Installation, Plugin-Ökosystem und Zielgruppe — eine Tabelle plus je ein Abschnitt pro Konkurrent, zur Wahl des passenden Agent-Harness.",
     "installTitle": "DSH installieren — DSH Meme Hub",
     "installDesc": "DSH-Installationsguide Schritt für Schritt: Terminal öffnen, Node.js prüfen, mit npx starten, Plugins hinzufügen — plus FAQ und häufige Tippfehler.",
     "launcherTitle": "DSH Desktop-Launcher — ohne Terminal | DSH Meme Hub",

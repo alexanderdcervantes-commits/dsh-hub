@@ -2,6 +2,8 @@
   "nav": {
     "meme": "🤪 整活專區",
     "plugins": "🧩 全部外掛",
+    "skins": "皮膚專區",
+    "pets": "桌寵專區",
     "install": "🚀 安裝",
     "launchers": "🖥️ 啟動器",
     "submit": "➕ 投稿",
@@ -26,7 +28,13 @@
     "statTotal": "收錄外掛",
     "statMeme": "整活精選",
     "statStars": "star 總和",
-    "statCats": "分類數"
+    "statCats": "分類數",
+    "whatTitle": "DeepSeek Harness (dsh) 是什麼？",
+    "whatP1": "DeepSeek Harness 是 DeepSeek 官方開源的 AI agent harness（智慧體執行框架），2026 年 8 月 13 日以 MIT 授權放出，官方 README 裡自己標注目前是 developer preview（開發者預覽期）。名字太長，社群直接叫它 dsh——npm 包名就是 {'@'}deepseek-ai/dsh。",
+    "whatP2": "它的設計哲學就一句：一切皆外掛（Everything is a Plugin）。核心只保留一個很小的調度核心（官方叫 Cordis 架構），介面、工具、皮膚、桌寵統統以外掛形式插上去——所以任務看板和鯨魚娘桌寵能住在同一個生態裡。",
+    "whatP3": "想親眼看看？一條命令：npx {'@'}deepseek-ai/dsh web，瀏覽器開啟本地地址就能玩。第一次接觸建議跟著安裝指南走，五分鐘。",
+    "whatCta": "看安裝指南 →",
+    "whatCta2": "逛全部外掛 →"
   },
   "plugin": {
     "install": "安裝",
@@ -75,7 +83,7 @@
   },
   "plugins": {
     "title": "全部外掛",
-    "sub": "已收錄的全部 dsh 外掛——可搜尋、可篩選、可排序。",
+    "sub": "人工精選，本站現已收錄 {n} 個 dsh 外掛——可搜尋、可篩選、可排序，每個都帶一鍵安裝命令。",
     "searchPlaceholder": "搜尋名稱、描述、倉庫…",
     "sortStars": "star 最多",
     "sortRecent": "最近推送",
@@ -84,6 +92,35 @@
     "results": "{n} 個外掛",
     "noResults": "沒有匹配的結果，換個關鍵詞試試？",
     "installGuide": "安裝指南 →"
+  },
+  "skins": {
+    "title": "🎨 DeepSeek Harness 皮膚與換膚外掛",
+    "sub": "dsh 怎麼換皮膚？這一頁收全了換膚/主題類外掛，按 star 排序，挑中就一條命令換上。",
+    "count": "{n} 個皮膚/主題外掛",
+    "whatH": "皮膚是什麼：dsh 的換膚機制",
+    "whatP1": "DeepSeek Harness 的介面是跑在瀏覽器裡的 Web UI（終端裡 npx 啟動後自動開啟的那個頁面），而「一切皆外掛」的設計意味著：皮膚不是設定檔裡的一個參數，它本身就是一個外掛。裝上、啟用，介面就換了；不喜歡就停用，隨時換回預設；想混搭就多裝幾個。",
+    "whatP2": "於是社群裡「換皮膚」的玩法五花八門：有把整套介面換成鯨魚娘女僕主題的皮膚系列，有把會話視窗一鍵切成 Galgame 畫風的，也有只動背景、狀態列文字這種小手術的。工程量不同，原理一樣。",
+    "howH": "怎麼換皮膚：三步通用流程",
+    "howP1": "第一步，先把 dsh 跑起來——還沒裝過的照著安裝指南走，五分鐘的事。第二步，從下面的列表挑一個皮膚外掛，進它的詳情頁複製安裝命令，貼進終端按 Enter。第三步，到 Web UI 的外掛頁啟用它，重新整理介面就能看到新皮膚。",
+    "howP2": "兩個提醒：不同皮膚外掛支援的 dsh 版本可能不一樣，裝之前掃一眼倉庫 README；皮膚也是社群作品，深改介面的外掛同樣建議先看看程式碼再裝。",
+    "howCta": "還沒裝 dsh？先看安裝指南 →",
+    "picksH": "換膚外掛精選",
+    "picksP1": "下面按 star 數從高到低排，既有整活專區的換皮組，也有認真做主題引擎的。拿不定主意就先試排最前面的鯨魚娘皮膚系列——本站吉祥物同款。",
+    "picksTop": "star 最高的兩個直接進："
+  },
+  "pets": {
+    "title": "🐳 DeepSeek Harness 桌寵與桌面寵物外掛",
+    "sub": "dsh 桌寵怎麼開？鯨魚娘、大肥魚、桌寵商店都在這一頁，一條命令讓桌面上多一隻。",
+    "count": "{n} 個桌寵/桌面寵物外掛",
+    "cultureH": "桌寵文化：開源一週，先游出來的是鯨魚",
+    "cultureP1": "DeepSeek Harness 開源沒幾天，社群交出的第一批爆款外掛裡，桌面寵物佔了一大席：有 QQ 寵物形態的鯨魚娘，能拖曳、投餵、完成任務攢資歷升稱號；有住在 Windows 桌面的大肥魚，跟著 dsh 一起啟停；還有乾脆做了個「桌寵應用商店」，一條命令瀏覽、安裝全社群投稿的動畫寵物。",
+    "cultureP2": "本站的吉祥物——那隻在 404 頁裡划水的鯨——同樣來自這個生態。鯨魚娘既是桌寵也是皮膚系列，算是 dsh 社群的非官方圖騰。",
+    "howH": "桌寵怎麼開",
+    "howP1": "桌寵不是獨立軟體，它也是一種 dsh 外掛。流程和裝任何外掛一樣：先把 dsh 跑起來（沒裝過看安裝指南），從下面挑一隻，複製詳情頁裡的安裝命令貼進終端，再到 Web UI 的外掛頁啟用。寵物長什麼樣、能不能互動、顯示在哪個視窗，每個外掛各有一套，以各倉庫 README 為準。",
+    "howCta": "先看安裝指南 →",
+    "picksH": "桌寵外掛精選",
+    "picksP1": "按 star 從高到低排。排在最前面的 Petdex 是桌寵界的應用商店，想先看全集可以從它逛起。",
+    "picksTop": "鯨魚娘本鯨在這兩個詳情頁："
   },
   "launcher": {
     "title": "桌面啟動器",
@@ -133,7 +170,11 @@
       "q4": "怎麼投稿自己的外掛？",
       "a4": "用本站的投稿頁，貼上倉庫連結就行。每一條投稿都是人工稽核的。",
       "q5": "dsh 和 DeepSeek Harness 是同一個東西嗎？",
-      "a5": "是。DeepSeek Harness 是全稱，dsh 是社群叫出來的簡稱，npm 包名是 {'@'}deepseek-ai/dsh。"
+      "a5": "是。DeepSeek Harness 是全稱，dsh 是社群叫出來的簡稱，npm 包名是 {'@'}deepseek-ai/dsh。",
+      "q6": "安裝失敗、報錯、打不開怎麼辦？",
+      "a6": "dsh 還在開發者預覽期，出報錯不丟人。最靠譜的做法：把報錯資訊原樣複製，去官方 GitHub 倉庫的 Discussions 先搜後問——多半已經有人踩過同一個坑。本站不搬運來路不明的「解決方案」，也不瞎編。",
+      "q7": "Windows / macOS / Linux 都能裝嗎？",
+      "a7": "能。dsh 是 Node.js 程式，三大桌面系統通用：Windows 用 PowerShell，macOS 用終端，Linux 各發行版自帶終端。裝好 Node.js v20+ 之後命令完全一樣。想在手機上碰運氣的，去看啟動器頁的社群安卓專案。"
     },
     "typoH": "拼錯了？太正常了",
     "typoP": "相當一部分訪客是拼錯了才搜進來的。deepseekharness 不帶空格、deepseek hardness 多個 d、deepseek herness 少個 a，搜的都是同一個東西。正確寫法是 DeepSeek Harness，兩個詞，社群簡稱 dsh。不管你當初是怎麼拼的，上面的命令照用不誤。",
@@ -233,7 +274,11 @@
     "screenshotHint": "可直接訪問的圖片連結。沒有截圖的專案會先委屈在文字選手區。",
     "generate": "生成投稿 issue",
     "openIssue": "去 GitHub 提交 issue →",
-    "hint": "這個表單會生成一個預填好的 GitHub issue——我們這邊沒有賬號系統、沒有後端、沒有追蹤。"
+    "hint": "這個表單會生成一個預填好的 GitHub issue——我們這邊沒有賬號系統、沒有後端、沒有追蹤。",
+    "devH": "開發者指南：怎麼寫一個 dsh 外掛",
+    "devP1": "官方倉庫就是第一手文件：外掛開發看 docs/development.md，整體貢獻流程看 CONTRIBUTING.md，都在 DeepSeek Harness 的 GitHub 倉庫裡，照著走就不會跑偏。",
+    "devP2": "寫的時候記得給倉庫打上 dsh-plugin topic——生態裡的導航站（包括本站）都靠它找外掛，這也是社群的收錄慣例。",
+    "devP3": "寫完想進本站？用上面的表單提交，附一句你自己的話介紹；每一條都人工稽核，通過後就會出現在全部外掛列表裡。"
   },
   "about": {
     "title": "關於 DSH Meme Hub",
@@ -260,13 +305,122 @@
     "updated": "資料更新於",
     "whaleLine": "這隻鯨魚沒找到你要的頁面。"
   },
+  "compare": {
+    "title": "DeepSeek Harness vs Claude Code / Codex / OpenCode：哪個好？",
+    "sub": "六個常見對手，一張總覽表加逐個小節。只講公開可查的事實，星數、價格這類會變的數字一律不寫死。",
+    "introP": "DeepSeek Harness（社群簡稱 dsh）是 DeepSeek 官方 2026 年 8 月開源的 agent harness，MIT 授權，官方 README 目前標注 developer preview。它常被拿來和 Claude Code、Codex 這樣的終端 agent 比，也有幾個同樣圍著 DeepSeek 打轉的社群專案。這頁把定位、出品方與開源情況、安裝方式和適合誰一次講清，幫你少走彎路。",
+    "vs": "vs",
+    "tableH": "總覽：一張表看懂",
+    "th": {
+      "tool": "工具",
+      "vendor": "出品 / 開源",
+      "pos": "定位",
+      "install": "安裝",
+      "who": "適合誰"
+    },
+    "dshRow": {
+      "vendor": "DeepSeek 官方 · MIT 開源",
+      "pos": "agent harness，一切皆外掛",
+      "install": "npx 一行啟動",
+      "who": "想折騰外掛生態、要開源可控的人"
+    },
+    "rows": {
+      "cc": {
+        "vendor": "Anthropic · 閉源商業",
+        "pos": "終端編碼 agent",
+        "install": "npm 安裝",
+        "who": "重度使用 Claude 生態的人"
+      },
+      "codex": {
+        "vendor": "OpenAI · 閉源商業",
+        "pos": "終端編碼 agent",
+        "install": "npm 安裝",
+        "who": "重度使用 OpenAI 生態的人"
+      },
+      "opencode": {
+        "vendor": "社群 · 開源",
+        "pos": "終端編碼 agent",
+        "install": "npm / 安裝腳本",
+        "who": "想要開源終端 agent 的人"
+      },
+      "reasonix": {
+        "vendor": "社群 · 開源",
+        "pos": "DeepSeek 原生終端 agent",
+        "install": "見倉庫 README",
+        "who": "專注終端體驗的 DeepSeek 使用者"
+      },
+      "pi": {
+        "vendor": "社群 · 開源",
+        "pos": "DeepSeek 原生終端 agent",
+        "install": "見倉庫 README",
+        "who": "想換口味的 DeepSeek 使用者"
+      },
+      "omnigent": {
+        "vendor": "社群專案",
+        "pos": "編排多 agent 的 meta-harness",
+        "install": "見倉庫 README",
+        "who": "要搭多 agent 工作流的人"
+      }
+    },
+    "sections": {
+      "cc": {
+        "p1": "Claude Code 是 Anthropic 出品的閉源商業終端 agent，和 Claude 模型深度綁定。DeepSeek Harness 則是 DeepSeek 官方開源、MIT 授權，核心很小，介面、工具、皮膚全以外掛形式插在 Cordis 架構上。",
+        "p2": "生態畫風也不同：Claude Code 背靠 Anthropic 的商業生態與 MCP 擴充；dsh 開源不久，GitHub 上 topic:dsh-plugin 已有 5000+ 倉庫且每日新增（資料以 GitHub 為準），從生產力工具一路長到鯨魚娘桌寵。兩邊安裝都是一行命令的量級，切換成本不高，都可以試。"
+      },
+      "codex": {
+        "p1": "Codex 是 OpenAI 出品的閉源商業編碼 agent，同樣走終端 + 一行命令的路線，綁的是 OpenAI 的模型與商業服務。",
+        "p2": "dsh 的差別還是那句：MIT 開源，everything is a plugin。想讀原始碼、改核心、自己發外掛發行版，閉源工具做不到，dsh 可以。不過它還在開發者預覽期，迭代快、坑也多，衝著穩定生產力來的可以再觀望一兩個版本。"
+      },
+      "opencode": {
+        "p1": "OpenCode 是社群開源的終端 agent。和 dsh 的共同點：都開源、都能一行命令跑起來、都不把你鎖死在一家商業產品裡。",
+        "p2": "差別在哲學：OpenCode 專注把終端裡的編碼體驗做好；dsh 把「一切皆外掛」當核心賣點，連桌寵和皮膚都是外掛，生態長得也更野。想在終端裡安安靜靜寫程式的看前者，想裝一屋子外掛折騰的看後者。"
+      },
+      "reasonix": {
+        "p1": "Reasonix 是社群做的 DeepSeek 原生終端 agent，GitHub 開源。它和 dsh 服務同一批人——想用 DeepSeek 模型跑 agent 的開發者——但兩者沒有官方關係。",
+        "p2": "選哪個看口味：想用官方 harness、吃到 everything-is-a-plugin 生態的選 dsh；想要更輕、專注終端 agent 本身的獨立專案，Reasonix 值得一試。都在 GitHub 上，各跑十分鐘就知道合不合手。"
+      },
+      "pi": {
+        "p1": "Pi agent 同樣是社群出品的 DeepSeek 原生終端 agent，GitHub 開源，和 dsh 沒有官方關係。",
+        "p2": "和 Reasonix 的處境類似：它賭的是「為 DeepSeek 模型特化的終端 agent」這條路線本身。要外掛生態和官方背書選 dsh，要輕量獨立的專案就把它加進候選一起試。"
+      },
+      "omnigent": {
+        "p1": "Omnigent 是編排多 agent 的 meta-harness，管的是「多個 agent 怎麼協同幹活」這層；dsh 管的是另一層——「一個 agent 內部，一切皆外掛」。",
+        "p2": "所以這兩者不太構成二選一，理論上還能組合著用（dsh 是 MIT 開源，隨便拼）。具體怎麼接，以兩個專案各自的官方文件為準，別信包括本站在內的二手轉述。"
+      }
+    },
+    "pickH": "怎麼選：四條實話",
+    "pick1": "想要開源可控、喜歡折騰外掛、對整活生態有興趣——選 DeepSeek Harness，從安裝指南開始。",
+    "pick2": "工作流已經綁死 Claude 或 OpenAI 全家桶——先用各家官方工具最省心，等 dsh 出了穩定版再看。",
+    "pick3": "不想敲命令列——先別急著選型，去啟動器頁看看圖形介面的桌面啟動器，雙擊就能用。",
+    "pick4": "最後一句實話：dsh 是內測期專案，遇到報錯去官方 GitHub Discussions 搜/提，比到處找偏方靠譜。",
+    "faqH": "常見問題",
+    "faq": {
+      "q1": "DeepSeek Harness 和 Claude Code 哪個好？",
+      "a1": "沒有絕對的好：要開源、可改、外掛生態爆發期，選 dsh；已經在 Claude 生態裡、需要閉源商業工具的成熟度，選 Claude Code。dsh 還在開發者預覽期，穩定性以官方倉庫為準。",
+      "q2": "DeepSeek Harness 免費嗎？",
+      "a2": "框架本身 MIT 開源、免費。跑 agent 消耗的模型呼叫費用取決於你接的模型服務，和框架開源與否是兩回事。",
+      "q3": "dsh 和 Reasonix、Pi agent 是什麼關係？",
+      "a3": "都是圍繞 DeepSeek 的專案，但相互沒有官方關係：dsh 是 DeepSeek 官方的 harness，Reasonix 和 Pi agent 是社群獨立的終端 agent。現狀以各自 GitHub 倉庫為準。"
+    },
+    "moreH": "選完了？接著逛",
+    "moreSub": "本站還有這三個地方：",
+    "mInstallD": "五分鐘跑起 DeepSeek Harness，再裝上第一批外掛",
+    "mLauncherD": "圖形介面桌面啟動器，全程不碰命令列"
+  },
   "meta": {
     "homeTitle": "DSH Meme Hub — DeepSeek Harness 外掛整活精選導航",
+    "homeDesc": "DeepSeek Harness (dsh) 是什麼？DeepSeek 官方 2026 年 8 月開源的 agent harness，一切皆外掛。本站是它的外掛導航：官方倉庫在哪、一條命令下載安裝、人工精選外掛與整活合集。",
     "homeSearchPh": "搜尋 {n} 個外掛…（試試：鯨魚、皮膚、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 外掛目錄 — 全部收錄 | DSH Meme Hub",
     "pluginsDesc": "已收錄的全部 DeepSeek Harness (dsh) 社群外掛：搜尋、分類篩選、按 star 或最近推送排序，附一鍵安裝命令。",
     "memeTitle": "整活專區 — DSH 社群最歡樂的外掛 | DSH Meme Hub",
     "memeDesc": "鯨魚娘桌寵、QQ2006 皮膚、貪玩藍鯨廣告網路……DeepSeek Harness 社群整活精選，附一鍵安裝。",
+    "skinsTitle": "DeepSeek Harness (dsh) 皮膚外掛精選 — 怎麼換皮膚/主題推薦 | DSH Meme Hub",
+    "skinsDesc": "dsh 怎麼換皮膚？DeepSeek Harness 換膚/主題外掛合集：鯨魚娘皮膚系列、Galgame 介面、Web UI 主題引擎，三步換膚通用流程 + 按 star 排序的皮膚推薦，附一鍵安裝命令。",
+    "petsTitle": "DeepSeek Harness (dsh) 桌寵外掛精選 — 桌面寵物/鯨魚娘怎麼開 | DSH Meme Hub",
+    "petsDesc": "dsh 桌寵怎麼開？DeepSeek Harness 桌面寵物外掛合集：鯨魚娘、大肥魚、桌寵商店 Petdex，一條命令讓桌面多一隻寵物，附安裝指南與精選推薦。",
+    "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — 哪個好？對比評測 | DSH Meme Hub",
+    "compareDesc": "DeepSeek Harness (dsh) 和 Claude Code、Codex、OpenCode、Reasonix、Pi agent、Omnigent 有什麼區別？定位、開源授權、安裝方式、外掛生態、適合誰，一張表 + 逐個對比，幫你選 agent harness。",
     "installTitle": "安裝 DSH — DSH Meme Hub",
     "installDesc": "從開啟終端到裝好第一個外掛：DSH 安裝教程包含 Node.js 檢查、npx 啟動、外掛安裝、FAQ 和常見拼寫錯誤。",
     "launcherTitle": "DSH 桌面啟動器 — 不敲命令列也能用 | DSH Meme Hub",
