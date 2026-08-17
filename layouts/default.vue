@@ -95,6 +95,9 @@ const toast = useState<string | null>('toast', () => null)
               <li><NuxtLink :to="localePath('/submit')">{{ t('footer.submit') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/skins')">{{ t('nav.skins') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/pets')">{{ t('nav.pets') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/plugins/vision')">{{ t('nav.vision') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/plugins/clients')">{{ t('nav.clients') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/plugins/ops')">{{ t('nav.ops') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/compare')">{{ t('nav.compare') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/best')">{{ t('nav.best') }}</NuxtLink></li>
             </ul>

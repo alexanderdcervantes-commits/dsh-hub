@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Build public/data/plugins.json for DSH Meme Hub.
 
+⚠️ 遗留脚本(LEGACY):2026-08-18 分类重构(14 类新taxonomy)与竞品合并收录(334 插件)
+之后,plugins.json 由人工/收录脚本直接维护,本脚本的一次性合并使命已完成,勿再整跑——
+重跑会用旧数据覆盖全量目录。仅作历史参照保留。
+
 Merges two existing sources (do NOT re-crawl them):
   1. /root/china-ai-arbitrage/public/data/dsh-plugins.json  — 87 catalogued plugins
   2. /root/dsh-meme-hub README.zh-CN.md / README.md          — 29 curated meme picks
@@ -26,7 +30,7 @@ SECTION_CATEGORY = {
     'skins':    ('换皮肤色', 'Skins & Themes'),
     'pets':     ('赛博宠物', 'Cyber Pets'),
     'slackoff': ('摸鱼游戏', 'Slack-Off Zone'),
-    'useful':   ('生产力工具', 'Actually Useful'),
+    'useful':   ('UI 增强', 'UI Enhancements'),  # 2026-08-18 起:生产力工具已并入 UI 增强
     'textclub': ('文字选手', 'Words Only'),
 }
 
@@ -212,7 +216,7 @@ MEME = [
 ]
 
 TAG_CATEGORY = {
-    'workhorse': ('生产力工具', 'Actually Useful'),
+    'workhorse': ('UI 增强', 'UI Enhancements'),  # 2026-08-18 起:生产力工具已并入 UI 增强
     'skin':      ('换皮肤色', 'Skins & Themes'),
     'slackoff':  ('摸鱼游戏', 'Slack-Off Zone'),
 }

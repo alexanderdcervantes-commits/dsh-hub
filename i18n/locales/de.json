@@ -9,7 +9,10 @@
     "submit": "➕ Einreichen",
     "about": "Über uns",
     "compare": "Vergleiche",
-    "best": "Plugin-Ranglisten"
+    "best": "Plugin-Ranglisten",
+    "vision": "Vision",
+    "clients": "Terminals & Clients",
+    "ops": "Security & Ops"
   },
   "hero": {
     "title": "Alles ist ein Plugin —",
@@ -483,6 +486,54 @@
         "name": "Plugin hinzufügen",
         "text": "dsh plugin add github:owner/repo mit dem gewünschten Plugin ausführen und es dann in der Web-UI aktivieren."
       }
-    }
+    },
+    "visionTitle": "DeepSeek Harness (dsh) Vision-Plugins — Wie Text-Modelle Bilder sehen | DSH Meme Hub",
+    "visionDesc": "Wie liest dsh Bilder? Alle DeepSeek-Harness-Vision- & Multimodal-Plugins: {n} Bild-Fragen-, OCR-, UI-Reproduktions-, Bildgenerierungs- und Spracheingabe-Plugins — VLM-Bridges und kostenlose Vision-Ketten, nach Stars sortiert.",
+    "clientsTitle": "DeepSeek Harness (dsh) TUIs & Desktop-Clients — DSH ohne Browser | DSH Meme Hub",
+    "clientsDesc": "Hat dsh eine Terminal-UI? Alle DeepSeek-Harness-TUIs und Clients: {n} Claude-Code-artige Terminals, Electron/macOS-Shells, Windows-Launcher und Mobile-Fernsteuerung — nach Stars sortiert mit Installationsbefehlen.",
+    "opsTitle": "DeepSeek Harness (dsh) Security- & Ops-Plugins — Approvals, Audits, Verbrauch | DSH Meme Hub",
+    "opsDesc": "Wie siehst du den dsh-Verbrauch? Alle DeepSeek-Harness-Security- & Ops-Plugins: {n} Approval-, Audit-, Session-Health-, Token-Verbrauchs- und Kosten-Monitoring-Plugins — nach Stars sortiert."
+  },
+  "vision": {
+    "title": "Vision- & Multimodal-Plugins — Augen für das text-only DSH",
+    "sub": "Screenshot einfügen und DeepSeek kann ihn lesen: Bild-Fragen, Long-Screenshot-OCR, UI-Reproduktion, Bildgenerierung und Spracheingabe — das gesamte DSH-Vision-Ökosystem in einer Kategorie.",
+    "count": "{n} Vision- & Multimodal-Plugins, nach Stars sortiert",
+    "whatH": "Was ist ein DSH-Vision-Plugin?",
+    "whatP1": "DeepSeek ist ein reines Textmodell und kann Bilder nicht sehen. Vision-Plugins fungieren als Augen: Screenshots, Diagramme und UI-Entwürfe laufen durch ein VLM und kommen als strukturierte Textbeweise (OCR, Layout, Semantik) zurück.",
+    "whatP2": "Einer der sternstärksten Plugin-Tracks überhaupt: ModLens und dsh-vision-toolkit geben Agenten ohne Visionsmodell das Sehen — teils mit Pixel-Diff, Grounding und GUI-Automatisierung.",
+    "howH": "Auswählen und installieren?",
+    "howP1": "Gelegentlich Bild einfügen → Router-Plugin mit kostenloser Vision-Kette; ernsthafte UI-Reproduktion und Batch-OCR → Workflow-Toolkit; Bildgenerierung und Sprache → ERNIE-Bildgen und FunASR-Sprachplugins.",
+    "howP2": "Die meisten Vision-Plugins brauchen einen OpenAI-kompatiblen VLM-API-Key (Zhipus Free-Tier ist üblich); wenige bringen eine kostenlose Kette mit. Installation wie bei jedem Plugin.",
+    "howCta": "Zur dreischrittigen Installationsanleitung →",
+    "picksH": "Vision & Multimodal Auswahl",
+    "picksP1": "Nach Stars sortiert, mit Installationsbefehlen und Manifest-Badges."
+  },
+  "clients": {
+    "title": "Terminals & Clients — TUI, Desktop-Shells und Mobile",
+    "sub": "Keine Lust, einen Browser-Tab offen zu halten? Claude-Code-artige TUIs, Electron/macOS-Desktop-Clients, Windows-Launcher und Fernsteuerung per Handy — andere Wege, DSH zu nutzen.",
+    "count": "{n} Terminals und Clients, nach Stars sortiert",
+    "whatH": "TUI vs. Desktop-Client vs. Launcher?",
+    "whatP1": "Eine TUI ist eine komplette Session-Oberfläche im Terminal (Claude-Code-Stil: Streaming-Gedanken, Doppel-Esc-Rollback); Desktop-Clients packen dsh web in ein eigenes Electron/SwiftUI-Fenster; Launcher starten den Dienst per Klick.",
+    "whatP2": "Mobile Lösungen sind meist Fernsteuerung: per LAN oder Ende-zu-Ende-Verschlüsselung zum DSH auf deinem Rechner — dieselbe Session vom Handy aus weiterführen.",
+    "howH": "Auswählen und installieren?",
+    "howP1": "Tägliche intensive Nutzung → TUI (npm one-click); Tray-resident → Desktop-Shell; Doppelklick-Start → Launcher; Fortschritt von der Couch → Mobile.",
+    "howP2": "TUIs sind meist npm-Pakete oder Profile-Bundles; Desktop-Clients: klonen und npm start; Mobile braucht Pairing auf beiden Seiten.",
+    "howCta": "Zur dreischrittigen Installationsanleitung →",
+    "picksH": "Terminals & Clients Auswahl",
+    "picksP1": "Nach Stars sortiert, mit Installationsbefehlen und Manifest-Badges."
+  },
+  "ops": {
+    "title": "Security & Ops — Approvals, Audits, Verbrauch und Kosten",
+    "sub": "Tool-Call-Approvals, Security-Audits, Session-Health-Checks, Token-Verbrauch und Kosten-Monitoring — DSH stabil halten und genau sehen, was es kostet.",
+    "count": "{n} Security- & Ops-Plugins, nach Stars sortiert",
+    "whatH": "Welche Sicherheitsgurte braucht DSH?",
+    "whatP1": "Ein autonomer Agent hat viel Macht — Approval-Plugins (Aegis & Co.) legen ein manuelles oder automatisches Gate vor jeden Tool-Call; Audit-Plugins scannen Konfiguration, Credentials und Netzwerk-Exposition in reproduzierbare, geschwärzte Risiko-Reports.",
+    "whatP2": "Ops-Seite: Session-Health-Checks, automatische Typ-Checks, Port-Triage, A/B-Slot-Upgrades und Auto-Resume. Verbrauchs-Seite: Token-Statistik, API-Balance-Monitore und Kosten-Governance.",
+    "howH": "Auswählen und installieren?",
+    "howP1": "Zuerst Approvals (standardmäßig manuell, auto öffnen, wenn vertraut); dann Verbrauchs-Monitoring; in Produktion Audits und Health-Checks; bei häufigen Upgrades die Ops-Toolbox.",
+    "howP2": "Alles Standard-dsh-Plugins — ein Befehl zur Installation, siehe Anleitung.",
+    "howCta": "Zur dreischrittigen Installationsanleitung →",
+    "picksH": "Security & Ops Auswahl",
+    "picksP1": "Nach Stars sortiert, mit Installationsbefehlen und Manifest-Badges."
   }
 }

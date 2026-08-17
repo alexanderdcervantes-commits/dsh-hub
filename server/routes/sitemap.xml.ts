@@ -11,7 +11,7 @@ export default defineEventHandler((event) => {
   const site = (config.public.siteUrl as string).replace(/\/$/, '')
   const plugins = (pluginsData as { plugins: Slug[] }).plugins
 
-  const top = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
+  const top = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'plugins/vision', 'plugins/clients', 'plugins/ops', 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
   const urls: string[] = []
 
   const LANGS = [

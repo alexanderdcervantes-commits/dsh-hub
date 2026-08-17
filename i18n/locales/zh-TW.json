@@ -9,7 +9,10 @@
     "submit": "➕ 投稿",
     "about": "關於",
     "compare": "對比評測",
-    "best": "外掛排行榜"
+    "best": "外掛排行榜",
+    "vision": "視覺與多模態",
+    "clients": "終端與客戶端",
+    "ops": "安全與運維"
   },
   "hero": {
     "title": "一切皆外掛——",
@@ -483,6 +486,54 @@
         "name": "新增外掛",
         "text": "執行 dsh plugin add github:owner/repo，owner/repo 換成你想裝的外掛，然後去 Web UI 啟用。"
       }
-    }
+    },
+    "visionTitle": "DeepSeek Harness (dsh) 識圖/視覺外掛精選 — 純文本模型怎麼看圖 | DSH Meme Hub",
+    "visionDesc": "dsh 怎麼識圖?DeepSeek Harness 視覺與多模態外掛合集:{n} 個識圖問答、長截圖 OCR、UI 還原、文生圖與語音輸入外掛,VLM 橋接與免費視覺鏈,按 star 排序,附一鍵安裝命令。",
+    "clientsTitle": "DeepSeek Harness (dsh) TUI 終端與桌面客戶端精選 — 不開瀏覽器用 DSH | DSH Meme Hub",
+    "clientsDesc": "dsh 有終端 UI 嗎?DeepSeek Harness TUI 與客戶端合集:{n} 個 Claude Code 風終端、Electron/macOS 桌面殼、Windows 啟動器與移動端遠端控制,按 star 排序,附安裝命令。",
+    "opsTitle": "DeepSeek Harness (dsh) 安全與運維外掛 — 審批/審計/用量監控 | DSH Meme Hub",
+    "opsDesc": "dsh 用量怎麼看?DeepSeek Harness 安全與運維外掛合集:{n} 個工具呼叫審批、安全審計、會話體檢、token 用量與費用監控外掛,按 star 排序,附一鍵安裝命令。"
+  },
+  "vision": {
+    "title": "視覺與多模態外掛 — 給純文本 DSH 裝上眼睛",
+    "sub": "貼上截圖就能讓 DeepSeek 讀圖:識圖問答、長截圖 OCR、UI 還原、文生圖與語音輸入,一個分類看全 DSH 的視覺生態。",
+    "count": "共 {n} 個視覺與多模態外掛,按 star 排序",
+    "whatH": "什麼是 DSH 視覺外掛?",
+    "whatP1": "DeepSeek 是純文本模型,看不了圖——視覺外掛在中間當\"眼睛\":把截圖、圖表、UI 設計稿經 VLM 轉成結構化文字證據(OCR、版面、語義),再交給模型處理。",
+    "whatP2": "這也是目前 star 最高的外掛賽道之一:ModLens、dsh-vision-toolkit 都在為\"無視覺模型的 Agent 補視力\",有的還支援畫素級 diff、grounding 與 GUI 自動化。",
+    "howH": "怎麼選、怎麼裝?",
+    "howP1": "只想偶爾貼圖問問題 → 選自帶免費視覺鏈的路由類外掛;要長期做 UI 還原、批次 OCR → 選帶工作流的工具包;要文生圖、語音輸入 → 看 ERNIE 文生圖與 FunASR 語音。",
+    "howP2": "多數視覺外掛需配一個 OpenAI 相容的 VLM API key(智譜免費檔最常用),少數自帶免費鏈路;安裝方式與其他外掛一致。",
+    "howCta": "檢視三步通用安裝教程 →",
+    "picksH": "視覺與多模態外掛精選",
+    "picksP1": "按 star 排序,含安裝命令與 manifest 驗證標記。"
+  },
+  "clients": {
+    "title": "終端與客戶端 — TUI、桌面殼與移動端",
+    "sub": "不想開著瀏覽器?Claude Code 風終端 UI、Electron/macOS 桌面客戶端、Windows 啟動器與手機遠端控制,換一種方式用 DSH。",
+    "count": "共 {n} 個終端與客戶端,按 star 排序",
+    "whatH": "TUI、桌面客戶端、啟動器有什麼區別?",
+    "whatP1": "TUI 是跑在終端裡的完整會話介面(Claude Code 風格,流式思考、雙擊 Esc 回滾);桌面客戶端把 dsh web 裝進 Electron/SwiftUI 獨立視窗;啟動器只負責一鍵拉起服務。",
+    "whatP2": "移動端方案多為\"遠端控制\"形態:通過區域網或端到端加密連線到你電腦上跑的 DSH,手機上繼續同一個會話。",
+    "howH": "怎麼選、怎麼裝?",
+    "howP1": "重度日常使用 → TUI(npm 一鍵裝);想要托盤常駐 → 桌面殼;只想雙擊啟動 → 啟動器;想躺著看進度 → 移動端。",
+    "howP2": "TUI 多為 npm 包或 profile bundle,桌面客戶端多為 clone 後 npm start,移動端需兩端配對。",
+    "howCta": "檢視三步通用安裝教程 →",
+    "picksH": "終端與客戶端精選",
+    "picksP1": "按 star 排序,含安裝命令與 manifest 驗證標記。"
+  },
+  "ops": {
+    "title": "安全與運維 — 審批、審計、用量與費用",
+    "sub": "工具呼叫審批、安全審計、會話體檢、token 用量與費用監控:讓 DSH 跑得又穩,還看得見花了多少。",
+    "count": "共 {n} 個安全與運維外掛,按 star 排序",
+    "whatH": "DSH 需要哪些\"安全帶\"?",
+    "whatP1": "自動化 Agent 許可權很大——審批類外掛(Aegis 等)給每次工具呼叫加人工或自動門禁;審計類外掛掃描配置、憑據與網路暴露面,輸出脫敏、可復現的風險報告。",
+    "whatP2": "運維側:會話健康檢查、自動型別檢查、埠處置、A/B 雙槽升級與斷點續接;用量側:token 統計、API 餘額監視與費用治理。",
+    "howH": "怎麼選、怎麼裝?",
+    "howP1": "先裝審批(預設手動檔,跑順了再開 auto);再裝用量監控盯費用;生產環境加審計與體檢;頻繁升級就上運維工具箱。",
+    "howP2": "均為標準 dsh 外掛,一條命令安裝,詳見安裝教程。",
+    "howCta": "檢視三步通用安裝教程 →",
+    "picksH": "安全與運維外掛精選",
+    "picksP1": "按 star 排序,含安裝命令與 manifest 驗證標記。"
   }
 }
