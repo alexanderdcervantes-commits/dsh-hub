@@ -1,9 +1,20 @@
 <script setup lang="ts">
+import { categoryPlugins, enabledCategoryPages, pickL10n } from '~/composables/useCategoryPages'
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const config = useRuntimeConfig()
 const { plugins, query, categories } = usePlugins()
+
+// 分类落地页入口（data/seo/category-pages.json 驱动）：标签、emoji、数量全部读配置+运行时计算，
+// 新增分类自动出现在这里与 sitemap/预渲染里（真实可点击入口，非 sitemap 孤立页）
+const categoryEntries = computed(() =>
+  enabledCategoryPages().map(cat => ({
+    slug: cat.slug,
+    emoji: cat.emoji,
+    label: pickL10n(cat.label, locale.value),
+    count: categoryPlugins(cat, plugins).length,
+  })))
 
 // 列表默认 UI 状态（ItemList 结构化数据也用同一组常量，保证两边永不漂移）
 const DEFAULT_CAT = 'all'
@@ -63,11 +74,23 @@ useHead({
       <p class="sub" style="margin:0 0 6px"><NuxtLink :to="localePath('/install')">{{ t('plugins.installGuide') }}</NuxtLink></p>
     </div>
 
-    <!-- 分类锚点页入口（内链：skins/pets 承接皮肤/桌宠搜索意图） -->
-    <div class="filter-bar" style="margin-bottom:12px">
-      <NuxtLink class="btn" :to="localePath('/plugins/skins')">🎨 {{ t('nav.skins') }}</NuxtLink>
-      <NuxtLink class="btn" :to="localePath('/plugins/pets')">🐳 {{ t('nav.pets') }}</NuxtLink>
-    </div>
+    <!-- 分类浏览入口（内链：每个分类一个落地页，承接分类搜索意图；数量运行时计算） -->
+    <section class="section" style="padding-top:10px">
+      <div class="section-head">
+        <h2>{{ t('catPages.browseH') }}</h2>
+        <span class="count-note">{{ t('catPages.browseSub') }}</span>
+      </div>
+      <div class="filter-bar cat-links">
+        <NuxtLink
+          v-for="c in categoryEntries"
+          :key="c.slug"
+          class="btn"
+          :to="localePath(`/plugins/${c.slug}`)"
+        >
+          {{ c.emoji }} {{ c.label }} ({{ c.count }})
+        </NuxtLink>
+      </div>
+    </section>
 
     <!-- 全局 .search-wrap 是 margin:0 auto 居中（首页 hero 用），这里必须左对齐
          与标题/下拉框/计数保持同一视觉线，否则动线断裂 -->

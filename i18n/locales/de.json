@@ -535,5 +535,17 @@
     "howCta": "Zur dreischrittigen Installationsanleitung →",
     "picksH": "Security & Ops Auswahl",
     "picksP1": "Nach Stars sortiert, mit Installationsbefehlen und Manifest-Badges."
+  },
+  "catPages": {
+    "browseH": "Nach Kategorien stöbern",
+    "browseSub": "Eine Landingpage pro Kategorie — Was es ist, unsere Top-Empfehlungen und FAQ",
+    "countNote": "{n} Plugins in dieser Kategorie katalogisiert",
+    "dataSync": "Stars und letzte Updates werden stündlich aus GitHub synchronisiert",
+    "top3H": "Top 3 Empfehlungen",
+    "top3P": "Sortiert nach GitHub-Stars, nur innerhalb dieser Kategorie",
+    "installH": "Vor der Installation",
+    "installCta": "Zur vollständigen Installationsanleitung →",
+    "faqH": "Häufige Fragen",
+    "listH": "Alle {n} Einträge"
   }
 }

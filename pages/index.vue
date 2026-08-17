@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { enabledCategoryPages } from '~/composables/useCategoryPages'
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
@@ -17,6 +18,12 @@ const memePicks = computed(() =>
 const top10 = computed(() => byStars().slice(0, 10))
 
 const cats = computed(() => categories(locale.value).slice(0, 8))
+
+// 分类卡优先链去分类落地页（data/seo/category-pages.json 驱动），无落地配置的分类回退 ?cat= 筛选
+const landingForCat = (key: string) => {
+  const hit = enabledCategoryPages().find(cat => cat.filter.categoryZh?.includes(key))
+  return hit ? localePath(`/plugins/${hit.slug}`) : null
+}
 
 const freshPicks = computed(() => fresh(7).slice(0, 8))
 
@@ -121,7 +128,7 @@ useHead({
           <NuxtLink
             v-for="c in cats" :key="c.key"
             class="cat-card"
-            :to="localePath({ path: '/plugins', query: { cat: c.key } })"
+            :to="landingForCat(c.key) ?? localePath({ path: '/plugins', query: { cat: c.key } })"
           >
             <div class="emoji">{{ c.emoji }}</div>
             <h3>{{ c.label }}</h3>

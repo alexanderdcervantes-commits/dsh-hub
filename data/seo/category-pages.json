@@ -1,0 +1,1692 @@
+{
+  "$comment": [
+    "DSH Meme Hub 分类落地页配置（Programmatic SEO）",
+    "驱动方：composables/useCategoryPages.ts（运行时筛选/取文案）+ nuxt.config.ts 与 scripts/check-prerender.mjs（预渲染种子）+ server/routes/sitemap.xml.ts（sitemap）。",
+    "字段：slug=路由段（/plugins/{slug}；pets/skins/clients/ops/vision 为存量 URL，不得改名）；filter=插件筛选（categoryZh ∪ memeSection ∪ topicsAny 正则，三者并集）；",
+    "label=入口 chip 短标签；title/desc 含 {n} 占位符，运行时以该分类实际插件数填充（数字纪律：页面数量一律动态）；intro=介绍文案（每语言 2 段，人工撰写）；",
+    "faqs=分类专属 FAQ（3–5 条，输出 FAQPage JSON-LD）；installNote=该分类安装注意点（正文链接指向 /install）；ogImage=分类代表图（public/images 下已有文件）。",
+    "zh-TW 文案按 scripts/gen-zh-tw.mjs 的 OpenCC s2twp 惯例手写（插件→外掛、介面、設定、支援等），与全站 zh-TW 用词一致。",
+    "新增/调整分类只改本文件：预渲染与 sitemap 自动跟随，无需改页面代码。"
+  ],
+  "categories": [
+    {
+      "slug": "tools",
+      "enabled": true,
+      "emoji": "🧰",
+      "ogImage": "/images/dsh-plugin-background.webp",
+      "filter": {
+        "categoryZh": [
+          "工具与集成"
+        ]
+      },
+      "label": {
+        "en": "Tools & Integrations",
+        "zh": "工具与集成",
+        "zh-TW": "工具與整合",
+        "de": "Tools & Integrationen"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Tool & Integration Plugins | DSH Meme Hub",
+        "zh": "工具与集成插件大全 — {n} 款 DeepSeek Harness 工具插件 | DSH Meme Hub",
+        "zh-TW": "工具與整合外掛大全 — {n} 款 DeepSeek Harness 工具外掛 | DSH Meme Hub",
+        "de": "Die besten {n} DeepSeek Harness (dsh) Tool- & Integrations-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Every DeepSeek Harness tool & integration plugin, ranked by stars",
+        "zh": "DeepSeek Harness 工具与集成插件目录",
+        "zh-TW": "DeepSeek Harness 工具與整合外掛目錄",
+        "de": "Alle DeepSeek Harness Tool- & Integrations-Plugins, nach Stars sortiert"
+      },
+      "desc": {
+        "en": "The complete directory of DeepSeek Harness (dsh) tool plugins: web-search bridges, browser control, tool routers, runtime injectors — {n} entries, star-sorted, one-click install commands included.",
+        "zh": "dsh 工具与集成插件大全：联网搜索桥、浏览器控制、工具路由、运行时注入器，共 {n} 款，按 GitHub star 排序，每款附一键安装命令与仓库链接。",
+        "zh-TW": "dsh 工具與整合外掛大全：聯網搜尋橋、瀏覽器控制、工具路由、執行時注入器，共 {n} 款，按 GitHub star 排序，每款附一鍵安裝命令與倉庫連結。",
+        "de": "Das komplette Verzeichnis der DeepSeek Harness (dsh) Tool-Plugins: Such-Bridges, Browser-Steuerung, Tool-Router, Injektoren — {n} Einträge, nach Stars sortiert, mit Ein-Klick-Installationsbefehl."
+      },
+      "intro": {
+        "en": [
+          "DeepSeek Harness ships deliberately thin: beyond the model, the session and the plugin mechanism, almost nothing is built in — web search, browser control and external services all arrive as tool plugins. This is the site's largest single section. The search bridges (modsearch, argo) turn queries into structured JSON evidence the agent can cite; dsh-browser hands your Chrome over to the agent; treg works like an OpenRouter for tools, funnelling every tool call through one routing entry point.",
+          "Before installing a tool plugin, check two things: whether it targets your dsh version (the repo README and manifest are the source of truth), and whether the service behind it is free or expects you to bring your own API key — search tools are the usual offenders. After installing, enable it on the web UI's plugin page; for anything that asks for sweeping permissions, a quick read of the source is cheap insurance."
+        ],
+        "zh": [
+          "dsh 的本体刻意做得很薄：模型、会话与插件机制之外几乎不内置能力，联网检索、操作浏览器、调用外部服务全都交给工具插件完成。这是全站收录量最大的一类——把搜索结果整理成结构化 JSON 证据的搜索桥（modsearch、argo）、让 agent 直接操作你 Chrome 的 dsh-browser，还有像 OpenRouter 一样统一分发工具调用的 treg。",
+          "装前确认两件事：插件支持的 dsh 版本（以 README 与 manifest 为准），以及背后的服务是否需要自带 API Key——搜索类尤其常见。装完在 Web UI 插件页启用；对权限要求高的工具，先读一遍源码更稳。"
+        ],
+        "zh-TW": [
+          "dsh 的本體刻意做得很薄：模型、會話與外掛機制之外幾乎不內建能力，聯網檢索、操作瀏覽器、呼叫外部服務全都交給工具外掛完成。這是全站收錄量最大的一類——把搜尋結果整理成結構化 JSON 證據的搜尋橋（modsearch、argo）、讓 agent 直接操作你 Chrome 的 dsh-browser，還有像 OpenRouter 一樣統一分發工具呼叫的 treg。",
+          "裝前確認兩件事：外掛支援的 dsh 版本（以 README 與 manifest 為準），以及背後的服務是否需要自備 API Key——搜尋類尤其常見。裝完在 Web UI 外掛頁啟用；對權限要求高的工具，先讀一遍原始碼更穩。"
+        ],
+        "de": [
+          "DeepSeek Harness ist bewusst schlank gehalten: Neben Modell, Sitzung und Plugin-Mechanismus ist fast nichts eingebaut — Websuche, Browser-Steuerung und externe Dienste kommen als Tool-Plugins. Dies ist die größte Einzelkategorie der Site: Die Such-Bridges (modsearch, argo) verwandeln Anfragen in strukturierte JSON-Beweise, die der Agent zitieren kann; dsh-browser übergibt dein Chrome an den Agenten; treg arbeitet wie ein OpenRouter für Tools und bündelt jeden Tool-Aufruf in einem Einstiegspunkt.",
+          "Vor der Installation zweimal prüfen: ob das Plugin deine dsh-Version unterstützt (README und Manifest sind die Primärquelle) und ob der dahinterliegende Dienst kostenlos ist oder einen eigenen API-Key verlangt — gerade bei Such-Tools häufig der Fall. Nach der Installation es in der Plugin-Seite der Web-UI aktivieren; bei weitreichenden Berechtigungen lohnt ein kurzer Blick in den Quellcode."
+        ]
+      },
+      "installNote": {
+        "en": "Tool plugins install like any other dsh plugin — one npx command, then enable on the plugin page (full walkthrough in the install guide). Plugins that need an API key are configured in their own settings panel afterwards, not in dsh's config files.",
+        "zh": "工具插件的安装方式与其他插件一致（一条 npx 命令，见安装指南）；需要 API Key 的工具装完后在它自己的设置面板里补配置即可，不用改 dsh 的配置文件。",
+        "zh-TW": "工具外掛的安裝方式與其他外掛一致（一條 npx 命令，見安裝指南）；需要 API Key 的工具裝完後在它自己的設定面板裡補設定即可，不用改 dsh 的設定檔。",
+        "de": "Tool-Plugins werden wie alle anderen installiert — ein npx-Befehl, dann in der Plugin-Seite aktivieren (alles im Installationsguide). Plugins mit API-Key werden anschließend in ihrem eigenen Einstellungsfeld konfiguriert, nicht in den dsh-Konfigurationsdateien."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Can I use dsh without installing any tool plugins?",
+            "zh": "dsh 不装工具插件能用吗？",
+            "zh-TW": "dsh 不裝工具外掛能用嗎？",
+            "de": "Kann ich dsh ohne Tool-Plugins nutzen?"
+          },
+          "a": {
+            "en": "Yes. The harness works out of the box; tool plugins exist for the extras — letting the agent search the web, drive a browser or call external services. Install them on demand, not upfront.",
+            "zh": "能。harness 本体开箱即用，工具插件解决的是「让 agent 联网查资料、操作浏览器、接外部服务」这类扩展需求，按需安装即可，不必一口气全装。",
+            "zh-TW": "能。harness 本體開箱即用，工具外掛解決的是「讓 agent 聯網查資料、操作瀏覽器、接外部服務」這類擴充需求，按需安裝即可，不必一口氣全裝。",
+            "de": "Ja. Das Harness funktioniert direkt nach der Installation; Tool-Plugins liefern die Extras — Websuche, Browser-Steuerung, externe Dienste. Bei Bedarf installieren, nicht im Voraus."
+          }
+        },
+        {
+          "q": {
+            "en": "Do tool plugins require my own API key?",
+            "zh": "工具插件要自己准备 API Key 吗？",
+            "zh-TW": "工具外掛要自己準備 API Key 嗎？",
+            "de": "Brauchen Tool-Plugins einen eigenen API-Key?"
+          },
+          "a": {
+            "en": "It splits two ways: plugins hitting open data sources (modsearch and friends) work right after install; anything bridging a commercial search vendor or proxy usually wants your own key in its settings. Each repo's README states which camp it's in.",
+            "zh": "分两种：modsearch 这类走公开数据源的可以即装即用；桥接搜索厂商或代理服务的通常要在插件设置里填自己的 Key，README 里会写清楚属于哪一种。",
+            "zh-TW": "分兩種：modsearch 這類走公開資料源的可以即裝即用；橋接搜尋廠商或代理服務的通常要在設定裡填自己的 Key，README 裡會寫清楚屬於哪一種。",
+            "de": "Zwei Fälle: Plugins mit offenen Datenquellen (wie modsearch) laufen sofort; Brücken zu kommerziellen Anbietern oder Proxys wollen meist einen eigenen Key in den Einstellungen. Das README nennt den jeweiligen Fall."
+          }
+        },
+        {
+          "q": {
+            "en": "What does the npx in the install command do?",
+            "zh": "安装命令里的 npx 是什么意思？",
+            "zh-TW": "安裝命令裡的 npx 是什麼意思？",
+            "de": "Was bedeutet das npx im Installationsbefehl?"
+          },
+          "a": {
+            "en": "dsh plugins install uniformly via npx: the command fetches the plugin package, registers it with your local dsh and leaves you one step — enabling it on the web UI's plugin page. No manual file copying involved. The install guide walks through the whole flow.",
+            "zh": "dsh 插件统一用 npx 安装（完整流程见安装指南）：命令会拉取插件包并注册进本地 dsh，之后只需在 Web UI 的插件页启用，不需要手动复制文件。",
+            "zh-TW": "dsh 外掛統一用 npx 安裝（完整流程見安裝指南）：命令會拉取外掛包並註冊進本機 dsh，之後只需在 Web UI 的外掛頁啟用，不需要手動複製檔案。",
+            "de": "dsh-Plugins werden einheitlich per npx installiert (Ablauf im Installationsguide): Der Befehl lädt das Paket und registriert es im lokalen dsh; danach genügt das Aktivieren in der Plugin-Seite der Web-UI. Kein manuelles Kopieren."
+          }
+        },
+        {
+          "q": {
+            "en": "Do these tools act on their own?",
+            "zh": "这些工具会自作主张吗？",
+            "zh-TW": "這些工具會自作主張嗎？",
+            "de": "Handeln diese Tools von selbst?"
+          },
+          "a": {
+            "en": "No. A tool only provides capability; when to call it and with what arguments is decided by the agent inside your session. For high-privilege tools like browser control, watching the first run is a sensible habit.",
+            "zh": "不会。工具只提供能力，何时调用、传什么参数由 agent 在会话里决定；对浏览器控制这类高权限工具，第一次运行时在旁边盯着是合理习惯。",
+            "zh-TW": "不會。工具只提供能力，何時呼叫、傳什麼參數由 agent 在會話裡決定；對瀏覽器控制這類高權限工具，第一次執行時在旁邊盯著是合理習慣。",
+            "de": "Nein. Ein Tool liefert nur die Fähigkeit; wann und mit welchen Parametern es aufgerufen wird, entscheidet der Agent in der Sitzung. Bei privilegierten Tools wie der Browser-Steuerung lohnt es sich, den ersten Lauf zu beobachten."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh tool plugins",
+          "deepseek harness integrations",
+          "dsh web search plugin",
+          "dsh browser control"
+        ],
+        "zh": [
+          "dsh 工具插件",
+          "deepseek harness 集成",
+          "dsh 联网搜索",
+          "dsh 浏览器控制"
+        ]
+      }
+    },
+    {
+      "slug": "ui",
+      "enabled": true,
+      "emoji": "✨",
+      "ogImage": "/images/dsh-web-ui.webp",
+      "filter": {
+        "categoryZh": [
+          "UI 增强"
+        ]
+      },
+      "label": {
+        "en": "UI Enhancements",
+        "zh": "UI 增强",
+        "zh-TW": "UI 增強",
+        "de": "UI-Erweiterungen"
+      },
+      "title": {
+        "en": "Best {n} DeepSeek Harness (dsh) UI Enhancement Plugins | DSH Meme Hub",
+        "zh": "UI 增强插件榜 — {n} 款 DeepSeek Harness 界面增强插件 | DSH Meme Hub",
+        "zh-TW": "UI 增強外掛榜 — {n} 款 DeepSeek Harness 介面增強外掛 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) UI-Erweiterungen | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness UI-enhancement shortlist",
+        "zh": "dsh 界面增强插件精选榜",
+        "zh-TW": "dsh 介面增強外掛精選榜",
+        "de": "Die besten UI-Erweiterungen für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Sidebars that become full workbenches, @file references, context visualisers, remote takeover — {n} DeepSeek Harness (dsh) UI plugins, star-sorted with one-click install commands.",
+        "zh": "dsh 界面增强插件精选：侧边栏工作台、@file 文件引用、上下文可视化、手机远程接管，共 {n} 款，按 star 排序，附一键安装命令。",
+        "zh-TW": "dsh 介面增強外掛精選：側邊欄工作台、@file 檔案參照、上下文視覺化、手機遠端接管，共 {n} 款，按 star 排序，附一鍵安裝命令。",
+        "de": "Sidebars als Voll-Werkbänke, @file-Referenzen, Kontext-Visualisierung, Fernsteuerung — {n} DeepSeek Harness (dsh) UI-Plugins, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "dsh's interface is a web UI that opens in your browser, which makes \"improving the interface\" one of the liveliest corners of the ecosystem. dsh-web-ui bundles a task board, a Git graph, live token stats and phone-scanned remote takeover into one package; dsh-better-sidebar grows the sidebar into a complete workbench with file management, an embedded browser, a real terminal and Git panels; dsh-at-file brings Codex-style @file references to the input box; dsh-context visualises what your context window is made of as it evolves and gets pruned.",
+          "UI plugins stack, but they can also fight each other — when two of them deeply rewrite the layout, enable one at a time and watch. Whether you want a more capable workbench or a calmer look decides where to start: sidebar and panel plugins for the former, the skins section for the latter."
+        ],
+        "zh": [
+          "dsh 的界面是浏览器里的 Web UI，「改界面」因此成了生态里最热闹的方向之一。dsh-web-ui 一包打包任务看板、Git 图谱、token 统计与手机远程接管；dsh-better-sidebar 把侧边栏扩成带文件管理、内嵌终端与 Git 面板的完整工作台；dsh-at-file 给输入框加上 Codex 风格 @file 引用；dsh-context 把上下文的构成与压缩画成可视化面板。",
+          "UI 插件可以叠加，也可能打架——两个都深度重排布局的插件同时开容易互相覆盖，建议一次启用一款观察效果。想要「更强的工台」从侧边栏类下手，想要「更舒服的观感」去皮肤专区。"
+        ],
+        "zh-TW": [
+          "dsh 的介面是瀏覽器裡的 Web UI，「改介面」因此成了生態裡最熱鬧的方向之一。dsh-web-ui 一包打包任務看板、Git 圖譜、token 統計與手機遠端接管；dsh-better-sidebar 把側邊欄擴成帶檔案管理、內嵌終端與 Git 面板的完整工作台；dsh-at-file 給輸入框加上 Codex 風格 @file 參照；dsh-context 把上下文的構成與壓縮畫成視覺化面板。",
+          "UI 外掛可以疊加，也可能打架——兩個都深度重排版面的外掛同時開容易互相覆蓋，建議一次啟用一款觀察效果。想要「更強的工台」從側邊欄類下手，想要「更舒服的觀感」去皮膚專區。"
+        ],
+        "de": [
+          "dshs Oberfläche ist eine Web-UI im Browser — deshalb ist „die Oberfläche verbessern“ eine der lebhaftesten Ecken des Ökosystems. dsh-web-ui bündelt Task-Board, Git-Graph, Token-Statistik und Fernsteuerung per QR-Scan; dsh-better-sidebar macht die Sidebar zur Voll-Werkbank mit Dateimanager, eingebettetem Browser, echtem Terminal und Git-Panels; dsh-at-file bringt Codex-artige @file-Referenzen ins Eingabefeld; dsh-context visualisiert Zusammensetzung und Komprimierung des Kontextfensters.",
+          "UI-Plugins lassen sich stapeln, können sich aber auch in die Quere kommen — wenn zwei das Layout tiefgreifend umbauen, besser einzeln aktivieren. Entscheidend ist die Frage: mächtigere Werkbank oder ruhigerer Anblick? Ersteres: Sidebar- und Panel-Plugins. Letzteres: der Skins-Bereich."
+        ]
+      },
+      "installNote": {
+        "en": "UI plugins install with the same one-line npx command as everything else (see the install guide). Enable one layout-rewriting plugin at a time; if two fight over the same region, disable the newer one first to find the culprit.",
+        "zh": "UI 插件用与其他插件相同的 npx 命令安装（见安装指南）。一次只启用一款深度改布局的插件；如果两款抢同一块界面区域，先停后装的那款来定位冲突源。",
+        "zh-TW": "UI 外掛用與其他外掛相同的 npx 命令安裝（見安裝指南）。一次只啟用一款深度改版面的外掛；如果兩款搶同一塊介面區域，先停後裝的那款來定位衝突源。",
+        "de": "UI-Plugins werden mit demselben npx-Einzeiler installiert (siehe Installationsguide). Layout-umbauende Plugins einzeln aktivieren; streiten sich zwei um dieselbe Region, zuerst das neuere deaktivieren."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "What's the difference between UI plugins and skin plugins?",
+            "zh": "UI 增强插件和皮肤插件有什么区别？",
+            "zh-TW": "UI 增強外掛和面板外掛有什麼區別？",
+            "de": "Was ist der Unterschied zwischen UI-Plugins und Skin-Plugins?"
+          },
+          "a": {
+            "en": "Skins mainly swap colours and looks (they have their own section); UI enhancements add or restructure functional areas — sidebar workbenches, file references, context visualisation, remote takeover. Rule of thumb: if it gives you a new capability, it's UI; if it only changes appearance, it's a skin.",
+            "zh": "皮肤主要换配色和外观（皮肤专区单独收录）；UI 增强会新增或重构功能区块——侧边栏工作台、文件引用、上下文可视化、远程接管这类「多了新能力」的都算 UI 增强。判断口诀：多了能力算 UI，只变好看算皮肤。",
+            "zh-TW": "面板主要換配色和外觀（面板專區單獨收錄）；UI 增強會新增或重構功能區塊——側邊欄工作台、檔案參照、上下文視覺化、遠端接管這類「多了新能力」的都算 UI 增強。判斷口訣：多了能力算 UI，只變好看算面板。",
+            "de": "Skins tauschen vor allem Farben und Aussehen (eigener Bereich); UI-Erweiterungen fügen funktionale Bereiche hinzu oder bauen sie um — Sidebar-Werkbank, Dateireferenzen, Kontext-Visualisierung, Fernsteuerung. Faustregel: neue Fähigkeit = UI, nur anderes Aussehen = Skin."
+          }
+        },
+        {
+          "q": {
+            "en": "Can I run several UI plugins at once?",
+            "zh": "多个 UI 插件能同时开吗？",
+            "zh-TW": "多個 UI 外掛能同時開嗎？",
+            "de": "Kann ich mehrere UI-Plugins gleichzeitig nutzen?"
+          },
+          "a": {
+            "en": "Yes — most only inject styles and panels into separate regions. The friction comes when two plugins deeply rearrange the same region (two sidebar rewrites, say). Run the default combo for a few days, then add one at a time so you can tell what changed.",
+            "zh": "可以，大多数插件只往各自区域注入样式和面板。摩擦出现在两款深度重排同一区域时（比如两个都要重写侧边栏）。建议先用默认组合跑几天，再逐个叠加，出了问题也知道是谁带来的。",
+            "zh-TW": "可以，大多數外掛只往各自區域注入樣式和面板。摩擦出現在兩款深度重排同一區域時（比如兩個都要重寫側邊欄）。建議先用預設組合跑幾天，再逐個疊加，出了問題也知道是誰帶來的。",
+            "de": "Ja — die meisten injizieren nur Styles und Panels in eigene Bereiche. Reibung entsteht, wenn zwei dieselbe Region umbauen (etwa beide die Sidebar). Erst die Standardkombination einige Tage fahren, dann einzeln ergänzen."
+          }
+        },
+        {
+          "q": {
+            "en": "Will UI plugins slow dsh down?",
+            "zh": "UI 插件会让 dsh 变慢吗？",
+            "zh-TW": "UI 外掛會讓 dsh 變慢嗎？",
+            "de": "Verlangsamen UI-Plugins dsh?"
+          },
+          "a": {
+            "en": "Mostly no — styling and panels are cheap. The ones to watch are plugins with polling or background jobs (remote takeover, live token stats), which use a bit more resources. Any of them can be disabled instantly from the plugin page.",
+            "zh": "大多数不会——注入样式和面板的开销很小。要留意的是带轮询或后台任务的那几款（远程接管、token 统计），资源占用会高一些；任何一款都能在插件页随时停用。",
+            "zh-TW": "大多數不會——注入樣式和面板的開銷很小。要留意的是帶輪詢或背景任務的那幾款（遠端接管、token 統計），資源佔用會高一些；任何一款都能在外掛頁隨時停用。",
+            "de": "Meist nein — Styles und Panels sind billig. Achtung bei Plugins mit Polling oder Hintergrundjobs (Fernsteuerung, Token-Statistik), sie brauchen etwas mehr Ressourcen. Deaktivieren geht jederzeit in der Plugin-Seite."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh ui plugins",
+          "deepseek harness sidebar",
+          "dsh web ui",
+          "dsh file reference"
+        ],
+        "zh": [
+          "dsh 界面插件",
+          "dsh 侧边栏",
+          "dsh web ui",
+          "dsh 界面增强"
+        ]
+      }
+    },
+    {
+      "slug": "agents",
+      "enabled": true,
+      "emoji": "🤖",
+      "ogImage": "/images/depharness.webp",
+      "filter": {
+        "categoryZh": [
+          "Agent 与自动化"
+        ]
+      },
+      "label": {
+        "en": "Agents & Automation",
+        "zh": "Agent 与自动化",
+        "zh-TW": "Agent 與自動化",
+        "de": "Agenten & Automatisierung"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Agent & Automation Plugins | DSH Meme Hub",
+        "zh": "Agent 与自动化插件大全 — {n} 款 DeepSeek Harness 智能体插件 | DSH Meme Hub",
+        "zh-TW": "Agent 與自動化外掛大全 — {n} 款 DeepSeek Harness 智能體外掛 | DSH Meme Hub",
+        "de": "Die {n} besten DeepSeek Harness (dsh) Agent- & Automatisierungs-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Multi-agent and automation plugins built on DeepSeek Harness",
+        "zh": "dsh 多智能体与自动化插件精选",
+        "zh-TW": "dsh 多智能體與自動化外掛精選",
+        "de": "Multi-Agenten- und Automatisierungs-Plugins für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Multi-agent teams, resident desktop assistants, content-discovery agents — {n} DeepSeek Harness (dsh) agent & automation plugins, star-sorted, with install commands and repo links.",
+        "zh": "dsh 多智能体与自动化插件大全：多 Agent 团队编排、常驻桌面助手、内容发现 Agent，共 {n} 款，按 star 排序，附安装命令与仓库链接。",
+        "zh-TW": "dsh 多智能體與自動化外掛大全：多 Agent 團隊編排、常駐桌面助手、內容發現 Agent，共 {n} 款，按 star 排序，附安裝命令與倉庫連結。",
+        "de": "Multi-Agenten-Teams, residente Desktop-Assistenten, Content-Discovery-Agenten — {n} DeepSeek Harness (dsh) Plugins, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "dsh is more than a single coding assistant — the harness architecture lets it spawn sub-agents, run resident in the background, or hand whole workflows to a team. This section gathers the projects that treat dsh as a foundation: dsh-agent-teams coordinates multi-agent teams; OpenBiliClaw turns the stack into a cross-platform content-discovery agent covering Bilibili, Xiaohongshu, Douyin, YouTube, X and more; Abu-Cowork is a local desktop assistant (an open Claude-Cowork alternative) that reads files, runs commands and writes reports on your machine.",
+          "DeepTide, DeepSeek's own coding agent built on the harness idea, also belongs here — read it as the official demonstration of this direction. Before picking, decide what you actually want: many agents dividing work (focus on orchestration and shared context) or one resident assistant (focus on permissions and how it stays running)."
+        ],
+        "zh": [
+          "dsh 不只是单个编码助手：harness 架构允许它调度子 Agent、常驻后台，甚至把整个工作流交给一个团队。这一类收录「拿 dsh 当底座再往上盖楼」的项目——dsh-agent-teams 做多智能体协作，OpenBiliClaw 把它变成覆盖 B 站、小红书、YouTube、X 的内容发现 Agent，Abu-Cowork 是本地运行的桌面助手。",
+          "官方的 DeepTide（DeepSeek 自家基于 harness 理念的编码 Agent）也在这类，可视为官方示范。选型先想清楚：要多个 Agent 分工（看编排与上下文共享），还是一个常驻助手（看权限与常驻方式）。"
+        ],
+        "zh-TW": [
+          "dsh 不只是單個編碼助手：harness 架構允許它排程子 Agent、常駐背景，甚至把整個工作流交給一個團隊。這一類收錄「拿 dsh 當底座再往上蓋樓」的專案——dsh-agent-teams 做多智能體協作，OpenBiliClaw 把它變成涵蓋 B 站、小紅書、YouTube、X 的內容發現 Agent，Abu-Cowork 是本機執行的桌面助手。",
+          "官方的 DeepTide（DeepSeek 自家基於 harness 理念的編碼 Agent）也在這類，可視為官方示範。選型先想清楚：要多個 Agent 分工（看編排與上下文共享），還是一個常駐助手（看權限與常駐方式）。"
+        ],
+        "de": [
+          "dsh ist mehr als ein einzelner Coding-Assistent — die Harness-Architektur erlaubt Sub-Agenten, residente Hintergrundprozesse oder ganze Workflows im Team. Diese Kategorie sammelt Projekte, die dsh als Fundament nutzen: dsh-agent-teams koordiniert Multi-Agenten-Teams; OpenBiliClaw macht den Stack zu einem plattformübergreifenden Content-Discovery-Agenten für Bilibili, Xiaohongshu, Douyin, YouTube und X; Abu-Cowork ist ein lokaler Desktop-Assistent (Open-Source-Alternative zu Claude Cowork), der Dateien liest, Befehle ausführt und Berichte schreibt.",
+          "Auch DeepTide gehört hierher — DeepSeeks eigener, auf der Harness-Idee aufbauender Coding-Agent, gewissermaßen die offizielle Referenzimplementierung dieser Richtung. Vor der Wahl klären: viele Agenten mit Arbeitsteilung (Stichwort Orchestrierung und geteilter Kontext) oder ein residenter Assistent (Stichwort Rechte und Dauerbetrieb)."
+        ]
+      },
+      "installNote": {
+        "en": "Multi-agent plugins often ship a companion service: besides the npx install command, follow the repo README to start the service side before running real tasks. Rehearse on a sample project first — see the install guide for the base setup.",
+        "zh": "多智能体类插件常带配套服务：除 npx 安装命令外，还要按 README 把服务端跑起来再上真实任务；建议先在示例项目上演练一遍，基础环境见安装指南。",
+        "zh-TW": "多智能體類外掛常帶配套服務：除 npx 安裝命令外，還要按 README 把服務端跑起來再上真實任務；建議先在範例專案上演練一遍，基礎環境見安裝指南。",
+        "de": "Multi-Agenten-Plugins bringen oft einen Begleitdienst mit: Neben dem npx-Befehl laut README zuerst die Dienstseite starten, bevor echte Aufgaben laufen. Zuerst an einem Beispielprojekt üben — Grundlage im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "How do these agent plugins relate to dsh itself?",
+            "zh": "这些 Agent 插件和 dsh 本体是什么关系？",
+            "zh-TW": "這些 Agent 外掛和 dsh 本體是什麼關係？",
+            "de": "Wie hängen diese Agent-Plugins mit dsh selbst zusammen?"
+          },
+          "a": {
+            "en": "They live in the ecosystem as plugins or companion services, using dsh's session and tool machinery as a base and layering capabilities on top — multi-agent orchestration, content discovery, desktop automation. They extend the harness; they don't replace it.",
+            "zh": "它们以插件或配套服务的形式寄居在 dsh 生态里，用 dsh 的会话与工具机制当底座，向上叠加多智能体编排、内容发现、桌面自动化等能力——是扩展本体，不是替换本体。",
+            "zh-TW": "它們以外掛或配套服務的形式寄居在 dsh 生態裡，用 dsh 的會話與工具機制當底座，向上疊加多智能體編排、內容發現、桌面自動化等能力——是擴充本體，不是替換本體。",
+            "de": "Sie leben als Plugins oder Begleitdienste im Ökosystem, nutzen dshs Sitzungs- und Tool-Mechanik als Basis und schichten oben drauf: Multi-Agenten-Orchestrierung, Content-Discovery, Desktop-Automatisierung. Sie erweitern das Harness, ersetzen es nicht."
+          }
+        },
+        {
+          "q": {
+            "en": "Do multi-agent plugins multiply my API spend?",
+            "zh": "多智能体插件会把我的 API 花费放大吗？",
+            "zh-TW": "多智能體外掛會把我的 API 費用放大嗎？",
+            "de": "Multierten Multi-Agenten-Plugins meine API-Kosten?"
+          },
+          "a": {
+            "en": "Yes — parallel agents mean parallel requests. Start with small tasks, watch the usage, and pair them with a balance/spend monitor from the Security & Operations section.",
+            "zh": "会。多个 Agent 并行意味着更多并发请求。建议先拿小任务试跑并盯着用量，配合安全与运维区里的余额与花费监控插件一起使用。",
+            "zh-TW": "會。多個 Agent 並行意味著更多併發請求。建議先拿小任務試跑並盯著用量，配合安全與運維區裡的餘額與花費監控外掛一起使用。",
+            "de": "Ja — parallele Agenten bedeuten parallele Anfragen. Mit kleinen Aufgaben starten, den Verbrauch beobachten und einen Bilanz-/Kostenmonitor aus dem Security-&-Ops-Bereich dazunehmen."
+          }
+        },
+        {
+          "q": {
+            "en": "Are desktop-assistant plugins a security risk?",
+            "zh": "桌面助手类插件权限大吗？",
+            "zh-TW": "桌面助手類外掛權限大嗎？",
+            "de": "Sind Desktop-Assistenten ein Sicherheitsrisiko?"
+          },
+          "a": {
+            "en": "They need file, shell and command access to be useful, which makes them high-trust software. Install only from repos you've read or that have a solid reputation, and rehearse inside a sandbox or a secondary account first.",
+            "zh": "桌面助手需要读写文件、执行命令的权限才能干活，属于高信任场景。只从你读过源码或口碑可信的仓库安装，并先在沙盒或次要账户里演练。",
+            "zh-TW": "桌面助手需要讀寫檔案、執行命令的權限才能幹活，屬於高信任場景。只從你讀過原始碼或口碑可信的倉庫安裝，並先在沙盒或次要帳戶裡演練。",
+            "de": "Sie brauchen Datei-, Shell- und Befehlszugriff, um nützlich zu sein — das ist Software mit hohem Vertrauensanspruch. Nur aus Repositorys installieren, deren Code man gelesen hat oder die einen guten Ruf haben; zuerst in einer Sandbox oder einem Zweitaccount üben."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh agent plugins",
+          "deepseek harness multi-agent",
+          "dsh automation",
+          "dsh subagents"
+        ],
+        "zh": [
+          "dsh 智能体插件",
+          "dsh 多智能体",
+          "deepseek harness 自动化",
+          "dsh 子代理"
+        ]
+      }
+    },
+    {
+      "slug": "ecosystem",
+      "enabled": true,
+      "emoji": "🧭",
+      "ogImage": "/images/deepseek-harness-gui.webp",
+      "filter": {
+        "categoryZh": [
+          "生态与开发"
+        ]
+      },
+      "label": {
+        "en": "Ecosystem & Development",
+        "zh": "生态与开发",
+        "zh-TW": "生態與開發",
+        "de": "Ökosystem & Entwicklung"
+      },
+      "title": {
+        "en": "DeepSeek Harness (dsh) Ecosystem & Dev Resources — All {n} Entries | DSH Meme Hub",
+        "zh": "生态与开发资源大全 — {n} 个 DeepSeek Harness 生态项目 | DSH Meme Hub",
+        "zh-TW": "生態與開發資源大全 — {n} 個 DeepSeek Harness 生態專案 | DSH Meme Hub",
+        "de": "DeepSeek Harness (dsh) Ökosystem & Dev-Ressourcen — alle {n} Einträge | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness ecosystem map, for builders",
+        "zh": "dsh 生态地图与插件开发资源",
+        "zh-TW": "dsh 生態地圖與外掛開發資源",
+        "de": "Die DeepSeek Harness Ökosystem-Karte für Entwickler"
+      },
+      "desc": {
+        "en": "Official repo, awesome lists, in-app plugin market and development tooling — {n} DeepSeek Harness (dsh) ecosystem & development entries, the starting point for plugin authors.",
+        "zh": "dsh 生态与开发资源大全：官方仓库、awesome 精选清单、应用内插件市场、开发工具链，共 {n} 个条目，插件作者的第一站。",
+        "zh-TW": "dsh 生態與開發資源大全：官方倉庫、awesome 精選清單、應用內外掛市集、開發工具鏈，共 {n} 個條目，外掛作者的第一站。",
+        "de": "Offizielles Repo, Awesome-Listen, Plugin-Markt in der App und Entwicklungs-Tooling — {n} DeepSeek Harness (dsh) Ökosystem-Einträge, die erste Anlaufstelle für Plugin-Autoren."
+      },
+      "intro": {
+        "en": [
+          "If you want the lay of the land — or you're planning to write a plugin yourself — start here. The official deepseek-harness repo is in this section: its \"everything is a plugin\" architecture notes and plugin-protocol docs are the primary source. Three independently maintained awesome lists catalogue the ecosystem bilingually (awesome-dsh-plugin, awesome-dsh-plugins, awesome-deepseek-harness), and dsh-market puts a browsable, searchable plugin market right inside dsh's settings page.",
+          "A practical path for plugin developers: read the official protocol first, pick one small single-purpose plugin from this list as a template (every page on this site links back to its repo), then run dsh-plugin-check as a health check before publishing. Tag your repository with the dsh-plugin topic and this site's discovery pipeline will pick it up."
+        ],
+        "zh": [
+          "想了解 dsh 生态全貌或打算自己写插件，从这一类入手最省力。官方仓库 deepseek-harness 就收录在这里——「一切皆插件」的架构说明与插件协议文档是第一手资料；三份独立维护的 awesome 清单各自维护中英双语精选目录；dsh-market 把「逛插件」直接做进了 dsh 设置页。",
+          "给开发者的路径：先读官方插件协议，再挑一个功能单一的小插件当模板（每个插件页都回链仓库），发布前跑一遍 dsh-plugin-check 健康检查；给仓库打上 dsh-plugin topic 即可进入本站的自动发现流程。"
+        ],
+        "zh-TW": [
+          "想了解 dsh 生態全貌或打算自己寫外掛，從這一類入手最省力。官方倉庫 deepseek-harness 就收錄在這裡——「一切皆外掛」的架構說明與外掛協定文件是第一手資料；三份獨立維護的 awesome 清單各自維護中英雙語精選目錄；dsh-market 把「逛外掛」直接做進了 dsh 設定頁。",
+          "給開發者的路徑：先讀官方外掛協定，再挑一個功能單一的小外掛當範本（每個外掛頁都回連倉庫），發布前跑一遍 dsh-plugin-check 健康檢查；給倉庫打上 dsh-plugin topic 即可進入本站的自動發現流程。"
+        ],
+        "de": [
+          "Wer den Überblick will — oder selbst ein Plugin schreiben möchte — startet hier. Das offizielle deepseek-harness-Repository ist in dieser Kategorie: Die Architektur-Notizen zum Prinzip „alles ist ein Plugin“ und die Plugin-Protokoll-Dokumentation sind die Primärquelle. Drei unabhängig gepflegte Awesome-Listen katalogisieren das Ökosystem zweisprachig, und dsh-market bringt einen durchsuchbaren Plugin-Markt direkt in dshs Einstellungsseite.",
+          "Ein praktischer Pfad für Plugin-Entwickler: zuerst das offizielle Protokoll lesen, dann aus dieser Liste ein kleines, einzweckiges Plugin als Vorlage wählen (jede Detailseite hier verlinkt zurück ins Repo), vor dem Publish dsh-plugin-check als Gesundheitscheck laufen lassen. Das Repository mit dem dsh-plugin-Topic versehen — die Discovery-Pipeline dieser Site nimmt es automatisch auf."
+        ]
+      },
+      "installNote": {
+        "en": "Ecosystem entries are mostly reading material and meta-tooling rather than installable plugins — the ones that do install (like the plugin market) use the same npx command as everything else. For the base setup, follow the install guide; for plugin development, start from the official repo's protocol docs.",
+        "zh": "这一类多为阅读材料与元工具，不全是可安装插件；可安装的（如插件市场）用与其他插件相同的 npx 命令。基础环境见安装指南；插件开发从官方仓库的协议文档起步。",
+        "zh-TW": "這一類多為閱讀材料與元工具，不全是可安裝外掛；可安裝的（如外掛市集）用與其他外掛相同的 npx 命令。基礎環境見安裝指南；外掛開發從官方倉庫的協定文件起步。",
+        "de": "Einträge dieser Kategorie sind meist Lektüre und Meta-Tooling, nicht alles ist installierbar; das Installierbare (etwa der Plugin-Markt) nutzt denselben npx-Befehl. Grundlage im Installationsguide; Plugin-Entwicklung startet mit den Protokoll-Docs des offiziellen Repos."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "I want to develop a dsh plugin — where do I start?",
+            "zh": "我想开发 dsh 插件，从哪里开始？",
+            "zh-TW": "我想開發 dsh 外掛，從哪裡開始？",
+            "de": "Ich möchte ein dsh-Plugin entwickeln — wo anfangen?"
+          },
+          "a": {
+            "en": "Read the official repo's plugin protocol and manifest spec first, then copy the structure of a small plugin from this list (its package.json carries the dsh fields). The install guide on this site also walks through a minimal runnable example.",
+            "zh": "先读官方仓库的插件协议与 manifest 说明，再照着这份列表里某个小插件的结构抄起（它的 package.json 里带 dsh 字段）；本站安装指南页也有最小可运行示例。",
+            "zh-TW": "先讀官方倉庫的外掛協定與 manifest 說明，再照著這份列表裡某個小外掛的結構抄起（它的 package.json 裡帶 dsh 欄位）；本站安裝指南頁也有最小可執行範例。",
+            "de": "Zuerst Plugin-Protokoll und Manifest-Spec des offiziellen Repos lesen, dann die Struktur eines kleinen Plugins aus dieser Liste übernehmen (dessen package.json trägt die dsh-Felder); der Installationsguide dieser Site enthält zusätzlich ein minimales lauffähiges Beispiel."
+          }
+        },
+        {
+          "q": {
+            "en": "How do the awesome lists differ from this site's directory?",
+            "zh": "awesome 清单和本站的目录有什么区别？",
+            "zh-TW": "awesome 清單和本站的目錄有什麼區別？",
+            "de": "Worin unterscheiden sich die Awesome-Listen vom Verzeichnis dieser Site?"
+          },
+          "a": {
+            "en": "Awesome lists are hand-curated by their maintainers, each on its own update rhythm. This site discovers plugins automatically from GitHub topics and manifests, and normalises star counts, last-push dates and install commands across all of them — the two complement each other.",
+            "zh": "awesome 清单由各维护者人工收录、更新节奏不一；本站从 GitHub topic 与 manifest 自动发现插件，统一展示 star 数、最近推送时间与安装命令。两边互补，交叉着看最全。",
+            "zh-TW": "awesome 清單由各維護者人工收錄、更新節奏不一；本站從 GitHub topic 與 manifest 自動發現外掛，統一顯示 star 數、最近推送時間與安裝命令。兩邊互補，交叉著看最全。",
+            "de": "Awesome-Listen werden von ihren Maintainerinnen und Maintainern kuratiert, each mit eigenem Updaterhythmus. Diese Site entdeckt Plugins automatisch aus GitHub-Topics und Manifesten und normalisiert Star-Zahlen, letzte Push-Daten und Installationsbefehle — beides ergänzt sich."
+          }
+        },
+        {
+          "q": {
+            "en": "How do I get my plugin listed here?",
+            "zh": "怎么让我的插件被本站收录？",
+            "zh-TW": "怎麼讓我的外掛被本站收錄？",
+            "de": "Wie komme ich mit meinem Plugin in diese Site?"
+          },
+          "a": {
+            "en": "Tag your repository with the dsh-plugin topic (or declare the dsh fields in its manifest) and it enters the automatic discovery pipeline. Want it faster? Submit it through this site's submit page.",
+            "zh": "给仓库加上 dsh-plugin topic（或在 manifest 里声明 dsh 字段），即可进入本站的自动发现流程；想加快进度可以走本站的投稿页提交。",
+            "zh-TW": "給倉庫加上 dsh-plugin topic（或在 manifest 裡宣告 dsh 欄位），即可進入本站的自動發現流程；想加快進度可以走本站的投稿頁提交。",
+            "de": "Repository mit dem dsh-plugin-Topic versehen (oder die dsh-Felder im Manifest deklarieren) — damit landet es in der automatischen Discovery. Schneller geht es über die Submit-Seite dieser Site."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "deepseek harness ecosystem",
+          "dsh plugin development",
+          "awesome dsh plugins",
+          "dsh plugin market"
+        ],
+        "zh": [
+          "dsh 生态",
+          "dsh 插件开发",
+          "awesome dsh",
+          "dsh 插件市场"
+        ]
+      }
+    },
+    {
+      "slug": "ops",
+      "enabled": true,
+      "emoji": "🛡️",
+      "ogImage": "/images/dsh-web-review.webp",
+      "filter": {
+        "categoryZh": [
+          "安全与运维"
+        ]
+      },
+      "label": {
+        "en": "Security & Operations",
+        "zh": "安全与运维",
+        "zh-TW": "安全與運維",
+        "de": "Sicherheit & Betrieb"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Security & Ops Plugins | DSH Meme Hub",
+        "zh": "安全与运维插件大全 — {n} 款 DeepSeek Harness 安全运维插件 | DSH Meme Hub",
+        "zh-TW": "安全與運維外掛大全 — {n} 款 DeepSeek Harness 安全運維外掛 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) Security- & Ops-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Keep your DeepSeek Harness agent in sight: security & ops plugins",
+        "zh": "dsh 安全与运维插件清单",
+        "zh-TW": "dsh 安全與運維外掛清單",
+        "de": "DeepSeek Harness im Blick behalten: Security- & Ops-Plugins"
+      },
+      "desc": {
+        "en": "Architecture-aware guards, vendor-neutral safety protocols, read-only security audits, balance and spend monitors — {n} DeepSeek Harness (dsh) security & operations plugins, star-sorted.",
+        "zh": "dsh 安全与运维插件大全：架构感知防护、中立安全协议、只读安全审计、余额与花费监控，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 安全與運維外掛大全：架構感知防護、中立安全協定、唯讀安全稽核、餘額與花費監控，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Architekturbewusste Schutzschichten, herstellerneutrale Sicherheitsprotokolle, Read-Only-Audits, Bilanz- und Kostenmonitore — {n} DeepSeek Harness (dsh) Security- & Ops-Plugins."
+      },
+      "intro": {
+        "en": [
+          "An agent holding your shell is a convenience and a liability at once, which makes security and spend two questions you can't skip. This section is for anyone who wants dsh to run with confidence: aegis gives coding agents architectural awareness (baseline-first, evidence-verified, drift-detecting — read the structure before writing code); openguardrails defines a vendor-neutral safety protocol with benchmarks that works across agents and sandboxes; dsh-security-audit walks your machine's config, plugin provenance, sessions and network exposure and writes a desensitised risk report.",
+          "Day-to-day operations are covered too: dsh-plugin-check scans plugin manifests and build pitfalls with zero dependencies, and dsh-balance-meter pins your DeepSeek balance and per-session spend to the composer bar, syncing the official price list every six hours. One audit plus one balance monitor after a fresh batch of installs is the cheapest peace of mind you can buy."
+        ],
+        "zh": [
+          "agent 拿着你的 shell 权限跑任务，安全与开销就绕不开。这一类给「想让 dsh 用得放心」的人：aegis 给编码代理装上架构感知（基线优先、漂移检测）；openguardrails 提供厂商中立、可跨 agent 与沙盒复用的安全协议与基准；dsh-security-audit 对配置、插件来源、会话与网络暴露面做只读审计，输出脱敏风险报告。",
+          "日常侧同样趁手：dsh-plugin-check 零依赖扫出清单协议与构建陷阱；dsh-balance-meter 把余额与本会话花费常驻作曲栏，每 6 小时同步官方价目表。新装一批插件后跑一次审计、挂一个余额监控，是成本最低的安心组合。"
+        ],
+        "zh-TW": [
+          "agent 拿著你的 shell 權限跑任務，安全與開銷就繞不開。這一類給「想讓 dsh 用得放心」的人：aegis 給編碼代理裝上架構感知（基線優先、漂移偵測）；openguardrails 提供廠商中立、可跨 agent 與沙盒重複使用的安全協定與基準；dsh-security-audit 對設定、外掛來源、會話與網路暴露面做唯讀稽核，輸出脫敏風險報告。",
+          "日常側同樣趁手：dsh-plugin-check 零依賴掃出清單協定與建置陷阱；dsh-balance-meter 把餘額與本會話花費常駐作曲欄，每 6 小時同步官方價目表。新裝一批外掛後跑一次稽核、掛一個餘額監控，是成本最低的安心組合。"
+        ],
+        "de": [
+          "Ein Agent mit deiner Shell ist Komfort und Risiko zugleich — Sicherheit und Kosten sind damit keine Optionalitäten. Diese Kategorie richtet sich an alle, die dsh mit gutem Gewissen fahren wollen: aegis gibt Coding-Agenten Architekturbewusstsein (Baseline zuerst, evidenzgeprüft, Drift-Erkennung); openguardrails definiert ein herstellerneutrales Sicherheitsprotokoll samt Benchmarks, agenten- und sandboxübergreifend; dsh-security-audit prüft Konfiguration, Plugin-Herkunft, Sitzungen und Netzwerk-Exposition und schreibt einen anonymisierten Risikobericht.",
+          "Auch der Alltag ist abgedeckt: dsh-plugin-check scannt Manifeste und Build-Fallen ohne Abhängigkeiten; dsh-balance-meter hält DeepSeek-Guthaben und Sitzungskosten in der Composer-Leiste und synchronisiert die offizielle Preisliste alle sechs Stunden. Ein Audit plus ein Bilanzmonitor nach jeder frischen Plugin-Charge ist das billigste Stück Seelenruhe."
+        ]
+      },
+      "installNote": {
+        "en": "The audit and check plugins here are read-only and zero-dependency — install and run them as-is, nothing to configure. The balance monitor reads account data locally and renders it in your UI; the install guide covers the base setup for all of them.",
+        "zh": "这里的审计与检查类插件全部只读、零依赖，装上即跑、无需配置；余额监控只在本机读取账户数据并渲染到界面上。基础安装步骤见安装指南。",
+        "zh-TW": "這裡的稽核與檢查類外掛全部唯讀、零依賴，裝上即跑、無需設定；餘額監控只在本機讀取帳戶資料並渲染到介面上。基礎安裝步驟見安裝指南。",
+        "de": "Die Audit- und Check-Plugins hier sind read-only und ohne Abhängigkeiten — installieren und loslaufen lassen. Der Bilanzmonitor liest Kontodaten ausschließlich lokal. Die Grundinstallation steht im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Does dsh need extra security plugins out of the box?",
+            "zh": "dsh 需要额外装安全插件吗？",
+            "zh-TW": "dsh 需要額外裝安全外掛嗎？",
+            "de": "Braucht dsh zusätzlich Security-Plugins?"
+          },
+          "a": {
+            "en": "The harness ships with its own permission-confirmation mechanism, so light day-to-day use is fine without extras. Once you let agents run long autonomous tasks or install high-privilege tool plugins, adding an audit and guard layer is recommended.",
+            "zh": "本体自带权限确认机制，日常轻度使用可以不装；一旦让 agent 长时间自主跑任务、或安装了高权限工具插件，就建议配上审计与防护类插件。",
+            "zh-TW": "本體自帶權限確認機制，日常輕度使用可以不裝；一旦讓 agent 長時間自主跑任務、或安裝了高權限工具外掛，就建議配上稽核與防護類外掛。",
+            "de": "Das Harness bringt einen eigenen Berechtigungs-Dialog mit — für leichte Alltagsnutzung reicht das. Sobald Agenten lange autonom laufen oder hochprivilegierte Tool-Plugins installiert sind, empfiehlt sich eine Audit- und Schutzschicht."
+          }
+        },
+        {
+          "q": {
+            "en": "Does the balance monitor leak my account data?",
+            "zh": "余额监控会泄露我的账户信息吗？",
+            "zh-TW": "餘額監控會洩露我的帳戶資訊嗎？",
+            "de": "Leakt der Bilanzmonitor meine Kontodaten?"
+          },
+          "a": {
+            "en": "These plugins read balance and usage figures locally and render them in your interface; nothing is sent to third parties. As always, the source is the final authority — skim the repo before installing.",
+            "zh": "这类插件只在本机读取账户余额与用量并渲染在界面上，不向第三方外传数据；是否可信最终以插件源码为准，装前可先读仓库。",
+            "zh-TW": "這類外掛只在本機讀取帳戶餘額與用量並渲染在介面上，不向第三方外傳資料；是否可信最終以外掛原始碼為準，裝前可先讀倉庫。",
+            "de": "Diese Plugins lesen Guthaben und Verbrauch ausschließlich lokal und zeigen sie in der Oberfläche; nichts geht an Dritte. Wie immer gilt: Der Quellcode ist die letzte Instanz — vor der Installation ins Repo schauen."
+          }
+        },
+        {
+          "q": {
+            "en": "How do I find out which of my plugins are problematic?",
+            "zh": "怎么知道哪些插件有问题？",
+            "zh-TW": "怎麼知道哪些外掛有問題？",
+            "de": "Wie finde ich problematische Plugins?"
+          },
+          "a": {
+            "en": "dsh-plugin-check flags manifest-protocol violations and patch-format mistakes — the common breakage causes. For the wider picture (config, provenance, network exposure), run dsh-security-audit for its desensitised risk report.",
+            "zh": "dsh-plugin-check 能扫出清单协议不合规范、patch 格式错误这类最常见的翻车原因；想看全貌（配置、来源、网络暴露面）就跑 dsh-security-audit，出一份脱敏风险报告。",
+            "zh-TW": "dsh-plugin-check 能掃出清單協定不合規範、patch 格式錯誤這類最常見的翻車原因；想看全貌（設定、來源、網路暴露面）就跑 dsh-security-audit，出一份脫敏風險報告。",
+            "de": "dsh-plugin-check findet Protokollverstöße im Manifest und Patch-Formatfehler — die häufigsten Bruchursachen. Für das ganze Bild (Konfiguration, Herkunft, Netzwerk-Exposition) liefert dsh-security-audit einen anonymisierten Risikobericht."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh security plugin",
+          "deepseek harness audit",
+          "dsh cost monitor",
+          "dsh balance meter"
+        ],
+        "zh": [
+          "dsh 安全插件",
+          "dsh 审计",
+          "dsh 花费监控",
+          "dsh 余额"
+        ]
+      }
+    },
+    {
+      "slug": "memory",
+      "enabled": true,
+      "emoji": "🧠",
+      "ogImage": "/images/dsh-memory-evolve.webp",
+      "filter": {
+        "categoryZh": [
+          "记忆与知识"
+        ]
+      },
+      "label": {
+        "en": "Memory & Knowledge",
+        "zh": "记忆与知识",
+        "zh-TW": "記憶與知識",
+        "de": "Gedächtnis & Wissen"
+      },
+      "title": {
+        "en": "Best {n} DeepSeek Harness (dsh) Memory & Knowledge Plugins | DSH Meme Hub",
+        "zh": "记忆与知识插件大全 — {n} 款 DeepSeek Harness 长期记忆插件 | DSH Meme Hub",
+        "zh-TW": "記憶與知識外掛大全 — {n} 款 DeepSeek Harness 長期記憶外掛 | DSH Meme Hub",
+        "de": "Die {n} besten DeepSeek Harness (dsh) Memory- & Wissens-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Long-term memory and knowledge plugins for DeepSeek Harness",
+        "zh": "dsh 长期记忆与知识库插件精选",
+        "zh-TW": "dsh 長期記憶與知識庫外掛精選",
+        "de": "Langzeitgedächtnis- und Wissens-Plugins für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Knowledge-graph recall, supervised persistent memory, git-driven micro-course libraries, self-evolving memory tracks — {n} DeepSeek Harness (dsh) memory & knowledge plugins, star-sorted.",
+        "zh": "dsh 记忆与知识插件大全：知识图谱召回、持久记忆、git 驱动微课库、自我进化记忆轨，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 記憶與知識外掛大全：知識圖譜召回、持久記憶、git 驅動微課庫、自我進化記憶軌，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Knowledge-Graph-Recall, supervidiertes Dauer gedächtnis, git-getriebene Mikrokurs-Bibliotheken, sich selbst weiterentwickelnde Memory-Tracks — {n} DeepSeek Harness (dsh) Plugins."
+      },
+      "intro": {
+        "en": [
+          "Out of the box, dsh's memory ends with the current session (plus whatever convention files live in the project) — close the window and the context is gone. Memory plugins exist to change that: graph-memory does knowledge-graph recall across sessions (it has been presented at a Tsinghua University workshop); mnemon takes an LLM-supervised persistent-memory route with graph recall; misakanet turns knowledge into a zero-dependency, git-driven micro-course library the agent learns from asynchronously; dsh-memory-evolve layers five memory tracks with git-branch awareness and background self-improvement.",
+          "Start by telling the two routes apart: \"remembers you\" (graph / persistent memory — picks up your preferences and project history next session) versus \"gets smarter\" (knowledge and skill libraries — accumulates know-how the agent can study). They stack, but everything a memory plugin writes eventually re-enters the context window: too much noise hurts more than it helps, so pruning and curation (engramory's whole pitch) is part of the job."
+        ],
+        "zh": [
+          "默认情况下，dsh 的记忆止于当前会话（外加项目内约定文件）——关掉窗口，上下文就没了。这一类插件解决这件事：graph-memory 用知识图谱做跨会话召回，还上过清华大学的讨论会；mnemon 走 LLM 监督的持久记忆路线；misakanet 把知识沉淀成 git 驱动的微课库供 agent 异步学习；dsh-memory-evolve 做五轨记忆加后台自我进化。",
+          "选型先分清两条路线：「记得你」选图谱/持久记忆类，「变强」选知识库/技能沉淀类，两者可叠加。但记忆内容最终会回流上下文，杂音太多反而拖累效果——定期剪枝与策展（engramory 的主打）是必修课。"
+        ],
+        "zh-TW": [
+          "預設情況下，dsh 的記憶止於當前會話（外加專案內約定檔案）——關掉視窗，上下文就沒了。這一類外掛解決這件事：graph-memory 用知識圖譜做跨會話召回，還上過清華大學的討論會；mnemon 走 LLM 監督的持久記憶路線；misakanet 把知識沉澱成 git 驅動的微課庫供 agent 非同步學習；dsh-memory-evolve 做五軌記憶加背景自我進化。",
+          "選型先分清兩條路線：「記得你」選圖譜/持久記憶類，「變強」選知識庫/技能沉澱類，兩者可疊加。但記憶內容最終會回流上下文，雜音太多反而拖累效果——定期剪枝與策展（engramory 的主打）是必修課。"
+        ],
+        "de": [
+          "Im Auslieferungszustand endet dshs Gedächtnis mit der aktuellen Sitzung (plus Konventionsdateien im Projekt) — Fenster zu, Kontext weg. Memory-Plugins ändern genau das: graph-memory macht Knowledge-Graph-Recall über Sitzungen hinweg (vorgestellt an einem Workshop der Tsinghua-Universität); mnemon verfolgt supervidiertes Dauer gedächtnis mit Graph-Recall; misakanet macht Wissen zu einer git-getriebenen Mikrokurs-Bibliothek ohne Abhängigkeiten, aus der der Agent asynchron lernt; dsh-memory-evolve schichtet fünf Memory-Tracks mit Git-Branch-Bewusstsein und Hintergrund-Selbstverbesserung.",
+          "Zuerst die zwei Routen auseinanderhalten: „erinnert sich an dich“ (Graph-/Dauergedächtnis — Präferenzen und Projekthistorie sind in der nächsten Sitzung wieder da) versus „wird schlauer“ (Wissens- und Skill-Bibliotheken — angesammeltes Know-how zum Studieren). Beides stapelt sich, aber alles, was ein Memory-Plugin schreibt, landet wieder im Kontextfenster: zu viel Rauschen schadet mehr als es nützt — regelmäßiges Beschneiden und Kuratieren (engramorys Kernidee) gehört dazu."
+        ]
+      },
+      "installNote": {
+        "en": "Memory plugins usually initialise their own storage on first run (a local directory, often git-managed) — no manual data migration needed. If you uninstall, back up the memory directory first; the base setup is in the install guide.",
+        "zh": "记忆插件首次使用时通常会自动初始化存储（本地目录，不少用 git 管理），无需手动迁移数据；卸载前记得先备份记忆目录。基础环境见安装指南。",
+        "zh-TW": "記憶外掛首次使用時通常會自動初始化儲存（本機目錄，不少用 git 管理），無需手動遷移資料；解除安裝前記得先備份記憶目錄。基礎環境見安裝指南。",
+        "de": "Memory-Plugins initialisieren ihren Speicher beim ersten Lauf meist selbst (lokales Verzeichnis, oft git-verwaltet) — keine manuelle Migration. Vor der Deinstallation das Memory-Verzeichnis sichern; die Grundlage steht im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "How do memory plugins differ from dsh's built-in project memory?",
+            "zh": "记忆插件和 dsh 自带的项目记忆有什么区别？",
+            "zh-TW": "記憶外掛和 dsh 自帶的專案記憶有什麼區別？",
+            "de": "Wie unterscheiden sich Memory-Plugins vom eingebauten Projektgedächtnis?"
+          },
+          "a": {
+            "en": "The built-in mechanism reads convention files inside the project and stops at the repo boundary. Memory plugins persist experience across sessions and projects into their own storage and recall it on demand — the two complement each other rather than compete.",
+            "zh": "自带机制只读项目内的约定文件、作用域限于当前仓库；记忆插件把「跨会话、跨项目」的经验写进独立存储并按需召回。两者互补，不冲突。",
+            "zh-TW": "自帶機制只讀專案內的約定檔案、作用域限於當前倉庫；記憶外掛把「跨會話、跨專案」的經驗寫進獨立儲存並按需召回。兩者互補，不衝突。",
+            "de": "Der eingebaute Mechanismus liest Konventionsdateien im Projekt und endet an der Repo-Grenze. Memory-Plugins persistieren Erfahrung über Sitzungen und Projekte hinweg in eigenen Speicher und rufen sie bei Bedarf ab — beides ergänzt sich."
+          }
+        },
+        {
+          "q": {
+            "en": "Can accumulated memory slow the agent down?",
+            "zh": "记忆会越积越多拖慢 Agent 吗？",
+            "zh-TW": "記憶會越積越多拖慢 Agent 嗎？",
+            "de": "Kann angesammeltes Gedächtnis den Agenten verlangsamen?"
+          },
+          "a": {
+            "en": "The risk is real: recalled content occupies context, and noise degrades answer quality. Mature plugins ship curation, pruning or forgetting mechanisms — and a periodic clean-up habit on your side keeps recall sharp.",
+            "zh": "会有这个风险：召回内容会占用上下文，杂音多时反而降低回答质量。成熟的方案都带策展、剪枝或遗忘机制，你自己定期整理一遍也能让召回保持锋利。",
+            "zh-TW": "會有這個風險：召回內容會佔用上下文，雜音多時反而降低回答品質。成熟的方案都帶策展、剪枝或遺忘機制，你自己定期整理一遍也能讓召回保持鋒利。",
+            "de": "Das Risiko ist real: Erinnertes belegt Kontext, Rauschen verschlechtert die Antwortqualität. Reife Lösungen bringen Kuratierung, Pruning oder Vergessen mit — und ein periodischer Aufräumkurs deinerseits hält den Recall scharf."
+          }
+        },
+        {
+          "q": {
+            "en": "Where is the memory stored — does it ever leave my machine?",
+            "zh": "记忆数据存在哪里，会离开本机吗？",
+            "zh-TW": "記憶資料存在哪裡，會離開本機嗎？",
+            "de": "Wo liegt das Gedächtnis — verlässt es jemals mein Gerät?"
+          },
+          "a": {
+            "en": "The common approach is local files in the project or user directory (many git-managed), with no third-party service in the loop. The exact location and format is documented in each plugin's README and source.",
+            "zh": "主流做法是存成项目内或用户目录下的本地文件（不少用 git 管理），中间不经过第三方服务；具体位置与格式以各插件 README 与源码为准。",
+            "zh-TW": "主流做法是存成專案內或使用者目錄下的本機檔案（不少用 git 管理），中間不經過第三方服務；具體位置與格式以各外掛 README 與原始碼為準。",
+            "de": "Der übliche Weg sind lokale Dateien im Projekt- oder Nutzerverzeichnis (oft git-verwaltet), ohne Drittdienst dazwischen; genauer Ort und Format stehen in README und Quellcode des jeweiligen Plugins."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh memory plugin",
+          "deepseek harness long-term memory",
+          "dsh knowledge graph",
+          "agent memory"
+        ],
+        "zh": [
+          "dsh 记忆插件",
+          "dsh 长期记忆",
+          "dsh 知识图谱",
+          "agent 记忆"
+        ]
+      }
+    },
+    {
+      "slug": "clients",
+      "enabled": true,
+      "emoji": "🖥️",
+      "ogImage": "/images/dsh-tui.webp",
+      "filter": {
+        "categoryZh": [
+          "客户端与终端"
+        ]
+      },
+      "label": {
+        "en": "Clients & Terminals",
+        "zh": "客户端与终端",
+        "zh-TW": "客戶端與終端",
+        "de": "Clients & Terminals"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) TUIs, Clients & Launchers | DSH Meme Hub",
+        "zh": "客户端与终端大全 — {n} 款 DeepSeek Harness TUI / 客户端 / 启动器 | DSH Meme Hub",
+        "zh-TW": "客戶端與終端大全 — {n} 款 DeepSeek Harness TUI / 客戶端 / 啟動器 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) TUIs, Clients & Launcher | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness terminal & client family",
+        "zh": "dsh 终端与客户端家族",
+        "zh-TW": "dsh 終端與客戶端家族",
+        "de": "Die Terminal- und Client-Familie von DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Claude Code-style TUIs, a native macOS workbench, lightweight Windows launchers — {n} DeepSeek Harness (dsh) clients & terminal frontends, star-sorted with install commands.",
+        "zh": "dsh 客户端与终端大全：Claude Code 风格 TUI、原生 macOS 工作台、Windows 轻量启动器，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 客戶端與終端大全：Claude Code 風格 TUI、原生 macOS 工作台、Windows 輕量啟動器，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Claude-Code-artige TUIs, native macOS-Werkbank, leichte Windows-Launcher — {n} DeepSeek Harness (dsh) Clients & Terminal-Frontends, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "dsh's default interface is the web UI that opens in your browser after launch — but not everyone wants to code in a browser tab. The community filled the gaps fast: dsh-tui and dsh-cc-tui are two Claude Code-style terminal frontends (pixel-whale header, streaming thoughts, double-Esc rewind) locked in a near star-count tie from day one; oh-dsh-desktop is a native macOS workbench with a real PTY and an isolated plugin-market preview; dsh-tianshu-tui layers harness-level workflows like TDD-driven agent loops on top of the official TUI; dsh-launcher turns \"log in, then open the browser\" into a silent auto-start on Windows.",
+          "Which one to pick depends on how you work: terminal dwellers go straight to a TUI, native-window people choose the desktop workbench, and if your only complaint is the browser dance, a launcher fixes it. Client plugins and UI-enhancement plugins act on different layers, so they usually coexist without conflict."
+        ],
+        "zh": [
+          "dsh 默认界面是启动后开在浏览器里的 Web UI，但不是所有人都想开着标签页写代码——社区很快把 TUI、桌面客户端与启动器补齐了。dsh-tui 与 dsh-cc-tui 是两款 Claude Code 风格终端界面（像素鲸鱼顶栏、流式思考、双击 Esc 回滚），star 数从上线起就咬得很紧；oh-dsh-desktop 是原生 PTY 的 macOS 工作台；dsh-launcher 把「登录再开浏览器」固化成 Windows 静默自启。",
+          "选哪类看使用姿势：泡终端的直接上 TUI，要原生窗口的选桌面工作台，只嫌开浏览器麻烦的先装启动器。客户端与 UI 增强作用于不同层面，通常可以并用。"
+        ],
+        "zh-TW": [
+          "dsh 預設介面是啟動後開在瀏覽器裡的 Web UI，但不是所有人都想開著分頁寫程式——社群很快把 TUI、桌面客戶端與啟動器補齊了。dsh-tui 與 dsh-cc-tui 是兩款 Claude Code 風格終端介面（像素鯨魚頂欄、串流思考、雙擊 Esc 回滾），star 數從上線起就咬得很緊；oh-dsh-desktop 是原生 PTY 的 macOS 工作台；dsh-launcher 把「登入再開瀏覽器」固化成 Windows 靜默自啟。",
+          "選哪類看使用姿勢：泡終端的直接上 TUI，要原生視窗的選桌面工作台，只嫌開瀏覽器麻煩的先裝啟動器。客戶端與 UI 增強作用於不同層面，通常可以並用。"
+        ],
+        "de": [
+          "dshs Standardoberfläche ist die Web-UI im Browser — aber nicht jeder will in einem Tab coden. Die Community hat die Lücken schnell gefüllt: dsh-tui und dsh-cc-tui sind zwei Claude-Code-artige Terminal-Frontends (Pixel-Wal-Kopfzeile, streamende Gedanken, Doppelt-Esc-Rollback), deren Star-Zahlen von Tag an Kopf-an-Kopf liegen; oh-dsh-desktop ist eine native macOS-Werkbank mit echtem PTY und isolierter Plugin-Markt-Vorschau; dsh-tianshu-tui setzt harness-level Workflows wie TDD-getriebene Agenten-Schleifen auf das offizielle TUI; dsh-launcher macht „anmelden, dann Browser öffnen“ auf Windows zum stillen Autostart.",
+          "Welcher es sein soll, hängt von der Arbeitsweise ab: Terminal-Menschen nehmen direkt ein TUI, Nativfenster-Menschen die Desktop-Werkbank, und wem nur der Browser-Tanz stört, dem reicht ein Launcher. Client-Plugins und UI-Erweiterungen wirken auf verschiedenen Ebenen und koexistieren meist problemlos."
+        ]
+      },
+      "installNote": {
+        "en": "Terminal frontends install like any plugin (one npx command, see the install guide) but run as your main frontend afterwards; launchers are small native apps you start instead of the raw npx command. Keep the web UI available as a fallback — both frontends share the same dsh instance underneath.",
+        "zh": "终端界面的安装与其他插件相同（一条 npx 命令，见安装指南），但之后它会作为主前端运行；启动器是替代 npx 命令启动 dsh 的小型原生程序。建议保留 Web UI 作为兜底——两套前端底下共享同一个 dsh 实例。",
+        "zh-TW": "終端介面的安裝與其他外掛相同（一條 npx 命令，見安裝指南），但之後它會作為主前端執行；啟動器是替代 npx 命令啟動 dsh 的小型原生程式。建議保留 Web UI 作為兜底——兩套前端底下共享同一個 dsh 實例。",
+        "de": "Terminal-Frontends installieren sich wie jedes Plugin (ein npx-Befehl, siehe Installationsguide), laufen danach aber als Haupt-Frontend; Launcher sind kleine native Programme, die dsh statt des raw-npx-Aufrufs starten. Die Web-UI als Rückfallebene behalten — beide Frontends teilen dieselbe dsh-Instanz."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Is a TUI plugin mutually exclusive with the web UI?",
+            "zh": "TUI 插件和 Web UI 是二选一吗？",
+            "zh-TW": "TUI 外掛和 Web UI 是二選一嗎？",
+            "de": "Schließt ein TUI-Plugin die Web-UI aus?"
+          },
+          "a": {
+            "en": "No. The TUI is a second frontend running alongside — the web UI stays usable, and both share the same dsh instance's sessions and configuration. Switch between them per situation.",
+            "zh": "不是。TUI 是并行提供的另一套前端，Web UI 依然可用；两边共享同一个 dsh 实例的会话与配置，按场景随时切换。",
+            "zh-TW": "不是。TUI 是並行提供的另一套前端，Web UI 依然可用；兩邊共享同一個 dsh 實例的會話與設定，按場景隨時切換。",
+            "de": "Nein. Das TUI ist ein zweites Frontend daneben — die Web-UI bleibt nutzbar, beide teilen Sitzungen und Konfiguration derselben dsh-Instanz. Je nach Situation wechseln."
+          }
+        },
+        {
+          "q": {
+            "en": "Why are there two TUIs with almost identical star counts?",
+            "zh": "为什么有两款 star 数几乎一样的 TUI？",
+            "zh-TW": "為什麼有兩款 star 數幾乎一樣的 TUI？",
+            "de": "Warum gibt es zwei TUIs mit nahezu gleichen Star-Zahlen?"
+          },
+          "a": {
+            "en": "Early on, no official TUI existed, so the community started two implementations almost simultaneously. They look similar but differ in the details — header, rewind behaviour, status line. The common play is to try both and keep one.",
+            "zh": "生态早期官方 TUI 缺位，社区几乎同时开工了两款实现：风格相近、细节各有取舍（顶栏、回滚、状态行的做法不同）。常见玩法是都装上试用，留下顺手的那款。",
+            "zh-TW": "生態早期官方 TUI 缺位，社群幾乎同時開工了兩款實作：風格相近、細節各有取捨（頂欄、回滾、狀態列的做法不同）。常見玩法是都裝上試用，留下順手的那款。",
+            "de": "Frühe Phase, kein offizielles TUI — die Community startete fast zeitgleich zwei Implementierungen. Ähnlicher Stil, unterschiedliche Details: Kopfzeile, Rollback-Verhalten, Statuszeile. Üblich ist: beide testen, eine behalten."
+          }
+        },
+        {
+          "q": {
+            "en": "Is there an official Windows client?",
+            "zh": "Windows 上有官方客户端吗？",
+            "zh-TW": "Windows 上有官方客戶端嗎？",
+            "de": "Gibt es einen offiziellen Windows-Client?"
+          },
+          "a": {
+            "en": "For now the official form is the web UI. On Windows, launchers like dsh-launcher fold the \"log in and open the browser\" ritual into a silent auto-start with a minimal window — close enough to a native client for most people.",
+            "zh": "目前官方形态就是 Web UI。Windows 上可以先用 dsh-launcher 这类启动器，把「登录 + 开浏览器」固化成静默自启加极简窗口，体验已经接近原生客户端。",
+            "zh-TW": "目前官方形態就是 Web UI。Windows 上可以先用 dsh-launcher 這類啟動器，把「登入 + 開瀏覽器」固化成靜默自啟加極簡視窗，體驗已經接近原生客戶端。",
+            "de": "Derzeit ist die offizielle Form die Web-UI. Unter Windows faltet etwa dsh-launcher das Ritual aus Anmeldung und Browserstart in einen stillen Autostart mit minimalem Fenster — für die meisten nah genug an einem nativen Client."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh tui",
+          "deepseek harness terminal",
+          "dsh desktop client",
+          "dsh launcher"
+        ],
+        "zh": [
+          "dsh tui",
+          "dsh 终端客户端",
+          "dsh 桌面客户端",
+          "dsh 启动器"
+        ]
+      }
+    },
+    {
+      "slug": "vision",
+      "enabled": true,
+      "emoji": "👁️",
+      "ogImage": "/images/dsh-deep-whale-hero.webp",
+      "filter": {
+        "categoryZh": [
+          "视觉与多模态"
+        ]
+      },
+      "label": {
+        "en": "Vision & Multimodal",
+        "zh": "视觉与多模态",
+        "zh-TW": "視覺與多模態",
+        "de": "Sehen & Multimodalität"
+      },
+      "title": {
+        "en": "Best {n} DeepSeek Harness (dsh) Vision & OCR Plugins | DSH Meme Hub",
+        "zh": "视觉与多模态插件大全 — {n} 款 DeepSeek Harness 识图 / OCR 插件 | DSH Meme Hub",
+        "zh-TW": "視覺與多模態外掛大全 — {n} 款 DeepSeek Harness 識圖 / OCR 外掛 | DSH Meme Hub",
+        "de": "Die {n} besten DeepSeek Harness (dsh) Vision- & OCR-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Give your text-only DeepSeek Harness agent eyes",
+        "zh": "给 dsh 装上眼睛：视觉与多模态插件",
+        "zh-TW": "給 dsh 裝上眼睛：視覺與多模態外掛",
+        "de": "Deinem textbasierten DeepSeek Harness Agenten Augen geben"
+      },
+      "desc": {
+        "en": "Screenshot OCR, multi-image understanding, UI restoration from mock-ups, free vision bridges — {n} DeepSeek Harness (dsh) vision & multimodal plugins, star-sorted with install commands.",
+        "zh": "dsh 视觉与多模态插件大全：长截图 OCR、多图理解、设计稿还原 UI、免费档视觉桥接，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 視覺與多模態外掛大全：長截圖 OCR、多圖理解、設計稿還原 UI、免費檔視覺橋接，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Screenshot-OCR, Mehrbild-Verständnis, UI-Rekonstruktion aus Entwürfen, kostenlose Vision-Bridges — {n} DeepSeek Harness (dsh) Vision-Plugins, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "dsh runs on text-only models — it can't see images out of the box. Vision plugins bolt that ability back on, in two broad flavours: bridge plugins such as modlens and dsh-vision-toolkit hand screenshots and photos to a vision model and feed structured results (OCR text, layout, semantics) back to the agent as evidence it can cite; agent-vision-toolkit and dsh-vision-router extend further to multi-image understanding, long-screenshot OCR, front-end UI restoration from mock-ups and GUI-automation support, with free vision chains built in.",
+          "Two things to confirm before installing: which VLM the plugin bridges to (several default to a free tier — Zhipu's, for instance — and accept any OpenAI-compatible endpoint of your own), and whether you need to bring your own key. The classic use cases: tossing an error screenshot straight at the agent, digging text out of a long chat screenshot, and turning a design mock-up into front-end code."
+        ],
+        "zh": [
+          "dsh 走纯文本模型路线，开箱看不了图——插件可以把视觉能力「外挂」回来。modlens、dsh-vision-toolkit 这类桥接方案把截图交给视觉模型，再把结构化结果（OCR 文本、版面、语义）作为证据喂回 agent；agent-vision-toolkit 与 dsh-vision-router 走得更远：多图理解、长截图 OCR、设计稿还原 UI、GUI 自动化辅助，还内置免费视觉链。",
+          "装前确认两件事：桥接的是哪家 VLM（不少默认接免费档，也可换成自己的 OpenAI 兼容端点）、是否需要自带 Key。典型场景：报错截图直接丢给 agent、长截图挖文字、设计稿反推前端代码。"
+        ],
+        "zh-TW": [
+          "dsh 走純文字模型路線，開箱看不了圖——外掛可以把視覺能力「外掛」回來。modlens、dsh-vision-toolkit 這類橋接方案把截圖交給視覺模型，再把結構化結果（OCR 文字、版面、語義）作為證據餵回 agent；agent-vision-toolkit 與 dsh-vision-router 走得更遠：多圖理解、長截圖 OCR、設計稿還原 UI、GUI 自動化輔助，還內建免費視覺鏈。",
+          "裝前確認兩件事：橋接的是哪家 VLM（不少預設接免費檔，也可換成自己的 OpenAI 相容端點）、是否需要自帶 Key。典型場景：報錯截圖直接丟給 agent、長截圖挖文字、設計稿反推前端程式碼。"
+        ],
+        "de": [
+          "dsh läuft auf reinen Textmodellen — Bilder sieht es von Haus aus nicht. Vision-Plugins schrauben diese Fähigkeit nach, in zwei Geschmacksrichtungen: Bridge-Plugins wie modlens und dsh-vision-toolkit geben Screenshots und Fotos an ein Vision-Modell und füttern strukturierte Ergebnisse (OCR-Text, Layout, Semantik) als zitierbare Beweise zurück; agent-vision-toolkit und dsh-vision-router gehen weiter — Mehrbild-Verständnis, Lang-Screenshot-OCR, UI-Rekonstruktion aus Entwürfen, GUI-Automatisierungs-Unterstützung, mit eingebauten kostenlosen Vision-Ketten.",
+          "Vor der Installation zweimal prüfen: welches VLM gebridgt wird (mehrere nutzen standardmäßig ein Gratis-Kontingent, etwa von Zhipu, und akzeptieren jeden eigenen OpenAI-kompatiblen Endpunkt) und ob ein eigener Key nötig ist. Die klassischen Fälle: Fehler-Screenshot direkt an den Agenten, Text aus einem langen Chat-Screenshot ziehen, aus einem Design-Entwurf Frontend-Code ableiten."
+        ]
+      },
+      "installNote": {
+        "en": "After installing, open the plugin's settings and confirm the VLM endpoint (free tier or your own key) before first use — swapping endpoints later is a two-line change. The install guide covers the base dsh setup.",
+        "zh": "装完后先在插件设置里确认 VLM 端点（免费档或自有 Key）再开始用；之后想换端点也只是改两行配置的事。dsh 基础环境见安装指南。",
+        "zh-TW": "裝完後先在外掛設定裡確認 VLM 端點（免費檔或自有 Key）再開始用；之後想換端點也只是改兩行設定的事。dsh 基礎環境見安裝指南。",
+        "de": "Nach der Installation in den Plugin-Einstellungen den VLM-Endpunkt bestätigen (Gratis-Kontingent oder eigener Key), bevor es losgeht — später zu wechseln ist eine Zwei-Zeilen-Änderung. Die dsh-Grundlage steht im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Can dsh really not read images by itself?",
+            "zh": "dsh 本体真的不能识图吗？",
+            "zh-TW": "dsh 本體真的不能識圖嗎？",
+            "de": "Kann dsh wirklich keine Bilder erkennen?"
+          },
+          "a": {
+            "en": "The harness currently leans on text-only coding models, so images can't enter the context directly. Vision plugins route around it: a vision model describes the image as structured text, and quality depends on whichever VLM is on the other end of the bridge.",
+            "zh": "目前 harness 主打纯文本编码模型，图片不能直接进上下文。视觉插件绕过这个限制的方式是让视觉模型把图「转述」成结构化文本，效果取决于桥接对面的 VLM 成色。",
+            "zh-TW": "目前 harness 主打純文字編碼模型，圖片不能直接進上下文。視覺外掛繞過這個限制的方式是讓視覺模型把圖「轉述」成結構化文字，效果取決於橋接對面的 VLM 成色。",
+            "de": "Das Harness setzt derzeit auf rein textbasierte Coding-Modelle — Bilder kommen nicht direkt in den Kontext. Vision-Plugins umgehen das: Ein Vision-Modell übersetzt das Bild in strukturierten Text; die Qualität hängt vom VLM am anderen Ende der Brücke ab."
+          }
+        },
+        {
+          "q": {
+            "en": "Do vision plugins cost extra?",
+            "zh": "视觉插件要额外花钱吗？",
+            "zh-TW": "視覺外掛要額外花錢嗎？",
+            "de": "Kosten Vision-Plugins extra?"
+          },
+          "a": {
+            "en": "It depends on the bridge target: solutions wired to a free VLM tier start at zero cost, while using your own OpenAI-compatible endpoint or a commercial model bills at that service's rates. Each plugin's README documents its configuration.",
+            "zh": "看桥接目标：接免费档 VLM 的方案可以零成本起步；用自己的 OpenAI 兼容端点或商业模型，则按对应服务的费率计费。各插件的 README 都写明了配置方法。",
+            "zh-TW": "看橋接目標：接免費檔 VLM 的方案可以零成本起步；用自己的 OpenAI 相容端點或商業模型，則按對應服務的費率計費。各外掛的 README 都寫明了設定方法。",
+            "de": "Es hängt vom Bridge-Ziel ab: Anbindungen an ein Gratis-VLM-Kontingent starten ohne Kosten; eigener OpenAI-kompatibler Endpunkt oder kommerzielles Modell rechnen nach den Sätzen des jeweiligen Dienstes ab. Die READMEs dokumentieren die Konfiguration."
+          }
+        },
+        {
+          "q": {
+            "en": "How well does OCR handle long screenshots?",
+            "zh": "OCR 识别长截图效果如何？",
+            "zh-TW": "OCR 識別長截圖效果如何？",
+            "de": "Wie gut funktioniert OCR bei langen Screenshots?"
+          },
+          "a": {
+            "en": "Long screenshots are the flagship scenario for these plugins: the tool slices the image, OCRs each slice, and merges the results. For tables and complex layouts most solutions also emit layout-structure information so the agent can reason over it a second time.",
+            "zh": "长截图 OCR 正是这类插件的主打场景：工具会把图切块识别再合并结果；对表格与复杂版面，多数方案还会同时输出版面结构信息，供 agent 做二次推理。",
+            "zh-TW": "長截圖 OCR 正是這類外掛的主打場景：工具會把圖切塊識別再合併結果；對表格與複雜版面，多數方案還會同時輸出版面結構資訊，供 agent 做二次推理。",
+            "de": "Lange Screenshots sind das Aushängeschild dieser Plugins: Das Werkzeug schneidet das Bild in Streifen, OCRt sie einzeln und führt die Ergebnisse zusammen. Bei Tabellen und komplexen Layouts liefern die meisten zusätzlich Strukturinformationen, über die der Agent ein zweites Mal nachdenken kann."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh vision plugin",
+          "deepseek harness ocr",
+          "dsh image understanding",
+          "dsh vlm bridge"
+        ],
+        "zh": [
+          "dsh 识图插件",
+          "dsh ocr",
+          "dsh 视觉模型",
+          "dsh 截图识别"
+        ]
+      }
+    },
+    {
+      "slug": "pets",
+      "enabled": true,
+      "emoji": "🐳",
+      "ogImage": "/images/dsh-client-ui-pet.webp",
+      "filter": {
+        "categoryZh": [
+          "赛博宠物"
+        ],
+        "memeSection": [
+          "pets"
+        ]
+      },
+      "label": {
+        "en": "Cyber Pets",
+        "zh": "赛博宠物",
+        "zh-TW": "賽博寵物",
+        "de": "Cyber-Pets"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Desktop Pet Plugins | DSH Meme Hub",
+        "zh": "桌宠大全 — {n} 款 DeepSeek Harness 桌面宠物插件 | DSH Meme Hub",
+        "zh-TW": "桌寵大全 — {n} 款 DeepSeek Harness 桌面寵物外掛 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) Desktop-Pets | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness desktop-pet collection",
+        "zh": "dsh 桌宠全家福",
+        "zh-TW": "dsh 桌寵全家福",
+        "de": "Die Desktop-Pet-Sammlung für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Whale-girls you can feed and level up, a pet-store app for one-command installs, a status-mirroring desktop fish — {n} DeepSeek Harness (dsh) desktop pet plugins, star-sorted.",
+        "zh": "dsh 桌宠大全：可投喂升称号的鲸鱼娘、一条命令装宠物的桌宠商店、同步 Agent 状态的大肥鱼，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 桌寵大全：可投餵升稱號的鯨魚娘、一條命令裝寵物的桌寵商店、同步 Agent 狀態的大肥魚，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Fütterbare Walfrauen mit Titeln, ein Pet-Store für Ein-Befehl-Installationen, ein Status spiegelnder Desktop-Fisch — {n} DeepSeek Harness (dsh) Desktop-Pets, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "The dsh community's first breakout hits weren't productivity tools — they were desktop pets. Petdex built itself into the app store of the pet world: community-submitted animated pets, one command to install, and a desktop app that mirrors your agent's state as the pets move. whale-girl is a QQ-pet-style whale maid you can drag, feed and play with, complete with task-based levelling, titles and memories — she even sulks when a task fails. dsh-dafeiyu is a big fat fish living on the Windows desktop: a transparent always-on-top window that starts and stops with dsh and mirrors thinking, editing, testing and waiting states.",
+          "A pet is more than decoration: most of them bind their animations to agent state (thinking, calling a tool, waiting for confirmation), which makes the pet a living progress bar on your desktop. The whale paddling around this site's 404 page comes from the same ecosystem — the whale-girl is both a pet and a skin series, something like the community's unofficial totem."
+        ],
+        "zh": [
+          "dsh 社区的第一批爆款不是生产力工具，而是桌宠。petdex 把自己做成了「桌宠界的应用商店」：社区投稿、一条命令安装动画宠物，桌面应用跟着 Agent 状态变化；whale-girl 是 QQ 宠物形态的鲸鱼娘，可投喂、可玩耍，完成任务升称号、存回忆，任务失败还会失落；dsh-dafeiyu 是住在 Windows 桌面的大肥鱼，透明置顶窗口跟随 dsh 启停，思考、测试、等待状态一目了然。",
+          "桌宠不只是卖萌：多数宠物的动作直接绑定 Agent 状态，摆在桌上等于一个活的进度条。本站 404 页那条鲸鱼也来自同一生态——鲸鱼娘既是桌宠也是皮肤系列，算得上社区的非官方图腾。"
+        ],
+        "zh-TW": [
+          "dsh 社群的第一批爆款不是生產力工具，而是桌寵。petdex 把自己做成了「桌寵界的應用商店」：社群投稿、一條命令安裝動畫寵物，桌面應用跟著 Agent 狀態變化；whale-girl 是 QQ 寵物形態的鯨魚娘，可投餵、可玩耍，完成任務升稱號、存回憶，任務失敗還會失落；dsh-dafeiyu 是住在 Windows 桌面的大肥魚，透明置頂視窗跟隨 dsh 啟停，思考、測試、等待狀態一目了然。",
+          "桌寵不只是賣萌：多數寵物的動作直接綁定 Agent 狀態，擺在桌上等於一個活的進度條。本站 404 頁那條鯨魚也來自同一生態——鯨魚娘既是桌寵也是皮膚系列，算是社群的非官方圖騰。"
+        ],
+        "de": [
+          "Die ersten großen Erfolge der dsh-Community waren keine Produktivitätstools, sondern Desktop-Pets. Petdex hat sich zum „App Store der Pet-Welt“ gemacht: Community-eingereichte animierte Pets, Installation per Befehl, und eine Desktop-App, die den Agentenzustand in den Bewegungen spiegelt. whale-girl ist eine Walfrau im QQ-Haustier-Stil — ziehbar, fütterbar, spielbar, mit Titel-Aufstieg durch Aufgaben und gesammelten Erinnerungen; scheitert eine Aufgabe, trauert sie. dsh-dafeiyu ist ein dicker Fisch auf dem Windows-Desktop: ein transparentes Always-on-Top-Fenster, das mit dsh startet und stoppt und Denken, Editieren, Testen und Warten unterscheidet.",
+          "Ein Pet ist mehr als Deko: Die meisten binden ihre Animationen an den Agentenzustand (denkt, ruft ein Tool, wartet auf Bestätigung) — damit ist das Pet ein lebender Fortschrittsbalken auf dem Desktop. Der Wal, der durch die 404-Seite dieser Site paddelt, stammt aus demselben Ökosystem — die Walfrau ist zugleich Pet und Skin-Serie, so etwas wie das inoffizielle Wappentier der Community."
+        ]
+      },
+      "installNote": {
+        "en": "Pets come in two shapes: plugins that live inside dsh's web UI (the title-bar pixel whale, for one) install with the usual npx command; companion desktop apps (Petdex, the fat fish) are downloaded per platform and then connect to your local dsh service. Each plugin's page here says which shape it is; the install guide covers the base setup.",
+        "zh": "桌宠分两种形态：插件形态（如标题栏像素鲸鱼）一条 npx 命令装进 dsh 即可；配套桌面应用形态（petdex、大肥鱼）按系统下载应用后再连接本地 dsh 服务。每个插件页都标了形态；基础环境见安装指南。",
+        "zh-TW": "桌寵分兩種形態：外掛形態（如標題欄像素鯨魚）一條 npx 命令裝進 dsh 即可；配套桌面應用形態（petdex、大肥魚）按系統下載應用後再連線本機 dsh 服務。每個外掛頁都標了形態；基礎環境見安裝指南。",
+        "de": "Pets gibt es in zwei Gestalten: Plugin-Gestalten (etwa der Pixel-Wal in der Titelleiste) installieren sich per npx; Begleit-Desktop-Apps (Petdex, der dicke Fisch) werden pro Plattform geladen und verbinden sich dann mit dem lokalen dsh-Dienst. Die Detailseiten nennen die Gestalt; die Grundlage steht im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Are pets standalone apps or dsh plugins?",
+            "zh": "桌宠是独立软件还是 dsh 插件？",
+            "zh-TW": "桌寵是獨立軟體還是 dsh 外掛？",
+            "de": "Sind Pets eigenständige Apps oder dsh-Plugins?"
+          },
+          "a": {
+            "en": "Both exist: some live as plugins inside the web UI (like the title-bar whale), others are companion desktop apps (Petdex, the fat fish) that read agent state from dsh's local service. Each plugin's page says which — and how to install it.",
+            "zh": "两者都有：有的以插件形态常驻 Web UI（如标题栏像素鲸鱼），有的是配套桌面应用（petdex、大肥鱼），通过读取 dsh 的本地服务感知 Agent 状态。装法见各插件页。",
+            "zh-TW": "兩者都有：有的以外掛形態常駐 Web UI（如標題欄像素鯨魚），有的是配套桌面應用（petdex、大肥魚），透過讀取 dsh 的本機服務感知 Agent 狀態。裝法見各外掛頁。",
+            "de": "Beides: Manche leben als Plugins in der Web-UI (etwa der Titelleisten-Wal), andere sind Begleit-Desktop-Apps (Petdex, der dicke Fisch), die den Agentenzustand aus dshs lokalem Dienst lesen. Die Detailseiten sagen welche Gestalt — und wie zu installieren ist."
+          }
+        },
+        {
+          "q": {
+            "en": "Do pets display my code or conversation content?",
+            "zh": "桌宠会显示我的代码或会话内容吗？",
+            "zh-TW": "桌寵會顯示我的程式碼或會話內容嗎？",
+            "de": "Zeigen Pets meinen Code oder Sitzungsinhalt?"
+          },
+          "a": {
+            "en": "No — they read state signals only (thinking / tool call / waiting) and never render conversation content. If you want certainty, a quick skim of the plugin's source settles it.",
+            "zh": "不会。它们只读取状态信号（思考中/工具调用/等待确认），不渲染任何会话内容；想确认的话，翻一下插件源码即可。",
+            "zh-TW": "不會。它們只讀取狀態訊號（思考中/工具呼叫/等待確認），不渲染任何會話內容；想確認的話，翻一下外掛原始碼即可。",
+            "de": "Nein — sie lesen nur Zustandssignale (denkt / Tool-Aufruf / wartet) und rendern nie Sitzungsinhalt. Wer Gewissheit will, wirft kurz einen Blick in den Quellcode."
+          }
+        },
+        {
+          "q": {
+            "en": "Do pets stay after I quit dsh?",
+            "zh": "关掉 dsh 桌宠还在吗？",
+            "zh-TW": "關掉 dsh 桌寵還在嗎？",
+            "de": "Bleiben Pets nach dem Beenden von dsh?"
+          },
+          "a": {
+            "en": "Depends on the implementation: ones that follow the harness (like the fat fish) exit together with it; standalone desktop apps can stay resident and are closed from the system tray.",
+            "zh": "取决于实现：跟随本体启停的（如大肥鱼）会一起退出；独立桌面应用形态的可以单独常驻，从系统托盘关闭。",
+            "zh-TW": "取決於實作：跟隨本體啟停的（如大肥魚）會一起退出；獨立桌面應用形態的可以單獨常駐，從系統匣關閉。",
+            "de": "Je nach Implementierung: Wer dem Harness folgt (wie der dicke Fisch), beendet sich mit ihm; eigenständige Desktop-Apps können resident bleiben und werden über den System-Tray geschlossen."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh desktop pet",
+          "deepseek harness pet",
+          "dsh whale girl",
+          "dsh petdex"
+        ],
+        "zh": [
+          "dsh 桌宠",
+          "dsh 桌面宠物",
+          "dsh 鲸鱼娘",
+          "petdex"
+        ]
+      }
+    },
+    {
+      "slug": "absurd",
+      "enabled": true,
+      "emoji": "🤯",
+      "ogImage": "/images/dsh-ads.webp",
+      "filter": {
+        "categoryZh": [
+          "抽象整活"
+        ],
+        "memeSection": [
+          "absurd"
+        ]
+      },
+      "label": {
+        "en": "Peak Absurdity",
+        "zh": "抽象整活",
+        "zh-TW": "抽象整活",
+        "de": "Absurdes Highlight"
+      },
+      "title": {
+        "en": "Top {n} Absurd DeepSeek Harness (dsh) Plugins — Community Nonsense Hall of Fame | DSH Meme Hub",
+        "zh": "抽象整活精选 — {n} 个 DeepSeek Harness 硬核整活插件 | DSH Meme Hub",
+        "zh-TW": "抽象整活精選 — {n} 個 DeepSeek Harness 硬核整活外掛 | DSH Meme Hub",
+        "de": "Top {n} absurde DeepSeek Harness (dsh) Plugins — Ruhmeshalle des Unsinns | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness absurdity hall of fame",
+        "zh": "dsh 抽象整活名人堂",
+        "zh-TW": "dsh 抽象整活名人堂",
+        "de": "Die Absurditäts-Ruhmeshalle von DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Digital avatars of departed teammates, a full QQ2006 interface rebuild, a 2005 web-portal takeover — {n} absurd DeepSeek Harness (dsh) plugins, engineered with complete seriousness, star-sorted.",
+        "zh": "dsh 抽象整活精选：离职同事数字分身、QQ2006 界面复刻、2005 年门户网站全家桶，共 {n} 个用硬核工程认真整活的项目，按 star 排序。",
+        "zh-TW": "dsh 抽象整活精選：離職同事數位分身、QQ2006 介面復刻、2005 年入口網站全家桶，共 {n} 個用硬核工程認真整活的專案，按 star 排序。",
+        "de": "Digitale Avatares geschiedener Teamkollegen, ein kompletter QQ2006-Interface-Nachbau, eine 2005er-Webportal-Übernahme — {n} absurde DeepSeek Harness (dsh) Plugins, todernst gebaut, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "This section collects projects that do one absurd thing with complete seriousness — often with engineering effort to match. colleague-skill distills a departing teammate's working style and context into a conversational digital avatar; its sibling ex-skill packages an ex's chat style and memories into a Skill (the “digital life 1.0” series — install at your own emotional risk). dsh-qq2006 rebuilds the entire interface as QQ2006 using original Tencent artwork, complete with skins, sound effects and a login window. dsh-ads turns dsh into a 2005 Chinese web portal: knockoff banner ads, a fortune-whale lucky draw, a fake antivirus popup — and the close button's hit area is smaller than it looks.",
+          "Absurdity here is mostly harmless but genuinely addictive. Before installing, ask two questions: does it rewrite large parts of the interface (it can fight skin and UI plugins), and will it interrupt a task that's actually running? The mascot of this section is the idea that a coding harness is a place where culture happens, not just work."
+        ],
+        "zh": [
+          "这一区收录「认真做一件离谱事」的项目，工程量常常不输正经工具。colleague-skill 把离职同事的工作方式与上下文蒸馏成可对话的数字分身，人气常年霸榜；同系列的 ex-skill 把你忘不掉的 TA 打包成 Skill，情感向整活，装前请评估精神状态。dsh-qq2006 用腾讯原版素材把界面改造成 QQ2006，换肤音效登录窗全套；dsh-ads 把 dsh 变成 2005 年中文门户，贪玩蓝鲸、财神鲸抽奖全配齐。",
+          "整活插件大多「无害但上头」，装前想清楚：是否大面积重写界面（可能与皮肤、UI 插件冲突）、是否干扰正在跑的任务。这一区的存在也是宣言：编码 harness 不只是干活的地方。"
+        ],
+        "zh-TW": [
+          "這一區收錄「認真做一件離譜事」的專案，工程量常常不輸正經工具。colleague-skill 把離職同事的工作方式與上下文蒸餾成可對話的數位分身，人氣常年霸榜；同系列的 ex-skill 把你忘不掉的 TA 打包成 Skill，情感向整活，裝前請評估精神狀態。dsh-qq2006 用騰訊原版素材把介面改造成 QQ2006，換膚音效登入窗全套；dsh-ads 把 dsh 變成 2005 年中文入口，貪玩藍鯨、財神鯨抽獎全配齊。",
+          "整活外掛大多「無害但上頭」，裝前想清楚：是否大面積重寫介面（可能與皮膚、UI 外掛衝突）、是否干擾正在跑的任務。這一區的存在也是宣言：編碼 harness 不只是幹活的地方。"
+        ],
+        "de": [
+          "Diese Sektion sammelt Projekte, die eine absurde Sache mit vollkommenem Ernst betreiben — oft mit entsprechendem Engineering-Aufwand. colleague-skill destilliert die Arbeitsweise eines scheidenden Teamkollegen in einen conversierenden digitalen Avatar; das Schwesterprojekt ex-skill verpackt den Chatstil einer vergessen-wollten Person in ein Skill (die „Digitales Leben 1.0“-Serie — Installation auf eigenes emotionales Risiko). dsh-qq2006 baut die gesamte Oberfläche mit originalen Tencent-Grafiken als QQ2006 nach, samt Skins, Soundeffekten und Login-Fenster. dsh-ads macht dsh zu einem chinesischen Webportal von 2005: Fake-Bannerwerbung, Glücksrad mit Glückswal, Virenscanner-Imitat — und die Klickfläche des Schließen-Kreuzes ist kleiner, als sie aussieht.",
+          "Der Unsinn hier ist meist harmlos, aber echt süchtig machend. Vor der Installation zwei Fragen: Schreibt es große Teile der Oberfläche um (Kollisionen mit Skin- und UI-Plugins möglich)? Und stört es eine gerade laufende Aufgabe? Diese Sektion ist auch ein Manifest: Ein Coding-Harness ist ein Ort, an dem Kultur passiert — nicht nur Arbeit."
+        ]
+      },
+      "installNote": {
+        "en": "Absurd plugins install exactly like any other (one npx command — see the install guide) and uninstall the same way. The ones that repaint the whole UI are best tried when no real task is running, so you can enjoy the chaos without collateral damage.",
+        "zh": "整活插件的安装与其他插件完全相同（一条 npx 命令，见安装指南），卸载同样一条命令。整体重绘界面的那几款，建议在没有真实任务运行时体验，尽情欣赏混乱而不误伤正事。",
+        "zh-TW": "整活外掛的安裝與其他外掛完全相同（一條 npx 命令，見安裝指南），解除安裝同樣一條命令。整體重繪介面的那幾款，建議在沒有真實任務執行時體驗，盡情欣賞混亂而不誤傷正事。",
+        "de": "Absurde Plugins installieren sich exakt wie alle anderen (ein npx-Befehl — siehe Installationsguide) und deinstallieren sich genauso. Die die ganze Oberfläche neu streichen, am besten ausprobieren, wenn keine echte Aufgabe läuft — dann lässt sich das Chaos ohne Kollateralschaden genießen."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Do absurd plugins affect normal usage?",
+            "zh": "整活插件会影响正常使用吗？",
+            "zh-TW": "整活外掛會影響正常使用嗎？",
+            "de": "Beeinträchtigen absurde Plugins die normale Nutzung?"
+          },
+          "a": {
+            "en": "Most only touch appearance and easter eggs — core functionality is untouched. A few rewrite large parts of the interface and can collide with skin or UI plugins; the README's known-issues section tells you which before you install.",
+            "zh": "大多数只改外观和彩蛋，核心功能不受影响；少数会大面积重写界面，可能与皮肤或 UI 插件冲突。装前看一眼 README 的已知问题一节就心里有数。",
+            "zh-TW": "大多數只改外觀和彩蛋，核心功能不受影響；少數會大面積重寫介面，可能與皮膚或 UI 外掛衝突。裝前看一眼 README 的已知問題一節就心裡有數。",
+            "de": "Die meisten fassen nur Aussehen und Easter Eggs an — Kernfunktionen bleiben unberührt. Wenige schreiben große Teile der Oberfläche um und kollidieren mit Skin- oder UI-Plugins; die Known-Issues-Sektion des READMEs sagt vorher Bescheid."
+          }
+        },
+        {
+          "q": {
+            "en": "Is installing these any different from normal plugins?",
+            "zh": "这类插件的安装方式和别的一样吗？",
+            "zh-TW": "這類外掛的安裝方式和別的一樣嗎？",
+            "de": "Unterscheidet sich die Installation dieser Plugins?"
+          },
+          "a": {
+            "en": "Not at all — same npx command, same plugin page toggle (the install guide has the full flow). \"Absurd\" is a content label, not a technical category: the protocol and mechanism are identical.",
+            "zh": "完全一样：同一条 npx 命令、同一个插件页开关（完整流程见安装指南）。「整活」只是内容取向标签，不是技术分类，协议与安装机制没有任何区别。",
+            "zh-TW": "完全一樣：同一條 npx 命令、同一個外掛頁開關（完整流程見安裝指南）。「整活」只是內容取向標籤，不是技術分類，協定與安裝機制沒有任何區別。",
+            "de": "Überhaupt nicht — derselbe npx-Befehl, derselbe Schalter in der Plugin-Seite (voller Ablauf im Installationsguide). „Absurd“ ist ein Inhaltslabel, keine technische Kategorie: Protokoll und Mechanik sind identisch."
+          }
+        },
+        {
+          "q": {
+            "en": "Where do digital-avatar plugins get their data?",
+            "zh": "数字分身类插件的数据从哪来？",
+            "zh-TW": "數位分身類外掛的資料從哪來？",
+            "de": "Woher bekommen Avatar-Plugins ihre Daten?"
+          },
+          "a": {
+            "en": "You supply the material yourself (chat logs, documents) and it is processed locally; the repos usually state that data stays on your machine. Anything involving another person's private content needs their consent first.",
+            "zh": "由使用者自己提供素材（聊天记录、文档等）在本地构建，插件仓库通常声明数据不出本机；涉及他人隐私内容时，请先征得本人同意。",
+            "zh-TW": "由使用者自己提供素材（聊天記錄、文件等）在本機構建，外掛倉庫通常聲明資料不出本機；涉及他人隱私內容時，請先徵得本人同意。",
+            "de": "Du lieferst das Material selbst (Chatverläufe, Dokumente), verarbeitet wird lokal; die Repos betonen meist, dass Daten das Gerät nicht verlassen. Bei privaten Inhalten anderer Menschen gilt: erst zustimmen lassen."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh meme plugins",
+          "deepseek harness absurd",
+          "dsh qq2006",
+          "dsh colleague skill"
+        ],
+        "zh": [
+          "dsh 整活插件",
+          "dsh 抽象整活",
+          "dsh qq2006",
+          "dsh 数字分身"
+        ]
+      }
+    },
+    {
+      "slug": "fun",
+      "enabled": true,
+      "emoji": "🎲",
+      "ogImage": "/images/dsh-sticky-note.webp",
+      "filter": {
+        "categoryZh": [
+          "娱乐"
+        ]
+      },
+      "label": {
+        "en": "Just for Fun",
+        "zh": "娱乐",
+        "zh-TW": "娛樂",
+        "de": "Nur zum Spaß"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Fun Plugins — Emoji, Stickers & More | DSH Meme Hub",
+        "zh": "娱乐插件大全 — {n} 款 DeepSeek Harness 趣味插件 | DSH Meme Hub",
+        "zh-TW": "娛樂外掛大全 — {n} 款 DeepSeek Harness 趣味外掛 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) Fun-Plugins — Emojis, Sticker & mehr | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "Seasoning for your sessions: dsh fun plugins",
+        "zh": "dsh 会话调味料：娱乐插件",
+        "zh-TW": "dsh 會話調味料：娛樂外掛",
+        "de": "Würze für deine Sitzungen: dsh Fun-Plugins"
+      },
+      "desc": {
+        "en": "Auto-emoji replies, two-way sticker chats, semantic sticker search, a market ticker under your session — {n} DeepSeek Harness (dsh) fun plugins, zero-config, star-sorted.",
+        "zh": "dsh 娱乐插件大全：AI 回复自带表情、双向贴纸互动、语义检索表情包、会话底部行情跑马灯，共 {n} 款，零配置即装即用，按 star 排序。",
+        "zh-TW": "dsh 娛樂外掛大全：AI 回覆自帶表情、雙向貼圖互動、語義檢索表情包、會話底部行情跑馬燈，共 {n} 款，零設定即裝即用，按 star 排序。",
+        "de": "Auto-Emojis in Antworten, beidseitige Sticker-Chats, semantische Sticker-Suche, ein Börsenticker unter der Sitzung — {n} DeepSeek Harness (dsh) Fun-Plugins, konfigurationsfrei, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "Less unhinged than the absurdity zone, more relaxed than the tool aisle: the fun section is where conversation gets its seasoning. dsh-emoji adds emoji to AI replies; dsh-stickers makes the sticker chat two-way (you send stickers, the agent sends stickers back); dsh-expression semantically searches your existing sticker library and only ever sends files that actually exist — it finds, it sends, it never bluffs. On the \"productive fun\" end, dsh-stock-market solves the age-old problem of not being able to lose money in the market while also writing code, and dsh-fun-ticker pins a marquee of crypto, FX, A-share and index quotes to the bottom of your session.",
+          "These plugins are mostly zero-config and leave nothing behind when uninstalled. If you try just one, start with an emoji plugin — lowest footprint, most reliable fun. The ticker and market ones are for people who genuinely enjoy watching the tape while they code."
+        ],
+        "zh": [
+          "比整活区克制一点、比工具区松弛一点：娱乐类是给会话加佐料的小插件。dsh-emoji 让 AI 回复自带表情；dsh-stickers 把贴纸互动做成双向；dsh-expression 语义检索你现成的表情包库、只发真实存在的文件——找得到、发得出、不硬发。有用好玩那一挂里，dsh-stock-market 解决了写代码时账户不能同时亏钱的行业痛点，dsh-fun-ticker 在会话底部挂一条加密/A 股/指数跑马灯，点击可看明细。",
+          "这类插件普遍零配置、即装即用、卸载无残留。只想先试一个就从表情类开始——存在感最低、乐子最稳；跑马灯与行情类适合真心喜欢边写代码边看盘的人。"
+        ],
+        "zh-TW": [
+          "比整活區克制一點、比工具區鬆弛一點：娛樂類是給會話加佐料的小外掛。dsh-emoji 讓 AI 回覆自帶表情；dsh-stickers 把貼圖互動做成雙向；dsh-expression 語義檢索你現成的表情包庫、只發真實存在的檔案——找得到、發得出、不硬發。有用好玩那一掛裡，dsh-stock-market 解決了寫程式時帳戶不能同時虧錢的行業痛點，dsh-fun-ticker 在會話底部掛一條加密/A 股/指數跑馬燈，點擊可看明細。",
+          "這類外掛普遍零設定、即裝即用、解除安裝無殘留。只想先試一個就從表情類開始——存在感最低、樂子最穩；跑馬燈與行情類適合真心喜歡邊寫程式邊看盤的人。"
+        ],
+        "de": [
+          "Weniger entfesselt als die Absurditätszone, entspannter als die Tool-Gasse: Hier bekommt die Unterhaltung ihre Würze. dsh-emoji setzt Emojis in die KI-Antworten; dsh-stickers macht den Sticker-Chat beidseitig — du schickst Sticker, der Agent schickt welche zurück; dsh-expression durchsucht semantisch deine bestehende Sticker-Bibliothek und verschickt nur Dateien, die wirklich existieren — es findet, es sendet, es blufft nie. Auf der „nützlich-toll“-Seite löst dsh-stock-market das uralte Problem, beim Coden nicht gleichzeitig an der Börse verlieren zu können, und dsh-fun-ticker pinnt eine Laufschrift aus Krypto-, Devisen-, A-Aktien- und Indexkursen unter die Sitzung — Klick auf einen Eintrag zeigt Details.",
+          "Diese Plugins sind meist konfigurationsfrei und hinterlassen bei der Deinstallation nichts. Wenn nur eines: mit einem Emoji-Plugin beginnen — kleinster Fußabdruck, zuverlässigster Spaß. Ticker und Markt sind für Menschen, die beim Coden wirklich mitfiebern."
+        ]
+      },
+      "installNote": {
+        "en": "Fun plugins are zero-config: standard npx command, enable on the plugin page, done (the install guide has the full flow). No keys, no accounts, nothing to prepare beforehand.",
+        "zh": "娱乐插件零配置：标准 npx 命令安装、插件页启用即可（完整流程见安装指南），无需准备任何 Key 与账号。",
+        "zh-TW": "娛樂外掛零設定：標準 npx 命令安裝、外掛頁啟用即可（完整流程見安裝指南），無需準備任何 Key 與帳號。",
+        "de": "Fun-Plugins sind konfigurationsfrei: Standard-npx-Befehl, in der Plugin-Seite aktivieren, fertig (voller Ablauf im Installationsguide). Keine Keys, keine Accounts, nichts vorzubereiten."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Do emoji and sticker plugins make sessions hard to read?",
+            "zh": "表情贴纸插件会把会话变得很难读吗？",
+            "zh-TW": "表情貼圖外掛會把會話變得很難讀嗎？",
+            "de": "Machen Emoji- und Sticker-Plugins Sitzungen unleserlich?"
+          },
+          "a": {
+            "en": "They don't take over — the usual implementation appends to the end of a message or renders a separate bubble, with a toggle (often a density setting) to dial it back. Chat for two turns after installing and adjust to taste.",
+            "zh": "不会喧宾夺主——常见做法是在消息末尾追加或独立气泡渲染，且带开关（不少还有密度设置）。装完先聊两句，不合口味就调低。",
+            "zh-TW": "不會喧賓奪主——常見做法是在訊息末尾附加或獨立氣泡渲染，且帶開關（不少還有密度設定）。裝完先聊兩句，不合口味就調低。",
+            "de": "Sie übernehmen nicht — üblich ist ein Anhang am Ende der Nachricht oder eine eigene Blase, mit Schalter (oft Dichte-Einstellung) zum Rückfahren. Nach der Installation zwei Runden chatten und nach Geschmack justieren."
+          }
+        },
+        {
+          "q": {
+            "en": "Is the market ticker's data accurate?",
+            "zh": "行情跑马灯的数据准吗？",
+            "zh-TW": "行情跑馬燈的資料準嗎？",
+            "de": "Sind die Ticker-Daten genau?"
+          },
+          "a": {
+            "en": "These plugins poll public quote APIs on a fixed interval — fine for a rough glance, not a price feed you'd trade on (each repo documents its data source). Watch, enjoy, don't place orders because of a marquee.",
+            "zh": "插件一般按固定间隔轮询公开行情接口，看个大概没问题，不保证与交易所逐笔一致（数据来源见各插件仓库），别拿来下单。",
+            "zh-TW": "外掛一般按固定間隔輪詢公開行情介面，看個大概沒問題，不保證與交易所逐筆一致（資料來源見各外掛倉庫），別拿來下單。",
+            "de": "Diese Plugins pollen in festen Intervallen öffentliche Kurs-APIs — für einen groben Blick okay, kein Handels-Feed (die Datenquelle dokumentiert jedes Repo). Schauen, freuen, nicht auf eine Laufschrift hin Orders platzieren."
+          }
+        },
+        {
+          "q": {
+            "en": "Can fun plugins coexist with the absurd-zone ones?",
+            "zh": "娱乐插件能和整活区的插件混装吗？",
+            "zh-TW": "娛樂外掛能和整活區的外掛混裝嗎？",
+            "de": "Vertragen sich Fun-Plugins mit denen aus der Absurditätszone?"
+          },
+          "a": {
+            "en": "Yes — no conflict at the protocol level. Only plugins that restyle the same screen region can overwrite each other; enable them one at a time and you'll see any clash immediately.",
+            "zh": "可以，协议层面没有冲突；只有同时改同一块界面区域的插件才可能互相覆盖，逐个启用观察，撞了立刻能看出来。",
+            "zh-TW": "可以，協定層面沒有衝突；只有同時改同一塊介面區域的外掛才可能互相覆蓋，逐個啟用觀察，撞了立刻能看出來。",
+            "de": "Ja — auf Protokollebene gibt es keinen Konflikt. Nur Plugins, die dieselben Bildschirmregionen umgestalten, können sich überschreiben; einzeln aktivieren, und eine Kollision fällt sofort auf."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh emoji plugin",
+          "dsh stickers",
+          "dsh stock ticker",
+          "deepseek harness fun"
+        ],
+        "zh": [
+          "dsh 表情插件",
+          "dsh 贴纸",
+          "dsh 跑马灯",
+          "dsh 娱乐插件"
+        ]
+      }
+    },
+    {
+      "slug": "skins",
+      "enabled": true,
+      "emoji": "🎨",
+      "ogImage": "/images/dsh-deep-whale.webp",
+      "filter": {
+        "categoryZh": [
+          "换皮肤色"
+        ],
+        "memeSection": [
+          "skins"
+        ],
+        "topicsAny": "skin|theme"
+      },
+      "label": {
+        "en": "Skins & Themes",
+        "zh": "换皮肤色",
+        "zh-TW": "換皮膚色",
+        "de": "Skins & Themes"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Skin & Theme Plugins | DSH Meme Hub",
+        "zh": "皮肤大全 — {n} 款 DeepSeek Harness 换肤 / 主题插件 | DSH Meme Hub",
+        "zh-TW": "皮膚大全 — {n} 款 DeepSeek Harness 換膚 / 主題外掛 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) Skin- & Theme-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness skin & theme collection",
+        "zh": "dsh 皮肤与主题合集",
+        "zh-TW": "dsh 皮膚與主題合輯",
+        "de": "Die Skin- und Theme-Sammlung für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Whale-girl maid interfaces, frosted-glass themes, a one-click Galgame conversation view, a QQ2006 nostalgia bomb — {n} DeepSeek Harness (dsh) skin & theme plugins, star-sorted, three steps to reskin.",
+        "zh": "dsh 皮肤与主题合集：鲸鱼娘女仆界面、玻璃磨砂主题、一键 Galgame 对话视图、QQ2006 怀旧复刻，共 {n} 款，按 star 排序，三步换肤。",
+        "zh-TW": "dsh 皮膚與主題合輯：鯨魚娘女僕介面、玻璃磨砂主題、一鍵 Galgame 對話視圖、QQ2006 懷舊復刻，共 {n} 款，按 star 排序，三步換膚。",
+        "de": "Walfrau-Meisterwerks-Interfaces, Milchglas-Themes, Ein-Klick-Galgame-Ansicht, der QQ2006-Nostalgie-Schlag — {n} DeepSeek Harness (dsh) Skin- & Theme-Plugins, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "dsh's interface is a web page, which is why a skin here isn't a config flag — it's a plugin: install to apply, disable to revert, stack to remix. This section collects the full spectrum of skin-flavoured plugins. dsh-deep-whale is the whale-girl \"deep-sea maid atelier\" series — twin maids minding the shop, deep-blue lace trim, a chibi sidebar (the same series this site's mascot wears). transparent-ui turns the top bar, sidebar, input box and stats row into adjustable frosted-glass panes. gal-view flips the conversation into a 16:9 Galgame stage with maid portraits, an ornate dialogue box, typewriter text and a drag-and-drop scene editor. And dsh-qq2006 replays 2006 with original Tencent assets — skins, sound effects, login window and all.",
+          "Reskinning is three steps: get dsh running (see the install guide if you haven't), pick a skin below and paste its install command into your terminal, then enable it on the web UI's plugin page and refresh. Two caveats: skins may target a specific dsh version — skim the README first — and for anything that deeply rewrites the UI, wear one skin at a time."
+        ],
+        "zh": [
+          "dsh 的界面是网页，皮肤因此不是配置项而是插件：装上即生效、停用即还原，还能叠加混搭。dsh-deep-whale 是鲸鱼娘「深海女仆工坊」系列，双女仆看店、深海蓝蕾丝界面加 Q 版侧栏，本站吉祥物同款；transparent-ui 把顶栏、侧栏、输入框全做成可调玻璃磨砂片；gal-view 一键切换 Galgame 舞台，立绘、对话框、打字机台词俱全；dsh-qq2006 用原版素材把 2006 年搬回来。",
+          "换肤三步：跑起 dsh（见安装指南）→ 复制安装命令到终端 → 在 Web UI 插件页启用刷新。皮肤可能绑定特定 dsh 版本，装前翻下 README；深度重写界面的一次只开一款。"
+        ],
+        "zh-TW": [
+          "dsh 的介面是網頁，皮膚因此不是設定項而是外掛：裝上即生效、停用即還原，還能疊加混搭。dsh-deep-whale 是鯨魚娘「深海女僕工坊」系列，雙女僕看店、深海藍蕾絲介面加 Q 版側欄，本站吉祥物同款；transparent-ui 把頂欄、側邊欄、輸入框全做成可調玻璃磨砂片；gal-view 一鍵切換 Galgame 舞台，立繪、對話框、打字機台詞俱全；dsh-qq2006 用原版素材把 2006 年搬回來。",
+          "換膚三步：跑起 dsh（見安裝指南）→ 複製安裝命令到終端 → 在 Web UI 外掛頁啟用重新整理。皮膚可能綁定特定 dsh 版本，裝前翻下 README；深度重寫介面的一次只開一款。"
+        ],
+        "de": [
+          "dshs Oberfläche ist eine Webseite — deshalb ist ein Skin hier kein Konfigurationsschalter, sondern ein Plugin: installieren wirkt, deaktivieren stellt wieder her, stapeln remixt. Diese Sektion sammelt das ganze Spektrum. dsh-deep-whale ist die Walfrau-Serie „Deep-Sea Maid Atelier“ — zwei Dienstmädchen im Laden, Tiefseeblau mit Spitzenbesatz, Chibi-Seitenleiste (dieselbe Serie wie das Maskottchen dieser Site). transparent-ui macht Kopfzeile, Seitenleiste, Eingabefeld und Statistikzeile zu justierbaren Milchglasscheiben. gal-view klappt die Sitzung auf eine 16:9-Galgame-Bühne — Porträts, prunkvoller Dialogkasten, Schreibmaschinentext, samt Szenen-Editor mit Drag-and-Drop. Und dsh-qq2006 holt mit originalen Tencent-Grafiken das Jahr 2006 zurück: Skins, Sounds, Login-Fenster.",
+          "Umstylen in drei Schritten: dsh zum Laufen bringen (siehe Installationsguide), unten einen Skin wählen und dessen Installationsbefehl ins Terminal einfügen, dann in der Plugin-Seite der Web-UI aktivieren und neu laden. Zwei Hinweise: Skins zielen womöglich auf eine bestimmte dsh-Version — vorher ins README schauen — und tiefgreifend umschreibende Skins besser einzeln tragen."
+        ]
+      },
+      "installNote": {
+        "en": "Reskinning is three steps: get dsh running (install guide), paste the skin plugin's install command into your terminal, enable it on the web UI's plugin page and refresh. No config files involved — disabling the plugin restores the default look instantly.",
+        "zh": "换肤三步：跑起 dsh（见安装指南）→ 把皮肤插件的安装命令粘进终端 → 在 Web UI 插件页启用刷新。全程不碰配置文件，停用插件即刻还原默认外观。",
+        "zh-TW": "換膚三步：跑起 dsh（見安裝指南）→ 把皮膚外掛的安裝命令貼進終端 → 在 Web UI 外掛頁啟用重新整理。全程不碰設定檔，停用外掛即刻還原預設外觀。",
+        "de": "Umstylen in drei Schritten: dsh starten (Installationsguide), den Installationsbefehl des Skin-Plugins ins Terminal einfügen, in der Plugin-Seite aktivieren und neu laden. Keine Konfigurationsdateien — deaktivieren stellt das Aussehen sofort wieder her."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Do I need to edit config files to change skins?",
+            "zh": "换皮肤需要改配置文件吗？",
+            "zh-TW": "換皮膚需要改設定檔嗎？",
+            "de": "Muss ich für Skins Konfigurationsdateien bearbeiten?"
+          },
+          "a": {
+            "en": "No. A skin is a plugin: one install command, one toggle on the plugin page. Disable it and you're back to the default interface — no leftovers.",
+            "zh": "不需要。皮肤是插件：一条安装命令加插件页一个开关。停用后自动回到默认界面，无残留。",
+            "zh-TW": "不需要。皮膚是外掛：一條安裝命令加外掛頁一個開關。停用後自動回到預設介面，無殘留。",
+            "de": "Nein. Ein Skin ist ein Plugin: ein Installationsbefehl, ein Schalter in der Plugin-Seite. Deaktivieren genügt — zurück zur Standardoberfläche, ohne Rückstände."
+          }
+        },
+        {
+          "q": {
+            "en": "Can different skins be stacked?",
+            "zh": "不同皮肤能叠加吗？",
+            "zh-TW": "不同皮膚能疊加嗎？",
+            "de": "Lassen sich Skins stapeln?"
+          },
+          "a": {
+            "en": "Colour-and-background tweaks mix fine; full layout rewrites can overwrite each other when two run together. One deep skin at a time, then layer the small touches on top.",
+            "zh": "只调配色和背景的可以混搭；深度重写布局的同时开多款可能互相覆盖。建议一次穿一套深度皮肤，再往上叠小改动。",
+            "zh-TW": "只調配色和背景的可以混搭；深度重排版面的同時開多款可能互相覆蓋。建議一次穿一套深度皮膚，再往上疊小改動。",
+            "de": "Farb- und Hintergrund-Justagen mischen sich gut; komplette Layout-Umbauten können sich gegenseitig überschreiben. Besser ein tiefgreifender Skin nach dem anderen, feine Anpassungen obendrauf."
+          }
+        },
+        {
+          "q": {
+            "en": "Do skins affect functionality?",
+            "zh": "皮肤会影响功能吗？",
+            "zh-TW": "皮膚會影響功能嗎？",
+            "de": "Beeinträchtigen Skins die Funktionalität?"
+          },
+          "a": {
+            "en": "Skins touch looks, not the model or agent behaviour. The extreme nostalgia reskins (QQ2006) do replace a lot of interface elements, so a few controls sit in new places — one lap around the UI and you'll know where everything went.",
+            "zh": "皮肤只动外观不动模型与 agent 行为。极端的整活向换肤（如 QQ2006）会替换大量界面元素，个别功能入口的位置会变，转一圈就熟了。",
+            "zh-TW": "皮膚只動外觀不動模型與 agent 行為。極端的整活向換膚（如 QQ2006）會替換大量介面元素，個別功能入口的位置會變，轉一圈就熟了。",
+            "de": "Skins fassen das Aussehen an, nicht Modell oder Agentenverhalten. Die extremen Nostalgie-Skins (QQ2006) ersetzen viele Oberflächenelemente, einige Bedienelemente wandern — eine Runde über die UI, und alles ist wiedergefunden."
+          }
+        },
+        {
+          "q": {
+            "en": "Do skins depend on the dsh version?",
+            "zh": "皮肤和 dsh 版本有关系吗？",
+            "zh-TW": "皮膚和 dsh 版本有關係嗎？",
+            "de": "Hängen Skins von der dsh-Version ab?"
+          },
+          "a": {
+            "en": "Yes — the interface structure evolves across versions, so a skin plugin may only fit a specific one. Checking the repo README's version notes before installing saves a round-trip.",
+            "zh": "有关系。界面结构随版本演进，皮肤插件可能只适配特定版本；装前看仓库 README 的版本说明可以少走弯路。",
+            "zh-TW": "有關係。介面結構隨版本演進，皮膚外掛可能只適配特定版本；裝前看倉庫 README 的版本說明可以少走彎路。",
+            "de": "Ja — die Oberflächenstruktur entwickelt sich mit den Versionen, ein Skin passt womöglich nur zu einer bestimmten. Ein Blick in die Versionshinweise des READMEs erspart einen Umweg."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh skins",
+          "deepseek harness theme",
+          "dsh whale girl skin",
+          "dsh qq2006 skin"
+        ],
+        "zh": [
+          "dsh 皮肤",
+          "dsh 换肤",
+          "dsh 主题插件",
+          "dsh 鲸鱼娘皮肤"
+        ]
+      }
+    },
+    {
+      "slug": "chat",
+      "enabled": true,
+      "emoji": "💬",
+      "ogImage": "/images/dsh-focus-chat.webp",
+      "filter": {
+        "categoryZh": [
+          "会话与消息"
+        ]
+      },
+      "label": {
+        "en": "Sessions & Messages",
+        "zh": "会话与消息",
+        "zh-TW": "會話與訊息",
+        "de": "Sitzungen & Nachrichten"
+      },
+      "title": {
+        "en": "Best {n} DeepSeek Harness (dsh) Session & Message Plugins | DSH Meme Hub",
+        "zh": "会话与消息插件大全 — {n} 款 DeepSeek Harness 会话管理插件 | DSH Meme Hub",
+        "zh-TW": "會話與訊息外掛大全 — {n} 款 DeepSeek Harness 會話管理外掛 | DSH Meme Hub",
+        "de": "Die {n} besten DeepSeek Harness (dsh) Session- & Nachrichten-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness session-management toolbox",
+        "zh": "dsh 会话管理工具箱",
+        "zh-TW": "dsh 會話管理工具箱",
+        "de": "Die Sitzungsverwaltungs-Werkzeugkiste für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "Turn rewinding on a change ledger, branch-based message editing, cross-harness conversation import, one-click sharing — {n} DeepSeek Harness (dsh) session & message plugins, star-sorted.",
+        "zh": "dsh 会话与消息插件大全：会话回退、分支消息编辑、跨 harness 对话迁移、一键分享，共 {n} 款，按 star 排序，附安装命令。",
+        "zh-TW": "dsh 會話與訊息外掛大全：會話回退、分支訊息編輯、跨 harness 對話遷移、一鍵分享，共 {n} 款，按 star 排序，附安裝命令。",
+        "de": "Sitzungs-Rewind per Change Ledger, verzweigtes Nachrichten-Editieren, harness-übergreifender Dialogimport, Teilen mit einem Klick — {n} DeepSeek Harness (dsh) Plugins, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "The session is dsh's core asset, and this section is all about the conversation itself. dsh-turn-rewind rolls back session and workspace state together on a persistent change ledger — closer to conversational semantics than a manual git reset. dsh-message-edit adds branch-based message editing, rerolls, retries and a version timeline. dsh-chat-import migrates conversations in from Claude Code, Codex, ChatGPT, Cursor, Gemini and more. On the sharing side, dsh-share does one-click conversation links while dsh-conversation-share exports a selected fragment as a branded PNG long-image with draggable range handles.",
+          "Multi-instance setups are in range too: dsh-interconnect forwards messages and events between dsh instances through a relay service, and dsh-resume-plugin lets dsh safely open and continue Codex and Claude Code sessions. If you hop between harnesses during the day, this category saves a lot of copy-paste."
+        ],
+        "zh": [
+          "会话是 dsh 的核心资产，这一类专门收拾「对话本身」：dsh-turn-rewind 基于持久 Change Ledger 把会话与工作区一起回滚；dsh-message-edit 做分支式消息编辑与版本时间线；dsh-chat-import 把各家 AI 编码工具的对话迁进来；dsh-share 一键分享，dsh-conversation-share 导出 PNG 长图。",
+          "dsh-interconnect 在多个实例间转发消息与事件，dsh-resume-plugin 让 dsh 安全续跑 Codex 与 Claude Code 会话。多 harness 搬家党能省下大量复制粘贴。"
+        ],
+        "zh-TW": [
+          "會話是 dsh 的核心資產，這一類專門收拾「對話本身」：dsh-turn-rewind 基於持久 Change Ledger 把會話與工作區一起回滾；dsh-message-edit 做分支式訊息編輯與版本時間線；dsh-chat-import 把各家 AI 編碼工具的對話遷進來；dsh-share 一鍵分享，dsh-conversation-share 匯出 PNG 長圖。",
+          "dsh-interconnect 在多個實例間轉發訊息與事件，dsh-resume-plugin 讓 dsh 安全續跑 Codex 與 Claude Code 會話。多 harness 搬家黨能省下大量複製貼上。"
+        ],
+        "de": [
+          "Die Sitzung ist dshs Kern-Asset, und diese Kategorie dreht sich um den Dialog selbst. dsh-turn-rewind rollt Sitzungs- und Workspace-Zustand gemeinsam auf einem persistenten Change Ledger zurück — näher an Dialogsemantik als ein manuelles git reset. dsh-message-edit bringt verzweigtes Editieren, Rerolls, Wiederholungen und eine Versionszeitleiste. dsh-chat-import migriert Gespräche aus Claude Code, Codex, ChatGPT, Cursor, Gemini und anderen. Beim Teilen: dsh-share für Ein-Klick-Links, dsh-conversation-share exportiert einen gewählten Ausschnitt als PNG-Langbild mit Marken-Fuß und ziehbaren Bereichsgriffen.",
+          "Auch Multi-Instanz-Setups sind abgedeckt: dsh-interconnect leitet Nachrichten und Events über einen Relay-Dienst zwischen dsh-Instanzen weiter, und dsh-resume-plugin lässt dsh Codex- und Claude-Code-Sitzungen sicher öffnen und fortsetzen. Wer tagsüber zwischen Harnesses pendelt, spart hier viel Copy-Paste."
+        ]
+      },
+      "installNote": {
+        "en": "Session plugins act on existing conversation data — nothing to migrate before installing. When importing external conversations, back up your sessions directory first; the install guide explains the paths and the base setup.",
+        "zh": "会话类插件作用于已有会话数据，安装前无需迁移；导入外部对话时先备份 sessions 目录（路径说明见安装指南）。",
+        "zh-TW": "會話類外掛作用於既有會話資料，安裝前無需遷移；匯入外部對話時先備份 sessions 目錄（路徑說明見安裝指南）。",
+        "de": "Session-Plugins wirken auf bestehende Dialogdaten — vor der Installation ist nichts zu migrieren. Beim Import externer Gespräche vorher das Sitzungsverzeichnis sichern; Pfade und Grundlage im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Does turn rewinding undo my code changes too?",
+            "zh": "会话回退会把我的代码改动也撤销吗？",
+            "zh-TW": "會話回退會把我的程式碼改動也撤銷嗎？",
+            "de": "Macht Sitzungs-Rewind auch meine Code-Änderungen rückgängig?"
+          },
+          "a": {
+            "en": "Yes — that's the point: on its change ledger, session state and workspace roll back together to a chosen turn, which fits conversation semantics better than raw git commands. The plugin documents its options for when you'd rather keep the files.",
+            "zh": "会——这正是它的卖点：基于 Change Ledger 把会话状态与工作区一起回滚到某个回合，比裸用 git 命令更贴合对话语义。不想动文件时，插件说明里写了对应的选项。",
+            "zh-TW": "會——這正是它的賣點：基於 Change Ledger 把會話狀態與工作區一起回滾到某個回合，比裸用 git 命令更貼合對話語義。不想動檔案時，外掛說明裡寫了對應的選項。",
+            "de": "Ja — genau das ist der Punkt: Auf dem Change Ledger rollen Sitzungszustand und Workspace gemeinsam auf den gewählten Zug zurück, passender zur Dialogsemantik als rohe Git-Befehle. Wer die Dateien behalten will, findet die Optionen in der Plugin-Doku."
+          }
+        },
+        {
+          "q": {
+            "en": "Is importing conversations from Claude Code / Codex reliable?",
+            "zh": "从 Claude Code / Codex 迁移对话靠谱吗？",
+            "zh-TW": "從 Claude Code / Codex 遷移對話靠譜嗎？",
+            "de": "Ist der Import von Gesprächen aus Claude Code / Codex zuverlässig?"
+          },
+          "a": {
+            "en": "The mainstream formats have ready importers (dsh-chat-import covers Claude Code, Codex, ChatGPT, Cursor and more). Start with a short conversation to verify the format, then move the long ones.",
+            "zh": "主流格式都有现成导入器（dsh-chat-import 支持 Claude Code、Codex、ChatGPT、Cursor 等）。先拿一小段会话验证格式没问题，再搬长的。",
+            "zh-TW": "主流格式都有現成匯入器（dsh-chat-import 支援 Claude Code、Codex、ChatGPT、Cursor 等）。先拿一小段會話驗證格式沒問題，再搬長的。",
+            "de": "Für die gängigen Formate gibt es fertige Importer (dsh-chat-import deckt Claude Code, Codex, ChatGPT, Cursor und weitere ab). Erst ein kurzes Gespräch zum Format-Prüfen, dann die langen umziehen."
+          }
+        },
+        {
+          "q": {
+            "en": "Could a shared conversation leak sensitive information?",
+            "zh": "分享出去的对话会泄露敏感信息吗？",
+            "zh-TW": "分享出去的對話會洩露敏感資訊嗎？",
+            "de": "Kann ein geteiltes Gespräch sensible Informationen leaken?"
+          },
+          "a": {
+            "en": "What gets shared is exactly the range you select — review it before exporting. Links and screenshots don't include anything beyond your chosen fragment by default, but keys and secrets in code deserve a final manual check, always.",
+            "zh": "分享内容以你选中的范围为准，导出前自己过一遍。链接与截图默认只含所选片段，不含其他本机数据；但代码里的密钥之类，永远值得手动再确认一次。",
+            "zh-TW": "分享內容以你選中的範圍為準，匯出前自己過一遍。連結與截圖預設只含所選片段，不含其他本機資料；但程式碼裡的金鑰之類，永遠值得手動再確認一次。",
+            "de": "Geteilt wird genau der gewählte Bereich — vor dem Export selbst drüberschauen. Links und Screenshots enthalten standardmäßig nur den Ausschnitt, keine weiteren lokalen Daten; aber Schlüssel und Secrets im Code verdienen immer einen letzten manuellen Blick."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh session plugin",
+          "dsh conversation import",
+          "dsh message edit",
+          "deepseek harness chat"
+        ],
+        "zh": [
+          "dsh 会话插件",
+          "dsh 对话迁移",
+          "dsh 消息编辑",
+          "dsh 会话回退"
+        ]
+      }
+    },
+    {
+      "slug": "slackoff",
+      "enabled": true,
+      "emoji": "🎮",
+      "ogImage": "/images/dsh-gomoku.webp",
+      "filter": {
+        "categoryZh": [
+          "摸鱼游戏"
+        ],
+        "memeSection": [
+          "slackoff"
+        ]
+      },
+      "label": {
+        "en": "Slack-Off Zone",
+        "zh": "摸鱼游戏",
+        "zh-TW": "摸魚遊戲",
+        "de": "Prokrastinations-Zone"
+      },
+      "title": {
+        "en": "Top {n} DeepSeek Harness (dsh) Mini-Games & Slack-Off Plugins | DSH Meme Hub",
+        "zh": "摸鱼游戏大全 — {n} 款 DeepSeek Harness 侧边栏小游戏 | DSH Meme Hub",
+        "zh-TW": "摸魚遊戲大全 — {n} 款 DeepSeek Harness 側邊欄小遊戲 | DSH Meme Hub",
+        "de": "Top {n} DeepSeek Harness (dsh) Mini-Games zum Prokrastinieren | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness arcade: games for the waiting minutes",
+        "zh": "dsh 侧边栏摸鱼游戏厅",
+        "zh-TW": "dsh 側邊欄摸魚遊戲廳",
+        "de": "Die DeepSeek Harness Arcade: Spiele für die Warteminuten"
+      },
+      "desc": {
+        "en": "LLM-reasoning gomoku (no search algorithm), a panel of hand-drawn canvas games, wordle that pops while the model generates, in-chat anime search — {n} DeepSeek Harness (dsh) mini-games.",
+        "zh": "dsh 摸鱼游戏大全：纯 LLM 推理的五子棋、Canvas 手绘小游戏合集、模型生成时弹出的 wordle、对话内搜番，共 {n} 款，按 star 排序。",
+        "zh-TW": "dsh 摸魚遊戲大全：純 LLM 推理的五子棋、Canvas 手繪小遊戲合輯、模型生成時彈出的 wordle、對話內搜番，共 {n} 款，按 star 排序。",
+        "de": "Gomoku mit reiner LLM-Logik (ohne Suchalgorithmus), eine Palette handgezeichneter Canvas-Spiele, Wordle während die Antwort lädt, Anime-Suche im Chat — {n} DeepSeek Harness (dsh) Mini-Games."
+      },
+      "intro": {
+        "en": [
+          "The minutes while the model chews through a long task need filling, and this zone exists precisely for those gaps. dsh-gomoku plays 15×15 gomoku against the AI in the sidebar — deliberately built with no search algorithm, so every move is live model reasoning; you can also set two models against each other and watch them fight. dsh-minigames ships a whole panel of hand-drawn canvas games (dino jump, Tetris, tank battle with AI, minesweeper, 2048, sudoku, Pac-Man…). D399 pops a menu of wordle and match-3 exactly when the model is generating — the prime slacking window.",
+          "For slacking off slightly more productively there's anime-find: multi-source anime search inside the conversation, cards with Bangumi ratings and details, magnet links one click away. Everything here runs offline (anime search aside, which needs its online sources) — the only real risk of installing these on a work machine is that they're too good."
+        ],
+        "zh": [
+          "模型跑长任务的那几分钟总得干点什么——摸鱼游戏区就是为这些碎片时间准备的。dsh-gomoku 在侧边栏和 AI 杀 15×15 五子棋，刻意不写搜索算法、每步都是纯 LLM 推理，还能围观双 AI 对战；dsh-minigames 一次带上一整包 Canvas 手绘小游戏：恐龙跳一跳、俄罗斯方块、坦克大战、扫雷、2048、数独、吃豆人；D399 卡在「模型生成中」这个黄金窗口弹出 wordle 和消消乐。",
+          "想摸得「有用」一点可以试 anime-find：对话内多源搜番，卡片带 Bangumi 评分与详情，磁力链接一键复制。这一区全部离线（搜番除外）——装在办公机上唯一的风险是：太好玩。"
+        ],
+        "zh-TW": [
+          "模型跑長任務的那幾分鐘總得幹點什麼——摸魚遊戲區就是為這些碎片時間準備的。dsh-gomoku 在側邊欄和 AI 殺 15×15 五子棋，刻意不寫搜尋演算法、每步都是純 LLM 推理，還能圍觀雙 AI 對戰；dsh-minigames 一次帶上一整包 Canvas 手繪小遊戲：恐龍跳一跳、俄羅斯方塊、坦克大戰、踩地雷、2048、數獨、小精靈；D399 卡在「模型生成中」這個黃金視窗彈出 wordle 和消消樂。",
+          "想摸得「有用」一點可以試 anime-find：對話內多源搜番，卡片帶 Bangumi 評分與詳情，磁力連結一鍵複製。這一區全部離線（搜番除外）——裝在辦公機上唯一的風險是：太好玩。"
+        ],
+        "de": [
+          "Die Minuten, in denen das Modell an einer langen Aufgabe kaut, wollen gefüllt sein — diese Zone existiert genau für diese Lücken. dsh-gomoku spielt 15×15-Gomoku gegen die KI in der Seitenleiste — bewusst ohne Suchalgorithmus, jeder Zug ist lebendige Modell-Logik; zwei Modelle gegeneinander antreten lassen und zuschauen geht auch. dsh-minigames liefert eine ganze Palette handgezeichneter Canvas-Spiele (Dino-Sprung, Tetris, Panzerschlacht mit KI, Minesweeper, 2048, Sudoku, Pac-Man…). D399 blendet Wordle und Match-3 genau ein, während das Modell generiert — das goldene Prokrastinationsfenster.",
+          "Wer etwas produktiver bummeln will, nimmt anime-find: Anime-Suche mit mehreren Quellen direkt im Gespräch, Karten mit Bangumi-Bewertung und Details, Magnet-Links einen Klick entfernt. Alles hier läuft offline (außer der Anime-Suche mit ihren Online-Quellen) — das einzige echte Risiko auf dem Arbeitsgerät: Es macht zu viel Spaß."
+        ]
+      },
+      "installNote": {
+        "en": "Games install with the standard npx command (see the install guide) — no keys, no configuration, offline by default. They live in the sidebar or pop on generation events, so they stay out of the way until you want them.",
+        "zh": "游戏插件用标准 npx 命令安装（见安装指南）：无 Key、无配置、默认离线。它们住在侧边栏或生成事件弹窗里，不想玩的时候完全不碍事。",
+        "zh-TW": "遊戲外掛用標準 npx 命令安裝（見安裝指南）：無 Key、無設定、預設離線。它們住在側邊欄或生成事件彈窗裡，不想玩的時候完全不礙事。",
+        "de": "Spiele installieren sich mit dem Standard-npx-Befehl (siehe Installationsguide) — keine Keys, keine Konfiguration, standardmäßig offline. Sie leben in der Seitenleiste oder poppen bei Generierungs-Events auf und stören nicht, solange man sie nicht will."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Do the games slow down running tasks?",
+            "zh": "摸鱼游戏会拖慢正在跑的任务吗？",
+            "zh-TW": "摸魚遊戲會拖慢正在跑的任務嗎？",
+            "de": "Verlangsamen die Spiele laufende Aufgaben?"
+          },
+          "a": {
+            "en": "Hardly — games run in the interface layer and don't compete with model inference. The pop-up games (like D399) are designed precisely for the waiting time while the model works.",
+            "zh": "基本不会：游戏跑在界面层，与模型推理互不抢占。生成时弹出来的那几款（如 D399）本来就是为模型干活的等待时间设计的。",
+            "zh-TW": "基本不會：遊戲跑在介面層，與模型推理互不搶佔。生成時彈出來的那幾款（如 D399）本來就是為模型幹活的等待時間設計的。",
+            "de": "Kaum — Spiele laufen in der Oberflächenschicht und konkurrieren nicht mit der Modell-Inferenz. Die Aufpoppenden (wie D399) sind genau für die Wartezeit gebaut, in der das Modell arbeitet."
+          }
+        },
+        {
+          "q": {
+            "en": "Does the AI play gomoku seriously?",
+            "zh": "和 AI 下棋它认真吗？",
+            "zh-TW": "和 AI 下棋它認真嗎？",
+            "de": "Nimmt die KI Gomoku ernst?"
+          },
+          "a": {
+            "en": "dsh-gomoku deliberately ships without a search algorithm — every move is the model reasoning in the moment, so playing strength floats with its mood. Losing to it is a normal outcome, not a bug.",
+            "zh": "dsh-gomoku 刻意不带搜索算法，每步都是模型临场推理——水平随模型状态浮动，输给它属于正常现象，不是你菜。",
+            "zh-TW": "dsh-gomoku 刻意不帶搜尋演算法，每步都是模型臨場推理——水準隨模型狀態浮動，輸給它屬於正常現象，不是你菜。",
+            "de": "dsh-gomoku kommt bewusst ohne Suchalgorithmus — jeder Zug ist spontane Modell-Logik, die Spielstärke schwankt mit der Tagesform. Against it zu verlieren ist ein normaler Ausgang, kein Bug."
+          }
+        },
+        {
+          "q": {
+            "en": "Do these games need internet access?",
+            "zh": "这些游戏需要联网吗？",
+            "zh-TW": "這些遊戲需要連線嗎？",
+            "de": "Brauchen diese Spiele Internet?"
+          },
+          "a": {
+            "en": "No — everything runs offline, with one exception: anime-find queries online sources for its search results. That makes the zone safe for locked-down office machines, with the one caveat.",
+            "zh": "不需要，全部离线运行——唯一的例外是搜番的 anime-find，它要查在线数据源。所以这一区在办公机上也能放心装，注意那个例外就行。",
+            "zh-TW": "不需要，全部離線執行——唯一的例外是搜番的 anime-find，它要查線上資料源。所以這一區在辦公機上也能放心裝，注意那個例外就行。",
+            "de": "Nein — alles läuft offline, mit einer Ausnahme: anime-find fragt für seine Ergebnisse Online-Quellen ab. Damit ist die Zone auch für abgesicherte Bürorechner geeignet — mit diesem einen Vorbehalt."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "dsh games",
+          "dsh gomoku",
+          "deepseek harness mini games",
+          "dsh minigames"
+        ],
+        "zh": [
+          "dsh 小游戏",
+          "dsh 五子棋",
+          "dsh 摸鱼",
+          "dsh minigames"
+        ]
+      }
+    }
+  ]
+}

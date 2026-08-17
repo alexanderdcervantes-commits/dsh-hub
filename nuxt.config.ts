@@ -11,7 +11,16 @@ const PLUGINS = (JSON.parse(readFileSync('./public/data/plugins.json', 'utf8')) 
 }).plugins
 const PLUGIN_SLUGS = PLUGINS.map((p) => p.slug)
 const MEME_SLUGS = PLUGINS.filter((p) => p.is_meme).map((p) => p.slug)
-const TOP_PAGES = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'plugins/vision', 'plugins/clients', 'plugins/ops', 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
+
+// 分类落地页路由：data/seo/category-pages.json 单一数据源（含存量 pets/skins/clients/ops/vision）。
+// 新增/下线分类只改该 JSON，此处与 sitemap、check-prerender 自动跟随。
+const CATEGORY_PAGES = (JSON.parse(readFileSync('./data/seo/category-pages.json', 'utf8')) as {
+  categories: Array<{ slug: string; enabled: boolean }>
+}).categories
+  .filter((c) => c.enabled)
+  .map((c) => `plugins/${c.slug}`)
+
+const TOP_PAGES = ['', 'plugins', ...CATEGORY_PAGES, 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
 // 与 scripts/check-prerender.mjs 的 locales 保持同步
 const LOCALES = ['en', 'zh', 'zh-TW', 'de']
 

@@ -535,5 +535,17 @@
     "howCta": "See the three-step install guide →",
     "picksH": "Security & Ops Picks",
     "picksP1": "Sorted by stars, with install commands and manifest badges."
+  },
+  "catPages": {
+    "browseH": "Browse by category",
+    "browseSub": "A landing page per category — what it is, our top picks and the FAQs",
+    "countNote": "{n} plugins catalogued in this section",
+    "dataSync": "Star counts and last-push dates are synced hourly from GitHub",
+    "top3H": "Top 3 picks",
+    "top3P": "Ranked by GitHub stars, within this category only",
+    "installH": "Before you install",
+    "installCta": "Full install guide →",
+    "faqH": "Frequently asked questions",
+    "listH": "All {n} entries"
   }
 }

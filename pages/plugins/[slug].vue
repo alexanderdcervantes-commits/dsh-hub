@@ -1,148 +1,24 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+import { categoryBySlug } from '~/composables/useCategoryPages'
+// /plugins/[slug] 路由分发器：同一个动态段服务两类页面——
+//   1) slug 命中 data/seo/category-pages.json（enabled）→ 分类落地页（CategoryLanding）
+//      含存量 URL：pets / skins / clients / ops / vision（原静态锚点页已删，由本路由承接，URL 不变）
+//   2) 否则视为插件 slug → 插件详情页（PluginDetail，原 [slug].vue 逻辑原样迁入）
+//   3) 都未命中 → 404
+// 分类配置在配置文件里维护，本页不含任何分类业务逻辑。
 const route = useRoute()
-const localePath = useLocalePath()
-const config = useRuntimeConfig()
-const { bySlug, related, catOf, emojiOf, descOf } = usePlugins()
+const { bySlug } = usePlugins()
 
-const plugin = bySlug(route.params.slug as string)
-if (!plugin) {
+const slug = route.params.slug as string
+const category = categoryBySlug(slug)
+const plugin = category ? undefined : bySlug(slug)
+
+if (!category && !plugin) {
   throw createError({ statusCode: 404, statusMessage: 'Plugin not found', fatal: true })
 }
-
-const siteUrl = config.public.siteUrl as string
-const desc = computed(() => descOf(plugin, locale.value))
-const pageUrl = computed(() => `${siteUrl}${localePath(`/plugins/${plugin.slug}`)}`)
-const ogImage = computed(() => `${siteUrl}${plugin.image ?? '/images/dsh-deep-whale.webp'}`)
-
-const title = computed(() =>
-  t('meta.pluginDetailTitle', { name: plugin.name, category: catOf(plugin, locale.value) }))
-
-useHead({
-  title,
-  meta: [
-    { name: 'description', content: desc.value },
-    { property: 'og:title', content: plugin.name },
-    { property: 'og:description', content: desc.value },
-    { property: 'og:image', content: ogImage.value },
-    { property: 'og:url', content: pageUrl.value },
-    { property: 'og:type', content: 'website' },
-  ],
-  script: [{
-    type: 'application/ld+json',
-    innerHTML: JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: plugin.name,
-      description: desc.value,
-      url: pageUrl.value,
-      applicationCategory: 'DeveloperApplication',
-      operatingSystem: 'Cross-platform',
-      softwareVersion: 'community',
-      author: { '@type': 'Person', name: plugin.repo.split('/')[0] },
-      codeRepository: plugin.url,
-      installUrl: plugin.url,
-      ...(plugin.license ? { license: `https://spdx.org/licenses/${plugin.license}.html` } : {}),
-      aggregateRating: plugin.stars > 0
-        ? {
-            '@type': 'AggregateRating',
-            ratingValue: Number(Math.min(5, 3.5 + Math.log10(plugin.stars + 1) / 2).toFixed(1)),
-            bestRating: '5',
-            ratingCount: plugin.stars,
-          }
-        : undefined,
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    }),
-  }],
-})
-
-const rel = computed(() => related(plugin, 4))
 </script>
 
 <template>
-  <div class="container">
-    <div class="detail-head">
-      <div class="breadcrumb">
-        <NuxtLink :to="localePath('/plugins')">{{ t('nav.plugins') }}</NuxtLink>
-        / {{ catOf(plugin, locale) }}
-      </div>
-      <h1>{{ plugin.name }}</h1>
-      <p class="lead">{{ desc }}</p>
-      <div class="filter-bar" style="margin-bottom:0">
-        <span class="stars" style="font-size:15px">{{ plugin.stars.toLocaleString() }} {{ t('plugin.stars') }}</span>
-        <span class="chip">{{ emojiOf(plugin) }} {{ catOf(plugin, locale) }}</span>
-        <span v-if="plugin.is_meme" class="chip orange">🔥 meme</span>
-        <a class="btn" :href="plugin.url" target="_blank" rel="noopener">{{ t('plugin.viewOnGithub') }} ↗</a>
-        <a v-if="plugin.video_url" class="btn" :href="plugin.video_url" target="_blank" rel="noopener">📺 {{ t('plugin.watchDemo') }} ↗</a>
-      </div>
-    </div>
-
-    <div class="detail-layout">
-      <div class="detail-main">
-        <PluginGallery
-          :image="plugin.image"
-          :image-w="plugin.image_w"
-          :image-h="plugin.image_h"
-          :screenshots="plugin.screenshots"
-          :name="plugin.name"
-        />
-
-        <div class="prose">
-          <div class="lang-label">{{ t('plugin.descEn') }}</div>
-          <p>{{ plugin.description_en }}</p>
-          <div class="lang-label" style="margin-top:18px">{{ t('plugin.descZh') }}</div>
-          <p>{{ plugin.description_zh }}</p>
-        </div>
-
-        <section v-if="rel.length" class="section">
-          <div class="section-head"><h2>{{ t('plugin.related') }}</h2></div>
-          <div class="grid cols-2">
-            <PluginCard v-for="p in rel" :key="p.slug" :plugin="p" />
-          </div>
-        </section>
-      </div>
-
-      <aside>
-        <div class="side-card">
-          <h3>{{ t('plugin.install') }}</h3>
-          <AppCopyCmd :cmd="plugin.install_cmd" />
-        </div>
-
-        <div class="side-card">
-          <h3>{{ t('plugin.evidence') }}</h3>
-          <div class="evidence-row">
-            <span class="k">manifest</span>
-            <span class="v" :class="plugin.has_manifest ? 'ok' : 'no'">
-              {{ plugin.has_manifest ? '✓ ' + t('plugin.manifestYes') : t('plugin.manifestNo') }}
-            </span>
-          </div>
-          <div class="evidence-row">
-            <span class="k">{{ t('plugin.pushed') }}</span>
-            <span class="v">{{ plugin.pushed_at || '—' }}</span>
-          </div>
-          <div class="evidence-row">
-            <span class="k">{{ t('plugin.stars') }}</span>
-            <span class="v">★ {{ plugin.stars.toLocaleString() }}</span>
-          </div>
-          <div v-if="plugin.forks" class="evidence-row">
-            <span class="k">{{ t('plugin.forks') }}</span>
-            <span class="v">{{ plugin.forks.toLocaleString() }}</span>
-          </div>
-          <div class="evidence-row">
-            <span class="k">{{ t('plugin.license') }}</span>
-            <span class="v">{{ plugin.license || '—' }}</span>
-          </div>
-          <div class="evidence-row">
-            <span class="k">{{ t('plugin.language') }}</span>
-            <span class="v">{{ plugin.language || '—' }}</span>
-          </div>
-        </div>
-
-        <div v-if="plugin.topics.length" class="side-card">
-          <h3>{{ t('plugin.topics') }}</h3>
-          <span v-for="topic in plugin.topics" :key="topic" class="chip" style="margin:0 6px 6px 0">{{ topic }}</span>
-        </div>
-      </aside>
-    </div>
-  </div>
+  <CategoryLanding v-if="category" :cat="category" />
+  <PluginDetail v-else-if="plugin" :plugin="plugin" />
 </template>

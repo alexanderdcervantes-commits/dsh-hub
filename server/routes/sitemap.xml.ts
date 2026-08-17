@@ -1,17 +1,23 @@
 import { defineEventHandler } from 'h3'
 import pluginsData from '~/public/data/plugins.json'
+import categoryCfgRaw from '~/data/seo/category-pages.json'
 
 interface Slug { slug: string; is_meme: boolean }
+interface CategoryCfg { slug: string; enabled: boolean }
 
-// 全量 sitemap：顶层页 + 全部插件详情 + 整活详情，× 4 语种（en 根路径，其余前缀）
+// 全量 sitemap：顶层页 + 分类落地页 + 全部插件详情 + 整活详情，× 4 语种（en 根路径，其余前缀）
+// 分类落地页列表与 nuxt.config.ts 预渲染种子同源：data/seo/category-pages.json（enabled 的才注册）
 // hreflang 用 i18n.locales 的 language 值，与 useLocaleHead 生成的页面级 alternate 保持一致
 // siteUrl 来自 runtimeConfig（构建时 NUXT_PUBLIC_SITE_URL 注入），域名迁移只改一处
 export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
   const site = (config.public.siteUrl as string).replace(/\/$/, '')
   const plugins = (pluginsData as { plugins: Slug[] }).plugins
+  const categoryPages = (categoryCfgRaw as { categories: CategoryCfg[] }).categories
+    .filter(c => c.enabled)
+    .map(c => `plugins/${c.slug}`)
 
-  const top = ['', 'plugins', 'plugins/skins', 'plugins/pets', 'plugins/vision', 'plugins/clients', 'plugins/ops', 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
+  const top = ['', 'plugins', ...categoryPages, 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
   const urls: string[] = []
 
   const LANGS = [

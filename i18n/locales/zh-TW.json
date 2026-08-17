@@ -535,5 +535,17 @@
     "howCta": "檢視三步通用安裝教程 →",
     "picksH": "安全與運維外掛精選",
     "picksP1": "按 star 排序,含安裝命令與 manifest 驗證標記。"
+  },
+  "catPages": {
+    "browseH": "按分類瀏覽",
+    "browseSub": "每個分類一個落地頁：是什麼、怎麼選、常見問題",
+    "countNote": "本分類已收錄 {n} 個外掛",
+    "dataSync": "star 數與最近更新時間每小時同步自 GitHub",
+    "top3H": "Top 3 精選",
+    "top3P": "按 GitHub star 數排出，僅統計本分類",
+    "installH": "安裝須知",
+    "installCta": "完整安裝指南 →",
+    "faqH": "常見問題",
+    "listH": "全部收錄（{n}）"
   }
 }

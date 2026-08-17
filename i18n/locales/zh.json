@@ -535,5 +535,17 @@
     "howCta": "查看三步通用安装教程 →",
     "picksH": "安全与运维插件精选",
     "picksP1": "按 star 排序,含安装命令与 manifest 验证标记。"
+  },
+  "catPages": {
+    "browseH": "按分类浏览",
+    "browseSub": "每个分类一个落地页：是什么、怎么选、常见问题",
+    "countNote": "本分类已收录 {n} 个插件",
+    "dataSync": "star 数与最近更新时间每小时同步自 GitHub",
+    "top3H": "Top 3 精选",
+    "top3P": "按 GitHub star 数排出，仅统计本分类",
+    "installH": "安装须知",
+    "installCta": "完整安装指南 →",
+    "faqH": "常见问题",
+    "listH": "全部收录（{n}）"
   }
 }
