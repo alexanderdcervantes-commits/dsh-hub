@@ -21,7 +21,8 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const DATA_FILE = resolve(import.meta.dirname, '../public/data/plugins.json')
-const PROXY = process.env.HTTP_PROXY || process.env.http_proxy || 'http://127.0.0.1:7890'
+// GITHUB_DIRECT=1 时强制不走代理(GitHub Actions runner 直连;本机默认走 sing-box)
+const PROXY = process.env.GITHUB_DIRECT ? '' : (process.env.HTTP_PROXY || process.env.http_proxy || 'http://127.0.0.1:7890')
 const TIMEOUT_MS = 20_000
 const CONCURRENCY = 8
 const MAX_SHOTS = 6
@@ -213,6 +214,13 @@ async function worker() {
 }
 
 await Promise.all(Array.from({ length: Math.min(CONCURRENCY, plugins.length) }, worker))
+
+// 熔断:失败过半说明代理/GitHub 整体抽风,此时写盘会把既有截图清空再被 CI 自动
+// commit 回 master —— 宁可直接失败退出,也不产出全空数据。
+if (failures.length > plugins.length / 2) {
+  console.error(`失败 ${failures.length}/${plugins.length} 过半,疑似网络整体故障;为防清空既有截图,本次不写盘`)
+  process.exit(1)
+}
 
 // 与既有数据文件保持同款格式(1 空格缩进 + 结尾换行),除新增字段外零 diff
 await writeFile(DATA_FILE, JSON.stringify(data, null, 1) + (raw.endsWith('\n') ? '\n' : ''))
