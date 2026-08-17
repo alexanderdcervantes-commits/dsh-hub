@@ -15,7 +15,7 @@ const localeOptions = computed<Array<{ code: string; name: string }>>(() =>
   (locales.value as Array<{ code: string; name: string }>).map(l => ({ code: l.code, name: l.name })))
 const menuOpen = ref(false)
 const currentName = computed(() =>
-  localeOptions.value.find(l => l.code === locale.value)?.name ?? locale.value)
+  localeOptions.value.find((l: { code: string; name: string }) => l.code === locale.value)?.name ?? locale.value)
 
 function pick(code: string) {
   menuOpen.value = false
