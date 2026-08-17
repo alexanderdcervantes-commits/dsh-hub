@@ -1,5 +1,12 @@
 import data from '~/public/data/plugins.json'
 
+/** 仓库截图条目（raw.githubusercontent 固定 commit，w/h 可为 null） */
+export interface PluginScreenshot {
+  url: string
+  w?: number | null
+  h?: number | null
+}
+
 export interface DshPlugin {
   slug: string
   name: string
@@ -23,6 +30,8 @@ export interface DshPlugin {
   /** 图片真实像素宽高(scripts/set-image-dims.mjs 回填,<img> 预留布局防 CLS) */
   image_w?: number
   image_h?: number
+  /** 自动抓取的仓库截图（scripts/fetch-screenshots.mjs 生成，raw.githubusercontent 固定 commit） */
+  screenshots?: PluginScreenshot[]
   install_cmd: string
   video_url?: string
   pushed_at: string

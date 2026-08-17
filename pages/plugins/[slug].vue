@@ -79,13 +79,13 @@ const rel = computed(() => related(plugin, 4))
 
     <div class="detail-layout">
       <div class="detail-main">
-        <div v-if="plugin.image" class="shot">
-          <img
-            :src="plugin.image" :alt="plugin.name"
-            :width="plugin.image_w" :height="plugin.image_h"
-            decoding="async" fetchpriority="high"
-          >
-        </div>
+        <PluginGallery
+          :image="plugin.image"
+          :image-w="plugin.image_w"
+          :image-h="plugin.image_h"
+          :screenshots="plugin.screenshots"
+          :name="plugin.name"
+        />
 
         <div class="prose">
           <div class="lang-label">{{ t('plugin.descEn') }}</div>

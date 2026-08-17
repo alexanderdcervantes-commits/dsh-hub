@@ -45,7 +45,13 @@
     "today": "今天",
     "descEn": "English",
     "descZh": "中文",
-    "watchDemo": "B站演示影片"
+    "watchDemo": "B站演示影片",
+    "galleryOpen": "檢視大圖",
+    "galleryClose": "關閉大圖",
+    "galleryPrev": "上一張",
+    "galleryNext": "下一張",
+    "galleryThumb": "檢視第 {n} 張截圖",
+    "imageUnavailable": "圖片暫不可用"
   },
   "meme": {
     "title": "整活專區",
