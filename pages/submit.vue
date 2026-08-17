@@ -79,5 +79,13 @@ useHead({
 
       <p class="hint" style="margin-top:16px">{{ t('submit.hint') }}</p>
     </div>
+
+    <div class="prose">
+      <h2>{{ t('submit.devH') }}</h2>
+      <p>{{ t('submit.devP1') }}</p>
+      <p>{{ t('submit.devP2') }}</p>
+      <p>{{ t('submit.devP3') }}</p>
+      <p>{{ t('submit.devP4') }}</p>
+    </div>
   </div>
 </template>

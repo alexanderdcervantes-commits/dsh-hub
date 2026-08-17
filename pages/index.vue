@@ -22,13 +22,15 @@ const freshPicks = computed(() => fresh(7).slice(0, 8))
 
 const siteUrl = config.public.siteUrl as string
 const heroSub = computed(() => t('hero.sub'))
+// 首页 description 走 SEO 导向的 meta.homeDesc；hero.sub 只当可见文案
+const homeDesc = computed(() => t('meta.homeDesc'))
 
 useHead({
   title: computed(() => t('meta.homeTitle')),
   meta: [
-    { name: 'description', content: heroSub.value },
+    { name: 'description', content: homeDesc.value },
     { property: 'og:title', content: 'DSH Meme Hub' },
-    { property: 'og:description', content: heroSub.value },
+    { property: 'og:description', content: homeDesc.value },
     { property: 'og:image', content: `${siteUrl}/images/dsh-deep-whale.webp` },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: `${siteUrl}${localePath('/')}` },
@@ -40,7 +42,7 @@ useHead({
       '@type': 'WebSite',
       name: 'DSH Meme Hub',
       url: siteUrl,
-      description: heroSub.value,
+      description: homeDesc.value,
       inLanguage: locale.value,
       potentialAction: {
         '@type': 'SearchAction',

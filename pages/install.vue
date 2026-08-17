@@ -26,7 +26,7 @@ const howtoLd = computed(() => ({
 const faqLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [1, 2, 3, 4, 5].map(i => ({
+  mainEntity: [1, 2, 3, 4, 5, 6, 7].map(i => ({
     '@type': 'Question',
     name: t(`install.faq.q${i}`),
     acceptedAnswer: { '@type': 'Answer', text: t(`install.faq.a${i}`) },
@@ -188,7 +188,7 @@ useHead({
         <!-- FAQ -->
         <section class="step-card">
           <h2>{{ t('install.faqH') }}</h2>
-          <div v-for="i in 5" :key="i" class="faq-item">
+          <div v-for="i in 7" :key="i" class="faq-item">
             <h3>{{ t(`install.faq.q${i}`) }}</h3>
             <p>{{ t(`install.faq.a${i}`) }}</p>
           </div>
