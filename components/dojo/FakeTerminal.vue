@@ -399,4 +399,11 @@ function focusInput() {
   font-weight: 600;
   line-height: 1.5;
 }
+
+/* 移动端:iOS 聚焦 <16px 输入框自动放大不回弹(道场核心交互,必守 16px);清屏钮触控加大 */
+@media (max-width: 640px) {
+  .dojo-term-input { font-size: 16px; }
+  .dojo-term-clear { padding: 8px 10px; min-height: 32px; }
+}
+
 </style>

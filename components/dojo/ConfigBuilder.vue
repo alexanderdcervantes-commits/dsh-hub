@@ -356,4 +356,10 @@ function configureLater() {
   margin: 18px 0 0;
   font-size: 13px;
 }
+
+/* 移动端:密钥输入 16px 防 iOS 聚焦放大(密钥粘贴是该组件唯一动作) */
+@media (max-width: 640px) {
+  .dojo-config-input { font-size: 16px; }
+}
+
 </style>

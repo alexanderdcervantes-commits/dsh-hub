@@ -59,6 +59,9 @@ onBeforeUnmount(() => {
   max-width: 728px;
   margin: 32px auto;
   transition: height 0.15s ease-out;
+  /* SSR 阶段 scale=1 的 728px 定宽盒在窄屏伸出视口造成整页横滚闪现;
+     容器已定宽定高,裁掉未缩放的溢出,水合缩放后内容正常可见 */
+  overflow: hidden;
 }
 .ad-scale {
   width: 728px;

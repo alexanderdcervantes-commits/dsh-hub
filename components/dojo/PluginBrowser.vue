@@ -324,4 +324,11 @@ function hasLogo(p: PluginCard): boolean {
   font-size: 13.5px;
   color: var(--dojo-text-desc);
 }
+
+/* 移动端:搜索框 44px + 16px(iOS 聚焦放大 + 触控双修),排序按钮加大 */
+@media (max-width: 640px) {
+  .dojo-pb-search { height: 44px; font-size: 16px; }
+  .dojo-pb-sort-btn { padding: 12px; }
+}
+
 </style>

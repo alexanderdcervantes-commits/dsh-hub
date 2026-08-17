@@ -204,4 +204,11 @@ const headlessRows = [
 .dojo-inline-link:focus-visible {
   text-decoration: none;
 }
+
+/* 移动端:首列 mono 47 字符超视口 → 允许换行(scoped 特异性才压得过上面的 nowrap) */
+@media (max-width: 640px) {
+  .dojo-table--code td:first-child { white-space: normal; overflow-wrap: anywhere; }
+  .dojo-table th, .dojo-table td { padding: 8px 10px; }
+}
+
 </style>

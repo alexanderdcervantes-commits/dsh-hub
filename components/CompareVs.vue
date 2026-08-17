@@ -161,10 +161,10 @@ useHead({
 
       <h2>{{ t('compare.cmn.ctaH') }}</h2>
       <p>{{ t('compare.cmn.ctaP') }}</p>
-      <p>
+      <div class="cta-row">
         <NuxtLink class="btn green" :to="localePath('/plugins')">{{ t('compare.cmn.ctaBtn') }}</NuxtLink>
-        <NuxtLink class="btn" :to="localePath('/install')" style="margin-left:10px">{{ t('compare.cmn.ctaInstall') }}</NuxtLink>
-      </p>
+        <NuxtLink class="btn" :to="localePath('/install')">{{ t('compare.cmn.ctaInstall') }}</NuxtLink>
+      </div>
 
       <h2>{{ t('compare.cmn.moreH') }}</h2>
       <ul class="more-vs">
@@ -201,9 +201,20 @@ useHead({
 .vs-table tbody th { color: var(--text-2); font-weight: 600; white-space: nowrap; }
 .vs-table .vendor { display: block; font-size: 12px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
 .vs-table td.num { font-variant-numeric: tabular-nums; font-weight: 700; }
+/* 长仓库名(owner/repo)可断行,否则一列 token 就 220px+,窄屏全靠盲拖 */
+.vs-table td a { overflow-wrap: anywhere; }
 .faq-item { margin: 14px 0; }
 .faq-item h3 { margin: 0 0 4px; }
 .faq-item p { margin: 0; color: var(--text-2); font-size: 14.5px; }
+/* CTA 两按钮:窄屏必然换行,gap 替代内联 margin,避免换行后贴边错位 */
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 10px; }
 .more-vs { margin: 8px 0 50px; padding-left: 22px; }
 .more-vs li { margin: 6px 0; }
+.more-vs a { display: inline-block; }
+@media (max-width: 620px) {
+  /* 配合上方 td a 的 overflow-wrap:anywhere:长仓库名断行后三列收进 335px 视口,
+     免横向拖动(sticky 方案在 anywhere 收窄 min-content 后永不触发,已弃) */
+  .vs-table th, .vs-table td { padding: 10px 10px; }
+  .more-vs li { margin: 10px 0; }
+}
 </style>

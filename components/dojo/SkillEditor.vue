@@ -517,4 +517,11 @@ function clearEditor() {
   font-size: 11px;
   color: rgba(0, 0, 0, 0.42);
 }
+
+/* 移动端:SKILL.md 编辑器是 step-07 核心练习,16px 防放大;头部按钮加大防点串 */
+@media (max-width: 640px) {
+  .dojo-skill-textarea { font-size: 16px; }
+  .dojo-skill-btn { padding: 10px 16px; }
+}
+
 </style>

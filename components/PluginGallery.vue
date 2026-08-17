@@ -292,8 +292,10 @@ watch(activeUrl, async () => {
 }
 
 @media (max-width: 620px) {
+  .lb-btn { width: 44px; height: 44px; }
+  .lb-close { top: 14px; right: 14px; }
   .lightbox { padding: 40px 10px; }
-  .lb-prev { left: 4px; }
-  .lb-next { right: 4px; }
+  .lb-prev { left: 6px; }
+  .lb-next { right: 6px; }
 }
 </style>

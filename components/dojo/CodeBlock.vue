@@ -86,4 +86,11 @@ onBeforeUnmount(() => clearTimeout(timer))
   font-family: inherit;
   white-space: pre;
 }
+
+/* 移动端:命令允许换行(复制内容取 props.code 不受影响);复制钮是道场高频主操作,加大 */
+@media (max-width: 640px) {
+  .dojo-code-pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .dojo-code-copy { padding: 8px 12px; min-height: 32px; }
+}
+
 </style>

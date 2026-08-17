@@ -320,4 +320,11 @@ function isCorrect(i: number): boolean {
   background: rgba(236, 19, 22, 0.05);
   color: var(--dojo-error);
 }
+
+/* 移动端:连点四题的提交/选项行加大触控 */
+@media (max-width: 640px) {
+  .dojo-quiz-submit { padding: 12px 24px; min-height: 44px; }
+  .dojo-quiz-option { padding: 12px; }
+}
+
 </style>
