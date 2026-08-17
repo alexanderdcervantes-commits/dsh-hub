@@ -7,7 +7,8 @@
     "install": "🚀 安裝",
     "launchers": "🖥️ 啟動器",
     "submit": "➕ 投稿",
-    "about": "關於"
+    "about": "關於",
+    "compare": "對比評測"
   },
   "hero": {
     "title": "一切皆外掛——",
@@ -34,7 +35,8 @@
     "whatP2": "它的設計哲學就一句：一切皆外掛（Everything is a Plugin）。核心只保留一個很小的調度核心（官方叫 Cordis 架構），介面、工具、皮膚、桌寵統統以外掛形式插上去——所以任務看板和鯨魚娘桌寵能住在同一個生態裡。",
     "whatP3": "想親眼看看？一條命令：npx {'@'}deepseek-ai/dsh web，瀏覽器開啟本地地址就能玩。第一次接觸建議跟著安裝指南走，五分鐘。",
     "whatCta": "看安裝指南 →",
-    "whatCta2": "逛全部外掛 →"
+    "whatCta2": "逛全部外掛 →",
+    "whatCta3": "和 Claude Code/OpenCode 比一比？"
   },
   "plugin": {
     "install": "安裝",
@@ -406,7 +408,103 @@
     "moreH": "選完了？接著逛",
     "moreSub": "本站還有這三個地方：",
     "mInstallD": "五分鐘跑起 DeepSeek Harness，再裝上第一批外掛",
-    "mLauncherD": "圖形介面桌面啟動器，全程不碰命令列"
+    "mLauncherD": "圖形介面桌面啟動器，全程不碰命令列",
+    "hub": {
+      "title": "DeepSeek Harness 對比評測：vs Claude Code、OpenCode、Codex",
+      "sub": "dsh 和 Claude Code、OpenCode、Codex 比怎麼樣？開源協議、GitHub star、開發語言、外掛生態、適合誰——一張對比表加一段公允分析，只用公開可查的實數。",
+      "intro": "選 agent harness 的人，最後都會搜一次「XX vs YY」。這個專區不站隊：每個對手單獨一頁，對比表只用 2026-08-17 從 GitHub 實抓的數字，論述段該承認的承認、該亮眼的亮眼。結論先放這——沒有全場景的贏家，只有合不合適。",
+      "hookCc": "MIT 開源新王挑戰閉源老將：開源 4 天 143,374 star，外掛倉庫已破 5,700。",
+      "hookOc": "同為 TypeScript + MIT 的直接競品：星數它暫時領先，dsh 靠 DeepSeek 官方背書和外掛生態反擊。",
+      "hookCx": "MIT 對 Apache-2.0，TypeScript 對 Rust，DeepSeek 生態對 OpenAI 生態。",
+      "go": "看這場對比 →"
+    },
+    "tbl": {
+      "tableH": "核心對比表",
+      "dimension": "對比維度",
+      "stars": "GitHub star",
+      "license": "開源授權",
+      "lang": "開發語言",
+      "eco": "外掛生態",
+      "released": "首發時間",
+      "repo": "GitHub 倉庫",
+      "dshSub": "DeepSeek 官方出品",
+      "ccSub": "Anthropic 出品",
+      "ocSub": "社群開源專案",
+      "cxSub": "OpenAI 出品",
+      "closed": "閉源（倉庫無 license）",
+      "ecoDsh": "topic:dsh-plugin 已 5,728 個倉庫，每日新增",
+      "ecoCc": "MCP 擴充生態（規模本站未統計）",
+      "ecoOc": "以官方文件為準（本站未統計）",
+      "ecoCx": "以官方文件為準（本站未統計）",
+      "relDsh": "2026-08-13（快照時開源 4 天）",
+      "relRival": "早於 dsh，持續更新",
+      "snapshot": "表中 star 數與倉庫數為 2026-08-17 的 GitHub 實抓快照，會隨時間變化；本站外掛資料每日自動重新整理。"
+    },
+    "cmn": {
+      "ctaH": "看完對比，接下來去哪",
+      "ctaP": "看看 dsh 社群 4 天就長出來的 101 個精選外掛——從正經生產力工具到鯨魚娘桌寵都有：",
+      "ctaBtn": "逛全部 101 個精選外掛 →",
+      "ctaInstall": "還沒裝 dsh？五分鐘安裝教學 →",
+      "moreH": "另外兩場對比",
+      "backHub": "← 返回對比專區"
+    },
+    "cc": {
+      "h1": "DeepSeek Harness vs Claude Code：開源 4 天的新王，挑戰閉源老將",
+      "intro": "一個是 DeepSeek 官方 2026 年 8 月 13 日才開源的 agent harness，4 天攢下 143,374 star；一個是 Anthropic 的閉源終端編碼 agent，141,712 star、成熟度經過市場長期驗證。這兩個常被一起搜——本頁把能查證的差異全部擺上桌，幫你按自己的需求選。",
+      "s1h": "開源 MIT vs 閉源：決策型使用者最先看的一條",
+      "s1p": "DeepSeek Harness 以 MIT 協議開源：原始碼可讀、核心可改，甚至可以基於它發行自己的客製化版本，商用不需要額外授權。Claude Code 的倉庫則沒有 license 檔案——閉源商業產品，你使用的是一個成品，而不是一份能拆開研究的工程。要說公道話：閉源不等於不好，商業工具的文件、支援和迭代節奏常常更穩；開源也不等於零成本——跑 agent 的模型呼叫費取決於你接的模型服務，跟框架協議無關，兩邊一樣要花。",
+      "s2h": "4 天 143,374 star：現象級開局，和已經燒起來的外掛生態",
+      "s2p": "dsh 於 2026-08-13 首發，到 8 月 17 日快照已有 143,374 star，反超 Claude Code 的 141,712——但公允地說，OpenCode 的 198,275 仍是四者最高，星數衡量的是熱度不是品質。更值得看的是生態速度：GitHub topic:dsh-plugin 已有 5,728 個倉庫，topic:deepseek-harness 4,123 個，awesome-dsh-plugin 清單 5,503 star。本站從中人工精選了 101 個外掛、13 個分類，每日自動重新整理截圖。",
+      "s3h": "誰適合用誰",
+      "s3p": "工作流深度綁定 Claude 模型、想要閉源商業工具的成熟度和兜底——Claude Code 是穩妥答案，Claude 模型的加成是真實優勢。想要開源可控、能改核心、自由接多模型，或者單純想玩「一切皆外掛」的生態——皮膚、桌寵、摸魚遊戲全是外掛——選 dsh。兩邊安裝都是一行命令的量級，切換成本很低，完全可以兩個都裝、各跑一週再定。",
+      "faqH": "常見問題",
+      "faq": {
+        "q1": "DeepSeek Harness 和 Claude Code 哪個好？",
+        "a1": "沒有全場景的贏家：要 MIT 開源、可改核心、外掛生態爆發期，選 dsh（143,374 star，2026-08-17 快照）；已經在 Claude 生態裡、看重閉源商業工具的成熟度和 Claude 模型的深度配合，選 Claude Code（141,712 star）。dsh 仍處 developer preview，穩定性以官方倉庫為準。",
+        "q2": "Claude Code 是閉源的嗎？",
+        "a2": "是。anthropics/claude-code 倉庫沒有 license 檔案，屬於閉源商業產品。閉源不影響它作為工具的成熟度，只是你不能讀改它的原始碼。",
+        "q3": "DeepSeek Harness 開源免費，以後會收費嗎？",
+        "a3": "已按 MIT 發布的程式碼，按協議可永久免費使用；後續版本的協議走向以 DeepSeek 官方倉庫公告為準，本站不代為承諾。另外框架免費不等於模型免費：跑 agent 的呼叫費用取決於你接的模型服務。"
+      }
+    },
+    "oc": {
+      "h1": "DeepSeek Harness vs OpenCode：同為 TypeScript + MIT，差別在哪",
+      "intro": "這是四者裡最「同門」的一對：都是 TypeScript 寫的、都是 MIT 開源、都能一行命令跑起來、都不把你鎖進商業產品。OpenCode 的 198,275 star 目前最高，dsh 的 143,374 緊隨其後——而且只用了 4 天。同門對決，拼的是路線。",
+      "s1h": "同棧同協議：最直接的競品",
+      "s1p": "兩張倉庫名片擺在一起：sst/opencode，TypeScript，MIT，198,275 star；deepseek-ai/deepseek-harness，TypeScript，MIT，143,374 star。對使用者來說這意味著幾乎零門檻互試——會讀 TS 就能讀兩邊原始碼、給兩邊寫擴充，心智模型也接近。這場對比沒有降維打擊，只有取向差異。",
+      "s2h": "dsh 的兩張牌：DeepSeek 官方背書，和爆發的外掛生態",
+      "s2p": "第一張牌是出身：dsh 是 DeepSeek 官方出品的開源 harness（npm 套件 {'@'}deepseek-ai/dsh，當前 0.1.0-rc.6），OpenCode 則是獨立開源專案。第二張牌是哲學：「一切皆外掛」——介面、工具、皮膚、桌寵統統以外掛形式插上去，於是開源 4 天，GitHub topic:dsh-plugin 就攢出 5,728 個倉庫，awesome 清單 5,503 star，本站精選收錄了 101 個。公允地說：OpenCode 星數更高、更成熟，專注把終端編碼體驗做紮實；dsh 換來的是生態爆發力和官方背書。",
+      "s3h": "怎麼選",
+      "s3p": "想在終端裡安安靜靜把程式碼寫好、要一個久經考驗的開源終端 agent——OpenCode 的 198,275 star 就是背書。想要 DeepSeek 官方 harness、想把皮膚桌寵介面都換成外掛折騰——dsh 的生態更野。都是 MIT、都是一行命令啟動，最省事的答案：都裝上，各跑一週。",
+      "faqH": "常見問題",
+      "faq": {
+        "q1": "DeepSeek Harness 和 OpenCode 是什麼關係？",
+        "a1": "沒有官方關係，是定位相近的開源競品：OpenCode 由 sst 維護，TypeScript + MIT，198,275 star；dsh 是 DeepSeek 官方出品，同為 TypeScript + MIT，143,374 star（2026-08-17 快照，開源第 4 天）。",
+        "q2": "兩個都開源，程式碼可以互相搬嗎？",
+        "a2": "各看各的倉庫協議：兩者都是 MIT，允許衍生使用，但具體邊界以各自倉庫的 license 檔案為準，本站不給法律結論。",
+        "q3": "哪個更適合接 DeepSeek 模型？",
+        "a3": "dsh 是 DeepSeek 官方的 harness，與 DeepSeek 模型同源出品；OpenCode 支援的模型列表以它的官方文件為準。截至本文發布，兩者都沒有公開的第三方效能基準測試，「哪個快」沒有可靠數字，別信包括本站在內的二手轉述。"
+      }
+    },
+    "cx": {
+      "h1": "DeepSeek Harness vs Codex：MIT 對 Apache-2.0，TypeScript 對 Rust",
+      "intro": "Codex 是 OpenAI 出品的編碼 agent：Rust 寫成，Apache-2.0 開源，106,397 star，持續更新。和 dsh（TypeScript、MIT、143,374 star、DeepSeek 官方出品）放在一起，是「同為開源、取向不同」的對比——生態對位、語言取捨、協議細節，本頁一次講清。",
+      "s1h": "協議與語言：MIT vs Apache-2.0，TypeScript vs Rust",
+      "s1p": "兩條都是寬鬆開源協議，都允許使用、修改和再散布，差別在條款細節——Apache-2.0 帶明確的專利授權與商標條款，檔案更長；MIT 以簡短著稱，對專利未作明示。真要做合規決策，請讀各自倉庫的 license 原文。語言是另一組取向：TypeScript 跑在 Node.js 上，會寫 JavaScript 的人當天就能給 dsh 寫外掛；Rust 編譯出自包含的原生二進位檔，工程取向不同。截至本文發布，兩者沒有公開的權威效能對比，這裡不給「誰快」的結論。",
+      "s2h": "生態對位：OpenAI 全家桶，對 DeepSeek 官方 + 外掛叢林",
+      "s2p": "Codex 背靠 OpenAI 的模型與生態，倉庫 106,397 star、持續更新；dsh 背靠 DeepSeek 官方，2026-08-13 開源、4 天 143,374 star，topic:dsh-plugin 已有 5,728 個倉庫——從正經生產力工具一路長到鯨魚娘桌寵和換皮膚，本站精選了 101 個、13 個分類。一邊是成熟的模型廠工程，一邊是點火就爆的外掛生態，畫風差異一目了然。",
+      "s3h": "誰適合用誰",
+      "s3p": "模型和工作流已經長在 OpenAI 生態裡——Codex 順理成章，而且它 Apache-2.0 開源，想讀程式碼也可以。想要 DeepSeek 官方 harness、更低門檻寫外掛（TypeScript）、或想玩桌寵皮膚這類整活生態——dsh 更對味。兩個都開源、都免費獲取，多試不虧。",
+      "faqH": "常見問題",
+      "faq": {
+        "q1": "DeepSeek Harness 和 Codex 哪個好？",
+        "a1": "按需選：深度使用 OpenAI 模型生態選 Codex（Rust、Apache-2.0、106,397 star）；要 DeepSeek 官方出品、MIT 協議、外掛生態爆發期（topic:dsh-plugin 5,728 個倉庫）選 dsh（143,374 star，2026-08-17 快照）。兩者都沒有公開效能基準，別拿「誰快」當決策依據。",
+        "q2": "Codex 是開源的嗎？",
+        "a2": "是。openai/codex 倉庫以 Apache-2.0 協議開源，106,397 star、持續更新——注意它和 Claude Code（倉庫無 license 檔案，閉源）不同，Codex 的原始碼可以讀。",
+        "q3": "Rust 和 TypeScript 寫的 agent，對我使用有什麼影響？",
+        "a3": "主要在擴充門檻和散布形態：TypeScript 的 dsh 對會 JavaScript 的人幾乎零上手成本，外掛就是 npm 生態的一等公民；Rust 的 Codex 編譯為原生二進位檔，散布形態不同，改原始碼需要 Rust 工具鏈。效能層面尚無公開對比測試，本站不下結論。"
+      }
+    }
   },
   "meta": {
     "homeTitle": "DeepSeek Harness (dsh) 外掛精選導航 — 發現/安裝/下載 {'|'} DSH Meme Hub",
@@ -420,6 +518,14 @@
     "skinsDesc": "dsh 怎麼換皮膚？DeepSeek Harness 換膚/主題外掛合集：鯨魚娘皮膚系列、Galgame 介面、Web UI 主題引擎，三步換膚通用流程 + 按 star 排序的皮膚推薦，附一鍵安裝命令。",
     "petsTitle": "DeepSeek Harness (dsh) 桌寵外掛精選 — 桌面寵物/鯨魚娘怎麼開 {'|'} DSH Meme Hub",
     "petsDesc": "dsh 桌寵怎麼開？DeepSeek Harness 桌面寵物外掛合集：鯨魚娘、大肥魚、桌寵商店 Petdex，一條命令讓桌面多一隻寵物，附安裝指南與精選推薦。",
+    "cmpHubTitle": "DeepSeek Harness (dsh) 對比評測 — vs Claude Code/OpenCode/Codex {'|'} DSH Meme Hub",
+    "cmpHubDesc": "DeepSeek Harness 和 Claude Code、OpenCode、Codex 比怎麼樣？開源協議、GitHub star、開發語言、外掛生態、適合誰——一張對比表 + 逐個公允分析，只用 2026-08-17 的 GitHub 實數。",
+    "vsCcTitle": "DeepSeek Harness vs Claude Code 哪個好？開源/star/生態對比 {'|'} DSH Meme Hub",
+    "vsCcDesc": "dsh 和 Claude Code 怎麼選？MIT 開源 vs 閉源、143,374 vs 141,712 star、TypeScript vs Python、5,728 個外掛倉庫，一張對比表 + 誰適合用誰的公允分析。",
+    "vsOcTitle": "DeepSeek Harness vs OpenCode：同為 TypeScript+MIT 怎麼選 {'|'} DSH Meme Hub",
+    "vsOcDesc": "dsh 和 OpenCode 都是 TypeScript + MIT 開源：198,275 vs 143,374 star、社群專案 vs DeepSeek 官方出品，一張對比表 + 公允分析幫你選。",
+    "vsCxTitle": "DeepSeek Harness vs Codex：MIT vs Apache-2.0 對比評測 {'|'} DSH Meme Hub",
+    "vsCxDesc": "dsh 和 Codex 怎麼選？TypeScript vs Rust、MIT vs Apache-2.0、DeepSeek 生態 vs OpenAI 生態、143,374 vs 106,397 star，一張對比表 + 公允分析。",
     "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — 哪個好？對比評測 {'|'} DSH Meme Hub",
     "compareDesc": "DeepSeek Harness (dsh) 和 Claude Code、Codex、OpenCode、Reasonix、Pi agent、Omnigent 有什麼區別？定位、開源授權、安裝方式、外掛生態、適合誰，一張表 + 逐個對比，幫你選 agent harness。",
     "installTitle": "DeepSeek Harness (dsh) 安裝教學 — 下載/Windows/macOS/Linux {'|'} DSH Meme Hub",
@@ -436,6 +542,7 @@
     "pluginDetailTitle": "{name} — {category}外掛 {'|'} DeepSeek Harness (dsh)",
     "memeDetailTitle": "{name} — {caption} {'|'} DSH 整活精選",
     "breadcrumbHome": "首頁",
+    "breadcrumbCompare": "對比評測",
     "breadcrumbInstall": "安裝指南",
     "howto": {
       "name": "安裝 DeepSeek Harness 和它的外掛",

@@ -175,6 +175,7 @@ useHead({
           <p>
             <NuxtLink class="btn green" :to="localePath('/install')" style="margin-right:10px">{{ t('home.whatCta') }}</NuxtLink>
             <NuxtLink :to="localePath('/plugins')">{{ t('home.whatCta2') }}</NuxtLink>
+            <NuxtLink :to="localePath('/compare')" style="margin-left:10px">{{ t('home.whatCta3') }}</NuxtLink>
           </p>
         </div>
       </section>

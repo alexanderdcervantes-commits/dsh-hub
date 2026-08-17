@@ -7,7 +7,8 @@
     "install": "🚀 Installation",
     "launchers": "🖥️ Launcher",
     "submit": "➕ Einreichen",
-    "about": "Über uns"
+    "about": "Über uns",
+    "compare": "Vergleiche"
   },
   "hero": {
     "title": "Alles ist ein Plugin —",
@@ -34,7 +35,8 @@
     "whatP2": "Die ganze Idee passt in eine Zeile: Alles ist ein Plugin. Der Kern ist ein winziger Scheduler (die Cordis-Architektur), und UI, Tools, Skins und Desktop-Haustiere stecken alle als Plugin daran — so landeten ein Task-Board und ein Walf-Mädchen-Haustier im selben Ökosystem.",
     "whatP3": "Selbst ansehen? Ein Befehl — npx {'@'}deepseek-ai/dsh web — und die Oberfläche öffnet sich im Browser. Zum ersten Mal hier? Folge der Installationsanleitung, das dauert etwa fünf Minuten.",
     "whatCta": "Zur Installationsanleitung →",
-    "whatCta2": "Alle Plugins durchstöbern →"
+    "whatCta2": "Alle Plugins durchstöbern →",
+    "whatCta3": "Vergleich mit Claude Code / OpenCode?"
   },
   "plugin": {
     "install": "Installieren",
@@ -406,7 +408,103 @@
     "moreH": "Entschieden? Weiter geht's",
     "moreSub": "Drei weitere Stationen auf dieser Seite:",
     "mInstallD": "DeepSeek Harness in fünf Minuten zum Laufen bringen, dann die ersten Plugins dazu",
-    "mLauncherD": "GUI-Desktop-Launcher — ganz ohne Terminal"
+    "mLauncherD": "GUI-Desktop-Launcher — ganz ohne Terminal",
+    "hub": {
+      "title": "DeepSeek Harness im Vergleich: Claude Code, OpenCode & Codex",
+      "sub": "Wie schlägt sich dsh gegen Claude Code, OpenCode und Codex? Lizenz, GitHub-Stars, Sprache, Plugin-Ökosystem und Zielgruppe — ein Vergleich pro Konkurrent, nur öffentlich prüfbare Zahlen.",
+      "intro": "Wer einen Agent-Harness sucht, tippt irgendwann „X vs Y“ in die Suche. Diese Rubrik nimmt keine Partei: pro Konkurrent eine Seite, Tabellen aus dem GitHub-Snapshot vom 17.08.2026, und Texte, die eingestehen, was einzugestehen ist. Das Fazit vorweg: Es gibt keinen Rundum-Sieger, nur Passung oder Nicht-Passung.",
+      "hookCc": "Der MIT-open-source-Herausforderer gegen den Closed-Source-Incumbent: 143.374 Stars in 4 Tagen, über 5.700 Plugin-Repos.",
+      "hookOc": "Beide TypeScript, beide MIT — die direktesten Konkurrenten. OpenCode liegt bei den Stars vorn; dsh kontert mit offizieller DeepSeek-Rückendeckung und Plugin-Ökosystem.",
+      "hookCx": "MIT gegen Apache-2.0, TypeScript gegen Rust, DeepSeek-Ökosystem gegen OpenAI-Ökosystem.",
+      "go": "Diesen Vergleich lesen →"
+    },
+    "tbl": {
+      "tableH": "Die Vergleichstabelle",
+      "dimension": "Vergleichspunkt",
+      "stars": "GitHub-Stars",
+      "license": "Lizenz",
+      "lang": "Sprache",
+      "eco": "Plugin-Ökosystem",
+      "released": "Erstveröffentlichung",
+      "repo": "GitHub-Repo",
+      "dshSub": "von DeepSeek (offiziell)",
+      "ccSub": "von Anthropic",
+      "ocSub": "Community-Projekt (Open Source)",
+      "cxSub": "von OpenAI",
+      "closed": "Closed Source (keine Lizenzdatei)",
+      "ecoDsh": "5.728 Repos unter topic:dsh-plugin, täglich mehr",
+      "ecoCc": "MCP-Erweiterungen (Umfang hier nicht gezählt)",
+      "ecoOc": "siehe offizielle Doku (hier nicht gezählt)",
+      "ecoCx": "siehe offizielle Doku (hier nicht gezählt)",
+      "relDsh": "13.08.2026 (4 Tage open source zum Snapshot)",
+      "relRival": "älter als dsh, aktiv weiterentwickelt",
+      "snapshot": "Stars und Repo-Zahlen sind ein GitHub-Snapshot vom 17.08.2026 und ändern sich mit der Zeit; die Plugin-Daten dieser Seite werden täglich automatisch aktualisiert."
+    },
+    "cmn": {
+      "ctaH": "Wie es weitergeht",
+      "ctaP": "Die 101 handverlesenen Plugins, die die dsh-Community in vier Tagen gewachsen hat — von Produktivitätstools bis zum Desktop-Wal:",
+      "ctaBtn": "Alle 101 Empfehlungen ansehen →",
+      "ctaInstall": "Neu bei dsh? Installationsanleitung in 5 Minuten →",
+      "moreH": "Die anderen beiden Vergleiche",
+      "backHub": "← Zurück zur Vergleichs-Rubrik"
+    },
+    "cc": {
+      "h1": "DeepSeek Harness vs. Claude Code: der 4 Tage alte Open-Source-Herausforderer gegen den Closed-Source-Incumbent",
+      "intro": "Das eine ist der Agent-Harness, den DeepSeek am 13.08.2026 open-sourced hat — 143.374 Stars in vier Tagen. Das andere ist Anthropics Closed-Source-Terminal-Agent — 141.712 Stars und lange am Markt erprobte Reife. Die beiden werden oft zusammen gesucht; diese Seite legt alle überprüfbaren Unterschiede auf den Tisch.",
+      "s1h": "MIT Open Source vs. Closed Source: das erste Kriterium der Entscheider",
+      "s1p": "DeepSeek Harness steht unter MIT: Quelltext lesbar, Kernel änderbar, eigene Distribution erlaubt — Kommerz ohne Zusatzfreigabe. Claude Codes Repository hat keine Lizenzdatei: Closed Source, kommerziell — man nutzt ein fertiges Produkt, kein zerlegbares Projekt. Fairerweise: Closed Source heißt nicht schlechter — kommerzielle Tools haben oft stabilere Doku, Support und Release-Rhythmus. Und Open Source heißt nicht kostenlos: die Modellkosten des Agent-Betriebs zahlt man bei beiden über den Modellanbieter, unabhängig von der Framework-Lizenz.",
+      "s2h": "143.374 Stars in 4 Tagen: ein Phänomen — und ein Ökosystem, das schon brennt",
+      "s2p": "dsh startete am 13.08.2026 und hatte zum Snapshot am 17.08. 143.374 Stars — knapp vor Claude Codes 141.712. Fair bleibt: OpenCodes 198.275 sind weiter Spitze; Stars messen Hitze, nicht Qualität. Aussagekräftiger ist das Ökosystem-Tempo: topic:dsh-plugin zählt schon 5.728 Repos, topic:deepseek-harness 4.123, die awesome-dsh-plugin-Liste 5.503 Stars. Diese Seite kuratiert davon 101 Plugins in 13 Kategorien, mit täglich automatisch aktualisierten Screenshots.",
+      "s3h": "Wer sollte was nehmen",
+      "s3p": "Wer tief im Claude-Ökosystem steckt und die Reife eines kommerziellen Closed-Source-Tools will, fährt mit Claude Code gut — der Claude-Modell-Vorteil ist real. Wer offene, kontrollierbare Software will, einen hackbaren Kernel, Modelfreiheit oder einfach das „alles ist ein Plugin“-Ökosystem — Skins, Desktop-Pets, Spiele — nimmt dsh. Beide installieren sich in einer Zeile; einfach beide eine Woche testen.",
+      "faqH": "FAQ",
+      "faq": {
+        "q1": "DeepSeek Harness oder Claude Code — was ist besser?",
+        "a1": "Kein Rundum-Sieger: MIT Open Source, hackbarer Kernel und ein explodierendes Plugin-Ökosystem sprechen für dsh (143.374 Stars, Snapshot 17.08.2026); Reife und die Claude-Integration für Claude Code (141.712 Stars). dsh ist noch Developer Preview — Stabilität entsprechend einordnen.",
+        "q2": "Ist Claude Code Closed Source?",
+        "a2": "Ja. Das Repo anthropics/claude-code hat keine Lizenzdatei; es ist ein kommerzielles Closed-Source-Produkt. Das macht es als Werkzeug nicht schlechter, nur den Quelltext kann man nicht lesen oder ändern.",
+        "q3": "DeepSeek Harness ist kostenlos und open source — wird es kostenpflichtig?",
+        "a3": "Unter MIT bereits veröffentlichter Code bleibt nach dieser Lizenz dauerhaft frei nutzbar; wie spätere Versionen lizenziert werden, sagen die offiziellen Ankündigungen — diese Seite verspricht da nichts. Und: kostenlose Framework heißt nicht kostenlose Modelle — die Agent-Nutzung kostet, was der Modellanbieter berechnet."
+      }
+    },
+    "oc": {
+      "h1": "DeepSeek Harness vs. OpenCode: beide TypeScript + MIT — worin liegt der Unterschied?",
+      "intro": "Die engste Paarung der vier: beide in TypeScript, beide MIT, beide mit einer Zeile startbar, keiner schließt ein kommerzielles Produkt ein. OpenCodes 198.275 Stars sind aktuell Spitze; dshs 143.374 folgen — nach vier Tagen. Ein Duell aus derselben Schule entscheidet sich über die Linie.",
+      "s1h": "Gleicher Stack, gleiche Lizenz: die direktesten Konkurrenten",
+      "s1p": "Zwei Repo-Visitenkarten nebeneinander: sst/opencode — TypeScript, MIT, 198.275 Stars; deepseek-ai/deepseek-harness — TypeScript, MIT, 143.374 Stars. Wer TS liest, liest beide Codebasen und schreibt für beide Erweiterungen — die Wechselkosten gehen gegen null. Hier gibt es keinen Erdrutschsieg, nur unterschiedliche Ausrichtungen.",
+      "s2h": "dshs zwei Trümpfe: offizielle DeepSeek-Rückendeckung und ein explodierendes Ökosystem",
+      "s2p": "Trumpf eins, die Herkunft: dsh ist der von DeepSeek selbst open-sourcte Harness (npm-Paket {'@'}deepseek-ai/dsh, aktuell 0.1.0-rc.6); OpenCode ist ein unabhängiges Open-Source-Projekt. Trumpf zwei, die Philosophie: alles ist ein Plugin — UI, Tools, Skins, Desktop-Pets — weshalb topic:dsh-plugin in vier Tagen auf 5.728 Repos wuchs, die awesome-Liste 5.503 Stars hat und diese Seite 101 davon kuratiert. Fair: OpenCode hat mehr Stars und mehr Reife und macht das Terminal-Coding solide; dsh tauscht das gegen Ökosystem-Tempo und offizielle Rückendeckung.",
+      "s3h": "Wie wählen",
+      "s3p": "Wer einen stillen, erprobten Open-Source-Terminal-Agent zum Coden will: OpenCode — 198.275 Stars sprechen dafür. Wer DeepSeeks offiziellen Harness will und ein Ökosystem, in dem Skins und Pets Plugins sind: dsh. Beide MIT, beide eine Zeile — installier beide, eine Woche je.",
+      "faqH": "FAQ",
+      "faq": {
+        "q1": "Sind DeepSeek Harness und OpenCode verwandt?",
+        "a1": "Nein, offiziell nicht — Open-Source-Konkurrenten mit ähnlicher Positionierung: OpenCode wird von sst gepflegt (TypeScript, MIT, 198.275 Stars); dsh ist DeepSeeks offizieller Harness (ebenfalls TypeScript + MIT, 143.374 Stars zum Snapshot 17.08.2026, Tag vier nach dem Open-Sourcing).",
+        "q2": "Beide open source — darf man Code übernehmen?",
+        "a2": "Jedes Repo nach eigener Lizenz: beide stehen unter MIT und erlauben abgeleitete Nutzung; die genauen Grenzen stehen in den jeweiligen Lizenzdateien — diese Seite gibt keine Rechtsauskunft.",
+        "q3": "Was passt besser zu DeepSeek-Modellen?",
+        "a3": "dsh ist DeepSeeks eigener Harness, vom Modellhersteller selbst; OpenCodes Modellliste steht in dessen Doku. Bis zur Veröffentlichung dieses Textes gibt es für beide keinen öffentlichen Dritt-Performance-Benchmark — ein verlässliches „schneller“ existiert nicht, auch nicht aus zweiter Hand."
+      }
+    },
+    "cx": {
+      "h1": "DeepSeek Harness vs. Codex: MIT gegen Apache-2.0, TypeScript gegen Rust",
+      "intro": "Codex ist OpenAIs Coding-Agent — in Rust, Apache-2.0 open source, 106.397 Stars, aktiv gepflegt. Neben dsh (TypeScript, MIT, 143.374 Stars, von DeepSeek) ist das ein Vergleich zweier Open-Source-Projekte mit unterschiedlicher Ausrichtung: Ökosystem, Sprachwahl, Lizenzdetails — alles auf einer Seite.",
+      "s1h": "Lizenz und Sprache: MIT vs. Apache-2.0, TypeScript vs. Rust",
+      "s1p": "Beide sind großzügige Lizenzen für Nutzung, Änderung und Weitergabe; der Unterschied steckt im Detail — Apache-2.0 bringt eine explizite Patent- und Markenklausel in längerem Text, MIT ist berühmt kurz und schweigt zu Patenten. Für echte Compliance-Entscheidungen: die Lizenztexte lesen. Die Sprachen sind ein anderer Trade-off: TypeScript läuft auf Node.js — wer JavaScript kann, schreibt am selben Tag ein dsh-Plugin; Rust kompiliert in eigenständige native Binaries. Einen autoritativen öffentlichen Performance-Vergleich gibt es bislang nicht, also kein Urteil hier.",
+      "s2h": "Ökosystem: OpenAI-Orbit gegen DeepSeeks Plugin-Dschungel",
+      "s2p": "Codex lehnt sich an OpenAIs Modelle und Ökosystem — 106.397 Stars, aktiv gepflegt. dsh lehnt sich an DeepSeek: am 13.08.2026 geöffnet, 143.374 Stars in vier Tagen, topic:dsh-plugin schon 5.728 Repos — von ernsthaften Produktivitätstools bis zum Desktop-Wal; diese Seite kuratiert 101 in 13 Kategorien. Auf der einen Seite gereifte Hersteller-Ingenieurskunst, auf der anderen ein beim Zünden explodiertes Ökosystem.",
+      "s3h": "Wer sollte was nehmen",
+      "s3p": "Modelle und Workflow wohnen schon im OpenAI-Ökosystem: Codex liegt nahe — und als Apache-2.0-Projekt ist der Code lesbar. Wer DeepSeeks offiziellen Harness will, niedrigere Plugin-Hürden (TypeScript) oder das Memes-und-Pets-Ökosystem: dsh. Beide open und gratis zu holen — beides probieren kostet nichts.",
+      "faqH": "FAQ",
+      "faq": {
+        "q1": "DeepSeek Harness oder Codex — was ist besser?",
+        "a1": "Nach Bedarf: tief im OpenAI-Ökosystem → Codex (Rust, Apache-2.0, 106.397 Stars); DeepSeeks offizieller Harness, MIT und ein explodierendes Plugin-Ökosystem (5.728 topic:dsh-plugin-Repos) → dsh (143.374 Stars, Snapshot 17.08.2026). Ohne öffentliche Benchmarks sollte „schneller“ kein Kriterium sein.",
+        "q2": "Ist Codex open source?",
+        "a2": "Ja. openai/codex steht unter Apache-2.0, 106.397 Stars, aktiv — anders als Claude Code (keine Lizenzdatei, Closed Source) ist der Quelltext lesbar.",
+        "q3": "Spielt Rust vs. TypeScript für mich eine Rolle?",
+        "a3": "Vor allem bei Erweiterbarkeit und Distribution: dshs TypeScript heißt nahezu null Einstieg für JavaScript-Kundige, Plugins sind npm-Bürger erster Klasse; Codex' Rust kompiliert zu nativen Binaries — andere Distribution, Anpassung braucht die Rust-Toolchain. Öffentliche Performance-Vergleiche gibt es nicht; kein Urteil."
+      }
+    }
   },
   "meta": {
     "homeTitle": "DeepSeek-Harness-Plugins (dsh) — Entdecken & Installieren {'|'} DSH Meme Hub",
@@ -420,6 +518,14 @@
     "skinsDesc": "Wie wechselt man dsh-Skins? Alle Skin- und Theme-Plugins für DeepSeek Harness: die Walf-Mädchen-Serie, Galgame-Oberflächen, Web-UI-Theme-Engines — Drei-Schritte-Anleitung plus nach Sternen sortierte Empfehlungen, jeweils mit Ein-Klick-Installationsbefehl.",
     "petsTitle": "DeepSeek-Harness-Desktop-Haustiere (dsh) — Walf-Mädchen & Pet-Plugins {'|'} DSH Meme Hub",
     "petsDesc": "Wie schaltet man ein dsh-Desktop-Haustier ein? Alle Haustier-Plugins für DeepSeek Harness: Walf-Mädchen, Desktop-Fisch und der Petdex-Haustierladen — ein Befehl pro Haustier, plus Installationsguide und sortierte Empfehlungen.",
+    "cmpHubTitle": "DeepSeek Harness (dsh) im Vergleich — vs. Claude Code / OpenCode / Codex {'|'} DSH Meme Hub",
+    "cmpHubDesc": "DeepSeek Harness gegen Claude Code, OpenCode und Codex: Lizenz, GitHub-Stars, Sprache, Plugin-Ökosystem und Zielgruppe — je ein Vergleich pro Konkurrent, nur mit Zahlen aus dem GitHub-Snapshot vom 17.08.2026.",
+    "vsCcTitle": "DeepSeek Harness vs. Claude Code — wer ist besser? {'|'} DSH Meme Hub",
+    "vsCcDesc": "dsh oder Claude Code? MIT gegen Closed Source, 143.374 gegen 141.712 Stars, TypeScript gegen Python, 5.728 Plugin-Repos — eine Vergleichstabelle plus eine faire Einordnung.",
+    "vsOcTitle": "DeepSeek Harness vs. OpenCode — beide TypeScript + MIT {'|'} DSH Meme Hub",
+    "vsOcDesc": "dsh und OpenCode, beide TypeScript + MIT: 198.275 gegen 143.374 Stars, Community-Projekt gegen DeepSeek offiziell — eine Vergleichstabelle plus faire Analyse.",
+    "vsCxTitle": "DeepSeek Harness vs. Codex — MIT gegen Apache-2.0 {'|'} DSH Meme Hub",
+    "vsCxDesc": "dsh oder Codex? TypeScript gegen Rust, MIT gegen Apache-2.0, 143.374 gegen 106.397 Stars — eine Vergleichstabelle plus faire Analyse.",
     "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — was ist besser? Vergleich {'|'} DSH Meme Hub",
     "compareDesc": "DeepSeek Harness (dsh) vs Claude Code, Codex, OpenCode, Reasonix, Pi Agent und Omnigent: Positionierung, Lizenz, Installation, Plugin-Ökosystem und Zielgruppe — eine Tabelle plus je ein Abschnitt pro Konkurrent, zur Wahl des passenden Agent-Harness.",
     "installTitle": "DeepSeek Harness (dsh) installieren — Windows, macOS & Linux {'|'} DSH Meme Hub",
@@ -436,6 +542,7 @@
     "pluginDetailTitle": "{name} — {category}-Plugin für DeepSeek Harness (dsh)",
     "memeDetailTitle": "{name} — {caption} {'|'} dsh Meme-Picks",
     "breadcrumbHome": "Startseite",
+    "breadcrumbCompare": "Vergleiche",
     "breadcrumbInstall": "Installation",
     "howto": {
       "name": "DeepSeek Harness und seine Plugins installieren",
