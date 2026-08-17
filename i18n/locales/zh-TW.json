@@ -309,106 +309,6 @@
     "whaleLine": "這隻鯨魚沒找到你要的頁面。"
   },
   "compare": {
-    "title": "DeepSeek Harness vs Claude Code / Codex / OpenCode：哪個好？",
-    "sub": "六個常見對手，一張總覽表加逐個小節。只講公開可查的事實，星數、價格這類會變的數字一律不寫死。",
-    "introP": "DeepSeek Harness（社群簡稱 dsh）是 DeepSeek 官方 2026 年 8 月開源的 agent harness，MIT 授權，官方 README 目前標注 developer preview。它常被拿來和 Claude Code、Codex 這樣的終端 agent 比，也有幾個同樣圍著 DeepSeek 打轉的社群專案。這頁把定位、出品方與開源情況、安裝方式和適合誰一次講清，幫你少走彎路。",
-    "vs": "vs",
-    "tableH": "總覽：一張表看懂",
-    "th": {
-      "tool": "工具",
-      "vendor": "出品 / 開源",
-      "pos": "定位",
-      "install": "安裝",
-      "who": "適合誰"
-    },
-    "dshRow": {
-      "vendor": "DeepSeek 官方 · MIT 開源",
-      "pos": "agent harness，一切皆外掛",
-      "install": "npx 一行啟動",
-      "who": "想折騰外掛生態、要開源可控的人"
-    },
-    "rows": {
-      "cc": {
-        "vendor": "Anthropic · 閉源商業",
-        "pos": "終端編碼 agent",
-        "install": "npm 安裝",
-        "who": "重度使用 Claude 生態的人"
-      },
-      "codex": {
-        "vendor": "OpenAI · 閉源商業",
-        "pos": "終端編碼 agent",
-        "install": "npm 安裝",
-        "who": "重度使用 OpenAI 生態的人"
-      },
-      "opencode": {
-        "vendor": "社群 · 開源",
-        "pos": "終端編碼 agent",
-        "install": "npm / 安裝腳本",
-        "who": "想要開源終端 agent 的人"
-      },
-      "reasonix": {
-        "vendor": "社群 · 開源",
-        "pos": "DeepSeek 原生終端 agent",
-        "install": "見倉庫 README",
-        "who": "專注終端體驗的 DeepSeek 使用者"
-      },
-      "pi": {
-        "vendor": "社群 · 開源",
-        "pos": "DeepSeek 原生終端 agent",
-        "install": "見倉庫 README",
-        "who": "想換口味的 DeepSeek 使用者"
-      },
-      "omnigent": {
-        "vendor": "社群專案",
-        "pos": "編排多 agent 的 meta-harness",
-        "install": "見倉庫 README",
-        "who": "要搭多 agent 工作流的人"
-      }
-    },
-    "sections": {
-      "cc": {
-        "p1": "Claude Code 是 Anthropic 出品的閉源商業終端 agent，和 Claude 模型深度綁定。DeepSeek Harness 則是 DeepSeek 官方開源、MIT 授權，核心很小，介面、工具、皮膚全以外掛形式插在 Cordis 架構上。",
-        "p2": "生態畫風也不同：Claude Code 背靠 Anthropic 的商業生態與 MCP 擴充；dsh 開源不久，GitHub 上 topic:dsh-plugin 已有 5000+ 倉庫且每日新增（資料以 GitHub 為準），從生產力工具一路長到鯨魚娘桌寵。兩邊安裝都是一行命令的量級，切換成本不高，都可以試。"
-      },
-      "codex": {
-        "p1": "Codex 是 OpenAI 出品的閉源商業編碼 agent，同樣走終端 + 一行命令的路線，綁的是 OpenAI 的模型與商業服務。",
-        "p2": "dsh 的差別還是那句：MIT 開源，everything is a plugin。想讀原始碼、改核心、自己發外掛發行版，閉源工具做不到，dsh 可以。不過它還在開發者預覽期，迭代快、坑也多，衝著穩定生產力來的可以再觀望一兩個版本。"
-      },
-      "opencode": {
-        "p1": "OpenCode 是社群開源的終端 agent。和 dsh 的共同點：都開源、都能一行命令跑起來、都不把你鎖死在一家商業產品裡。",
-        "p2": "差別在哲學：OpenCode 專注把終端裡的編碼體驗做好；dsh 把「一切皆外掛」當核心賣點，連桌寵和皮膚都是外掛，生態長得也更野。想在終端裡安安靜靜寫程式的看前者，想裝一屋子外掛折騰的看後者。"
-      },
-      "reasonix": {
-        "p1": "Reasonix 是社群做的 DeepSeek 原生終端 agent，GitHub 開源。它和 dsh 服務同一批人——想用 DeepSeek 模型跑 agent 的開發者——但兩者沒有官方關係。",
-        "p2": "選哪個看口味：想用官方 harness、吃到 everything-is-a-plugin 生態的選 dsh；想要更輕、專注終端 agent 本身的獨立專案，Reasonix 值得一試。都在 GitHub 上，各跑十分鐘就知道合不合手。"
-      },
-      "pi": {
-        "p1": "Pi agent 同樣是社群出品的 DeepSeek 原生終端 agent，GitHub 開源，和 dsh 沒有官方關係。",
-        "p2": "和 Reasonix 的處境類似：它賭的是「為 DeepSeek 模型特化的終端 agent」這條路線本身。要外掛生態和官方背書選 dsh，要輕量獨立的專案就把它加進候選一起試。"
-      },
-      "omnigent": {
-        "p1": "Omnigent 是編排多 agent 的 meta-harness，管的是「多個 agent 怎麼協同幹活」這層；dsh 管的是另一層——「一個 agent 內部，一切皆外掛」。",
-        "p2": "所以這兩者不太構成二選一，理論上還能組合著用（dsh 是 MIT 開源，隨便拼）。具體怎麼接，以兩個專案各自的官方文件為準，別信包括本站在內的二手轉述。"
-      }
-    },
-    "pickH": "怎麼選：四條實話",
-    "pick1": "想要開源可控、喜歡折騰外掛、對整活生態有興趣——選 DeepSeek Harness，從安裝指南開始。",
-    "pick2": "工作流已經綁死 Claude 或 OpenAI 全家桶——先用各家官方工具最省心，等 dsh 出了穩定版再看。",
-    "pick3": "不想敲命令列——先別急著選型，去啟動器頁看看圖形介面的桌面啟動器，雙擊就能用。",
-    "pick4": "最後一句實話：dsh 是內測期專案，遇到報錯去官方 GitHub Discussions 搜/提，比到處找偏方靠譜。",
-    "faqH": "常見問題",
-    "faq": {
-      "q1": "DeepSeek Harness 和 Claude Code 哪個好？",
-      "a1": "沒有絕對的好：要開源、可改、外掛生態爆發期，選 dsh；已經在 Claude 生態裡、需要閉源商業工具的成熟度，選 Claude Code。dsh 還在開發者預覽期，穩定性以官方倉庫為準。",
-      "q2": "DeepSeek Harness 免費嗎？",
-      "a2": "框架本身 MIT 開源、免費。跑 agent 消耗的模型呼叫費用取決於你接的模型服務，和框架開源與否是兩回事。",
-      "q3": "dsh 和 Reasonix、Pi agent 是什麼關係？",
-      "a3": "都是圍繞 DeepSeek 的專案，但相互沒有官方關係：dsh 是 DeepSeek 官方的 harness，Reasonix 和 Pi agent 是社群獨立的終端 agent。現狀以各自 GitHub 倉庫為準。"
-    },
-    "moreH": "選完了？接著逛",
-    "moreSub": "本站還有這三個地方：",
-    "mInstallD": "五分鐘跑起 DeepSeek Harness，再裝上第一批外掛",
-    "mLauncherD": "圖形介面桌面啟動器，全程不碰命令列",
     "hub": {
       "title": "DeepSeek Harness 對比評測：vs Claude Code、OpenCode、Codex",
       "sub": "dsh 和 Claude Code、OpenCode、Codex 比怎麼樣？開源協議、GitHub star、開發語言、外掛生態、適合誰——一張對比表加一段公允分析，只用公開可查的實數。",
@@ -526,8 +426,6 @@
     "vsOcDesc": "dsh 和 OpenCode 都是 TypeScript + MIT 開源：198,275 vs 143,374 star、社群專案 vs DeepSeek 官方出品，一張對比表 + 公允分析幫你選。",
     "vsCxTitle": "DeepSeek Harness vs Codex：MIT vs Apache-2.0 對比評測 {'|'} DSH Meme Hub",
     "vsCxDesc": "dsh 和 Codex 怎麼選？TypeScript vs Rust、MIT vs Apache-2.0、DeepSeek 生態 vs OpenAI 生態、143,374 vs 106,397 star，一張對比表 + 公允分析。",
-    "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — 哪個好？對比評測 {'|'} DSH Meme Hub",
-    "compareDesc": "DeepSeek Harness (dsh) 和 Claude Code、Codex、OpenCode、Reasonix、Pi agent、Omnigent 有什麼區別？定位、開源授權、安裝方式、外掛生態、適合誰，一張表 + 逐個對比，幫你選 agent harness。",
     "installTitle": "DeepSeek Harness (dsh) 安裝教學 — 下載/Windows/macOS/Linux {'|'} DSH Meme Hub",
     "installDesc": "DeepSeek Harness 下載安裝教學：Windows/macOS/Linux 三系統通用，Node.js 環境檢查、npx 一行啟動、裝外掛，安裝失敗/報錯/打不開怎麼辦，FAQ 一步不落。",
     "launcherTitle": "DeepSeek Harness (dsh) 桌面版下載 — 圖形介面/不用命令列 {'|'} DSH Meme Hub",

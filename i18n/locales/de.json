@@ -309,106 +309,6 @@
     "whaleLine": "Der Wal konnte diese Seite nicht finden."
   },
   "compare": {
-    "title": "DeepSeek Harness vs Claude Code / Codex / OpenCode: Was ist besser?",
-    "sub": "Sechs übliche Konkurrenten — eine Übersichtstabelle plus je ein Abschnitt. Nur öffentlich überprüfbare Fakten; Sternzahlen und Preise ändern sich, deshalb lassen wir sie bewusst weg.",
-    "introP": "DeepSeek Harness — für die Community dsh — ist das Agent-Harness, das DeepSeek im August 2026 unter der MIT-Lizenz open-sourced hat; das offizielle README nennt es weiterhin einen Developer Preview. Es wird mit Terminal-Agents wie Claude Code und Codex verglichen, und es gibt Community-Projekte im DeepSeek-Orbit. Diese Seite deckt Positionierung, Anbieter und Open-Source-Status, Installationsmethode und Zielgruppe ab — damit du dir Umwege sparst.",
-    "vs": "vs",
-    "tableH": "Die Übersicht auf einen Blick",
-    "th": {
-      "tool": "Werkzeug",
-      "vendor": "Anbieter / Lizenz",
-      "pos": "Positionierung",
-      "install": "Installation",
-      "who": "Passt zu"
-    },
-    "dshRow": {
-      "vendor": "DeepSeek · MIT, Open Source",
-      "pos": "Agent-Harness, alles ist ein Plugin",
-      "install": "eine npx-Zeile",
-      "who": "Tüftler, die Open Source wollen"
-    },
-    "rows": {
-      "cc": {
-        "vendor": "Anthropic · geschlossen, kommerziell",
-        "pos": "Terminal-Coding-Agent",
-        "install": "via npm",
-        "who": "Heavy-Claude-Ecosystem-Nutzer"
-      },
-      "codex": {
-        "vendor": "OpenAI · geschlossen, kommerziell",
-        "pos": "Terminal-Coding-Agent",
-        "install": "via npm",
-        "who": "Heavy-OpenAI-Ecosystem-Nutzer"
-      },
-      "opencode": {
-        "vendor": "Community · Open Source",
-        "pos": "Terminal-Coding-Agent",
-        "install": "npm / Installationsskript",
-        "who": "Fans offener Terminal-Agents"
-      },
-      "reasonix": {
-        "vendor": "Community · Open Source",
-        "pos": "DeepSeek-nativer Terminal-Agent",
-        "install": "siehe Repo-README",
-        "who": "Terminal-first-DeepSeek-Nutzer"
-      },
-      "pi": {
-        "vendor": "Community · Open Source",
-        "pos": "DeepSeek-nativer Terminal-Agent",
-        "install": "siehe Repo-README",
-        "who": "DeepSeek-Nutzer auf Abwechslung"
-      },
-      "omnigent": {
-        "vendor": "Community-Projekt",
-        "pos": "Meta-Harness zur Agent-Orchestrierung",
-        "install": "siehe Repo-README",
-        "who": "Bauer von Multi-Agent-Workflows"
-      }
-    },
-    "sections": {
-      "cc": {
-        "p1": "Claude Code ist Anthropics geschlossener, kommerzieller Terminal-Agent, eng an die Claude-Modelle gekoppelt. DeepSeek Harness ist DeepSeeks eigene Version: MIT-lizenziert und offen, mit winzigem Kern, und UI, Tools und Skins stecken alle über die Cordis-Architektur daran.",
-        "p2": "Auch die Ökosysteme fühlen sich anders an: Claude Code lehnt sich an Anthropics kommerzielles Ökosystem und MCP-Erweiterungen; dsh zählt trotz jungen Alters bereits 5000+ Repos unter topic:dsh-plugin auf GitHub, täglich kommen mehr hinzu (aktuelle Zahlen: GitHub) — von Produktivitätstools bis zum Walf-Mädchen-Haustier. Beide installieren sich in einer Zeile, beide auszuprobieren kostet kaum Zeit."
-      },
-      "codex": {
-        "p1": "Codex ist OpenAIs geschlossener, kommerzieller Coding-Agent — dieselbe Schule aus Terminal plus ein Befehl, gebunden an OpenAIs Modelle und Dienste.",
-        "p2": "Der dsh-Unterschied ist wieder dieselbe Zeile: MIT Open Source, alles ist ein Plugin. Quellcode lesen, den Kern patchen oder eine eigene Plugin-Distribution shipping — das bieten geschlossene Tools nicht. Aber Achtung: noch Developer Preview, schnelllebig und stellenweise holprig; wer heute felsige Produktivität braucht, beobachtet es noch ein, zwei Releases."
-      },
-      "opencode": {
-        "p1": "OpenCode ist ein Community-eigener, offener Terminal-Agent. Gemeinsam mit dsh: Open Source, Ein-Befehl-Start und kein Lock-in in ein einzelnes kommerzielles Produkt.",
-        "p2": "Der Unterschied ist die Philosophie: OpenCode will das Terminal-Coding-Erlebnis gut machen; dsh macht „alles ist ein Plugin“ zum Verkaufsargument — Haustiere und Skins inklusive —, wächst deshalb wilder. Wer ruhig im Terminal coden will, tendiert zu OpenCode; wer ein Haus voller Plugins will, zu dsh."
-      },
-      "reasonix": {
-        "p1": "Reasonix ist ein Community-eigener, DeepSeek-nativer Terminal-Agent, Open Source auf GitHub. Es bedient dieselbe Zielgruppe wie dsh — Entwickler, die Agents auf DeepSeek-Modellen fahren —, aber die beiden haben keine offizielle Beziehung.",
-        "p2": "Die Wahl ist Geschmackssache: Das offizielle Harness mit dem Everything-is-a-Plugin-Ökosystem spricht für dsh; ein leichteres, unabhängiges Projekt, das auf den Terminal-Agent selbst fokussiert, ist Reasonix’ Pitch. Beide leben auf GitHub — je zehn Minuten verraten dir, was in der Hand liegt."
-      },
-      "pi": {
-        "p1": "Pi Agent ist ein weiterer Community-DeepSeek-nativer Terminal-Agent, Open Source auf GitHub, ohne offizielle Bindung an dsh.",
-        "p2": "Es sitzt im selben Spot wie Reasonix: Es setzt auf die Spur „Terminal-Agent, spezialisiert auf DeepSeek-Modelle“. Für das Plugin-Ökosystem und offizielle Rückendeckung nimm dsh; für ein leichtes, unabhängiges Tool nimm es in die engere Auswahl und probier sie nebeneinander."
-      },
-      "omnigent": {
-        "p1": "Omnigent ist ein Meta-Harness, der mehrere Agents orchestriert — seine Ebene ist „wie mehrere Agents zusammenarbeiten“. dsh arbeitet auf einer anderen Ebene: Innerhalb eines Agents ist alles ein Plugin.",
-        "p2": "Es ist also weniger ein Entweder-oder, als es aussieht, und beide lassen sich wohl kombinieren (dsh ist MIT-lizenziert — remixen ausdrücklich erlaubt). Wie genau, steht in den offiziellen Docs der Projekte — nicht in zweiter Hand weitererzählt, auch nicht auf dieser Seite."
-      }
-    },
-    "pickH": "Wie wählen: vier ehrliche Zeilen",
-    "pick1": "Open Source unter eigener Kontrolle, Plugin-Tüfteln, ein meme-freundliches Ökosystem — DeepSeek Harness. Starte mit der Installationsanleitung.",
-    "pick2": "Dein Workflow klebt schon am Claude- oder OpenAI-Paket — bleib vorerst beim jeweiligen offiziellen Tool und schau wieder vorbei, wenn dsh ein stabiles Release hat.",
-    "pick3": "Du willst einfach kein Terminal — halt dich mit der Wahl zurück und schau dir erst die GUI-Launcher an; Doppelklick und los.",
-    "pick4": "Eine letzte ehrliche Zeile: dsh ist Beta. Wenn etwas bricht, in den offiziellen GitHub Discussions suchen oder posten — das schlägt jede Hausmittelkur.",
-    "faqH": "FAQ",
-    "faq": {
-      "q1": "DeepSeek Harness oder Claude Code — was ist besser?",
-      "a1": "Keins gewinnt insgesamt: Wer Open Source, Hackbarkeit und ein explodierendes Plugin-Ökosystem will, nimmt dsh; wer Reife im Claude-Ökosystem braucht, Claude Code. dsh ist noch Developer Preview — Stabilität entsprechend einordnen.",
-      "q2": "Ist DeepSeek Harness kostenlos?",
-      "a2": "Das Framework selbst ist MIT-lizenziert und kostenlos. Die Modellaufrufe beim Agentenbetrieb verrechnet der Modelldienst deiner Wahl — das ist von der Lizenz unabhängig.",
-      "q3": "Hängen dsh, Reasonix und Pi Agent zusammen?",
-      "a3": "Sie alle umkreisen DeepSeek, haben aber keine offizielle Beziehung: dsh ist DeepSeeks eigenes Harness; Reasonix und Pi Agent sind unabhängige Community-Terminal-Agents. Den aktuellen Stand liefern die jeweiligen GitHub-Repos."
-    },
-    "moreH": "Entschieden? Weiter geht's",
-    "moreSub": "Drei weitere Stationen auf dieser Seite:",
-    "mInstallD": "DeepSeek Harness in fünf Minuten zum Laufen bringen, dann die ersten Plugins dazu",
-    "mLauncherD": "GUI-Desktop-Launcher — ganz ohne Terminal",
     "hub": {
       "title": "DeepSeek Harness im Vergleich: Claude Code, OpenCode & Codex",
       "sub": "Wie schlägt sich dsh gegen Claude Code, OpenCode und Codex? Lizenz, GitHub-Stars, Sprache, Plugin-Ökosystem und Zielgruppe — ein Vergleich pro Konkurrent, nur öffentlich prüfbare Zahlen.",
@@ -526,8 +426,6 @@
     "vsOcDesc": "dsh und OpenCode, beide TypeScript + MIT: 198.275 gegen 143.374 Stars, Community-Projekt gegen DeepSeek offiziell — eine Vergleichstabelle plus faire Analyse.",
     "vsCxTitle": "DeepSeek Harness vs. Codex — MIT gegen Apache-2.0 {'|'} DSH Meme Hub",
     "vsCxDesc": "dsh oder Codex? TypeScript gegen Rust, MIT gegen Apache-2.0, 143.374 gegen 106.397 Stars — eine Vergleichstabelle plus faire Analyse.",
-    "compareTitle": "DeepSeek Harness vs Claude Code / Codex / OpenCode — was ist besser? Vergleich {'|'} DSH Meme Hub",
-    "compareDesc": "DeepSeek Harness (dsh) vs Claude Code, Codex, OpenCode, Reasonix, Pi Agent und Omnigent: Positionierung, Lizenz, Installation, Plugin-Ökosystem und Zielgruppe — eine Tabelle plus je ein Abschnitt pro Konkurrent, zur Wahl des passenden Agent-Harness.",
     "installTitle": "DeepSeek Harness (dsh) installieren — Windows, macOS & Linux {'|'} DSH Meme Hub",
     "installDesc": "DeepSeek Harness (dsh) unter Windows, macOS und Linux installieren: Node.js prüfen, mit einer npx-Zeile starten, Plugins hinzufügen — und was zu tun ist, wenn die Installation fehlschlägt, Fehler meldet oder sich nicht öffnet. Lösungen und Troubleshooting in der FAQ.",
     "launcherTitle": "DeepSeek-Harness-Desktop (dsh) — GUI, ohne Kommandozeile {'|'} DSH Meme Hub",
