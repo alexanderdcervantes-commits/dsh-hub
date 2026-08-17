@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(python3 *)",
+      "Bash(curl -sL --max-time 30 https://brown-tiger-44338.viewhtml.app/ -o /tmp/ecomap.html)",
+      "Bash(break)",
+      "Read(//tmp/**)",
+      "Bash(curl -s --max-time 20 \"https://api.github.com/search/repositories?q=dsh-lobe-ui&per_page=3\")",
+      "Bash(curl -sv --max-time 15 \"https://api.github.com/search/repositories?q=dsh-lobe-ui&per_page=3\")",
+      "Bash(curl -s --max-time 10 https://api.github.com/rate_limit)",
+      "WebSearch"
+    ]
+  }
+}
