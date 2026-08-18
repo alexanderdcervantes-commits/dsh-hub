@@ -42,6 +42,7 @@ const toast = useState<string | null>('toast', () => null)
         <nav class="main-nav">
           <NuxtLink :to="localePath('/meme')" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
           <NuxtLink :to="localePath('/plugins')" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
+          <NuxtLink :to="localePath('/store')" :class="{ active: navActive('/store') }">{{ t('nav.store') }}</NuxtLink>
           <NuxtLink :to="localePath('/install')" :class="{ active: navActive('/install') }">{{ t('nav.install') }}</NuxtLink>
           <NuxtLink :to="localePath('/launcher')" :class="{ active: navActive('/launcher') }">{{ t('nav.launchers') }}</NuxtLink>
           <NuxtLink :to="localePath('/submit')" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
@@ -93,6 +94,7 @@ const toast = useState<string | null>('toast', () => null)
               <li><NuxtLink :to="localePath('/install')">{{ t('footer.install') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/launcher')">{{ t('footer.launchers') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/submit')">{{ t('footer.submit') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath('/store')">{{ t('nav.store') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/skins')">{{ t('nav.skins') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/pets')">{{ t('nav.pets') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath('/plugins/vision')">{{ t('nav.vision') }}</NuxtLink></li>

@@ -10,7 +10,7 @@ const memeSlugs = data.plugins.filter(p => p.is_meme).map(p => p.slug)
 // 分类落地页与 nuxt.config.ts 同源：data/seo/category-pages.json（enabled 的才进种子）
 const categoryCfg = JSON.parse(readFileSync('data/seo/category-pages.json', 'utf8'))
 const categoryPages = categoryCfg.categories.filter(c => c.enabled).map(c => `plugins/${c.slug}`)
-const topPages = ['', 'plugins', ...categoryPages, 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
+const topPages = ['', 'plugins', 'store', ...categoryPages, 'best', 'compare', 'compare/deepseek-harness-vs-claude-code', 'compare/deepseek-harness-vs-opencode', 'compare/deepseek-harness-vs-codex', 'meme', 'submit', 'about', 'install', 'launcher']
 const locales = ['en', 'zh', 'zh-TW', 'de']
 
 const expected = [
