@@ -1,8 +1,8 @@
 {
   "nav": {
     "meme": "🤪 Meme-Zone",
-    "plugins": "🧩 Alle Plugins",
-    "store": "🏪 Plugin-Markt",
+    "plugins": "🧩 Plugin-Marktplatz",
+    "store": "🏪 Plugin-Verzeichnis",
     "skins": "Skins",
     "pets": "Desktop-Pets",
     "install": "🚀 Installation",
@@ -90,7 +90,7 @@
     }
   },
   "plugins": {
-    "title": "Alle Plugins",
+    "title": "Plugin-Marktplatz",
     "sub": "Handverlesen und katalogisiert: bisher {n} dsh-Plugins auf dieser Seite — durchsuchbar, filterbar, sortierbar, jedes mit Ein-Klick-Installationsbefehl.",
     "searchPlaceholder": "Name, Beschreibung, Repo suchen…",
     "sortStars": "Meiste Sterne",
@@ -439,7 +439,7 @@
     "homeDesc": "Was ist DeepSeek Harness (dsh)? Das Agent-Harness, das DeepSeek im August 2026 open-sourced hat — alles ist ein Plugin. Diese Seite ist dessen kuratiertes Verzeichnis: Community-Plugins entdecken, herunterladen und mit einem Befehl installieren, dazu handverlesene Perlen und die Meme-Picks.",
     "homeSearchPh": "{n} Plugins durchsuchen… (versuch: Wal, Skin, Vier gewinnt)",
     "pluginsTitle": "DeepSeek Harness (dsh) Plugin-Marktplatz — kompletter Katalog & Empfehlungen {'|'} DSH Meme Hub",
-    "pluginsDesc": "Wo ist der Plugin-Marktplatz für DeepSeek Harness (dsh)? Genau hier: Marktplatz und kompletter Plugin-Katalog in einem — {n} handverlesene Plugins von Desktop-Pets über Skins bis Produktivität, durchsuchbar, nach Sternen sortiert, jedes mit Ein-Klick-Installationsbefehl.",
+    "pluginsDesc": "Wo ist der Plugin-Marktplatz für DeepSeek Harness (dsh)? Genau hier: Marktplatz, Plugin-Verzeichnis und durchsuchbare Bibliothek in einem — {n} handverlesene Plugins von Desktop-Pets über Skins bis Produktivität, nach Sternen sortiert, jedes mit Ein-Klick-Installationsbefehl.",
     "bestTitle": "Beste DeepSeek-Harness-Plugins (dsh) — Top {n} & Redaktionsfavoriten {'|'} DSH Meme Hub",
     "bestDesc": "Du suchst die besten dsh-Plugins? Drei Ranglisten aus unseren {total} handverlesenen Plugins: die Top {top} nach GitHub-Sternen, zuletzt aktive Plugins der letzten {d} Tage und {picks} Redaktionsfavoriten — täglich aktualisiert, jeder Eintrag mit Ein-Klick-Installation.",
     "storeTitle": "DeepSeek Harness Plugin-Verzeichnis · DSH Plugin-Bibliothek — {c} Kategorien & Top 10 {'|'} DSH Meme Hub",

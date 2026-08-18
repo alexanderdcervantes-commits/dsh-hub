@@ -1,8 +1,8 @@
 {
   "nav": {
     "meme": "🤪 整活专区",
-    "plugins": "🧩 全部插件",
-    "store": "🏪 插件市场",
+    "plugins": "🧩 插件市场",
+    "store": "🏪 插件目录",
     "skins": "皮肤专区",
     "pets": "桌宠专区",
     "install": "🚀 安装",
@@ -90,7 +90,7 @@
     }
   },
   "plugins": {
-    "title": "全部插件",
+    "title": "插件市场",
     "sub": "人工精选，本站现已收录 {n} 个 dsh 插件——可搜索、可筛选、可排序，每个都带一键安装命令。",
     "searchPlaceholder": "搜索名称、描述、仓库…",
     "sortStars": "star 最多",
@@ -439,7 +439,7 @@
     "homeDesc": "DeepSeek Harness (dsh) 是什么？DeepSeek 官方 2026 年 8 月开源的 agent harness，一切皆插件。本站是它的插件精选导航：发现、下载、一条命令安装社区插件，外加人工精选的好物与整活合集。",
     "homeSearchPh": "搜索 {n} 个插件…（试试：鲸鱼、皮肤、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 插件市场 — 插件大全：搜索/筛选/一键安装 {'|'} DSH Meme Hub",
-    "pluginsDesc": "dsh 插件市场在哪？本站就是 DeepSeek Harness 的插件市场与插件大全：人工精选 {n} 款插件，桌宠、皮肤、摸鱼游戏、生产力工具全分类，可搜索、按 star 排序，每个都带一键安装命令。",
+    "pluginsDesc": "dsh 插件市场在哪？本站就是 DeepSeek Harness 的插件市场与插件大全，也是可搜索的插件目录和插件库：人工精选 {n} 款插件，桌宠、皮肤、摸鱼游戏、生产力工具全分类，按 star 排序，每个都带一键安装命令。",
     "bestTitle": "DeepSeek Harness (dsh) 插件排行榜 — Top {n} 与必备精选 {'|'} DSH Meme Hub",
     "bestDesc": "想找 dsh 必备插件？本站从 {total} 个精选插件里排出三张榜：GitHub star 总榜 Top {top}、近 {d} 天活跃榜、{picks} 个编辑精选推荐，数据每日自动刷新，每个插件附一键安装命令。",
     "storeTitle": "DeepSeek Harness 插件目录 · DSH 插件库 — {c} 分类导购与 Top 10 精选 {'|'} DSH Meme Hub",

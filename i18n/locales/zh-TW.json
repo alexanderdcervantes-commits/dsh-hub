@@ -1,8 +1,8 @@
 {
   "nav": {
     "meme": "🤪 整活專區",
-    "plugins": "🧩 全部外掛",
-    "store": "🏪 外掛市集",
+    "plugins": "🧩 外掛市場",
+    "store": "🏪 外掛目錄",
     "skins": "皮膚專區",
     "pets": "桌寵專區",
     "install": "🚀 安裝",
@@ -90,7 +90,7 @@
     }
   },
   "plugins": {
-    "title": "全部外掛",
+    "title": "外掛市場",
     "sub": "人工精選，本站現已收錄 {n} 個 dsh 外掛——可搜尋、可篩選、可排序，每個都帶一鍵安裝命令。",
     "searchPlaceholder": "搜尋名稱、描述、倉庫…",
     "sortStars": "star 最多",
@@ -439,7 +439,7 @@
     "homeDesc": "DeepSeek Harness (dsh) 是什麼？DeepSeek 官方 2026 年 8 月開源的 agent harness，一切皆外掛。本站是它的外掛精選導航：發現、下載、一條命令安裝社群外掛，外加人工精選的好物與整活合集。",
     "homeSearchPh": "搜尋 {n} 個外掛…（試試：鯨魚、皮膚、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 外掛市場 — 外掛大全：搜尋/篩選/一鍵安裝 {'|'} DSH Meme Hub",
-    "pluginsDesc": "dsh 外掛市場在哪？本站就是 DeepSeek Harness 的外掛市場與外掛大全：人工精選 {n} 款外掛，桌寵、皮膚、摸魚遊戲、生產力工具全分類，可搜尋、按 star 排序，每個都帶一鍵安裝命令。",
+    "pluginsDesc": "dsh 外掛市場在哪？本站就是 DeepSeek Harness 的外掛市場與外掛大全，也是可搜尋的外掛目錄和外掛庫：人工精選 {n} 款外掛，桌寵、皮膚、摸魚遊戲、生產力工具全分類，按 star 排序，每個都帶一鍵安裝命令。",
     "bestTitle": "DeepSeek Harness (dsh) 外掛排行榜 — Top {n} 與必備精選 {'|'} DSH Meme Hub",
     "bestDesc": "想找 dsh 必備外掛？本站從 {total} 個精選外掛裡排出三張榜：GitHub star 總榜 Top {top}、近 {d} 天活躍榜、{picks} 個編輯精選推薦，資料每日自動重新整理，每個外掛附一鍵安裝命令。",
     "storeTitle": "DeepSeek Harness 外掛目錄 · DSH 外掛庫 — {c} 分類導購與 Top 10 精選 {'|'} DSH Meme Hub",

@@ -1,8 +1,8 @@
 {
   "nav": {
     "meme": "🤪 Meme Zone",
-    "plugins": "🧩 All Plugins",
-    "store": "🏪 Plugin Market",
+    "plugins": "🧩 Plugin Market",
+    "store": "🏪 Plugin Directory",
     "skins": "Skins",
     "pets": "Desktop Pets",
     "install": "🚀 Install",
@@ -90,7 +90,7 @@
     }
   },
   "plugins": {
-    "title": "All Plugins",
+    "title": "Plugin Marketplace",
     "sub": "Hand-picked and catalogued: {n} dsh plugins on this site so far — searchable, filterable, sortable, each with a one-click install command.",
     "searchPlaceholder": "Search name, description, repo…",
     "sortStars": "Most stars",
@@ -439,7 +439,7 @@
     "homeDesc": "What is DeepSeek Harness (dsh)? The agent harness DeepSeek open-sourced in August 2026 — everything is a plugin. This site is its curated directory: discover, download and install community plugins with one command, plus the meme picks.",
     "homeSearchPh": "Search {n} plugins… (try: whale, skin, gomoku)",
     "pluginsTitle": "DeepSeek Harness (dsh) Plugin Marketplace — Full Catalog & Top Picks {'|'} DSH Meme Hub",
-    "pluginsDesc": "Where is the dsh plugin marketplace? Right here: the full DeepSeek Harness plugin marketplace and catalog — {n} hand-picked plugins across desktop pets, skins, games and productivity, searchable, sortable by stars, each with a one-click install command.",
+    "pluginsDesc": "Where is the dsh plugin marketplace? Right here: the full DeepSeek Harness plugin marketplace, plugin directory and searchable library — {n} hand-picked plugins across desktop pets, skins, games and productivity, sortable by stars, each with a one-click install command.",
     "bestTitle": "Best DeepSeek Harness (dsh) Plugins — Top {n} Ranked & Editor's Picks {'|'} DSH Meme Hub",
     "bestDesc": "Looking for the best dsh plugins? Three boards from our {total} hand-picked ones: the top {top} by GitHub stars, recently active plugins from the last {d} days, and {picks} editor's picks — refreshed daily, one-click install on every entry.",
     "storeTitle": "DeepSeek Harness Plugin Directory · DSH Plugin Library — {c} Categories & Top 10 {'|'} DSH Meme Hub",
