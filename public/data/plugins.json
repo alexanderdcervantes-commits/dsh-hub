@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-08-18",
- "count": 341,
+ "count": 342,
  "plugins": [
   {
    "slug": "dsh-web-ui",
@@ -11540,6 +11540,44 @@
    "description_zh_TW": "等模型回覆時在右側展開 18 款離線小遊戲：恐龍跳一跳、俄羅斯方塊、坦克大戰、掃雷、2048、數獨、吃豆人、跟槍練習……全 Canvas 零素材，登錄檔還能自己加新遊戲",
    "category_zh_TW": "摸魚遊戲",
    "meme_caption_zh_TW": "鍵盤只劫持遊戲區，絕不碰聊天框",
+   "screenshots": []
+  },
+  {
+   "slug": "dsh-whale-musume",
+   "name": "dsh-whale-musume",
+   "repo": "Sutera-Diffusus/dsh-whale-musume",
+   "url": "https://github.com/Sutera-Diffusus/dsh-whale-musume",
+   "description_zh": "元气鲸鱼娘桌宠：摸头涨好感、开工抱起笔记本陪你干活、深夜自动安静不打扰；530+ 条打工人台词（待机/摸鱼/DDL/画疯文学）+ 30 个成就，纯前端注入，零遥测零外联",
+   "description_en": "An energetic whale-girl desktop pet: pat her head to raise affection, she grabs her laptop and works alongside you, and stays quiet late at night — 530+ worker-bee dialogue lines, 30 achievements, pure frontend injection, zero telemetry",
+   "stars": 12,
+   "forks": 2,
+   "category_zh": "赛博宠物",
+   "category_en": "Cyber Pets",
+   "is_meme": true,
+   "meme_section": "pets",
+   "meme_caption_zh": "摸头会开心，深夜不打扰——她是真的在陪你写代码",
+   "meme_caption_en": "Pat her head and she brightens; leave her be at night — she really is coding alongside you",
+   "image": null,
+   "install_cmd": "dsh plugin --profile web add github:Sutera-Diffusus/dsh-whale-musume",
+   "pushed_at": "2026-08-17",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": false,
+   "topics": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "desktop-pet",
+    "mascot",
+    "whale-girl",
+    "no-telemetry",
+    "cute",
+    "ai-companion",
+    "local-first"
+   ],
+   "description_zh_TW": "元氣鯨魚娘桌寵：摸頭漲好感、開工抱起筆記本陪你幹活、深夜自動安靜不打擾；530+ 條打工人台詞（待機/摸魚/DDL/畫瘋文學）+ 30 個成就，純前端注入，零遙測零外聯",
+   "category_zh_TW": "賽博寵物",
+   "meme_caption_zh_TW": "摸頭會開心，深夜不打擾——她是真的在陪你寫程式碼",
    "screenshots": []
   }
  ]
