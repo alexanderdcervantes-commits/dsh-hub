@@ -17,7 +17,7 @@ const memePicks = computed(() =>
 
 const top10 = computed(() => byStars().slice(0, 10))
 
-const cats = computed(() => categories(locale.value).slice(0, 8))
+const cats = computed(() => categories(locale.value))
 
 // 分类卡优先链去分类落地页（data/seo/category-pages.json 驱动），无落地配置的分类回退 ?cat= 筛选
 const landingForCat = (key: string) => {

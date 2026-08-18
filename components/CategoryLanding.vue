@@ -116,6 +116,16 @@ useHead(() => ({
       </div>
     </section>
 
+    <!-- 全量列表：star 降序，与 ItemList schema 同源 -->
+    <section class="section">
+      <div class="section-head">
+        <h2>{{ t('catPages.listH', { n }) }}</h2>
+      </div>
+      <div class="grid cols-3" style="padding-bottom:50px">
+        <PluginCard v-for="p in list" :key="p.slug" :plugin="p" />
+      </div>
+    </section>
+
     <!-- 安装引导：该分类的注意点 + /install -->
     <section class="section">
       <div class="section-head"><h2>{{ t('catPages.installH') }}</h2></div>
@@ -133,16 +143,6 @@ useHead(() => ({
           <summary>{{ f.q }}</summary>
           <p>{{ f.a }}</p>
         </details>
-      </div>
-    </section>
-
-    <!-- 全量列表：star 降序，与 ItemList schema 同源 -->
-    <section class="section">
-      <div class="section-head">
-        <h2>{{ t('catPages.listH', { n }) }}</h2>
-      </div>
-      <div class="grid cols-3" style="padding-bottom:50px">
-        <PluginCard v-for="p in list" :key="p.slug" :plugin="p" />
       </div>
     </section>
   </div>
