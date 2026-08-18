@@ -99,7 +99,8 @@
     "allCats": "全部分类",
     "results": "{n} 个插件",
     "noResults": "没有匹配的结果，换个关键词试试？",
-    "installGuide": "安装指南 →"
+    "installGuide": "安装指南 →",
+    "storeGuide": "想看分类导购与精选榜单？逛一圈插件目录 →"
   },
   "best": {
     "title": "DeepSeek Harness (dsh) 插件排行榜",
@@ -437,12 +438,12 @@
     "homeTitle": "DeepSeek Harness (dsh) 插件精选导航 — 发现/安装/下载/命令 {'|'} DSH Meme Hub",
     "homeDesc": "DeepSeek Harness (dsh) 是什么？DeepSeek 官方 2026 年 8 月开源的 agent harness，一切皆插件。本站是它的插件精选导航：发现、下载、一条命令安装社区插件，外加人工精选的好物与整活合集。",
     "homeSearchPh": "搜索 {n} 个插件…（试试：鲸鱼、皮肤、五子棋）",
-    "pluginsTitle": "DeepSeek Harness (dsh) 插件大全 — 推荐/必备插件导航 {'|'} DSH Meme Hub",
-    "pluginsDesc": "deepseek harness 插件去哪找？人工精选的 dsh 插件大全与推荐目录：桌宠、皮肤、摸鱼游戏、生产力工具全分类，可搜索、按 star 排序，每个都带一键安装命令。",
+    "pluginsTitle": "DeepSeek Harness (dsh) 插件市场 — 插件大全：搜索/筛选/一键安装 {'|'} DSH Meme Hub",
+    "pluginsDesc": "dsh 插件市场在哪？本站就是 DeepSeek Harness 的插件市场与插件大全：人工精选 {n} 款插件，桌宠、皮肤、摸鱼游戏、生产力工具全分类，可搜索、按 star 排序，每个都带一键安装命令。",
     "bestTitle": "DeepSeek Harness (dsh) 插件排行榜 — Top {n} 与必备精选 {'|'} DSH Meme Hub",
     "bestDesc": "想找 dsh 必备插件？本站从 {total} 个精选插件里排出三张榜：GitHub star 总榜 Top {top}、近 {d} 天活跃榜、{picks} 个编辑精选推荐，数据每日自动刷新，每个插件附一键安装命令。",
-    "storeTitle": "DeepSeek Harness 插件市场 — {n} 款 dsh 插件一站式挑选 {'|'} DSH Meme Hub",
-    "storeDesc": "DSH 插件市场：DeepSeek Harness 插件目录与插件库二合一，{n} 款社区插件按 GitHub star 排序，{c} 个分类货架随便逛，每款附一键安装命令，数据定时同步自 GitHub。",
+    "storeTitle": "DeepSeek Harness 插件目录 · DSH 插件库 — {c} 分类导购与 Top 10 精选 {'|'} DSH Meme Hub",
+    "storeDesc": "DSH 插件目录与插件库二合一：{n} 款 DeepSeek Harness 社区插件按 GitHub star 排序，{c} 个分类货架随便逛，Top 10 精选帮你挑，每款附一键安装命令，数据定时同步自 GitHub。",
     "memeTitle": "整活专区 — DSH 社区最欢乐的插件 {'|'} DSH Meme Hub",
     "memeDesc": "鲸鱼娘桌宠、QQ2006 皮肤、贪玩蓝鲸广告网络……DeepSeek Harness 社区整活精选，附一键安装。",
     "skinsTitle": "DeepSeek Harness (dsh) 皮肤插件精选 — 怎么换皮肤/主题推荐 {'|'} DSH Meme Hub",
@@ -543,7 +544,7 @@
   },
   "store": {
     "h1Lead": "DSH",
-    "h1Main": "插件市场",
+    "h1Main": "插件目录 · 插件库",
     "heroSub": "DeepSeek Harness 生态的 web 版应用商店：装机前在这里发现，装机后一键带走。{n} 款社区插件精选，每条都附安装命令与仓库链接。",
     "statCurated": "精选插件",
     "statCats": "分类货架",

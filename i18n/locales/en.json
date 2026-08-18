@@ -99,7 +99,8 @@
     "allCats": "All categories",
     "results": "{n} plugins",
     "noResults": "Nothing matched. Try another keyword?",
-    "installGuide": "How to install dsh and plugins →"
+    "installGuide": "How to install dsh and plugins →",
+    "storeGuide": "Want a guided tour and the Top 10 picks? Browse the plugin directory →"
   },
   "best": {
     "title": "Best DeepSeek Harness (dsh) Plugins — The Rankings",
@@ -437,12 +438,12 @@
     "homeTitle": "DeepSeek Harness (dsh) Plugins — Discover, Install, Download {'|'} DSH Meme Hub",
     "homeDesc": "What is DeepSeek Harness (dsh)? The agent harness DeepSeek open-sourced in August 2026 — everything is a plugin. This site is its curated directory: discover, download and install community plugins with one command, plus the meme picks.",
     "homeSearchPh": "Search {n} plugins… (try: whale, skin, gomoku)",
-    "pluginsTitle": "Best DeepSeek Harness (dsh) Plugins — Top Picks & Must-Haves {'|'} DSH Meme Hub",
-    "pluginsDesc": "Where to find the best DeepSeek Harness (dsh) plugins? A hand-picked, must-have directory of the dsh ecosystem: search by category, sort by stars or recency, every entry with a one-click install command.",
+    "pluginsTitle": "DeepSeek Harness (dsh) Plugin Marketplace — Full Catalog & Top Picks {'|'} DSH Meme Hub",
+    "pluginsDesc": "Where is the dsh plugin marketplace? Right here: the full DeepSeek Harness plugin marketplace and catalog — {n} hand-picked plugins across desktop pets, skins, games and productivity, searchable, sortable by stars, each with a one-click install command.",
     "bestTitle": "Best DeepSeek Harness (dsh) Plugins — Top {n} Ranked & Editor's Picks {'|'} DSH Meme Hub",
     "bestDesc": "Looking for the best dsh plugins? Three boards from our {total} hand-picked ones: the top {top} by GitHub stars, recently active plugins from the last {d} days, and {picks} editor's picks — refreshed daily, one-click install on every entry.",
-    "storeTitle": "DeepSeek Harness Plugin Marketplace — {n} dsh Plugins {'|'} DSH Meme Hub",
-    "storeDesc": "The DeepSeek Harness (dsh) plugin marketplace — part plugin directory, part plugin library: {n} community plugins ranked by GitHub stars across {c} category shelves, each with a one-click install command. Synced from GitHub on a schedule.",
+    "storeTitle": "DeepSeek Harness Plugin Directory · DSH Plugin Library — {c} Categories & Top 10 {'|'} DSH Meme Hub",
+    "storeDesc": "The DeepSeek Harness (dsh) plugin directory and plugin library in one: {n} community plugins ranked by GitHub stars across {c} category shelves, plus a Top 10 to start with, each with a one-click install command. Synced from GitHub on a schedule.",
     "memeTitle": "Meme Zone — the funniest DeepSeek Harness (dsh) plugins {'|'} DSH Meme Hub",
     "memeDesc": "Whale-girl pets, QQ2006 skins, a knockoff ad network for your terminal — the funniest DeepSeek Harness community picks, one click to install.",
     "skinsTitle": "DeepSeek Harness (dsh) Skins — How to Change Themes & Best Skin Plugins {'|'} DSH Meme Hub",
@@ -543,7 +544,7 @@
   },
   "store": {
     "h1Lead": "DSH",
-    "h1Main": "Plugin Marketplace",
+    "h1Main": "Plugin Directory · Plugin Library",
     "heroSub": "The web app store of the DeepSeek Harness ecosystem: discover before you install, take it home with one command. {n} curated community plugins, each with its install command and repo link.",
     "statCurated": "Curated plugins",
     "statCats": "Category shelves",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-// /store 插件市场落地页：4 个 SEO 关键词的主战场（dsh 插件市场 / deepseek harness
-// 插件市场 / DeepSeek Harness 插件目录 / DSH 插件库），结构与文案基调沿用已确认的
-// 预览稿。全部数字运行时计算（数字纪律：页面不写死任何数量）。
+// /store 插件目录导购页：认领「DeepSeek Harness 插件目录 / DSH 插件库」关键词
+// （「插件市场」主词已归 /plugins，本页仅正文自然提及保持主题相关），结构与文案
+// 基调沿用已确认的预览稿。全部数字运行时计算（数字纪律：页面不写死任何数量）。
 // canonical / 四语 hreflang（含 x-default）由 layouts/default.vue 的 useLocaleHead 全局注入。
 import { categoryPlugins, enabledCategoryPages, pickL10n } from '~/composables/useCategoryPages'
 
@@ -39,7 +39,7 @@ const faqs = computed(() =>
 
 const siteUrl = config.public.siteUrl as string
 const pageUrl = computed(() => `${siteUrl}${localePath('/store')}`)
-const title = computed(() => t('meta.storeTitle', { n: plugins.length }))
+const title = computed(() => t('meta.storeTitle', { n: plugins.length, c: shelves.value.length }))
 const desc = computed(() =>
   t('meta.storeDesc', { n: plugins.length, c: shelves.value.length }))
 

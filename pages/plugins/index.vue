@@ -57,7 +57,7 @@ useHead({
   title: t('meta.pluginsTitle'),
   meta: [{
     name: 'description',
-    content: t('meta.pluginsDesc'),
+    content: t('meta.pluginsDesc', { n: plugins.length }),
   }],
   script: [{
     type: 'application/ld+json',
@@ -72,6 +72,8 @@ useHead({
       <h1>{{ t('plugins.title') }}</h1>
       <p class="sub">{{ t('plugins.sub', { n: plugins.length }) }}</p>
       <p class="sub" style="margin:0 0 6px"><NuxtLink :to="localePath('/install')">{{ t('plugins.installGuide') }}</NuxtLink></p>
+      <!-- 导购入口：/store 的正文级内链（footer 之外的真实用户入口，防孤立页） -->
+      <p class="sub" style="margin:0"><NuxtLink :to="localePath('/store')">{{ t('plugins.storeGuide') }}</NuxtLink></p>
     </div>
 
     <!-- 分类浏览入口（内链：每个分类一个落地页，承接分类搜索意图；数量运行时计算） -->

@@ -99,7 +99,8 @@
     "allCats": "全部分類",
     "results": "{n} 個外掛",
     "noResults": "沒有匹配的結果，換個關鍵詞試試？",
-    "installGuide": "安裝指南 →"
+    "installGuide": "安裝指南 →",
+    "storeGuide": "想看分類導購與精選榜單？逛一圈外掛目錄 →"
   },
   "best": {
     "title": "DeepSeek Harness (dsh) 外掛排行榜",
@@ -437,12 +438,12 @@
     "homeTitle": "DeepSeek Harness (dsh) 外掛精選導航 — 發現/安裝/下載/指令 {'|'} DSH Meme Hub",
     "homeDesc": "DeepSeek Harness (dsh) 是什麼？DeepSeek 官方 2026 年 8 月開源的 agent harness，一切皆外掛。本站是它的外掛精選導航：發現、下載、一條命令安裝社群外掛，外加人工精選的好物與整活合集。",
     "homeSearchPh": "搜尋 {n} 個外掛…（試試：鯨魚、皮膚、五子棋）",
-    "pluginsTitle": "DeepSeek Harness (dsh) 外掛大全 — 推薦/必備外掛導航 {'|'} DSH Meme Hub",
-    "pluginsDesc": "deepseek harness 外掛去哪找？人工精選的 dsh 外掛大全與推薦目錄：桌寵、皮膚、摸魚遊戲、生產力工具全分類，可搜尋、按 star 排序，每個都帶一鍵安裝命令。",
+    "pluginsTitle": "DeepSeek Harness (dsh) 外掛市場 — 外掛大全：搜尋/篩選/一鍵安裝 {'|'} DSH Meme Hub",
+    "pluginsDesc": "dsh 外掛市場在哪？本站就是 DeepSeek Harness 的外掛市場與外掛大全：人工精選 {n} 款外掛，桌寵、皮膚、摸魚遊戲、生產力工具全分類，可搜尋、按 star 排序，每個都帶一鍵安裝命令。",
     "bestTitle": "DeepSeek Harness (dsh) 外掛排行榜 — Top {n} 與必備精選 {'|'} DSH Meme Hub",
     "bestDesc": "想找 dsh 必備外掛？本站從 {total} 個精選外掛裡排出三張榜：GitHub star 總榜 Top {top}、近 {d} 天活躍榜、{picks} 個編輯精選推薦，資料每日自動重新整理，每個外掛附一鍵安裝命令。",
-    "storeTitle": "DeepSeek Harness 外掛市集 — {n} 款 dsh 外掛一站挑選 {'|'} DSH Meme Hub",
-    "storeDesc": "DSH 外掛市集：DeepSeek Harness 外掛目錄與外掛庫二合一，{n} 款社群外掛按 GitHub star 排序，{c} 個分類貨架隨便逛，每款附一鍵安裝命令，資料定時同步自 GitHub。",
+    "storeTitle": "DeepSeek Harness 外掛目錄 · DSH 外掛庫 — {c} 分類導購與 Top 10 精選 {'|'} DSH Meme Hub",
+    "storeDesc": "DSH 外掛目錄與外掛庫二合一：{n} 款 DeepSeek Harness 社群外掛按 GitHub star 排序，{c} 個分類貨架隨便逛，Top 10 精選幫你挑，每款附一鍵安裝命令，資料定時同步自 GitHub。",
     "memeTitle": "整活專區 — DSH 社群最歡樂的外掛 {'|'} DSH Meme Hub",
     "memeDesc": "鯨魚娘桌寵、QQ2006 皮膚、貪玩藍鯨廣告網路……DeepSeek Harness 社群整活精選，附一鍵安裝。",
     "skinsTitle": "DeepSeek Harness (dsh) 皮膚外掛精選 — 怎麼換皮膚/主題推薦 {'|'} DSH Meme Hub",
@@ -543,7 +544,7 @@
   },
   "store": {
     "h1Lead": "DSH",
-    "h1Main": "外掛市集",
+    "h1Main": "外掛目錄 · 外掛庫",
     "heroSub": "DeepSeek Harness 生態的網頁版應用程式商店：安裝前在這裡發現，安裝後一鍵帶走。{n} 款社群外掛精選，每條都附安裝命令與倉庫連結。",
     "statCurated": "精選外掛",
     "statCats": "分類貨架",

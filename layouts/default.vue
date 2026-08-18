@@ -42,7 +42,6 @@ const toast = useState<string | null>('toast', () => null)
         <nav class="main-nav">
           <NuxtLink :to="localePath('/meme')" :class="{ active: navActive('/meme') }">{{ t('nav.meme') }}</NuxtLink>
           <NuxtLink :to="localePath('/plugins')" :class="{ active: navActive('/plugins') }">{{ t('nav.plugins') }}</NuxtLink>
-          <NuxtLink :to="localePath('/store')" :class="{ active: navActive('/store') }">{{ t('nav.store') }}</NuxtLink>
           <NuxtLink :to="localePath('/install')" :class="{ active: navActive('/install') }">{{ t('nav.install') }}</NuxtLink>
           <NuxtLink :to="localePath('/launcher')" :class="{ active: navActive('/launcher') }">{{ t('nav.launchers') }}</NuxtLink>
           <NuxtLink :to="localePath('/submit')" :class="{ active: navActive('/submit') }">{{ t('nav.submit') }}</NuxtLink>
