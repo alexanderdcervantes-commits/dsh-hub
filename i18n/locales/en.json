@@ -200,7 +200,9 @@
       "q6": "The install fails, throws an error, or won't open — now what?",
       "a6": "Two checks first: run node -v and make sure it prints v20 or later, and if you just installed Node.js, close the window and reopen it. Still not installing? dsh is a developer preview, errors happen — copy the exact error text and search the official GitHub repo's Discussions first, then ask; chances are someone already hit the same wall. This site doesn't relay mystery \"fixes\" or make solutions up.",
       "q7": "Does it work on Windows, macOS and Linux?",
-      "a7": "Yes. dsh is a Node.js program and works on all three desktop systems: PowerShell on Windows, Terminal on macOS, whatever your Linux distro ships. Once Node.js v20+ is installed the commands are identical. Curious about phones? See the community Android project on the launchers page."
+      "a7": "Yes. dsh is a Node.js program and works on all three desktop systems: PowerShell on Windows, Terminal on macOS, whatever your Linux distro ships. Once Node.js v20+ is installed the commands are identical. Curious about phones? See the community Android project on the launchers page.",
+      "q8": "What are the common dsh commands?",
+      "a8": "Three core ones: npx {'@'}deepseek-ai/dsh web starts the Web UI; npm install -g {'@'}deepseek-ai/dsh installs the dsh CLI globally; dsh plugin add github:owner/repo installs a plugin (swap in the owner/repo). Then manage and enable plugins from the Web UI — every plugin page on this site has a copy-ready command."
     },
     "typoH": "Misspelled it? Happens a lot",
     "typoP": "A fair share of visitors get here by typing it wrong. deepseekharness without the space, deepseek hardness with an extra d, deepseek herness missing an a — all point to the same project. The correct spelling is DeepSeek Harness, two words, dsh for short. The commands above work no matter how you spelled it.",

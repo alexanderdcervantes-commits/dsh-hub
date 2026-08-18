@@ -173,7 +173,7 @@
     "sortRecent": "最近更新"
   },
   "install": {
-    "title": "安装 DSH",
+    "title": "如何安装 dsh",
     "sub": "从零开始，跟着检查点一步步来：打开终端、装 Node.js、启动 dsh，再装几个社区精选插件。全程大约 5 分钟，不需要编程基础。",
     "whatH": "DeepSeek Harness 是什么？",
     "whatP": "DeepSeek Harness 是 DeepSeek 在 2026 年 8 月开源的 agent 框架。名字太长，社区懒得念全称，直接叫它 dsh——npm 包名也是 {'@'}deepseek-ai/dsh。它的思路就一句话：一切皆插件。UI、工具、皮肤，全都插在一个小内核上。",
@@ -200,7 +200,9 @@
       "q6": "安装失败、报错、打不开怎么办？",
       "a6": "先做两个检查：终端里敲 node -v，版本号不低于 v20；刚装过 Node.js 的话，把窗口关掉重开再试。还是装不上？dsh 还在开发者预览期，出报错不丢人——把报错信息原样复制，去官方 GitHub 仓库的 Discussions 先搜后问，多半已经有人踩过同一个坑。本站不搬运来路不明的「解决方案」，也不瞎编。",
       "q7": "Windows / macOS / Linux 都能装吗？",
-      "a7": "能。dsh 是 Node.js 程序，三大桌面系统通用：Windows 用 PowerShell，macOS 用终端，Linux 各发行版自带终端。装好 Node.js v20+ 之后命令完全一样。想在手机上碰运气的，去看启动器页的社区安卓项目。"
+      "a7": "能。dsh 是 Node.js 程序，三大桌面系统通用：Windows 用 PowerShell，macOS 用终端，Linux 各发行版自带终端。装好 Node.js v20+ 之后命令完全一样。想在手机上碰运气的，去看启动器页的社区安卓项目。",
+      "q8": "dsh 有哪些常用命令？",
+      "a8": "核心就三条：npx {'@'}deepseek-ai/dsh web 启动 Web UI；npm install -g {'@'}deepseek-ai/dsh 全局安装 dsh 命令；dsh plugin add github:owner/repo 安装插件（owner/repo 换成插件仓库）。装好后去 Web UI 的插件页管理、启用。本站每个插件详情页都有一键复制的命令，直接抄。"
     },
     "typoH": "拼错了？太正常了",
     "typoP": "相当一部分访客是拼错了才搜进来的。deepseekharness 不带空格、deepseek hardness 多个 d、deepseek herness 少个 a，搜的都是同一个东西。正确写法是 DeepSeek Harness，两个词，社区简称 dsh。不管你当初是怎么拼的，上面的命令照用不误。",
@@ -431,7 +433,7 @@
     }
   },
   "meta": {
-    "homeTitle": "DeepSeek Harness (dsh) 插件精选导航 — 发现/安装/下载 {'|'} DSH Meme Hub",
+    "homeTitle": "DeepSeek Harness (dsh) 插件精选导航 — 发现/安装/下载/命令 {'|'} DSH Meme Hub",
     "homeDesc": "DeepSeek Harness (dsh) 是什么？DeepSeek 官方 2026 年 8 月开源的 agent harness，一切皆插件。本站是它的插件精选导航：发现、下载、一条命令安装社区插件，外加人工精选的好物与整活合集。",
     "homeSearchPh": "搜索 {n} 个插件…（试试：鲸鱼、皮肤、五子棋）",
     "pluginsTitle": "DeepSeek Harness (dsh) 插件大全 — 推荐/必备插件导航 {'|'} DSH Meme Hub",
@@ -452,7 +454,7 @@
     "vsOcDesc": "dsh 和 OpenCode 都是 TypeScript + MIT 开源：198,275 vs 143,374 star、社区项目 vs DeepSeek 官方出品，一张对比表 + 公允分析帮你选。",
     "vsCxTitle": "DeepSeek Harness vs Codex：MIT vs Apache-2.0 对比评测 {'|'} DSH Meme Hub",
     "vsCxDesc": "dsh 和 Codex 怎么选？TypeScript vs Rust、MIT vs Apache-2.0、DeepSeek 生态 vs OpenAI 生态、143,374 vs 106,397 star，一张对比表 + 公允分析。",
-    "installTitle": "DeepSeek Harness (dsh) 安装教程 — 下载/Windows/macOS/Linux {'|'} DSH Meme Hub",
+    "installTitle": "如何安装 dsh（DeepSeek Harness）— 常用命令/Windows/macOS/Linux {'|'} DSH Meme Hub",
     "installDesc": "DeepSeek Harness 下载安装教程：Windows/macOS/Linux 三系统通用，Node.js 环境检查、npx 一行启动、装插件、安装失败报错打不开怎么办，FAQ 一步不落。",
     "launcherTitle": "DeepSeek Harness (dsh) 桌面版下载 — 图形界面/不用命令行 {'|'} DSH Meme Hub",
     "launcherDesc": "想要 deepseek desktop 桌面版？社区启动器给 DSH 套上图形界面：Windows/macOS/Linux/安卓下载安装、双击即用，全程不碰命令行。",

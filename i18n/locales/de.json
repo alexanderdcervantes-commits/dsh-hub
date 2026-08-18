@@ -200,7 +200,9 @@
       "q6": "Die Installation schlägt fehl, wirft einen Fehler oder öffnet sich nicht — was nun?",
       "a6": "Zuerst zwei Checks: node -v ausführen und sicherstellen, dass v20 oder neuer erscheint; hast du Node.js gerade installiert, schließe das Fenster und öffne es neu. Läuft es immer noch nicht? dsh ist eine Developer Preview, Fehler passieren — den Fehlertext exakt kopieren und zuerst in den Discussions des offiziellen GitHub-Repos suchen, dann fragen: Höchstwahrscheinlich hatte jemand dieselbe Wand schon. Diese Seite reicht keine mysteriösen „Lösungen“ weiter und erfindet auch keine.",
       "q7": "Läuft es auf Windows, macOS und Linux?",
-      "a7": "Ja. dsh ist ein Node.js-Programm und läuft auf allen drei Desktop-Systemen: PowerShell auf Windows, Terminal auf macOS, was auch immer deine Linux-Distro mitbringt. Sobald Node.js v20+ installiert ist, sind die Befehle identisch. Neugierig auf Handys? Sieh dir das Community-Android-Projekt auf der Launcher-Seite an."
+      "a7": "Ja. dsh ist ein Node.js-Programm und läuft auf allen drei Desktop-Systemen: PowerShell auf Windows, Terminal auf macOS, was auch immer deine Linux-Distro mitbringt. Sobald Node.js v20+ installiert ist, sind die Befehle identisch. Neugierig auf Handys? Sieh dir das Community-Android-Projekt auf der Launcher-Seite an.",
+      "q8": "Welche Befehle gibt es für dsh?",
+      "a8": "Drei Kernbefehle: npx {'@'}deepseek-ai/dsh web startet die Web-UI; npm install -g {'@'}deepseek-ai/dsh installiert die dsh-CLI global; dsh plugin add github:owner/repo installiert ein Plugin (owner/repo ersetzen). Danach lassen sich Plugins in der Web-UI verwalten und aktivieren — auf jeder Plugin-Seite dieser Site gibt es einen kopierfertigen Befehl."
     },
     "typoH": "Verschrieben? Kommt ständig vor",
     "typoP": "Ein guter Teil der Besucher landet hier durch Tippfehler. deepseekharness ohne Leerzeichen, deepseek hardness mit extra d, deepseek herness ohne a — alle meinen dasselbe Projekt. Richtig ist DeepSeek Harness, zwei Wörter, kurz dsh. Die Befehle oben funktionieren unabhängig davon, wie du es geschrieben hast.",
