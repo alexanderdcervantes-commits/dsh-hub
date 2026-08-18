@@ -66,3 +66,13 @@
 ## 六、窗口期判断
 生态一天一个样（topic:dsh-plugin 一天 +141 仓库），导航站赛道暂无基建完备的头部——**窗口期就是现在**。
 内容量（101 收录）尚追不上 awesome 清单广度 → 66 个候选插件审核收录是拉开差距的关键动作。
+
+### 10. dsh-plugin.market（0326/dsh-plugin-market）— 可信注册站定位
+- 定位：Trusted/Verified Plugin Registry（区别于发现型导航）——Format Verification / Compatibility / Security Scan / Maintenance / Publisher Trust 五维 Trust Profile，扫描结果绑定 commit SHA（dsh plugin add github:owner/repo#sha 可追溯安装）
+- 技术：Cloudflare Workers + React 19 + Hono + D1，GitHub Actions 部署
+- 生命周期：Candidate → Detected → Format Verified → Featured
+- 数据（2026-08-18）：★3、forks 0、2026-08-16 创建——极早期
+- 威胁评估：**当前 SEO 威胁为零**（站点 3.4KB 纯 JS 壳，body 可见文本 39 字符，无 SSR 无内容——Google 读不到任何东西）
+- 定位差异：他们做"信任层"（verify/security），我们做"发现层"（导航/精选/meme/多语种 SEO）。同 awesome-dsh-plugin 的 manifest 校验、hub.omdsh.dev 的核验定位更接近，与我们正面冲突面小
+- 值得记的点：commit SHA 绑定扫描结果的思路（安装代码与展示结果一一对应）是真创新，若生态爆发安全焦虑可借鉴
+- 监控：若他们加 SSR/静态化内容 或 star 破百，重新评估
