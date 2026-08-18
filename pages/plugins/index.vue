@@ -67,7 +67,7 @@ useHead({
 </script>
 
 <template>
-  <div class="container">
+  <div class="container plugins-flow">
     <div class="page-head">
       <h1>{{ t('plugins.title') }}</h1>
       <p class="sub">{{ t('plugins.sub', { n: plugins.length }) }}</p>
@@ -76,8 +76,10 @@ useHead({
       <p class="sub" style="margin:0"><NuxtLink :to="localePath('/store')">{{ t('plugins.storeGuide') }}</NuxtLink></p>
     </div>
 
-    <!-- 分类浏览入口（内链：每个分类一个落地页，承接分类搜索意图；数量运行时计算） -->
-    <section class="section" style="padding-top:10px">
+    <!-- 分类浏览入口（内链：每个分类一个落地页，承接分类搜索意图；数量运行时计算）。
+         DOM 保持标题层级 h1→h2→卡片 h3 与桌面原位（搜索框上方）；≤620 经 .plugins-flow
+         的 flex order 下沉到列表后——置顶时 14 个按钮换行成 ~380px 高的墙，把搜索框/筛选推出首屏 -->
+    <section class="section cat-links-section">
       <div class="section-head">
         <h2>{{ t('catPages.browseH') }}</h2>
         <span class="count-note">{{ t('catPages.browseSub') }}</span>

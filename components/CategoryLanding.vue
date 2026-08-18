@@ -150,7 +150,9 @@ useHead(() => ({
 
 <style scoped>
 /* Top 3 角标：金银铜三色，与全站 .top-list .rank 配色一致 */
-.top3-item { position: relative; }
+/* min-width:0 必须：本元素是 grid item 包装层（不像别处直接放 .plugin-card），
+   缺它时 ≤620 的 1fr 轨道按 min-content(auto 最小值)被卡内 nowrap 命令撑到 400-600px → 整页横滚 */
+.top3-item { position: relative; min-width: 0; }
 .top3-rank {
   position: absolute;
   top: 10px;
@@ -163,7 +165,12 @@ useHead(() => ({
   background: var(--card);
   border: 1px solid var(--border-soft);
   box-shadow: var(--shadow);
+  /* 纯装饰角标：不吞下方卡片链接的点击 */
+  pointer-events: none;
 }
+/* 角标悬于卡片右上(y≈10-32)正对 .title-row 首行(y≈16-44)：给首行留出角标投影区，
+   长标题/分类 chip 换行避开而不是钻到角标底下被盖住 */
+.top3-item :deep(.title-row) { padding-right: 56px; }
 .top3-rank.r1 { color: #e3b341; }
 .top3-rank.r2 { color: #a371f7; }
 .top3-rank.r3 { color: #bc4c00; }

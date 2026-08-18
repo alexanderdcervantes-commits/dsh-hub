@@ -210,7 +210,9 @@ img { max-width: 100%; display: block; }
   .grid.cols-3, .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
-  .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }
+  /* minmax(0,1fr) 而非裸 1fr：裸 1fr 的 auto 最小值=子项 min-content，
+     nowrap 命令/图片固有宽会把轨道撑到 400-600px 造成整页横滚（900px 断点本就这么写） */
+  .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: minmax(0, 1fr); }
 }
 
 .plugin-card {
@@ -521,19 +523,12 @@ img { max-width: 100%; display: block; }
 /* 单列时 aside(安装命令+证据)沉到相关推荐之后 → order 前置,移动/平板首屏即可安装;
    断点与单列化同在 860,避免 620-860 区间同一布局出现两种内容顺序 */
 @media (max-width: 860px) {
-  .detail-layout { grid-template-columns: 1fr; }
+  /* minmax(0,1fr)：裸 1fr 的 auto 最小值=子项 min-content，画廊大图固有宽会把轨道撑破视口 */
+  .detail-layout { grid-template-columns: minmax(0, 1fr); }
   .detail-layout > aside { order: -1; }
 }
-.detail-main .shot {
-  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow); background: var(--card); margin-bottom: 20px;
-}
-/* height:auto 让 <img> 的 width/height 属性推算宽高比,加载前即占位,消灭 CLS */
-.detail-main .shot img { width: 100%; height: auto; }
-.detail-main .shot .fallback-strip {
-  padding: 48px 20px; text-align: center; font-size: 56px;
-  background: linear-gradient(135deg, #dafbe1, #ddf1ff);
-}
+/* 同理：作为 grid item 的主列也要放开 auto 最小值，否则仍会溢出轨道（图片固有宽） */
+.detail-main { min-width: 0; }
 .prose p { color: var(--text); font-size: 15px; }
 .prose .lang-label { font-size: 12.5px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
 .side-card {
@@ -600,6 +595,8 @@ img { max-width: 100%; display: block; }
   max-width: 800px;
   margin: 0 auto 60px;
   display: grid;
+  /* 显式钳制轨道：隐式 auto 轨道按段落 max-content 定宽（整行不折），343px 容器下整页撑破 */
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 .step-card {
@@ -637,6 +634,7 @@ img { max-width: 100%; display: block; }
   margin: 8px 0 0;
   padding: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 6px;
 }
 .overview-list li {
@@ -653,6 +651,7 @@ img { max-width: 100%; display: block; }
   color: var(--text-2);
   font-size: 14px;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 4px;
 }
 .os-list li::marker { color: var(--accent); }
@@ -710,7 +709,7 @@ img { max-width: 100%; display: block; }
 .next-card h3 { margin: 0 0 4px; font-size: 15.5px; color: var(--accent-strong); }
 .next-card p { margin: 0; color: var(--text-2); font-size: 13.5px; }
 @media (max-width: 620px) {
-  .next-grid { grid-template-columns: 1fr; }
+  .next-grid { grid-template-columns: minmax(0, 1fr); }
   .step-card, .next-links { padding: 18px; }
 }
 
@@ -754,6 +753,10 @@ img { max-width: 100%; display: block; }
   .lang-list button { padding: 10px; }
   .copy-btn { min-height: 40px; padding: 8px 12px; font-size: 13px; }
   .install-cmd { padding-block: 10px; }
+  /* FAQ 折叠面板(/store、分类落地页 scoped .faq-list):details 的纵向 padding 不进
+     summary 点击盒,触达仅 ~21px → summary 自身补 padding 撑到 45px;
+     scoped 块只声明 font/cursor,此处无属性冲突 */
+  .faq-list summary { padding-block: 12px; }
   /* iOS:输入类控件 <16px 聚焦自动放大且不回弹;select/textarea/input 统一 16px */
   .form-card input[type='text'], .form-card input[type='url'],
   .form-card select, .form-card textarea { font-size: 16px; }
@@ -784,4 +787,21 @@ img { max-width: 100%; display: block; }
   /* 命令文字压在复制按钮下不可见 → 让 .cmd 自滚 */
   .install-cmd .cmd { overflow-x: auto; scrollbar-width: none; }
   .install-cmd .cmd::-webkit-scrollbar { display: none; }
+  /* /plugins 分类导购区:DOM 保持原位(标题层级 h1→h2→h3、桌面搜索框上方),
+     仅 ≤620 用 flex order 把它沉到列表后,避免 14 按钮换行墙(~380px)把搜索框推出首屏 */
+  .plugins-flow { display: flex; flex-direction: column; }
+  .plugins-flow > .cat-links-section { order: 9; }
+  /* 按钮墙单行横滑(同 .main-nav 惯例,mask 渐隐提示可滑);桌面/平板换行墙不变 */
+  .cat-links {
+    flex-wrap: nowrap;
+    /* 纵向留 2px：overflow 容器会裁掉按钮上下溢出的焦点环（同 .main-nav 的处理） */
+    padding-block: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, #000 92%, transparent);
+  }
+  .cat-links::-webkit-scrollbar { display: none; }
+  .cat-links .btn { white-space: nowrap; flex-shrink: 0; }
 }

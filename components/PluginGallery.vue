@@ -108,7 +108,7 @@ watch(activeUrl, async () => {
 
 <template>
   <div v-if="items.length" ref="root" class="plugin-gallery">
-    <!-- 主图：画框观感沿用 .detail-main .shot（变量来自 assets/css/main.css），点击进灯箱 -->
+    <!-- 主图：圆角白卡画框（CSS 变量来自 assets/css/main.css），点击进灯箱 -->
     <div class="main-frame">
       <button
         type="button" class="zoom-btn"
@@ -171,7 +171,7 @@ watch(activeUrl, async () => {
 <style scoped>
 .plugin-gallery { margin-bottom: 20px; }
 
-/* 主图画框：对齐 .detail-main .shot 的圆角白卡观感 */
+/* 主图画框：圆角白卡观感（原 .detail-main .shot 全局规则已删，观感在此自治） */
 .main-frame {
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
@@ -192,7 +192,7 @@ watch(activeUrl, async () => {
 }
 .zoom-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
-/* 有宽高属性时靠属性推算宽高比占位（同 .detail-main .shot img 的防 CLS 手法） */
+/* 有宽高属性时靠属性推算宽高比占位（防 CLS） */
 .img-wrap { background: var(--bg); }
 .img-wrap img { display: block; width: 100%; height: auto; }
 .img-wrap.no-dims { aspect-ratio: 16 / 10; }
