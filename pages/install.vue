@@ -67,6 +67,16 @@ useHead({
       </div>
 
       <div class="install-page">
+        <!-- 不想敲命令行？去桌面启动器专区 -->
+        <div class="alt-callout">
+          <span class="ic">🖥️</span>
+          <div class="body">
+            <strong>{{ t('install.altH') }}</strong>
+            <p>{{ t('install.altP') }}</p>
+          </div>
+          <NuxtLink class="btn green" :to="localePath('/launcher')">{{ t('install.altCta') }}</NuxtLink>
+        </div>
+
         <!-- 安装前速览 -->
         <section class="step-card overview">
           <h2>{{ t('install.overviewTitle') }}</h2>

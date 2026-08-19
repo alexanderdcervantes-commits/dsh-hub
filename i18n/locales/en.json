@@ -292,7 +292,10 @@
         "title": "📖 About",
         "desc": "Learn how DSH Meme Hub picks what gets listed"
       }
-    }
+    },
+    "altH": "Don't want to use a terminal?",
+    "altP": "This page covers the command-line install (one npx command). Prefer a normal desktop app you can double-click? Head to the desktop launchers section:",
+    "altCta": "🖥️ Browse desktop launchers →"
   },
   "submit": {
     "title": "Submit a Plugin",

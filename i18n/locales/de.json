@@ -292,7 +292,10 @@
         "title": "📖 Über uns",
         "desc": "Erfahre, wie DSH Meme Hub auswählt, was gelistet wird"
       }
-    }
+    },
+    "altH": "Keine Lust aufs Terminal?",
+    "altP": "Diese Seite zeigt die Installation per Kommandozeile (ein einziger npx-Befehl). Lieber eine normale Desktop-App zum Doppelklicken? Dann ab in die Desktop-Launcher-Sektion:",
+    "altCta": "🖥️ Zu den Desktop-Launchern →"
   },
   "submit": {
     "title": "Plugin einreichen",
