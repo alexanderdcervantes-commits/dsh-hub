@@ -1,6 +1,6 @@
 {
  "updatedAt": "2026-08-19",
- "count": 342,
+ "count": 343,
  "plugins": [
   {
    "slug": "dsh-web-ui",
@@ -13518,6 +13518,37 @@
      "h": null
     }
    ]
+  },
+  {
+   "slug": "dsh-liangwengu",
+   "name": "dsh-liangwengu",
+   "repo": "mozhuanzuojing/dsh-liangwengu",
+   "url": "https://github.com/mozhuanzuojing/dsh-liangwengu",
+   "description_zh": "梁文谷提醒：按 DeepSeek API 定价的高峰/空闲时段（北京时间）提醒你——峰来了快跑，峰走了开薅。卡通弹窗+系统通知+提示音+30 分钟倒计时+血条修仙，08:55 准时播报「梁文峰要来了，块跑啊！」",
+   "description_en": "Liangwengu reminder: alerts you by DeepSeek API pricing peak/idle windows (Beijing time) — run when the peak hits, farm when it's idle. Cartoon popup + system notification + sounds + 30-min countdown + HP-cultivation HUD, with a 08:55 shout of \"Liang Wenfeng is coming, run!\". Pricing basis: DeepSeek official docs (peak 9:00-12:00 / 14:00-18:00, idle half price).",
+   "stars": 0,
+   "forks": 0,
+   "category_zh": "抽象整活",
+   "category_en": "Absurd",
+   "is_meme": true,
+   "meme_section": "absurd",
+   "meme_caption_zh": "峰来了快跑，峰走了开薅——API 定价版的梁文谷提醒",
+   "meme_caption_en": "run when the peak hits, farm when it dips — Liangwengu for your API bill",
+   "image": null,
+   "install_cmd": "dsh plugin --profile web add dsh-liangwengu",
+   "pushed_at": "2026-08-19",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": true,
+   "topics": [
+    "cordis",
+    "deepseek-harness",
+    "dsh-plugin"
+   ],
+   "description_zh_TW": "梁文谷提醒：按 DeepSeek API 定價的高峰/空閒時段（北京時間）提醒你——峰來了快跑，峰走了開薅。卡通彈窗+系統通知+提示音+30 分鐘倒數+血條修仙，08:55 準時播報「梁文峰要來了，塊跑啊！」",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "峰來了快跑，峰走了開薅——API 定價版的梁文谷提醒",
+   "screenshots": []
   }
  ]
 }
