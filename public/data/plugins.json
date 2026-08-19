@@ -13534,7 +13534,7 @@
    "meme_section": "absurd",
    "meme_caption_zh": "峰来了快跑，峰走了开薅——API 定价版的梁文谷提醒",
    "meme_caption_en": "run when the peak hits, farm when it dips — Liangwengu for your API bill",
-   "image": null,
+   "image": "/images/dsh-liangwengu.webp",
    "install_cmd": "dsh plugin --profile web add dsh-liangwengu",
    "pushed_at": "2026-08-19",
    "license": "MIT",
@@ -13548,7 +13548,15 @@
    "description_zh_TW": "梁文谷提醒：按 DeepSeek API 定價的高峰/空閒時段（北京時間）提醒你——峰來了快跑，峰走了開薅。卡通彈窗+系統通知+提示音+30 分鐘倒數+血條修仙，08:55 準時播報「梁文峰要來了，塊跑啊！」",
    "category_zh_TW": "抽象整活",
    "meme_caption_zh_TW": "峰來了快跑，峰走了開薅——API 定價版的梁文谷提醒",
-   "screenshots": []
+   "screenshots": [
+    {
+     "url": "https://raw.githubusercontent.com/mozhuanzuojing/dsh-liangwengu/5398256bad38ed79f19fd3ef6f318876327de775/assets/cartoon.jpg",
+     "w": 1254,
+     "h": 1254
+    }
+   ],
+   "image_w": 1254,
+   "image_h": 1254
   }
  ]
 }
