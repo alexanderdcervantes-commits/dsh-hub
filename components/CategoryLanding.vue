@@ -18,6 +18,14 @@ const top3 = computed(() => list.value.slice(0, 3))
 // 内容不足保护（规范 §2.3）：运行时过滤后不足 3 条 → 该页 noindex，不再进索引
 const thin = computed(() => list.value.length < 3)
 
+// 渐进加载：与 /plugins 列表页同款（首屏 60，「加载更多」每步 +120）——大分类 500+ 张卡
+// 一次渲染拖垮 INP 也撑爆预渲染 HTML；分类页无筛选器，无需重置逻辑，shown 即可
+const PAGE = 60
+const STEP = 120
+const shown = ref(PAGE)
+const visible = computed(() => list.value.slice(0, shown.value))
+const remaining = computed(() => Math.max(0, list.value.length - shown.value))
+
 const siteUrl = config.public.siteUrl as string
 const pageUrl = computed(() => `${siteUrl}${localePath(`/plugins/${props.cat.slug}`)}`)
 const n = computed(() => list.value.length)
@@ -56,12 +64,13 @@ useHead(() => ({
       }),
     },
     {
-      // 与渲染列表同一数据源、同一排序，永不漂移
+      // 与渲染列表同一数据源、同一排序，永不漂移；头部 500 条前缀样本
+      // （与 /plugins 列表页同一截断上限，防大分类结构化数据膨胀）
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        itemListElement: list.value.map((p, i) => ({
+        itemListElement: list.value.slice(0, 500).map((p, i) => ({
           '@type': 'ListItem',
           position: i + 1,
           name: p.name,
@@ -116,13 +125,19 @@ useHead(() => ({
       </div>
     </section>
 
-    <!-- 全量列表：star 降序，与 ItemList schema 同源 -->
+    <!-- 全量列表：star 降序，与 ItemList schema 同源；渐进加载（首屏 60，逐步 +120） -->
     <section class="section">
       <div class="section-head">
         <h2>{{ t('catPages.listH', { n }) }}</h2>
       </div>
-      <div class="grid cols-3" style="padding-bottom:50px">
-        <PluginCard v-for="p in list" :key="p.slug" :plugin="p" />
+      <div class="grid cols-3">
+        <PluginCard v-for="p in visible" :key="p.slug" :plugin="p" />
+      </div>
+      <!-- 容器常驻（按钮 v-if）：无更多时也保住与下一节的间距，替代原 grid 内联 padding-bottom -->
+      <div class="load-more">
+        <button v-if="remaining" class="btn" @click="shown += STEP">
+          {{ t('plugins.loadMore', { n: remaining }) }}
+        </button>
       </div>
     </section>
 

@@ -905,3 +905,9 @@ img { max-width: 100%; display: block; }
 .markdown-body hr { border: 0; border-top: 2px solid var(--border-soft); margin: 24px 0; }
 /* GFM 任务列表勾选框(markdown-it 渲染成 <input type=checkbox disabled>) */
 .markdown-body input[type='checkbox'] { margin: 0 6px 0 0; accent-color: var(--accent); }
+
+/* ---------- 列表渐进加载(/plugins 列表页与分类落地页共用,批2) ---------- */
+/* 容器常驻(按钮 v-if 隐藏):无更多可加载时也保住列表与后续内容的底距,
+   替代两页 grid 原来的内联 padding-bottom:50px */
+.load-more { display: flex; justify-content: center; padding: 8px 0 50px; }
+.load-more .btn { min-width: 220px; }

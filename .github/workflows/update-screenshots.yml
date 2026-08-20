@@ -9,7 +9,9 @@ name: Update Screenshots & Discovery
 #       整体重建文件,runner 上无此路径必崩,且会丢 screenshots/image_w 等下游字段)
 #   ④ 跑 discover-plugins.mjs,生成新插件「提名」清单 data/discovery/candidates.json
 #      (提名 ≠ 收录:候选仅供人工/AI 审核,收录仍走既有数据源流程)
-# 四个脚本都幂等/失败不写文件 —— git diff 有变化才 commit 回 master(→ 触发
+#   ⑤ IndexNow 全量提交 sitemap:数据刷新→commit→mirror→Vercel 部署后,次日把
+#      sitemap 全部 URL 重新推给搜索引擎,保证新增/变更详情页尽快被收录
+# 前四个脚本都幂等/失败不写文件 —— git diff 有变化才 commit 回 master(→ 触发
 # mirror 同步 → Vercel 重新部署),无变化不产生空提交。
 
 on:
@@ -77,3 +79,9 @@ jobs:
             git commit -m 'chore(data): auto refresh screenshots + readmes + discovery candidates'
             git push
           fi
+
+      # ⑤ IndexNow:向搜索引擎全量提交 sitemap URL(昨日的部署此刻已上线,今天的数据
+      # 刚推走,明日再推一轮——收录管道闭环)。引擎侧故障不能阻塞数据管道,失败仅告警。
+      - name: IndexNow ping (sitemap)
+        run: node scripts/indexnow.mjs sitemap
+        continue-on-error: true

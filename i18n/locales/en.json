@@ -102,7 +102,8 @@
     "results": "{n} plugins",
     "noResults": "Nothing matched. Try another keyword?",
     "installGuide": "How to install dsh and plugins →",
-    "storeGuide": "Want a guided tour and the Top 10 picks? Browse the plugin directory →"
+    "storeGuide": "Want a guided tour and the Top 10 picks? Browse the plugin directory →",
+    "loadMore": "Load more ({n} remaining)"
   },
   "best": {
     "title": "Best DeepSeek Harness (dsh) Plugins — The Rankings",

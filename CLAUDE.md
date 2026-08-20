@@ -1,4 +1,4 @@
-# AGENTS.md — dsh-meme-hub-site 项目协作守则
+# CLAUDE.md — dsh-meme-hub-site 项目协作守则
 
 给在此仓库工作的任何 agent（Claude Code / Codex / OpenCode / Hermes）看的项目级约束。
 

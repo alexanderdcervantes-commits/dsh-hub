@@ -38,14 +38,25 @@ const cats = computed(() => categories(locale.value))
 const results = computed(() =>
   query({ q: q.value, categoryKey: cat.value, sort: sort.value }))
 
+// 渐进加载：全量 1862 张卡一次渲染会把单页 HTML 撑到 ~2MB 且 INP 破秒，
+// 首屏只出 60 张（SSG 产物降到 ~90KB 量级），「加载更多」每步 +120（第二屏起放大步长，
+// 减少点击次数）；筛选/搜索/排序变化时重置回首屏
+const PAGE = 60
+const STEP = 120
+const shown = ref(PAGE)
+const visible = computed(() => results.value.slice(0, shown.value))
+const remaining = computed(() => Math.max(0, results.value.length - shown.value))
+watch([q, cat, sort], () => { shown.value = PAGE })
+
 // ItemList 结构化数据：与渲染列表共用 usePlugins() 同一份数据，
-// 按默认渲染顺序（star 降序）列出全部插件，绝对 URL 走 runtimeConfig.siteUrl + localePath。
+// 按默认渲染顺序（star 降序）取头部 500 条（前缀样本，Google 接受；全量 1862 条会
+// 把结构化数据撑到百 KB 级），绝对 URL 走 runtimeConfig.siteUrl + localePath。
 const siteUrl = config.public.siteUrl as string
 const listPlugins = query({ q: '', categoryKey: DEFAULT_CAT, sort: DEFAULT_SORT })
 const listItemJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: listPlugins.map((p, i) => ({
+  itemListElement: listPlugins.slice(0, 500).map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: p.name,
@@ -117,9 +128,16 @@ useHead({
 
     <p class="result-note">{{ t('plugins.results', { n: results.length }) }}</p>
 
-    <div v-if="results.length" class="grid cols-3" style="padding-bottom:50px">
-      <PluginCard v-for="p in results" :key="p.slug" :plugin="p" />
+    <div v-if="results.length" class="grid cols-3">
+      <PluginCard v-for="p in visible" :key="p.slug" :plugin="p" />
     </div>
     <p v-else style="color:var(--text-3);padding-bottom:50px">{{ t('plugins.noResults') }}</p>
+
+    <!-- 容器常驻（按钮 v-if）：无更多时也保住列表底距，替代原 grid 的内联 padding-bottom -->
+    <div v-if="results.length" class="load-more">
+      <button v-if="remaining" class="btn" @click="shown += STEP">
+        {{ t('plugins.loadMore', { n: remaining }) }}
+      </button>
+    </div>
   </div>
 </template>

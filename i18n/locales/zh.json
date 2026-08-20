@@ -102,7 +102,8 @@
     "results": "{n} 个插件",
     "noResults": "没有匹配的结果，换个关键词试试？",
     "installGuide": "安装指南 →",
-    "storeGuide": "想看分类导购与精选榜单？逛一圈插件目录 →"
+    "storeGuide": "想看分类导购与精选榜单？逛一圈插件目录 →",
+    "loadMore": "加载更多（还有 {n} 个）"
   },
   "best": {
     "title": "DeepSeek Harness (dsh) 插件排行榜",
