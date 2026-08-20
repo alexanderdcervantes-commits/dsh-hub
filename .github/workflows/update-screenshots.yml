@@ -1,13 +1,15 @@
 name: Update Screenshots & Discovery
 
-# 每天定时三件事:
+# 每天定时四件事:
 #   ① 重跑 fetch-screenshots.mjs,刷新 public/data/plugins.json 的 screenshots 字段
-#   ② 跑 refresh-stars.py,原地刷新 stars/pushed_at/license/topics 等仓库元数据
+#   ② 跑 fetch-readmes.mjs,全量抓仓库 README 落盘 public/readmes/(正文图片钉死
+#      commit SHA 防裂;只读 plugins.json 不改写,失败清单写 data/readme-failures.json)
+#   ③ 跑 refresh-stars.py,原地刷新 stars/pushed_at/license/topics 等仓库元数据
 #      (注意:不能用 build-data.py --enrich —— 它从 /root/china-ai-arbitrage 外部源
 #       整体重建文件,runner 上无此路径必崩,且会丢 screenshots/image_w 等下游字段)
-#   ③ 跑 discover-plugins.mjs,生成新插件「提名」清单 data/discovery/candidates.json
+#   ④ 跑 discover-plugins.mjs,生成新插件「提名」清单 data/discovery/candidates.json
 #      (提名 ≠ 收录:候选仅供人工/AI 审核,收录仍走既有数据源流程)
-# 三个脚本都幂等/失败不写文件 —— git diff 有变化才 commit 回 master(→ 触发
+# 四个脚本都幂等/失败不写文件 —— git diff 有变化才 commit 回 master(→ 触发
 # mirror 同步 → Vercel 重新部署),无变化不产生空提交。
 
 on:
@@ -27,7 +29,7 @@ jobs:
     # 只在旧仓库运行;被 mirror 同步到新仓库后自动跳过(同 ci.yml/mirror.yml)
     if: github.repository == 'the-beating-light-of-the-nail/dsh-meme-hub-site'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45 # 批1起全量抓 1800+ 仓 README,30 分钟余量不够
     env:
       GITHUB_DIRECT: '1' # runner 直连 GitHub,不走本机 sing-box 代理
     steps:
@@ -47,6 +49,11 @@ jobs:
         run: node scripts/fetch-screenshots.mjs
         # 只用 git ls-remote + raw.githubusercontent,不占 API 配额,无需 token
 
+      - name: Fetch repo READMEs (fetch-readmes.mjs)
+        run: node scripts/fetch-readmes.mjs
+        # 全量抓 README 落 public/readmes/,同样只走 ls-remote + raw,不占 API 配额;
+        # 单仓失败不中断,只记 data/readme-failures.json
+
       - name: Refresh stars & repo metadata (refresh-stars.py, in-place)
         run: python3 scripts/refresh-stars.py
         # 原地刷新已提交的 plugins.json(101 仓 × 2 次 API 调用,带 token 走 5000/h 配额);
@@ -63,10 +70,10 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/data/plugins.json data/discovery/candidates.json
+          git add public/data/plugins.json public/readmes data/readme-failures.json data/discovery/candidates.json
           if git diff --cached --quiet; then
-            echo '截图与候选均无变化,跳过提交'
+            echo '截图、README 与候选均无变化,跳过提交'
           else
-            git commit -m 'chore(data): auto refresh screenshots + discovery candidates'
+            git commit -m 'chore(data): auto refresh screenshots + readmes + discovery candidates'
             git push
           fi

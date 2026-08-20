@@ -1,0 +1,121 @@
+# Humanize
+
+**Current Version: 1.18.0**
+
+> Derived from the [GAAC (GitHub-as-a-Context)](https://github.com/SihaoLiu/gaac) project.
+
+A Claude Code plugin that provides iterative development with independent AI review. Build with confidence through continuous feedback loops.
+
+## What is RLCR?
+
+**RLCR** stands for **Ralph-Loop with Codex Review**, inspired by the official ralph-loop plugin and enhanced with independent Codex review. The name also reads as **Reinforcement Learning with Code Review** -- reflecting the iterative cycle where AI-generated code is continuously refined through external review feedback.
+
+## Core Concepts
+
+- **Iteration over Perfection** -- Instead of expecting perfect output in one shot, Humanize leverages continuous feedback loops where issues are caught early and refined incrementally.
+- **One Build + One Review** -- Claude implements, Codex independently reviews. No blind spots.
+- **Ralph Loop with Swarm Mode** -- Iterative refinement continues until all acceptance criteria are met. Optionally parallelize with Agent Teams.
+- **Capability Anchors** -- Generated plans include a feature/capability map, and RLCR rounds keep Claude and Codex anchored to the relevant capability node.
+- **Begin with the End in Mind** -- Before the loop starts, Humanize verifies that *you* understand the plan you are about to execute. The human must remain the architect. ([Details](docs/usage.md#begin-with-the-end-in-mind))
+
+## How It Works
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zevorn/dsh-humanize/f39c19d5a596735c9dfaa1cbb0b95c02152b039c/docs/images/rlcr-workflow.svg" alt="RLCR Workflow" width="680"/>
+</p>
+
+The loop has two phases: **Implementation** (Claude works, Codex reviews summaries) and **Code Review** (Codex checks code quality with severity markers). Issues feed back into implementation until resolved.
+
+
+## Install
+
+```bash
+# Add PolyArch marketplace
+/plugin marketplace add PolyArch/humanize
+# If you want to use development branch for experimental features
+/plugin marketplace add PolyArch/humanize#dev
+# Then install humanize plugin
+/plugin install humanize@PolyArch
+```
+
+Requires [codex CLI](https://github.com/openai/codex) for review. See the full [Installation Guide](docs/install-for-claude.md) for prerequisites and alternative setup options.
+
+### DeepSeek Harness
+
+Humanize is also available as a standard **DeepSeek Harness profile bundle**.
+The **DeepSeek V4 Flash Max** builder agent runs the RLCR loop inside a DSH
+session while the **Codex** review agent independently gates progress. The
+bundle registers these skills: `humanize`, `humanize-rlcr`, `ask-codex`,
+`humanize-gen-plan`, and `humanize-refine-plan`; it also mounts the Humanize
+trajectory view in the latest DSH web client.
+
+```bash
+# Install the standard bundle into the web profile.
+dsh plugin --profile web add github:dsh-external/dsh-humanize#<commit-or-tag>
+```
+
+Git installs build the web client through the bundle's `prepare` script. If
+pnpm blocks that build, add the exact package key it prints to
+`$DSH_HOME/profiles/web/pnpm-workspace.yaml` under `allowBuilds`, then rerun the
+command. Configure the builder model (`deepseek-v4-flash-max`) in the DSH model
+settings — the full walkthrough is in the
+[Installation Guide for DeepSeek Harness](docs/install-for-dsh.md).
+
+## Quick Start
+
+1. **Generate an idea draft** from a loose thought (optional — skip if you already have a draft):
+   ```bash
+   /humanize:gen-idea "add undo/redo to the editor"
+   ```
+   Output goes to `.humanize/ideas/<slug>-<timestamp>.md` and a companion `directions.json` artifact. Pass a `.md` path to expand existing rough notes. `--n` controls how many parallel directions explore the idea (default 6).
+
+2. **Explore directions as parallel prototypes** (optional — skip if you want to go straight to planning):
+   ```bash
+   /humanize:explore-idea .humanize/ideas/<slug>-<timestamp>.directions.json
+   ```
+   Dispatches bounded parallel prototype workers (one per direction), each running in an isolated git worktree. After all workers complete, writes `.humanize/explore/<run-id>/explore-report.md` for audit/ranking details and `.humanize/explore/<run-id>/final-idea.md` as the plan-ready synthesis. Worker worktrees are optional prototype fast paths; the default follow-up is to generate a clean plan from `final-idea.md`.
+
+3. **Generate a plan** from your draft or explored final idea:
+   ```bash
+   /humanize:gen-plan --input .humanize/explore/<run-id>/final-idea.md --output docs/plan.md
+   ```
+   Add `--coach` to run mandatory short-answer stage quizzes after each planning stage. Normal plan decision questions stay separate; quiz mismatches are treated as design drift, AI design correction, or background gaps before the agent expands the next planning layer.
+   Generated plans include a `Feature Map / Capability Map` before the task breakdown so each task carries its global capability context.
+
+4. **Refine an annotated plan** before implementation when reviewers add comments (`CMT:` ... `ENDCMT`, `<cmt>` ... `</cmt>`, or `<comment>` ... `</comment>`):
+   ```bash
+   /humanize:refine-plan --input docs/plan.md
+   ```
+
+5. **Run the loop**:
+   ```bash
+   /humanize:start-rlcr-loop docs/plan.md
+   ```
+   When the plan has a capability map, RLCR records a `Capability Anchor` in each round contract and Goal Tracker active task so Claude coding and Codex review stay aligned with the map.
+
+6. **Consult Gemini** for deep web research (requires Gemini CLI):
+   ```bash
+   /humanize:ask-gemini What are the latest best practices for X?
+   ```
+
+7. **Monitor progress (in another terminal, not inside Claude Code)**:
+   ```bash
+   source <path/to/humanize>/scripts/humanize.sh # Or just add it into your .bashec or .zshrc
+   humanize monitor rlcr       # RLCR loop
+   humanize monitor skill      # All skill invocations (codex + gemini)
+   humanize monitor codex      # Codex invocations only
+   humanize monitor gemini     # Gemini invocations only
+   ```
+
+## Documentation
+
+- [Usage Guide](docs/usage.md) -- Commands, options, environment variables
+- [Install for Claude Code](docs/install-for-claude.md) -- Full installation instructions
+- [Install for Codex](docs/install-for-codex.md) -- Codex skill runtime setup
+- [Install for Kimi](docs/install-for-kimi.md) -- Kimi CLI skill setup
+- [Configuration](docs/usage.md#configuration) -- Shared config hierarchy and override rules
+- [Bitter Lesson Workflow](docs/bitlesson.md) -- Project memory, selector routing, and delta validation
+
+## License
+
+MIT

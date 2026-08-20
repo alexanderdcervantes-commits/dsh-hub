@@ -1,0 +1,344 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/7dgroup-ai/dsh-skill-7d-code-reviewer/21597116a3a0bcdf27b59c9f3c07739a459e5a91/screenshots/banner.png" alt="7DGroup code review skill plugin banner" width="800">
+</p>
+
+<p align="center">
+  <img alt="npm version" src="https://img.shields.io/npm/v/@7dgroup/dsh-skill-7d-code-reviewer?style=flat-square&color=4b6fff">
+  <img alt="license MIT" src="https://img.shields.io/badge/license-MIT-263146?style=flat-square">
+  <img alt="node" src="https://img.shields.io/badge/node-%5E22.19%20%7C%7C%20%3E%3D24-339933?style=flat-square">
+  <img alt="by 7DGroup" src="https://img.shields.io/badge/by-7DGroup-7da1de?style=flat-square">
+  <a href="https://awesome-dsh-plugin.com"><img alt="Awesome DSH Plugin" src="https://awesome-dsh-plugin.com/badge.svg"></a>
+</p>
+
+<p align="center">
+  <strong>English</strong> | <a href="README.zh.md">中文</a>
+</p>
+
+# @7dgroup/dsh-skill-7d-code-reviewer
+
+**Author: 7DGroup**
+
+A professional, template-driven code review skill plugin for DeepSeek Harness (DSH), developed by the 7DGroup team for AI-assisted code review in any dsh session. Built on TypeScript + Cordis, it installs as a composable bundle and registers the `7d-code-reviewer` skill with `ctx.skills`: a five-step review flow, critical/medium/minor severity grading, four-dimension scoring, and dual text + HTML report output. Zero core changes — install to enable, remove the bundle row to uninstall.
+
+---
+## 📌 Project Info
+
+| Field | Value |
+|---|---|
+| Author | 7DGroup |
+| Version | 0.1.0-rc.5 |
+| Runtime | Node `^22.19.0 || >=24.0.0` · pnpm 10+ · dsh CLI |
+| Peer dependencies | `@deepseek-ai/cordis` · `@deepseek-ai/dsh-skill` · `@deepseek-ai/dsh-invariants` |
+| Skill name | `7d-code-reviewer` |
+| Repository | [github.com/7dgroup-ai/dsh-skill-7d-code-reviewer](https://github.com/7dgroup-ai/dsh-skill-7d-code-reviewer) |
+| License | MIT |
+
+## 🖼️ Plugin Effect
+
+Skill invocation in a dsh session:
+
+![Invoking the 7d-code-reviewer skill for a code review](https://raw.githubusercontent.com/7dgroup-ai/dsh-skill-7d-code-reviewer/21597116a3a0bcdf27b59c9f3c07739a459e5a91/screenshots/skills.png)
+
+Sample HTML report generated from the pure-placeholder template:
+
+![Sample code review HTML report](https://raw.githubusercontent.com/7dgroup-ai/dsh-skill-7d-code-reviewer/21597116a3a0bcdf27b59c9f3c07739a459e5a91/screenshots/report-preview.png)
+
+**Core Capabilities**:
+
+- **Template-driven mode** — separation of concerns: `SKILL.md` decides what to review and how severe it is, `templates/` only presents. The HTML report template stays pure placeholders; all placeholders must be filled, and every dynamic value is HTML-escaped.
+- **Five-step review flow** — accept the task → quick scan → line-by-line review (loading `references/` on demand) → severity grading → report generation.
+- **Three-level severity grading** — 🔴 critical (must fix) / 🟡 medium (should fix) / 🟢 minor (optional polish).
+- **Four-dimension scoring** — code quality / security / performance / maintainability, each on a 1–10 scale, plus an overall score and an auto-generated summary.
+- **Dual output** — a text summary for quick reading, plus a full HTML report saved as `code-review-report-{timestamp}.html`.
+- **Built-in knowledge base** — coding standards, security checklist (SQL injection, XSS, authentication/authorization, sensitive-data leaks) and worked review examples, loaded on demand instead of bloating the prompt.
+- **Zero core changes** — pure composable bundle; no patches to the DSH core, safe to install and remove.
+
+**Use Cases**:
+
+- Code review before commit / merge request
+- Security audit of existing code
+- Quality assessment before refactoring
+- Enforcing team coding standards
+- Any code quality question inside a dsh conversation
+
+## ✅ Features
+
+- ✅ Five-step template-driven review flow
+- ✅ Three-level severity grading with fix suggestions
+- ✅ Four-dimension scoring rubric (code quality / security / performance / maintainability)
+- ✅ Text summary + HTML report dual output
+- ✅ Pure-placeholder HTML report template with mandatory filling rules
+- ✅ Documented HTML escaping rules for all filled content
+- ✅ On-demand knowledge base (coding standards / security checklist / review examples)
+- ✅ No executable scripts ship with the skill
+- ✅ Installable from GitHub (`github:` shorthand), npm or tarball
+- ✅ Git-install build is self-contained (`prepare` hook, transpile-only)
+
+## 📂 Project Structure
+
+```
+dsh-skill-7d-code-reviewer/
+├── src/                                # source code
+│   ├── index.ts                        # Cordis plugin: registers the skill provider
+│   └── invariant.ts                    # companion plugin: package ownership invariant
+├── assets/7d-code-reviewer/            # skill resources shipped with the package
+│   ├── SKILL.md                        # review logic + template selection
+│   ├── references/                     # knowledge base, loaded on demand
+│   │   ├── coding-standards.md         # naming rules, code complexity
+│   │   ├── security-checklist.md       # SQL injection, XSS, auth, leaks
+│   │   └── review-examples.md          # worked review examples
+│   ├── templates/
+│   │   └── report-template.html        # pure-placeholder HTML report
+│   └── scripts/
+│       └── html-report-generation.md   # HTML escaping rules for filled content
+├── tests/                              # vitest suite
+│   └── skill-7d-code-reviewer.spec.ts
+├── screenshots/                        # README screenshots
+│   ├── skills.png                      # skill invocation
+│   └── report-preview.png              # sample HTML report
+├── cordis.patch.yml                    # composition patch layer
+├── tsdown.config.ts                    # build config (transpile-only)
+├── 7dgroup-dsh-skill-7d-code-reviewer-0.1.0-rc.5.tgz   # prebuilt tarball
+├── package.json
+└── README.md
+```
+
+## 🚀 Quick Start
+
+Prerequisites: `dsh` CLI, Node `^22.19.0 || >=24.0.0`, pnpm 10+.
+
+### Install from within a dsh session (recommended)
+
+The most direct way — just ask the agent in any dsh conversation, and it runs the install for you. Use the GitHub spec — the npm name `@7dgroup/dsh-skill-7d-code-reviewer` only works after the package is published:
+
+> 安装插件 github:7dgroup-ai/dsh-skill-7d-code-reviewer
+
+(Or in English: "Install the plugin github:7dgroup-ai/dsh-skill-7d-code-reviewer" — the agent executes the equivalent `dsh plugin` command through its session shell.)
+
+For a git install the agent will hit the same pnpm `allowBuilds` gate and print the exact key to add to the profile's pnpm settings file (`~/.dsh/profiles/<name>/pnpm-workspace.yaml`); after you add it, ask the agent to retry and the skill is enabled.
+
+### Install directly in dsh (CLI)
+
+Run one command directly in dsh — the `github:` shorthand is the fastest way:
+
+```sh
+dsh plugin --profile <name> add github:7dgroup-ai/dsh-skill-7d-code-reviewer
+```
+
+`<name>` is the profile you boot with `dsh --profile <name>` — see [What is a dsh profile?](#what-is-a-dsh-profile) below for how profiles work, how to pick a name and where the profile files live.
+
+The full URL form is equivalent:
+
+```sh
+dsh plugin --profile <name> add git+https://github.com/7dgroup-ai/dsh-skill-7d-code-reviewer.git
+```
+
+`dsh plugin` appends the bundle to the profile's `dsh.profile.bundles`, and the bundle's own patch layer mounts the `skill-7d-code-reviewer` row over the base composition.
+
+pnpm blocks a git dependency's build scripts until explicitly allowed, so the first `add` fails. Copy the exact package key pnpm printed into the profile's pnpm settings file — `~/.dsh/profiles/<name>/pnpm-workspace.yaml` — then re-run:
+
+```yaml
+allowBuilds:
+  '@7dgroup/dsh-skill-7d-code-reviewer@git+https://github.com/7dgroup-ai/dsh-skill-7d-code-reviewer.git#<sha>': true
+```
+
+(With the `github:` shorthand the key reads `@7dgroup/dsh-skill-7d-code-reviewer@github:7dgroup-ai/dsh-skill-7d-code-reviewer#<sha>` — always copy the exact key pnpm prints.)
+
+Allowing a build means letting that package's code run on your machine at install time, outside any agent sandbox. Prefer pinning a commit (`...#<sha>`) so later pushes cannot silently change what runs.
+
+### What is a dsh profile?
+
+Every dsh run boots a **profile** — a named environment whose configuration lives under the harness home in `~/.dsh/profiles/<name>` (or `$DSH_HOME/profiles/<name>` if the `DSH_HOME` env var is set). A profile directory holds:
+
+| File | Purpose |
+|---|---|
+| `package.json` | Profile manifest: `dsh.profile.bundles` lists the ordered plugin bundles to mount; `dependencies` holds out-of-tree plugins |
+| `cordis.patch.yml` | Your own patch layer, applied after every bundle layer |
+| `pnpm-workspace.yaml` | pnpm settings for the profile; the `allowBuilds` key goes here |
+| `node_modules` | pnpm-managed plugin dependencies |
+
+There is **no default profile** — `dsh --profile <name>` is required on every run (`dsh web` is a shorthand for `dsh --profile web`). The shipped `web` and `headless` profiles auto-initialize on first boot; any other name is created automatically the first time you run a `dsh plugin --profile <name> ...` command, which reports where it was created:
+
+```sh
+dsh plugin --profile tui add github:7dgroup-ai/dsh-skill-7d-code-reviewer
+# dsh: initialized profile tui at ~/.dsh/profiles/tui
+```
+
+To see which profiles already exist, list `~/.dsh/profiles/` — each subdirectory is one profile name. A custom name must be created this way before it can boot: `dsh --profile <name>` on an unknown custom name fails with the hint `create it with 'dsh plugin --profile <name> add <package>'`.
+
+### Install from tarball (no build approval)
+
+A prebuilt tarball is committed at the repository root — download it and install directly:
+
+```sh
+dsh plugin --profile <name> add ./7dgroup-dsh-skill-7d-code-reviewer-0.1.0-rc.5.tgz
+```
+
+Or once published on npm:
+
+```sh
+dsh plugin --profile <name> add @7dgroup/dsh-skill-7d-code-reviewer
+```
+
+Both forms ship prebuilt code and need no `allowBuilds` allowance.
+
+### Recommended setup — install into the `web` profile
+
+Most sessions boot the default `web` profile (`dsh web` is a shorthand for `dsh --profile web`), so the recommended path is to install the skill there — no new profile needed:
+
+**Step 0 — pnpm on PATH.** `dsh plugin` forwards to pnpm in the profile directory, so pnpm must be installed and on PATH:
+
+```sh
+corepack prepare pnpm@latest --activate   # or: npm install -g pnpm@10
+```
+
+**Step 1 — install via the `github:` shorthand.** A git install runs the package's `prepare` build, which pnpm blocks until explicitly allowed — so the first `add` fails:
+
+```sh
+dsh plugin --profile web add github:7dgroup-ai/dsh-skill-7d-code-reviewer
+```
+
+Copy the exact key pnpm prints into `~/.dsh/profiles/web/pnpm-workspace.yaml`:
+
+```yaml
+allowBuilds:
+  '@7dgroup/dsh-skill-7d-code-reviewer@github:7dgroup-ai/dsh-skill-7d-code-reviewer#<sha>': true
+```
+
+then re-run the same command. Prefer **pinning a commit** — append `#<sha>` to the spec (`github:7dgroup-ai/dsh-skill-7d-code-reviewer#<sha>`) so later pushes cannot silently change what runs.
+
+**Prefer no build approval?** Install the prebuilt tarball instead — it ships ready-to-run code and never hits the `allowBuilds` gate:
+
+```sh
+dsh plugin --profile web add ./7dgroup-dsh-skill-7d-code-reviewer-0.1.0-rc.5.tgz
+```
+
+**After install.** The profile manifest `~/.dsh/profiles/web/package.json` gains the dependency and the bundle row:
+
+```json
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "@7dgroup/dsh-skill-7d-code-reviewer": "<version>"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@7dgroup/dsh-skill-7d-code-reviewer"
+      ]
+    }
+  }
+}
+```
+
+Nothing else needs editing — `cordis.patch.yml` stays `[]`, because the bundle's own patch layer mounts the `skill-7d-code-reviewer` row automatically. Verify the mount with `dsh --profile web --dump-config`, restart the session (bundle changes apply on the next boot), then run `/7d-code-reviewer`.
+
+**Using a different profile?** Replace `web` with the name you boot (`dsh --profile <name>`); the skill only activates in the profile it is installed into.
+
+### Build and test
+
+```sh
+pnpm install
+pnpm build   # tsdown; also runs as the `prepare` hook on git installs
+pnpm test    # vitest
+```
+
+## 💡 Usage
+
+The skill activates whenever you ask for a code review — either with the slash command or in natural language:
+
+> /7d-code-reviewer Review this module: ...
+
+The five-step review flow:
+
+| Step | What happens |
+|---|---|
+| 1. Accept the task | Take the submitted code or file paths; determine the language and business context |
+| 2. Quick scan | Classify the change (new feature / bugfix / refactor); locate the core files and key logic |
+| 3. Line-by-line review | Load the matching references on demand; check naming, security, performance and error handling |
+| 4. Severity grading | 🔴 critical — must fix · 🟡 medium — should fix · 🟢 minor — optional improvement |
+| 5. Report generation | Fill the placeholder HTML template; output the text summary plus `code-review-report-{timestamp}.html` |
+
+### Output example (text summary)
+
+```
+✅ 优点
+- 函数意图明确，返回用户数据
+
+⚠️ 问题
+🔴 严重：SQL 注入风险
+  位置：get_user() 第 2 行
+  描述：直接使用 f-string 拼接用户输入到 SQL 语句
+  建议修复：使用参数化查询，如 cursor.execute("SELECT * FROM users WHERE id=?", [uid])
+
+📊 总体评分：3/10
+   代码质量: 5/10 | 安全性: 1/10 | 性能: 7/10 | 可维护性: 4/10
+```
+
+The full HTML report is saved to `code-review-report-{timestamp}.html` and the file path is reported back to you.
+
+## 📊 Grading & Scoring Standards
+
+Severity levels:
+
+| Level | Marker | Definition | Handling |
+|---|---|---|---|
+| Critical | 🔴 | security vulnerability, crash risk | must fix |
+| Medium | 🟡 | performance hazard, logic flaw | should fix |
+| Minor | 🟢 | naming, comments | optional improvement |
+
+Dimension scoring (each on a 1–10 scale):
+
+| Dimension | Excellent (8–10) | Good (6–7) | Needs work (4–5) | Poor (1–3) |
+|---|---|---|---|---|
+| Code quality | clear naming, clean structure, no duplication | mostly compliant, minor issues | confusing naming or high complexity | violates coding standards |
+| Security | no risk, parameterized queries, full validation | basically safe, small flaws | security hazards | severe vulnerabilities |
+| Performance | efficient algorithms, caching, no N+1 | acceptable | obvious problems | severe defects |
+| Maintainability | documented, modular, high test coverage | maintainable | missing comments/tests | hard to maintain |
+
+Overall score bands: 9–10 excellent · 7–8 good · 5–6 fair · 3–4 poor · 1–2 very poor (fix immediately).
+
+## 📈 HTML Report
+
+- **Score circle** — overall score (1–10) with an auto-generated summary
+- **Issue statistics bar** — critical / medium / minor counts and good points
+- **Dimension score cards** — code quality / security / performance / maintainability
+- **Issues grouped by severity** — location, description and fix suggestion (with code sample)
+- **Good points & improvement suggestions** sections
+- Pure-placeholder template — all placeholders must be filled; every dynamic value is HTML-escaped per `scripts/html-report-generation.md`
+- Empty sections follow the no-content rule (e.g. "🎉 未发现严重问题！")
+
+## ⚠️ Notes
+
+1. The provider contributes one fixed skill; no runtime customization.
+2. Report quality depends on the model following the placeholder-filling and HTML-escaping rules; nothing validates the generated report.
+3. The prepared build ships no type declarations; the dsh Loader loads the runtime entry only.
+4. The build is transpile-only (`dts: false`) with no lint or typecheck scripts — type errors surface in the editor/IDE.
+5. Commit messages in this repository follow the Simplified Chinese convention: `【类型】简短描述` (nine fixed type tags).
+
+## ❓ FAQ
+
+**Q: Why does the first `dsh plugin add` fail?**
+A: pnpm refuses to run build scripts of git dependencies until explicitly allowed. Copy the exact package key pnpm printed into the profile's `pnpm-workspace.yaml` → `allowBuilds`, then re-run.
+
+**Q: How do I pin a specific commit?**
+A: Append `#<sha>` to the spec, e.g. `git+https://github.com/7dgroup-ai/dsh-skill-7d-code-reviewer.git#<sha>` — later pushes cannot silently change what runs.
+
+**Q: How do I uninstall?**
+A: Run `dsh plugin --profile <name> remove @7dgroup/dsh-skill-7d-code-reviewer` (pnpm removes the dependency and the bundle row is reconciled away), or edit the profile's `package.json` and remove the row from `dsh.profile.bundles`. No core patches are left behind.
+
+**Q: Can I install without approving builds?**
+A: Yes — use the prebuilt tarball (committed at the repository root) or the npm package (once published); neither needs `allowBuilds`.
+
+**Q: Which profile should I install into?**
+A: The one you boot — `dsh --profile <name>` is required on every run, and the skill only activates in the profile it is installed into. Most sessions boot `web` (`dsh web`), so `dsh plugin --profile web add ...` is the typical command.
+
+**Q: `dsh plugin` fails with "pnpm not found"?**
+A: `dsh plugin` forwards to pnpm in the profile directory — install pnpm and put it on PATH (`corepack prepare pnpm@latest --activate` or `npm install -g pnpm@10`), then re-run.
+
+## 📄 License
+
+[MIT](LICENSE) · Copyright (c) 2026 7DGroup

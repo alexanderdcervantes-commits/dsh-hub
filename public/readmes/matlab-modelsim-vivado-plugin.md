@@ -1,0 +1,97 @@
+# mmv-dspic — MATLAB + ModelSim + Vivado 数字通信 IC 设计全流程插件
+
+一个 DeepSeek Harness 插件，为 Agent 提供 **MATLAB（算法建模/参考仿真）→ ModelSim（RTL 编译/仿真）→ Vivado（综合/实现/比特流）** 的完整数字通信 IC 设计工具链，全部通过本地已安装的 EDA 工具执行。
+
+## 工具一览
+
+| 工具 | 作用 |
+| --- | --- |
+| `mmv_check_env` | 探测 MATLAB / ModelSim / Vivado 是否可用并读取版本信息 |
+| `mmv_project_init` | 初始化设计工作区（matlab/ rtl/ sim/ scripts/ reports/ + 模板） |
+| `mmv_matlab_run` | 以 `matlab -batch` 运行 .m 脚本或内联表达式，捕获输出与退出码 |
+| `mmv_modelsim_compile` | 用 vlog/vcom 把 Verilog/SystemVerilog/VHDL 源码编译进 work 库（vlib 自动建库） |
+| `mmv_modelsim_simulate` | 用 `vsim -c` 以 do-file 或内联命令运行批处理仿真，可录制波形 |
+| `mmv_vivado_run` | 以 `vivado -mode batch -notrace` 运行任意 Tcl 脚本 |
+| `mmv_vivado_flow` | 一键生成并运行 综合 → 实现 → 比特流 的标准 Tcl 流程 |
+
+所有运行类工具返回统一的规范结果：`exitCode`（超时被杀时为 `null`）、`timedOut`、`durationMs`、`stdout`、`stderr`、`truncated`（输出超过 `maxOutputChars` 上限时截断并标记）。非零退出码是正常领域结果而非工具错误，Agent 需检查 `exitCode` 判断成败。
+
+## 安装与加载
+
+本插件运行在 DeepSeek Harness 生态内（依赖 `@deepseek-ai/dsh-tools` 等 workspace 包），推荐把它作为**可放入 checkouts 的文件夹**使用：克隆/复制本仓库到你的 `deepseek-harness` checkout 根目录（保留文件夹名 `matlab-modelsim-vivado-plugin`，这样 `tsconfig`/`vitest` 对 `../tsconfig.base.json` 的相对引用成立；放在其他位置时请相应调整）。
+
+### 方式一：Web 覆盖层（开发用，已验证）
+
+```sh
+# 从 deepseek-harness checkout 根目录运行
+# cordis.yml 中的 name 需为绝对路径，Windows 上必须写成 file:///... 的 URL 形式
+# （裸的 D:/ 路径会被当成 d: 协议）——迁移机器后请修改该行
+pnpm dsh web --patch ./matlab-modelsim-vivado-plugin/cordis.yml
+```
+
+打开 `http://127.0.0.1:3080`。启动日志出现 `[mmv-dspic] plugin loaded (...)` 即加载成功；Agent 立即可调用 7 个 `mmv_*` 工具。若已有 GUI 实例在运行，需先停掉旧实例再以此命令重启。
+
+### 方式二：组合包安装（bundle，官方格式）
+
+```sh
+# 先构建 lib/（在 checkout 根目录执行）
+node node_modules/typescript/bin/tsc -b matlab-modelsim-vivado-plugin/tsconfig.build.json
+
+# 安装进 profile（本仓库声明了 dsh.bundle manifest，会自动追加到 dsh.profile.bundles）
+pnpm dsh plugin --profile web add ./matlab-modelsim-vivado-plugin
+pnpm dsh web   # 或 dsh --profile web 启动
+```
+
+验证层已生效：`pnpm dsh --profile web --dump-config` 应出现 `# == mmv-dspic` 层。源码模式（`pnpm dsh`，tsx 解析）下 `@deepseek-ai/*` 依赖经由 checkout 的 tsconfig paths 解析；`dsh plugin add` 用 `link:` 协议链接本目录，不会自动安装其 npm 依赖，因此**必须在 deepseek-harness checkout 内构建并使用**。从纯 npm/git 独立安装（脱离 checkout）暂不支持，需要先发布到 npm 再由 pnpm 解析依赖。
+
+### 方式三：临时 profile 验证
+
+```sh
+pnpm dsh plugin --profile mmv-test add ./matlab-modelsim-vivado-plugin
+pnpm dsh --profile mmv-test --dump-config   # 检查 # == mmv-dspic 层
+# 验证后删除：Remove-Item $env:USERPROFILE\.dsh\profiles\mmv-test -Recurse
+```
+
+## 配置
+
+`cordis.yml` 中 `mmv-dspic` 条目的 `config`：
+
+| 字段 | 默认值 | 说明 |
+| --- | --- | --- |
+| `matlabPath` | `matlab` | MATLAB 可执行文件（PATH 名或绝对路径） |
+| `modelsimPath` | `vsim` | ModelSim 引用：PATH 名、vsim 绝对路径或 bin 目录；vlog/vcom/vlib 由它推导 |
+| `vivadoPath` | `vivado` | Vivado 可执行文件；Windows 上解析到 `.bat/.cmd` 时经 cmd 调用 |
+| `workdir` | `''` | 工具运行的默认工作目录；空表示 Harness 进程目录 |
+| `timeoutMs` | `600000` | 每次运行的默认超时（毫秒），单次调用可用 `timeoutMs` 参数覆盖 |
+| `maxOutputChars` | `40000` | stdout/stderr 单流截断上限（字符） |
+
+## 推荐流程（数字通信 IC 设计）
+
+1. **`mmv_check_env`** — 确认三个工具链可用。
+2. **`mmv_project_init`** — 建立工作区；`matlab/` 放算法模型，`rtl/` 放可综合 RTL，`sim/` 放 testbench 与 do-file。
+3. **`mmv_matlab_run`** — 在 MATLAB 中完成算法建模（滤波器系数、调制映射、BER/EVN 曲线、定点化参考数据）。
+4. **`mmv_modelsim_compile` + `mmv_modelsim_simulate`** — 编译 RTL 与 testbench，批处理仿真并与 MATLAB 参考数据交叉比对；`recordWaves: true` 生成 WLF 波形。
+5. **`mmv_vivado_flow`** — 仿真通过后综合/实现/生成比特流，产出 `synth.dcp`、`impl.dcp`、utilization/timing 报告与 `.bit` 文件（默认输出到 `vivado_out/`）。
+6. **`mmv_vivado_run`** — 需要自定义 Tcl 步骤（报告分析、DCP 检查等）时使用。
+
+## 开发与验证
+
+```sh
+# 类型检查（project references 构建，依赖已构建的 lib/types）
+node node_modules/typescript/bin/tsc -b matlab-modelsim-vivado-plugin/tsconfig.json
+
+# 单元测试（真实 ToolRuntime + 真实子进程，EDA 工具用假可执行文件替身）
+node node_modules/vitest/vitest.mjs run --config matlab-modelsim-vivado-plugin/vitest.config.ts
+```
+
+测试覆盖：插件导出形态（Loader 兼容）、7 个工具注册与 HMR 卸载、进程运行器的超时/中止/截断/缺失可执行文件契约、参数校验（含 exactly-one 约束）、以及通过真实 spawn 的假 vlib/vlog/vsim/vivado 验证完整调用链。
+
+## 设计说明与限制
+
+- 进程由插件直接 `spawn`（不经过 dsh-shell/dsh-subprocess 服务），因此不走 Harness 的 shell 审批/沙箱策略；这也是该插件定位为本地开发插件的取舍。
+- 运行类工具未接入 `ctx.jobs` 后台任务机制：MATLAB/Vivado 长任务在前台执行，由 `timeoutMs` 兜底。需要后台化时可参考 `dsh-tool-bash` 的 producer 模式扩展。
+- `mmv_vivado_flow` 生成的 Tcl 假定 `read_verilog`/`read_vhdl`/`read_xdc` 直接读文件列表；不含 IP 核、`synth_design` 之外的策略选项，复杂工程请用 `mmv_vivado_run` 跑手写 Tcl。
+- 未提供波形查看、报告解析等后处理工具；Agent 直接阅读工具返回的日志与报告文本。
+- 插件不在 deepseek-harness 的 `packages/` 下，不参与其 coverage/文档门禁与 invariant 注册。
+- `lib/` 为构建产物，不入库（`.gitignore`）；使用方式二的用户需先构建。
+- 测试中的 fake 工具链替身仅在 Windows 上生成 `.cmd`、其他平台生成 sh 脚本，两条路径均已覆盖。

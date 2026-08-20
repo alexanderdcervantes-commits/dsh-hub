@@ -67,7 +67,9 @@
     "galleryPrev": "上一张",
     "galleryNext": "下一张",
     "galleryThumb": "查看第 {n} 张截图",
-    "imageUnavailable": "图片暂不可用"
+    "imageUnavailable": "图片暂不可用",
+    "editorialTitle": "本站点评",
+    "readmeTitle": "仓库 README"
   },
   "meme": {
     "title": "整活专区",

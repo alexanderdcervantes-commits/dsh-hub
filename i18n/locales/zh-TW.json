@@ -67,7 +67,9 @@
     "galleryPrev": "上一張",
     "galleryNext": "下一張",
     "galleryThumb": "檢視第 {n} 張截圖",
-    "imageUnavailable": "圖片暫不可用"
+    "imageUnavailable": "圖片暫不可用",
+    "editorialTitle": "本站點評",
+    "readmeTitle": "倉庫 README"
   },
   "meme": {
     "title": "整活專區",

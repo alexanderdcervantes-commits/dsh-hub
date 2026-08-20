@@ -1,0 +1,229 @@
+# dsh-knowledge
+
+[![npm](https://img.shields.io/npm/v/%40lemoncat7%2Fdsh-knowledge)](https://www.npmjs.com/package/@lemoncat7/dsh-knowledge)
+[![GitHub Release](https://img.shields.io/github/v/release/lemoncat7/dsh-knowledge)](https://github.com/lemoncat7/dsh-knowledge/releases/latest)
+[![awesome · DSH plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
+
+`dsh-knowledge` 是面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的知识库插件。它不修改 DSH Agent Loop，同一个插件既能使用本地 SQLite，也能连接远程中央知识库。
+
+正式版本 `0.7.1` 提供可部署的多知识库、按需检索工具、本地与远程中央服务、文档型 Web 管理台，以及全局回写策略与安全直写协调：
+
+- 回答完成后同步调用 DSH 当前模型判断是否产生知识，并在回答下方显示逐库回写结果。
+- 知识标题、正文、自然语言标签和提取理由默认跟随本轮用户语言；代码、命令和技术标识保持原样。
+- 回写结果只作为 UI 状态展示，在下一次模型请求前会被移除，不占用会话上下文。
+- 全局“严谨 / 主动”回写策略保存在权威知识库服务中；远程客户端自动跟随中央设置。严谨模式不限制候选数量，而是只接受明确陈述或已经验证的长期知识。
+- 可创建多个知识库，分别设定说明、默认标签和提取要求。
+- 每个知识库可选择专用回写模型；未设定时跟随当前会话模型。
+- 项目和会话挂载；会话默认继承项目，也可独立覆盖或关闭。
+- 每个挂载支持仅召回、审核写入、直接写入，以及包含/排除标签和额外提取要求。
+- `create / update / conflict / skip` 提取决策；直写模式自动写入普通结果，冲突仍进入人工审核。
+- 直接写入由服务端原子协调：兼容的同主题内容合并并保留版本，完全重复直接跳过，疑似矛盾保护原条目并转入审核。
+- 未挂载知识库时，不召回、不提取、不回写。
+- 全局与项目范围，以及偏好、事实、决策、流程、经验五类知识。
+- SQLite WAL、FTS5 全文搜索、原子事务、完整版本历史和幂等提取任务。
+- 挂载库的名称和描述作为轻量动态目录注入，不直接塞入文档正文。
+- 每条新用户消息默认只主动预取 3 条短摘要；模型可按需调用只读的 `knowledge_search` 与 `knowledge_read` 工具继续检索。
+- 用户明确要求时，模型可调用 `knowledge_base_create` 和 `knowledge_base_update` 创建或修改知识库；工具内部跟随当前 Provider 自动写入本地 SQLite 或远程中央服务，模型不传也不猜存储位置。
+- 创建或修改工具不会自动挂载知识库，也不会回退、双写或同步到另一端；结果会明确返回实际写入的 `local` 或 `remote`。
+- 搜索和读取由服务端按当前会话挂载、项目范围及包含/排除标签强制限权，读取句柄带签名且仅限当前会话。
+- 本地与远程 Provider 使用同一接口；远程模式不做隐式双向同步。
+- DSH“设置 → 插件”提供“知识库连接”卡片，可选择本地来源或填写中央服务地址和只写客户端令牌，保存后实时验证并切换 Provider。
+- Bearer Token 仅保存 SHA-256 摘要，支持 `read / propose / write / admin` 权限及吊销。
+- 认证 HTTP API，可作为其他 DSH 客户端和未来桌面端的中央知识库。
+- Apple 风格三栏文档界面，按知识库浏览自动整理的 `README.md`、`facts.md`、`decisions.md` 等文档。
+- 知识库管理拆分为“知识库”和“项目与会话挂载”两个工作区；支持按名称、描述、标签和模型即时搜索，避免知识库较多时逐张翻找。
+- 知识库栏和文档栏可拖拽或用方向键调宽；文档标题栏提供稳定的显示开关，可直接收起和展开两个栏位；DSH 内的管理窗口可缩放、最大化和还原。
+- 随插件安装的响应式 Web 管理台，覆盖概览、文档浏览、条目维护、AI 候选审核和客户端令牌管理。
+- DSH 浏览器端插件：在左侧工作区下方显示“知识库”，并在当前页面内打开管理面板。
+- 明暗主题、键盘操作、窄屏布局以及不依赖颜色的状态标签。
+
+## 安装
+
+从 npm 安装正式版：
+
+```bash
+dsh plugin --profile web add @lemoncat7/dsh-knowledge
+```
+
+需要固定版本时：
+
+```bash
+dsh plugin --profile web add @lemoncat7/dsh-knowledge@0.7.1
+```
+
+也可以从 [GitHub Release](https://github.com/lemoncat7/dsh-knowledge/releases/latest) 下载完整预构建包后安装：
+
+```bash
+dsh plugin --profile web add ./lemoncat7-dsh-knowledge-0.7.1.tgz
+```
+
+卸载：
+
+```bash
+dsh plugin --profile web remove @lemoncat7/dsh-knowledge
+```
+
+插件是标准 DSH profile bundle：`package.json` 的 `dsh.bundle.patch` 指向 `cordis.patch.yml`。安装后不需要单独运行知识库容器。
+
+安装或更新后请重启对应的 DSH profile。Web 版重启命令：
+
+```bash
+pnpm dsh web
+```
+
+## DSH 插件商店
+
+本仓库符合 DSH 社区目录的安装要求：声明了 `dsh.bundle`、发布了 npm 预构建包，并使用 GitHub `dsh-plugin` Topic。目录收录完成后，可在 DSH 的插件市场搜索 `dsh-knowledge` 或“知识库”，安装源为 `@lemoncat7/dsh-knowledge`。
+
+插件商店的数据来自 [awesome-dsh-plugin.com](https://awesome-dsh-plugin.com)，不是单靠 npm 标签自动生成。若商店尚未刷新，可先使用上面的 npm 命令安装。
+
+## 本地模式
+
+默认配置使用 DSH 持久目录中的 SQLite 文件：
+
+```yaml
+- id: knowledge
+  name: '@lemoncat7/dsh-knowledge'
+  config:
+    backend: local
+    databasePath: !!js dshHomePath('knowledge/knowledge.sqlite')
+    extractionEnabled: true
+    defaultScope: project
+    autoRecallLimit: 3
+    exposeApi: false
+    exposeWeb: true
+```
+
+本地管理台默认开启。它使用独立的同源管理接口，不要求开放远程 API，也不要求输入访问令牌；侧栏“知识库”安装后即可使用。任何能访问 DSH Web 的用户都具有本地管理权限，因此把 DSH 暴露到公网时，应继续使用反向代理登录保护整个 DSH 站点。
+
+提取模型默认沿用刚完成回答的 provider/model。可在单个知识库中设置专用回写模型；以下全局配置仅作为兼容性后备：
+
+```yaml
+    extractionProvider: deepseek-official
+    extractionModel: deepseek-chat
+```
+
+独立模型必须先在 DSH 的模型设置中注册。不论使用 Kimi 还是其他会话模型，首次超限后都会保持原 provider/model，用精简提示和低推理重试，不会暗中换模型。
+
+提取输出达到模型上限时会自动用双倍预算重试一次（最高 8192 tokens）。其他提取失败会将幂等任务标为 `failed`，失败任务最多可重新领取两次，并在回答下方记录回写通知，不会阻断下一轮。
+
+## 中央服务端
+
+需要作为中央知识库时，进入“知识库 → 访问管理”，点击“开启远程 API”。开关会持久化，页面会显示其他客户端应填写的完整 API 地址；然后为每台客户端创建独立令牌。已撤销令牌可以永久删除。
+
+部署自动化仍可通过配置直接启用认证 API：
+
+```yaml
+    backend: local
+    databasePath: !!js dshHomePath('knowledge/knowledge.sqlite')
+    exposeApi: true
+    apiToken: !!js process.env.DSH_KNOWLEDGE_API_TOKEN
+    apiPrefix: /knowledge-api/v1
+    exposeWeb: true
+    webPath: /knowledge
+```
+
+`DSH_KNOWLEDGE_API_TOKEN` 至少 24 个字符。该值只用于创建或恢复 bootstrap admin 身份；数据库只保存摘要。服务端没有 TLS，非回环部署必须放在 HTTPS 反向代理之后。
+
+启用后访问 `http://<DSH 地址>:<端口>/knowledge`。本地管理台使用同源管理权限；开放给其他客户端的 `apiPrefix` 仍强制要求 Bearer Token。管理台和 API 均由 DSH 自身 WebServer 提供，不需要额外容器。
+
+管理台功能：
+
+- 查看准确的知识、候选和提取任务统计。
+- 创建和编辑多个知识库，管理默认标签与提取要求。
+- 在知识库页切换全局“严谨 / 主动”回写策略。
+- 管理当前项目挂载和会话覆盖，设定召回、写入模式与标签范围。
+- 在三栏界面中搜索和阅读 Markdown 文档，并保留条目管理作为兼容入口。
+- 查看 AI 提取依据，直接通过、编辑后通过或拒绝候选。
+- 创建、查看和撤销客户端令牌；新令牌原文只显示一次。
+
+知识库的 `description` 同时用于读取和回写路由：它会出现在会话的轻量挂载目录中，帮助模型判断何时调用检索工具；提取器也只有在当前对话中的可复用知识符合该描述时，才能选择这个库。挂载只表示“可选”，不代表每次回答都要检索或写入。`extractionInstructions` 用于在匹配后继续限定具体收录规则。
+
+创建示例：
+
+```json
+{
+  "draft": {
+    "name": "DSH 项目规范",
+    "description": "只匹配 DSH 插件开发、架构决策和部署规范相关对话",
+    "defaultTags": ["dsh", "project-rule"],
+    "extractionInstructions": "只收录已确认且可跨会话复用的结论"
+  }
+}
+```
+
+局部修改标签或描述时使用 `PATCH /knowledge-bases/:id`，请求体为 `{"patch":{"description":"...","defaultTags":["..."]}}`。
+
+主要 API：
+
+| Method | Path | Permission | Purpose |
+| --- | --- | --- | --- |
+| GET | `/health` | public | 健康检查 |
+| GET/PUT | `/settings` | read/admin | 读取或修改全局回写策略 |
+| GET | `/search` | read | FTS 检索 |
+| GET/POST | `/knowledge-bases` | read/write | 知识库列表和创建 |
+| GET/PUT/PATCH | `/knowledge-bases/:id` | read/write | 详情、完整替换和局部修改 |
+| POST | `/knowledge-bases/:id/archive` | admin | 归档并关闭相关挂载 |
+| POST | `/knowledge-bases/:id/restore` | admin | 恢复已归档知识库 |
+| DELETE | `/knowledge-bases/:id` | admin | 永久删除已归档知识库及全部关联数据 |
+| GET/POST/DELETE | `/mounts` | read/write | 挂载查询、更新和删除 |
+| POST | `/mounts/bulk` | write | 事务型批量挂载与取消 |
+| GET | `/mounts/resolve` | read | 解析项目继承与会话覆盖 |
+| GET | `/documents` | read | 按知识库或正文搜索 Markdown 文档 |
+| GET | `/documents/:id` | read | 读取单篇 Markdown 文档 |
+| GET/POST | `/entries` | read/write | 列表和直接创建 |
+| GET/PUT/DELETE | `/entries/:id` | read/write/admin | 详情、更新、彻底删除 |
+| GET | `/entries/:id/versions` | read | 版本历史 |
+| GET/POST | `/candidates` | read/propose | 候选列表和提交 |
+| POST | `/candidates/direct` | propose + write | 原子直写、兼容合并、重复跳过和冲突转审 |
+| POST | `/candidates/:id/review` | write | 审核候选 |
+| GET/POST/DELETE | `/tokens` | admin | 客户端令牌管理 |
+
+路径均位于配置的 `apiPrefix` 下。创建令牌时，原始令牌只在响应中返回一次。
+
+## 远程客户端
+
+先在中央实例的“知识库 → 客户端令牌”中为每台客户端分别创建令牌。普通 DSH 客户端建议选择 `read + propose`；需要直接写入或管理挂载时再增加 `write`。令牌原文只显示一次。
+
+其他 DSH 客户端安装本插件后，打开“设置 → 插件 → 知识库连接”，选择“远程”，填写中央实例的知识库 API 地址和客户端令牌，再点“验证并连接”。插件会先验证地址和令牌，成功后立即热切换，并把连接持久化到 DSH 数据目录；令牌不会在页面或控制接口中回显，只能覆盖。
+
+侧栏“知识库”入口会先通过控制接口确认当前实例是否启用了管理台，确认后才加载管理页面。管理台默认随本地模式启用；只有 profile 显式设置 `exposeWeb: false` 时才关闭。入口不会把未注册的 `/knowledge` 误交给 DSH Web 主页面，因此不会触发 `dsh-plugin-desktop` 参数错误。
+
+如需用配置文件或环境变量部署，也可以直接设置 Provider：
+
+```yaml
+- id: knowledge
+  name: '@lemoncat7/dsh-knowledge'
+  config:
+    backend: remote
+    remoteUrl: 'https://knowledge.example.com/knowledge-api/v1'
+    remoteToken: !!js process.env.DSH_KNOWLEDGE_REMOTE_TOKEN
+    extractionEnabled: true
+    autoRecallLimit: 3
+```
+
+远程地址必须是 HTTPS；只有 `localhost` 和回环 IP 的测试地址允许 HTTP。普通客户端建议只分配 `read + propose` 权限。
+远程客户端连接的是中央库，不会复制或同步一份本地数据库；断网时无法召回或回写。侧栏管理台仍在当前 DSH 内打开，插件通过同源代理携带已保存的远程令牌访问中央 API，不使用跨域 iframe，也不会把令牌交给浏览器。远程模式隐藏“访问管理”，API 开关和客户端令牌仍由中央 DSH 管理。每台客户端仍需用自己的项目/会话标识挂载所需知识库。
+
+## 开发与 Docker 构建
+
+要求 Node.js `^22.19.0 || >=24.0.0`。
+
+```bash
+npm install
+npm test
+npm run pack:check
+```
+
+推荐使用 Node 24 Docker 环境编译、测试并输出 tarball：
+
+```bash
+docker build \
+  --build-arg NODE_IMAGE=docker.1ms.run/library/node:24-bookworm-slim \
+  --target artifact \
+  --output type=local,dest=dist .
+```
+
+架构和一致性设计见 [docs/architecture.md](docs/architecture.md)，首版产品边界见 [docs/requirements.md](docs/requirements.md)，文档型演进设计见 [docs/document-knowledge-design.zh-CN.md](docs/document-knowledge-design.zh-CN.md)。
+
+本项目采用 MIT License。

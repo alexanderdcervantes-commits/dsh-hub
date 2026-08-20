@@ -67,7 +67,9 @@
     "galleryPrev": "Vorheriges Bild",
     "galleryNext": "Nächstes Bild",
     "galleryThumb": "Screenshot {n} ansehen",
-    "imageUnavailable": "Bild nicht verfügbar"
+    "imageUnavailable": "Bild nicht verfügbar",
+    "editorialTitle": "Redaktionelle Einschätzung",
+    "readmeTitle": "Repo-README"
   },
   "meme": {
     "title": "Meme-Zone",

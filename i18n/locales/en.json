@@ -67,7 +67,9 @@
     "galleryPrev": "Previous image",
     "galleryNext": "Next image",
     "galleryThumb": "View screenshot {n}",
-    "imageUnavailable": "Image unavailable"
+    "imageUnavailable": "Image unavailable",
+    "editorialTitle": "Editor's Take",
+    "readmeTitle": "Repo README"
   },
   "meme": {
     "title": "Meme Zone",

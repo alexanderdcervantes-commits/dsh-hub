@@ -1,0 +1,279 @@
+# dsh-native-launcher
+
+> 以"零额外安装"为设计原则：仅凭一个官方插件与 Windows 原生机制，让 DeepSeek Harness Web UI 获得桌面 App 式的一键启动体验。
+
+## 设计理念
+
+**不额外安装任何东西。以官方 DeepSeek Harness 为中心，通过官方支持的插件机制，尝试拼出类似桌面端的体验。**
+
+-  **零额外安装**：不引入 Electron / Python / WebView2 等任何重型桌面端或运行时——只有官方 dsh 插件 + Windows 自带机制（wscript / powershell / cmd / NotifyIcon / AppsFolder）。装进 profile 即用，卸载即干净。
+-  **以官方为中心**：不魔改、不替换官方 Web UI，一切围绕官方版本做加法；插件本身也只是标准 dsh bundle patch，官方升级后依然兼容。
+-  **轻量体验优先**：适合想获得"桌面 App"般手感、又不想额外下载软件的人——装一个插件，换来快捷方式、托盘、独立应用窗口。
+-  **原生能力借用**：浏览器本身就是最好的"桌面壳"——PWA 安装、`--app` 独立窗口、系统应用注册，这些官方浏览器能力直接借用，不为小众需求自造轮子；同时也为"想深度适配浏览器生态"的用户保留了路径（安装为应用后任务栏/开始菜单/可固定全部由系统管理）。
+
+**一句话**：用最小的插件代价，换取最接近原生的桌面体验；不装软件，只用官方的东西。
+
+## 安装
+
+> **平台**：仅支持 **Windows**（Windows 10/11，x64）。macOS / Linux 请勿安装本插件。
+>
+> **版本要求**：需要 **dsh >= 0.1.0-rc.8**（rc.8 起官方默认自动打开浏览器，插件通过 `--no-open` 避免双开；该参数 rc.8 起支持）。若 dsh 版本过低，插件启动时会记录日志提醒升级：`npm install -g @deepseek-ai/dsh@0.1.0-rc.8`
+>
+> 前置要求：`dsh plugin` 命令依赖 **pnpm**。若提示 `pnpm is not recognized`，先安装：
+> ```bash
+> npm install -g pnpm
+> ```
+> （或启用 Node 自带的 corepack：`corepack enable pnpm`）
+
+```bash
+# 方式一：npm
+npm install -g dsh-native-launcher
+dsh plugin --profile web add dsh-native-launcher
+
+# 方式二：源码安装
+git clone https://github.com/ingleav626-art/dsh-native-launcher
+dsh plugin --profile web add <path-to-repo>
+# 重启 dsh web 后生效
+```
+
+安装后重启：桌面出现快捷方式，右下角托盘出现图标。双击快捷方式即用。
+
+**安装为应用（推荐，一次性）**：普通标签页打开 `http://127.0.0.1:3080` → 视觉中心出现安装提示框 → 点「安装」→ 弹出浏览器安装提示 → 确认。装完后：
+- 快捷方式自动打开**已安装的应用**（独立窗口、任务栏独立图标、可固定）
+- 若点安装无反应（浏览器安装抑制期），用 Edge 菜单 `⋯ → 更多工具 → 应用 → 将此站点安装为应用`
+
+## 特性
+
+-  **桌面快捷方式**：安装即生成（默认名 `DSH WebUI`，官方 DSH 图标），双击即用；幂等——已存在则跳过，指向错误/图标变更自动重建，设置页可强制重建
+-  **静默启动**：wscript 隐藏窗口，无 cmd 黑窗、无闪屏
+-  **HTTP 就绪探测**：实例已在运行（HTTP 200）→ 直接打开连上；未运行 → 才启动（不会 EADDRINUSE 失败；对 0.0.0.0 / 127.0.0.1 / [::] 监听形态免疫；TCP 通但服务未就绪时不会误判）
+-  **已安装应用优先打开**：若 Edge/Chrome 已把站点安装为 PWA 应用，快捷方式直接打开**已安装的应用窗口**（独立任务栏、无地址栏、官方图标）；未安装时按 `openMode` 回退（`--app` 独立窗口 / `--new-window` / 默认）
+-  **聚焦唤起不重复弹窗**：应用已在运行时（无论快捷方式还是托盘），通过 Win32 API（按 PID + 窗口标题双匹配，绕过前台锁）**聚焦现有窗口**，绝不新开实例；冷启动失败也会自动换路径回退，不再"点了没反应"
+-  **冷启动自愈**：浏览器完全未运行时（首进程可能吞掉 `--app-id`/`--app` 参数），每次启动都会验证浏览器进程是否真的起来——没起来自动换下一条路径，最终回退默认方式打开，不再"点了没反应"
+-  **系统托盘**：NotifyIcon 托盘菜单（打开 WebUI / 退出 WebUI），单实例互斥，**无论从快捷方式还是终端直接启动 dsh 都会出现**；"退出 WebUI"＝停止 DSH 服务 + 关闭浏览器应用窗口 + 关闭托盘，一次彻底退出；**重启 dsh 自动换新托盘**（版本标记 + 进程探测）
+-  **可靠通知（托盘原生 Toast 为主）**：任务完成 / 出错 / 被中止 / 被阻塞 / 达 Token 上限——**托盘直发 Windows 原生 Toast**（有声、进通知中心），**不依赖浏览器通知权限**；浏览器通知仅作兜底（不双弹）；Toast 失败降级 BalloonTip + 提示音，原因写 `tray-notify.log`；**页面关闭时 host 自动补发**（2s 确认窗口）；**等待批准 / 回答 / 计划审阅**也会通知（pendingInteraction 检测）
+-  **关闭语义（桌面 App 行为）**：关闭所有页面窗口后，无任务则**优雅退出服务**（官方 `appExit`，含持久化 flush）；有任务则**驻留到完成再退出**；20s 防抖 + 2s 二次确认防误杀
+-  **安装引导**：站点可安装时自动弹出白底安装模态框（含安装按钮与浏览器限制兜底提示），可一键唤出 Edge/Chrome 原生安装流程
+-  **官方图标**：应用 / 快捷方式 / 托盘 / favicon 全部使用 DeepSeek Harness 官方图标（favicon.svg 原版渲染）
+-  **增强设置页**：设置侧边栏新增 "WebUI 启动器" section（查看配置 / 重建快捷方式）+ **独立"通知"设置 section**（完成原因开关、关键词规则、等待确认开关、测试按钮）
+-  **零依赖**：仅 node builtins + Windows 自带工具
+
+###  下一步实现（规划中）
+
+- **功能可自定义化**：设置页升级为完整配置 UI（托盘开关 / 自动打开 / 打开方式 / 端口等全部可调、可持久化），不再需要改配置文件
+- **模块化可裁剪**：通知 / 关闭语义等可选模块带独立开关——甚至可以裁剪成**纯启动器**（只保留快捷方式 + 托盘 + 打开/退出，不加载通知等无关代码）
+- **一键卸载**：卸载命令自动清理桌面快捷方式、托盘进程、生成物目录（目前需手动三步清理）
+- **多浏览器适配**：Chrome / Firefox 的 PWA 安装引导差异化处理
+
+## 常见问题
+
+**Q：任务完成了但没收到通知？**
+A：通知主通道是托盘原生通知（不依赖浏览器权限）。若托盘也没弹：先确认托盘图标在（重启 dsh 会自动拉起/换新托盘），再看 `~/.dsh-webui-launcher/tray-notify.log` 是否有失败原因。另注意 Windows 会**静默屏蔽短时间内的连续通知**（同 tag 几秒内重复时尤其明显）——设置页"发送测试通知"请**间隔几秒**再点。
+
+**Q：关掉窗口后服务退出了，但我不想让它退？**
+A：把配置 `closeToExit` 改为 `false`——关窗后服务常驻（手动用托盘"退出 WebUI"才退出）。
+
+**Q：任务还在跑，我关了窗口，任务会丢吗？**
+A：不会。有任务在跑时服务会**驻留**，任务跑完（且仍无窗口）才自动退出；任务完成还会弹托盘通知。
+
+**Q：改了端口，启动打开的还是旧页面？**
+A：改 `port` 后已安装的旧 PWA 仍指向旧端口，启动会自动回退 `--app` 模式（功能可用）；清理旧应用请到 `edge://apps` 手动卸载。
+
+**Q：卸载重装了浏览器应用（PWA），通知没了？**
+A：托盘通知不受影响；浏览器兜底通知需要在通知设置页重新点一次"请求权限"。
+
+**Q：托盘图标不见了？**
+A：重启 dsh 会自动重新拉起（含旧托盘自动换新）；仍不行就任务管理器结束残留的 PowerShell 托盘进程（含 pwsh）再重启。
+
+**Q：一个任务会收到两条通知（托盘+浏览器）？**
+A：不会。托盘是主通道，浏览器通知只在其未送达时兜底（3 秒确认），正常情况下只弹一条。
+
+**Q：双击快捷方式只有命令行窗口，WebUI 没打开？**
+A：快捷方式通过 `dsh --profile web` 启动服务，**依赖 PATH 中的全局 dsh 命令**。若你平时用 `npx @deepseek-ai/dsh web` 运行（dsh 未全局安装），`dsh` 命令不存在会导致启动失败。v0.2.1 起会自动回退 npx 启动并在窗口显示提示；建议执行 `npm install -g @deepseek-ai/dsh` 全局安装以获得秒开体验。若仍失败，请提供 `%USERPROFILE%\.dsh-webui-launcher\` 下的日志（新建 issue 时模板会引导提供）。
+
+## 卸载
+
+```bash
+dsh plugin --profile web remove dsh-native-launcher   # 1. 移除插件（profile 依赖 + bundle）
+```
+
+然后手动清理生成物（插件只负责生成，不负责回收）：
+
+```powershell
+Remove-Item "$env:USERPROFILE\.dsh-webui-launcher" -Recurse -Force   # 2. 启动脚本/托盘/图标/日志
+Remove-Item "$env:USERPROFILE\Desktop\DSH WebUI.lnk"                 # 3. 桌面快捷方式
+```
+
+- **托盘进程**：右键托盘 → 退出托盘（若还在运行）
+- **已安装的 PWA**（若装过）：Edge 打开 `edge://apps` → DSH WebUI → 卸载
+- 最后重启 dsh
+
+## 版本状态
+
+### v0.2.2（当前）—— rc.8 适配 + 关闭语义修复
+
+**v0.2.2**：
+- **rc.8 适配（避免双开）**：官方 dsh web 自 rc.8 起默认自动打开浏览器（普通标签页）——启动命令默认加 `--no-open` 让官方让位，浏览器由插件负责打开（PWA 应用窗口优先），不再出现"官方标签页 + 插件应用窗口"双开；**版本要求 dsh >= 0.1.0-rc.8**（`--no-open` 参数 rc.8 起支持，低版本插件会日志提醒升级）
+- **关闭语义修复**：关窗时任务在跑 → **立即挂起等待**（不再等 20s 防抖到期），任务完成时**重新开始** 20s+2s 计时——修复"短任务（<20s）结束后重开页面只剩 2s 窗口"的问题（任务刚结束想重开页面却连不上）
+- **关闭语义全链路日志**：schedule / 挂起 / 唤醒 / 二次确认 / 取消均记录原因与状态，时序问题看日志即定位
+- npm 关键词：`dsh, deepseek-harness, launcher, windows, tray, native, zero-dependency, plugin`
+
+### v0.2.1 —— 启动可靠性修复
+
+**v0.2.1 修复**：
+- **launch.cmd 分支结构**：诊断日志文本中的括号/箭头破坏 cmd 的 if/else 解析，导致"已运行/未运行"分支同时执行（前端拉起的同时又启动新实例、端口冲突）——已修复并实测验证
+- **HTTP 就绪探测**：启动探测从 TCP 改为 HTTP（返回 200 才算"已运行"），消除托盘退出后立即双击时的误判
+- **启动命令兜底**：`dsh` 不在 PATH（npx 方式使用）时自动回退 `npx --yes @deepseek-ai/dsh`，并在窗口显示明确提示，不再静默失败
+- **托盘拉起可靠性**：spawn 参数修复 + 存活验证自动重试（最多 3 次），根治"托盘 spawn 后立即退出"
+- **环境自诊断日志**：启动时自动记录 node / dsh 命令可用性 / 端口 / 托盘进程 / 快捷方式目标（PowerShell 5.1 兼容）——问题反馈无需反复追问，看日志即可定位
+- **auto-open 去重**：页面已在用时不再重复打开浏览器
+- **close-to-exit 门槛**：仅快捷方式（启动器）拉起时生效；命令行 / npx 启动为常驻服务
+
+**v0.2（桌面化体验完整闭环）**：
+
+**v0.1 基础（桌面化外壳）**：
+- 桌面快捷方式（官方图标）+ 静默启动（无黑窗）
+- TCP 端口探测：已运行则直连，未运行才启动（不重复启动）
+- **已安装 PWA 应用优先打开**：装过应用的直接打开应用窗口，未安装自动回退浏览器
+- **应用窗口聚焦唤起**：应用已在运行时，快捷方式 / 托盘只聚焦现有窗口，绝不重复弹新实例
+- **多代 Edge 兼容**：同时支持新版 PWA 宿主进程 `pwahelper.exe` 与旧版 `msedge.exe --app-id`；窗口检测按 **app_id + 端口 URL（任意 host）** 双锚点，域名 / 应用名 / 标题均可变
+- 系统托盘（**打开 WebUI / 退出 WebUI**，"退出"＝停服务 + 关应用窗口 + 退托盘，一次彻底退出）
+- 安装引导模态框（白底，一键唤出浏览器原生安装流程）
+- 设置页增强 section（查看配置 / 重建快捷方式）+ **独立"通知"设置 section**
+- 官方 DSH 图标全入口统一
+
+**v0.2 新增（可靠性 + 关闭语义）**：
+-  **托盘原生 Toast 通知主通道**：通知决策完成后由**托盘（PowerShell）直发 Windows 原生 Toast**（有声、进通知中心）——**不再依赖浏览器通知权限**，绕开浏览器通知的不可靠转发；浏览器通知降级为**兜底**（仅当托盘未消费时补发，不双弹）；Toast 失败自动降级 BalloonTip + 提示音，失败原因记录到 `tray-notify.log`
+-  **等待确认通知**：任务进入**等待批准 / 等待回答 / 计划审阅**状态时通知（dsh-notification v0.1.2 的 pendingInteraction 检测，设置页可开关）
+-  **关闭语义（桌面应用行为）**：所有页面窗口关闭后（`pagehide` + fetch keepalive 上报），host 检查任务——无任务则走官方 `appExit` 优雅退出（持久化 flush）；有任务则**驻留到完成**，任务完成且仍无窗口时自动退出；20s 防抖 + 2s 二次确认避免刷新/闪断/重开竞态误杀，多窗口全部关闭才算
+-  **页面关闭通知兜底**：任务完成时若页面已关（client 决策不可达），host 在 2 秒确认窗口后直接补写托盘通知（全量、无规则过滤）——"关了页面也不会漏提醒"
+-  **托盘自更新**：tray.ps1 版本标记 + apply 进程探测（覆盖 powershell.exe / pwsh.exe）——重启 dsh 时旧托盘自动换新，不再"托盘还是旧逻辑"
+-  **强杀残留清理**：托盘启动时清空未消费的通知文件——大退后重启不再补弹"上次任务结束"
+
+**安装为应用后自动获得**（浏览器原生能力，无需本插件代码）：任务栏独立图标、无地址栏独立窗口、开始菜单条目、可固定任务栏、应用级关闭——与桌面 App 一致的窗口体验。
+
+### v0.1
+- 桌面快捷方式、静默启动、TCP 端口探测、系统托盘（打开/停止/退出）
+- PWA 应用窗口优先、安装引导、设置页增强、任务完成通知（dsh-notification 集成）
+
+## 工作原理
+
+```
+桌面快捷方式(DSH WebUI.lnk)
+    │ wscript.exe launcher.vbs（隐藏窗口，无黑窗）
+    ▼
+launch.cmd HTTP 就绪探测 (127.0.0.1:<port>)
+    ├─ 已运行(HTTP 200) → 拉起托盘 → open-webui.ps1（打开已装应用/浏览器，不重复启动）
+    └─ 未运行 → 拉起托盘 → set DSH_LAUNCHER=1 && dsh --profile web（静默启动；dsh 不在 PATH 时自动回退 npx --yes @deepseek-ai/dsh）
+                                │
+                                ▼
+                         插件 apply（任意启动方式都会执行）
+                                ├─ 拉起系统托盘（Mutex 单实例 + 版本自更新）
+                                ├─ 注册 PWA 路由（manifest + 官方图标）
+                                ├─ 注册设置页 "WebUI 启动器" section
+                                ├─ 注册通知/关闭语义（见下）
+                                └─ 检测 DSH_LAUNCHER=1 → loader.await() 就绪
+                                   → webServer.port 就绪 → 打开 WebUI
+```
+
+**open-webui.ps1 打开链路（多路探测，命中一个即启动）**：
+
+| 优先级 | 方式 | 说明 |
+| --- | --- | --- |
+| 0 | 已运行检测 → **聚焦现有窗口** | 按 app_id / 端口 URL（任意 host）匹配 pwahelper/msedge 进程；已在运行则 Win32 聚焦，绝不新开 |
+| 0 | `--app-id=<app_id>` | host 启动时扫描 Edge 已安装应用（Manifest Resources + Preferences 按站点 URL 匹配），部署自适应；冷启动后验证进程是否真的出现 |
+| 0b | AppsFolder（`explorer shell:AppsFolder\<AUMID>`） | Windows 已注册应用列表，按站点 host 前缀 + 名称匹配 |
+| 1-2 | PWA 快捷方式扫描 | 开始菜单 / 任务栏 / 桌面（浏览器 exe + `--app-id` 特征），避免自我递归 |
+| 3 | Chromium Web Applications 目录 | 旧结构 internal manifest 匹配 |
+| 4 | `--app` / `--new-window` / 默认 | 未安装应用时的浏览器回退 |
+
+**通知链路（可靠主通道）**：
+
+```
+回合结束（agent 实时窗口判定，防重放）
+   ├─ client（页面开着）：规则过滤 → 上报 host → 写 tray-notify.json
+   │      └─ 3s 后查 tray-acked：托盘已消费 → 浏览器不弹；未消费 → 浏览器兜底
+   └─ host 兜底（2s 确认窗口）：无客户端在线才补写（页面全关场景）
+          └─ 托盘 Timer 1.5s 轮询 → PowerShell 原生 Toast（AUMID 注册）
+             ├─ 成功 → 删除队列文件
+             └─ 失败 → 记 tray-notify.log + BalloonTip + 提示音
+```
+
+等待批准 / 回答 / 计划审阅（pendingInteraction）走同一通道。
+
+**关闭语义（桌面 App 行为）**：
+
+```
+页面加载 → online 登记（per-tab clientId）
+页面关闭/刷新 → pagehide + fetch keepalive → offline 上报
+   → 全部客户端离线 → 20s 防抖（刷新/重连可取消）
+   → 任务空闲 → 2s 二次确认 → appExit(0) 官方优雅退出（持久化 flush）
+   → 任务在跑 → 驻留；任务完成且仍无客户端 → 自动退出
+```
+
+## 配置
+
+`cordis.patch.yml`（或 profile 的 patch 层覆盖）：
+
+```yaml
+- id: native-launcher
+  config:
+    # 快捷方式双击后执行的启动命令（cmd 中运行，依赖 PATH 里的 dsh；dsh 缺失时自动回退 npx --yes @deepseek-ai/dsh）
+    # --no-open：让官方 dsh web（rc.8 起默认自动开浏览器）让位，避免双开——浏览器由插件负责打开（PWA 应用优先）
+    launchCommand: dsh --profile web --no-open
+    # 是否自动打开浏览器（仅快捷方式启动且带 DSH_LAUNCHER=1 时）
+    autoOpen: true
+    # 快捷方式名称（不含扩展名）
+    shortcutName: DSH WebUI
+    # 快捷方式已存在时是否强制覆盖
+    force: false
+    # 端口探测端口（需与 webserver 端口一致）
+    port: 3080
+    # 是否启用系统托盘
+    tray: true
+    # 打开方式：app（--app 独立窗口，默认）| new-window（独立窗口）| default（浏览器默认行为）
+    openMode: app
+    # 关闭语义（桌面应用行为）：所有页面窗口关闭后，无任务则优雅退出服务；有任务则驻留到完成
+    closeToExit: true
+```
+
+生成物（用户目录 `~/.dsh-webui-launcher/`）：
+
+| 文件 | 作用 |
+| --- | --- |
+| `launcher.vbs` | wscript 入口：隐藏窗口调起 cmd |
+| `launch.cmd` | HTTP 就绪探测 + 启动/直连 + 拉起托盘（dsh 缺失时自动 npx 回退） |
+| `open-webui.ps1` | 多路探测打开已安装应用 / 浏览器（已运行→聚焦，未运行→启动） |
+| `tray.ps1` | NotifyIcon 托盘（单实例 Mutex；打开 / 退出 WebUI；Toast 通知轮询；版本标记） |
+| `tray-version.txt` | 托盘脚本版本标记（apply 用它做托盘自更新） |
+| `tray-notify.json` | 通知队列文件（host 写 → 托盘轮询弹 Toast → 消费删除） |
+| `dsh-webui.ico` | 快捷方式 / 托盘图标（官方 DSH 图标） |
+| `native-launcher.log` | 插件运行日志（启动/快捷方式/托盘/通知/关闭语义诊断，含环境快照） |
+| `launch.log` | 快捷方式启动分支日志（每次双击的探测结果与走向，排查用） |
+| `tray-exit.log` | 托盘退出原因记录（mutex 冲突 / 正常退出，排查用） |
+| `tray-notify.log` | 托盘 Toast 失败原因 / tick 错误（排查用） |
+| `pwa-scan.log` | PWA 应用扫描诊断日志（每次启动重写，排查用） |
+
+## 与同类方案对比
+
+| 方案 | 形态 | 亮点 | 短板 |
+| --- | --- | --- | --- |
+| **dsh-native-launcher（本插件）** | 标准 dsh 插件 + Windows 自带机制 | 轻量（零重型依赖）、托盘、已装应用优先打开、可靠通知、关窗自动退出、安装引导、设置页、端口直连、静默启动、官方图标 | 仅 Windows |
+| [jenokagong/dsh-webui-launcher](https://github.com/jenokagong-dotcom/dsh-webui-launcher) | 纯 bat | 控制台可最小化恢复、快速启动（~2s） | 关窗=停服务、无托盘、无端口直连 |
+| [LvienOeria 插件](https://github.com/LvienOeria/ds-harness-webui-launcher) | dsh 插件 | 幂等 state hash、配置 .bak 备份、坏配置大声报错 | **不支持 Windows**，无托盘/快捷方式 |
+| [zhanweipan 启动器](https://github.com/zhanweipan/ds-harness-launcher) | Electron | 一键部署、版本管理、多实例、日志面板 | 重型桌面端，与轻量定位相悖 |
+| [Hllojjh 托盘](https://github.com/Hllojjh/ds-harness-tray) | Python 托盘 | 单实例互斥、只停自己进程树、外部占用识别、二次确认 | 依赖 Python 运行时 |
+| [Ruler4396 启动器](https://github.com/Ruler4396/ds-harness-webui) | WebView2 | 服务驻留三模式、关窗即停 | 依赖 WebView2 运行时 |
+
+**差异化**：同为 dsh 插件的方案里，LvienOeria 不支持 Windows、jenokagong 无托盘，而重型桌面端（Electron/WebView2/Python）都要求**额外安装运行时**——与"不额外安装任何东西"的理念相悖。本插件是"纯 Windows 原生 + 纯插件"的最小代价路线：**桌面"应用窗口"走浏览器原生 PWA 机制**——用户安装 PWA 后快捷方式直接打开已安装应用（任务栏独立、官方图标、可固定），而非自造浏览器壳——同样是"任务栏独立应用"，成本比 Electron/WebView2 低一个数量级，且零运行时依赖。
+
+
+## 致谢
+
+- 构建于 [DeepSeek Harness](https://github.com/deepseek-ai/dsh) 插件生态之上（MIT License, Copyright (c) 2026 DeepSeek）——"以最小破坏性利用原生插件生态实现桌面级体验"的设计理念，依赖其 Cordis 插件机制与官方 API
+- **任务通知功能完整集成自**：[dsh-notification](https://github.com/omdsh-dev/dsh-notification)（MIT License, Copyright (c) 2026 DeepSeek）——host 投影（`lib/notification-host.js`）与 client 完成检测/设置（`lib/notification-client.js`）为其**原样构建产物**（v0.1.2 同步：含等待确认通知），通过本插件包内模块挂载（含 `Settings > 通知` 设置页）本插件将其浏览器通知升级为托盘通知更可靠。
+- 图标使用官方 DeepSeek Harness 品牌图标（源自 dsh web 的 `favicon.svg`），仅用于非商业开源插件场景
+
+## 许可证
+
+MIT

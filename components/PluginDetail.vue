@@ -59,6 +59,15 @@ useHead({
 })
 
 const rel = computed(() => related(plugin, 4))
+
+// 「本站点评」人工字段:数据源尚未注入(editorial_zh/editorial_en 均可选),类型上
+// 局部扩展而非改 DshPlugin;zh 系(含 zh-TW,同 descOf 惯例)取中文、缺省兜底英文
+type EditorialPlugin = DshPlugin & { editorial_zh?: string; editorial_en?: string }
+const editorial = computed(() => {
+  const p = plugin as EditorialPlugin
+  if (locale.value === 'zh' || locale.value === 'zh-TW') return p.editorial_zh || p.editorial_en || ''
+  return p.editorial_en || ''
+})
 </script>
 
 <template>
@@ -95,6 +104,15 @@ const rel = computed(() => related(plugin, 4))
           <div class="lang-label" style="margin-top:18px">{{ t('plugin.descZh') }}</div>
           <p>{{ plugin.description_zh }}</p>
         </div>
+
+        <!-- 本站点评(人工撰写;editorial_zh/en 均未注入时整块不出现) -->
+        <section v-if="editorial" class="section">
+          <div class="section-head"><h2>{{ t('plugin.editorialTitle') }}</h2></div>
+          <div class="editorial-box">{{ editorial }}</div>
+        </section>
+
+        <!-- 仓库 README 全文(fetch-readmes.mjs 管道产物,无文件时组件自身不渲染) -->
+        <PluginReadme :slug="plugin.slug" />
 
         <section v-if="rel.length" class="section">
           <div class="section-head"><h2>{{ t('plugin.related') }}</h2></div>
