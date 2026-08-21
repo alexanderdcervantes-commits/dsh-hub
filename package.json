@@ -12,7 +12,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "build:data": "python3 scripts/build-data.py --enrich && node scripts/set-image-dims.mjs && node scripts/gen-zh-tw.mjs",
-    "check:prerender": "node scripts/check-prerender.mjs",
     "gen:zh-tw": "node scripts/gen-zh-tw.mjs"
   },
   "dependencies": {
