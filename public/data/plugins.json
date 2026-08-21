@@ -4963,7 +4963,8 @@
      "w": null,
      "h": null
     }
-   ]
+   ],
+   "category_de": "Peak Absurdity"
   },
   {
    "slug": "dsh-memory-evolve",
@@ -9828,8 +9829,8 @@
    "description_en": "Longbridge (港美股) market-data access for DSH — broker-grade quotes, account and trading tools plus a credentials settings page; trades require explicit confirmation; complements dsh-stock-market's free A-share sources.",
    "stars": 5,
    "forks": 0,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-longbridge",
@@ -9848,7 +9849,8 @@
     }
    ],
    "description_zh_TW": "dsh-longbridge：DSH 長橋（Longbridge）港美股資料接入外掛——券商級行情、賬戶與交易工具 + 設定頁憑據管理；交易工具強制確認，與覆蓋 A 股免費公開源的 dsh-stock-market 互補。",
-   "category_zh_TW": "工具與整合"
+   "category_zh_TW": "股票金融",
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-humanize",
@@ -10171,8 +10173,8 @@
    "description_en": "dsh-fun-ticker: a persistent bottom marquee — crypto/FX/A-share/index/US-HK tickers in any mix, add or remove them yourself, click for details with a mini sparkline; all data free and keyless, proxied host-side with caching.",
    "stars": 5,
    "forks": 0,
-   "category_zh": "娱乐",
-   "category_en": "Just for Fun",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "image": null,
    "install_cmd": "dsh plugin add github:omdsh-dev/dsh-fun-ticker",
@@ -10191,7 +10193,8 @@
     }
    ],
    "description_zh_TW": "dsh-fun-ticker：會話底部常駐橫向跑馬燈——加密/匯率/A股/指數/港美股任意組合，使用者自主增刪標的，點選條目檢視明細（含迷你 sparkline）；全部資料免費免 key，客戶端不直連上游，宿主側代理 + 快取。",
-   "category_zh_TW": "娛樂"
+   "category_zh_TW": "股票金融",
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-voice-funasr",
@@ -11824,7 +11827,7 @@
    "stars": 3,
    "forks": 0,
    "category_zh": "换皮肤色",
-   "category_en": "Skins & Themes",
+   "category_en": "Skins",
    "is_meme": false,
    "image": null,
    "install_cmd": "git clone https://github.com/AdamPlatin123/dsh-tonghuashun.git",
@@ -11849,7 +11852,8 @@
     }
    ],
    "description_zh_TW": "DSH 同花順終端皮膚外掛：同花順行情終端風格皮膚 + 程式碼量 K 線行情面板——含 ui-skin-ths 終端皮膚（紅漲綠跌令牌）與 ui-market 行情面板（程式碼量日 K 線 dock、指數 details）兩個包。",
-   "category_zh_TW": "換皮膚色"
+   "category_zh_TW": "換皮膚色",
+   "category_de": "Skins"
   },
   {
    "slug": "dsh-deepseek-balance",
@@ -17167,8 +17171,8 @@
    "description_en": "Xueqiu (Snowball) market panel docked above the composer: A-share/HK/US quotes and indices, watchlist, candlestick K-line with volume, MAs and crosshair tooltip, hot list, search, 7x24 news, plus a draggable mini index badge — no login needed.",
    "stars": 7,
    "forks": 1,
-   "category_zh": "UI 增强",
-   "category_en": "UI Enhancements",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -17189,7 +17193,7 @@
     "xueqiu"
    ],
    "description_zh_TW": "雪球行情面板：嵌入輸入框上方，免登入檢視 A股/港美股行情、指數與自選股，K線蠟燭圖（成交量/均線/十字游標）、熱榜、搜尋、7×24 快訊，另有可拖動迷你指數徽章。",
-   "category_zh_TW": "UI 增強",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -17223,7 +17227,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-navigation-bar",
@@ -27648,8 +27653,8 @@
    "description_en": "Stock market skin + real-time ticker plugin for DSH Web GUI: candlestick (K-line) popup with day/week/month periods, watchlist with pinyin fuzzy search, portfolio P&L tracker, trading session indicators, support for A-share/HK/US/crypto/forex.",
    "stars": 3,
    "forks": 0,
-   "category_zh": "换皮肤色",
-   "category_en": "Skins & Themes",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -27672,7 +27677,7 @@
     "web-ui"
    ],
    "description_zh_TW": "股市行情皮膚與功能外掛：全域性交易終端皮膚 + 跑馬燈 + 個股 K 線彈窗（日K/周K/月K 切換）、自選拼音首字母模糊搜尋、持倉盈虧管理、交易時段指示，支援 A股 / 港股 / 美股 / 加密貨幣 / 外匯。",
-   "category_zh_TW": "換皮膚色",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -27681,7 +27686,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-theme-firefly",
@@ -43002,8 +43008,8 @@
    "description_en": "Research-only trading workbench bundle: typed market-data provider seam with a CSV reference provider, multi-timeframe indicator regime snapshot and OHLCV tools, interactive chart cards in dsh web with provenance-gated model annotations, and a risk-guard denying execution-shaped tool calls at tools/pre-execute.",
    "stars": 12,
    "forks": 1,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -43024,7 +43030,7 @@
     "trading"
    ],
    "description_zh_TW": "只讀交易研究工作臺 bundle：帶型別的行情資料接縫（含 CSV 參考資料來源）、多週期指標 regime 快照與 OHLCV 工具、dsh web 互動式 K 線卡（模型標註需溯源並經價格區間校驗）、以及在 tools/pre-execute 攔截下單形工具呼叫的 risk-guard。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -43033,7 +43039,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-net-proxy",
@@ -43224,7 +43231,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Tools & Integrationen"
   },
   {
    "slug": "mrpulor-gh-dsh-nuphus-mcp",
@@ -43446,8 +43454,8 @@
    "description_en": "Quantitative R&D toolkit for DeepSeek Harness — 46 tools across six domains covering market data, indicators, factor evaluation, walk-forward ML validation, risk, options, bonds and fund simulation, with an end-to-end research pipeline.",
    "stars": 17,
    "forks": 2,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -43476,7 +43484,7 @@
     "trading"
    ],
    "description_zh_TW": "面向 DeepSeek Harness 的量化研究工具箱，46 個工具覆蓋行情、指標、因子評價、機器學習驗證、風控、期權、債券與基金模擬，並提供端到端研究管線。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -43490,7 +43498,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-shop-assistant",
@@ -43828,8 +43837,8 @@
    "description_en": "US stock quotes, price history, financial statements, analyst consensus and news via yahoo-finance2.",
    "stars": 7,
    "forks": 1,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -43853,7 +43862,7 @@
     "yahoo-finance"
    ],
    "description_zh_TW": "美股行情、歷史 K 線、財務報表、分析師共識與新聞，資料來自 yahoo-finance2。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -43867,7 +43876,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-better-edit",
@@ -45025,8 +45035,8 @@
    "description_en": "China A-share financial data MCP server for the harness: 11 fin_data__* tools (quotes/K-lines/financials/calendar/special-data/announcements/EDB/reconcile/funds/indices) over THS free official REST (primary) + AKShare (fallback) + Wind (exclusive domains), with observable degradation, context-budget compression (result-side -72.2% measured), and an offline 10-year market-data lake; BYOK.",
    "stars": 4,
    "forks": 0,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -45045,10 +45055,11 @@
     "free-first"
    ],
    "description_zh_TW": "中國 A 股金融資料 MCP server：11 個 fin_data__* 工具（行情/K線/財務/日曆/特色資料/公告/EDB/對賬/基金/指數），同花順免費官方 REST 主幹 + AKShare 兜底 + Wind 獨家域，降級全程可觀測；上下文壓縮（實測結果側 -72.2%）；離線 10 年資料湖；BYOK 零平臺金鑰。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-design",
@@ -46270,8 +46281,8 @@
    "description_en": "Financial research workflow and portfolio risk tools with source discipline for current market facts.",
    "stars": 5,
    "forks": 0,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -46296,7 +46307,7 @@
     "sox"
    ],
    "description_zh_TW": "金融研究工作流與組合風控工具，對當前市場事實強制來源與時間戳邊界。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -46305,7 +46316,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "stylotrace-dsh-plugin-stylotrace",
@@ -54004,8 +54016,8 @@
    "description_en": "A-share stock analysis and screening skill: real-time quotes, technical timing scores, buy/sell signals and a managed watchlist.",
    "stars": 3,
    "forks": 2,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -54027,7 +54039,7 @@
     "trading"
    ],
    "description_zh_TW": "A股智慧選股技能：即時行情、技術面擇時分、買賣訊號與動態股票池。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -54036,7 +54048,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "BigFish",
@@ -54511,8 +54524,8 @@
    "description_en": "RigorQuant preset + skill pack: unattended walled multi-agent research for empirical and computational mathematics (economics, finance, portfolio), with a four-part pre-implementation check battery and a jacobian/Lean escalation lane.",
    "stars": 3,
    "forks": 0,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -54527,7 +54540,7 @@
     "dsh-plugin"
    ],
    "description_zh_TW": "RigorQuant 預設與技能包：面向實證與計算數學（經濟學、金融、組合）的無人值守隔離多智慧體研究，內建四重實現前校驗與 jacobian/Lean 升級通道。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -54536,7 +54549,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "shopline-ai-toolkit-dsh",
@@ -63209,8 +63223,8 @@
    "description_en": "Scheduled bilingual financial reports for DSH: market quotes, news and macro calendar, with per-target timezones and delivery through eight dsh-im channels.",
    "stars": 0,
    "forks": 0,
-   "category_zh": "工具与集成",
-   "category_en": "Tools & Integrations",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -63225,7 +63239,7 @@
     "dsh-plugin"
    ],
    "description_zh_TW": "DSH 定時雙語財經日報：包含行情、新聞與宏觀日曆，支援每個目標獨立配置時區，並通過 dsh-im 的八種通道投遞。",
-   "category_zh_TW": "工具與整合",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -63234,7 +63248,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-dingtalk",
@@ -64411,8 +64426,8 @@
    "description_en": "Ecosystem trend dashboard (行情面板): snapshot the dsh-plugin topic and the awesome list into local history, then report weekly trends — new plugins, star gainers, category heat, awesome coverage — plus a keyword radar for new plugins and star surges.",
    "stars": 0,
    "forks": 0,
-   "category_zh": "生态与开发",
-   "category_en": "Ecosystem & Development",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -64431,7 +64446,7 @@
     "trends"
    ],
    "description_zh_TW": "生態行情面板：把 dsh-plugin topic 與 awesome 收錄列表快照成本地歷史，產出週報（新增外掛、star 增速、類別熱度、收錄覆蓋率），並支援關鍵詞雷達監控新品與 star 突增。",
-   "category_zh_TW": "生態與開發",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -64440,7 +64455,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-update-checker",
@@ -75458,8 +75474,8 @@
    "description_en": "A-share watchlist real-time market monitoring plugin: a collapsible popup in the top-right corner of the DeepSeek Harness (DSH) web interface for real-time quote monitoring, group switching, intraday and candlestick (K-line) charts, and buy/sell target price settings.",
    "stars": 57,
    "forks": 5,
-   "category_zh": "娱乐",
-   "category_en": "Just for Fun",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -75479,7 +75495,7 @@
     "stock-market"
    ],
    "description_zh_TW": "A 股自選股即時行情盯盤外掛：在 DeepSeek Harness（DSH）Web 介面的右上角顯示一個可摺疊彈窗，即時監控自選股行情、切換分組、檢視分時與 K 線、設定買賣目標價。",
-   "category_zh_TW": "娛樂",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -75508,7 +75524,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-galgame-generator",
@@ -75566,8 +75583,8 @@
    "description_en": "Local-first A-share portfolio and watchlist monitor for DSH: sidebar quotes, holdings P&L, browser add/edit/delete, and JSON persistence.",
    "stars": 3,
    "forks": 0,
-   "category_zh": "娱乐",
-   "category_en": "Just for Fun",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -75586,7 +75603,7 @@
     "stocks"
    ],
    "description_zh_TW": "DSH 本地優先的 A 股持倉與自選監控：側欄行情、持倉盈虧，以及網頁新增、修改、刪除和 JSON 儲存。",
-   "category_zh_TW": "娛樂",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -75595,7 +75612,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "-",
@@ -76633,8 +76651,8 @@
    "description_en": "Floating card showing your real position P&L (今日盈亏), Shanghai Composite Index, and intraday chart, auto-synced from the Tonghuashun investment-ledger — no manual watchlist setup.",
    "stars": 2,
    "forks": 0,
-   "category_zh": "娱乐",
-   "category_en": "Just for Fun",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -76649,7 +76667,7 @@
     "dsh-plugin"
    ],
    "description_zh_TW": "懸浮卡片，自動同步同花順投資賬本的真實持倉盈虧，顯示今日盈虧、上證指數和當日走勢圖，無需手動新增股票。",
-   "category_zh_TW": "娛樂",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -76663,7 +76681,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-serendipity",
@@ -76720,8 +76739,8 @@
    "description_en": "Real-time quote bull/bear desk pet for DSH: a portfolio-average-driven pet that runs faster and jumps higher the closer gains reach 20%, with a watchlist panel for searching and adding stocks plus a live \"race\" of how each holding is moving.",
    "stars": 0,
    "forks": 0,
-   "category_zh": "娱乐",
-   "category_en": "Just for Fun",
+   "category_zh": "股票金融",
+   "category_en": "Stocks & Quant",
    "is_meme": false,
    "meme_section": null,
    "meme_caption_zh": "",
@@ -76741,7 +76760,7 @@
     "stock"
    ],
    "description_zh_TW": "DSH 的即時行情牛熊桌寵：由自選組合平均漲跌驅動，收益越接近 20% 跑得越猛；帶自選面板可搜尋新增股票，還有展示每隻標的漲跌的即時賽跑。",
-   "category_zh_TW": "娛樂",
+   "category_zh_TW": "股票金融",
    "meme_caption_zh_TW": "",
    "screenshots": [
     {
@@ -76750,7 +76769,8 @@
      "h": null
     }
    ],
-   "auto_ingested": true
+   "auto_ingested": true,
+   "category_de": "Börse & Quant"
   },
   {
    "slug": "dsh-xiaotangyuan-game",

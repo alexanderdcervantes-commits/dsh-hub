@@ -56,6 +56,7 @@ const CATEGORY_EMOJI: Record<string, string> = {
   '客户端与终端': '🖥️', '视觉与多模态': '👁️', '记忆与知识': '🧠',
   '生态与开发': '🧭', '安全与运维': '🛡️',
   '会话与消息': '💬', '娱乐': '🎲',
+  '股票金融': '📈',
 }
 
 export function usePlugins() {

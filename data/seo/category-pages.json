@@ -1687,6 +1687,141 @@
           "dsh minigames"
         ]
       }
+    },
+    {
+      "slug": "stock",
+      "enabled": true,
+      "emoji": "📈",
+      "ogImage": "/images/dsh-tonghuashun.webp",
+      "filter": {
+        "categoryZh": [
+          "股票金融"
+        ]
+      },
+      "label": {
+        "en": "Stocks & Quant",
+        "zh": "股票金融",
+        "zh-TW": "股票金融",
+        "de": "Börse & Quant"
+      },
+      "title": {
+        "en": "DeepSeek for Stocks & Quant — {n} Stock/Trading Plugins | DSH Meme Hub",
+        "zh": "DeepSeek 炒股/选股/量化 — {n} 款股票金融插件大全 | DSH Meme Hub",
+        "zh-TW": "DeepSeek 炒股/選股/量化 — {n} 款股票金融外掛大全 | DSH Meme Hub",
+        "de": "DeepSeek für Börse & Quant — {n} Aktien-/Trading-Plugins | DSH Meme Hub"
+      },
+      "h1": {
+        "en": "The DeepSeek Harness stocks & quant collection",
+        "zh": "dsh 股票金融工具箱",
+        "zh-TW": "dsh 股票金融工具箱",
+        "de": "Börse- & Quant-Werkzeuge für DeepSeek Harness"
+      },
+      "desc": {
+        "en": "dsh stock & quant plugins: A-share watchlist tickers, US/HK market panels, quant backtesting toolkits, screening signals and holdings P&L tracking — {n} entries, star-sorted with one-click install commands.",
+        "zh": "dsh 股票金融插件大全：A 股盯盘弹窗、港美股行情面板、量化回测工具箱、选股信号与持仓盈亏管理，共 {n} 款，按 star 排序，附一键安装命令。",
+        "zh-TW": "dsh 股票金融外掛大全：A 股盯盤彈窗、港美股行情面板、量化回測工具箱、選股訊號與持倉盈虧管理，共 {n} 款，按 star 排序，附一鍵安裝命令。",
+        "de": "dsh Börse- & Quant-Plugins: A-Aktien-Watchlisten, HK/US-Marktpanels, Quant-Backtesting-Toolkits, Screening-Signale und Depot-G/U-Verfolgung — {n} Einträge, nach Stars sortiert."
+      },
+      "intro": {
+        "en": [
+          "The first step to turning DeepSeek into a trading workbench is real market data, and these plugins each bring their own source: a login-free Xueqiu panel covering A-shares and HK/US quotes (candlesticks, hot lists, 24/7 flash news), yahoo-finance2 for US quotes, financial statements and analyst consensus, a Longbridge plugin on broker-grade APIs, plus an A-share data MCP built on THS's free official REST with AKShare fallback. The top-starred dsh-stock-watch turns watchlist monitoring into a persistent popup in the corner of the web UI — intraday charts, K-lines and target prices at a glance.",
+          "The sane way to approach deepseek stock trading is to treat the AI as a research-and-discipline tool, not an oracle: monitoring goes to the resident quote widgets, while in-session the agent pulls indicators, computes factors and runs dsh-quant's 46 quant tools for validation; after close you review holdings P&L (THS ledger sync and local-first portfolio monitors already exist). deepseek stock-screening skills like bigA produce technical scores and buy/sell signals for reference — every trade decision stays yours. AI investing works when it preps the evidence and you pull the trigger."
+        ],
+        "zh": [
+          "把 DeepSeek 变成炒股工作台的第一步是接上真实行情：这一类插件各接各的数据源——雪球免登录面板覆盖 A 股与港美股（K 线、热榜、7×24 快讯），yahoo-finance2 供给美股行情、财报与分析师共识，长桥插件走券商级接口，还有同花顺免费官方 REST 加 AKShare 兜底的 A 股数据 MCP。star 最高的 dsh-stock-watch 把自选股盯盘做成 Web 界面右上角的常驻弹窗，分时、K 线、目标价一目了然。",
+          "用 deepseek 炒股的合理姿势是把 AI 当研究与纪律工具，而不是预测机器：盯盘交给常驻行情组件，盘中让 agent 拉指标、算因子、跑 dsh-quant 的 46 个量化工具做验证，收盘后再复盘持仓盈亏（同花顺账本同步、本地优先持仓监控都有现成插件）。deepseek 选股类技能（如 bigA）能产出技术面评分与买卖信号参考，但每一笔买卖决策请自己拿主意——AI 炒股的正确打开方式是「它备料，你拍板」。"
+        ],
+        "zh-TW": [
+          "把 DeepSeek 變成炒股工作台的第一步是接上真實行情：這一類外掛各接各的資料源——雪球免登入面板涵蓋 A 股與港美股（K 線、熱榜、7×24 快訊），yahoo-finance2 供給美股行情、財報與分析師共識，長橋外掛走券商級介接，還有同花順免費官方 REST 加 AKShare 兜底的 A 股資料 MCP。star 最高的 dsh-stock-watch 把自選股盯盤做成 Web 介面右上角的常駐彈窗，分時、K 線、目標價一目了然。",
+          "用 deepseek 炒股的合理姿勢是把 AI 當研究與紀律工具，而不是預測機器：盯盤交給常駐行情元件，盤中讓 agent 拉指標、算因子、跑 dsh-quant 的 46 個量化工具做驗證，收盤後再複盤持倉盈虧（同花順帳本同步、本機優先持倉監控都有現成外掛）。deepseek 選股類技能（如 bigA）能產出技術面評分與買賣訊號參考，但每一筆買賣決策請自己拿主意——AI 炒股的正確打開方式是「它備料，你拍板」。"
+        ],
+        "de": [
+          "Der erste Schritt, DeepSeek zur Börsen-Werkbank zu machen, ist echte Marktdaten — und diese Plugins bringen jeweils ihre eigene Quelle mit: ein Xueqiu-Panel ohne Login für A-Aktien und HK/US-Kurse (Candlesticks, Hotlists, 24/7-Kurznachrichten), yahoo-finance2 für US-Kurse, Finanzberichte und Analystenkonsens, ein Longbridge-Plugin auf Broker-Niveau sowie ein A-Aktien-Daten-MCP auf Basis der kostenlosen offiziellen THS-REST mit AKShare-Fallback. Der am höchsten gestarnte dsh-stock-watch macht die Watchlist zu einem dauerhaften Popup in der Ecke der Web-UI — Intraday-Charts, K-Linien und Zielkurse auf einen Blick.",
+          "Der vernünftige Weg zum deepseek-Aktienhandel behandelt die KI als Forschungs- und Disziplinwerkzeug, nicht als Orakel: Das Monitoring übernehmen dauerhafte Kurs-Widgets, in der Sitzung zieht der Agent Indikatoren, berechnet Faktoren und validiert über dsh-quants 46 Quant-Tools; nach Börsenschluss prüfen Sie das Depot-G/U (Sync mit dem THS-Konto und lokale Portfolio-Monitore existieren bereits). deepseek-Screening-Skills wie bigA liefern technische Scores und Kauf-/Verkaufssignale als Referenz — jede Handelsentscheidung bleibt bei Ihnen. KI-Investing funktioniert, wenn sie die Belege vorbereitet und Sie den Auslöser ziehen."
+        ]
+      },
+      "installNote": {
+        "en": "Stock plugins install with one command like any other — for the watchlist popup: dsh plugin --profile web add github:Awu12277/dsh-stock-watch. Credential-backed ones (the Longbridge broker API) take their token in the settings page afterwards; the full walkthrough is in the install guide.",
+        "zh": "股票插件与其他插件一样一条命令安装，例如装盯盘弹窗：dsh plugin --profile web add github:Awu12277/dsh-stock-watch；需要凭据的（长桥券商接口）装完在设置页补 Token 即可。完整流程见安装指南。",
+        "zh-TW": "股票外掛與其他外掛一樣一條命令安裝，例如裝盯盤彈窗：dsh plugin --profile web add github:Awu12277/dsh-stock-watch；需要憑證的（長橋券商介接）裝完在設定頁補 Token 即可。完整流程見安裝指南。",
+        "de": "Börsen-Plugins installieren sich wie alle anderen mit einem Befehl — für das Watchlist-Popup: dsh plugin --profile web add github:Awu12277/dsh-stock-watch. Plugins mit Zugangsdaten (die Longbridge-Broker-API) bekommen ihren Token danach in der Einstellungsseite; der vollständige Ablauf steht im Installationsguide."
+      },
+      "faqs": [
+        {
+          "q": {
+            "en": "Can DeepSeek actually trade stocks?",
+            "zh": "deepseek 能炒股吗？",
+            "zh-TW": "deepseek 能炒股嗎？",
+            "de": "Kann DeepSeek mit Aktien handeln?"
+          },
+          "a": {
+            "en": "It's a research terminal, not a money printer — pulling quotes, computing indicators and backtesting factors are exactly what dsh plugins are good at, but the buy/sell decisions remain yours.",
+            "zh": "能当研究终端不能当印钞机——行情拉取、指标计算、因子回测都是 dsh 插件的强项，但买卖决策请自己拿主意。",
+            "zh-TW": "能當研究終端不能當印鈔機——行情拉取、指標計算、因子回測都是 dsh 外掛的強項，但買賣決策請自己拿主意。",
+            "de": "Als Research-Terminal ja, als Gelddruckmaschine nein — Kurse abrufen, Indikatoren berechnen und Faktoren zurücktesten sind genau die Stärken von dsh-Plugins; die Kauf-/Verkaufsentscheidungen bleiben aber bei Ihnen."
+          }
+        },
+        {
+          "q": {
+            "en": "Which DeepSeek stock plugins are there?",
+            "zh": "有哪些 deepseek 股票插件？",
+            "zh-TW": "有哪些 deepseek 股票外掛？",
+            "de": "Welche DeepSeek-Aktien-Plugins gibt es?"
+          },
+          "a": {
+            "en": "This page collects {n}: the A-share watchlist popup (dsh-stock-watch), the Xueqiu panel (dsh-xueqiu), US market data (dsh-us-stocks), the quant toolkit (dsh-quant) and more — all manually verified and installable.",
+            "zh": "本页收录 {n} 款：A 股盯盘（dsh-stock-watch）、雪球面板（dsh-xueqiu）、美股行情（dsh-us-stocks）、量化工具箱（dsh-quant）等，全部人工验证可装。",
+            "zh-TW": "本頁收錄 {n} 款：A 股盯盤（dsh-stock-watch）、雪球面板（dsh-xueqiu）、美股行情（dsh-us-stocks）、量化工具箱（dsh-quant）等，全部人工驗證可裝。",
+            "de": "Diese Seite sammelt {n}: das A-Aktien-Watchlist-Popup (dsh-stock-watch), das Xueqiu-Panel (dsh-xueqiu), US-Marktdaten (dsh-us-stocks), das Quant-Toolkit (dsh-quant) und mehr — alle manuell geprüft und installierbar."
+          }
+        },
+        {
+          "q": {
+            "en": "Is the market data real-time?",
+            "zh": "数据是实时的吗？",
+            "zh-TW": "資料是即時的嗎？",
+            "de": "Sind die Kursdaten Echtzeit?"
+          },
+          "a": {
+            "en": "Sources differ per plugin: Xueqiu/yahoo-finance deliver near-real-time quotes, others are delayed feeds; each repo's README states which applies.",
+            "zh": "各插件接的数据源不同：雪球/yahoo-finance 为准实时行情，部分为延迟数据；以各插件 README 标注为准。",
+            "zh-TW": "各外掛接的資料源不同：雪球/yahoo-finance 為準即時行情，部分為延遲資料；以各外掛 README 標注為準。",
+            "de": "Je Plugin unterschiedliche Quellen: Xueqiu/yahoo-finance liefern nahezu Echtzeit-Kurse, andere verzögerte Feeds; maßgeblich ist das jeweilige README."
+          }
+        },
+        {
+          "q": {
+            "en": "Is AI stock trading reliable?",
+            "zh": "AI 炒股靠谱吗？",
+            "zh-TW": "AI 炒股靠譜嗎？",
+            "de": "Ist KI-Aktienhandel verlässlich?"
+          },
+          "a": {
+            "en": "The tools handle research and discipline, not the prediction of ups and downs. None of these plugins constitutes investment advice — trade at your own risk.",
+            "zh": "工具负责研究和纪律，不负责预测涨跌。所有插件均不构成投资建议，据此交易风险自负。",
+            "zh-TW": "工具負責研究和紀律，不負責預測漲跌。所有外掛均不構成投資建議，據此交易風險自負。",
+            "de": "Die Tools sind für Recherche und Disziplin zuständig, nicht für die Vorhersage von Kursen. Keines dieser Plugins stellt Anlageberatung dar — Handeln auf eigenes Risiko."
+          }
+        }
+      ],
+      "keywords": {
+        "en": [
+          "deepseek stock plugins",
+          "deepseek stock analysis",
+          "deepseek quant trading",
+          "dsh stocks",
+          "ai stock trading",
+          "deepseek trading"
+        ],
+        "zh": [
+          "deepseek 炒股",
+          "deepseek 选股",
+          "deepseek 量化交易",
+          "dsh 股票插件",
+          "deepseek 股票分析",
+          "AI 炒股"
+        ]
+      }
     }
   ]
 }
