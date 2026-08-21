@@ -298,7 +298,10 @@
     },
     "altH": "不想用命令列？",
     "altP": "本頁講的是命令列安裝（npx 一條命令跑起來）。想裝成普通桌面軟體、雙擊即用的話，去桌面啟動器專區：",
-    "altCta": "🖥️ 去桌面啟動器專區 →"
+    "altCta": "🖥️ 去桌面啟動器專區 →",
+    "docsH": "想要更詳細的教學？",
+    "docsP": "從 API Key 設置、Web UI 啟動到第一次對話和外掛開發，文件區有 66 篇超詳細教學。",
+    "docsCta": "📖 去看文件 →"
   },
   "submit": {
     "title": "投稿外掛",
@@ -323,6 +326,33 @@
     "p2": "其他導航站羅列一切，配信任分和 manifest 檢查。我們做的不一樣：只挑好東西——和好玩的。這裡的每個條目都被人看過一眼、安裝命令可用，整活區裡只有真正把我們逗笑的東西。",
     "p3": "資料（star、最近推送、許可證、manifest 存在性）從 GitHub API 定期重新整理。本站是純靜態全量預渲染的多語言（EN / 簡體中文 / 繁體中文 / DE）導航——任何網路環境下都夠快。",
     "disclaimer": "本站所有截圖摘錄自各開源專案的 README，版權歸原作者所有。僅做導航與宣傳，不分發任何原始碼或素材。如有侵權請提 issue，我們會第一時間撤下。"
+  },
+  "docs": {
+    "title": "文件",
+    "tocTitle": "本頁目錄",
+    "nextStep": "下一步",
+    "prevPage": "上一篇",
+    "nextPage": "下一篇",
+    "pageCount": "{n} 篇",
+    "homeIntro": {
+      "h1": "DSH 文件",
+      "welcome": "66 篇超詳細教學，從安裝設置一路講到外掛開發——照順序讀，或直接跳到需要的篇章。",
+      "groups": {
+        "getStarted": "零基礎起步：裝好 DSH、設置好 Key、完成第一次對話。",
+        "userGuide": "日常使用的全部命令與設置：CLI、權限、憑證與隱私。",
+        "capabilities": "一篇講一個能力點：多模型路由、內建工具、子 Agent、MCP、技能系統。",
+        "howItWorks": "從啟動載入到 Agent 主循環，把 DSH 的運作原理拆開講。",
+        "pluginDev": "從第一個外掛到寫工具、寫服務、發布設置的完整開發路徑。",
+        "guides": "程式碼審查、MCP 助手、程式驅動等實戰整合場景。",
+        "reference": "FAQ、術語表與環境變數速查。"
+      }
+    },
+    "nextGuideT": "📖 使用指南",
+    "nextGuideD": "只是日常用：命令列、設置、權限與隱私",
+    "nextLearnT": "🧠 原理課程",
+    "nextLearnD": "想理解原理：DSH 是什麼 → Agent 主循環",
+    "nextDevT": "🧩 外掛開發",
+    "nextDevD": "想給模型加能力：寫你的第一個外掛"
   },
   "footer": {
     "about": "關於",
@@ -504,7 +534,9 @@
     "clientsTitle": "DeepSeek Harness (dsh) TUI 終端與桌面客戶端精選 — 不開瀏覽器用 DSH | DSH Meme Hub",
     "clientsDesc": "dsh 有終端 UI 嗎?DeepSeek Harness TUI 與客戶端合集:{n} 個 Claude Code 風終端、Electron/macOS 桌面殼、Windows 啟動器與移動端遠端控制,按 star 排序,附安裝命令。",
     "opsTitle": "DeepSeek Harness (dsh) 安全與運維外掛 — 審批/審計/用量監控 | DSH Meme Hub",
-    "opsDesc": "dsh 用量怎麼看?DeepSeek Harness 安全與運維外掛合集:{n} 個工具呼叫審批、安全審計、會話體檢、token 用量與費用監控外掛,按 star 排序,附一鍵安裝命令。"
+    "opsDesc": "dsh 用量怎麼看?DeepSeek Harness 安全與運維外掛合集:{n} 個工具呼叫審批、安全審計、會話體檢、token 用量與費用監控外掛,按 star 排序,附一鍵安裝命令。",
+    "docsTitle": "DSH 文件（DeepSeek Harness 教學）— 從安裝到外掛開發 {'|'} DSH Meme Hub",
+    "docsDesc": "66 篇 DeepSeek Harness（DSH）中文教學：安裝設置、命令列、權限憑證、原理課程與外掛開發，從零開始把 DSH 用起來。"
   },
   "vision": {
     "title": "視覺與多模態外掛 — 給純文本 DSH 裝上眼睛",

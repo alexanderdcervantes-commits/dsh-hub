@@ -77,6 +77,16 @@ useHead({
           <NuxtLink class="btn green" :to="localePath('/launcher')">{{ t('install.altCta') }}</NuxtLink>
         </div>
 
+        <!-- 想要更详细的教程？去文档区 -->
+        <div class="alt-callout">
+          <span class="ic">📖</span>
+          <div class="body">
+            <strong>{{ t('install.docsH') }}</strong>
+            <p>{{ t('install.docsP') }}</p>
+          </div>
+          <NuxtLink class="btn green" :to="localePath('/docs/getting-started/quickstart')">{{ t('install.docsCta') }}</NuxtLink>
+        </div>
+
         <!-- 安装前速览 -->
         <section class="step-card overview">
           <h2>{{ t('install.overviewTitle') }}</h2>

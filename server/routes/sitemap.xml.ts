@@ -1,6 +1,7 @@
 import { defineEventHandler } from 'h3'
 import pluginsData from '~/public/data/plugins.json'
 import categoryCfgRaw from '~/data/seo/category-pages.json'
+import docsData from '~/data/docs/docs-data.json'
 
 interface Slug { slug: string; is_meme: boolean }
 interface CategoryCfg { slug: string; enabled: boolean }
@@ -44,6 +45,11 @@ export default defineEventHandler((event) => {
     emit(`plugins/${plug.slug}`)
     if (plug.is_meme) emit(`meme/${plug.slug}`)
   }
+
+  // 文档区（批1）：总览 + 66 篇文档页，同一 emit() 模式输出四语 hreflang alternates
+  const docPages = (docsData as { pages: Array<{ slug: string }> }).pages
+  emit('docs')
+  for (const d of docPages) emit(`docs/${d.slug}`)
 
   event.node.res.setHeader('content-type', 'application/xml')
   return `<?xml version="1.0" encoding="UTF-8"?>\n`

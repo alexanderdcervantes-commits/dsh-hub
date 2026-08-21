@@ -298,7 +298,10 @@
     },
     "altH": "不想用命令行？",
     "altP": "本页讲的是命令行安装（npx 一条命令跑起来）。想装成普通桌面软件、双击即用的话，去桌面启动器专区：",
-    "altCta": "🖥️ 去桌面启动器专区 →"
+    "altCta": "🖥️ 去桌面启动器专区 →",
+    "docsH": "想要更详细的教程？",
+    "docsP": "从 API Key 配置、Web UI 启动到第一次对话和插件开发，文档区有 66 篇超详细教程。",
+    "docsCta": "📖 去看文档 →"
   },
   "submit": {
     "title": "投稿插件",
@@ -323,6 +326,33 @@
     "p2": "其他导航站罗列一切，配信任分和 manifest 检查。我们做的不一样：只挑好东西——和好玩的。这里的每个条目都被人看过一眼、安装命令可用，整活区里只有真正把我们逗笑的东西。",
     "p3": "数据（star、最近推送、许可证、manifest 存在性）从 GitHub API 定期刷新。本站是纯静态全量预渲染的多语言（EN / 简体中文 / 繁體中文 / DE）导航——任何网络环境下都够快。",
     "disclaimer": "本站所有截图摘录自各开源项目的 README，版权归原作者所有。仅做导航与宣传，不分发任何源码或素材。如有侵权请提 issue，我们会第一时间撤下。"
+  },
+  "docs": {
+    "title": "文档",
+    "tocTitle": "本页目录",
+    "nextStep": "下一步",
+    "prevPage": "上一篇",
+    "nextPage": "下一篇",
+    "pageCount": "{n} 篇",
+    "homeIntro": {
+      "h1": "DSH 文档",
+      "welcome": "66 篇超详细教程，从安装配置一路讲到插件开发——按顺序读，或直接跳到需要的篇章。",
+      "groups": {
+        "getStarted": "零基础起步：装好 DSH、配好 Key、完成第一次对话。",
+        "userGuide": "日常使用的全部命令与配置：CLI、权限、凭据与隐私。",
+        "capabilities": "一篇讲一个能力点：多模型路由、内置工具、子 Agent、MCP、技能系统。",
+        "howItWorks": "从启动加载到 Agent 主循环，把 DSH 的运行原理拆开讲。",
+        "pluginDev": "从第一个插件到写工具、写服务、发布配置的完整开发路径。",
+        "guides": "代码审查、MCP 助手、程序驱动等实战集成场景。",
+        "reference": "FAQ、术语表与环境变量速查。"
+      }
+    },
+    "nextGuideT": "📖 使用指南",
+    "nextGuideD": "只是日常用：命令行、配置、权限与隐私",
+    "nextLearnT": "🧠 原理课程",
+    "nextLearnD": "想理解原理：DSH 是什么 → Agent 主循环",
+    "nextDevT": "🧩 插件开发",
+    "nextDevD": "想给模型加能力：写你的第一个插件"
   },
   "footer": {
     "about": "关于",
@@ -504,7 +534,9 @@
     "clientsTitle": "DeepSeek Harness (dsh) TUI 终端与桌面客户端精选 — 不开浏览器用 DSH | DSH Meme Hub",
     "clientsDesc": "dsh 有终端 UI 吗?DeepSeek Harness TUI 与客户端合集:{n} 个 Claude Code 风终端、Electron/macOS 桌面壳、Windows 启动器与移动端远程控制,按 star 排序,附安装命令。",
     "opsTitle": "DeepSeek Harness (dsh) 安全与运维插件 — 审批/审计/用量监控 | DSH Meme Hub",
-    "opsDesc": "dsh 用量怎么看?DeepSeek Harness 安全与运维插件合集:{n} 个工具调用审批、安全审计、会话体检、token 用量与费用监控插件,按 star 排序,附一键安装命令。"
+    "opsDesc": "dsh 用量怎么看?DeepSeek Harness 安全与运维插件合集:{n} 个工具调用审批、安全审计、会话体检、token 用量与费用监控插件,按 star 排序,附一键安装命令。",
+    "docsTitle": "DSH 文档（DeepSeek Harness 教程）— 从安装到插件开发 {'|'} DSH Meme Hub",
+    "docsDesc": "66 篇 DeepSeek Harness（DSH）中文教程：安装配置、命令行、权限凭据、原理课程与插件开发，从零开始把 DSH 用起来。"
   },
   "vision": {
     "title": "视觉与多模态插件 — 给纯文本 DSH 装上眼睛",

@@ -298,7 +298,10 @@
     },
     "altH": "Don't want to use a terminal?",
     "altP": "This page covers the command-line install (one npx command). Prefer a normal desktop app you can double-click? Head to the desktop launchers section:",
-    "altCta": "🖥️ Browse desktop launchers →"
+    "altCta": "🖥️ Browse desktop launchers →",
+    "docsH": "Want more detailed tutorials?",
+    "docsP": "From API key setup and launching the Web UI to your first chat and plugin development — the docs section has 66 in-depth tutorials.",
+    "docsCta": "📖 Read the docs →"
   },
   "submit": {
     "title": "Submit a Plugin",
@@ -323,6 +326,33 @@
     "p2": "Other directories list everything, with trust scores and manifest checks. We do something different: we pick the good stuff — and the fun stuff. Every entry here was looked at by a human, has a working install command, and the meme section only contains things that made us actually laugh.",
     "p3": "Data (stars, last push, license, manifest presence) is refreshed from the GitHub API. This site is a static, fully prerendered, multilingual (EN / 简体中文 / 繁體中文 / DE) guide — fast on any connection.",
     "disclaimer": "All screenshots are excerpted from the respective open-source projects' READMEs and belong to their original authors. Navigation and promotion only — no source or assets are redistributed. File an issue if any inclusion infringes your rights and it will be removed promptly."
+  },
+  "docs": {
+    "title": "Docs",
+    "tocTitle": "On this page",
+    "nextStep": "Next steps",
+    "prevPage": "Previous",
+    "nextPage": "Next",
+    "pageCount": "{n} pages",
+    "homeIntro": {
+      "h1": "DSH Documentation",
+      "welcome": "66 in-depth tutorials covering everything from installation to plugin development — read in order or jump straight to what you need.",
+      "groups": {
+        "getStarted": "Start from zero: install DSH, set up your API key, and finish your first chat.",
+        "userGuide": "Everyday commands and configuration: CLI, permissions, credentials and privacy.",
+        "capabilities": "One capability per page: multi-model routing, built-in tools, sub-agents, MCP, skills and more.",
+        "howItWorks": "How DSH works under the hood, from boot-time loading to the agent loop.",
+        "pluginDev": "The full plugin development path: your first plugin, custom tools, services and config publishing.",
+        "guides": "Hands-on integrations: code review, MCP assistants, driving DSH from your own program.",
+        "reference": "FAQ, glossary and environment variables at a glance."
+      }
+    },
+    "nextGuideT": "📖 User Guide",
+    "nextGuideD": "Just using it day to day: CLI, configuration, permissions",
+    "nextLearnT": "🧠 How It Works",
+    "nextLearnD": "Understand the internals: What is DSH → the agent loop",
+    "nextDevT": "🧩 Plugin Dev",
+    "nextDevD": "Extend the model: write your first plugin"
   },
   "footer": {
     "about": "About",
@@ -504,7 +534,9 @@
     "clientsTitle": "DeepSeek Harness (dsh) TUIs & Desktop Clients — Use DSH Without a Browser | DSH Meme Hub",
     "clientsDesc": "Does dsh have a terminal UI? Every DeepSeek Harness TUI and client: {n} Claude Code-style terminals, Electron/macOS shells, Windows launchers and mobile remote controls — star-sorted with install commands.",
     "opsTitle": "DeepSeek Harness (dsh) Security & Ops Plugins — Approvals, Audits, Usage | DSH Meme Hub",
-    "opsDesc": "How do you check dsh usage? Every DeepSeek Harness security & ops plugin: {n} tool-call approval, security audit, session health, token usage and cost-monitoring plugins — star-sorted with one-click install commands."
+    "opsDesc": "How do you check dsh usage? Every DeepSeek Harness security & ops plugin: {n} tool-call approval, security audit, session health, token usage and cost-monitoring plugins — star-sorted with one-click install commands.",
+    "docsTitle": "DSH Docs (DeepSeek Harness Tutorials) — From Install to Plugin Dev {'|'} DSH Meme Hub",
+    "docsDesc": "66 in-depth DeepSeek Harness (DSH) tutorials: installation, CLI, permissions, how it works and plugin development."
   },
   "vision": {
     "title": "Vision & Multimodal Plugins — Eyes for Text-Only DSH",

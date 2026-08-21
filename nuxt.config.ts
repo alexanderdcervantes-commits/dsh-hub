@@ -24,12 +24,20 @@ const TOP_PAGES = ['', 'plugins', 'store', ...CATEGORY_PAGES, 'best', 'compare',
 // 与 scripts/check-prerender.mjs 的 locales 保持同步
 const LOCALES = ['en', 'zh', 'zh-TW', 'de']
 
+// 文档区（批1）：/docs 总览 + 66 篇 catch-all 文档页（[...slug].vue，slug 含斜杠）。
+// 数据源与 composables/useDocs.ts、server/routes/sitemap.xml.ts 同一 JSON，单一来源。
+const DOC_SLUGS = (JSON.parse(readFileSync('./data/docs/docs-data.json', 'utf8')) as {
+  pages: Array<{ slug: string }>
+}).pages.map((p) => p.slug)
+const DOCS_PAGES = ['/docs', ...DOC_SLUGS.map(s => `/docs/${s}`)]
+
 const prerenderSeed = LOCALES.flatMap((lang) => {
   const prefix = lang === 'en' ? '' : `/${lang}`
   return [
     ...TOP_PAGES.map((p) => (p === '' ? prefix || '/' : `${prefix}/${p}`)),
     ...PLUGIN_SLUGS.map((s) => `${prefix}/plugins/${s}`),
     ...MEME_SLUGS.map((s) => `${prefix}/meme/${s}`),
+    ...DOCS_PAGES.map(p => `${prefix}${p}`),
   ]
 })
 

@@ -298,7 +298,10 @@
     },
     "altH": "Keine Lust aufs Terminal?",
     "altP": "Diese Seite zeigt die Installation per Kommandozeile (ein einziger npx-Befehl). Lieber eine normale Desktop-App zum Doppelklicken? Dann ab in die Desktop-Launcher-Sektion:",
-    "altCta": "🖥️ Zu den Desktop-Launchern →"
+    "altCta": "🖥️ Zu den Desktop-Launchern →",
+    "docsH": "Du möchtest ausführlichere Anleitungen?",
+    "docsP": "Von der API-Key-Konfiguration über den Start der Web-UI bis zum ersten Chat und der Plugin-Entwicklung – im Dokumentationsbereich findest du 66 ausführliche Tutorials.",
+    "docsCta": "📖 Zu den Docs →"
   },
   "submit": {
     "title": "Plugin einreichen",
@@ -323,6 +326,33 @@
     "p2": "Andere Verzeichnisse listen alles auf, mit Trust-Scores und Manifest-Checks. Wir machen etwas anderes: Wir picken das Gute — und das Lustige. Jeder Eintrag hier wurde von einem Menschen angeschaut, hat einen funktionierenden Installationsbefehl, und die Meme-Sektion enthält nur Dinge, über die wir wirklich gelacht haben.",
     "p3": "Daten (Sterne, letzter Push, Lizenz, Manifest-Vorhandensein) werden über die GitHub-API aufgefrischt. Diese Seite ist ein statischer, vollständig vorgerenderter, viersprachiger Guide (EN / 简体中文 / 繁體中文 / DE) — schnell auf jeder Verbindung.",
     "disclaimer": "Alle Screenshots sind den READMEs der jeweiligen Open-Source-Projekte entnommen und gehören ihren Urhebern. Nur Navigation und Werbung — kein Quellcode und keine Assets werden weiterverbreitet. Falls eine Listung deine Rechte verletzt, eröffne ein Issue und sie wird umgehend entfernt."
+  },
+  "docs": {
+    "title": "Dokumentation",
+    "tocTitle": "Auf dieser Seite",
+    "nextStep": "Nächste Schritte",
+    "prevPage": "Zurück",
+    "nextPage": "Weiter",
+    "pageCount": "{n} Artikel",
+    "homeIntro": {
+      "h1": "DSH-Dokumentation",
+      "welcome": "66 ausführliche Tutorials von der Installation bis zur Plugin-Entwicklung – der Reihe nach lesen oder direkt zum passenden Kapitel springen.",
+      "groups": {
+        "getStarted": "Von null losgelegt: DSH installieren, API-Key einrichten, den ersten Chat führen.",
+        "userGuide": "Alle Befehle und Einstellungen für den Alltag: CLI, Berechtigungen, Credentials und Datenschutz.",
+        "capabilities": "Eine Fähigkeit pro Artikel: Multi-Modell-Routing, eingebaute Tools, Sub-Agents, MCP, Skills und mehr.",
+        "howItWorks": "Wie DSH unter der Haube funktioniert – vom Booten bis zur Agent-Loop.",
+        "pluginDev": "Der komplette Weg zum eigenen Plugin: erstes Plugin, eigene Tools, Services und Config-Publishing.",
+        "guides": "Praxisnahe Integrationen: Code-Review, MCP-Assistenten, DSH aus dem eigenen Programm steuern.",
+        "reference": "FAQ, Glossar und Umgebungsvariablen auf einen Blick."
+      }
+    },
+    "nextGuideT": "📖 Benutzerhandbuch",
+    "nextGuideD": "Für den Alltag: CLI, Konfiguration, Berechtigungen",
+    "nextLearnT": "🧠 Wie es funktioniert",
+    "nextLearnD": "Die Innereien verstehen: Was ist DSH → die Agent-Loop",
+    "nextDevT": "🧩 Plugin-Entwicklung",
+    "nextDevD": "Dem Modell Fähigkeiten geben: das erste Plugin schreiben"
   },
   "footer": {
     "about": "Über uns",
@@ -504,7 +534,9 @@
     "clientsTitle": "DeepSeek Harness (dsh) TUIs & Desktop-Clients — DSH ohne Browser | DSH Meme Hub",
     "clientsDesc": "Hat dsh eine Terminal-UI? Alle DeepSeek-Harness-TUIs und Clients: {n} Claude-Code-artige Terminals, Electron/macOS-Shells, Windows-Launcher und Mobile-Fernsteuerung — nach Stars sortiert mit Installationsbefehlen.",
     "opsTitle": "DeepSeek Harness (dsh) Security- & Ops-Plugins — Approvals, Audits, Verbrauch | DSH Meme Hub",
-    "opsDesc": "Wie siehst du den dsh-Verbrauch? Alle DeepSeek-Harness-Security- & Ops-Plugins: {n} Approval-, Audit-, Session-Health-, Token-Verbrauchs- und Kosten-Monitoring-Plugins — nach Stars sortiert."
+    "opsDesc": "Wie siehst du den dsh-Verbrauch? Alle DeepSeek-Harness-Security- & Ops-Plugins: {n} Approval-, Audit-, Session-Health-, Token-Verbrauchs- und Kosten-Monitoring-Plugins — nach Stars sortiert.",
+    "docsTitle": "DSH-Dokumentation (DeepSeek-Harness-Tutorials) — Von der Installation bis zur Plugin-Entwicklung {'|'} DSH Meme Hub",
+    "docsDesc": "66 ausführliche DeepSeek-Harness-Tutorials (DSH): Installation, CLI, Berechtigungen, Funktionsweise und Plugin-Entwicklung."
   },
   "vision": {
     "title": "Vision- & Multimodal-Plugins — Augen für das text-only DSH",
