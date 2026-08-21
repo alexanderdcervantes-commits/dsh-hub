@@ -1,4 +1,4 @@
-# dsh-plugin-Audit
+# dsh-plugin-diraud
 
 English | [中文](README.zh.md)
 
@@ -19,26 +19,32 @@ plugin-management enhancement: group the plugin list by source so you can tell
     reversible) and call `ctx.loader.update` for live effect (HMR-independent);
     official/builtin plugins are locked;
 - **Plugin Catalog panel** (sidebar footer entry): grouped cards with a source
-  badge and a search box (independent of the built-in "Plugin list" page);
+  badge, search box, installed version and description. When package metadata
+  provides a GitHub repository, the card links directly to its full feature
+  documentation (v0.8; independent of the built-in "Plugin list" page);
 - **Self-installed plugin updates (v0.6)**: the panel's top "Update" section
   checks the npm registry on open, shows the installed vs. latest version for
   every self-installed plugin, and runs `pnpm update` on click (corepack/npx
-  fallback, live output); official/builtin plugins and this plugin itself are
-  locked;
+  fallback, live output). Desktop-managed `link:` dependencies and local links
+  are labeled instead of being falsely reported as updated; official/builtin
+  plugins and this plugin itself are locked;
 
 ## Screenshot
 
 Sidebar footer **Plugin Catalog** entry (since v0.5) — click to open the panel: self-installed plugins grouped by origin, each card with an enable/disable toggle:
 
-![Plugin Catalog](https://raw.githubusercontent.com/tttwh/dsh-plugin-Audit/e96b3a4f4c643f77d3f3ca7938f7860c12d303d7/docs/plugin-catalog.png)
+![Plugin Catalog](https://raw.githubusercontent.com/tttwh/dsh-plugin-Audit/e4ef01b04c19c16c6ca2c78834a70f82b5ed5768/docs/plugin-catalog.png)
 
 ## Quick start
 
 Prerequisites: `pnpm`, the `dsh` CLI.
 
 ```sh
-# Install
-dsh plugin --profile web add https://github.com/tttwh/dsh-plugin-Audit/archive/refs/heads/main.tar.gz
+# Install (recommended: from npm)
+dsh plugin --profile web add dsh-plugin-diraud
+
+# Or from the GitHub main branch
+dsh plugin --profile web add https://github.com/tttwh/dsh-plugin-diraud/archive/refs/heads/main.tar.gz
 ```
 
 **Restart `dsh web`**, then:
@@ -56,7 +62,7 @@ dsh plugin --profile web add https://github.com/tttwh/dsh-plugin-Audit/archive/r
 | `/plugin-audit <keyword>` | Filter by package / entry keyword |
 | `/plugin-audit disable <keyword>` | Disable a matching **self-installed** plugin (persisted) |
 | `/plugin-audit enable <keyword>` | Enable a matching **self-installed** plugin (persisted) |
-| `dsh plugin --profile web remove dsh-plugin-Audit` | Uninstall |
+| `dsh plugin --profile web remove dsh-plugin-diraud` | Uninstall |
 
 > **How toggles persist**: `disable/enable` writes a `- id: <raw config id>` +
 > `disabled: true` override into the profile's `cordis.patch.yml` (the user
@@ -88,7 +94,7 @@ third-party package published under `@deepseek-ai/`) are overridden via
 ## Repository layout
 
 ```text
-dsh-plugin-Audit/
+dsh-plugin-diraud/
   src/classify.ts        origin-classification pure function (single source of truth)
   src/patch.ts           cordis.patch.yml read/write (persist toggles)
   src/toggle.ts          shared toggle core (persist + ctx.loader.update)

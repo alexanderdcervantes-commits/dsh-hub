@@ -16,6 +16,7 @@ Return to the same Harness session from whichever device is with you. Harness ke
 - Send new instructions or change direction
 - Answer questions and respond to permission requests
 - Open workspaces from any connected computer
+- Preview files from a remote workspace with the optional `dsh-file-viewer` plugin
 - Move between devices without moving your work
 
 Remote is available in a browser and through the **Remote** workspace entry in Harness on another computer.
@@ -42,9 +43,14 @@ dsh plugin --profile web add ds-harness-remote
 
 Package: [npm](https://www.npmjs.com/package/ds-harness-remote) · [GitHub](https://github.com/liguobao/deepseek-harness-remote)
 
-To pin a GitHub release instead, install `github:liguobao/deepseek-harness-remote#v0.3.15`.
+To pin a GitHub release instead, install `github:liguobao/deepseek-harness-remote#v0.3.19`.
 
 Restart Harness after installation.
+
+The `0.3.19` Client remains compatible with `0.3.15` Hosts for Remote
+workspaces and sessions. Features introduced later, such as the remote command
+catalog and file viewing, are enabled only when the selected Host supports
+them.
 
 ## Sign in and connect
 
@@ -60,19 +66,19 @@ Restart Harness after installation.
 Enable **Allow control of this device** in Remote settings to make the current computer available as a Host.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/b94455034abfe38196f91647e87be05cf4c014e6/docs/images/setting.png" alt="Remote settings showing an authorized and online Host" width="520">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/setting.png" alt="Remote settings showing an authorized and online Host" width="520">
 </p>
 
 Open **Remote** on another computer, select an online Host, then choose or browse for a workspace.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/b94455034abfe38196f91647e87be05cf4c014e6/docs/images/host-list.png" alt="Remote workspace picker listing online Hosts" width="900">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/host-list.png" alt="Remote workspace picker listing online Hosts" width="900">
 </p>
 
 The workspace opens in the native Harness interface, with the active Host and encrypted connection status shown in the header.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/b94455034abfe38196f91647e87be05cf4c014e6/docs/images/remote.png" alt="A Harness conversation running through an encrypted remote connection" width="900">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/remote.png" alt="A Harness conversation running through an encrypted remote connection" width="900">
 </p>
 
 ## Secure by design
@@ -80,7 +86,8 @@ The workspace opens in the native Harness interface, with the active Host and en
 - The Host makes outbound connections only. No public port is opened.
 - Session traffic is end-to-end encrypted. The service relays ciphertext without storing session plaintext or device private keys.
 - Remote exposes only the Harness capabilities required by the interface. It does not provide a shell or remote desktop.
-- Folder browsing lists directories only; it cannot read files or change the filesystem.
+- The workspace picker lists folders only. When `dsh-file-viewer` is installed on both devices, its existing read-only viewer can additionally preview files through bounded, encrypted range reads.
+- Remote file preview cannot write, delete, upload, execute, or open a path in an external application. File Viewer providers continue to enforce their own allowed roots and locator authorization.
 - Removing a device immediately revokes its Remote access.
 
 For implementation details, see the [Plugin guide](packages/plugin/README.md), [documentation index](docs/README.md), and [Remote Protocol](docs/protocol.md).

@@ -1,6 +1,6 @@
 <div align="center">
 
-![Banner](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/ace3ec1d013b17f62db875615e98ad88ab98fbe5/docs/banner.png)
+![Banner](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/6f21b8b917e5f3c6c90f0cbae339c78698bc28e7/docs/banner.png)
 
 # dsh-auxiliary
 
@@ -107,6 +107,8 @@ compact:
 The listener is always installed and is a pure pass-through until a complete route is configured. Only `purpose: 'compaction'` calls are rerouted; the main session and every other call category are untouched.
 
 **Compression engine** *(optional)*: `engine.enabled: true` replaces the stock compaction backend with a `BasicCompactionEngine` subclass that drives summarization with an explicit context-compression instruction (see `engine.compressPrompt`). It reuses the compact route and adds no third model route. It is mutually exclusive with `@deepseek-ai/dsh-compaction-basic` — the plugin detects the conflict and skips the engine with a warning.
+
+**Compaction threshold**: the Context compaction card exposes a slider plus a precise percentage input (17%–99%). Saving the threshold also enables the compression engine and writes `engine.thresholdRatio`, so compaction fires automatically once context usage reaches that percentage; the threshold must stay above the retention ratio (`engine.retainRatio`, 16% by default). The engine refreshes the policy before every pressure check, so no restart is needed after saving.
 
 ### Approval model (@dsh-plugin/dsh-approve-for-me hookup)
 
@@ -220,7 +222,7 @@ Each tool is registered only while its feature is enabled with a complete route 
 The plugin registers its own settings namespace (`dsh-auxiliary`) with a schemastery schema; the settings page writes through `settings.update(...)`, and `installSettingsSection` keeps the plugin's resolved view in sync. Two details matter:
 
 - **Raw vs resolved**: model rows in the `llm-pi-ai` namespace are validated by a `z.object` schema that strips unknown keys from *resolved* views but does not throw — so non-schema fields like `imageGeneration` survive in the **raw user section**. Reads that must see such fields go through `namespace.user` (raw); routed reads use `settings.get()` (resolved).
-- **DOM injection**: the model catalog page is owned by the harness client, so the plugin observes the DOM (`MutationObserver`) and appends the **Allow image input** / **Allow image generation** checkboxes into each user-owned model row's expanded advanced area. The checkboxes read/write the raw user section directly, and the image-generation picker filters the catalog to marked models only.
+- **DOM injection**: the model catalog page is owned by the harness client, so the plugin observes the DOM (`MutationObserver`) and appends the **Allow image input** / **Allow image generation** checkboxes into each user-owned model row's expanded advanced area. The checkboxes initialize from the raw user section; changes are held in the browser until that provider card closes (after the page's Apply) and are then written back to the raw user section, so they cannot race the page's own revision check. The image-generation picker filters the catalog to marked models only.
 
 ### 4. Credentials, not plain env
 
@@ -277,7 +279,7 @@ All fields are optional; defaults are shown.
 
 ### Settings page: Auxiliary Models
 
-![Auxiliary Models settings page](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/ace3ec1d013b17f62db875615e98ad88ab98fbe5/docs/image.png)
+![Auxiliary Models settings page](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/6f21b8b917e5f3c6c90f0cbae339c78698bc28e7/docs/image.png)
 
 The plugin ships a web settings section (**Settings → Auxiliary Models**).
 Configure providers and models in the **Models** page first, then use the
@@ -301,15 +303,29 @@ settings**:
   makes the model selectable in the **Image-generation model** card. Enable
   only when the upstream endpoint actually generates images.
 
-The checkboxes are injected into every user-owned `llm-pi-ai` model row and
-are always visible — no need to expand the row's capacity disclosure. A model
-you are **adding** gets working checkboxes immediately: the marks are recorded
-in the browser and written into the model's settings at the same time the page
-saves the new model (Apply), so you can set image capabilities while adding,
-not only after saving. Rows that cannot carry the marks explain why instead of
-staying silent: DeepSeek-official (or any non-pi-ai adapter) rows show a notice
-that the marks are `llm-pi-ai`-only, and pi-ai catalog rows not yet saved into
-the user section say to save the model first.
+The checkboxes are injected into every user-owned `llm-pi-ai` model row, inside
+the same capacity disclosure as the **Context window** and **Max output tokens**
+fields, so they stay out of the way until that row fold is expanded. A model you
+are **adding** inside the custom-provider create card gets working checkboxes
+too; a row added without a model id shows both checkboxes disabled inside that
+fold until an id is typed, and editing an existing model id carries its saved
+capability marks to the new id. A changed mark is recorded in the browser first
+and written after the page saves the provider settings (Apply), so you can edit
+other model fields alongside image capabilities without tripping the page's own
+"settings changed elsewhere" revision conflict. Rows that cannot carry the
+marks explain why instead of staying silent: DeepSeek-official (or any
+non-pi-ai adapter) rows show a notice that the marks are `llm-pi-ai`-only, and
+pi-ai catalog rows not yet saved into the user section say to save the model
+first.
+
+The same fold also exposes **thinking-level** configuration: a list of rows
+adds/removes levels (only `off`, `minimal`, `low`, `medium`, `high`, `xhigh`,
+`max`), a pencil button batch-edits text such as `[low, high, max]` and rejects
+the whole input when any entry is invalid, and the default-thinking dropdown
+offers only the levels present in the list. New models start with an empty list
+and no default. These fields are plugin-owned raw model-row fields
+(`thinkingLevels` / `defaultThinkingLevel`) and are also written only after the
+provider card Apply closes, so they never race the page's revision checks.
 
 ## Notes
 

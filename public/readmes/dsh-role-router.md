@@ -12,9 +12,9 @@
 
 ## 预览
 
-![主界面与 composer 模型摘要](https://raw.githubusercontent.com/SnowAmberX/dsh-role-router/0c39fb764d01f97d569a759333b097b47bf22e8c/img/main.png)
+![主界面与 composer 模型摘要](https://raw.githubusercontent.com/SnowAmberX/dsh-role-router/cc5d377d5696e604a189aaa6b81f4cb6e65239a6/img/main.png)
 
-![设置页中的多角色模型路由卡片](https://raw.githubusercontent.com/SnowAmberX/dsh-role-router/0c39fb764d01f97d569a759333b097b47bf22e8c/img/setting.png)
+![设置页中的多角色模型路由卡片](https://raw.githubusercontent.com/SnowAmberX/dsh-role-router/cc5d377d5696e604a189aaa6b81f4cb6e65239a6/img/setting.png)
 
 ## 路由语义
 

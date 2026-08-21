@@ -11,7 +11,7 @@ This README is written so a human **or another coding agent** can install the pl
 **License:** Apache-2.0  
 **Compatible Host:** DeepSeek Harness `0.1.0-rc.5`
 
-![Native Taskboard board, task detail, and workflow views](https://raw.githubusercontent.com/shengsheng90/DSH-taskboard/f98828d38974fb33d167b93a70404dc94d9ab9b8/docs/assets/taskboard-demo.gif)
+![Native Taskboard board, task detail, and workflow views](https://raw.githubusercontent.com/shengsheng90/DSH-taskboard/b3b0928172fa3f82a3802089cecb82e403b15ebc/docs/assets/taskboard-demo.gif)
 
 If you are an installing agent, jump to [Install into DeepSeek Harness](#install-into-deepseek-harness) and follow every step in order. Do **not** add this Git repository as a raw plugin source: `lib/` is gitignored, so a git install has no compiled Host/Client bundle.
 

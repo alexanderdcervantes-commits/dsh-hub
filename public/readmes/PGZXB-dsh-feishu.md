@@ -6,13 +6,16 @@ English | [中文](README.zh.md)
 [![Node](https://img.shields.io/badge/node-%3E%3D22.13-339933.svg)](package.json)
 [![npm](https://img.shields.io/npm/v/@dsh-feishu/dsh-feishu)](https://www.npmjs.com/package/@dsh-feishu/dsh-feishu)
 [![CI](https://img.shields.io/github/actions/workflow/status/PGZXB/dsh-feishu/ci.yml?branch=main)](.github/workflows/ci.yml)
-[![dsh](https://img.shields.io/badge/dsh-0.1.0--rc.7-4D6BFE)](https://github.com/deepseek-ai/deepseek-harness)
 
 The Feishu UI for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh) — a dsh-native plugin with a **panel-driven control console**: every slash command is a button on the ⚙️ control-panel card, approvals and questions resolve inside the chat, and one QR scan sets the whole app up.
 
 > **Note:** [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) is
 > still pre-release (`0.1.0-rc.x`) and may break between releases. dsh-feishu
-> tracks the latest release — currently compatible with **dsh `0.1.0-rc.7`**.
+> tracks **two** dsh versions:
+> - the `main` branch (installed from git) tracks **dsh `@next`** — currently
+>   **`0.1.0-rc.8`**;
+> - the npm `@latest` release tracks **dsh `@latest`** — currently
+>   **`0.1.0-rc.7`**.
 
 https://github.com/user-attachments/assets/e9163793-52f2-4e2c-a08a-22b27372be61
 
@@ -96,18 +99,18 @@ session goes like this:
    default policy; a group with just you and the bot also answers plain
    messages, and the policy is configurable).
 
-<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/1_chat.png" width="640" alt="Chat with the bot"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/1_chat.png" width="640" alt="Chat with the bot"></p>
 
 2. **Open the control panel.** Send `/panel` to pop up the panel card.
 
-<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/2_panel.png" width="640" alt="Control panel"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/2_panel.png" width="640" alt="Control panel"></p>
 
 3. **Pick a working directory.** The bot refuses work until the chat has
    one: tap **📚 Pick project** to choose from a list (the `/repo`
    equivalent), or **📁 Change dir** to type a path (the `/cd <path>`
    equivalent).
 
-<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/3_repo.png" width="640" alt="Project picker"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/3_repo.png" width="640" alt="Project picker"></p>
 
 4. **Ask.** Send a message — the agent runs and its output streams into a
    live card (tool calls, reasoning, markdown, tables). The card ends green
@@ -116,7 +119,7 @@ session goes like this:
 
    | Mid-stream | Finalized |
    |---|---|
-   | ![Card mid-stream](https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/4.1_streaming-mid.png) | ![Card finalized](https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/4.2_streaming-done.png) |
+   | ![Card mid-stream](https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/4.1_streaming-mid.png) | ![Card finalized](https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/4.2_streaming-done.png) |
 
 5. **Approve or answer when asked.** A permission escalation posts an
    approval card — tap **Allow once** (or **Reject**). A question posts a
@@ -124,14 +127,14 @@ session goes like this:
 
    | Approval | Question |
    |---|---|
-   | ![Approval card](https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/5.1_approval.png) | ![Question card](https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/5.2_question.png) |
+   | ![Approval card](https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/5.1_approval.png) | ![Question card](https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/5.2_question.png) |
 
 6. **Manage sessions.** Tap **🗂️ Sessions** to list saved sessions and
    resume any of them from the card (the `/sessions` equivalent; `/resume
    <id>` moves one into this chat), and tap **➕ New chat** (the `/clear`
    equivalent) to start fresh without deleting the old one.
 
-<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/fc7cd500970e533834a02d1d4c8ee2e5003ac0e6/docs/assets/snapshots/6_sessions.png" width="640" alt="Sessions picker"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/PGZXB/dsh-feishu/ed4333e1b41c3fdd28e5c096e7f83dc25978b84a/docs/assets/snapshots/6_sessions.png" width="640" alt="Sessions picker"></p>
 
 Every button on the panel card maps to a slash command — pick whichever
 feels faster; `/help` lists them all.

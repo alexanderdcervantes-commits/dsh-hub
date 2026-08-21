@@ -1,28 +1,11 @@
 # dsh-edit-approval
 
-[简体中文](README.zh.md)
-
-Per-edit approval for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): intercepts `write` / `edit` / `str_replace_editor` and shows a red/green line-level diff **before** the file is touched — **approve once or reject**, with a master switch in Settings → General.
-
-> **Status:** published to npm (`v0.2.2`) via GitHub Actions Trusted Publishing + Sigstore provenance. Targets the web profile (`dsh --profile web`).
+Per-edit approval for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): **every `write` / `edit` / `str_replace_editor` call asks before the file is touched** — a red/green line-level diff, then **approve once or reject**; master switch in Settings → General.
 
 [![npm version](https://img.shields.io/npm/v/dsh-edit-approval.svg)](https://www.npmjs.com/package/dsh-edit-approval)
 [![npm license](https://img.shields.io/npm/l/dsh-edit-approval.svg)](https://github.com/SiriLee/dsh-edit-approval/blob/main/LICENSE)
 
-## Table of contents
-
-- [✨ Features](#-features)
-- [📸 Screenshots](#-screenshots)
-- [How it works](#how-it-works)
-- [Approval policy interaction](#approval-policy-interaction)
-- [Install](#-install)
-- [Configure](#configure)
-- [Behavior details & limitations](#behavior-details--limitations)
-- [Not included](#not-included)
-- [Compatibility](#compatibility)
-- [Development](#development)
-- [Publishing](#publishing)
-- [License](#license)
+> English | [中文](README.zh.md)
 
 ## ✨ Features
 
@@ -38,13 +21,25 @@ Per-edit approval for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek
 
 ## 📸 Screenshots
 
-| Master switch in Settings → General | The `/approval-edit` command and its arguments |
-|:---:|:---:|
-| ![Settings → General with the Edit approval toggle row](https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/d85ea8c0c1e41be46ec37d7e009c9878201d86f2/assets/screenshots/settings-switch.png) | ![The /approval-edit command showing its on\|off\|status arguments](https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/d85ea8c0c1e41be46ec37d7e009c9878201d86f2/assets/screenshots/status-command.png) |
+<table>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/c509fe3c5dc8029457f5217d30d46b7d365d6b6b/assets/screenshots/settings-switch.png" width="440" alt="Master switch in Settings → General"><br><sub>Master switch in Settings → General</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/c509fe3c5dc8029457f5217d30d46b7d365d6b6b/assets/screenshots/status-command.png" width="440" alt="The /approval-edit command and its arguments"><br><sub>The /approval-edit command and its arguments</sub></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><img src="https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/c509fe3c5dc8029457f5217d30d46b7d365d6b6b/assets/screenshots/approval-panel.png" width="760" alt="Approval panel with the red/green line diff"><br><sub>Approval panel — red/green line diff</sub></td>
+  </tr>
+</table>
 
-| Approval panel — red/green line diff |
-|:---:|
-| ![Approval panel showing the tool/file header and red/green line diff](https://raw.githubusercontent.com/SiriLee/dsh-edit-approval/d85ea8c0c1e41be46ec37d7e009c9878201d86f2/assets/screenshots/approval-panel.png) |
+## 📦 Install
+
+Published to npm — the registry path is the recommended one. **Restart dsh web (`--profile web`) after installing.**
+
+```sh
+dsh plugin --profile web add dsh-edit-approval
+```
+
+For contributors: local checkout (`dsh plugin --profile web add /path/to/dsh-edit-approval`), a pinned GitHub commit (`dsh plugin --profile web add github:SiriLee/dsh-edit-approval#<sha>`), or an offline tarball (`npm pack` then `dsh plugin --profile web add ./dsh-edit-approval-<version>.tgz`). A git install fails on first run until you add an `allowBuilds` key to the profile's `pnpm-workspace.yaml` (pnpm blocks git dependencies from running build scripts); after that it runs the plugin's `prepare` and installs it. `npm pack` also runs `prepare`, so a tarball always carries a prebuilt `lib/` (with `.d.ts`) and the `LICENSE`.
 
 ## How it works
 
@@ -89,47 +84,6 @@ Under `never`, every `ask` this plugin emitted would be deterministically
 rejected by the approval service, silently breaking every edit in a full-access
 session. The plugin therefore stops asking and lets the sandbox enforce. It
 never expands access or changes the sandbox mode.
-
-## 📦 Install
-
-Published to npm — the registry path is the recommended one. **Restart dsh web
-(`--profile web`) after installing.**
-
-### Option A: registry (recommended)
-
-```sh
-dsh plugin --profile web add dsh-edit-approval
-```
-
-### Option B: local checkout (authors / contributors)
-
-```sh
-cd dsh-edit-approval
-npm install      # devDeps come from the npm registry; no harness checkout needed
-npm run build    # full tsc build, including .d.ts
-dsh plugin --profile web add /path/to/dsh-edit-approval   # link install
-```
-
-### Option C: GitHub (pin a commit for reproducibility)
-
-```sh
-dsh plugin --profile web add github:SiriLee/dsh-edit-approval#<commit-sha>
-```
-
-First run fails: pnpm blocks git dependencies from running build scripts. Follow
-the CLI hint to add an `allowBuilds` key to the profile's `pnpm-workspace.yaml`
-(e.g. `$DSH_HOME/profiles/web/pnpm-workspace.yaml`), then retry. pnpm then runs
-the plugin's `prepare` (full build) and installs it into the profile.
-
-### Option D: tarball (offline / self-hosted registry)
-
-```sh
-npm pack                                   # produces dsh-edit-approval-<version>.tgz
-dsh plugin --profile web add ./dsh-edit-approval-<version>.tgz
-```
-
-`npm pack` runs `prepare`, so the tarball always carries a prebuilt `lib/`
-(including `.d.ts`) and the `LICENSE`; `dsh plugin add` runs no build scripts.
 
 ## Configure
 
@@ -232,6 +186,10 @@ scripts/                build + artifact verification
 cordis.patch.yml        bundle patch (mounts the host plugin row)
 package.json            dsh.bundle + dsh.client manifests, peerDependencies
 ```
+
+## Security
+
+This plugin reads the target file only to compute the preview diff (at the `tools/pre-execute` interception point); it never writes files itself — the tool body performs the write only after you approve. It makes no network requests and accesses no credentials.
 
 ## License
 

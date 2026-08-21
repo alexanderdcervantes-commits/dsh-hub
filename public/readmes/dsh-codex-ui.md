@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/020dec3b9ee5c11fb4899f9736bfc3dd69f7920c/assets/branding/dsh-banner.png" alt="DSH Codex UI" width="100%">
+  <img src="https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/5321915cdc8d1579ab808e409c765eae173cfd46/assets/branding/dsh-banner.png" alt="DSH Codex UI" width="100%">
 </p>
 
 <div align="center">
@@ -32,19 +32,19 @@
 
 Light theme: Codex-style sidebar, workspace tree, and conversation column.
 
-![Light theme conversation](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/020dec3b9ee5c11fb4899f9736bfc3dd69f7920c/assets/screenshots/conversation-light.png)
+![Light theme conversation](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/5321915cdc8d1579ab808e409c765eae173cfd46/assets/screenshots/conversation-light.png)
 
 Dark theme: the same layout with Codex dark tokens.
 
-![Dark theme conversation](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/020dec3b9ee5c11fb4899f9736bfc3dd69f7920c/assets/screenshots/conversation.png)
+![Dark theme conversation](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/5321915cdc8d1579ab808e409c765eae173cfd46/assets/screenshots/conversation.png)
 
 Conversation menu: rename, pin, unread, archive, fork, copy, and delete.
 
-![Conversation menu](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/020dec3b9ee5c11fb4899f9736bfc3dd69f7920c/assets/screenshots/session-menu.png)
+![Conversation menu](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/5321915cdc8d1579ab808e409c765eae173cfd46/assets/screenshots/session-menu.png)
 
 **Settings → About** lists the companion plugins and their install state.
 
-![About page and companion plugins](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/020dec3b9ee5c11fb4899f9736bfc3dd69f7920c/assets/screenshots/settings-about.png)
+![About page and companion plugins](https://raw.githubusercontent.com/MichengAI/dsh-codex-ui/5321915cdc8d1579ab808e409c765eae173cfd46/assets/screenshots/settings-about.png)
 
 ## Prerequisites
 
@@ -68,6 +68,17 @@ Conversation menu: rename, pin, unread, archive, fork, copy, and delete.
 `dshmarket` stays optional. When it is installed, **Plugins** opens the market first.
 
 Do not install the suite and the individual plugins in the same profile. The two patch sets conflict.
+
+## DSH product ecosystem
+
+Codex UI can be installed independently or used through the desktop app or Web suite. They share the same DSH core but serve different ways of working:
+
+| Product | Relationship to Codex UI |
+| --- | --- |
+| [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) | The host runtime that provides models, sessions, tools, and the plugin system |
+| [DSH Codex Desktop](https://github.com/MichengAI/dsh-codex-desktop) | A ready-to-install desktop product with Codex UI and the other five feature products built in |
+| [DSH Codex Suite](https://github.com/MichengAI/dsh-codex-ui/tree/main/packages/dsh-codex-suite) | A one-click suite for existing DSH Web environments that installs Codex UI and the other five feature products |
+| Six feature products | [Codex UI](https://github.com/MichengAI/dsh-codex-ui) · [IM Connect](https://github.com/MichengAI/dsh-im-connect) · [Automation](https://github.com/MichengAI/dsh-automation) · [Skills Manager](https://github.com/MichengAI/dsh-skills-manager) · [Archive Manager](https://github.com/MichengAI/dsh-archive-manager) · [Agency Agents](https://github.com/MichengAI/dsh-agency-agents) |
 
 ## Installation
 

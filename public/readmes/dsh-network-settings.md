@@ -18,8 +18,8 @@
 
 ## Highlights
 
-- **Two runtime models only** — automatically detects `WINDOWS_NATIVE` or
-  `WSL_DISTRIBUTION`; no manual Windows/WSL mode switch.
+- **Three runtime models** — automatically detects `WINDOWS_NATIVE`,
+  `WSL_DISTRIBUTION`, or `MACOS_NATIVE`.
 - **DSH path graph** — shows the actual DSH network path, DNS side branch and
   first failing edge; a TUN/VPN adapter is chained with the physical uplink
   NIC and the real gateway behind it.
@@ -47,20 +47,20 @@
 The plugin lives in **DSH Settings → Plugins → Network** (click images to
 enlarge)
 
-<a href="docs/images/wsl-in-dsh.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/f0396dfe575d14a410d3cdcc881dd81dd7be19eb/docs/images/wsl-in-dsh.png" width="720" alt="The plugin inside the DSH settings UI"></a>
+<a href="docs/images/wsl-in-dsh.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/838a33254cdde71c44858b4995689385c4e6d530/docs/images/wsl-in-dsh.png" width="720" alt="The plugin inside the DSH settings UI"></a>
 
 </td></tr>
 <tr>
 <td width="50%" align="center">
 
-<a href="docs/images/wsl-path-graph.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/f0396dfe575d14a410d3cdcc881dd81dd7be19eb/docs/images/wsl-path-graph.png" width="380" alt="DSH network path in WSL"></a>
+<a href="docs/images/wsl-path-graph.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/838a33254cdde71c44858b4995689385c4e6d530/docs/images/wsl-path-graph.png" width="380" alt="DSH network path in WSL"></a>
 
 <sub>DSH inside a WSL distribution: DSH → distro → WSL NAT → Windows Host → proxy TUN → physical NIC → gateway → target</sub>
 
 </td>
 <td width="50%" align="center">
 
-<a href="docs/images/win-path-graph.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/f0396dfe575d14a410d3cdcc881dd81dd7be19eb/docs/images/win-path-graph.png" width="380" alt="DSH network path on Windows"></a>
+<a href="docs/images/win-path-graph.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/838a33254cdde71c44858b4995689385c4e6d530/docs/images/win-path-graph.png" width="380" alt="DSH network path on Windows"></a>
 
 <sub>Windows-native DSH path, chaining the physical uplink behind a TUN/VPN adapter</sub>
 
@@ -69,7 +69,7 @@ enlarge)
 <tr>
 <td width="42%" align="center" valign="top">
 
-<a href="docs/images/win-network-config.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/f0396dfe575d14a410d3cdcc881dd81dd7be19eb/docs/images/win-network-config.png" width="300" alt="Network configuration"></a>
+<a href="docs/images/win-network-config.png"><img src="https://raw.githubusercontent.com/kanneiren/dsh-network-settings/838a33254cdde71c44858b4995689385c4e6d530/docs/images/win-network-config.png" width="300" alt="Network configuration"></a>
 
 <sub>Grouped network configuration</sub>
 
@@ -137,7 +137,8 @@ Click [Copy network report]
 ## Support
 
 - DSH: `@deepseek-ai/dsh >= 0.1.0-rc.6` (Web profile)
-- Platform: Windows 10/11 with WSL
+- Platform: Windows 10/11 with WSL; macOS (CI-verified, real-machine
+  validation pending)
 - All network checks are local and read-only unless you explicitly confirm a
   change.
 

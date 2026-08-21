@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/801954dd7be67213cf4adc1aeb6f97bd3daa12cc/assets/readme/hero.svg" width="100%" alt="dsh-agent-teams turns one DeepSeek Harness session into a coordinated multi-agent team">
+  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/fe854d19d20c88d9436d13338f86257f741955c9/assets/readme/hero.svg" width="100%" alt="dsh-agent-teams turns one DeepSeek Harness session into a coordinated multi-agent team">
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 Ask in natural language. The plugin provides the team protocol, ten coordination tools, persistent state, an automatic shared-task scheduler, and a live Web UI—without requiring a separate workflow engine.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/801954dd7be67213cf4adc1aeb6f97bd3daa12cc/assets/ui.png" width="100%" alt="DeepSeek Harness conversation with the AgentTeams live activity panel, members, tasks, dependencies, and reports">
+  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/fe854d19d20c88d9436d13338f86257f741955c9/assets/ui.png" width="100%" alt="DeepSeek Harness conversation with the AgentTeams live activity panel, members, tasks, dependencies, and reports">
 </p>
 
 ## Why AgentTeams?

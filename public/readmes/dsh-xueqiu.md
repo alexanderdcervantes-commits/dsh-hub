@@ -10,7 +10,7 @@
 
 中文 | [English](./README.en.md)
 
-**[功能](#-功能) · [截图](#-截图) · [安装](#-安装) · [使用](#️-使用) · [稳定性](#-稳定性设计) · [FAQ](#-faq) · [更新日志](#-更新日志)**
+**[功能](#-功能) · [截图](#-截图) · [安装](#-安装) · [使用](#️-使用) · [稳定性](#-稳定性设计) · [质量与测试](#-质量与测试) · [FAQ](#-faq) · [更新日志](#-更新日志)**
 
 ## 🆚 与同类行情插件
 
@@ -29,7 +29,7 @@
 | 功能 | 说明 |
 | --- | --- |
 | 📊 实时行情 | 大盘指数（上证/深证/创业板/科创50）+ 自选股列表，涨红跌绿，**表头点击排序** |
-| 🕯️ K线图 | **蜡烛图** + 成交量柱 + **MA5/10/20 均线** + **十字光标悬浮详情**（开高低收/涨跌/量/均线值），5分/15分/30分/60分/日K/周K/月K 7 档切换 |
+| 🕯️ K线图 | **蜡烛图** + 成交量柱 + **MA5/10/20 均线** + **十字光标悬浮详情**（开高低收/涨跌/量/均线值），5分/15分/30分/60分/日K/周K/月K 7 档切换；**滚轮锚点缩放 + 拖拽平移**，拖到尽头自动追加更早历史，双击复位 |
 | ⏱️ 分时图 | 价格线 + 均价线 + 昨收基准虚线，十字光标查任意分钟报价 |
 | 🔥 热榜 | 雪球热门榜，A股/美股/港股/全球 切换 |
 | 🔍 搜索 | 搜股票（一键加自选/看详情）、搜帖子 |
@@ -46,6 +46,8 @@
 | ⏱️ 智能刷新 | 盘中 20s 刷新行情，收盘自动放慢，降低被风控概率 |
 | 🕐 交易时段 | 面板头常驻显示 **A 股/港股/美股** 盘中·午休·盘前·休市（本地时区推算，不含节假日），行情区域显示精确 A 股时段 |
 | 🌗 主题自适应 | 跟随 DSH 明暗主题 |
+| 🤖 Agent 工具 | **对话内直接问行情**：`xueqiu_quote`（实时行情）、`xueqiu_kline`（K线）、`xueqiu_search`（搜股票）、`xueqiu_hot`（热榜）、`xueqiu_news`（7×24 快讯）、`xueqiu_kol`（个股热议大V）——模型直接调用，无需翻网页 |
+| 🃏 工具调用卡片 | `xueqiu_quote` 渲染为红涨绿跌行情表、`xueqiu_kline` 为迷你蜡烛图、`xueqiu_hot` 为热榜排名列表、`xueqiu_news` 为快讯时间线（重要快讯高亮），对话流内直接看结果 |
 
 所有数据来自雪球公开接口（访问首页获取匿名 cookie + 浏览器 UA/Referer），**无需登录**。
 
@@ -53,15 +55,25 @@
 
 **嵌入式主面板**：停靠在输入框上方，指数卡 + 自选股行情 + 四个功能页签：
 
-![主面板](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/ea3f7affb025b6375d481706a6056680e6193438/assets/panel.png)
+![主面板](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/panel.png)
 
 **个股详情**：16 项行情数据 + K线蜡烛图（成交量柱 / MA5-10-20 均线 / 十字光标）+ 财务指标 + 热议用户：
 
-![个股详情](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/ea3f7affb025b6375d481706a6056680e6193438/assets/detail.png)
+![个股详情](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/detail.png)
 
 **迷你行情区域**：四大指数 + 自选 12 只两列平铺，⤡ 手柄调宽度，点击开合面板，可拖动：
 
-![迷你行情区域](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/ea3f7affb025b6375d481706a6056680e6193438/assets/badge.png)
+![迷你行情区域](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/badge.png)
+
+**Agent 工具调用卡片**（对话内直接问行情，结果渲染为专属卡片而非 JSON）：
+
+| `xueqiu_quote` 行情表 | `xueqiu_kline` 蜡烛图 |
+| --- | --- |
+| ![quote](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/quote.png) | ![kline](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/kline.png) |
+
+| `xueqiu_hot` 热榜 | `xueqiu_news` 快讯时间线 |
+| --- | --- |
+| ![hot](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/hot.png) | ![news](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/news.png) |
 
 ## 📦 安装
 
@@ -112,6 +124,28 @@ dsh plugin --profile web add ./dsh-xueqiu
 - **限频退避**：遇到"请求频繁"按 2s→4s 指数退避后重试。
 - **渐进渲染**：详情页报价 + K线先行上屏，分时/财务/KOL 异步到达后增量合并。
 
+## 🧪 质量与测试
+
+三套互补的自动化测试，每次发版前全部通过（最近一次实测 2026-08-20，macOS + dsh web 3080 端口）：
+
+| 套件 | 覆盖 | 实测结果 |
+| --- | --- | --- |
+| `scripts/static-smoke.sh` | 静态安装 7 道门禁（tarball 解包 → cordis 组合 → bundle 注册 → RPC 起活） | ✅ 7/7 |
+| `scripts/feature-matrix.py` | 20 个 RPC 动作 × 正常/边界/非法/降级 × 未登录/已登录/Cookie过期 三环境 | ✅ 54–56 项断言全过 / 每环境 |
+| `scripts/browser-interact.sh` | 真实鼠标交互：徽章拖动/⤡调宽/双击复位/面板开合/四个页签数据/越界恢复钳制 | ✅ 全过 |
+
+**热缓存性能实测**（数据已在 TTL 窗口内，即用户连续操作时的体验）：
+
+```
+kline       日K 120 根      1–12 ms
+quote       3 只行情批量      1 ms
+quoteDetail 个股详情         1 ms
+search      搜索"茅台"        2 ms
+finance     财务指标          2 ms
+```
+
+首次冷请求（需访问雪球取数）典型耗时 100–700ms，全部经请求闸门（并发 2）排队。复现方式：装好插件后 `python3 scripts/feature-matrix.py --base http://127.0.0.1:3080 --mode logged`。
+
 ## 📁 目录结构
 
 ```
@@ -154,7 +188,31 @@ dsh-xueqiu/
 
 ## 📋 更新日志
 
-- **1.16.0** (待发布)
+- **1.20.2**（2025-08-21）
+  - 修复：**完整 QA 测试轮发现的 3 个缺陷**——① `login.status` 在登录文件缺 uid/screenName 字段时不再返回空，回退到 JWT 解码值；② K 线查询无效代码的错误文案不再误导为「cookie 不完整」，明确提示检查代码格式；③ `xueqiu_news` 的 count 参数现在真正生效（上游固定每页 ~10 条并忽略 count，工具层用 max_id 自动翻页补足，最多 3 页）。
+  - 新增：**离线单测套件 `qa/`**（mock shell，不发网络）并接入 GitHub Actions——覆盖调度节流/TTL 缓存/重试链/云端同步语义/cookie 双 URL 回退/命令注入防护等 40 项断言；另有本地 live 套件 `qa/live.mjs` 对真实 API 做 51 项数据正确性验证。
+- **1.20.1**（2025-08-20）
+  - 打磨：**6 个 agent Tool 描述重写**——每个工具的 description 扩展为结构化说明（何时使用 / 输入格式与示例 / 输出字段），并写明工具间的协作关系（不确定代码先 `xueqiu_search`、只要最新价别拉 K 线、热榜≠涨幅榜等边界）。纯文案改动，直接提升 agent 选工具与传参的准确率（对标 dsh-us-stocks 的描述深度）。
+- **1.20.0**（2025-08-20）
+  - 新增：**登录态自选股自动同步（云端为准的双端统一）**——打开面板/行情刷新时自动检查，距上次同步超过 10 分钟即在后台拉取云端自选并镜像到本地；你在雪球网页/App 上加删自选，插件端 10 分钟内自动跟随。节流时间戳持久化，多实例不重复拉取；接口异常静默失败不影响行情；云端返回空列表时不镜像（防误清空）。「同步云端自选」按钮保留，点击强制立即同步。
+- **1.19.1**（2025-08-20）
+  - 修复：匿名 cookie 播种改为**双 URL 兜底链**——优先 `xueqiu.com/hq`（无 WAF 挑战，直接发全套匿名 token），失败再回退首页。部分地区首页被阿里云 WAF JS 挑战接管后只发 `acw_tc`，导致匿名请求报 400016，此修复使播种不再依赖单一入口（感谢 [@Lambenthan](https://github.com/Lambenthan) PR#2 的定位与验证）。
+- **1.19.0**（2025-08-20）
+  - 新增：**K线滚轮缩放 + 拖拽平移**——详情页K线默认显示尾部 120 根（缓冲 500 根），滚轮以鼠标位置为锚点缩放（20~全部），水平拖动平移看历史；拖到缓冲头部自动追加拉取更早 500 根（按时间戳去重合并，上限 3000 根）；双击复位。图底标注 `窗口/总数 根` 与操作提示。
+  - host：`kline` RPC 新增 `begin` 参数（毫秒时间戳），返回该根往前的历史，供平移分页（分钟取整保证缓存 key 稳定）。
+- **1.18.2**（2025-08-20）
+  - 修复：Agent 工具的时间戳用了 UTC（`toISOString`），快讯/K线时间比本地早 8 小时（18:14 显示成 10:14）。现按本地时区格式化。
+- **1.18.1**（2025-08-20）
+  - 新增：`xueqiu_hot` 热榜卡片（排名+名称+热度升降+现价涨跌）与 `xueqiu_news` 快讯卡片（时间线、mark=1 重要快讯高亮、列表内滚动）。
+- **1.18.0**（2025-08-20）
+  - 新增：**Agent 工具调用卡片**——`xueqiu_quote` 结果渲染为红涨绿跌行情表，`xueqiu_kline` 渲染为迷你蜡烛图（复用面板图表组件，头部含周期/根数/区间/区间涨跌），对话流内直接看图，不再是一坨 JSON。
+- **1.17.0**（2025-08-20）
+  - **新增：Agent 工具（一期 6 个）**——模型在对话中直接调用雪球数据，不必再让 agent 爬网页：`xueqiu_quote`（实时行情，一次 20 只）、`xueqiu_kline`（7 档周期 OHLCV）、`xueqiu_search`（代码/中文名/拼音搜索）、`xueqiu_hot`（热榜）、`xueqiu_news`（7×24 快讯，可翻页）、`xueqiu_kol`（个股热议大V，雪球社区数据独有）。复用既有请求闸门/缓存/Cookie 自愈，数据层零新增请求路径。
+- **1.16.1**（2025-08-20）
+  - 修复：双击 ⤡ 复位徽章宽度时，`badgeW:null` 被 host 侧 `Number(null)=0` 钳制为下限 120px 落盘——刷新后徽章变成 120px 窄条（`dockH` 同理被钳为 160）。现 null 按显式复位处理。
+  - 修复：恢复徽章位置时的视口钳制按实际宽度计算（原先固定 `-140`，区域模式宽达 480px 时右缘出屏）。
+  - 新增：`scripts/browser-interact.sh` 浏览器交互回归（真实鼠标事件：拖拽/调宽/双击复位/面板四 tab/越屏恢复）。
+- **1.16.0**（2025-08-20）
   - 修复：登录 Cookie 过期后，公开行情接口（报价/K线/分时/热榜等）被一并毒化全部报错 —— 现自动降级为匿名请求继续工作，仅云端自选等功能提示重新登录。
   - 新增：`scripts/feature-matrix.py` 功能矩阵回归测试（155 项断言 × 未登录/已登录/Cookie过期 三环境）。
 - **1.15.2**（2025-08-19）

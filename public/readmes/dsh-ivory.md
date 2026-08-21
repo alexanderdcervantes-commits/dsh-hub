@@ -21,7 +21,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/main/assets/hero-dark.png">
-  <img alt="Ivory for DSH home screen" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/3391be192dfb3a5cc4b0ac7a6f43bfc7be03f317/assets/hero-light.png" width="1440">
+  <img alt="Ivory for DSH home screen" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/bffb4d263473bdada4a9f5bccfcf4275a3f2e7c5/assets/hero-light.png" width="1440">
 </picture>
 
 Ivory gives the DSH web interface a quieter reading rhythm without changing how
@@ -47,7 +47,7 @@ focus mode stays off until you choose it.
 Install the exact GitHub release without using npm.
 
 ```sh
-dsh plugin --profile web add github:ZJUZhiyuCai/dsh-ivory#v0.2.4
+dsh plugin --profile web add github:ZJUZhiyuCai/dsh-ivory#v0.2.6
 ```
 
 Remove Ivory and return to the native DSH interface.
@@ -73,8 +73,8 @@ dsh plugin --profile web remove dsh-ivory
 
 <table>
   <tr>
-    <td width="72%"><img alt="Ivory conversation view on desktop" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/3391be192dfb3a5cc4b0ac7a6f43bfc7be03f317/assets/conversation-light.png"></td>
-    <td width="28%"><img alt="Ivory conversation view on mobile" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/3391be192dfb3a5cc4b0ac7a6f43bfc7be03f317/assets/mobile-light.png"></td>
+    <td width="72%"><img alt="Ivory conversation view on desktop" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/bffb4d263473bdada4a9f5bccfcf4275a3f2e7c5/assets/conversation-light.png"></td>
+    <td width="28%"><img alt="Ivory conversation view on mobile" src="https://raw.githubusercontent.com/ZJUZhiyuCai/dsh-ivory/bffb4d263473bdada4a9f5bccfcf4275a3f2e7c5/assets/mobile-light.png"></td>
   </tr>
   <tr>
     <td align="center"><sub>Focused desktop conversation</sub></td>
@@ -103,19 +103,20 @@ and [third-party notices](https://github.com/ZJUZhiyuCai/dsh-ivory/blob/main/THI
 
 > [!NOTE]
 > DeepSeek Harness is in developer preview and may make breaking UI changes.
-> Ivory 0.2.x is verified against DSH 0.1.0-rc.6. When Ivory cannot prove the
-> current structural contract, it keeps token-level theming and releases the
-> host layout back to DSH.
+> Ivory 0.2.x is verified against DSH 0.1.0-rc.7 with the current 0.1.0-rc.8
+> web client modules. When Ivory cannot prove the current structural contract,
+> it keeps token-level theming and releases the host layout back to DSH.
 
 <details>
 <summary><strong>Quality and release checks</strong></summary>
 
 ```sh
 npm ci
-npm test          # 14 static, build, publint, and package checks
-npm run qa:r2     # 69 browser regressions; DSH must run at 127.0.0.1:3080
-npm run qa:adversarial  # 25 stress checks: reconciliation safety, toggle/resize storms, degraded mode
-npm run qa:activity     # 13 checks for thinking/tool-call rows, icons, and terminal polish
+npm test          # renderer unit tests, then 14 static, build, publint, and package checks
+npm run qa:r2     # 71 browser regressions; DSH must run at 127.0.0.1:3080
+npm run qa:adversarial  # 29 stress checks: reconciliation safety, toggle/resize storms, degraded mode
+npm run qa:activity     # 16 checks for thinking/tool-call rows, icons, and terminal polish
+npm run qa:micro        # 28 Vision Toolkit/Ivory micro-component checks; set DVT_CLIENT_JS if the toolkit is not installed in the DSH web profile
 ```
 
 The browser suite covers responsive layout, composer focus, dark mode,
@@ -139,13 +140,15 @@ dsh plugin --profile web add link:$PWD
 dsh web
 ```
 
-Edit `src/skin.css` or `src/client.template.js`, then run `npm run build`.
+Edit `src/skin.css`, `src/client.template.js`, or `src/markdown.js`, then run `npm run build`.
 The generated `lib/client.js` is committed so GitHub installs need no build
 permission.
 
 ```text
 src/skin.css             theme and compatibility styles
 src/client.template.js   client lifecycle and optional enhancements
+src/markdown.js          capped DOM-built Markdown preview renderer
+scripts/test-markdown.mjs  renderer unit tests (node --test)
 lib/client.js            deterministic generated browser bundle
 lib/index.js             inert host entry point
 cordis.patch.yml         DSH bundle registration

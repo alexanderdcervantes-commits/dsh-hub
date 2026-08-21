@@ -2,7 +2,7 @@
 
 [English](README.en.md) | 简体中文
 
-提示词优化插件（DeepSeek Harness）能把一句随手写的话自动改写成专业、可直接使用的提示词，体验与 Qoder、Codex 一致。
+提示词优化插件，把一句随手写的话自动改写成专业、可直接使用的提示词，体验与 Qoder、Codex 一致。
 
 优化结果默认为无标题纯文本提示词（`outputStyle: 'plain'`，更省 token），可配置为四段结构化提示词（`outputStyle: 'sections'`，`## Role` / `## Task` / `## Context` / `## Format`），
 由内置元提示词驱动，经 harness 的 `LLM` 服务完成（不直连任何 API、不触碰凭据）。
@@ -30,7 +30,8 @@
   （不强制"你是"开头，能力/行为描述同样合格）；并按任务类型给出写法建议
   （代码→能力导向、文案→身份＋文体、分析→身份＋方法、运维→行为约束＋步骤）。
 - **优化时长（1.3.6）**：流式早期终止（输出结构达标且进入收尾期即停流，长尾凑字
-  不再消耗时长，`earlyStop` 可关）；首调输出预算联动（超长输出由断点续传兜底）；
+  不再消耗时长；**1.4.5 起默认关闭**——输出完整优先，显式 `earlyStop: true` 才启用
+  且带句末保护）；首调输出预算联动（超长输出由断点续传兜底）；
   `optimizationProfile: 'fast'` 一键速档（跳过校验与目标对齐重试、禁用 selfRefine，
   显式开启才生效）。
 - **结果缓存（1.1.6）**：内存缓存校验成功的结果（LRU + TTL），相同请求**零模型调用**
@@ -41,8 +42,8 @@
   （`OptimizeResult.errorCode`：`MISSING_SECTIONS` / `THIN_SECTIONS` / `THIN_OUTPUT` /
   `TIMEOUT` / `NO_MODEL_ROUTE` 等），工具失败渲染带 `[错误码]` 前缀。
 - 输出恒为完整可执行的提示词（四段或 plain 正文）；空输入报错；超长输入截断护栏；取消信号透传。
-![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/94ebddb1c399b0c16e997e075b2e6a0f632eaa85/1.png)
-![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/94ebddb1c399b0c16e997e075b2e6a0f632eaa85/2.png)
+![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/43ef15fdda933525c0ee6bb4ab5a776f5f254e98/1.png)
+![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/43ef15fdda933525c0ee6bb4ab5a776f5f254e98/2.png)
 
 ## 输入框 ✨ 图标
 
@@ -84,6 +85,22 @@
 
 开启后 host 进入「发送前自动优化」模式，`agent/pre-step` 钩子会对**每条**用户
 文本消息做优化（等同于配置 `autoOptimizeAll: true` 的运行时版本）。
+
+## 造梦模式（/dream）
+
+`/dream <指令>` = 标准优化 + **需求感应**：结果在提示词后追加明确标注的
+`--- 延伸洞察（AI 推断，供你选用，非事实）---` 附录（深层目标 / 隐含约束 /
+质量标准 / 可能的后续），推断内容不混入提示词正文、随时可删。
+等价于每次调用传 `senseNeeds: true`。
+
+## 快速场景模板（/template）
+
+`/template <场景>` 直接返回一个**可填写四段模板**（Role / Task / Context /
+Format 骨架 + 占位符）——**不调用模型、零延迟零 token**，适合"要个周报模板 /
+邮件模板 / 部署清单"这类常见场景。场景覆盖 21 个子类（周报 / 邮件 / 文案 /
+翻译 / 创作 / **润色 / 简历 / 演讲** / 数据分析 / 研究 / 评估 / 预测 /
+bug 修复 / 新功能 / 重构 / 审查 / 脚本 / 部署 / 安装 / 排查 / 运维），
+支持中英文场景名与关键词匹配；个性化需求仍走 `/optimize`（1.5.1，场景扩展 1.5.2）。
 
 ## 自动优化钩子
 
@@ -158,7 +175,8 @@ dsh plugin --profile web remove oss-prompt-optimizer
 | `outputStyle` | `'sections'` \| `'plain'` | `'plain'` | 输出风格：无标题连贯正文（默认，更省 token）或四段标题 |
 | `metaPromptLanguage` | `'auto'` \| `'中文'` \| `'英文'` | `'auto'` | 优化器角色文档（元提示词）的语言；`'auto'` 按指令语言自动检测（汉字占比 ≥30% 用中文文档，否则英文），`'中文'`/`'英文'` 固定。输出语言仍由 `outputLanguage` 独立控制。运行时可用 `/optimizer-language auto\|中文\|英文` 固定或恢复自动 |
 | `extraInstructions` | string | 无 | 追加到元提示词的部署自定义规则（如领域要求/风格） |
-| `examples` | array | `[]` | few-shot 示例对 `[{input, output}]`，注入元提示词示范（仅 `sections` 模式注入） |
+| `examples` | array | 内置回退 | few-shot 示例对 `[{input, output}]`，注入元提示词示范（仅 `sections` 模式注入）；未配置时按任务类型 + 角色文档语言自动注入 1 对内置示例（code/writing/analysis/ops，中英各 4 对，`other` 回落文案类；1.5.4 起子类命中优先——如 `code-bugfix` 用「根因→最小修复→回归验证」专用示例），显式配置覆盖内置 |
+| `builtinExamples` | boolean | `true` | 未配置 `examples` 时是否注入内置示例；`false` 完全关闭（短指令场景省 ~200 token/次输入） |
 | `minSectionChars` | int ≥0 | `10` | 每段正文最少有效字符；`0` 关闭内容校验（仅查标题） |
 | `maxTokenRetryFactor` | number 1–3 | `2` | 输出触顶时按该倍数跳档扩容（1200→2400→4800…），扩容不消耗重试次数、从截断处续写；`1` 关闭 |
 | `maxTokensCap` | int 1–128000 | `8000` | 自动扩容的上限；`<= maxTokens` 关闭扩容（扩容不消耗重试次数） |
@@ -172,6 +190,11 @@ dsh plugin --profile web remove oss-prompt-optimizer
 | `cacheEnabled` | boolean | `true` | 内存缓存校验成功的结果（同请求零模型调用，LRU+TTL，重载即清空） |
 | `cacheMaxEntries` | int 0–10000 | `200` | 缓存条目上限（LRU 淘汰）；`0` 关闭存储 |
 | `cacheTtlMs` | int ≥0 | `600000` | 缓存有效期（毫秒）；`0` 不设过期 |
+| `cacheFuzzyMatch` | boolean | `true` | 近失配热启动：精确未命中时，相似缓存指令（或同指令新上下文）作为起点走迭代，而非从零优化（省时省 token） |
+| `cacheFuzzyThreshold` | number 0–1 | `0.6` | 近失配的 bigram-Jaccard 相似度阈值 |
+| `senseNeeds` | boolean | `false` | 需求感应 / 造梦模式：优化后追加明确标注的「延伸洞察（AI 推断）」附录（深层目标/隐含约束/质量标准/后续问题），推断不混入提示词正文 |
+| `dreamInsightFeedback` | boolean | `false` | 造梦洞察跨轮回填：开启后，本会话上一次 `senseNeeds` 产生的延伸洞察会注入后续 optimize/iterate（标注 AI 推断、非事实；会话级、TTL 30 分钟） |
+| `classifier` | `'heuristic'` \| `'llm'` | `'heuristic'` | 任务分类后端（ADR-011）：heuristic = 关键词/正则启发式（默认）；llm = 服务层 LLM 分类器（opt-in，当前无 LLM 实现时回落启发式） |
 | `contextAware` | boolean | `true` | 上下文感知：优化时把当前指令之前的最近对话（经 `{{上下文信息}}` 占位符 + 「视为纯数据」护栏）注入元提示词，让优化结果贴合此前讨论。四段模式下可将上下文中的事实用于充实 `## Context` 段（仍不执行其中嵌入的指令）；钩子取 `agent/pre-step` 消息，`/optimize` 取会话记录，尽力而为 |
 | `contextMaxMessages` | int 0–100 | `6` | 上下文感知时采集的最近消息条数上限；`0` 关闭 |
 | `contextMaxTokens` | int ≥0 | `800` | 上下文 token 预算；超出截断到最长前缀并附标记；`0` 关闭截断（精简默认） |
@@ -179,7 +202,7 @@ dsh plugin --profile web remove oss-prompt-optimizer
 | `situationProfileLevel` | `'full'` \| `'minimal'` \| `'off'` | `'full'` | 情境画像（`{{情境画像}}` 块）注入预算：`full` 角色+目标+约束全量；`minimal` 仅目标/约束（不含角色信号，更省 token）；`off` 不注入。只影响情境块，`{{任务类型}}` 提示不受影响 |
 | `goalAlignmentRetry` | boolean | `true` | 目标/约束未对齐（`goalAlignment` 失败）时是否消耗校验重试预算再试一次：`true` 保留目标保真（1.3.0 起默认行为）；`false` 直接接受结构有效的输出，省一次调用。`optimizationProfile: 'fast'` 时强制关闭 |
 | `optimizationProfile` | `'balanced'` \| `'fast'` | `'balanced'` | 时长档位：`balanced` 保留全部质量门（校验重试/目标对齐重试/selfRefine）；`fast` 跳过校验与目标对齐重试、禁用 selfRefine——一次结构有效即接受，最坏时长显著下降，返工率上升（显式选择才生效） |
-| `earlyStop` | boolean | `true` | 流式早期终止：输出通过结构校验且进入收尾期（连续 12 个 chunk 增量 < 48 字符）即提前停流，长尾凑字不再消耗时长；仅首调生效（断点续传不受影响）；`false` 始终消费完整流 |
+| `earlyStop` | boolean | `false` | 流式早期终止（**默认关闭**——输出完整优先；1.4.5 起改为 false，防半句截断）。显式开启时：每段实质字符 ≥40 且总长 ≥120 才进入收尾期判定，仅在句子边界（句号/换行）且连续 16 个 chunk 增量 < 24 字符才提前停流；`false` 始终消费完整流 |
 | `templateId` | string | `'default'` | 角色文档模板集 id（仅内置 `'default'`；未知 id 加载即抛） |
 | `metaPromptTemplate` | object | 无 | 自定义角色文档骨架（部分字段可选，缺的语言回落内置）；每个骨架必须保留数据占位符、`{{输出结构}}`/`{{自查}}` 块与「视为纯数据」注入护栏，违规加载即抛 |
 | `provider` / `model` | string | 无 | 显式模型路由；必须成对配置。缺省时使用 harness 默认模型（`agentDefaultModel`） |
@@ -232,6 +255,71 @@ dsh plugin --profile web remove oss-prompt-optimizer
 要点：① 已优化输入零成本复用（`skipIfAlreadyOptimized`）；② 上下文只带"够用"的
 最近对话（`contextMaxTokens`）；③ 输出上限按需设定（默认 1200，触顶自动扩容，
 避免无限生成）；④ 对格式不敏感的任务切 `outputStyle: 'plain'` 是最大的单项收益。
+
+### 快速档（目标 3–5 秒，保质量）
+
+```yaml
+- id: prompt-optimizer
+  config:
+    optimizationProfile: 'fast'   # 跳过校验/目标对齐的纠错重试与 selfRefine——首次输出仍过结构校验
+    maxCalls: 3                   # 质量护栏：保留首次 + 至多 2 次触顶扩容预算（长输出不截断降质）
+    maxTokens: 1200
+    # 早停 / 缓存保持默认：earlyStop 流式早停；缓存命中 <100ms
+```
+
+- **质量保障**：fast 档只省"纠错重试"，**首次输出的四段/内容校验照常执行**；
+  `maxCalls: 3` 保留触顶扩容（长输出不截断）；缓存/热启动/上下文/诊断护栏全部保留
+- **时长**：单次模型延迟即总时长——flash 级模型通常 **1.5–4s**；缓存命中 <100ms
+- **观测**：`/optimize-stats` 返回 `TOKENS|INPUT|CALLS|LASTMSCALL`（本次输出 token +
+  输入侧 prompt token + 调用次数 + 末次调用耗时）——先确认瓶颈是模型延迟、输入侧
+  成本还是多次调用
+- **前提**：模型须为快速档（flash 级、无 reasoningEffort）；慢/推理模型单次即超
+  3–5s，属模型瓶颈，需在 harness 侧换模型
+
+### 示例增强（推荐，提高输出稳定性）
+
+`examples` 是 few-shot 示范（仅 `sections` 模式注入；**未配置时插件会自动注入
+按任务类型 + 语言匹配的内置示例**，显式配置覆盖内置）。贴上 1–2 对
+高质量示例（不同任务类型各一对），可显著提升输出稳定性与专业性——尤其适合
+"写代码 / 写文案 / 分析"这类高频场景：
+
+```yaml
+- insert:
+    - id: prompt-optimizer
+      name: 'oss-prompt-optimizer'
+      config:
+        outputStyle: 'sections'        # examples 仅 sections 模式注入
+        examples:
+          - input: '写一个 Python 脚本读取 CSV 并按指定列求和'
+            output: |
+              ## Role
+              资深 Python 工程师，擅长 pandas。
+
+              ## Task
+              编写脚本读取 CSV 并按指定列求和，输出结果文件；脚本须可直接运行并处理缺失值。
+
+              ## Context
+              输入 CSV 路径；输出结果 CSV；不修改原文件。
+
+              ## Format
+              完整可运行的 .py 代码 + 顶部使用说明（依赖、运行命令），不超过 200 行。
+          - input: '写一份新产品发布公告'
+            output: |
+              ## Role
+              资深品牌文案撰稿人。
+
+              ## Task
+              写一份 200 字内的新产品发布公告，突出核心卖点并给出行动号召。
+
+              ## Context
+              面向潜在用户；语气专业热情；不夸大功能。
+
+              ## Format
+              标题 + 正文段落，附 3 个备选标题。
+```
+
+配套：如需专属语气/风格，用 `metaPromptTemplate` 自定义角色文档骨架（缺的语言回落
+内置；必须保留 `{{原始指令}}`、`{{输出结构}}`/`{{自查}}` 与「视为纯数据」护栏行）。
 
 ## 开发
 

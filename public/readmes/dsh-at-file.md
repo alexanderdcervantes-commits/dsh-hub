@@ -2,9 +2,9 @@
 
 Workspace path references for the DeepSeek Harness web interface. Type `@` in the composer to search the current workspace and insert a file or directory path.
 
-![@ path picker](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/289f19bb83f80a95df49f567eeef42462d4da92f/assets/screenshots/workspace-path-picker.png)
+![@ path picker](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/c57849b27e378cf6b41d082b17c8a8750cee370f/assets/screenshots/workspace-path-picker.png)
 
-![File reference in the composer](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/289f19bb83f80a95df49f567eeef42462d4da92f/assets/screenshots/file-mention-composer.png)
+![File reference in the composer](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/c57849b27e378cf6b41d082b17c8a8750cee370f/assets/screenshots/file-mention-composer.png)
 
 ## Usage
 
@@ -36,23 +36,23 @@ A query containing `/` matches path segments in order. For example, `src/view` c
 
 When a directory is highlighted, press `ArrowRight` to enter it. The draft advances to `@path/` without a trailing space, and the candidate menu stays open for the next selection. `Enter` and pointer selection keep the existing behavior and finish the directory reference.
 
-Each result shows the filename first and its parent directory underneath. Duplicate filenames include the parent directory in the main label. Built-in SVG icons distinguish folders, source files, text, PDFs, images, data and configuration files, archives, and other files.
+Each result shows the complete filename first and its parent directory underneath. The menu expands to its 537px design width when space permits, and long filenames wrap instead of being ellipsized. Duplicate filenames also include the parent directory in the main label. Built-in SVG icons distinguish folders, source files, text, PDFs, images, data and configuration files, archives, and other files.
 
 The default index skips common version-control directories, IDE metadata, dependency trees, caches, and build output. The list covers VS Code, Visual Studio, JetBrains IDEs, Fleet, Eclipse, Android and Gradle, Xcode, CMake, Flutter, .NET, Unity, Unreal, and common JavaScript and Python output directories. OS metadata files named `desktop.ini`, `Thumbs.db`, and `.DS_Store` are excluded by default.
 
 ## Install or Update
 
 ```sh
-dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/tags/v0.6.5.tar.gz
+dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/tags/v0.6.7.tar.gz
 ```
 
-Use the same command to update an existing installation. Restart `dsh web` after installation so the Host and browser client load version `0.6.5`.
+Use the same command to update an existing installation. Restart `dsh web` after installation so the Host and browser client load version `0.6.7`.
 
 ## File Filters
 
 Open **Settings -> File mentions** to manage file-name filters.
 
-![File mention settings with Exact and Regex rules](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/289f19bb83f80a95df49f567eeef42462d4da92f/assets/screenshots/file-mention-settings.png)
+![File mention settings with Exact and Regex rules](https://raw.githubusercontent.com/omdsh-dev/dsh-at-file/c57849b27e378cf6b41d082b17c8a8750cee370f/assets/screenshots/file-mention-settings.png)
 
 - **Global** contains rules shared by every workspace.
 - **Workspace** contains additional rules for the selected workspace path. Each workspace keeps its own list, and the panel shows the global rules it inherits.
@@ -86,7 +86,7 @@ Omitting `ignoreDirs` keeps the built-in list. When you provide it, include ever
 
 ## Path Handling
 
-- The picker indexes regular files and directories in the active workspace. Configured directory names and symbolic links are skipped.
+- The picker indexes regular files, directories, and symbolic links in the active workspace. Directory links are traversed through their workspace-relative alias, while links back to an ancestor are kept visible without being re-entered.
 - Global and workspace file-name filters are combined during the Host index walk, before entries count toward `maxIndexedFiles` or reach the browser.
 - The Host accepts workspace-relative paths. Absolute paths and paths that escape the workspace are ignored.
 - Reference markers are created from typed text and picker selections. Pasted `@` tokens are ignored when the default setting is enabled.

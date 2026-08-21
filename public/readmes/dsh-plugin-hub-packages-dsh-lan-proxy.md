@@ -1,4 +1,6 @@
 # @wingsky-1/dsh-lan-proxy
+[![npm](https://img.shields.io/npm/v/@wingsky-1/dsh-lan-proxy)](https://www.npmjs.com/package/@wingsky-1/dsh-lan-proxy)
+[![GitHub Releases](https://img.shields.io/github/v/release/wingsky-1/dsh-plugin-hub)](https://github.com/wingsky-1/dsh-plugin-hub/releases)
 
 局域网访问 dsh web UI：在 `0.0.0.0:<port>` 监听，把 HTTP/HTTPS 与 WebSocket/wss
 转发到回环 web 服务器（默认 `127.0.0.1:3080`）。
@@ -9,16 +11,47 @@
 
 ## 安装
 
+前提：已安装 DeepSeek Harness 且 `dsh web` 可正常启动（未全局安装 dsh 见下方「未全局安装 dsh」）。
+
+### 安装插件（add）
+
 ```sh
 dsh plugin --profile web add @wingsky-1/dsh-lan-proxy
 ```
 
-安装后**重启一次** `dsh web`。插件注入 webServer，仅在回环服务器绑定后启动，
-并自动解析真实上游端口。
+### 卸载插件（remove）
 
-> ⚠️ **安装即开端口**：本插件会在 `0.0.0.0:3081`（HTTP）与 `0.0.0.0:3443`
-> （HTTPS）监听，局域网内所有设备都可访问你的 dsh web。不需要时请
-> `dsh plugin --profile web remove @wingsky-1/dsh-lan-proxy`。
+```sh
+dsh plugin --profile web remove @wingsky-1/dsh-lan-proxy
+```
+
+### 更新插件（update）
+
+```sh
+dsh plugin --profile web update @wingsky-1/dsh-lan-proxy
+```
+
+> 安装 / 卸载 / 更新后都需**重启一次** `dsh web`（bundle 层只在启动时组合）生效。
+
+### 指定版本号（@version）
+
+省略 `@版本号` 即安装默认 latest（推荐）。仅当 registry 尚未同步到最新、或最新版在你的环境有问题时，在包名后追加 `@版本号`：
+
+```sh
+dsh plugin --profile web add @wingsky-1/dsh-lan-proxy@<版本号>
+```
+
+### 未全局安装 dsh
+
+若本机没有全局 `dsh` 命令，用 `npx` 临时拉起（底层调用 `pnpm`，仍需本机装好 `pnpm` 与 `Node.js`）：
+
+```sh
+npx @deepseek-ai/dsh plugin --profile web add @wingsky-1/dsh-lan-proxy
+npx @deepseek-ai/dsh plugin --profile web remove @wingsky-1/dsh-lan-proxy
+npx @deepseek-ai/dsh plugin --profile web update @wingsky-1/dsh-lan-proxy
+```
+
+> ⚠️ **安装即开端口**：本插件会在 `0.0.0.0:3081`（HTTP）与 `0.0.0.0:3443`（HTTPS）监听，局域网内所有设备都可访问你的 dsh web。不需要时请卸载（见上方 remove）。
 
 ## 配置
 

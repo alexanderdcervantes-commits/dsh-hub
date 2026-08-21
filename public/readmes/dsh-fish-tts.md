@@ -3,7 +3,7 @@
 **中文 | [English](./README.en.md)**
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/1b84f9b7a0848df19d997d392a44788602eb293f/assets/readme/hero.svg" width="100%" alt="dsh-fish-tts — DeepSeek Harness 语音合成插件（仅支持 Fish Audio API）" />
+  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/d5b1da8660136117f4a421a5e4362c12ff4cf771/assets/readme/hero.svg" width="100%" alt="dsh-fish-tts — DeepSeek Harness 语音合成插件（仅支持 Fish Audio API）" />
 </p>
 
 <p align="center">
@@ -47,36 +47,48 @@
 ## 界面截图
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/1b84f9b7a0848df19d997d392a44788602eb293f/assets/readme/screenshot-read-aloud.png" width="75%" alt="消息操作条上的朗读按钮" /><br>
+  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/d5b1da8660136117f4a421a5e4362c12ff4cf771/assets/readme/screenshot-read-aloud.png" width="75%" alt="消息操作条上的朗读按钮" /><br>
   <em>消息操作条上的「朗读」按钮</em>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/1b84f9b7a0848df19d997d392a44788602eb293f/assets/readme/screenshot-auto-read.png" width="75%" alt="输入栏的自动朗读开关" /><br>
+  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/d5b1da8660136117f4a421a5e4362c12ff4cf771/assets/readme/screenshot-auto-read.png" width="75%" alt="输入栏的自动朗读开关" /><br>
   <em>输入栏的自动朗读开关</em>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/1b84f9b7a0848df19d997d392a44788602eb293f/assets/readme/screenshot-settings.png" width="75%" alt="语音合成设置页（模型 / 音色 / API Key / 代理）" /><br>
+  <img src="https://raw.githubusercontent.com/MaRi23333/dsh-fish-tts/d5b1da8660136117f4a421a5e4362c12ff4cf771/assets/readme/screenshot-settings.png" width="75%" alt="语音合成设置页（模型 / 音色 / API Key / 代理）" /><br>
   <em>设置页：模型 / 音色 / API Key / 代理 / 试听</em>
 </p>
 
 ## 安装
 
+一条命令，从 npm 安装（推荐）：
+
+```sh
+npx @deepseek-ai/dsh plugin --profile web add dsh-fish-tts
+```
+
+然后**重启 dsh web**（关掉终端重新运行 `dsh web`）并刷新页面，打开 **Settings → 语音朗读**。
+
+其他安装方式：
+
 ```sh
 # 从 GitHub 安装（git-hosted 插件会在安装时构建）
-dsh plugin --profile web add github:MaRi23333/dsh-fish-tts
+npx @deepseek-ai/dsh plugin --profile web add github:MaRi23333/dsh-fish-tts
 
-# 或从本地目录安装
+# 从本地目录安装
 git clone https://github.com/MaRi23333/dsh-fish-tts.git
 cd dsh-fish-tts
 pnpm install && pnpm run build
-dsh plugin --profile web add /absolute/path/to/dsh-fish-tts
+npx @deepseek-ai/dsh plugin --profile web add /absolute/path/to/dsh-fish-tts
 ```
 
-然后**重启 dsh web**（关掉终端重新运行 `dsh web`）并刷新页面。
-
 > 仓库已提交 `lib/` 构建产物，git 安装无需本地构建；改源码后运行 `pnpm run build` 再重启即可。
+
+> **从 GitHub 版换到 npm 源**：裸包名 `add dsh-fish-tts` 对已装的 git 版是静默空操作（pnpm 判定同名依赖已满足）。请改用 `npx @deepseek-ai/dsh plugin --profile web add dsh-fish-tts@latest`，或先 `remove` 再 `add`。
+
+> 安装刚发布的 npm 版本时，pnpm 的供应链保护可能自动在 profile 的 `pnpm-workspace.yaml` 写入 `minimumReleaseAgeExclude: [dsh-fish-tts@…]`，属正常行为，不影响使用。
 
 ### 安装后验证
 

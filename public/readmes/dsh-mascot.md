@@ -2,7 +2,7 @@
 
 [中文](README.md) | [English](README.en.md)
 
-![悬浮伙伴](https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/assets/cover.jpg)
+![悬浮伙伴](https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/assets/cover.jpg)
 
 DeepSeek Harness（`dsh web`）的悬浮伙伴：一只可拖动的卡通猫或狗，停在界面上陪你干活。它跟着当前会话的状态换表情、说短句，也支持拖拽、点击、双击收起。设置页有独立的「悬浮伙伴」分区，用缩略图切换形象。
 
@@ -16,13 +16,13 @@ https://github.com/user-attachments/assets/3e2c4737-ffda-43fd-96af-e79537123468
 
 | 橘猫 | 布偶 | 缅因 | 金渐层 | 银渐层 |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="橘猫"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat-ragdoll/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="布偶"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat-maine/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="缅因"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat-golden/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="金渐层"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat-silver/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="银渐层"> |
+| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="橘猫"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat-ragdoll/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="布偶"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat-maine/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="缅因"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat-golden/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="金渐层"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat-silver/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="银渐层"> |
 
 ### 狗狗
 
 | 奶黄 | 泰迪 | 边牧 | 柯基 | 柴犬 |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/dog/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="奶黄"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/dog-poodle/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="泰迪"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/dog-collie/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="边牧"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/dog-corgi/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="柯基"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/dog-shiba/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="柴犬"> |
+| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/dog/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="奶黄"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/dog-poodle/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="泰迪"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/dog-collie/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="边牧"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/dog-corgi/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="柯基"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/dog-shiba/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="150" alt="柴犬"> |
 
 ### 表情
 
@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/3e2c4737-ffda-43fd-96af-e79537123468
 
 | 正常 | 干活 | 写答案 | 开心 | 思考 | 难过 |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="110" alt="正常"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E5%B9%B2%E6%B4%BB%E8%84%B8.jpg" width="110" alt="干活"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E5%86%99%E7%AD%94%E6%A1%88%E8%84%B8.jpg" width="110" alt="写答案"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E5%BC%80%E5%BF%83%E8%84%B8.jpg" width="110" alt="开心"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E6%80%9D%E8%80%83%E8%84%B8.jpg" width="110" alt="思考"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/05632a0491bb2259e983bf3b39377959ecab4cb9/docs/cat/%E9%9A%BE%E8%BF%87%E8%84%B8.jpg" width="110" alt="难过"> |
+| <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E6%AD%A3%E5%B8%B8%E8%84%B8.jpg" width="110" alt="正常"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E5%B9%B2%E6%B4%BB%E8%84%B8.jpg" width="110" alt="干活"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E5%86%99%E7%AD%94%E6%A1%88%E8%84%B8.jpg" width="110" alt="写答案"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E5%BC%80%E5%BF%83%E8%84%B8.jpg" width="110" alt="开心"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E6%80%9D%E8%80%83%E8%84%B8.jpg" width="110" alt="思考"> | <img src="https://raw.githubusercontent.com/falser101/dsh-mascot/f10d055f140ae789bb6f56fdcb9874b5039c74b5/docs/cat/%E9%9A%BE%E8%BF%87%E8%84%B8.jpg" width="110" alt="难过"> |
 
 闲置时会眨眼；思考、干活、写答案、完成、出错时整只一起动。
 
@@ -38,12 +38,14 @@ https://github.com/user-attachments/assets/3e2c4737-ffda-43fd-96af-e79537123468
 
 - **跟着会话走**：排队、等你确认、思考、调工具、写答案、完成、出错，各有表情和文案。纯前端投影，不发会话事件。
 - **拖来拖去**：松手停在你放的位置；窗口缩小才会夹回屏幕里。
-- **状态气泡**：忙碌时说陪伴的话（「还在忙，别急～」），工具名默认关掉，悬停或设置里可打开。闲置时可按安静 / 标准 / 热闹自动冒泡。
+- **输入时变小**：焦点在对话输入框、它又闲着时，收成小头像贴着原来那只角，发完再展开，少挡字。
+- **状态气泡**：忙碌时说陪伴的话（「还在忙，别急～」），工具名默认关掉，悬停或设置里可打开。闲置时可按安静 / 标准 / 热闹自动冒泡。第一次出现会说一句「拖我，悬停有按钮」，出一次就够。
 - **AI 小剧场**（默认关）：打开后会打**当前默认模型**偶尔写一句俏皮话，没 key 或失败时退回内置句子。高推理模型开着会比较亏，所以默认不用。
 - **悬停安慰**：鼠标放上去会换成更软的话，比如「别着急，我在努力想～」。
 - **并行感知**：好几个会话或子代理同时跑时，右上角出数字；悬停能看到谁在忙，点一下跳过去。
 - **显示 / 隐藏**：设置 → 通用，或设置 → 悬浮伙伴，有「显示悬浮宠物」总开关。关掉后整只从界面消失；右键「隐藏」同样生效。
-- **宠物上的入口**：点一下说句俏皮话；双击收成小头像；悬停脚下一排小按钮：换一只、去当前任务、隐藏、打开设置（右键会钉住这排按钮）。
+- **宠物上的入口**：点一下说句俏皮话（猫会「喵」、狗会「汪」，不会串台）；双击收成小头像；悬停出一排小按钮：换一只、去当前任务、隐藏、打开设置（右键会钉住这排按钮）。贴着底边时按钮开到头顶，贴左边就往右开，避免顶出窗口。
+- **干活 / 写答案是两张脸**：调工具眯眼吐舌尖，写答案张小口；不再只靠晃动区分。
 - **等得越久动作越大**：等模型时先打哈欠，再伸懒腰；空闲时仍会偶尔动一下。频率跟「安静 / 标准 / 热闹」走。
 - 文案跟界面语言走（中 / 英）；系统开了减弱动态时，动画会停。
 

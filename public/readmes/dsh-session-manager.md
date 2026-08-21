@@ -31,7 +31,7 @@
 ### 从 GitHub
 
 ```sh
-dsh plugin --profile web add 'github:dream12347/dsh-session-manager#v0.2.1'
+dsh plugin --profile web add 'github:dream12347/dsh-session-manager#v0.2.2'
 ```
 
 ### 从本地目录
@@ -44,7 +44,7 @@ dsh plugin --profile web add /absolute/path/to/dsh-session-manager
 
 ```sh
 pnpm pack
-dsh plugin --profile web add /absolute/path/to/dsh-session-manager-0.2.1.tgz
+dsh plugin --profile web add /absolute/path/to/dsh-session-manager-0.2.2.tgz
 ```
 
 安装完成后**重启** `dsh web`（host 插件与客户端 bundle 需要重启加载）。
@@ -53,19 +53,19 @@ dsh plugin --profile web add /absolute/path/to/dsh-session-manager-0.2.1.tgz
 
 设置页「会话管理」分栏（工作区分组、行操作与回收站）：
 
-![设置页会话管理](https://raw.githubusercontent.com/dream12347/dsh-session-manager/7de52fa55d5a570224435358f35353884c38886c/assets/settings-section.png)
+![设置页会话管理](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/settings-section.png)
 
 对话顶部快捷入口（对话管理 / 回收站 / 删除本对话）：
 
-![对话顶部快捷入口](https://raw.githubusercontent.com/dream12347/dsh-session-manager/7de52fa55d5a570224435358f35353884c38886c/assets/header-buttons.png)
+![对话顶部快捷入口](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/header-buttons.png)
 
 会话管理抽屉（工作区分组、图钉固定、点击外部收起）：
 
-![会话管理抽屉](https://raw.githubusercontent.com/dream12347/dsh-session-manager/7de52fa55d5a570224435358f35353884c38886c/assets/session-drawer.png)
+![会话管理抽屉](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/session-drawer.png)
 
 通用设置「上下文压缩阈值」（17%–90%，滑块刻度）：
 
-![上下文压缩阈值](https://raw.githubusercontent.com/dream12347/dsh-session-manager/7de52fa55d5a570224435358f35353884c38886c/assets/general-settings.png)
+![上下文压缩阈值](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/general-settings.png)
 
 ## 使用
 

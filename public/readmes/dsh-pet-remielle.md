@@ -1,5 +1,9 @@
 # dsh-pet-remielle · 蕾米埃尔桌宠
 
+[![npm version](https://img.shields.io/npm/v/dsh-pet-remielle)](https://www.npmjs.com/package/dsh-pet-remielle)
+[![awesome dsh plugin](https://awesome-dsh-plugin.com/badge.svg)](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 由 **DSH 真实会话事件**驱动的多宠物网页桌宠：桌宠实时跟随 DeepSeek Harness 的任务进展，以贴纸动画 + 状态气泡呈现。
 
 - 多宠物注册表 + 状态气泡（项目 / 阶段 / 待办 / 进度实时汇报）
@@ -33,12 +37,12 @@
 
 | 贴纸 | 展示 | 触发场景 |
 |---|---|---|
-| 01 绘制中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/01.gif" width="56" alt="01 绘制中"/> | THINKING + streaming：流式输出（正在写回复）、双击画画 |
-| 02 摸鱼中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/02.gif" width="56" alt="02 摸鱼中"/> | WORKING / ERROR：调用工具（查找/编辑/测试/命令） |
-| 03 得意中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/03.gif" width="56" alt="03 得意中"/> | PULSE SUCCESS：回合完成、绘制完成、点击互动 |
-| 04 思考中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/04.gif" width="56" alt="04 思考中"/> | THINKING：回合/步骤开始、推理、结果整理 |
-| 05 等待中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/05.gif" width="56" alt="05 等待中"/> | WAITING：提问回答、审批等待、回合挂起（blocked） |
-| 06 待机中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/29dc24d787f003cc44c87cea45b14dbe1e0d2b29/assets/pets/remielle/06.gif" width="56" alt="06 待机中"/> | IDLE / DISCONNECTED：空闲、回合结束之后 |
+| 01 绘制中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/01.gif" width="56" alt="01 绘制中"/> | THINKING + streaming：流式输出（正在写回复）、双击画画 |
+| 02 摸鱼中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/02.gif" width="56" alt="02 摸鱼中"/> | WORKING / ERROR：调用工具（查找/编辑/测试/命令） |
+| 03 得意中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/03.gif" width="56" alt="03 得意中"/> | PULSE SUCCESS：回合完成、绘制完成、点击互动 |
+| 04 思考中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/04.gif" width="56" alt="04 思考中"/> | THINKING：回合/步骤开始、推理、结果整理 |
+| 05 等待中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/05.gif" width="56" alt="05 等待中"/> | WAITING：提问回答、审批等待、回合挂起（blocked） |
+| 06 待机中 | <img src="https://raw.githubusercontent.com/Gin-7/dsh-pet-remielle/096831597aaea1126fcffa4a57e992e7f25b208e/assets/pets/remielle/06.gif" width="56" alt="06 待机中"/> | IDLE / DISCONNECTED：空闲、回合结束之后 |
 
 多 Session 同时运行时按 `等待确认 > 错误 > 工作 > 思考 > 空闲` 展示最需要关注的顶层任务；子 Agent 默认忽略（可在设置开启）。
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/titanwings/colleague-skill/5a799b83b5d11aa0dbdc09df70fed46265d71f0b/docs/social-preview.png" alt="COLLEAGUE.SKILL — Distill how they think." width="100%">
+<img src="https://raw.githubusercontent.com/titanwings/colleague-skill/7a77c7cb67622057d9af55778a6f5884901a7ba8/docs/social-preview.png" alt="COLLEAGUE.SKILL — Distill how they think." width="100%">
 
 <br>
 
@@ -65,12 +65,6 @@ Massive thanks to everyone who starred — we'll keep shipping, keep distilling.
 > 🔷 **2026.08.13 Update** — dot-skill now supports **DeepSeek Harness** through its native filesystem Skill discovery. Install it globally at `~/.dsh/skills/dot-skill` or per project at `.dsh/skills/dot-skill`, then invoke `/dot-skill` directly.
 
 > 📝 **2026.06.01 Update** — **[COLLEAGUE.SKILL 技术报告](colleague_skill.pdf) 已上线**；这次最开心的不只是发了篇 paper，而是社区一起把 gallery 推到 215 个 skills、165 位贡献者和 100k+ skill-card 累计 stars，论文 Acknowledgements 也专门收录并感谢了所有社区贡献者。
-
-> 📢 **2026.05.11 Update** — **WeChat group 12 is live!** Come hang out with the dot-skill community — share skills, discuss features, trade tips.
->
-> <img src="https://raw.githubusercontent.com/titanwings/colleague-skill/5a799b83b5d11aa0dbdc09df70fed46265d71f0b/docs/assets/wechat-group-qr-12.png" alt="dot-skill WeChat group QR" width="240">
->
-> QR refreshes every 7 days (expires 2026-05-18) — if expired, ping me on Discord.
 
 > 🗺️ **2026.04.13** — **dot-skill Roadmap is live!** colleague.skill is evolving into **dot-skill** — distill anyone, not just colleagues. 👉 **[Full Roadmap](ROADMAP.md)** · **[💬 Discord](https://discord.gg/NVX66RxWZv)**
 

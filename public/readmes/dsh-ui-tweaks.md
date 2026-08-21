@@ -6,18 +6,18 @@
 
 | | |
 |---|---|
-| ![对话时间线](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/timeline.png) | ![Claude Desktop 表格样式](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/table.png) |
+| ![对话时间线](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/timeline.png) | ![Claude Desktop 表格样式](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/table.png) |
 | **对话时间线**：右侧竖轨，悬停展开消息预览、点击跳转、随滚动高亮当前位置，自动避让右侧边栏 | **表格样式**：Claude Desktop 浅灰圆角卡片风格 |
-| ![对话框宽度](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/dialog_box.png) | ![设置面板](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/settings.png) |
+| ![对话框宽度](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/dialog_box.png) | ![设置面板](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/settings.png) |
 | **对话框宽度**：消息列、输入框、统计栏同步变宽 | **设置面板**：字体大小 / 表格样式 / 对话框宽度 / 时间线 / Git 状态栏 |
-| ![GitBar](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/git.png) | |
+| ![GitBar](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/git.png) | |
 | **GitBar**：输入框工具行内的 git 状态胶囊（分支在权限旁、差异在模型前），支持分支切换、删除、推送到远程，差异面板内可直接提交 | |
-| ![归档管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/archive.png) | ![MCP 管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/337b9f5658a949bfef02e8880250481ff1bb4e26/assets/mcp.png) |
+| ![归档管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/archive.png) | ![MCP 管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/mcp.png) |
 | **归档管理**：设置中的「归档」页面，列出所有已归档会话（标题 / 工作区 / 相对时间），支持恢复与彻底删除 | **MCP 管理**：设置中的「MCP 管理」页面，列出所有配置的 MCP 服务器及其运行状态，支持添加 / 编辑 / 启用停用 / 删除 / 重启 |
 
 ## 功能
 
-- **消息字体大小（px）**：直接输入数字（10–32），作用于消息正文、标题、表格与代码。
+- **消息字体大小（px）**：直接输入数字（10–32），作用于消息正文、标题、表格与代码。**代码字号**可单独设置（8–32px 绝对值，默认 13；行内代码按比例跟随）——旧版的百分比配置（`codeFontScale`）仍然兼容，一旦设置新的 px 值即以其为准。
 - **表格样式**：可选 `默认` 或 **Claude Desktop** 风格（浅灰圆角单元格卡片、单元格间有间隙、无边框、单元格与行内代码同底色、表头不加粗）。
 - **对话框宽度（px）**：直接输入数字（600–1600）；消息列、输入框、输入框下方的统计栏（轮数/步数/耗时/tok/s）**三者同步变宽**。
 - **对话时间线（可开关，默认关闭）**：在消息区右侧显示细竖导航轨——每条用户消息一根指示线，悬停展开面板预览消息、随滚动高亮当前位置、点击平滑跳转到对应消息（自动加载更早历史）。**浅色/深色模式都正常显示**，且**始终贴在消息区右侧**：即使安装了右侧边栏（如 dsh-better-sidebar）并展开，时间线也会自动避让、不会与侧边栏重叠。会话中用户消息少于 2 条时自动隐藏。
@@ -34,6 +34,7 @@
   - **添加 / 编辑**：编辑器支持**表单**（实例 ID / 名称 / 类型 stdio 或 HTTP / 超时时间 ms / 命令 / 参数 / 环境变量 / URL / 请求头）或直接**粘贴 YAML** 两种方式，保存前会做格式校验（名称与 ID 字符集、超时正整数、URL 协议、命令非空、未知 YAML 字段等）。
   - **启用 / 停用 / 删除 / 重启**：改动直接写入 profile 的 `cordis.patch.yml`（保持注释与结构），DSH 内置补丁监视器热重载加载器——被改动的那个服务器**实时**启动/停止/重启，不影响其它服务器；重启单独运行时生效、不改配置。环境变量值仅在本机浏览器可见，用于编辑。
   - 新增后请确认服务器能成功连接（状态为「运行中」并注册了工具）；启动失败的实例会显示「错误」并可重启重试。
+- **`/init` 斜杠命令（可开关，默认关闭）**：在输入框键入 `/init`（斜杠菜单中可见「分析当前项目并生成 AGENTS.md」），回车或点击后弹出语言选择——**中文提示词 / 英文提示词**，选中即向当前会话提交一段完整的 AGENTS.md 引导提示词：代理会自行探索项目（README、清单文件、构建脚本、关键目录），然后在仓库根目录**生成或改进**一份面向未来 AI 编码代理的 `AGENTS.md`（项目简介、常用命令、代码风格约定、目录导览、注意事项；已存在时原地改进不丢内容）。纯客户端实现；在「界面调整」中开启后生效。
 
 所有修改**即时生效**，无需刷新。同一份配置也可以直接在设置文档里手改：
 
@@ -45,6 +46,7 @@ ui-tweaks:
   timelineEnabled: true   # 默认 false（关闭），设为 true 开启
   gitBarEnabled: true     # 默认 false（关闭），设为 true 开启 GitBar
   archiveManagerEnabled: true   # 默认 false（关闭），设为 true 开启「归档」页面
+  initCommandEnabled: true      # 默认 false（关闭），设为 true 开启 /init 斜杠命令
   # suggestModel: 'provider:model'   # 可选：指定生成提交说明的模型
 ```
 

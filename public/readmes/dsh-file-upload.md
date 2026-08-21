@@ -12,7 +12,7 @@
 
 ## Screenshot
 
-![dsh-file-upload in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-upload/9aad269a5cf19539ec081c79f561edf4c47bd099/assets/screenshot.png)
+![dsh-file-upload in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-upload/c4e41b09aa63434fe0ec764fe60ac15197df06b5/assets/screenshot.png)
 
 The upload icon button in the composer tool row (official DSH design tokens, follows dark/light theme); the picked file's path (blurred in the screenshot) is inserted into the input box automatically, ready to send.
 

@@ -4,7 +4,7 @@
 
 对话一长就没法一直往上翻了。这个插件在对话栏左侧常驻一个侧边栏式对话大纲：按轮次列出每次提问和该轮最后一条回复，点击任意一条即可跳回对应位置，按住 Ctrl/Shift 再点击则直接切到轨迹视图的同一位置。蓝框会始终标记你当前读到哪，随滚动跟随；面板可一键收起以恢复对话全宽。顶部的输入框可以按关键词过滤。它有两种模式：默认的轻便模式只反映官方已加载的窗口，零额外开销；需要完整大纲时可切换到全面模式，进入即主动加载全部历史（长会话会有明显的性能开销）。
 
-![dsh-chat-outline 演示](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/be56f36e4d51b7da3a618dbe5abc47c010a444ed/docs/gif4.gif)
+![dsh-chat-outline 演示](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/8596bc4e68d92c30f01648692f3aeb4d61e173a3/docs/gif4.gif)
 
 ## 中文文档
 
@@ -55,7 +55,7 @@ dsh plugin --profile web add github:liliuCourier/dsh-chat-outline
 
 面板头部右侧有两个按钮：**模式按钮**（轻便/全面）切换两种模式，选择会被记住；最右侧的 **▸ 按钮**可收起（缩进）对话定位边栏、恢复对话全宽，收起后点聊天区左缘的 ☰ 重新展开。
 
-![模式与收起按钮位置（面板头部右侧）](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/be56f36e4d51b7da3a618dbe5abc47c010a444ed/docs/mode-toggle.png)
+![模式与收起按钮位置（面板头部右侧）](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/8596bc4e68d92c30f01648692f3aeb4d61e173a3/docs/mode-toggle.png)
 
 - **轻便模式（默认）**：大纲只显示官方已加载窗口里的内容，插件不做任何额外的历史抓取，零性能开销。窗口只覆盖最近的一部分时，大纲里也只有最近的轮次；想看到更早的内容，点聊天区官方自带的「加载更早记录」按钮把窗口往前扩，大纲会跟着变全。
 - **全面模式**：进入会话（对话加载完成后）即主动分页加载全部历史，大纲覆盖整个会话，不用去点官方的加载按钮。
@@ -85,7 +85,7 @@ dsh plugin --profile web add github:liliuCourier/dsh-chat-outline
 
 ### 兼容性
 
-适配 DSH 0.1.0-rc.6。DSH 升级后如遇异常，请更新插件。
+适配 DSH 0.1.0-rc.7（已在 rc.7 上验证，暂未发现问题；rc.6 同样可用）。DSH 升级后如遇异常，请更新插件。
 
 ### 许可证
 
@@ -144,7 +144,7 @@ The panel stays on the left of the conversation as a fixed-width sidebar (the ch
 
 Two buttons sit on the right of the panel header: the **mode button** (Light/Full) switches between the two modes and remembers your choice; the rightmost **▸ button** collapses (retracts) the outline sidebar to restore full chat width — the floating ☰ on the left edge of the chat re-expands it.
 
-![Mode and collapse buttons (right of the panel header)](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/be56f36e4d51b7da3a618dbe5abc47c010a444ed/docs/mode-toggle.png)
+![Mode and collapse buttons (right of the panel header)](https://raw.githubusercontent.com/liliuCourier/dsh-chat-outline/8596bc4e68d92c30f01648692f3aeb4d61e173a3/docs/mode-toggle.png)
 
 - **Light mode (default)**: the outline only shows what is inside the officially loaded window. The plugin does no extra history fetching, so there is zero performance overhead. When the window only covers the recent part of the session, the outline only lists the recent turns; to see older entries, click the official "load older records" button in the chat to extend the window — the outline follows.
 - **Full mode**: as soon as the conversation finishes loading, the plugin actively pages through the entire history so the outline covers the whole session, no official load button needed.
@@ -174,7 +174,7 @@ Both views share the same event numbering, so no matter which view you jump from
 
 ### Compatibility
 
-Works with DSH 0.1.0-rc.6. If you run into issues after a DSH upgrade, update the plugin.
+Works with DSH 0.1.0-rc.7 (verified on rc.7, no issues found so far; rc.6 also works). If you run into issues after a DSH upgrade, update the plugin.
 
 ### License
 

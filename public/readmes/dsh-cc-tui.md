@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/docs/assets/logo.svg" alt="dsh-TUI - DeepSeek Harness terminal interface" width="560">
+  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/docs/assets/logo.svg" alt="dsh-TUI - DeepSeek Harness terminal interface" width="560">
 </p>
 <p align="center">
   <strong>简体中文</strong> | <a href="README_EN.md">English</a>
@@ -36,7 +36,7 @@
 本插件被 **DeepSeek Harness 官方公众号** 推文收录，作为"内测用户精选插件"展示：
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/wechat-official.png" alt="DeepSeek Harness 官方公众号推文收录 dsh-TUI" width="560">
+  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-official.png" alt="DeepSeek Harness 官方公众号推文收录 dsh-TUI" width="560">
 </p>
 
 同时也被 [dshfind](https://dshfind.com/ccch1mneyyy/dsh-TUI) 插件目录收录：
@@ -61,9 +61,9 @@
 
 ## 界面预览
 
-![首屏：像素鲸鱼顶栏](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/splash.png)
+![首屏：像素鲸鱼顶栏](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/splash.png)
 
-![工作状态行 + 上下文进度条](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/working-line.png)
+![工作状态行 + 上下文进度条](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/working-line.png)
 
 ## 快速开始
 
@@ -87,6 +87,14 @@ sh install.sh
 ```
 
 `dsh-tui --resume` 恢复上次会话；Windows 也可用仓库里的 `dsh-tui.cmd`（等价）。
+
+### Herdr
+
+在 [Herdr](https://herdr.dev) pane 中直接运行 `dsh-tui` 即可，无需额外配置。
+dsh-TUI 会通过 Herdr 提供的本地接口上报 `idle`、`working`、`blocked` 状态；
+问卷或工具审批出现时标记为 `blocked`。离开 Herdr 运行时该集成完全不启用。
+Herdr 的 `agent start --kind dsh-tui`、session 身份与服务重启后自动恢复仍需 Herdr
+上游加入原生 agent kind；当前可正常保活、重连和观察手工启动的 pane。
 
 在 VS Code 中运行的完整指南（内置终端直接使用 + companion 扩展
 `dsh-tui-vscode`——**真实集成终端承载、体验与 Claude Code 官方扩展几乎一致、
@@ -122,7 +130,7 @@ npm install -g @deepseek-harness-tui/dsh-tui@<profile-version>
 | `Ctrl+R` | 历史消息搜索 |
 | `/` | 会话内全文搜索（`n`/`N` 跳转） |
 | `Ctrl+V` | 粘贴文本或文件管理器中的文件；图片显示为 `[Image #N]` 并作为持久附件发送 |
-| `Ctrl+X` | 用 `$VISUAL`/`$EDITOR`（如 nvim）打开当前输入编辑，保存退出后回填 |
+| `Ctrl+G` | 用 `$VISUAL`/`$EDITOR`（如 nvim）打开当前输入编辑，保存退出后回填 |
 | `?` | 快捷键菜单（仅输入框为空时响应） |
 | `Shift+↑` | 消息选择模式（Enter 展开单条） |
 | `Ctrl+P` | 切换启动时 loaded-context 面板（面板在屏时有效） |
@@ -145,7 +153,7 @@ macOS 自带 Terminal.app 会自行消费 `⌘` 快捷键，请继续使用 `Ctr
 |---|---|
 | 拖拽选择 | 应用内文本选区，**松开即复制**（OSC 52 + `wl-copy`/`xclip`/`xsel` 原生兜底；tmux 内走 `load-buffer -w`），复制后自动取消选区并弹出「已复制 N 个字符」提示 |
 | 双击 / 三击 | 选词 / 选行，同样即选即复制 |
-| 滚轮 | 滚动消息列表（±3 行/格） |
+| 滚轮 | 仅在 fullscreen 且鼠标跟踪启用时：Help 打开时滚动帮助，否则滚动消息列表（±3 行/格）；默认 inline 模式不会把滚轮事件交给 TUI |
 | `Esc` | 拖拽进行中取消选区（不复制） |
 | 单击消息行 | 展开/收起该行 |
 | 单击「加载更早消息」/「ctrl+e 显示前 N 条」 | 加载更早消息 / 展开全部 |
@@ -298,7 +306,9 @@ pnpm smoke
 ```
 
 `lib/types/` 是忽略入库的生成目录；`pnpm build` 会从干净输出目录重新编译并运行
-构建门禁。npm Git URL 安装通过 `prepare` 生成同一套运行时。渲染、问卷和工具卡
+构建门禁。**Git URL 安装不受支持**（源 manifest 的 `@dsh-std/*` 为 workspace 依赖、
+`vendor/dsh-std` 为子模块、且 pnpm ≥11 默认拒绝 git 依赖的 `prepare` 脚本）；请安装
+registry 包：`dsh plugin --profile dsh-tui add @deepseek-harness-tui/dsh-tui`。渲染、问卷和工具卡
 改动还需运行对应回归脚本。
 
 
@@ -310,7 +320,7 @@ pnpm smoke
 
 | 微信群 | QQ 群（群号 572549239） | 微信三群 |
 | :---: | :---: | :---: |
-| <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/wechat-group.jpg" alt="dsh-TUI 社区交流群微信群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/qq-group.png" alt="dsh-TUI 社区交流群 QQ 群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/1f93efe85360560e3da49726d7a55af659e771fe/screenshots/wechat-group3.jpg" alt="dsh-TUI 社区交流群微信三群二维码" width="200"> |
+| <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-group.jpg" alt="dsh-TUI 社区交流群微信群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/qq-group.png" alt="dsh-TUI 社区交流群 QQ 群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-group3.jpg" alt="dsh-TUI 社区交流群微信三群二维码" width="200"> |
 
 > 微信群二维码约 7 天过期一次，如遇失效请走 QQ 群（572549239），或开个 issue 提醒我们更新。
 

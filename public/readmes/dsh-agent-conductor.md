@@ -1,6 +1,6 @@
 # ⚡ dsh-agent-conductor · DSH 指挥家（Skill 版）
 
-<img src="https://raw.githubusercontent.com/MJorgin/dsh-agent-conductor/f954ae7f368ed6b1852016c3448027eb733b3608/docs/social-preview.png" alt="dsh-agent-conductor" width="100%">
+<img src="https://raw.githubusercontent.com/MJorgin/dsh-agent-conductor/d4e2366a786677c8654a5e99583d2a4970806dc9/docs/social-preview.png" alt="dsh-agent-conductor" width="100%">
 
 **让 DeepSeek Harness 的 agent 自动识别派活需求，把任务派给 11 种外部 agent CLI（Codex、Claude Code、TraeCode、OpenCode、Gemini、Cursor、Kimi、Qwen、Copilot、WorkBuddy、Grok）无头执行，结果回传会话。**
 

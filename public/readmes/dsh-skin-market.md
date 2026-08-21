@@ -2,11 +2,11 @@
 
 一个嵌入 DSH 设置页的皮肤市场，可以浏览、安装、使用、停用、更新和卸载社区皮肤。
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/25cbe065d612facf99f0b012cc201daa51bc2474/docs/assets/skin-market-liang.png" alt="DSH 设置中的皮肤市场发现页" width="70%">
+  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/2715913f8a93b91ec71a25d0334b8d176e6ae1ca/docs/assets/skin-market-liang.png" alt="DSH 设置中的皮肤市场发现页" width="70%">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/25cbe065d612facf99f0b012cc201daa51bc2474/docs/assets/skin-market-deep-whale.png" alt="DSH 皮肤市场中的 Deep Whale 皮肤详情弹窗" width="70%">
+  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/2715913f8a93b91ec71a25d0334b8d176e6ae1ca/docs/assets/skin-market-deep-whale.png" alt="DSH 皮肤市场中的 Deep Whale 皮肤详情弹窗" width="70%">
 </p>
 
 ### 在线预览
@@ -26,7 +26,7 @@
 > 安装前请确保已关闭其他皮肤插件，避免冲突
 
 ```sh
-dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
+dsh plugin --profile web add 'dsh-skin-market@latest'
 ```
 
 
@@ -45,7 +45,7 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
 3. 如果发现已启用的皮肤插件，列出它们并停在安装前，提醒我先停用以避免冲突；未经我确认不得修改任何 profile 文件，也不得执行安装。
 4. 如果没有冲突，明确说“未检测到已启用的皮肤插件”，然后直接执行：
 
-dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
+dsh plugin --profile web add 'dsh-skin-market@latest'
 
 5. 安装后读取 web profile 的 package.json，确认 dependencies 和 dsh.profile.bundles 中都有 dsh-skin-market；缺失则报告安装或注册失败。
 6. 告诉我如何重启 DSH Web，并确认重启后可从“设置 → 皮肤市场”打开。不要替我安装任何皮肤。
@@ -59,7 +59,7 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
 
 ### 安装失败时，可以让 DSH 自己排查
 
-皮肤市场的安装、更新和卸载会调用 DSH 的 profile 插件管理器；当前 DSH 使用 `pnpm` 管理 profile 依赖。如果出现 `pnpm is not recognized`、`package manifest missing` 或 `allowBuilds` 相关报错，不必手动猜测 profile 状态。
+> 皮肤市场的安装、更新和卸载会调用 DSH 的 profile 插件管理器；当前 DSH 使用 `pnpm` 管理 profile 依赖。如果出现 `pnpm is not recognized`、`package manifest missing` 或 `allowBuilds` 相关报错，不必手动猜测 profile 状态。
 
 <details>
 <summary><strong>点击展开排查提示词</strong></summary>
@@ -80,39 +80,50 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
 
 </details>
 
-当前面向 DSH Web `0.1.0-rc.6`。目录中的安装目标固定到收录时的完整 commit。
+## 更新本插件
 
-皮肤市场同时支持带 `dsh.bundle` 的完整插件和只有 `dsh.client` 的纯前端皮肤。对于后者，市场会在安装后自动、幂等地写入该皮肤已审核的 `rowId` 和 package 注册项；卸载时一并移除。维护者不必为了进入市场而额外复制一份 `cordis.patch.yml`，但仍须在 package 或 README 中提供明确的 row ID 和 DSH 兼容范围。
+#### 方式一，页面更新（推荐）：
 
-## 兼容性验证
+在「设置 → 皮肤市场」标题右侧点击“更新”，完成后会提醒重启 DSH Web。
 
-截至 2026-08-17，npm 的 DSH `latest` 与 `next` 均为 `0.1.0-rc.6`。本项目使用重新安装的该版本完成了以下验证：
+#### 方式二，命令更新：
 
-- 皮肤市场 `0.1.15`：132 条目录校验、70 项自动化测试、类型检查、Host/Client 构建、站点构建和 package preflight 全部通过
-- DSH Web 实机启动：市场 Host 路由、客户端设置入口、在线目录和 5 分钟静默更新正常加载
-- Liang Intensity `0.1.4` 联合冒烟：8 项测试和客户端 bundle 构建通过，并可在同一 DSH Web profile 中保持 active
+```bash
+dsh plugin --profile web add 'dsh-skin-market@latest'
+```
+> 完成后需手动重启 DSH
 
-这组结果证明上述版本组合可以启动和运行，不代表市场内所有第三方皮肤都已完成同等级别的人工兼容或安全审核。
+#### 方式三，提示词更新：
+<details>
+<summary><strong>点击展开提示词</strong></summary>
 
-## 在线目录更新
+复制以下内容给 DSH Agent：
 
-已安装的皮肤市场不需要升级插件才能看到新收录或更新后的皮肤：
+```text
+请把已安装在 DSH Web profile 的 dsh-skin-market 更新到 npm 最新版本。
 
-- 打开市场时由 DSH Host 从 GitHub Pages 拉取最新 `catalog.json`
-- 页面保持打开时每 5 分钟静默检查一次；窗口重新获得焦点时也会立即静默检查
-- GitHub 上出现更高的市场插件版本时，标题右侧会显示下载按钮；悬停后显示“更新”，安装完成后提示重启生效
-- 浏览器会用 IndexedDB 保留最近一次有效目录；再次打开时先展示缓存，再在后台校验在线目录
-- 列表首批只渲染 20 个皮肤，接近底部时每次无感追加 20 个；搜索和排序仍覆盖完整目录
-- 首次无缓存时显示结构化骨架屏，预览图延迟加载并保留固定尺寸，避免页面跳动
-- 远程目录通过 schema、唯一 ID/package/rowId、GitHub 仓库地址和固定 commit 安装目标校验后，才会进入可安装生命周期
-- 验证成功的目录会缓存到当前 profile；离线、超时或远程数据不合法时自动回退到缓存，再回退到插件内置目录
-- 每日抓取任务在完整测试通过后直接部署在线目录，同时继续创建 registry PR 留下可审查记录
+请严格按以下顺序执行：
+1. 确认当前使用的是 web profile，并读取其 package.json，确认已安装 dsh-skin-market；不要先卸载，也不要修改其他皮肤。
+2. 执行：
+
+dsh plugin --profile web add 'dsh-skin-market@latest'
+
+3. 更新后重新读取 web profile 的 package.json，确认 dsh-skin-market 依赖和 bundle 注册仍然存在。
+4. 告诉我更新前后版本，并提醒我确认没有 Agent 正在运行后重启 DSH Web。不要替我更新或卸载任何社区皮肤。
+```
+
+</details>
 
 ## 收录你的皮肤
 
 如果你开发了 DSH 皮肤，先准备一个公开的 GitHub 仓库，再复制下面整段提示词给你的 Agent。把 `<你的皮肤仓库地址>` 换成真实地址即可。
 
 这不是终端命令，而是交给 Agent 的任务说明：
+
+<details>
+<summary><strong>点击展开提示词</strong></summary>
+
+复制以下整段提示词给你的 Agent：
 
 ```text
 请把我的 DSH 皮肤提交到 DSH 皮肤市场。
@@ -135,11 +146,15 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
 收录不等于安全认证。不要声称该皮肤已被 DSH 官方、安全团队或市场背书。
 ```
 
+</details>
+
 皮肤市场里的「提交皮肤」也可以根据仓库地址生成这段提示词。
 
 `registry/skins/` 是社区提交的唯一事实来源，每个皮肤一个 YAML 文件。`data/catalog.json` 是生成文件，不需要在社区 PR 中维护；PR 合并到 `main` 后会由仓库自动重生成。这样新增皮肤之间不会因为共同编辑一个目录文件而反复冲突。
 
 ## 收录要求
+
+皮肤市场同时支持带 `dsh.bundle` 的完整插件和只有 `dsh.client` 的纯前端皮肤。对于后者，市场会在安装后自动、幂等地写入该皮肤已审核的 `rowId` 和 package 注册项；卸载时一并移除。维护者不必为了进入市场而额外复制一份 `cordis.patch.yml`，但仍须在 package 或 README 中提供明确的 row ID 和 DSH 兼容范围。
 
 - 必须是公开、可安装的 DSH Web 皮肤仓库或 monorepo 子包
 - 安装来源必须固定到完整 40 位 commit SHA
@@ -161,6 +176,34 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-skin-market'
 
 - 兼容性表示维护者是否明确声明并验证了支持的 DSH Web 版本；缺少声明时会提示风险，但不会单独阻止市场安装。
 - 市场安装表示目录是否具备固定安装目标、package、`dsh.client` Web 声明、row ID 和可解析的已构建客户端入口。符合这些条件时，市场会调用 DSH 的 `plugin add` 命令完成安装；不要求插件仓库自行实现名为 `add` 的命令。
+
+## 兼容性验证
+
+当前面向 DSH Web `0.1.0-rc.6`。目录中的安装目标固定到收录时的完整 commit。
+
+截至 2026-08-17，npm 的 DSH `latest` 与 `next` 均为 `0.1.0-rc.6`。本项目使用重新安装的该版本完成了以下验证：
+
+- 皮肤市场 `0.1.15`：132 条目录校验、70 项自动化测试、类型检查、Host/Client 构建、站点构建和 package preflight 全部通过
+- DSH Web 实机启动：市场 Host 路由、客户端设置入口、在线目录和 5 分钟静默更新正常加载
+- Liang Intensity `0.1.4` 联合冒烟：8 项测试和客户端 bundle 构建通过，并可在同一 DSH Web profile 中保持 active
+
+这组结果证明上述版本组合可以启动和运行，不代表市场内所有第三方皮肤都已完成同等级别的人工兼容或安全审核。
+
+## 在线目录更新
+
+已安装的皮肤市场不需要升级插件才能看到新收录或更新后的皮肤：
+
+- 打开市场时由 DSH Host 从 GitHub Pages 拉取最新 `catalog.json`
+- 页面保持打开时每 5 分钟静默检查一次；窗口重新获得焦点时也会立即静默检查
+- npm 上出现更高的市场插件版本时，标题右侧会显示下载按钮；悬停后显示“更新”，安装完成后提示重启生效
+- 浏览器会用 IndexedDB 保留最近一次有效目录；再次打开时先展示缓存，再在后台校验在线目录
+- 列表首批只渲染 20 个皮肤，接近底部时每次无感追加 20 个；搜索和排序仍覆盖完整目录
+- 首次无缓存时显示结构化骨架屏，预览图延迟加载并保留固定尺寸，避免页面跳动
+- 远程目录通过 schema、唯一 ID/package/rowId、GitHub 仓库地址和固定 commit 安装目标校验后，才会进入可安装生命周期
+- 验证成功的目录会缓存到当前 profile；离线、超时或远程数据不合法时自动回退到缓存，再回退到插件内置目录
+- 每日抓取任务在完整测试通过后直接部署在线目录，同时继续创建 registry PR 留下可审查记录
+
+
 
 ## 本地开发
 
@@ -194,7 +237,10 @@ npm run registry
 npm test
 npm run typecheck
 npm run build
+npm run release -- 0.1.31 --dry-run
 ```
+
+正式发布时去掉 `--dry-run`；脚本会校验工作区、同步 npm 版本、提交并推送 Git tag，再发布 npm。需要同时创建 GitHub Release 时追加 `--github-release`。
 
 完整的本地安装和回滚验证步骤见 [TESTING.md](./TESTING.md)。
 

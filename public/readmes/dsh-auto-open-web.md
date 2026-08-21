@@ -34,7 +34,13 @@ dsh web profile 启动后自动打开独立应用窗口（或网页标签页）�
    `open` 包（win32 = PowerShell Start，darwin = `open`，linux = `xdg-open`），
    `open` 包不可用时退回平台原生拉起（win32 = `cmd /c start`，darwin = `open`，
    linux = `xdg-open`）。
-   `appWindow: false` 时不自动打开任何窗口。
+   `appWindow: false` 时**与官方相同**:默认浏览器打开(普通标签页,官方
+   open 方式)。
+4. **`--no-open` / SSH 会话（与官方相同的不打开）**：`dsh web --no-open`
+   （webStartup 服务的 `openBrowser === false`）或 SSH 会话（`SSH_CONNECTION`/
+   `SSH_TTY` 环境变量，与官方 `launchedThroughSsh` 同源）时不打开任何
+   窗口/页面——插件读取与官方**同一来源**（web-startup 提供的 webStartup
+   服务）做同样的抑制。
 
 端口取自 webServer 服务的真实监听值（`--port` 自定义、`--port 0` 均正确）。
 **无需等待**：插件把 webServer 声明为硬依赖（`inject`），Cordis 会等
@@ -46,8 +52,11 @@ Job Object（强杀也生效）+ 退出清理结束进程树。
 > **与 DSH 核心浏览器交接的关系**：DSH 核心（web-app bundle）默认会在启动后
 > 用系统默认浏览器打开 GUI（`openBrowser: true`，普通标签页/窗口，非独立窗口）。
 > 安装本插件后，插件的 bundle 补丁会把 `web-runtime.openBrowser` 置为 `false`，
-> 只保留插件的独立应用窗口，不再弹出普通浏览器页面；卸载插件后恢复默认行为
-> （临时关闭也可用 `dsh web --no-open`）。
+> 打开行为完全由本插件接管：`appWindow: true` 时打开独立应用窗口，不弹出
+> 普通浏览器页面；`appWindow: false` 时插件执行**与官方核心相同的默认浏览器
+> 交接**（open 包 → 平台原生拉起），行为与未安装插件时一致；`dsh web
+> --no-open`（或 SSH 会话）时与官方一致不打开任何窗口/页面。卸载插件后
+> 恢复官方默认行为。
 
 ### WebView2 宿主要求（仅 webview2 模式）
 
@@ -72,7 +81,7 @@ Job Object（强杀也生效）+ 退出清理结束进程树。
 
 | 字段 | 默认 | 说明 |
 | --- | --- | --- |
-| `appWindow` | `true` | 启动时自动打开独立应用窗口；false 时不自动打开任何窗口 |
+| `appWindow` | `true` | 启动时自动打开独立应用窗口；false 时与官方相同——用系统默认浏览器打开 GUI（普通标签页，官方 open 方式） |
 | `windowKind` | `webview2` | `webview2` = WebView2 宿主（独立进程、任务栏 DSH 图标、随 DSH 退出）；`browser` = 浏览器 `--app` 专用实例。所选类型不可用时仅记录日志、不打开 |
 | `exitOnWindowClose` | `false` | **（实验性）**关闭自动打开的窗口时随之退出 DSH（默认关闭；仅 `appWindow` 开启时生效）。窗口进程**正常**退出（用户关闭窗口）时触发 `process.exit(0)`；启动失败/崩溃/被强杀（非 0 退出码）不触发，避免误退出。**设置卡片保存后当前会话即时生效**（退出监听始终注册、行为由实时标志决定），无需重启 DSH |
 | `browserPath` | `''` | 手动指定的浏览器可执行文件路径（单条，如 `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`；仅浏览器模式使用），优先于内置候选 Edge → Chrome；路径不存在会跳过并告警。设置卡片上的「浏览」按钮弹出**原生文件对话框**：与官方工作区目录选择器同一机制（子进程 + koffi 驱动 IFileOpenDialog，对话框是子进程的第一个窗口，自动置顶；不使用 PowerShell）。「测试」按钮**真实拉起**一个 `--app` 专用测试实例（独立 user-data-dir `~/.dsh/<browser>-test-profile`，不污染正式实例）：确认浏览器主进程存活后报告成功，窗口展示数秒后自动结束该测试进程树（精确 pid，不动正式实例；Job Object 可用时测试实例也加入作业，DSH 退出时兜底）；测试使用当前输入的路径（未保存也能测），失败会显示原因 |
@@ -151,8 +160,9 @@ dsh plugin --profile web remove dsh-auto-open-web   # 同时移除依赖与对�
 
 - **本包零 dependencies**:所有运行时依赖均由 **DSH 部署提供**,以 optional
   peer 声明(安装无警告):
-  - `@deepseek-ai/dsh`(宿主,声明兼容范围 `>=0.1.0-rc.7 <0.2.0`,
-    `settings.plugin.item` 自该版本起为 keyed 插槽,注册需 `options.key`;
+  - `@deepseek-ai/dsh`(宿主,声明兼容范围 `>=0.1.0-rc.8 <0.2.0`:
+    自 rc.8 起客户端冻结表移除 `dsh-client-schema-form`、引入
+    `dsh-client-runtime`,本插件的设置卡片与打开行为均依赖该版本;
     不做运行时版本检测)
   - `@deepseek-ai/schemastery`(配置 schema 校验器;运行时解析:常规 import
     优先,其次 Windows 全局 npm 布局下的 DSH 部署副本)
@@ -161,13 +171,19 @@ dsh plugin --profile web remove dsh-auto-open-web   # 同时移除依赖与对�
   因此任何平台安装都无构建拦截——鸿蒙等无 koffi 预编译的环境开箱即装;
   posix 平台走 posix 降级适配器(browser 模式可用;webview2 / 原生对话框
   不可用),且平台适配器按平台条件加载,posix 上完全不求值 win32.js。
+- **设置卡片 UI 完全自绘**(自 0.1.10 起):不依赖官方任何组件/CSS 模板
+  (不 require `dsh-client-ui-primitives`,不复刻官方样式表),卡片外壳、
+  字段、按钮、输入框、图标全部手写;观感经官方设计令牌变量
+  (`--dsw-alias-*` / `--dsw-static-*`)对齐,浅/深色自动跟随主题。
+  仅使用官方公开的数据/机制接口:`settingsScope`(settings 域)、`slots`
+  (插槽)、`locale`(文案)、`dsh-client-runtime`(快照 store)。
 - **npm 包已含 WebView2 宿主编译产物**(prepack 编译后发布);**GitHub
   main 分支与源码 checkout 方式不含** `host-publish/`(构建产物被
   .gitignore 忽略):webview2 模式需先在 `node_modules/dsh-auto-open-web`
   下执行 `pnpm run build:host` 生成(需 .NET SDK);browser 模式无需构建。
 - 若手动编辑 `package.json` 安装(不经 dsh plugin 命令),需同时追加
   `dependencies` 与 `dsh.profile.bundles` 两项;使用本地 `file:` 依赖时
-  `dsh web` 启动会把 `file:` 规范化成 `^0.1.5`,运行时不受影响。
+  `dsh web` 启动会把 `file:` 规范化成 `^0.1.10`,运行时不受影响。
 
 ## 图标
 

@@ -120,7 +120,7 @@ Agent one-glance guide: [mcp/AGENT_GUIDE.md](mcp/AGENT_GUIDE.md)
 
 ## 🖥️ UI Workbench (dsh-quant-ui)
 
-![dsh-quant UI](https://raw.githubusercontent.com/pengpengyi92/dsh-quant/42d86aa531acfa9ff354c4d9be739541ca0264e1/demos/ui-demo-preview.png)
+![dsh-quant UI](https://raw.githubusercontent.com/pengpengyi92/dsh-quant/156d94d88c3eac934f2d7d31cd2ee8625da2c477/demos/ui-demo-preview.png)
 
 [dsh-quant-ui](https://github.com/pengpengyi92/dsh-quant-ui): candlesticks + MA
 overlays + trade markers, equity curves, fund NAV / management-fee / performance-fee
@@ -262,6 +262,25 @@ results append after the reusable prefix.
 
 | Version | Date | Notes |
 |---|---|---|
+| 0.80.0 | 2026-08-20 | QUANT_PEOPLE_CN + QUANT_PEOPLE_GLOBAL — 101st-release quant headcount estimates (CN ~30-50k, 4-city ~25-38k, global ~80-120k), 46 reports total |
+| 0.79.0 | 2026-08-20 | QUANT_WORLD_MAP — 100th-release special: global quant world map (5-city axis, 9 paths, talent trees, 4-city census synthesis), 44 reports total |
+| 0.78.0 | 2026-08-20 | NYC_FOREIGN_QUANT — New York hedge-fund-universe census (~28 firms, 12 HQs, CT suburb dark core, NY-LDN twin), 43 reports total |
+| 0.77.0 | 2026-08-20 | LDN_FOREIGN_QUANT — London global-quant-hub census (~30 firms, 12 HQs, four-city comparison), 42 reports total |
+| 0.76.0 | 2026-08-20 | SG_FOREIGN_QUANT — Singapore foreign-quant census (~20 firms, crypto/MM/family-office edge, HK twin comparison), 41 reports total |
+| 0.75.0 | 2026-08-20 | HK_FOREIGN_QUANT — Hong Kong foreign-quant census (~26 firms, 5 categories, hub-vs-branch, 2025-26 expansion wave), 40 reports total |
+| 0.74.0 | 2026-08-20 | QRT_SPECIAL — data-king deep-dive (Credit Suisse MBO, $42B in 10y, Dao China 10×/98%), 39 reports total |
+| 0.73.0 | 2026-08-20 | TWOSIGMA_SPECIAL — ML-pioneer deep-dive (DE Shaw spawn flagship, data-first, dual-founder governance crisis), 38 reports total |
+| 0.72.0 | 2026-08-20 | DESHAW_SPECIAL — cradle-king deep-dive (computational finance origin, DE Shaw Mafia, Anton supercomputer), 37 reports total |
+| 0.71.0 | 2026-08-20 | RENAISSANCE_SPECIAL — black-box-king deep-dive (Simons' three turns, Medallion 66%/30y, $100B+ profits), 36 reports total |
+| 0.70.0 | 2026-08-20 | WORLDQUANT_SPECIAL — alpha-factory deep-dive (BRAIN crowdsourcing, 100M alphas, IQC, 101 Alphas), 35 reports total |
+| 0.69.0 | 2026-08-20 | SIG_SPECIAL — poker-mother deep-dive (probability OS, ByteDance 15,000×, talent tree root), 34 reports total |
+| 0.68.0 | 2026-08-20 | CITADEL_SPECIAL — scale-king deep-dive (dual-engine fund+market-making, $16B peak year, Miami HQ), 33 reports total |
+| 0.67.0 | 2026-08-19 | XTX_SPECIAL — per-capita-productivity king deep-dive (£14M/head, six secrets), 32 reports total |
+| 0.66.0 | 2026-08-19 | SHOWDOWN_CN_GLOBAL — six-dimension CN-vs-global showdown (+ transparency inversion), 31 reports total |
+| 0.65.0 | 2026-08-19 | LISTED_QUANT — listed-quant census (Virtu/Flow/Man + Knight death chain), 30 reports total |
+| 0.64.0 | 2026-08-19 | CAPITAL_MODEL — foreign capital-structure census (prop/fundraise/hybrid), 29 reports total |
+| 0.63.0 | 2026-08-19 | POD_PLATFORM — pod-shop capstone (5 angles + dsh isomorphism), 28 reports total |
+| 0.62.0 | 2026-08-19 | BALYASNY_SPECIAL — sixth firm deep-dive (Schonfeld lineage + 2018 halving + rebuild), 27 reports total |
 | 0.61.0 | 2026-08-19 | MILLENNIUM_SPECIAL — fifth firm deep-dive (pod federation + China talent root), 26 reports total |
 | 0.60.0 | 2026-08-19 | POINT72_SPECIAL — fourth firm deep-dive (SAC rebirth + Cubist + 14 offices), 25 reports total |
 | 0.59.0 | 2026-08-19 | OPTIVER_SPECIAL — third firm deep-dive (Dutch name + Ready Trader Go + tool lineage), 24 reports total |
@@ -398,7 +417,7 @@ cd deepseek-harness && pnpm exec tsx ../quant-indicators/consumer-test/boot.ts
 
 If dsh-quant helps your research, a ⭐ makes the project visible to more dsh users.
 
-<p align="center"><img src="https://raw.githubusercontent.com/pengpengyi92/dsh-quant/42d86aa531acfa9ff354c4d9be739541ca0264e1/demos/whale-trading.png" alt="dsh whale trading on a holographic screen" width="420" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pengpengyi92/dsh-quant/156d94d88c3eac934f2d7d31cd2ee8625da2c477/demos/whale-trading.png" alt="dsh whale trading on a holographic screen" width="420" /></p>
 
 This whale stands for DeepSeek Harness (dsh) — trading on its holographic screen 🐋
 

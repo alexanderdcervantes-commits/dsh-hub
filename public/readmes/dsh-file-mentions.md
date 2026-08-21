@@ -12,12 +12,18 @@
 
 ## Screenshot
 
-![dsh-file-mentions in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-mentions/4bd43b55d9ea3f9630036e95ba3c481981ac6f63/assets/screenshot.png)
+![dsh-file-mentions in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-mentions/86e1db7120d7b4c5965df34b49d2abd8d1cfc248/assets/screenshot.png)
 
 Inline paths wrapped in backticks (`` `~/...` ``, absolute, relative, or Chinese paths) become
 **click-to-open**; each clickable path carries a small folder-icon button that reveals the file in your
 file manager; a "📎 mentioned files" chip list at the turn tail covers the rest. URLs are
 already auto-linked by the official renderer, so this plugin leaves them alone.
+
+![External-drive whitelist settings](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-mentions/86e1db7120d7b4c5965df34b49d2abd8d1cfc248/assets/screenshot-settings.png)
+
+The external-drive whitelist (Settings → Plugins → file-mentions): paths outside the session
+working directory (external drives, `~/Desktop`, etc.) become clickable once added — one path
+per line. System-disk marker directories (`/System`, `/etc`) are rejected automatically.
 
 ## Features
 
@@ -51,6 +57,18 @@ Manual mount fallback: see [docs/install.md](docs/install.md).
 Have the agent wrap paths in backticks (e.g. `` `~/docs/plan.md` ``) to make them clickable
 inline. The tail chip list appears automatically — no configuration.
 
+### Paths outside the session directory (external drives, etc.)
+
+For safety, absolute/`~/` paths are only probed inside the current session's working
+directory. To make paths on an external drive (e.g. `/Volumes/USB`) or any other directory
+outside the session working dir clickable, add that directory to the **external-drive
+whitelist** in Settings → Plugins → file-mentions (one path per line). Saving takes effect
+immediately — no restart required.
+
+System-disk protection: whitelist roots containing system marker directories (`/System`,
+`/etc`, or `\Windows` on Windows) are rejected automatically, so a full system disk mounted
+externally can never be whitelisted by mistake.
+
 ## Platform support
 
 | Platform | Status |
@@ -62,20 +80,26 @@ inline. The tail chip list appears automatically — no configuration.
 ## Requirements
 
 - DSH web (run with `npx @deepseek-ai/dsh web`)
-- Pure Node stdlib — no runtime dependencies
+- Pure Node stdlib implementation — peer dependencies (`@deepseek-ai/dsh-settings`,
+  `@deepseek-ai/schemastery`) are provided by the host
 - Opening files uses the system default app / file manager (per-platform command branching)
 
 ## How it works
 
-- **Host** (`lib/index.js`): two routes — `/api/file-mentions/check` (existence check) and
-  `/api/file-mentions/open` (system open, `mode: open/reveal`, per-platform command). Pure
-  Node stdlib; `execFile` avoids shell injection.
+- **Host** (`lib/index.js`): three routes — `/api/file-mentions/check` (existence check),
+  `/api/file-mentions/open` (system open, `mode: open/reveal`, per-platform command) and
+  `/api/file-mentions/config` (whitelist read/write for the settings page, same-origin
+  guarded). Probe surface: absolute/`~/` paths are checked only inside the session cwd or
+  user-declared whitelist roots (stored via the official settings service — immediate
+  effect, no restart); whitelist roots are protected against system disks and symlink
+  escapes. Pure Node stdlib; `execFile` avoids shell injection.
 - **Client** (`lib/client.js`): a conversationEvents collector extracts paths from each
   reply → publishes them to turn data → the tail list filters non-existent paths before
   rendering; inline clicks use a **document-level click delegation** (the official render
   entry is occupied by the official "deliverables" plugin, so DOM delegation is the only
   viable path); inline folder-icon buttons are inserted by a MutationObserver and restored
-  automatically after React re-renders.
+  automatically after React re-renders; a settings card (sidebar section + plugin page)
+  edits the whitelist.
 
 See [docs/architecture.md](docs/architecture.md).
 

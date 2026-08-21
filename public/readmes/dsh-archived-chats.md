@@ -1,80 +1,195 @@
 # dsh-archived-chats
 
-> ⚡ **Deletion takes effect immediately — no restart.** Even sessions still resident in the background are torn down safely along the official lifecycle and wiped from disk the moment you click delete, instead of being "parked until the next restart".
+[English](README.en.md) | 中文
 
-A settings page for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) that brings archived chats back into view.
+> ⚡ **删除即生效，无需重启。** 即使会话仍驻留在后台，也会沿官方生命周期当场安全拆除并从磁盘彻底删除——点下删除的那一刻就删干净，而不是"停用后等下次重启"。
 
-Once a conversation is archived in DeepSeek Harness it disappears from the sidebar, and there is no built-in way to browse it again — only the workspace store (`~/.dsh/storages/workspace.json`) still remembers it. This plugin adds an **Archived Chats** page under Settings where every archived session is visible, searchable, and manageable.
+为 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 新增一个「已归档的聊天」设置页，把被归档的会话重新找回来。
 
-## Install
+在 DeepSeek Harness 里，聊天一旦归档就会从侧边栏消失，界面中没有任何入口可以再看到它，只有工作区存档（`~/.dsh/storages/workspace.json`）还记得它。这个插件在「设置」中补上一个「已归档的聊天」页面，让所有归档会话都可见、可搜索、可管理。
+
+## 🚀 安装
 
 ```sh
-dsh plugin --profile web add dsh-archived-chats
+dsh plugin --profile web add dsh-archived-chats@latest
 ```
 
-Restart DSH once after installing, then open **Settings → Archived Chats**.
+安装后重启一次 DSH，然后打开 **设置 → 已归档的聊天**。
 
-## Compatibility
+更新已有安装：
 
-Version 0.7.0 is tested against DeepSeek Harness `0.1.0-rc.7`. The plugin registers a top-level `settings.section`, so the rc.7 keyed-slot change for `settings.plugin.item` does not apply to it. Future Harness releases should still be checked with the smoke suite and a real-host UI pass before publishing a plugin update, because client slot and design-token contracts may evolve.
+```sh
+dsh plugin --profile web update dsh-archived-chats
+```
 
-## Features
+## 兼容性
 
-- **Complete archived-session list**, grouped by workspace (project) with a per-group count. Every group can be collapsed or expanded, and the state is remembered per browser.
-- **Search and sort** by title, workspace title, tags, and note text; filter by type (all / regular / subagent), project, and tag; then order results by newest, oldest, or title.
-- **Tags and notes**: open an editor from any row to attach up to 8 tags (24 Unicode characters each) and a note (2,000 Unicode characters). Tag chips render per row, overflowing past three into a `+N` indicator, and the tag filter narrows the list case-insensitively.
-- **Storage insights**: a summary strip reports the archived count, total measured size, and how many sessions could not be measured; each row shows its own size. Measurement never follows symbolic links and skips sessions whose directories are unreadable.
-- **JSON + Markdown backups**: export one row, the current selection, or every archived chat as a ZIP. Each package has a versioned manifest, a lossless machine-readable session record, and a human-readable transcript for every included session.
-- **Flexible multi-select**: select individual chats, every visible result, or an entire project. The selection bar can export, unarchive, or permanently delete the chosen chats in one action, while selections hidden by another filter remain intact.
-- **Unarchive** a single chat or a whole project group from the group's `⋯` menu — restored chats reappear in the sidebar immediately.
-- **Delete** one chat, a project group, or everything (**Delete All**), each behind a confirmation dialog. Deletion is thorough: the session log is removed from disk, the session is detached from its workspace record, and the registry's in-memory header index is purged, so the sidebar drops the rows live.
-- Sessions still resident in the background are **deleted in place too**: the plugin disposes the session through the official lifecycle teardown order (cancel → quiesce → flush → fiber teardown → registry detach), the persistence layer releases the write path, and the physical delete completes within the same request — no restart. If the running DSH build does not expose the required internal seams, the plugin falls back to "park permanently + delete on the next start", with parked sessions staying hidden meanwhile.
-- Works in light and dark schemes; localized in English and 中文.
+0.9.0 版本以 DeepSeek Harness `0.1.0-rc.7` 作为自动化兼容性基线。插件注册的是顶层 `settings.section`，因此 rc.7 针对 `settings.plugin.item` 的 keyed-slot 变更不影响本插件；同时已在 Harness `0.1.0-rc.8` 上完成真实宿主页面复核，覆盖归档列表、搜索、元数据编辑、批量与分组操作以及备份导入预览。以后 Harness 发布新版本时，仍应在发布插件更新前重跑冒烟测试并检查真实宿主页面，因为客户端插槽和设计令牌契约仍可能演进。
 
-## Tags, notes, and statistics
+## 预览
 
-Tags and notes live **only on your machine** in `$DSH_HOME/plugin-data/archived-chats/metadata.json` — they are never uploaded, synced, or sent anywhere else. Unarchiving a session keeps its metadata; a completed physical deletion removes it, while a deferred or failed deletion keeps it intact. Metadata and statistics failures are always non-blocking: the list, unarchive, and deletion keep working even when the metadata store is unreadable or a session directory cannot be measured.
+以下截图均来自 `0.9.0` 在本地 DeepSeek Harness `0.1.0-rc.8` Web profile 中的实际操作。
 
-## Export and backup
+![已归档的聊天总览](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/1-archived-chats.png)
+![搜索与筛选](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/2-search.png)
+![删除确认](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/3-delete-confirm.png)
+![分组操作](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/4-group-menu.png)
+![标签与备注编辑](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/5-metadata-editor.png)
+![批量操作](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/6-bulk-actions.png)
+![导入预览](https://raw.githubusercontent.com/Ultronen/dsh-archived-chats/9b28518c9f30fdc44fb666c33e844f0c31dd8cba/assets/screenshots/7-import-preview.png)
 
-Every export is a local browser download. A single session and a batch use the same ZIP format:
+## 使用流程
+
+1. 在 DSH 正常聊天的会话菜单中点击归档。归档只会把会话从侧边栏隐藏，工作区存档仍会保留会话数据。
+2. 打开 **设置 → 已归档的聊天**。页面按工作区分组，并在当前浏览器中记住分组的折叠状态。
+3. 搜索、筛选或排序会话；需要多选时点击 **批量选择** 显示复选框，完成后会自动恢复简洁列表。也可打开某一行的元数据编辑器添加标签与备注，或使用分组菜单执行项目级操作。
+4. 点击顶部 **导入备份** 选择本插件导出的 ZIP，预览后确认无冲突会话；点击 **导出备份** 导出当前选中项，未选择时导出全部归档会话。单条会话也可以从行内操作导出。
+5. 点击 **取消归档** 将会话放回侧边栏；只有确实需要永久删除时才点击 **删除**，确认弹窗会明确显示受影响的范围。**全部删除** 收纳在顶部 **更多** 菜单中。
+
+## 功能
+
+- **完整归档列表**：按工作区（项目）分组并显示每组数量；每个分组都可折叠/展开，状态按浏览器记忆。
+- **搜索与排序**：按标题、项目名、标签和备注内容搜索，用类型（全部 / 普通会话 / 子代理会话）、项目和标签筛选，并按最新、最早或标题排序。
+- **标签与备注**：任意行打开编辑器即可添加最多 8 个标签（每个最多 24 个 Unicode 字符）和一条备注（最多 2,000 个 Unicode 字符）。每行渲染标签小徽章，超过 3 个折叠为 `+N`，标签筛选不区分大小写。
+- **存储统计**：概览条显示归档数量、已统计总大小与无法统计的会话数；每行显示各自占用。统计不会跟随符号链接，无法读取的会话目录显示为「无法统计」而非让请求失败。
+- **JSON + Markdown 备份**：可导出单条、当前选中项或全部归档会话。每个 ZIP 都包含带版本的清单、用于机器恢复的完整会话 JSON，以及方便阅读的 Markdown 对话稿。
+- **预览后导入与恢复**：选择 ZIP 备份后先检查全部会话，默认选中无冲突 ID 的项目，确认后作为已归档聊天恢复。已有 ID 会跳过，绝不会覆盖。
+- **紧凑顶部操作**：常用的 **导入备份** / **导出备份** 直接可用，低频危险操作收纳在 **更多**；页面专注于 DSH 归档管理，不常驻来源选择器或冗余菜单。
+- **按需多选**：复选框默认隐藏，点击 **批量选择** 后才显示；可逐条选择、选择当前筛选结果或整个项目。选中后可一次导出、取消归档或永久删除，隐藏在其他筛选结果中的选择不会丢失。
+- **取消归档**单个聊天，或从分组的 `⋯` 菜单整组取消——恢复的聊天会立刻回到侧边栏。
+- **删除**单个聊天、某个项目分组或全部（**全部删除**），均有确认弹窗。删除是彻底的：会话日志从磁盘移除、从工作区记录中摘除、注册表内存索引同步清理，主侧边栏的条目也会立即消失。
+- 仍驻留后台的会话也**当场删除**：插件按官方生命周期的拆除顺序原地停用并注销会话（取消 → 静默 → 落盘 → 拆纤程 → 摘出注册表），持久层随之释放写入通道，同一次请求内即完成物理删除——无需重启。若当前 DSH 版本不提供所需内部接口，则自动回退为「永久停用 + 下次启动完成删除」，停用期间会话保持隐藏。
+- 适配浅色/深色主题，支持中文和英文界面。
+
+## 标签、备注与统计
+
+标签和备注**只保存在本机**的 `$DSH_HOME/plugin-data/archived-chats/metadata.json` 中——不会被上传、同步或发送到任何其他地方。取消归档会保留元数据；物理删除完成后会移除它，而延后或失败的删除会保留它。元数据与统计失败永远不阻塞：即使元数据存储无法读取或某个会话目录无法统计，列表、取消归档和删除仍然可用。
+
+## 导出与备份
+
+导出只会触发本地浏览器下载。单条和批量使用同一种 ZIP 格式：
 
 ```text
 manifest.json
-sessions/001-<safe-title>-<id>/session.json
-sessions/001-<safe-title>-<id>/transcript.md
+sessions/001-<安全标题>-<id>/session.json
+sessions/001-<安全标题>-<id>/transcript.md
 ```
 
-`session.json` is the authoritative backup record: it contains the complete metadata and event values returned by Harness persistence plus the archive title, workspace, timestamps, origin, tags, note, and storage facts. `transcript.md` is a readable companion derived with Harness's canonical message projection. ZIP paths are sanitized and collision-safe, and batches are generated one session at a time instead of buffering every transcript together.
+`session.json` 是权威备份记录：原样保存 Harness 持久层返回的完整元数据和事件，并附带归档标题、工作区、时间、来源、标签、备注和存储统计。`transcript.md` 是通过 Harness 官方消息投影生成的可读副本。ZIP 路径会净化并处理重名，批量导出逐个会话生成，不会同时把所有会话内容堆进内存。
 
-Attachment references remain in JSON, but **attachment bytes and descendant sessions are not included**. Use Harness's official Session log export when you need its attachment-complete conversation-tree package. Version 0.7.0 exports only; validated import/restore and conflict handling are planned for 0.8.0.
+JSON 会保留附件引用，但**本版不复制附件二进制，也不包含子会话**。需要带完整附件的会话树时，请使用 Harness 官方的 Session log 导出。
 
-## How it works
+## 导入与恢复
 
-- **Host half** (`lib/index.js`) registers the `/plugins/dsh-archived-chats/*` routes on the DSH web server: `GET /state`, `GET /stats`, `POST /export`, `POST /metadata`, `POST /unarchive`, `POST /unarchive-all`, `POST /delete`, `POST /delete-all`. `/state` joins tags, notes, and `metadataUpdatedAt` onto every row; `/stats` returns byte/file totals; `/export` streams a ZIP response from a bounded native-form request. Unarchiving writes through the workspace registry's own state path, so every connected client receives the `host/archived-sessions-changed` push. Mutating routes require a custom `x-dsh-archived-chats: 1` header as CSRF hardening; read-only export does not mutate plugin or Harness state.
-- **Export writer** (`lib/export.js`): owns format-versioned records, safe filenames, Harness transcript projection, and sequential ZIP entries. It preflights the first session before response headers and keeps at most one inspected session payload during a batch.
-- **Metadata store** (`lib/metadata.js`): a versioned, atomic JSON store. Writes serialize through a queue and replace the file via a temp-file rename, so simultaneous saves cannot interleave; unreadable or unsupported files are never overwritten.
-- **Storage statistics** (`lib/stats.js`): measures session directories at concurrency 4, skips symbolic links, caches results for 30 seconds, and reports unavailable rows instead of failing the request. Delete invalidates the cached row.
-- **In-place live deletion**: deleting a resident session replays the agent factory's own disposer sequence — `cancel({ kind: 'disposed' })` → `whenIdle` → `flush` → `agent.scope.dispose()` → detach of the `agents` and `sessions` store entries. The session detach emits `session/disposed`, the persistence coordinator retires (drains and releases) the write path, and the ordinary cold delete completes in the same request. The store entries are internal surfaces, so every step is feature-detected; anything missing falls back to park-and-defer.
-- **Pending-deletion store** (fallback path and crash bracket): the id is recorded in `$DSH_HOME/plugin-data/archived-chats/pending-deletions.json` while the session stays archived and hidden; the next boot sweeps the queue through the ordinary delete path. In-place deletes are bracketed by the same store (recorded before disposal, cleared once the files are gone), so a crash mid-delete is completed on the next start. Parked sessions are excluded from the listing; unarchiving cancels a pending deletion.
-- **Title cache**: resolved titles are memoized per id across list refreshes instead of re-reading every archived log; delete and unarchive invalidate their entries.
-- **Browser half** (`lib/client.js`) registers a `settings.section` slot entry (order 30) and renders the page with React and the rc.7 DSH overlay/state design tokens.
+导入只接受本插件版本一的导出 ZIP。浏览器会先上传并进行有界校验，然后展示标题、项目、标签、备注、存储信息、ID 冲突、项目不存在警告和附件引用警告；预览不会渲染原始事件或 Markdown。已有会话 ID 会被禁用并跳过，找不到的项目会恢复为未分组。确认令牌 10 分钟后过期且只能使用一次。标签和备注通过现有本地元数据限制恢复，不会恢复附件二进制。宿主没有可用的 Harness 写入能力时返回 `restore-unsupported`，不会写入任何数据。
 
-## Development
+## 常见问题
+
+<details>
+<summary><b>归档会删除聊天吗？</b></summary>
+
+不会。DSH 只是把聊天从侧边栏隐藏，并保留归档会话记录。这个插件提供设置页，用来查找、导出、恢复、取消归档或删除这些记录。
+
+</details>
+
+<details>
+<summary><b>导入备份包含已存在的会话 ID 时会怎样？</b></summary>
+
+冲突行会在预览中明确标记，默认禁用并跳过。导入流程绝不会覆盖已有会话。
+
+</details>
+
+<details>
+<summary><b>ZIP 备份包含附件吗？</b></summary>
+
+`session.json` 会保留附件引用，但不会包含附件二进制或子会话。需要完整附件会话树时，请使用 Harness 官方 Session log 导出。
+
+</details>
+
+<details>
+<summary><b>删除仍在运行的会话需要重启吗？</b></summary>
+
+在提供所需生命周期接口的宿主上，删除会在同一次请求中拆除运行中的会话并移除文件。较旧或不兼容的宿主会使用安全的待删队列，在下次启动时完成物理删除。
+
+</details>
+
+## 实现概览
+
+插件由两部分组成：Host 服务层负责读取和修改本地归档数据，浏览器设置页负责搜索、筛选、备份和恢复。所有修改都通过受保护的本地路由完成；导入会先预览，删除会优先尝试安全的生命周期拆除，能力不足时回退到下次启动处理。
+
+普通用户需要了解的数据保存、备份限制、删除结果和兼容性说明已列在本 README 中。路由清单、数据流、恢复事务、实时删除生命周期和失败回退等维护者细节请参阅 [架构文档](docs/ARCHITECTURE.md)。
+
+## 开发
 
 ```sh
 npm test
 ```
 
-The suite (`test/*.test.mjs`) covers export records and real ZIP decoding, the metadata store, the statistics service, and host-and-browser smoke tests. It uses an isolated temporary DSH home plus mocked host and browser runtimes; it never reads or changes real sessions.
+测试套件（`test/*.test.mjs`）覆盖导出记录与真实 ZIP 解包、有界导入校验、恢复事务、元数据存储、统计服务，以及宿主+浏览器冒烟测试。测试使用隔离的临时 DSH 主目录和模拟运行时，不会读取或修改真实会话。
 
-## Uninstall
+## 版本更新记录
+
+### 0.9.0
+
+- 新增按需显示的批量选择模式：列表默认不展示复选框，点击入口后才显示，完成批量操作后自动退出。
+- 将常用 ZIP 备份操作改为直接的 **导入备份 / 导出备份**，危险操作收纳到 **更多**，精简页头布局。
+- 移除未提供原生继续能力的跨工具 JSONL 迁移入口，让插件专注于 DSH 已归档聊天管理。
+- 在 DeepSeek Harness `0.1.0-rc.8` 真实宿主中复核新控件、备份预览和标题单行布局。
+
+### 0.8.1
+
+- 将中文 README 设为仓库和 npm 包的默认入口，英文文档改为 `README.en.md`。
+- 将维护者架构、路由、恢复事务和删除生命周期细节移到 `docs/ARCHITECTURE.md` 与 `docs/ARCHITECTURE.en.md`。
+- 安装章节增加快速识别用的 🚀 图标；插件运行时行为保持与 0.8.0 一致。
+
+### 0.8.0
+
+- 新增版本一 ZIP 备份的预览后导入。
+- 新增不会覆盖已有会话的冲突安全恢复和事务式写入。
+- 新增工作区/附件警告、有界校验、一次性确认令牌和元数据恢复。
+
+### 0.7.0
+
+- 新增单条、选中项和全部归档会话的带版本 JSON + Markdown ZIP 备份。
+- 新增流式导出、安全 ZIP 路径、清单记录和官方消息投影生成的 Markdown 对话稿。
+
+### 0.6.0
+
+- 新增标签、备注、存储统计、元数据持久化和归档洞察界面。
+- 加固仍在运行会话的删除流程，并为不提供内部生命周期接口的宿主增加回退处理。
+
+### 0.5.1
+
+- 发布面向 DeepSeek Harness `0.1.0-rc.7` 的兼容性修订版本。
+- 更新浏览器设置区块，使用 rc.7 的浮层和状态设计令牌。
+
+### 0.5.0
+
+- 新增多选以及批量取消归档/删除流程。
+- 改进破坏性操作后的焦点恢复和项目范围选择行为。
+
+### 0.4.0
+
+- 在宿主提供所需生命周期接口时，新增仍在运行会话的原地删除。
+- 新增安全的待删队列回退、标题缓存，以及破坏性操作完成后的成功提示。
+
+### 0.3.0
+
+- 首个公开发布版本，提供「已归档的聊天」设置页。
+- 新增按工作区分组浏览、标题搜索、类型/项目筛选、取消归档，以及带确认的单条/分组/全部删除。
+- 新增 Host 路由、浏览器设置区块，以及用于处理运行中会话的待删队列清扫。
+
+### 0.1.0 和 0.2.0
+
+- 这两个版本从未发布到 npm，也没有对应的仓库标签；`0.3.0` 是首个公开版本。
+
+## 卸载
 
 ```sh
 dsh plugin --profile web remove dsh-archived-chats
 ```
 
-The only leftovers are the small `pending-deletions.json` and `metadata.json` files under `$DSH_HOME/plugin-data/archived-chats/`; uninstalling does not process the delete queue or remove your tags/notes.
+唯一残留是 `$DSH_HOME/plugin-data/archived-chats/` 下的待删队列 `pending-deletions.json` 和 `metadata.json` 两个小文件；卸载不会触发队列处理，也不会删除你的标签与备注。
 
 ## License
 

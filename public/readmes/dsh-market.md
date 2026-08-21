@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dsh-market/dsh-market/eca19a156c9fb7ee8982ebe295f9f1a3647e1843/assets/logo.svg" width="96" alt="dsh-market logo">
+  <img src="https://raw.githubusercontent.com/dsh-market/dsh-market/263665cfc34970ac80e2cd4455cbb58a4e1214b5/assets/logo.svg" width="96" alt="dsh-market logo">
 </p>
 
 # dsh-market
@@ -13,11 +13,9 @@ English | [中文](README.zh.md)
 
 The plugin market inside DeepSeek Harness. Open Settings → **Plugin Market** → browse, search, one-click install.
 
-![dsh-market](https://raw.githubusercontent.com/dsh-market/dsh-market/eca19a156c9fb7ee8982ebe295f9f1a3647e1843/assets/demo-en.png)
+![dsh-market](https://raw.githubusercontent.com/dsh-market/dsh-market/263665cfc34970ac80e2cd4455cbb58a4e1214b5/assets/demo-en.png)
 
-One-click themes — install, switch live, no restart:
-
-![Themes tab](https://raw.githubusercontent.com/dsh-market/dsh-market/eca19a156c9fb7ee8982ebe295f9f1a3647e1843/assets/themes-en.png)
+One-click themes: install, switch live, no restart.
 
 ## Install
 
@@ -64,7 +62,16 @@ Installs prefer npm tarballs over full-repo GitHub downloads whenever a plugin p
 - The install endpoint accepts same-origin POST only; the market never phones home
 - Backups can contain credentials from your profile config — the UI warns before export and upload; WebDAV sync is https-only, refuses private-network targets, and never stores your password in the browser
 - The restart endpoint additionally requires a direct loopback client (forwarded requests are rejected) and relaunches the exact DSH entry, arguments, environment, and working directory
-- One-click restart launches a detached replacement. If DSH is managed by systemd, launchd, pm2, or another supervisor, set the plugin option `allowRestart: false` and let the supervisor own restarts instead; the pending-change notice remains visible but the button is hidden
+- One-click restart launches a detached replacement. **When this host is systemd's own service process the button is hidden automatically** — the market would otherwise kill the takeover process along with the unit's cgroup and the service would not come back. The pending-change notice stays visible and says so. Detection requires both a systemd marker AND being the unit's main process, because `INVOCATION_ID` is inherited by every descendant of a unit (an ordinary terminal included) and hiding the button for those would be the worse bug. pm2 and launchd are not detected, so those deployments need the explicit setting below. Either flip **Allow restart** off in **Settings → Plugins → Plugin configuration**, or write it into the profile patch — where it has to sit under `config:`, because the loader passes only that sub-object to a plugin and a top-level `allowRestart:` is silently ignored (#227 by @Fantasymax):
+
+  ```yaml
+  - id: dsh-market
+    name: dshmarket
+    config:
+      allowRestart: false   # NOT at the top level beside `name:`
+  ```
+
+  `GET /dsh-market/status` reports `"restart": false` once it has taken effect.
 - For terminal-attached launches, the detached replacement keeps running after the original terminal closes
 - Listing ≠ endorsement: plugins are third-party code, install sources you trust
 

@@ -2,9 +2,11 @@
 
 [![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 
-DeepSeek Harness 本地音乐库播放器插件（bundle）。
+DeepSeek Harness 本地音乐/小说播放插件。
 
-在 Host 进程里扫描本地音乐目录（默认 `~/Music`，可在面板里改），以 HTTP Range 流式（仅显示播放时间，暂无拖动跳转）给浏览器提供音频；浏览器侧给聊天输入区注入**正在播放条**（曲目信息、上一首/播放暂停/下一首/停止、顺序/单曲/乱序循环模式、音量、实时频谱），并提供一个浮动的**播放面板**（曲目列表 / 音乐目录选择与格式提示）。同时注册 `music_play` 模型工具，让 agent 可以直接按关键词播放本地音乐。
+写代码写累了、想摸鱼又不想切窗口？这个插件就是你的**摸鱼神器**——直接在 DeepSeek Harness 的网页里塞进一个本地音乐播放器：扫一下你电脑上的音乐目录（默认 `~/Music`）就能在浏览器里听歌，带播放条和可拖拽的播放面板，还能自己建歌单。
+
+光听歌还不够，它还能**听书**：把本地 `.txt` 小说丢给 AI 朗读，想听哪章点哪章、声音随便挑。最绝的是它还注册了 `music_play` 模型工具——你连鼠标都不用动，在对话框里跟 agent 说句「播放周杰伦的歌」，音乐分分钟响起来，摸鱼摸出新境界。
 
 ## 特性
 
@@ -12,17 +14,19 @@ DeepSeek Harness 本地音乐库播放器插件（bundle）。
 - 顺序播放、单曲循环、乱序播放三种模式
 - 实时 7 段频谱可视化（解码音频包络驱动）
 - 播放时申请屏幕唤醒锁，防止听歌时熄屏/休眠（支持 Wake Lock 的浏览器，如 Chrome/Edge）
-- 播放列表面板可自由拖动，位置跨刷新记忆
-- `music_play` 模型工具：agent 可按关键词让浏览器播放
+- 播放列表面板可自由拖动，右下角可拖拽调整大小，位置与尺寸跨刷新记忆
+- AI 讲书：本地 `.txt` 小说经 MiMo TTS 合成朗读，自动识别**书名/前言/章节/尾声**结构，播放条带**章节目录**跳转、章节切歌，可选 4 种中文 AI 声音（默认白桦）
+- `music_play` 模型工具：agent 可按关键词播放本地音乐，也可按小说名启动 AI 讲书
 - 支持的格式：`mp3 / m4a / m4b / aac / flac / wav / ogg / opus / webm / aiff`（自动递归扫描子目录，上限 500 首）
+- **自建歌单**：可新建多个歌单，从本地文件（支持多选、可跨目录）添加歌曲；播放条爱心按钮一键收藏到默认歌单「我最喜欢」；歌单作为播放来源时，顺序/乱序循环只在该歌单内进行
 
 ## 截图
 
-![播放条](https://raw.githubusercontent.com/kendu76/dsh-music-player/0806be74e4272ccaa7f7ed17e40f8d8d2b0718aa/assets/screenshot-bar.png)
+![播放条](https://raw.githubusercontent.com/kendu76/dsh-music-player/3be03c3bb670a1fedb5255870fdc9665b3e2d8e9/assets/screenshot-bar.png)
 
-![实时频谱](https://raw.githubusercontent.com/kendu76/dsh-music-player/0806be74e4272ccaa7f7ed17e40f8d8d2b0718aa/assets/screenshot-spectrum.png)
+![实时频谱](https://raw.githubusercontent.com/kendu76/dsh-music-player/3be03c3bb670a1fedb5255870fdc9665b3e2d8e9/assets/screenshot-spectrum.png)
 
-![播放面板](https://raw.githubusercontent.com/kendu76/dsh-music-player/0806be74e4272ccaa7f7ed17e40f8d8d2b0718aa/assets/screenshot-panel.png)
+![播放面板](https://raw.githubusercontent.com/kendu76/dsh-music-player/3be03c3bb670a1fedb5255870fdc9665b3e2d8e9/assets/screenshot-panel.png)
 
 ## 安装
 
@@ -65,8 +69,8 @@ dsh plugin --profile <profile> add ./dsh-music-player-0.1.0.tgz
 
 插件为「Host 端 + Web 端」双面结构：
 
-- Host 端（`lib/index.js`）：音乐扫描、HTTP 流式、`music_play` 工具
-- Web 端（`lib/client.js`）：浏览器里的播放条 / 播放面板 / 频谱
+- Host 端（`lib/index.js`）：音乐扫描、HTTP 流式、歌单 CRUD/持久化、`music_play` 工具、AI 讲书（小说结构解析 + TTS 合成）
+- Web 端（`lib/client.js`）：浏览器里的播放条 / 播放面板 / 频谱 / 歌单（收藏、一键清空）/ 讲书控制
 
 两者由一个 `cordis.patch.yml` 插入 `music-player` 行并自动组对（在 Web 端 `dsh.client` 声明即指回该行名并加载浏览器半体）：
 
@@ -78,13 +82,46 @@ dsh plugin --profile <profile> add ./dsh-music-player-0.1.0.tgz
 
 播放模式与音量保存在浏览器 `localStorage`，当前曲目与进度也会在刷新后恢复（浏览器的自动播放可能被拦截，点一次 ▶ 即可解锁）。
 
+## 自建歌单（收藏）
+
+播放面板「音乐」页内新增子标签：**曲库 / ♥ 我最喜欢 / ＋**，支持自建歌单并把歌单作为播放来源——此时顺序/乱序循环只在该歌单内进行。
+
+- **新建歌单**：点「＋」输入名称即建（可建多个）。
+- **曲库加入**：在「曲库」列表每首歌行尾有「＋」按钮，点击可把该曲加入任一已有歌单，或直接新建歌单加入。
+- **添加歌曲**：进入某歌单 → 点「添加歌曲」→ 打开本地文件多选框（可多选、可跨目录）加入歌单；歌单内每首歌支持上移/下移排序与移除。
+- **清空歌单**：每个歌单（含「我最喜欢」）详情内都有「清空」按钮，二次确认后一键移除全部歌曲（歌曲文件不会被删除）。
+- **收藏**：播放条上的爱心按钮一键把当前曲加入默认歌单「我最喜欢」，再点取消；「我最喜欢」固定不可删除/重命名。
+- **播放范围**：在歌单里点歌，则顺序/乱序/单曲循环都在该歌单内；在「曲库」点歌则回到全库循环。
+- **命令**：`music_play` 工具新增 `playlist` 参数，可让 agent 直接播放某个歌单（如「播放歌单 我最喜欢」）。
+- 歌单数据保存在 `~/.dsh/music-player-playlists.json`，刷新/重启不丢；歌单可包含曲库目录之外的本地音频文件。
+
+## AI 讲书
+
+把本地 `.txt` 小说交给 AI 朗读（复用 DSH 已配置的 xiaomi/MiMo TTS）。**AI 语音目前仅支持 xiaomi 提供方（限时免费），请在设置中配置好再使用此功能。**
+
+### 前置
+
+在 DSH 的模型设置里配置一个 xiaomi/MiMo TTS provider（含 api key）。未配置时，小说列表会提示"未配置 xiaomi/MiMo TTS 模型"。
+
+### 使用
+
+1. 打开播放面板，切到「小说」标签，点「选择小说目录」选定包含 `.txt` 的目录（默认与音乐目录相同）。
+2. 点击某一本小说开始朗读；也可让 agent 用 `music_play` 工具按小说名播放（如「播放《中国制造》」）。
+3. 播放条上的讲书控制：
+   - **章节目录**（📖 按钮）：自动识别全书结构（书名/前言/章节/尾声），弹出目录，点击任意章节即从该章开头朗读
+   - **后退 / 前进**：讲书模式下跳上一章 / 下一章（音乐模式下仍是上一首 / 下一首）
+   - **AI 声音**：点音量按钮，在弹层选择声音——冰糖（女）、茉莉（女）、苏打（男）、白桦（男，默认）
+4. 刷新页面后从上次位置续读（断点续播）。
+
+支持的格式：`.txt`（自动识别 UTF-8 / UTF-16 / GBK/GB18030 编码，无需手工转码）。
+
 ## 开发
 
-需要 Node.js ≥ 20（vitest 建议 20.19+）与 npm。开发依赖仅 `vitest`：
+需要 Node.js ≥ 20（vitest 建议 20.19+）与 npm。开发依赖：`vitest` + `react`/`react-dom`/`jsdom`（用于前端渲染冒烟测试）：
 
 ```sh
 npm install
-npm test        # 跑 vitest 测试套件
+npm test        # 跑 vitest 测试套件（Host 单测 + Web 渲染冒烟，共 50+ 用例）
 ```
 
 修改 `lib/` 后，在本机 profile 里用 link 方式本地调试并验证：
@@ -108,6 +145,12 @@ dsh plugin --profile <profile> add ./   # 或直接改 profile 里的 link 目�
 
 **`music_play` 工具说"音乐库为空"？**
 说明还没有可用的音乐目录。请先打开播放面板，点「选择音乐目录」配置一次。
+
+**小说列表提示"未配置 xiaomi/MiMo TTS 模型"？**
+AI 语音目前仅支持 xiaomi 提供方（限时免费）。请先在 DSH 模型设置里配置 xiaomi/MiMo provider（含 api key），再使用讲书功能。
+
+**讲书播放时点后退/前进没反应？**
+讲书模式下后退/前进是跳上一章/下一章；如果当前小说没有识别出章节结构（目录按钮提示"暂无章节结构"），则无法跳章，只能整本顺序播。
 
 **想支持更多音频格式？**
 格式支持由 Host 端 `AUDIO_TYPES` 表驱动，在 `lib/index.js` 里加扩展名与 MIME 即可（播放器本身用浏览器原生 `<audio>` 解码，最终能否播放还取决于浏览器对该编码的支持）。

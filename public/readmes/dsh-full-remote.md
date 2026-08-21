@@ -41,11 +41,11 @@ to the Internet. For composition details, see
 
 | Desktop control panel | Mobile workspace |
 |---|---|
-| ![Desktop control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-desktop.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-mobile.png) |
+| ![Desktop control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-desktop.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile.png) |
 
 | Phone confirmation sheet | Remote desktop confirmation |
 |---|---|
-| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-remote-confirm-desktop.png) |
+| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-desktop.png) |
 
 ## Problem
 
@@ -74,7 +74,8 @@ server. The proxy:
   privileged APIs pass Harness's trust check;
 - requires an access token or a valid device session before any request is
   forwarded;
-- forwards HTTP, SSE, and WebSocket traffic;
+- forwards HTTP, SSE, and WebSocket traffic; compressible HTTP responses
+  may be gzipped (not SSE or WebSocket);
 - provides a settings page (**Settings → Reverse proxy**) for starting and
   stopping the proxy, changing the listen address, rotating the token, and
   managing device sessions.
@@ -103,7 +104,10 @@ flowchart LR
    authentication do not reach the backend.
 3. The proxy rewrites `Host`/`Origin` to loopback, removes untrusted
    headers, and forwards the request to the Harness Web server at
-   `127.0.0.1:3080`.
+   `127.0.0.1:3080`. Compressible HTTP responses (HTML/JS/CSS/JSON/SVG,
+   ≥1 KB) may be gzipped; SSE and WebSocket are not. Hashed `/assets/*`
+   files may receive a long-cache header. See
+   [HTTP gzip](./docs/http-gzip.md).
 
 ## Features
 
@@ -151,6 +155,14 @@ flowchart LR
   per remote IP
 - Stream-level request body limit; hop-by-hop and spoofable headers are
   stripped; upstream `set-cookie` is removed
+- Gzip for compressible HTTP responses (JS/CSS/HTML/JSON/SVG) when the
+  client advertises gzip; SSE, WebSocket, fonts, gate pages, and bodies
+  under 1 KB are skipped. Measured first-load of the Harness shell:
+  **−72.7%** (1.29 MB → 351 KB). `vendor-*.js` −75.7%. Tiny JSON grows,
+  so it is not compressed. Issue #11's "95%+" is not a general result.
+  Off: `compressResponses: false`. Details: [HTTP gzip](./docs/http-gzip.md)
+- Long-cache `Cache-Control` on hashed `/assets/*` (not `index.html` or
+  `/api`). Off: `cacheHashedAssets: false`
 
 ### One-click public tunnel (Cloudflare quick tunnel)
 
@@ -277,7 +289,7 @@ dsh plugin --profile web update --latest dsh-full-remote
 
 Then restart `dsh web`. `--latest` ignores the current range, installs the
 newest version, and rewrites `package.json`. For a specific version use
-`dsh plugin --profile web update dsh-full-remote@0.3.3`.
+`dsh plugin --profile web update dsh-full-remote@0.3.5`.
 
 ## Screenshots
 
@@ -291,17 +303,17 @@ address, recommended setup, tunnel target, one-click quick tunnel,
 one-time invite QR, access token, connected devices with source IPs
 (inline rename), and the audit viewer.
 
-![Reverse proxy control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-desktop.png)
+![Reverse proxy control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-desktop.png)
 
 | One-time phone invite (QR) | Connected devices with inline rename |
 |---|---|
-| ![Phone invite](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-invite.png) | ![Connected devices](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-devices.png) |
+| ![Phone invite](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-invite.png) | ![Connected devices](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-devices.png) |
 
 ### Mobile
 
 | Login page | Control panel | Add workspace |
 |---|---|---|
-| ![Mobile login](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-mobile-login.png) | ![Mobile panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-mobile-panel.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-mobile.png) |
+| ![Mobile login](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile-login.png) | ![Mobile panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile-panel.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile.png) |
 
 ### Remote confirmation
 
@@ -311,7 +323,7 @@ look at the host display.
 
 | Phone bottom sheet | Remote desktop card |
 |---|---|
-| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-remote-confirm-desktop.png) |
+| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-desktop.png) |
 
 ### Gate pages
 
@@ -320,7 +332,7 @@ itself, and the first-visit approval wait page.
 
 | Device home | Waiting for approval |
 |---|---|
-| ![Device home](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-home.png) | ![Waiting for approval](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/3bdf1a651b32ec7a0338584f2db14ef8337ff2c9/docs/screenshots/preview-wait.png) |
+| ![Device home](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-home.png) | ![Waiting for approval](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-wait.png) |
 
 ## Configuration
 
@@ -346,6 +358,8 @@ Common options:
     cloudflaredPath: ""          # optional path to cloudflared for the one-click tunnel
     tlsCertFile: ""              # optional local HTTPS
     tlsKeyFile: ""
+    compressResponses: true      # gzip JS/CSS/JSON/HTML ≥1KB; skip SSE/WebSocket/fonts/gate pages
+    cacheHashedAssets: true      # immutable Cache-Control on hashed /assets/* only
 ```
 
 The complete option list, with defaults and validation, is defined in the
@@ -356,9 +370,10 @@ Two points to note:
 
 - Installing the plugin pins the in-app directory picker so that a phone
   can add workspaces. By default the stock adaptive picker is disabled and
-  the browse pair is enabled; set `DSH_FULL_REMOTE_USE_NATIVE_PICKER=1`
-  before boot only when you deliberately want the host's native chooser and
-  do not need remote directory browsing.
+  the browse pair is created at runtime unless another plugin already
+  inserted it. Set `DSH_FULL_REMOTE_USE_NATIVE_PICKER=1` before boot only
+  when you deliberately want the host's native chooser and do not need
+  remote directory browsing.
 - `backendHost` must remain a loopback address. A wildcard or non-loopback
   value is rejected at load time.
 
@@ -413,6 +428,11 @@ side of the tunnel. For LAN use without a tunnel, set
   platform; Windows ARM64 has no official build — install it yourself
   and set `cloudflaredPath`). For a stable daily entry, bring your own
   frp / ngrok / named tunnel.
+- Gzip at the proxy helps LAN and SSH/frp. A Cloudflare quick tunnel
+  already compresses HTML/JS/CSS/JSON at the edge, so that path sees
+  little extra saving. Live model output uses WebSocket and is not gzipped.
+  Plugin login/wait/home pages are not gzipped (about 1 KB of potential
+  saving). Full contract: [HTTP gzip](./docs/http-gzip.md).
 
 ## Development
 
@@ -420,7 +440,7 @@ side of the tunnel. For LAN use without a tunnel, set
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-full-remote-0.3.3.tgz
+dsh plugin --profile web add ./dsh-full-remote-0.3.5.tgz
 ```
 
 Git installs run the `prepare` build. On pnpm ≥ 10 allow it:

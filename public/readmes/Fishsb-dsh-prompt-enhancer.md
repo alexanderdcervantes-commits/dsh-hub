@@ -60,11 +60,11 @@ node "<DSH_HOME>\AppData\Local\dsh-prompt-enhancer\executor\0.1.11\lib\updater-h
 
 **模型配置**（按序尝试多个模型）：
 
-![模型配置](https://raw.githubusercontent.com/Fishsb/dsh-prompt-enhancer/cdf48abf8c0d441c9022df284c5f3d561abaf594/docs/screenshots/settings-models.png)
+![模型配置](https://raw.githubusercontent.com/Fishsb/dsh-prompt-enhancer/c058755b829f275daeab87cb8755cebaa48a8a2a/docs/screenshots/settings-models.png)
 
 **一键重启 CLI**（服务异常时命令行恢复）：
 
-![一键重启 CLI](https://raw.githubusercontent.com/Fishsb/dsh-prompt-enhancer/cdf48abf8c0d441c9022df284c5f3d561abaf594/docs/screenshots/restart-cli.png)
+![一键重启 CLI](https://raw.githubusercontent.com/Fishsb/dsh-prompt-enhancer/c058755b829f275daeab87cb8755cebaa48a8a2a/docs/screenshots/restart-cli.png)
 
 ## ⚙️ 配置
 

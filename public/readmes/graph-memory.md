@@ -1,6 +1,6 @@
 # Graph Memory
 
-![DeepSeek Harness + OpenClaw → Graph Memory](https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/brand/graph-memory-hosts-banner.png)
+![DeepSeek Harness + OpenClaw → Graph Memory](https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/brand/graph-memory-hosts-banner.png)
 
 <p align="center">
   <strong>Traceable, searchable, cross-session memory for AI agents.</strong><br>
@@ -68,7 +68,7 @@ Typed edges such as `USED_SKILL`, `SOLVED_BY`, `REQUIRES`, `PATCHES`, and `CONFL
 The original OpenClaw adapter was measured in a seven-turn workflow that installed, authenticated, and queried `bilibili-mcp`:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/token-comparison.png" alt="Seven-turn token comparison" width="82%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/token-comparison.png" alt="Seven-turn token comparison" width="82%">
 </p>
 
 | Turn | Without Graph Memory | With Graph Memory |
@@ -93,8 +93,8 @@ The DSH integration does not discard the original project. Graph Memory is evolv
 On March 15, 2026, the project owner presented Graph Memory's architecture at the CLAW program event held in Tsinghua Science Park. The following owner-supplied materials and the [Sina Finance event report](https://cj.sina.com.cn/articles/view/7984421895/1dbe89c0700101nnpq) document that development.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/history/tsinghua-sharing.jpg" alt="Graph Memory technical sharing" width="47%">
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/history/sina-report.jpg" alt="Sina Finance event coverage" width="28%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/history/tsinghua-sharing.jpg" alt="Graph Memory technical sharing" width="47%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/history/sina-report.jpg" alt="Sina Finance event coverage" width="28%">
 </p>
 
 - [Community cross-session memory demo](https://www.bilibili.com/video/BV1xUcZzfEaB/)
@@ -103,7 +103,7 @@ On March 15, 2026, the project owner presented Graph Memory's architecture at th
 The image below is the existing OpenClaw / ClawX-era Pro graph prototype. It demonstrates a previously explored interaction direction; it is not a shipped DSH frontend.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/graph-ui.png" alt="Existing Graph Memory Pro prototype" width="92%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/graph-ui.png" alt="Existing Graph Memory Pro prototype" width="92%">
 </p>
 
 Names and venue information document project history only and do not imply endorsement by Tsinghua University, Sina Finance, DeepSeek, or OpenClaw.
@@ -187,12 +187,12 @@ Current beta: `1.6.0-beta.1`. Local acceptance used DeepSeek Harness `0.1.0-rc.5
 
 <p align="center">
   <strong>Plugin enabled: graph-memory/dsh is active in the DSH plugin list</strong><br>
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/dsh/plugin-inventory-active.png" alt="Graph Memory active in the DSH plugin list" width="88%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/dsh/plugin-inventory-active.png" alt="Graph Memory active in the DSH plugin list" width="88%">
 </p>
 
 <p align="center">
   <strong>Cross-session semantic recall in a fresh Session</strong><br>
-  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/dsh/vector-cross-session-recall.png" alt="Cross-session vector recall in DSH" width="88%">
+  <img src="https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/dsh/vector-cross-session-recall.png" alt="Cross-session vector recall in DSH" width="88%">
 </p>
 
 ## Install on DeepSeek Harness
@@ -202,7 +202,7 @@ Prerequisites: Node.js `22.19+` or `24+`. The current beta is not yet published 
 ```bash
 git clone https://github.com/adoresever/graph-memory.git
 cd graph-memory
-npm ci
+npm install
 npm test
 npm run build
 npm pack
@@ -246,7 +246,7 @@ dsh web
 
 Without embeddings, Graph Memory continues with FTS5 and does not block conversation.
 
-![Vector status](https://raw.githubusercontent.com/adoresever/graph-memory/dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80/docs/images/dsh/vector-status.png)
+![Vector status](https://raw.githubusercontent.com/adoresever/graph-memory/2c20ed9f3c16bdc87602905516948620aad79512/docs/images/dsh/vector-status.png)
 
 ## DSH tools
 
@@ -362,7 +362,7 @@ The Community memory core is host-neutral. DSH development does not require Open
 ## Development
 
 ```bash
-npm ci
+npm install
 npm test
 npm run build
 npm pack

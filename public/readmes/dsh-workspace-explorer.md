@@ -14,18 +14,22 @@ Inspired by the VS Code / Cursor project tree, filling the gap of a missing dire
 
 ## 🖥 Demo
 
-![dsh-workspace-explorer demo](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/f03b9547e9499377a0f9b5003d76d0a9e4507ce4/demo/preview.gif)
+![dsh-workspace-explorer demo](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/demo/preview.gif)
 
-*Demo GIF (v0.5.1): the **“Workspace Files” pill entry**, multi-select batch insert, folder drag → compact tree text, paginated preview, and the settings tab.*
+*Demo GIF (recorded at v0.5.1): the **“Workspace Files” pill entry**, multi-select batch insert, folder drag → compact tree text, paginated preview, and the settings tab. The v0.6.0 split-view preview and file editing are shown in the screenshots below.*
 
 <details>
 <summary><b>Screenshots</b> · 截图</summary>
 
-![Panel](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/f03b9547e9499377a0f9b5003d76d0a9e4507ce4/assets/screenshots/panel.png)
+![Panel](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/assets/screenshots/panel.png)
 
-![File tree](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/f03b9547e9499377a0f9b5003d76d0a9e4507ce4/assets/screenshots/tree.png)
+![File tree](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/assets/screenshots/tree.png)
 
-![Insert & send](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/f03b9547e9499377a0f9b5003d76d0a9e4507ce4/assets/screenshots/insert.png)
+![Split-view preview](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/assets/screenshots/preview.png)
+
+![Edit mode](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/assets/screenshots/edit.png)
+
+![Insert & send](https://raw.githubusercontent.com/Jiyr0119/dsh-workspace-explorer/1a539c1a947ef01876d87413c394a363e94bec41/assets/screenshots/insert.png)
 
 </details>
 
@@ -41,6 +45,8 @@ Inspired by the VS Code / Cursor project tree, filling the gap of a missing dire
 - 🌓 **Theme-aware** — built entirely on DSH's `--dsw-alias-*` design tokens; adapts to light/dark with a native dialog look (16px radius, lv3 shadow)
 - 🔍 **Search & filter** — filter files by name across loaded directories (flat result list with a match count)
 - 👁 **Paginated preview** — preview any text file with prev/next line paging (total lines & current page shown); insert the reference, or paste the full content for small files (≤ 32 KB)
+- ✏️ **Split view preview** — click the 👁 icon before any file to open a 340px left-side preview panel; the file tree stays visible on the right for easy navigation
+- 📝 **File editing** — click "Edit" in the preview panel to enter textarea mode; save writes directly to disk with change detection (warns if the file was modified externally)
 - 🌐 **i18n** — zh/en dictionaries registered through DSH's locale service; the panel follows the DSH UI language
 
 ## Quick Start
@@ -125,7 +131,7 @@ dsh-workspace-explorer/
 
 ## Version
 
-Current version **v0.5.1** — the session-header entry is now a **“Workspace Files” capsule (feature name + folder icon)**, matching the native Session log button style; the demo GIF was re-recorded to show the entry plus the M1 read-path features (multi-select batch insert, folder drag & tree text, paginated preview, settings tab).
+Current version **v0.6.0** — the **M2 write path**: a 340px **split-view preview panel** (click the 👁 button before any file; the file tree stays visible on the right) and **in-panel file editing** (textarea mode with Save / Discard / Cancel, a “Modified” badge, and external-change detection on save).
 See [CHANGELOG.md](./CHANGELOG.md) for release notes.
 
 ## Roadmap
@@ -145,9 +151,12 @@ Focused on the two lines that actually matter to the product: the **read path** 
 - [x] **Multi-target references**: drag a directory in (inserts a depth-limited compact tree listing) + multi-select / batch-insert file references (Shift / Cmd) — one capability, one milestone
 - [x] **Paginated full preview** for large files (prev / next page, lazy loading) instead of the 60-line / 200 KB cap — not rendering the whole file at once
 
-**Milestone M2 — write path (separate product decision)**
+**Milestone M2 — write path ✅ (v0.6.0)**
 
-- [ ] **In-panel file editing**: approval gate + atomic save + change detection (warn when the file changed on disk). From here the plugin stops being read-only — a deliberate repositioning that also needs updated copy and screenshots
+- [x] **Split view preview panel**: left-side 340px panel slides in, file tree stays visible on the right
+- [x] **Clickable preview icon**: 👁 button before each file name opens the preview panel
+- [x] **In-panel file editing**: textarea mode with save/discard/cancel; change detection (warns when file modified externally)
+- [x] **Host write route**: `/dsh-we/api/write` with atomic save and size-based change detection
 
 **Parked backlog** (do when real demand shows up)
 

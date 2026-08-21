@@ -31,9 +31,13 @@ dsh plugin --profile web remove dsh-ssq-plugin
 双击打开 **`dist/index.html`** 即可（桌面，Chrome / Edge / Safari 均可）。
 手机访问请打开 **`dist/index-mobile.html`**（移动版，底部导航 + 大触控目标，已去掉导入/导出按钮）。
 
+**手机装成 App（PWA）**：把 `dist/` 下的移动版文件（`index-mobile.html` + `manifest.json` + `sw.js` + `icons/`）部署到任意 https 静态托管（GitHub Pages / Vercel / Netlify 等），手机浏览器打开页面 → 菜单「添加到主屏幕」→ 获得全屏 App 图标体验，支持离线使用。直接发 `index-mobile.html` 单文件到手机也能打开，只是没有 App 图标与离线缓存。
+
 ## 三大功能
 
 ### 1️⃣ 趋势追踪（历史千期）
+- **🕗 开奖号码查询**：期号下拉可选任意有数据的期号，查看该期 6 红 + 1 蓝开奖号码与日期（默认最新一期）
+- **打开页面自动更新**：加载后自动静默拉取最新一期数据并刷新展示（手动「在线更新」按钮保留）
 - 统计最近 **10–1000 期**（默认 1000 期）每个号码的表现：出现次数、频率、近 10 期、当前遗漏、最大遗漏、平均遗漏
 - 热 / 温 / 冷 三档热度标记，近 10 期 vs 前 10 期对比趋势箭头（↑↓→）
 - 红球 / 蓝球出现次数柱状图（点击柱子查看该号码的「滚动 10 期频率」走势曲线）
@@ -96,6 +100,9 @@ dsh-ssq-plugin/
 ├── data/ssq-history.json ← 插件内置数据快照
 ├── dist/index.html     ← HTML 版成品（桌面版，单文件）
 ├── dist/index-mobile.html ← HTML 版成品（移动版，单文件，无导入导出）
+├── dist/manifest.json  ← PWA 清单（移动版添加到主屏幕用）
+├── dist/sw.js          ← PWA Service Worker（离线缓存）
+├── dist/icons/         ← PWA 图标（192/512/maskable/apple-touch）
 ├── template.html       ← HTML 版桌面模板
 ├── template-mobile.html ← HTML 版移动模板
 ├── src/style.css       ← HTML 版桌面样式

@@ -7,7 +7,7 @@
 Token cost tracking for DeepSeek Harness, with per-model configurable pricing and
 peak/off-peak rates.
 
-![dsh-cost-tracker: per-session cost bar and the /cost command](https://raw.githubusercontent.com/yflmq001/dsh-cost-tracker/dd8c57ce76d914eb72dd44544e7492f12d3ef105/assets/screenshots/hero.png)
+![dsh-cost-tracker: per-session cost bar and the /cost command](https://raw.githubusercontent.com/yflmq001/dsh-cost-tracker/096b1ae917ae127f08aa3f0cad4ca320e58448ef/assets/screenshots/hero.png)
 
 ## What it does
 
@@ -33,6 +33,10 @@ Pricing starts empty (`models: {}`); fill in your models under the plugin's
 `config` (see below). To override defaults, add a `cost-tracker` row to the
 profile's own `cordis.patch.yml` — later layers win by row id.
 
+> ⚠️ When overriding, address the row by its **`id`** (`cost-tracker`), **not** by
+> `name`. Cordis non-insert patches locate the target line by `id`; a `name`-keyed
+> override row is silently dropped, leaving prices at `models: {}`.
+
 The cross-session bill persists through dsh's storage domain; a profile
 without a storage backend keeps the bill in memory only.
 
@@ -42,7 +46,7 @@ Pricing lives under the plugin's config (Schemastery-validated). All prices are
 currency units per **million tokens**; you fill them in manually (no scraping).
 
 ```yaml
-- name: 'dsh-cost-tracker'
+- id: cost-tracker
   config:
     models:
       deepseek-v4-flash:

@@ -6,7 +6,9 @@
 </p>
 <p align="center">
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-263146?style=flat-square"></a>
+  <img src="https://camo.githubusercontent.com/2c11fb2e0e14bb9985c5acbe61123a7441c5ee63aa27fa6e04e2a707ebfd6022/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6473682d2d706c7567696e2d72656164792d3437384342463f6c6f676f3d646565707365656b266c6f676f436f6c6f723d7768697465" alt="dsh-plugin" data-canonical-src="https://img.shields.io/badge/dsh--plugin-ready-478CBF?logo=deepseek&amp;logoColor=white" style="max-width: 100%;">
   <img alt="Public beta" src="https://img.shields.io/badge/status-public%20beta-7da1de?style=flat-square">
+ <a href="https://dshfind.com/zh/plugins/drscrewdriver/dsh-input-traffic?ref=badge"><img alt="dsh-input-traffic" src="https://dshfind.com/api/badge/drscrewdriver/dsh-input-traffic?lang=zh"></a>
 </p>
 
 # dsh-input-traffic
@@ -242,6 +244,18 @@ src/
 - 语义参考：[dsh-traffic-light](https://github.com/yimeng-dev/dsh-traffic-light)（Session 运行状态红绿灯提示）
 - harness 锚点：`packages/client/AGENTS.md`、`packages/client/tsdown.client.ts`、`packages/client/web/src/platform.ts`、`packages/bundle/web-app/cordis.patch.yml`、`packages/client/ui-conversation/src/client/queue/QueueDock.tsx`、`packages/host/apiproxy/src/api-proxy.ts`
 
+## drscrewdriver DSH Plugin Family
+
+本项目是 [drscrewdriver](https://github.com/drscrewdriver) 维护的 DSH 插件系列之一。如果这个对你有用，其他插件多半也有用：
+
+| 插件 | 一句话描述 |
+|---|---|
+| **[dsh-input-traffic](https://github.com/drscrewdriver/dsh-input-traffic)** | DSH Web GUI 忙时输入队列：三档交通管制，拖拽重排，会话冻结 |
+| [dsh-thinking-levels](https://github.com/drscrewdriver/dsh-thinking-levels) | 逐轮 reasoning_effort 控制：Auto 智能调度或手动固定档位 |
+| [dsh-seatbelt-sandbox](https://github.com/drscrewdriver/dsh-seatbelt-sandbox) | macOS Seatbelt 沙箱适配器：libsandbox 原生 loader，接替弃用的 sandbox-exec |
+| [dsh-switch-search](https://github.com/drscrewdriver/dsh-switch-search) | 侧边栏会话搜索增强：标题/内容切换，按用户/回复/工具筛选 |
+
 ## License
 
 MIT
+

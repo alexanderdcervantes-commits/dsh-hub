@@ -25,21 +25,21 @@
 
 **会话管理**（删除 / 复制 / 移动 / 重设 / 标签 / 查看 / 空会话标注）：
 
-![会话管理](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/f8f7f12de645536059c2fa98fa808d64248a96ed/assets/session-manage.png)
+![会话管理](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/fec2b093a07c81158ca30bf9981fe99fbe4bad2b/assets/session-manage.png)
 
 **回收站**（删除的会话进回收站，可恢复 / 彻底删除 / 查看内容）：
 
-![会话回收站](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/f8f7f12de645536059c2fa98fa808d64248a96ed/assets/session-trash.png)
+![会话回收站](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/fec2b093a07c81158ca30bf9981fe99fbe4bad2b/assets/session-trash.png)
 
 **子目录管理**（工作区下建目录 / 重命名 / 删除 / 复制）：
 
-![子目录](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/f8f7f12de645536059c2fa98fa808d64248a96ed/assets/subdirs.png)
+![子目录](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/fec2b093a07c81158ca30bf9981fe99fbe4bad2b/assets/subdirs.png)
 
 **开关设置项**（分区化设置：⏰ 定时心跳 / 🔧 功能开关 / 🗑️ 回收站）：
 
-![开关设置项 1](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/f8f7f12de645536059c2fa98fa808d64248a96ed/assets/settings-1.png)
+![开关设置项 1](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/fec2b093a07c81158ca30bf9981fe99fbe4bad2b/assets/settings-1.png)
 
-![开关设置项 2](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/f8f7f12de645536059c2fa98fa808d64248a96ed/assets/settings-2.png)
+![开关设置项 2](https://raw.githubusercontent.com/AbcdefgXW/dsh-toolbox-web/fec2b093a07c81158ca30bf9981fe99fbe4bad2b/assets/settings-2.png)
 
 ## 环境要求
 

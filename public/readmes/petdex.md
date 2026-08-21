@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/crafter-station/petdex/e35d0bc86279056937bf490f6322b69adb819ecb/public/brand/petdex-desktop-icon.png" alt="Petdex" width="120" />
+<img src="https://raw.githubusercontent.com/crafter-station/petdex/310004f0fa30fcf034d6665f43e52e07f8dc209f/public/brand/petdex-desktop-icon.png" alt="Petdex" width="120" />
 
 <h1>Petdex</h1>
 

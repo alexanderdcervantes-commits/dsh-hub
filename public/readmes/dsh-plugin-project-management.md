@@ -74,7 +74,7 @@ Open `http://127.0.0.1:3080` and ask, for example:
 
 ## Web UI
 
-![Project management Web UI](https://raw.githubusercontent.com/Luke-Yong/dsh-plugin-project-management/00751aca5b3bcf6a05f8760210bc82df4e85599b/Screenshot.png)
+![Project management Web UI](https://raw.githubusercontent.com/Luke-Yong/dsh-plugin-project-management/b10c38fa50b4d195971f649444e1326d0900febf/Screenshot.png)
 
 The plugin ships a browser half with two surfaces:
 

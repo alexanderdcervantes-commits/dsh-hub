@@ -12,13 +12,13 @@ Both the model context **and** the visible transcript are truncated, and the dur
 
 ## Screenshots
 
-![rewind](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/ffa18a0d2161c4f10e84f6879bd19f202f801222/docs/rewind.jpg)
+![rewind](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/61a5f4e669606f84cb54a694d62062d070c25dad/docs/rewind.jpg)
 
-![rewind dialog](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/ffa18a0d2161c4f10e84f6879bd19f202f801222/docs/rewind_dialog.jpg)
+![rewind dialog](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/61a5f4e669606f84cb54a694d62062d070c25dad/docs/rewind_dialog.jpg)
 
-![rewind logo](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/ffa18a0d2161c4f10e84f6879bd19f202f801222/docs/rewind_logo.jpg)
+![rewind logo](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/61a5f4e669606f84cb54a694d62062d070c25dad/docs/rewind_logo.jpg)
 
-![undo](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/ffa18a0d2161c4f10e84f6879bd19f202f801222/docs/undo.jpg)
+![undo](https://raw.githubusercontent.com/flow2dream/dsh-msg-rewind/61a5f4e669606f84cb54a694d62062d070c25dad/docs/undo.jpg)
 
 *Real screenshots from dsh web.*
 

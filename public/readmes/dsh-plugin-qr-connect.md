@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/mervyn-teo/dsh-plugin-qr-connect">
-    <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-qr-connect/4028ea0a5c49fd51593951f0eced52ff54bb77a8/assets/banner.png" alt="dsh-plugin-qr-connect banner — scan to connect any device to your DeepSeek Harness web UI" width="100%">
+    <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-qr-connect/938b32a13fb2634c3bc671ae1f95da1b61e62a17/assets/banner.png" alt="dsh-plugin-qr-connect banner — scan to connect any device to your DeepSeek Harness web UI" width="100%">
   </a>
 </p>
 
@@ -18,7 +18,7 @@ boot.
 ## Demo
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-qr-connect/4028ea0a5c49fd51593951f0eced52ff54bb77a8/assets/demo-v2.gif" alt="dsh-plugin-qr-connect demo — click the QR button, scan, connect" width="360">
+  <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-qr-connect/938b32a13fb2634c3bc671ae1f95da1b61e62a17/assets/demo-v2.gif" alt="dsh-plugin-qr-connect demo — click the QR button, scan, connect" width="360">
 </p>
 
 ## What it does

@@ -3,12 +3,12 @@
 <p align="center"><a href="README_EN.md">English</a> · <b>简体中文</b></p>
 
 <p align="center">
-  <b>一只跟着你的 agent 换表情的桌宠。<br>
+  <b>一只跟着你的 agent 换表情的 macOS 桌宠。<br>
   换成你自己的猫也行。</b>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/diy-skin.png" width="820" alt="一张猫的照片变成六个状态的桌宠">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/diy-skin.png" width="820" alt="一张猫的照片变成六个状态的桌宠">
 </p>
 <p align="center">
   <sub>进去一张照片，出来六个状态：空闲、干活、等你、报错、开心、睡着。<br>
@@ -16,6 +16,7 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/macOS-only-000000.svg?logo=apple&logoColor=white" alt="macOS only">
   <a href="https://www.npmjs.com/package/deepseek-desk-pet"><img src="https://img.shields.io/npm/v/deepseek-desk-pet.svg?color=cb3837&label=npm" alt="npm"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <img src="https://img.shields.io/badge/python-系统自带-3776AB.svg" alt="System Python">
@@ -24,7 +25,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/floats-above.png" width="820" alt="桌宠浮在一个全屏编辑器之上">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/floats-above.png" width="820" alt="桌宠浮在一个全屏编辑器之上">
 </p>
 <p align="center">
   <sub>它是一个真的 macOS 窗口，不是塞进 DSH 页面里的挂件。<br>
@@ -80,7 +81,7 @@ dsh plugin --profile web add github:anneheartrecord/dsh-desk-pet#main
 ## 状态
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/states.png" width="720" alt="空闲、干活、等你、报错、开心、睡着">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/states.png" width="720" alt="空闲、干活、等你、报错、开心、睡着">
 </p>
 
 跟着本地 DSH 自动变，没有需要配的东西。
@@ -112,18 +113,18 @@ stateDiagram-v2
 ## 皮肤
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skins.png" width="600" alt="五套皮肤">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skins.png" width="600" alt="五套皮肤">
 </p>
 
 在右键菜单的皮肤子菜单里挑，或者用 `--skin <id>` 指定启动时用哪套。每套六个状态齐全，每个状态三帧。
 
 | 皮肤 | 动起来 |
 |---|---|
-| **深索鲸（默认）** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/loop-deepseek.gif" width="120" alt="deepseek"> |
-| **蓝鲸** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/loop-bluewhale.gif" width="120" alt="bluewhale"> |
-| **线核** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/loop-threadcore.gif" width="120" alt="threadcore"> |
-| **鹦鹉螺** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/loop-nautilus.gif" width="120" alt="nautilus"> |
-| **水母** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/loop-jellyfish.gif" width="120" alt="jellyfish"> |
+| **深索鲸（默认）** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/loop-deepseek.gif" width="120" alt="deepseek"> |
+| **蓝鲸** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/loop-bluewhale.gif" width="120" alt="bluewhale"> |
+| **线核** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/loop-threadcore.gif" width="120" alt="threadcore"> |
+| **鹦鹉螺** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/loop-nautilus.gif" width="120" alt="nautilus"> |
+| **水母** | <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/loop-jellyfish.gif" width="120" alt="jellyfish"> |
 
 > 空闲是 2.4 秒静止，然后一次很短的眨眼。三帧均分我试过，效果不好。
 
@@ -132,27 +133,27 @@ stateDiagram-v2
 顺序：空闲 · 干活 · 等你 · 报错 · 开心 · 睡着
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skin-deepseek.png" width="820" alt="deepseek">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skin-deepseek.png" width="820" alt="deepseek">
 </p>
 <p align="center"><sub>深索鲸（默认）</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skin-bluewhale.png" width="820" alt="bluewhale">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skin-bluewhale.png" width="820" alt="bluewhale">
 </p>
 <p align="center"><sub>蓝鲸</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skin-threadcore.png" width="820" alt="threadcore">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skin-threadcore.png" width="820" alt="threadcore">
 </p>
 <p align="center"><sub>线核</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skin-nautilus.png" width="820" alt="nautilus">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skin-nautilus.png" width="820" alt="nautilus">
 </p>
 <p align="center"><sub>鹦鹉螺</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/e6ce9969f51329a085d805c728ba76e48107d9c8/docs/media/skin-jellyfish.png" width="820" alt="jellyfish">
+  <img src="https://raw.githubusercontent.com/anneheartrecord/dsh-desk-pet/18bfb38316e5e4fe64f3c1fa50c5dd520776cfae/docs/media/skin-jellyfish.png" width="820" alt="jellyfish">
 </p>
 <p align="center"><sub>水母</sub></p>
 

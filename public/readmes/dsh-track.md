@@ -8,8 +8,8 @@
 > **DeepSeek Harness 的嵌入式任务管理引擎** —— 把「念头、决策、任务」变成结构化、可追溯、可折叠的数据。
 > 捕获零摩擦，决策留痕迹，任务有生命周期。数据全部在 harness 内部（session 事件 + storage KV），零外部依赖。
 
-**状态** Active · **测试** 240 passing · **构建** `pnpm run build` · **版本** 0.5.0
-> **v0.6.0 · 会话执行图 + 日历纱线 + 证据纪律（main · 未发布，2026-08-18）**：**会话执行图（M1）**——
+**状态** Active · **测试** 240 passing · **构建** `pnpm run build` · **版本** 0.6.0
+> **v0.6.0 · 会话执行图 + 日历纱线 + 证据纪律（2026-08-21）**：**会话执行图（M1）**——
 > 任意会话一键建成确定性的 turn→step→tool 树（每条边带 (sessionId, seq) 引用回原始日志），可按工作区
 > 批量建图，渲染为会话标签栏的「会话结构图」tab（遵循 host conversation.view 规范）；**日历纱线**——
 > 跨项目 session 生命周期 / 漂移 / 切换一图可见（泳道按事件量降序、零活动仓库折叠、跨会话/跨项目连线金色菱形），
@@ -39,9 +39,9 @@
 
 | 面板总览（右侧捕获墙 + 任务墙） | 跳回来源对话（高亮定位到原始 prompt） |
 |---|---|
-| ![dsh-track 面板总览](https://raw.githubusercontent.com/fakechris/dsh-track/49991c6ee0be954daf38c5429f8148e3cf4c6137/assets/panel.png) | ![跳回来源对话](https://raw.githubusercontent.com/fakechris/dsh-track/49991c6ee0be954daf38c5429f8148e3cf4c6137/assets/jump-back.png) |
+| ![dsh-track 面板总览](https://raw.githubusercontent.com/fakechris/dsh-track/fd000f69da4ab79973a1ffe6e168da74fca6355e/assets/panel.png) | ![跳回来源对话](https://raw.githubusercontent.com/fakechris/dsh-track/fd000f69da4ab79973a1ffe6e168da74fca6355e/assets/jump-back.png) |
 | 日历纱线（跨项目 session 生命周期 / 漂移 / 切换） | 自包含可视化导出（数据 JSON + HTML 视图，离线可交互） |
-| ![日历纱线](https://raw.githubusercontent.com/fakechris/dsh-track/49991c6ee0be954daf38c5429f8148e3cf4c6137/assets/calendar-yarn.png) | 见 [`export/track-calendar-view.html`](export/track-calendar-view.html)（示例导出） |
+| ![日历纱线](https://raw.githubusercontent.com/fakechris/dsh-track/fd000f69da4ab79973a1ffe6e168da74fca6355e/assets/calendar-yarn.png) | 见 [`export/track-calendar-view.html`](export/track-calendar-view.html)（示例导出） |
 
 ## ✨ 特性
 
@@ -125,6 +125,15 @@ HTTP API（面板的数据面，`/api/track/*`）：
 | `GET /api/track/usage?since=&limit=` | LLM 用量汇总 + 最近明细 |
 | `GET /api/track/funnel` | 工具调用漏斗（capture 转化率等） |
 | `POST /api/track/sync` | 历史同步（等价 `track_sync_history`） |
+
+## 🔗 深链跳转（Deep Links）
+
+从外部（终端 / 其他 agent / jump 启动器 / 脚本）一键打开浏览器并定位到 Web GUI 的**指定会话**（可精确到某条消息）：
+
+- **路径形式** `http://<host>:<port>/s/<sessionId>[/<messageId>]` —— 持久化，书签/刷新/分享持续有效；
+- **查询形式** `http://<host>:<port>/?open=<sessionId>[&message=<messageId>]` —— 一次性，跳转后参数自动清理；
+- 能力由 `src/client/deep-link.ts` 提供（复用 `jumpToConversation` 的 open + 滚动定位，见上节「↩ 对话」）。
+- **给其他 agent / 脚本的使用指引**（含获取 sessionId / messageId 的命令、验证与注意事项）：[`docs/deep-link-handoff.md`](docs/deep-link-handoff.md)
 
 ## 🏗️ 架构
 

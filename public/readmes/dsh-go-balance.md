@@ -17,11 +17,11 @@
 
 ## 截图
 
-![输入框工具行右侧的余额胶囊](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/3915c56fcf7030a11734f2ad8878676827d1381c/docs/screenshot-composer.png)
+![输入框工具行右侧的余额胶囊](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/8d11fea5d123fb0935df1b18f5f8f6bf7d2190da/docs/screenshot-composer.png)
 
-![悬停明细](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/3915c56fcf7030a11734f2ad8878676827d1381c/docs/screenshot-tooltip.png)
+![悬停明细](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/8d11fea5d123fb0935df1b18f5f8f6bf7d2190da/docs/screenshot-tooltip.png)
 
-![低余额警示配色](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/3915c56fcf7030a11734f2ad8878676827d1381c/docs/screenshot-warn.png)
+![低余额警示配色](https://raw.githubusercontent.com/iamfromchangsha/dsh-go-balance/8d11fea5d123fb0935df1b18f5f8f6bf7d2190da/docs/screenshot-warn.png)
 
 ## 安装
 
@@ -74,8 +74,8 @@ bundle 行暴露一个可选键：
 ### 安全与健壮性
 
 - **并发去重** — 刷新调用共享同一个在途 Promise，定时器与懒刷新永远不会并发打到上游 API。
-- **错误脱敏** — 返回浏览器的错误只含 `code`（和可选的 HTTP `status`）；DNS 失败等内部细节仅写入 host 日志。
-- **路由防护** — DSH webServer 本身不强制鉴权（"No TLS, auth, or origin policy"），默认只绑定回环地址即为边界；`/go-usage` 另拒绝非回环 `Origin` 的浏览器跨站读取（403）。快照只含配额百分比与重置时间，绝不含密钥或身份信息。
+- **错误脱敏与密钥安全** — 返回浏览器的错误只含 `code`（和可选的 HTTP `status`）；DNS 失败等内部细节仅写入 host 日志，且日志中的密钥串一律替换为 `[REDACTED]`。密钥只经 `Authorization: Bearer` 发给 opencode.ai，仅存在于 host 进程内存，不落盘、不进日志、不过 `/go-usage`。
+- **路由防护** — DSH webServer 本身不强制鉴权（"No TLS, auth, or origin policy"），默认只绑定回环地址即为边界；`/go-usage` 另拒绝非回环 `Origin` 的浏览器跨站读取（403），并带每地址 120 次/分钟的内存级速率限制（429）。快照只含配额百分比与重置时间，绝不含密钥或身份信息。
 - **范围校验** — `percent` 必须是 `[0, 100]` 内的有限数字，上游返回畸形值会丢弃整份快照并保留上次有效数据。
 
 ## 开发

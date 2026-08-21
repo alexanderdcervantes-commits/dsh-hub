@@ -13,7 +13,7 @@
 目录，句柄存 IndexedDB；agent 通过三个模型工具 list/read/write 该目录下的文件，工具
 调用经插件自建的 WebSocket 通道转发到浏览器执行。
 
-![agent 调 browser_fs_read 读到授权目录里的 hello.txt；右下角为插件卡片](https://raw.githubusercontent.com/whitefirer/dsh-browser-fs/de862a25b3e96aabae92644def0bf016a5cc393e/docs/screenshot-in-action.png)
+![agent 调 browser_fs_read 读到授权目录里的 hello.txt；右下角为插件卡片](https://raw.githubusercontent.com/whitefirer/dsh-browser-fs/9b1cfd99bf5f20ce11037c35c323b4cef8de6e61/docs/screenshot-in-action.png)
 
 ## 原理
 

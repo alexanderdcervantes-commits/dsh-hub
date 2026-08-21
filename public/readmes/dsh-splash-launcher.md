@@ -10,11 +10,11 @@
 
 **启动动画（WPF 无边框，HARNESS 逐笔描边）**
 
-![启动动画](https://raw.githubusercontent.com/Isilsolme/dsh-splash-launcher/1f71f423a5b8449f47492de67fa17b3905c3fc2f/docs/screenshots/startup-animation.png)
+![启动动画](https://raw.githubusercontent.com/Isilsolme/dsh-splash-launcher/5e88f246683d257c88c5e63f98047c79a7b69454/docs/screenshots/startup-animation.png)
 
 **进入后的 GUI 界面**
 
-![GUI 界面](https://raw.githubusercontent.com/Isilsolme/dsh-splash-launcher/1f71f423a5b8449f47492de67fa17b3905c3fc2f/docs/screenshots/gui.png)
+![GUI 界面](https://raw.githubusercontent.com/Isilsolme/dsh-splash-launcher/5e88f246683d257c88c5e63f98047c79a7b69454/docs/screenshots/gui.png)
 
 ---
 

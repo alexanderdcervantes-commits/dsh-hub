@@ -12,13 +12,13 @@ A local-first runtime for AI agents. Sessions, sandboxed tools, memory,
 credentials, audit trails, and a built-in Console — all running on your
 machine or in your own infrastructure.
 
-![SandBase Harness architecture](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/81b2f55ec5c470a6f51fac38b273f069eef7f96b/docs/assets/sandbase-harness-architecture.svg)
+![SandBase Harness architecture](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/65ce225d01f56b5584d833af6b1afcc119dfd323/docs/assets/sandbase-harness-architecture.svg)
 
 > Looking for a lightweight bridge instead of a full runtime? [SandBase CLI](https://github.com/sandbaseai/cli)
 > connects 25 AI client targets to 2,000+ models through a local stdio MCP bridge.
 
 ```bash
-git clone --branch v0.3.4 --depth 1 https://github.com/sandbaseai/sandbase-harness.git
+git clone --branch v0.3.7 --depth 1 https://github.com/sandbaseai/sandbase-harness.git
 cd sandbase-harness
 npm ci
 npm run build
@@ -40,6 +40,21 @@ Choose SandBase Harness when you need more than a model loop:
 
 If this runtime solves a real agent-infrastructure problem for you,
 [star the repository](https://github.com/sandbaseai/sandbase-harness) so other builders can find it.
+
+### Try it in Codespaces
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sandbaseai/sandbase-harness?quickstart=1)
+
+The included development container installs dependencies and builds the runtime.
+When the terminal is ready, start the server on the forwarded port:
+
+```bash
+node dist/index.js start --host 0.0.0.0
+```
+
+Open the forwarded **SandBase Harness Console** port, then configure a model in
+**Settings > Models**. Codespaces usage may be billed by GitHub; the local
+quick start below remains free and keeps all runtime data on your machine.
 
 ## Why
 
@@ -70,7 +85,7 @@ is that runtime layer — not a visual workflow builder and not another model SD
 
 | Console overview | Settings | API reference |
 | --- | --- | --- |
-| ![overview](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/81b2f55ec5c470a6f51fac38b273f069eef7f96b/docs/assets/dashboard-overview.png) | ![settings](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/81b2f55ec5c470a6f51fac38b273f069eef7f96b/docs/assets/dashboard-settings-models.png) | ![api-ref](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/81b2f55ec5c470a6f51fac38b273f069eef7f96b/docs/assets/dashboard-api-reference.png) |
+| ![overview](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/65ce225d01f56b5584d833af6b1afcc119dfd323/docs/assets/dashboard-overview.png) | ![settings](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/65ce225d01f56b5584d833af6b1afcc119dfd323/docs/assets/dashboard-settings-models.png) | ![api-ref](https://raw.githubusercontent.com/sandbaseai/sandbase-harness/65ce225d01f56b5584d833af6b1afcc119dfd323/docs/assets/dashboard-api-reference.png) |
 
 ## Requirements
 
@@ -87,15 +102,22 @@ then boot that profile:
 
 ```bash
 export MANAGED_AGENTS_URL=http://127.0.0.1:3000
-dsh plugin --profile web add managed-agents
+# Run from the sibling my-agents workspace created above.
+dsh plugin --profile web add -w ../sandbase-harness
 dsh web
 ```
 
-The patch starts `managed-agents-mcp` over stdio. DSH can then list agents,
+The profile installs the verified source checkout directly; it does not resolve
+the unrelated unscoped npm package. The patch starts the bundled MCP entry over
+stdio. DSH can then list agents,
 create and run sessions, inspect results and artifacts, and stop work through
 native `mcp__sandbase__*` tools. See
 [`examples/deepseek-harness`](examples/deepseek-harness/README.md) for the full
 tool list and authenticated-runtime configuration.
+
+For a walkthrough that starts with DSH and adds this runtime as a real
+third-party plugin, read the
+[DeepSeek Harness developer guide](https://blog.sandbase.ai/deepseek-harness-developer-preview-2026/#add-a-real-third-party-runtime-plugin).
 
 Pair the plugin with SandBase Skills to give the same DSH project a portable,
 source-verifiable research workflow:
@@ -125,7 +147,7 @@ to identify the first broken runtime boundary.
 ## Quick Start
 
 ```bash
-git clone --branch v0.3.4 --depth 1 https://github.com/sandbaseai/sandbase-harness.git
+git clone --branch v0.3.7 --depth 1 https://github.com/sandbaseai/sandbase-harness.git
 cd sandbase-harness
 npm ci
 npm run build
@@ -146,10 +168,10 @@ The six-tool MCP bridge is published as a multi-architecture OCI image. Start
 the Harness API, then add this stdio command to an MCP client:
 
 ```bash
-docker pull ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.4
+docker pull ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.7
 docker run --rm -i \
   -e MANAGED_AGENTS_URL=http://host.docker.internal:3000 \
-  ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.4
+  ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.7
 ```
 
 For an authenticated remote runtime, also pass `MANAGED_AGENTS_API_KEY`. The
@@ -173,7 +195,7 @@ copilot plugin install sandbaseai/sandbase-harness:agent-plugin
 ```
 
 The plugin passes these environment variables through to the pinned
-`ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.4` image. It does not store a key
+`ghcr.io/sandbaseai/sandbase-harness-mcp:0.3.7` image. It does not store a key
 in `plugin.json`, `mcp.json`, or the installed plugin files. On Linux, the
 plugin's Docker command maps `host.docker.internal` through `host-gateway`.
 
@@ -436,7 +458,7 @@ init smoke, and `examples/basic` startup smoke.
 - [Self-host the SandBase agent runtime](https://www.ssdnodes.com/learn/self-host-sandbase-agent-runtime)
   by SSD Nodes — an independent VPS walkthrough covering installation, agent
   configuration, MCP servers, sandbox modes, and reverse-proxy deployment. The
-  article demonstrates v0.3.2; use the current release command above for v0.3.4.
+  article demonstrates v0.3.2; use the current release command above for v0.3.7.
 
 ## License
 

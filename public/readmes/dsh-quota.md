@@ -2,12 +2,12 @@
 
 DeepSeek Harness 插件：右下角「会员额度」悬浮球 + 面板，一眼看清各 AI 平台的套餐额度与余额。
 
-![面板特写](https://raw.githubusercontent.com/Minokun/dsh-quota/a28186b614535006cc006fdca989d580e3a70c01/docs/screenshot-panel.png)
+![面板特写](https://raw.githubusercontent.com/Minokun/dsh-quota/e260cb29230f500f1eef119b5bae6776d776baf8/docs/screenshot-panel.png)
 
 <details>
 <summary>📸 整页效果（悬浮球在右下角）</summary>
 
-![整页效果](https://raw.githubusercontent.com/Minokun/dsh-quota/a28186b614535006cc006fdca989d580e3a70c01/docs/screenshot-full.png)
+![整页效果](https://raw.githubusercontent.com/Minokun/dsh-quota/e260cb29230f500f1eef119b5bae6776d776baf8/docs/screenshot-full.png)
 
 </details>
 

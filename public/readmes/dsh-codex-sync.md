@@ -110,6 +110,8 @@ dsh-codex-sync doctor                   # 体检: 技能/会话/cloudflare 握�
 | `enableImport` | `true` | 注册 /import-codex 等命令 |
 | `maxSkills` | `100` | 最多注册的技能数 |
 | `maxSessionBytes` | `268435456` (256MiB) | 导入大小保护 |
+| `importSubagents` | `false` | codex 子代理线程默认过滤——它们约占 rollout 总量一半（`parent_thread_id` 标记，如 Socrates/Popper），只导入主会话让列表干净；`true` 连子代理一起，或临时 `/import-codex --include-subagents` |
+| `--include-subagents` | - | `/import-codex` 的裸布尔 flag（无需值）：本次导入连子代理线程一起 |
 | `mcpServers` | `{}` | 显式 MCP 服务器（dsh-mcp-client 配置） |
 | `mcpMirror` | `true` | 自动镜像 codex 的 mcp_servers |
 | `mcpMirrorDeny` | `[]` | 额外不镜像的服务器名（`dsh-plugins` 恒排除） |
@@ -125,7 +127,8 @@ npm test
 
 - `test/host.smoke.mjs` — 宿主冒烟：命令注册、CommandInvocation 参数解析、/auto-import 持久化、镜像状态（含静音/排除/禁用原因）
 - `test/client.render.mjs` — client bundle 加载 + 真实 React SSR 渲染冒烟
-- `test/codex-reader.test.mjs` — codex rollout 解析：系统控制块剥离 + 标题取第一条真实用户消息
+- `test/codex-reader.test.mjs` — codex rollout 解析：系统控制块剥离、标题取第一条真实用户消息、新 schema（custom_tool_call/_output、reasoning）工具轨迹还原、图片片段剥离（9 个单测）
+- CI：GitHub Actions 在 push/PR 跑全部套件（无 dsh 安装也能跑——host/client 测试用仓库本地 devDeps）
 - 发布流程：**先本地 `npm test` 全绿 → 用户实测验收 → 推送 GitHub → 再发布 npm**（避免线上反复更新）
 
 ## 自动 vs 手动

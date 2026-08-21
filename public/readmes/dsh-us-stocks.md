@@ -1,9 +1,15 @@
 # dsh-us-stocks
 
+[![npm](https://img.shields.io/npm/v/dsh-us-stocks)](https://www.npmjs.com/package/dsh-us-stocks)
+[![license](https://img.shields.io/github/license/Realyujie/dsh-us-stocks)](LICENSE)
+[![node](https://img.shields.io/node/v/dsh-us-stocks)](https://www.npmjs.com/package/dsh-us-stocks)
+[![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-orange)](https://github.com/topics/dsh-plugin)
+[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
+
 English | [中文](README.zh.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/c2247325614afbefdd4ba45a7c652efbad6f6c93/assets/readme/cover.png" alt="dsh-us-stocks cover" width="300">
+  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/13237087e59238ddbe379a82383cc82a471660b6/assets/readme/cover.png" alt="dsh-us-stocks cover" width="300">
 </p>
 
 US stock market data tools for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness), powered by [yahoo-finance2](https://github.com/gadicc/yahoo-finance2).
@@ -11,7 +17,7 @@ US stock market data tools for [DeepSeek Harness](https://github.com/deepseek-ai
 Gives the agent six first-class tools for quotes, price history, financial statements, analyst consensus, news and ownership — instead of leaving it to improvise against HTML pages.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/c2247325614afbefdd4ba45a7c652efbad6f6c93/assets/readme/overview.svg" alt="Six tools for one ticker: quote, history, financials, analyst view, news, ownership. Same AAPL task: 31 calls in 213s without the plugin, 5 calls in 33s with it." width="960">
+  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/13237087e59238ddbe379a82383cc82a471660b6/assets/readme/overview.svg" alt="Six tools for one ticker: quote, history, financials, analyst view, news, ownership. Same AAPL task: 31 calls in 213s without the plugin, 5 calls in 33s with it." width="960">
 </p>
 
 ## Before and after
@@ -144,7 +150,7 @@ Bars are ordered oldest to newest. `date` is `yyyy-MM-dd` for `1d`/`1wk`/`1mo`, 
 In the Web UI the call renders as a candlestick chart — bodies, wicks, a volume band, price gridlines and per-bar OHLC on hover — drawn from the same payload the model receives, so the picture and the numbers cannot disagree. Colours follow the host theme, green rising and red falling. Chart labels follow the host language, English or Chinese; messages from the data source are shown verbatim, since they are written for the model as well as the reader. Elsewhere the call shows the host's generic result card; the tool's output is identical either way.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/c2247325614afbefdd4ba45a7c652efbad6f6c93/assets/readme/hero.png" alt="dsh-us-stocks rendering an AAPL candlestick chart in DeepSeek Harness" width="1200">
+  <img src="https://raw.githubusercontent.com/Realyujie/dsh-us-stocks/13237087e59238ddbe379a82383cc82a471660b6/assets/readme/hero.png" alt="dsh-us-stocks rendering an AAPL candlestick chart in DeepSeek Harness" width="1200">
 </p>
 
 Every response carries a `chart_note` explaining this, because the model reads the returned data when deciding what to do next, not the tool description it read at call time. Without it, a model that got a chart in the Web UI has been observed spending a minute installing `matplotlib` into a virtualenv to build a second one, unaware the request was already satisfied.

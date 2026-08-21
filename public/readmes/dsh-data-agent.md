@@ -3,7 +3,7 @@
 **中文** | [English](README.en.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/fa50f6ace933afe028dbc927d90c7fbb79a88b8b/assets/dsh-data-agent-banner.webp" alt="dsh-data-agent HERO图" width="100%">
+  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/7caa266c1036d7e3b42d4bc710350c1406b56957/assets/dsh-data-agent-banner.webp" alt="dsh-data-agent HERO图" width="100%">
 </p>
 <p align="center">
   <img src="https://img.shields.io/github/v/release/omdsh-dev/dsh-data-agent?style=flat-square" alt="Version">
@@ -34,7 +34,7 @@
 
 dsh-data-agent是DeepSeek Harness（DSH）的数据分析插件。连接数据库后，直接提出业务问题，DSH会自动查看库表、编写并执行SQL、根据真实结果继续分析，最终给出清晰的数据结论和商业洞察。插件同时支持Web UI与dsh-tui，无需修改DSH源码。
 
-![数据分析图表](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/fa50f6ace933afe028dbc927d90c7fbb79a88b8b/assets/charts.webp)
+![数据分析图表](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/7caa266c1036d7e3b42d4bc710350c1406b56957/assets/charts.webp)
 
 ## 生态规范状态
 
@@ -70,11 +70,11 @@ Web UI还提供按需数据库工作台：点击输入框右上角的数据库�
 
 SQL命令页会把读查询结果显示为带固定表头的结构化表格，并按100行分页，宽表可在结果区内横向滚动。当前结果可导出为Excel（`.xlsx`）、UTF-8 CSV或复制到剪贴板；三种导出都包含已加载的完整结果，单次最多50,000行。写入/管理命令及错误仍显示为文本消息，不会被误解析成表格。
 
-![数据库工作台](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/fa50f6ace933afe028dbc927d90c7fbb79a88b8b/assets/tables.webp)
+![数据库工作台](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/7caa266c1036d7e3b42d4bc710350c1406b56957/assets/tables.webp)
 
 创建会话时选择“数据模式”，DSH就会以数据分析工作流处理后续问题。
 
-![数据模式预设](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/fa50f6ace933afe028dbc927d90c7fbb79a88b8b/assets/settings.webp)
+![数据模式预设](https://raw.githubusercontent.com/omdsh-dev/dsh-data-agent/7caa266c1036d7e3b42d4bc710350c1406b56957/assets/settings.webp)
 
 ## 快速安装
 
@@ -262,6 +262,7 @@ MIT
 
 ## 友情链接
 
-- [dshfind.com](https://dshfind.com)：DeepSeek Harness中文学习与分享社区
-- [dsh-web-ui](https://github.com/dsh-external/dsh-web-ui)：DeepSeek Harness Web UI插件与皮肤集合
-- [dsh-cc-tui](https://github.com/dsh-external/dsh-cc-tui)：Claude Code风格的全屏终端界面
+- [dshfind.com](https://dshfind.com)：面向DeepSeek Harness生态的中文技术社区，提供项目发现、实践分享与开发者交流
+- [dsh-web-ui](https://github.com/dsh-external/dsh-web-ui)：DeepSeek Harness的可扩展Web UI，支持浏览器端交互以及插件与主题扩展
+- [dsh-cc-tui](https://github.com/dsh-external/dsh-cc-tui)：面向DeepSeek Harness的键盘优先全屏终端界面，适用于高效的对话式开发工作流
+- [platonai/Browser4](https://github.com/platonai/Browser4)：面向自主智能体、智能信息抽取与大规模Web自动化的AI原生浏览器引擎

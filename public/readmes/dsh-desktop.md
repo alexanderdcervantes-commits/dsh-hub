@@ -11,7 +11,7 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 
 发布安装包内置固定版本的官方 `@deepseek-ai/dsh` 运行时；普通用户无需另外安装 Node.js、pnpm 或 `dsh` CLI。桌面外壳、安装包、连接增强与发布签名均由本项目独立负责，不属于官方运行时的一部分。桌面客户端与官方 `dsh` 使用各自独立的版本号；应用的连接设置页会同时显示两个版本号，便于排查兼容问题。
 
-![DSH Desktop 首页：窗口里就是官方 Web UI 本体](https://raw.githubusercontent.com/bruc3van/dsh-desktop/6346b539fca6ab64da658f6770346dbafb6fc1ea/docs/images/dsh-desktop-home.png)
+![DSH Desktop 首页：窗口里就是官方 Web UI 本体](https://raw.githubusercontent.com/bruc3van/dsh-desktop/26a5bcf3babc4172acf3887026b862112beb6987/docs/images/dsh-desktop-home.png)
 
 ## 为什么值得使用
 
@@ -34,7 +34,7 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 
 - **长任务常驻桌面。** 关闭窗口不等于中断任务：应用驻留在托盘 / 菜单栏，Harness 服务继续在后台运行，随点随开；本地服务意外退出有受控重启，系统唤醒或长时间后台导致页面异常时会在确认服务可达后自动恢复。终端窗口和浏览器标签页给不了这层保障。
 - **Agent 执行环境经过工程治理。** Agent 本质是在你电脑上执行命令的进程，它的环境值得被认真对待：优先复用你正在跑的实例与 PATH 上的 `dsh`，Agent 跑在你自己的完整 shell 环境里；内置运行时下没装过这些工具的用户也能执行 `node`、`dsh` 和 `pnpm`；`ELECTRON_RUN_AS_NODE` 不会泄漏给 Agent（否则 `code` 等 Electron 工具会启动失败）；从 Finder/Dock 启动也能找到 Homebrew、`~/.local/bin` 和写在 `~/.zshrc` 里的工具。详见[内置运行时下的 Agent 执行环境](#内置运行时下的-agent-执行环境)。
-- **安全是身份，不是特性列表里的一条。** 一个能读写你文件的应用，值得用最保守的方式分发：客户端只用公开的 `dsh web` 接口，不碰官方仓库内部；窗口开沙箱、关 Node 集成、导航锁在官方源站；打包后更新源与数据目录禁止被环境变量劫持；应用内更新下载后先校验 SHA-256 再安装；渲染进程只放行剪贴板与全屏；外链一律交给系统浏览器。详见[安全与隐私](#安全与隐私)。
+- **安全是身份，不是特性列表里的一条。** 一个能读写你文件的应用，值得用最保守的方式分发：客户端只用公开的 `dsh web` 接口，不碰官方仓库内部；窗口开沙箱、关 Node 集成、导航锁在官方源站；打包后更新源与数据目录禁止被环境变量劫持；应用内更新下载后先校验 SHA-256 再安装；本机可信 Web UI 放行通知、剪贴板、全屏、媒体与用户主动选择的文件，远程地址保持更窄权限；外链一律交给系统浏览器。详见[安全与隐私](#安全与隐私)。
 - **安全市场：先审查、再安装。** 随安装包发布的内置市场默认关闭、开启后才联网；市场目录来自数据来源仓库的每日自动采集 + 人工精选，「安全安装」不替你执行任何命令，而是把审查提示词交给 Agent 先读代码、确认干净后再用官方命令安装。详见[内置安全市场](#内置安全市场)。
 - **官方发版，当天就能用上。** 窗口加载的是官方 Web UI 本体，不是仿制版。官方界面加功能、改交互，官方文档、教程和快捷键全部对得上，不会出现「教程里有的界面你找不到」；官方一发版，你升级自己已有的 dsh（或等应用内更新推送内置运行时），桌面端零改动、零等待。
 - **双击就能用，不用懂命令行。** 安装包自带官方运行时，不需要安装 Node.js、pnpm，也不需要敲任何命令；首次启动填一个 API Key 就能开始对话。对小白用户来说这就是全部；懂命令行的话，智能模式、固定地址这些进阶玩法也都在手边。
@@ -87,11 +87,11 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 
 在智能模式下，只要你已经在终端里跑着官方 Web UI，桌面端就会直接复用它——这正是开发者路径：会话与桌面端实时共享，而 Agent 跑在你自己的完整 shell 环境里。
 
-智能模式只使用你机器上**已经存在**的东西——PATH 上的 `dsh`、npx 缓存过的官方包——不联网、不下载、也不替你安装 Node.js。官方 `dsh web` 的端口除 `--port` 外也可写在 web profile 补丁层（`~/.dsh/profiles/web/cordis.patch.yml`）里，客户端会读取并一并探测，不会因为实例挪了端口就在旁边另起一个 harness。npx 缓存里的官方包版本低于内置运行时时，连接设置里会说明（缓存仍优先使用——那是你上次 `npx @deepseek-ai/dsh` 留下的，重新跑一次即可刷新）。客户端启动的都是纯后台服务进程（`dsh web --port 0`），退出桌面端时一并关闭；选中的运行时启动失败会按仍启用的来源依次回退（默认最后是内置运行时）。四种来源都可以在连接设置里用多选按钮单独关闭，方便测试时固定到某一种；缺省全部开启，至少保留一种。本机官方实例仍在跑、而智能模式又不会复用它时，客户端不会另起本机已安装 / npx / 内置运行时，也不会替你结束那个进程——需要先在终端里退出。页面完全加载不出来时，启动界面会直接给出**「Web UI 连接…」**按钮。运行时选择顺序的完整细节见[开发指南](docs/development.zh.md#从源码运行)。
+智能模式只使用你机器上**已经存在**的东西——PATH 上的 `dsh`、npx 缓存过的官方包——不联网、不下载、也不替你安装 Node.js。官方 `dsh web` 的端口除 `--port` 外也可写在 web profile 补丁层（`~/.dsh/profiles/web/cordis.patch.yml`）里，客户端会读取并一并探测，不会因为实例挪了端口就在旁边另起一个 harness。连接设置还可以为**客户端自己启动**的 dsh 固定端口（默认随机 `--port 0`，不占 3080；保存后立刻重新拉起；被占用时不会换口）。npx 缓存里的官方包版本低于内置运行时时，连接设置里会说明（缓存仍优先使用——那是你上次 `npx @deepseek-ai/dsh` 留下的，重新跑一次即可刷新）。客户端启动的都是纯后台服务进程，rc.8 及以上带 `--no-open`，退出桌面端时一并关闭；选中的运行时启动失败会按仍启用的来源依次回退（默认最后是内置运行时）。四种来源都可以在连接设置里用多选按钮单独关闭，方便测试时固定到某一种；缺省全部开启，至少保留一种。本机官方实例仍在跑、而智能模式又不会复用它时，客户端不会另起本机已安装 / npx / 内置运行时，也不会替你结束那个进程——需要先在终端里退出。页面完全加载不出来时，启动界面会直接给出**「Web UI 连接…」**按钮。运行时选择顺序的完整细节见[开发指南](docs/development.zh.md#从源码运行)。
 
 连接设置把「智能」和「自定义」分成两种方式：智能模式下只显示四个来源，点选立即生效；选「自定义」后才会出现地址栏，右侧是「保存并连接」。点「智能」会立即切回，已填地址会保留。
 
-![官方设置弹窗里的「桌面设置」：当前连接与四个来源开关、安全市场开关，以及客户端和内置 dsh 的版本](https://raw.githubusercontent.com/bruc3van/dsh-desktop/6346b539fca6ab64da658f6770346dbafb6fc1ea/docs/images/dsh-desktop-setting.png)
+![官方设置弹窗里的「桌面设置」：当前连接与四个来源开关、安全市场开关，以及客户端和内置 dsh 的版本](https://raw.githubusercontent.com/bruc3van/dsh-desktop/26a5bcf3babc4172acf3887026b862112beb6987/docs/images/dsh-desktop-setting.png)
 
 连接状态按**谁启动了这个运行时**来描述，避免「本地」和「内置」混用：
 
@@ -126,7 +126,8 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 - **边界小**：客户端只使用公开的 `dsh web` CLI 和 `/api` 协议，不修改官方仓库，也不依赖 Harness 私有内部包。
 - **窗口加固**：Electron 开启上下文隔离与沙箱、关闭 Node 集成，将页面导航限制在当前 Web UI 源站，外部链接交给系统浏览器打开。
 - **更新链路防劫持**：打包环境下，更新源地址与 GitHub API 地址、数据目录（`DSH_HOME`、`DSH_DESKTOP_HOME`）及连接探测开关均禁止被环境变量覆盖（唯一的调试后门是 `DSH_DESKTOP_ALLOW_UNSAFE=1`，只在刻意排查打包产物时使用，请勿在日常环境常驻）；校验更新清单中的安装包文件名，防止路径穿越写出到下载目录之外。
-- **权限最小化**：渲染进程权限请求仅放行剪贴板写入与全屏，摄像头、麦克风等设备权限一律拒绝；拦截页面内的越权导航与新窗口跳转，仅允许跳转到可信来源。
+- **按来源分层授权**：客户端管理的本机 Web UI 可使用通知、剪贴板读写、全屏、麦克风/摄像头以及用户主动触发的文件选择，避免官方 UI 与插件能力被桌面外壳误伤；自定义远程地址只放行剪贴板写入与通知。跨域子框架、USB/HID/串口、定位、屏幕捕获和存储权限升级默认拒绝；页面内越权导航与新窗口跳转仍会被拦截。
+- **系统通知的平台边界**：Windows 安装版使用与安装快捷方式一致的 AppUserModelID；源码开发态按 Electron 要求使用当前 `electron.exe` 身份，Windows 仍可能要求先把该可执行文件固定到开始菜单以注册 Toast。Linux 保留 Chromium 的原生桌面通知。macOS 的系统通知中心要求有效代码签名，因此当前临时签名包会自动把同一套 Web Notification 降级为 Dock 数字角标、Dock 弹跳和可点击的应用内提醒；点击仍回到对应会话，窗口回到前台或提醒关闭后清除 Dock 提醒。
 - **插件先审查、再安装**：内置安全市场默认关闭、开启后才联网；「安全安装」不执行任何安装命令，而是把审查提示词交给 Agent，确认干净后再由你决定是否用官方命令安装；市场接入客户端启动的任一运行时（内置、你自己装的 dsh、npx 缓存都行），插件按普通插件的方式复制进 profile，绝不把闭包里的那份交给另一份运行时。详见[内置安全市场](#内置安全市场)。
 
 使用本客户端仍需遵守 DeepSeek、模型提供方和所连接服务各自的条款与隐私政策。API Key、模型请求、费用、生成内容以及 Agent 对本机文件或命令的操作由用户和对应服务负责。本软件按 MIT 许可证「原样」提供，不承诺适用于特定用途，也不对数据丢失、服务中断、模型输出或第三方费用承担保证责任；法律另有强制规定的除外。
@@ -159,7 +160,7 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 
 **不想要它**：连接设置里有「安全市场」开关，关掉就会立即移除市场插件，之后启动也不会再装回。就算客户端已经卸载了，市场自己的「已安装」面板也能把它卸载掉——官方 `dsh plugin` 命令不管这份插件，所以面板是最后的入口。
 
-![设置里的「安全市场」：按分类均衡发牌的精选目录，右上角显示市场自身版本](https://raw.githubusercontent.com/bruc3van/dsh-desktop/6346b539fca6ab64da658f6770346dbafb6fc1ea/docs/images/marketplace.png)
+![设置里的「安全市场」：按分类均衡发牌的精选目录，右上角显示市场自身版本](https://raw.githubusercontent.com/bruc3van/dsh-desktop/26a5bcf3babc4172acf3887026b862112beb6987/docs/images/marketplace.png)
 
 市场有三个刻意的设计：
 
@@ -167,11 +168,11 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 - **默认关闭，开启才联网。** 市场关闭时不发起任何网络请求；开启后读取一次目录快照并持久化（`$DSH_HOME/storages/safe_market.json`），之后走 ETag 条件请求，连不上 GitHub 时继续用上次的目录。一个装上就开始联网的插件等于替你做了决定，这个开关把决定还给你。
 - **先审查、再安装。** 「安全安装」不替你执行任何安装命令：它打开一个新会话、把一段安全审查提示词**填入输入框（不发送）**，由你按回车让 Agent 实际读仓库代码——重点检查凭据/token 访问、向第三方外传数据、远程代码执行、`postinstall` 等安装脚本、无对应源码的混淆文件，以及权限是否远超其声称的功能；发现可疑处必须停下来说清原因并询问你。确认干净后，Agent 才会用官方命令 `dsh plugin --profile web add` 安装。审查与安装因此绑在一起、绕不过去；发不发送由你决定，**收录不代表安全背书**——请自己看过再决定。
 
-![点「安全安装」后：审查提示词被填进新会话的输入框，停在这里等你按回车](https://raw.githubusercontent.com/bruc3van/dsh-desktop/6346b539fca6ab64da658f6770346dbafb6fc1ea/docs/images/marketplace-sec-install.png)
+![点「安全安装」后：审查提示词被填进新会话的输入框，停在这里等你按回车](https://raw.githubusercontent.com/bruc3van/dsh-desktop/26a5bcf3babc4172acf3887026b862112beb6987/docs/images/marketplace-sec-install.png)
 
 目录里已经装过的插件会标出「已安装 vX.Y.Z」，按钮也随之变成「安全升级」——走的是同一套「先审查、再动手」的流程，只是提示词第一步先让 Agent 确认上游到底有没有新版本，没有就原样不动。已装插件的日常管理则在同一页顶部的已安装面板：
 
-![已安装面板：版本、启用状态，以及停用/启用与卸载](https://raw.githubusercontent.com/bruc3van/dsh-desktop/6346b539fca6ab64da658f6770346dbafb6fc1ea/docs/images/marketplace-installed.png)
+![已安装面板：版本、启用状态，以及停用/启用与卸载](https://raw.githubusercontent.com/bruc3van/dsh-desktop/26a5bcf3babc4172acf3887026b862112beb6987/docs/images/marketplace-installed.png)
 
 卸载不是从列表里划掉：它先停用插件，再在这个 profile 里执行与官方 `dsh plugin remove` 相同的移除，锁文件和 node_modules 一并清掉。装成了依赖、却没写进 `bundles` 因而当前不会加载的插件，面板也会单独列出并标明——你机器上装过什么，这里就看得见什么，也能就地卸掉。
 
@@ -207,7 +208,7 @@ DSH Desktop 是一个独立的 DeepSeek Harness（`dsh`）Electron 客户端。�
 
 **Q：内置了插件市场吗？之后还有什么计划？**
 
-内置了：随安装包发布的[安全市场](https://github.com/bruc3van/dsh-desktop-safe-market)，设置里叫「安全市场」。它按官方 in-box bundle 的方式接入当前 profile（复制进 `profiles/node_modules` 并写入 `dsh.profile.bundles`），客户端启动的任一运行时都能用上；市场默认关闭、开启后才联网；固定地址连接时会撤回（该运行时不由客户端启动）；复用本机已在运行的实例则会保守地重新接入（只恢复条目、不换插件目录）。目录的每日自动采集 + 人工精选、以及「先审查、再安装」的完整流程见[内置安全市场](#内置安全市场)。官方 Web UI 自身的能力（技能、插件、交互等）仍随官方发版直接出现在窗口里。桌面外壳自身的后续工作见[开发指南](docs/development.zh.md#当前状态)与 [TODO](TODO.md)：macOS/Windows 签名与公证、系统通知、OS Keychain、语音输入，以及内置运行时的独立更新通道、运行中实例的周期探测提示等。
+内置了：随安装包发布的[安全市场](https://github.com/bruc3van/dsh-desktop-safe-market)，设置里叫「安全市场」。它按官方 in-box bundle 的方式接入当前 profile（复制进 `profiles/node_modules` 并写入 `dsh.profile.bundles`），客户端启动的任一运行时都能用上；市场默认关闭、开启后才联网；固定地址连接时会撤回（该运行时不由客户端启动）；复用本机已在运行的实例则会保守地重新接入（只恢复条目、不换插件目录）。目录的每日自动采集 + 人工精选、以及「先审查、再安装」的完整流程见[内置安全市场](#内置安全市场)。官方 Web UI 自身的能力（技能、插件、交互等）仍随官方发版直接出现在窗口里。桌面外壳自身的后续工作见[开发指南](docs/development.zh.md#当前状态)与 [TODO](TODO.md)：macOS/Windows 正式签名与公证、OS Keychain、语音输入，以及内置运行时的独立更新通道、运行中实例的周期探测提示等。
 
 ## 参与开发
 

@@ -22,23 +22,23 @@ A self-contained **power & lifecycle controller** for [DeepSeek Harness](https:/
 
 **① Sidebar power button** — a theme-aware footer entry, styled to match the adjacent Settings trigger.
 
-![Power button in the sidebar footer](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/e878b9cee784486ad6a1e0d666aa207a985a8c9c/docs/screenshots/en/power-button.png)
+![Power button in the sidebar footer](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/40664835035a62e99a73047c05d665bdcfe0e445/docs/screenshots/en/power-button.png)
 
 **② Restart / Shutdown menu** — opens from the power button; two actions, one click away.
 
-![Restart / Shutdown menu](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/e878b9cee784486ad6a1e0d666aa207a985a8c9c/docs/screenshots/en/power-menu.png)
+![Restart / Shutdown menu](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/40664835035a62e99a73047c05d665bdcfe0e445/docs/screenshots/en/power-menu.png)
 
 **③ Shutdown confirm dialog** — guard against accidental shutdowns: the default focus sits on **Cancel**, and only an explicit confirm actually stops the process.
 
-![Shutdown confirm dialog](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/e878b9cee784486ad6a1e0d666aa207a985a8c9c/docs/screenshots/en/shutdown-confirm.png)
+![Shutdown confirm dialog](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/40664835035a62e99a73047c05d665bdcfe0e445/docs/screenshots/en/shutdown-confirm.png)
 
 **④ Shutdown progress overlay** — a Windows-style full-screen transition showing the current stage while the process winds down.
 
-![Shutdown progress overlay](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/e878b9cee784486ad6a1e0d666aa207a985a8c9c/docs/screenshots/en/shutdown-progress.png)
+![Shutdown progress overlay](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/40664835035a62e99a73047c05d665bdcfe0e445/docs/screenshots/en/shutdown-progress.png)
 
 **⑤ Restart completed toast** — after the page auto-reloads, a success notice confirms DSH is back.
 
-![Restart completed toast](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/e878b9cee784486ad6a1e0d666aa207a985a8c9c/docs/screenshots/en/restart-done.png)
+![Restart completed toast](https://raw.githubusercontent.com/keyiadiannao/dsh-restart-button/40664835035a62e99a73047c05d665bdcfe0e445/docs/screenshots/en/restart-done.png)
 
 ## Install
 

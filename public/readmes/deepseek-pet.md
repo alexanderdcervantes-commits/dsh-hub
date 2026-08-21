@@ -6,7 +6,7 @@ DeepSeek Pet 是一个嵌入 DeepSeek Harness 网页的交互式桌宠插件。�
 
 角色使用完整表情图切换，不拆分头部、手脚或五官图层，避免部件错位和表情突变。
 
-<img src="https://raw.githubusercontent.com/keleus/deepseek-pet/6c05c7ddd34696c6761168c116be781d74707e26/docs/deepseek-pet-preview.png" alt="DeepSeek Pet 网页内运行效果" width="560">
+<img src="https://raw.githubusercontent.com/keleus/deepseek-pet/35132a4fcfa1a40e4cab7e0163939cc5b25de38b/docs/deepseek-pet-preview.png" alt="DeepSeek Pet 网页内运行效果" width="560">
 
 ## 功能
 
@@ -21,11 +21,13 @@ DeepSeek Pet 是一个嵌入 DeepSeek Harness 网页的交互式桌宠插件。�
 - 上下文达到 62% 时提示“还可以再吃一点”，达到 82% 时显示“吃饱了”；
 - 图片输入时显示蒙眼状态；
 - 无任务 10 分钟显示饿了，30 分钟抱枕犯困，1 小时后睡觉；
+- 待机、思考、回复、成功、等待、错误和干饭等动作按累计时间稳定轮换，不会因重渲染随机跳图；
+- 设置页可按动作组启用或停用具体图片，每组至少保留一张；思考和执行工具时会在工作与白米饭动作间稳定交替；
 - 根据本地时间显示早上、中午、下午和晚上的问候，23 点后犯困，凌晨进入睡觉状态；
 - 鼠标移入角色时，在角色脚下显示“−”最小化按钮；
 - 支持拖动角色、单击互动、双击折叠；鼠标悬停角色时可用滚轮缩放，并记住位置和尺寸；
 - 支持窄屏布局和 `prefers-reduced-motion`；
-- 设置面板新增「桌宠设置」页（界面样式与页面设计系统一致），提供两种展示模式：
+- 设置面板新增「桌宠设置」页（界面样式与页面设计系统一致），可配置动作图片，并提供两种展示模式：
   - **默认**：保持当前展示方式不变；
   - **页面置顶**：桌宠固定在视口右下角，悬浮在当前网页所有内容（包括弹窗）之上。
 
@@ -121,12 +123,10 @@ npx @deepseek-ai/dsh plugin --profile web remove deepseek-pet
 ```bash
 npm install
 npm run build
-npm test
 ```
 
 - `npm run assets`：从源图生成透明 WebP 表情并嵌入客户端代码；
-- `npm run build`：生成 `lib/index.js` 和 `lib/client.js`；
-- `npm test`：运行状态映射、交互和插件装载测试。
+- `npm run build`：生成 `lib/index.js` 和 `lib/client.js`。
 
 主要目录：
 
@@ -135,8 +135,6 @@ src/host/         插件 Host 入口
 src/client/       网页入口、组件、状态逻辑和动画样式
 public/assets/    表情源素材
 scripts/          素材处理和构建脚本
-tests/unit/       自动化单元测试
-tests/visual/     可按需构建的视觉测试夹具
 lib/              可安装的构建产物
 ```
 

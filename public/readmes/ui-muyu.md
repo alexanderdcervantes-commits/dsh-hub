@@ -3,7 +3,7 @@
 English | [中文](README.zh.md)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/TongY1n/ui-muyu/4f4ddd723be32c0df0726c6e151d1cefedc780e5/docs/images/preview.png" width="220" alt="Cyber wooden fish preview" />
+  <img src="https://cdn.jsdelivr.net/gh/TongY1n/ui-muyu@main/docs/images/preview.png" width="220" alt="Cyber wooden fish preview" />
 </div>
 
 A cyber wooden fish — a small floating widget in the web window. Tap it during work breaks to rack up some "merit".

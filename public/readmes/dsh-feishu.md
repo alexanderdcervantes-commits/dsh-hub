@@ -11,7 +11,7 @@
 └────────┘   API   └──────────────┘  events     └──────────┘  stream   └──────────┘
 ```
 
-![dsh-feishu — DeepSeek Harness × Feishu IM bridge](https://raw.githubusercontent.com/itr-del/dsh-feishu/33478f52215074f0f08eb9034a164574a1ad0ff9/assets/hero.png)
+![dsh-feishu — DeepSeek Harness × Feishu IM bridge](https://raw.githubusercontent.com/itr-del/dsh-feishu/4ff201caddca2c78ca47d85628c3ccda725836fc/assets/hero.png)
 
 ## Features
 
@@ -101,6 +101,12 @@ DM the bot anything — the agent will reply in the same conversation.
 ## License
 
 MIT.
+
+## Acknowledgments
+
+- [DeepSeek Harness (dsh)](https://github.com/deepseek-ai/deepseek-harness) — the agent runtime this plugin extends.
+- [@larksuiteoapi/node-sdk](https://github.com/larksuite/node-sdk) — official Feishu (Lark) SDK, MIT licensed.
+- [DeepSeek API](https://platform.deepseek.com) — LLM backend.
 
 ## Author
 

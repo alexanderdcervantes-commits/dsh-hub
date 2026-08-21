@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/3f2dc5aa43e5174cd69271729b9fc178bf8dd85a/docs/images/dsh-noema-logo.png" alt="DSH Noema" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/77f3a0c426440499d96b2cf9b7fa0c9ca3b5f4a6/docs/images/dsh-noema-logo.png" alt="DSH Noema" width="120" />
 </p>
 
 <h1 align="center">DSH Noema</h1>
@@ -26,7 +26,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/3f2dc5aa43e5174cd69271729b9fc178bf8dd85a/docs/images/dsh-noema-overview.png" alt="DSH Noema — memory settings page" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/77f3a0c426440499d96b2cf9b7fa0c9ca3b5f4a6/docs/images/dsh-noema-overview.png" alt="DSH Noema — memory settings page" width="100%" />
 </p>
 <p align="center"><sub>The Noema Memory settings page — import sources, memory management, and live server status</sub></p>
 
@@ -197,6 +197,12 @@ pnpm test          # build + node --test tests/
 ```
 
 The e2e test runs against `noema/target/debug/noema-mcp` when present (it is skipped otherwise).
+
+## Ecosystem
+
+- [DSH Crew](https://github.com/ZSeven-W/dsh-crew) — dispatch work to DSH agents from Claude Code / Codex
+- [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
+- [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) — inspect and edit `.op` design documents inside a conversation
 
 ## License
 

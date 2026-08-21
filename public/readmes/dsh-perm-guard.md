@@ -12,9 +12,9 @@
 
 ## Screenshot
 
-![Auto button in the composer tool row](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/00446c84cd871348f49282984e09e71413799a8e/assets/screenshot-auto-button.png)
+![Auto button in the composer tool row](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/37c58be26a2b2b035bc041f685386240cecbf1c2/assets/screenshot-auto-button.png)
 
-![Auto Permissions settings page](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/00446c84cd871348f49282984e09e71413799a8e/assets/screenshot-settings.png)
+![Auto Permissions settings page](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/37c58be26a2b2b035bc041f685386240cecbf1c2/assets/screenshot-settings.png)
 
 ## Features
 

@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://memorax-ai.github.io/dsh-harmony/">
-    <img width="132" alt="Harmony" src="https://raw.githubusercontent.com/CH4ACKO3/dsh-harmony/4291b3b364b0dffaacc4221a7d3ec890d1dbd095/assets/harmony-icon.png">
+    <img width="132" alt="Harmony" src="https://raw.githubusercontent.com/CH4ACKO3/dsh-harmony/45ce69f0410675c96e0f0aa0fcec72a3e3240eb5/assets/harmony-icon.png">
   </a>
 
   <h1>dsh-harmony</h1>
@@ -86,6 +86,8 @@ Open **Settings → Harmony** after starting the WebUI. For profiles, Desktop in
 
 Use the terminal UI or non-interactive commands against any profile. Commands contact a running Host transactionally and report `live`; stopped profiles are validated and updated atomically as `offline`.
 
+Multiple Hosts may use the same profile. Harmony follows DSH Settings' write model: whole-profile writes are serialized by a file lock and committed atomically; a stale UI save is rejected and refreshed, while concurrent processes use last-complete-write-wins semantics.
+
 ```sh
 dsh harmony --profile web
 dsh harmony status --json --profile web
@@ -105,28 +107,41 @@ Press `Tab` in the TUI to switch between Provider and Patch views. The Patch vie
 
 ## Patch model
 
-Harmony runs every Patch from one global `patchOrder`. Provider-level `before` and `after` rules set the usual order. A Patch that declares either rule uses its own rules instead. In **Settings → Harmony**, users can move a whole provider or place one Patch between Patches from another provider. Harmony checks that the saved list contains every registered Patch exactly once.
+Harmony runs every Patch from one global `patchOrder`. Provider-level `before` and `after` rules set the usual order. A Patch that declares either rule uses its own rules instead. In **Settings → Harmony**, users can move a whole provider or place one Patch between Patches from another provider. Plugin and Patch details provide their enable and disable actions, while the Patch status page is a read-only runtime monitor. Harmony checks that the saved list contains every registered Patch exactly once.
+
+Plugin-wide disablement is an independent `provider/*` flag. It never clears or creates individual Patch flags. Re-enabling a plugin therefore restores only the Patches that were individually enabled before the plugin was disabled.
+
+Every Patch may declare a human-readable `description`. Harmony exposes it through Patch status and JSON output, and displays it in Settings so users can understand the Patch before changing its order or enablement.
 
 A composite Patch groups several Patches under one order position and switch. Members keep their declared order and apply only when every member succeeds. A failed standalone Patch is reported and skipped; later Patches and the Host continue to run.
 
-## Plugin conflicts
+## Plugin compatibility
 
-Any DSH plugin package can declare incompatible plugin versions under `dsh.plugin.conflicts`, whether or not it provides Harmony Patches:
+Any DSH plugin package can describe its relationships with other plugins under `dsh.plugin.compatibility`, whether or not it provides Harmony Patches:
 
 ```json
 {
   "dsh": {
     "plugin": {
-      "conflicts": {
-        "legacy-plugin": "*",
-        "@vendor/other-plugin": "<2.0.0"
+      "compatibility": {
+        "requires": {
+          "base-plugin": "^2.0.0"
+        },
+        "conflicts": {
+          "legacy-plugin": "*"
+        },
+        "integrates": {
+          "optional-renderer": "^1.0.0"
+        }
       }
     }
   }
 }
 ```
 
-Harmony warns when matching packages are enabled together, but does not disable or block either plugin. One declaration is sufficient, reciprocal declarations produce one warning, and disabling a Harmony Patch does not disable its owning plugin. Conflict targets are package names and values are semver ranges.
+`requires` reports a missing, inactive, or incompatible dependency; `conflicts` warns when an incompatible pair is active; and `integrates` reports an available optional integration. These declarations never install, enable, disable, or block plugins. Targets are package names and values are semver ranges. Reciprocal conflict declarations produce one warning, and disabling a Harmony Patch does not disable its owning plugin.
+
+Live reports use the plugins active in Loader. When the profile is stopped, Harmony can only inspect its installation and therefore treats installed profile packages as active.
 
 ## React-aware patches
 
@@ -166,6 +181,14 @@ Documentation sources and local preview tooling live on the [`docs`](https://git
 ```sh
 npm test
 ```
+
+Set `DSH_HARMONY_PERF=1` when starting DSH to log one structured timing record for each Harmony startup, plugin update, profile update, and manual reload:
+
+```sh
+DSH_HARMONY_PERF=1 dsh web --no-open
+```
+
+Each record separates Patch preparation, source transformation, Host reload, browser rebuild, and total time. The probe stays inactive by default. Node.js diagnostic tools can instead subscribe to the `diagnostics_channel` channel `dsh-harmony:load` without enabling log output.
 
 ## License
 

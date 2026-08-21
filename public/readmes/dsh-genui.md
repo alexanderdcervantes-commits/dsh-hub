@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/f5db33ec-7471-4d4a-a85b-79c9962ab4ef
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-genui/8b0465fe4f4fe43ff4fa9d03f237cc9335d87c2f/assets/showcase-panel.png" width="92%" alt="Real rendering: an interactive monitoring panel">
+  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-genui/7ac881b8e351fbae17a998c8d5bb2b012c648cb5/assets/showcase-panel.png" width="92%" alt="Real rendering: an interactive monitoring panel">
   <br><em>Real output: an interactive monitoring panel rendered by the model (click "refresh" and it regenerates the data)</em>
 </p>
 
@@ -91,7 +91,7 @@ dsh plugin --profile web add link:$PWD
 - **Function plots**: `plot` draws curves; parameter sliders redraw in real time, with optional auto-animation
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-genui/8b0465fe4f4fe43ff4fa9d03f237cc9335d87c2f/assets/showcase-plot.png" width="60%" alt="Function plotting: drag a slider for live redraw">
+  <img src="https://raw.githubusercontent.com/omdsh-dev/dsh-genui/7ac881b8e351fbae17a998c8d5bb2b012c648cb5/assets/showcase-plot.png" width="60%" alt="Function plotting: drag a slider for live redraw">
 </p>
 
 - **Quiz**: `quiz` grades on click with explanation and retry; with `action`, the answer is also sent back to the model (grading stays local and instant)
@@ -158,6 +158,17 @@ DEEPSEEK_API_KEY=sk-... node scripts/e2e.mjs --install git   # friend path (git 
 
 Prereqs: `dsh`/`pnpm` on PATH, `DEEPSEEK_API_KEY`, and the main repo's web build output (playwright resolves it from the main repo). On PASS it saves an `e2e-final.png` screenshot.
 
+### Visual e2e (no model key)
+
+For style/component iterations, a visual smoke that needs no API key: boots a real dsh web with the plugin link-installed, injects the component gallery fence through the DOM channel, renders it in headless Chrome, screenshots the full page, and exercises local interactions (table sort, quiz judging, tree collapse, numeric alignment) with hard assertions:
+
+```sh
+npx tsx scripts/e2e-visual.mts          # → .e2e-artifacts/gallery.png + interactions.png
+npx tsx scripts/e2e-visual.mts --keep   # keep the scratch DSH_HOME for debugging
+```
+
+Overridable: `--port 3098`, `--out <dir>`, `DSH_BIN` (defaults to the npm-mode `~/node_modules/.bin/dsh`), `PLAYWRIGHT_PATH` (defaults to the global playwright-core).
+
 ## 🗺️ Roadmap (evaluated)
 
 | Direction | Verdict | Rationale |
@@ -167,7 +178,7 @@ Prereqs: `dsh`/`pnpm` on PATH, `DEEPSEEK_API_KEY`, and the main repo's web build
 | Cross-session state persistence (replay restores tabs/switches) | Not doing | Replay-reset is the more correct default (the model has already updated the UI with a new fence); state survives naturally during streaming |
 | MCP adapter / standalone gallery page / i18n | Not doing | No cross-tool demand signal; gallery material is covered by `gallery.ts` + demo-prompts + README screenshots; only 6 built-in strings |
 
-Tests parse the dsh source (`vitest.config.ts`'s `DSH_ROOT`, default `~/.dsh/source/current`).
+Unit tests and builds use the locked published dsh rc.8 packages. `DSH_ROOT` is only needed by source-level or end-to-end checks.
 
 ## 🔗 Friendly links
 

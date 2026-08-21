@@ -1,5 +1,7 @@
 # DeepSeek Harness Mobile GUI Agent
 
+![Mobile GUI Agent cover](https://raw.githubusercontent.com/kunjinkao-os/dsh-mobile-gui-agent/8083e27f877a4b6290bb34a65586200750151ce1/docs/images/dsh-mobile-gui-agent-cover.png)
+
 [![CI](https://github.com/kunjinkao-os/dsh-mobile-gui-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/kunjinkao-os/dsh-mobile-gui-agent/actions/workflows/ci.yml)
 [![awesome · DSH plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
 [![DeepSeek Harness](https://img.shields.io/badge/DeepSeek%20Harness-0.1.0--rc.6-4B32C3)](https://github.com/deepseek-ai/deepseek-harness)
@@ -18,7 +20,7 @@ Connect and authorize an Android device, then install the pinned release into th
 
 ```bash
 adb devices -l
-dsh plugin --profile web add github:kunjinkao-os/dsh-mobile-gui-agent#v0.2.0
+dsh plugin --profile web add github:kunjinkao-os/dsh-mobile-gui-agent#v0.2.1
 dsh --profile web --dump-config
 dsh --profile web
 ```
@@ -34,7 +36,17 @@ The device row must report `device`. The configuration dump must contain a `# ==
 
 The blank-session toolbar launcher is also available, but the flow above makes the separation between Harness conversation messages and phone tasks explicit.
 
-![mobile_gui_agent setting and enabling a 12:00 alarm](https://raw.githubusercontent.com/kunjinkao-os/dsh-mobile-gui-agent/7c2b5609aa66b4ab401c834008a791507d4872bf/docs/images/mobile-gui-agent-alarm-task.png)
+![mobile_gui_agent setting and enabling a 12:00 alarm](https://raw.githubusercontent.com/kunjinkao-os/dsh-mobile-gui-agent/8083e27f877a4b6290bb34a65586200750151ce1/docs/images/mobile-gui-agent-alarm-task.png)
+
+## Demos
+
+Opening Android Settings and navigating to the Wi-Fi page:
+
+![mobile_gui_agent opening Settings and navigating to Wi-Fi](https://raw.githubusercontent.com/kunjinkao-os/dsh-mobile-gui-agent/8083e27f877a4b6290bb34a65586200750151ce1/docs/images/open-settings-wifi-demo.png)
+
+Opening Taobao with `deepseek_mobile`:
+
+![deepseek_mobile opening Taobao](https://raw.githubusercontent.com/kunjinkao-os/dsh-mobile-gui-agent/8083e27f877a4b6290bb34a65586200750151ce1/docs/images/open-taobao-demo.png)
 
 ## Compatibility
 
@@ -98,13 +110,13 @@ The dump must contain a `# == dsh-mobile-gui-agent` layer and one row named `dsh
 Built `lib/` artifacts are tracked so a pinned Git checkout can be installed without allowing a dependency build script:
 
 ```bash
-dsh plugin --profile web add github:kunjinkao-os/dsh-mobile-gui-agent#v0.2.0
+dsh plugin --profile web add github:kunjinkao-os/dsh-mobile-gui-agent#v0.2.1
 ```
 
 For an immutable review target, replace the release tag with its commit SHA. A release tarball can also be installed without a Git build step:
 
 ```bash
-dsh plugin --profile web add ./dsh-mobile-gui-agent-0.2.0.tgz
+dsh plugin --profile web add ./dsh-mobile-gui-agent-0.2.1.tgz
 ```
 
 Pin a reviewed tag or commit when installing a plugin that can control a real device.

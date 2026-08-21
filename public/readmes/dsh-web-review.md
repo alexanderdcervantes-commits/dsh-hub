@@ -7,12 +7,12 @@
 在内置浏览器中，像使用设计工具一样选择页面元素、填写修改意见，并临时调整文本、颜色、字体、尺寸、间距、边框与效果。确认发送后，Agent 会结合页面批注修改当前工作区中的源码。
 
 <p align="center">
-  <img width="100%" alt="dsh-web-review 网页预览、元素批注与视觉调整演示" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/7809b6697c347cc11a6c0d4ba641b80926de3ef6/docs/assets/web-review-demo.gif" />
+  <img width="100%" alt="dsh-web-review 网页预览、元素批注与视觉调整演示" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/63e258bda8c94488079ff15de55295262e844271/docs/assets/web-review-demo.gif" />
 </p>
 
 <p align="center">
-  <img width="49%" alt="dsh-web-review 网页预览" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/7809b6697c347cc11a6c0d4ba641b80926de3ef6/docs/assets/web-review-preview.jpg" />
-  <img width="49%" alt="dsh-web-review 元素批注与属性调整器" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/7809b6697c347cc11a6c0d4ba641b80926de3ef6/docs/assets/web-review-annotation-editor.jpg" />
+  <img width="49%" alt="dsh-web-review 网页预览" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/63e258bda8c94488079ff15de55295262e844271/docs/assets/web-review-preview.jpg" />
+  <img width="49%" alt="dsh-web-review 元素批注与属性调整器" src="https://raw.githubusercontent.com/CanglongCl/dsh-web-review/63e258bda8c94488079ff15de55295262e844271/docs/assets/web-review-annotation-editor.jpg" />
 </p>
 
 > 如果你用过 v0、Codex 等 Coding Agent 应用的内置浏览器，你应该对此会很熟悉。

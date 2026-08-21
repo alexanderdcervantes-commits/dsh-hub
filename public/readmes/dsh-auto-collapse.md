@@ -10,7 +10,7 @@
 
 ## 效果预览
 
-![折叠效果](https://raw.githubusercontent.com/a179-sanae/dsh-auto-collapse/fdb724fb3eaee6d435a89fa09c4b1c52d8b92197/assets/screenshot.png)
+![折叠效果](https://raw.githubusercontent.com/a179-sanae/dsh-auto-collapse/29f2e17910ee867e3eea491365434ae3b7ad4172/assets/screenshot.png)
 
 ## 特性
 
@@ -23,6 +23,14 @@
 - **可逆**：卸载（HMR stop）时完整还原所有折叠/隐藏/改写。
 
 ## 安装
+
+已发布 npm 包（推荐，使用构建好的版本）：
+
+```bash
+dsh plugin --profile web add "dsh-auto-collapse"
+```
+
+从 GitHub 安装（开发版或需要跟随 `main` 分支时）：
 
 ```bash
 dsh plugin --profile web add "github:a179-sanae/dsh-auto-collapse#main"
@@ -62,8 +70,16 @@ npm run deploy
 
 ### 发布新版本
 
+更新 `package.json` 中的 `version` 后，发布到 npm（`prepack` 钩子会自动构建）：
+
 ```bash
-npm pack --pack-destination <本地插件目录>   # 打包（prepack 钩子自动构建）
+npm publish --access public
+```
+
+本机开发也可以只打包为 tgz：
+
+```bash
+npm pack --pack-destination <本地插件目录>
 ```
 
 将 profile 的 `package.json` 中插件依赖更新为新 tgz 路径后重新安装插件。

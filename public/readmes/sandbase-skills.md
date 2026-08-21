@@ -1,13 +1,15 @@
 # SandBase Skills
 
 [![GitHub stars](https://img.shields.io/github/stars/sandbaseai/sandbase-skills?style=social)](https://github.com/sandbaseai/sandbase-skills/stargazers)
-[![skills.sh flagship](https://img.shields.io/badge/skills.sh-flagship%20indexed-000000)](https://skills.sh/sandbaseai/sandbase-skills/multi-source-search)
+[![skills.sh installs](https://skills.sh/b/sandbaseai/sandbase-skills)](https://skills.sh/sandbaseai/sandbase-skills)
 [![AgentSkill.sh directory](https://img.shields.io/badge/AgentSkill.sh-security--scanned_directory-0f766e)](https://agentskill.sh/@sandbaseai)
 [![Release](https://img.shields.io/github/v/release/sandbaseai/sandbase-skills)](https://github.com/sandbaseai/sandbase-skills/releases/latest)
 [![Discussions](https://img.shields.io/github/discussions/sandbaseai/sandbase-skills)](https://github.com/sandbaseai/sandbase-skills/discussions)
 [![License](https://img.shields.io/github/license/sandbaseai/sandbase-skills)](LICENSE)
 
 **Browse the flagship Skill:** [skills.sh](https://skills.sh/sandbaseai/sandbase-skills/multi-source-search) · [Agentic Awesome Skills](https://github.com/sickn33/agentic-awesome-skills/tree/main/skills/multi-source-search) · [Agent Skill Exchange](https://github.com/agentskillexchange/skills/tree/main/skills/cross-validate-research-with-sandbase-multi-source-search) · [askill](https://askill.sh/skills/gh/sandbaseai/sandbase-skills/@multi-source-search) · [Awesome Skills](https://www.awesomeskills.dev/en/skill/sandbase-skills-multi-source-search) · [skills.re](https://skills.re/skills/sandbaseai/sandbase-skills/multi-source-search) · [SkillsCat](https://skills.cat/skills/sandbaseai/sandbase-skills/multi-source-search) · [OpenAgentSkill](https://www.openagentskill.com/skills/sandbaseai-sandbase-skills-multi-source-search) · [AgentSkill.sh](https://agentskill.sh/@sandbaseai)
+
+Have a repeatable workflow that is missing? [Request a Skill](https://github.com/sandbaseai/sandbase-skills/issues/new?template=skill_request.yml) with a public example and acceptance criteria.
 
 [English](./README.md) | [中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [Deutsch](./README.de.md) | [Português](./README.pt-BR.md)
 
@@ -18,7 +20,7 @@ ships a worked evidence-ledger example, and includes an offline validator. If it
 improves a real workflow, [star the repository](https://github.com/sandbaseai/sandbase-skills)
 so other builders can discover it.
 
-![Multi-source search workflow: search capabilities, source-origin tracing, evidence ledger, and offline validation](https://raw.githubusercontent.com/sandbaseai/sandbase-skills/b5774f2f9bdf938ae80821ba16e644247fc30e59/assets/multi-source-search-workflow.svg)
+![Multi-source search workflow: search capabilities, source-origin tracing, evidence ledger, and offline validation](https://raw.githubusercontent.com/sandbaseai/sandbase-skills/5452b45117ec75afb1338131e46109474defb89b/assets/multi-source-search-workflow.svg)
 
 ## What are Skills?
 

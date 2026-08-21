@@ -37,7 +37,7 @@
 
 - **贴图即用，不用换模型：** 注册独立路由 `deepseek-vision`（显示名 *DeepSeek + Vision*），
   真实声明 `inputModalities: ['text','image']`——聊天窗贴图、`tool-fs read_image`、浏览器
-  截图工具全部放行。
+  截图、MCP 工具返回的图片、ACP 客户端内联图片全部放行。
 - **每张图只描述一次：** 按 `attachmentId` 进程内 LRU 缓存，重试、上下文压缩、后续轮次
   复用同一份描述，不重复计费。
 - **会话不变量保持：** 原始图片仍持久化进 session log，历史 / 回放 / 重构不受影响。
@@ -113,7 +113,7 @@ headless profile、其他 spec 形式（git / 目录 / tarball）、无 CLI 的�
 
 聊天窗里选中 **DeepSeek + Vision** provider 之后：
 
-| ![模型选择器里的 DeepSeek + Vision provider](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/00ebf579ed6bb0214f7b6e7ecf01bd1eaca0958e/docs/images/provider-picker.png) | ![聊天窗贴图，图片被描述后发送给 DeepSeek](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/00ebf579ed6bb0214f7b6e7ecf01bd1eaca0958e/docs/images/chat.png) |
+| ![模型选择器里的 DeepSeek + Vision provider](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/provider-picker.png) | ![聊天窗贴图，图片被描述后发送给 DeepSeek](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/chat.png) |
 | :---: | :---: |
 
 - **粘贴 / 拖入图片** → 被配置好的视觉模型先描述成文字（逐字提取代码、报错、日志、
@@ -126,7 +126,7 @@ headless profile、其他 spec 形式（git / 目录 / tarball）、无 CLI 的�
 
 ```mermaid
 flowchart LR
-    User["聊天窗贴图 / read_image / 截图"] --> Gate["deepseek-vision 路由：inputModalities = text + image"]
+    User["聊天窗贴图 / read_image / 截图 / MCP / ACP"] --> Gate["deepseek-vision 路由：inputModalities = text + image"]
     Gate --> Persist["apiproxy prompt RPC → ImageBlock 持久化进 session log"]
     Persist --> Bridge["ImageBridge：改写图片块（含 tool-result 嵌套）"]
     VL["可配置 VL 模型（默认 qwen3-vl-flash，OpenAI 兼容端点）"] --> Bridge
@@ -143,8 +143,11 @@ DeepSeek wire；reasoning efforts / context 窗口 / 默认 maxTokens / retry po
 
 ## 配置
 
-全部可省略（走默认值）。两个 key 都支持 credential-ref（环境变量名），凭据经 dsh 的
-credentials seam 解析（Web Models 页写入的凭据即可用），无 seam 时回退到启动环境变量：
+全部可省略（走默认值）。两个 key 都支持 credential-ref（环境变量名）。已挂载 dsh 的
+`credentials` 服务时，其解析结果（即使未配置）具有权威性；只有服务缺席才直接读取启动环境。
+官方 `credentials-local` 的优先级是：**进程环境变量（最高、只读）→ GUI 管理的
+`.credentials.yaml` → `.env` 回退**。因此 Web Models 页写入的凭据可用，而本次进程显式
+导出的 key 始终优先且不能在 GUI 内修改：
 
 | 路径 | 默认值 | 说明 |
 | --- | --- | --- |
@@ -164,7 +167,7 @@ credentials seam 解析（Web Models 页写入的凭据即可用），无 seam �
 的"DeepSeek + Vision（视觉语言桥接）"卡片（`vl.*` 全字段 + VL 密钥）、Web Models 页
 （`deepseek.*` 子段由可配置 provider 目录接管）、`settings.yaml`（两个子段都可写）。
 
-![插件设置卡片](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/00ebf579ed6bb0214f7b6e7ecf01bd1eaca0958e/docs/images/plugin-settings.png)
+![插件设置卡片](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/plugin-settings.png)
 
 `provider` / `displayName` 是注册期事实，修改即时生效（adapter 路由 + 可配置 provider
 目录原子重注册，不需重启）；改成已被占用的路由 id 时两个注册表保留旧值并记日志。

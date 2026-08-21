@@ -13,7 +13,7 @@
 
 | 登录门禁（未登录访问任何路径） | 设置 → 登录与账号 |
 |:---:|:---:|
-| ![登录页](https://raw.githubusercontent.com/xgone/dsh-remote/e970eb5387137a175fa16f094ff6769a93065a5d/docs/login-zh.png) | ![账号管理设置页](https://raw.githubusercontent.com/xgone/dsh-remote/e970eb5387137a175fa16f094ff6769a93065a5d/docs/settings-zh.png) |
+| ![登录页](https://raw.githubusercontent.com/xgone/dsh-remote/1f04ba93a37731cd23e75cb38bcd1c99e710e51f/docs/login-zh.png) | ![账号管理设置页](https://raw.githubusercontent.com/xgone/dsh-remote/1f04ba93a37731cd23e75cb38bcd1c99e710e51f/docs/settings-zh.png) |
 
 ---
 
@@ -243,6 +243,18 @@ dsh plugin --profile web add @xgone/dsh-remote
       roots: []              # 额外允许读取的根目录（绝对路径）
       maxListing: 500        # 目录索引每页最多渲染的条目数
 ```
+
+> **Windows 提示**：默认根目录是 DSH 主目录与 dsh 进程工作目录（通常是 profile 目录），工作区文件常在
+> 其他盘符路径下。被拒绝时面板会直接显示当前允许的根目录列表；把工作区所在目录加入 `files.roots`
+> 即可，YAML 中路径写双反斜杠或正斜杠：
+>
+> ```yaml
+> remote:
+>   files:
+>     roots:
+>       - "E:\\CODE"
+>       - "D:/projects"
+> ```
 
 关闭认证：`enabled: false`。
 

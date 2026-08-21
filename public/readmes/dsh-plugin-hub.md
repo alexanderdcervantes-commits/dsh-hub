@@ -34,6 +34,8 @@ static plugin & skill index** refreshed by CI every 6 hours.
 - [Disclaimer](#disclaimer)
 - [Known limitations](#known-limitations)
 - [Help](#help)
+- [Ecosystem & discoverability](#ecosystem--discoverability)
+- [Support](#support)
 - [Changelog](#changelog)
 - [License](#license)
 <!-- /TOC -->
@@ -137,6 +139,29 @@ Requires: DSH ≥ 0.1.0-rc.6 (web profile, with `dsh-client-modules` / `dsh-host
 - **Version check**: 检测更新 reads npm `dist-tags.latest` (curl channel, works even when
   node networking is blocked) and warns about subpackages that need syncing (depsOutdated).
 
+### Framework one-click upgrade (deepseek-harness card)
+
+- The **deepseek-harness** card shows **「框架升级 → vX」** when a newer framework version is
+  available (stable `latest` preferred; `next` channel when `latest` equals the installed
+  version); clicking runs the full flow: backup config + framework snapshot (rollback point)
+  → **online install** (service stays up, page never disconnects) → version verification →
+  **auto-restart to apply**;
+- **Real-time progress**: a `DSH-Upgrade` console window pops up showing live pnpm download
+  progress; the in-panel progress card shows the waiting time;
+- **Upgrade protection**: failed installs **auto-rollback** (robocopy, backup verified before
+  upgrade), version check catches fake success, 10-min hard timeout, stall detection
+  (no debug-log updates → auto switch registry), global trap fallback, and 15-min stale-state
+  cleanup — the framework is never left broken;
+- **pnpm channel**: npm-cli.js freezes at startup in the schtasks task environment (0-byte
+  debug log, no network requests ever sent); upgrades use `corepack pnpm` (starts in ~0.4s,
+  installed rc.8 in 11.5s) against the **npmmirror (China) registry**, with
+  `dangerouslyAllowAllBuilds` so native modules (node-pty/koffi) compile;
+- **Runtime bin resolution**: under the pnpm layout `@deepseek-ai/dsh` is a Junction — the
+  relaunch step resolves `bin.js` at runtime (follows the Junction to the current version)
+  instead of using a path baked in at script-generation time;
+- **Card dismiss semantics**: terminal states (done/failed) are permanently dismissed on ✕
+  (persisted); in-progress dismissal is session-only and the card returns after a refresh.
+
 ### Marketplace (multi-source)
 
 - **Source switcher**: click the login pill to switch between **GitHub / Gitee / custom
@@ -156,6 +181,10 @@ Requires: DSH ≥ 0.1.0-rc.6 (web profile, with `dsh-client-modules` / `dsh-host
 
 ### Static index market (plugin & skill tabs)
 
+> **Hybrid architecture**: browsing uses the static index (instant, zero GitHub API calls),
+> searching uses live channels (GitHub search API / multi-source parallel) — they complement
+> each other: a brand-new repo can be found by live search even before it enters the index.
+
 - Empty query on the GitHub source shows the **static index** (`marketplace/index.json`,
   jsDelivr CDN + 10-min host cache): 500+ plugins by stars, instant, **zero GitHub API calls**;
 - **插件 / 技能 tabs** next to the search box: the skills tab lists auto-collected
@@ -169,6 +198,8 @@ Requires: DSH ≥ 0.1.0-rc.6 (web profile, with `dsh-client-modules` / `dsh-host
 ### Source Manager
 
 The floating "Sources" button (right of the title row, semi-transparent) opens the manager:
+
+![Source Manager](https://github.com/user-attachments/assets/ef712900-65ae-4f6f-9584-bacdd8d34ea1)
 
 - **Install sources (registry)**: add / inline edit / set primary / restore defaults;
   private and intranet addresses supported; **deletion is protected** (install-critical);
@@ -380,6 +411,23 @@ The script locates `dsh-app-boot/lib/index.js` in the npx cache, skips when alre
   failures fall back to git install; switch the primary source if npmmirror is unstable.
 - **Skill not found by DSH**: enable `@deepseek-ai/dsh-skill-filesystem` in the profile
   (`cordis.yml`) and restart; skills live in `~/.dsh/skills/<name>/`.
+
+---
+
+## Ecosystem & discoverability
+
+- Listed on [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (the community main list) and [DSH Directory](https://dsh.directory);
+- This hub's own auto-collection index (500+ plugins / 300 skills, refreshed by CI every 6h) includes **any** repo tagged `dsh-plugin` / `agent-skills` / `claude-skills` / `dsh-skill` — tag your repo and it appears in the market automatically, no application needed;
+- If you build DSH plugins, this panel is your distribution channel: one-click install for every user of the hub.
+
+## Support
+
+If this panel saves you time or makes DSH more fun to use:
+
+- ⭐ **Star this repo** — it directly helps more DSH users find it;
+- Share it with DSH users or in DSH communities;
+- Submit your own plugin (tag it `dsh-plugin`) to grow the ecosystem;
+- Found a bug or want a feature? [Open an issue](https://github.com/Noob-stupid/dsh-plugin-hub/issues).
 
 ---
 

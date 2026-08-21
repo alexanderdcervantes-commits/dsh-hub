@@ -5,6 +5,7 @@
   <a href="https://www.npmjs.com/package/dsh-ths-holdings"><img src="https://img.shields.io/npm/v/dsh-ths-holdings?style=flat-square" alt="npm version"></a>
   <a href="https://github.com/PM25000/dsh-ths-holdings"><img src="https://img.shields.io/github/stars/PM25000/dsh-ths-holdings?style=flat-square" alt="GitHub stars"></a>
   <img src="https://img.shields.io/badge/license-MIT-ff1493?style=flat-square" alt="MIT">
+  <a href="https://www.npmjs.com/package/dsh-ths-holdings"><img src="https://img.shields.io/npm/dt/dsh-ths-holdings?style=flat-square" alt="npm version"></a>
 </p>
 
 English | [中文](README.zh.md)
@@ -15,7 +16,7 @@ Unlike watchlist tools, this plugin reads your **actual positions** and shows yo
 
 ## Screenshots
 
-![dsh-ths-holdings card](https://raw.githubusercontent.com/PM25000/dsh-ths-holdings/ab7dfb6aea88ba7cf5511da99a464a1fd4225484/assets/screenshot.png)
+![dsh-ths-holdings card](https://raw.githubusercontent.com/PM25000/dsh-ths-holdings/24744d9f3acc819abea9c331ab0c9ad9ca591707/assets/screenshot.png)
 
 ## Installation
 
@@ -61,7 +62,7 @@ The session cookie expires eventually — when it does, the card shows a **Token
 
 > 💡 After completing a new trade, re-upload your data from the investment-ledger **app** to the web version so your holdings stay consistent between the two.
 >
-> ![Data upload tutorial](https://raw.githubusercontent.com/PM25000/dsh-ths-holdings/ab7dfb6aea88ba7cf5511da99a464a1fd4225484/assets/update.png)
+> ![Data upload tutorial](https://raw.githubusercontent.com/PM25000/dsh-ths-holdings/24744d9f3acc819abea9c331ab0c9ad9ca591707/assets/update.png)
 
 ## Features
 

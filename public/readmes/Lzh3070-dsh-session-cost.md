@@ -17,7 +17,13 @@ DeepSeek Harness（dsh）Web 界面的**会话花费插件**：把当前会话�
 
 ## 安装
 
-> ⚠️ **注意**：npm 上的 `dsh-session-cost`（0.1.3）是另一个同名插件（[ChengChe106/dsh-session-cost](https://github.com/ChengChe106/dsh-session-cost)），与本仓库无关。请务必用下面的仓库地址安装本插件。
+```sh
+dsh plugin --profile web add @phynez_1103/dsh-session-cost
+```
+
+> ⚠️ **注意**：本插件的 npm 包名是**带 scope 的 `@phynez_1103/dsh-session-cost`**。npm 上的裸名包 `dsh-session-cost`（[ChengChe106/dsh-session-cost](https://github.com/ChengChe106/dsh-session-cost)）是另一个同名插件，与本仓库无关——`dsh plugin add dsh-session-cost` 装到的是它，不是本插件。
+
+也可以直接从 GitHub 仓库安装：
 
 ```sh
 dsh plugin --profile web add github:Lzh3070/dsh-session-cost
@@ -26,7 +32,7 @@ dsh plugin --profile web add github:Lzh3070/dsh-session-cost
 国内网络可走 Gitee 镜像：
 
 ```sh
-dsh plugin --profile web add https://gitee.com/lzh10602042_gitee/dsh-session-cost/repository/archive/main.zip
+dsh plugin --profile web add https://gitee.com/lzh10602042_gitee/dsh-session-cost/repository/archive/master.zip
 ```
 
 装完**重启 dsh web 服务**，浏览器硬刷新（Ctrl+Shift+R）。
@@ -37,7 +43,7 @@ dsh plugin --profile web add https://gitee.com/lzh10602042_gitee/dsh-session-cos
 
 输入框右侧的小徽标（`¥0.12`），悬停弹出浮窗：
 
-![会话花费截图](https://raw.githubusercontent.com/Lzh3070/dsh-session-cost/98a4b6b2a233fc5caee419d552b26c21137dca1f/Snipaste.png)
+![会话花费截图](https://raw.githubusercontent.com/Lzh3070/dsh-session-cost/986c34e1445ca5012d32e2d9d02768c5cb0cb12c/Snipaste.png)
 
 浮窗内容示例：
 

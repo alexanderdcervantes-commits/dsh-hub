@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/5cfadc511f08dbc5c09f76e6943b709e846d1cae/docs/images/dsh-openpencil-logo.png" alt="DSH OpenPencil" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/0475b8d130357a973ac34e6da2c0000afff1f217/docs/images/dsh-openpencil-logo.png" alt="DSH OpenPencil" width="120" />
 </p>
 
 <h1 align="center">DSH OpenPencil</h1>
@@ -28,7 +28,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/5cfadc511f08dbc5c09f76e6943b709e846d1cae/docs/images/dsh-openpencil-overview.png" alt="DSH OpenPencil — multi-frame preview and sidebar editor" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/0475b8d130357a973ac34e6da2c0000afff1f217/docs/images/dsh-openpencil-overview.png" alt="DSH OpenPencil — multi-frame preview and sidebar editor" width="100%" />
 </p>
 <p align="center"><sub>Exact multi-frame <code>.op</code> previews with an interactive canvas and the managed editor workbench</sub></p>
 
@@ -260,6 +260,12 @@ DSH OpenPencil is the DeepSeek Harness plugin for **[OpenPencil](https://github.
 | **[Zode](https://github.com/ZSeven-W/zode)** | Open-source, AI-native coding assistant for your terminal — reads your code, runs commands, and drives OpenPencil over MCP. |
 | **[noema](https://github.com/ZSeven-W/noema)** | Local-first, non-vector memory system for coding agents — durable memory as inspectable files, works across runtimes. |
 | **[openpencil-skill](https://github.com/ZSeven-W/openpencil-skill)** | The LLM skill plugin that teaches AI agents how to design with `op` — a companion to this DSH plugin. |
+
+Sibling DSH plugins:
+
+- [DSH Crew](https://github.com/ZSeven-W/dsh-crew) — dispatch work to DSH agents from Claude Code / Codex
+- [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
+- [DSH Noema](https://github.com/ZSeven-W/dsh-noema) — long-term memory for DSH
 
 ## Contributing
 

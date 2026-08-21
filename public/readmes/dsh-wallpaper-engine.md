@@ -15,8 +15,9 @@
 - **液态玻璃设置页**（v0.3.1）：设置页升级为**一级设置页**（参照 dsh-web-ui-all 皮肤中心的设计），整页是可自定义的液态玻璃卡片 —— **配色**（6 种预设 + 自定义取色）与**玻璃透明度**（0–60%）即时生效、持久保存。
 - **整个设置窗口液态玻璃化**（v0.3.2）：一键把 **DSH 原生设置窗口整体**（对话框 + 左侧导航 + General / 模型 / 插件等**全部原生分区**）换成液态玻璃 + 自定义配色 —— 开启「设置窗口液态玻璃」开关后，窗口背景、导航选中/悬停、按钮、开关、链接等全部跟随 **配色** 与 **玻璃透明度**，关闭则恢复原生样式。
 - **玻璃调节统一**（v0.3.3–v0.3.5）：设置窗口的玻璃模糊与**对话栏共用同一套调节参数**（「玻璃」滑动条 0–60 px 同时控制设置窗口与输入栏/气泡的模糊半径，饱和度/亮度/对比度配方一致）；新增「**玻璃颜色**」—— 设置窗口玻璃的**底色色调**可自定义（6 预设 + 自定义取色，默认浅色白 / 深色深夜蓝，选定后两种主题统一使用该色），与「配色」（交互元素）分工：**配色管控件、玻璃颜色管玻璃本身**。
+- **设置持久化到宿主端文件**（v0.4.0）：全部设置（已选壁纸、配色、透明度、布局、轮播、隐藏、倍速/翻转等）改存 `~/.dsh-wallpaper-engine/config.json`，不再依赖浏览器 localStorage —— **重启、换端口（含 DSH Desktop 的随机端口）、清浏览器数据、换浏览器都不再丢失**；旧版 localStorage 配置首次启动自动迁移。
 
-![基础效果展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/86ce2f776021dee409294f8c44fab918e4703aa7/docs/images/showcase.png)
+![基础效果展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/showcase.png)
 
 > 壁纸 + 磨砂遮罩 + iOS 液态玻璃，渲染在 DSH 界面后方。
 
@@ -57,8 +58,23 @@ Scene 壁纸的 3D 场景（shader/粒子/几何）本身无法在浏览器里�
      - `POST /wallpaper-engine/upload` → 上传自定义壁纸（JPG / PNG / MP4，原始字节流）
      - `POST /wallpaper-engine/remove` → 移除已上传的壁纸
      - `POST /wallpaper-engine/upload-dir` → 更改上传目录（持久化到 `~/.dsh-wallpaper-engine/config.json`，自动迁移已有文件）
+     - `GET /wallpaper-engine/settings` → 读取插件设置（v0.4.0）
+     - `PUT /wallpaper-engine/settings` → 保存插件设置（v0.4.0，写入 `~/.dsh-wallpaper-engine/config.json`）
 - **Client 端**（`lib/client.js`）：一个浏览器模块，拉取壁纸列表，把选中壁纸渲染到应用三列**后方**的固定图层，并在「设置」里注册一个**一级设置页**「Wallpaper Engine」（含液态玻璃卡片、选择弹窗、隐藏/恢复、倍速/翻转、配色/透明度与自定义壁纸管理）。
 - **自定义壁纸存储**：上传的文件写入插件管理的本地目录（默认 `~/.dsh-wallpaper-engine/uploads`，可在设置里改到任意盘符），经同一套 `/media`、`/preview` 路由服务——与 WE 媒体走完全相同的管道，天然跨重启持久、无浏览器配额限制。
+
+## 设置持久化（v0.4.0）
+
+**你的全部设置（已选壁纸、配色、透明度、布局、轮播、隐藏、倍速/翻转等）从 v0.4.0 起保存在宿主端文件里，不再依赖浏览器 localStorage。**
+
+- **存在哪里**：`~/.dsh-wallpaper-engine/config.json`（与「上传目录」的配置是同一个文件）。具体位置：
+  - Windows：`C:\Users\<你的用户名>\.dsh-wallpaper-engine\config.json`
+  - WSL / Linux / macOS：`~/.dsh-wallpaper-engine/config.json`
+- **为什么改**：此前设置存在浏览器 localStorage，而 localStorage 按「地址 + 端口」隔离——**DSH Desktop 每次启动用随机端口**，等于每次进入一个全新的存储空间，配置全部恢复默认（Web 端固定端口则无此问题）。改存宿主端文件后与端口无关。
+- **带来的好处**：重启 / 换端口 / 清浏览器数据 / 换浏览器 / 无痕模式都不再丢失配置。
+- **旧数据迁移**：老版本存在 localStorage 里的配置会在**首次启动时自动迁移**到该文件，无需任何手动操作。
+- **需要知道的行为变化**：同一台电脑上，多个浏览器（如 Chrome 和 Edge）或手机等设备访问同一个 dsh 时，**共享同一份配置**（此前各存各的）；如果你回滚到旧版本，它仍会读取 localStorage 里的缓存副本，配置不会丢。
+- **配置文件的读写**：每次修改设置会自动写入（200ms 防抖合并）；文件损坏时插件回退默认值且不会覆盖你的文件。
 
 ## 安装
 
@@ -132,11 +148,11 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 4. 用 **暂停/播放** 暂停视频壁纸，用 **关闭** 清除壁纸。
    选择会保存在浏览器的 `localStorage`（键 `dsh-wallpaper-engine:selection`）中。
 
-![设置界面功能展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/86ce2f776021dee409294f8c44fab918e4703aa7/docs/images/features.png)
+![设置界面功能展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/features.png)
 
 > 设置界面：液态玻璃卡片（「外观」配色/透明度）、当前壁纸卡片、「自定义壁纸」「轮播列表」「壁纸效果」分区。
 
-![壁纸选择弹窗与壁纸仓库](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/86ce2f776021dee409294f8c44fab918e4703aa7/docs/images/wallpaper-library.png)
+![壁纸选择弹窗与壁纸仓库](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/wallpaper-library.png)
 
 > 选择弹窗：浏览全部壁纸缩略图，支持批量隐藏与已隐藏恢复。
 
@@ -159,6 +175,14 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 
 - **紧凑布局**：设置页顶部有一个**滑动开关**。开启后为 **CD 架效果** —— 卡片像 CD 盒一样纵向层叠（下排上沿盖住上排下沿、左右不遮挡），鼠标悬停放大置顶；网格更紧凑（每行约 7 个）且**一页到底不翻页**。关闭则为常规网格（固定高度防重叠 + 分页，默认）。选择保存在浏览器 `localStorage`。
 - **黑胶唱片**：选择壁纸界面旁边有一个**旋转的黑胶唱片**，把当前选中壁纸的封面当作唱片标签展示 —— 播放时旋转、暂停即停（系统开启「减少动态效果」时停用动画）。弹窗头部也保留小号黑胶。该效果在**经典与新版两种卡片样式下都显示**。
+
+![紧凑布局壁纸仓库（CD 架效果）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/compact-wallpaper-library.png)
+
+> 紧凑布局：CD 架式层叠网格，悬停放大置顶，一页到底不翻页。
+
+![旋转的黑胶唱片（黑胶 CD 壁纸展示）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/vinyl-record.gif)
+
+> 黑胶唱片：当前选中壁纸的封面作为唱片标签，播放时旋转、暂停即停。
 
 ### 视频倍速与水平翻转
 
@@ -193,6 +217,10 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 
 > 开启「设置窗口液态玻璃」后，**General、模型、插件等所有原生分区**和左侧导航都会变成同一套液态玻璃 + 配色（通过覆盖设置对话框作用域内的 shell token 实现，不侵入其他界面）。设置窗口的玻璃模糊与**对话栏使用同一套调节参数**：「玻璃」滑动条（0–60 px）同时控制设置窗口与输入栏/气泡的模糊半径，饱和度/亮度/对比度配方完全一致；**玻璃颜色**决定玻璃底色本身的色调（默认浅色白/深色深夜蓝，选定后两种主题统一使用该色），**玻璃透明度**决定浓淡，越高越"透"（壁纸颜色更清晰地透过面板），越低越接近实色。不支持 `backdrop-filter` 的浏览器自动回退到高不透明实色，保证文字可读。所有控件即时生效并保存在浏览器 `localStorage`，刷新不丢。
 
+![液态玻璃全新设置窗口](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/liquid-glass-window.png)
+
+> 液态玻璃：整个设置窗口统一玻璃质感，跟随「配色」「玻璃颜色」与「玻璃透明度」。
+
 ### 四个滑动条
 
 壁纸激活后，四个滑动条可以微调它与界面的融合效果：
@@ -214,7 +242,7 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 
 本插件的液态玻璃效果对 dsh-better-sidebar 的侧边栏面板做了专门适配（毛玻璃、高光与层级统一），让侧边栏与对话区共享同一套「壁纸 + 遮罩」背景，三列视觉一致、不再割裂。
 
-![dsh-better-sidebar 兼容适配](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/86ce2f776021dee409294f8c44fab918e4703aa7/docs/images/better-sidebar.png)
+![dsh-better-sidebar 兼容适配](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/better-sidebar.png)
 
 ## 已知限制
 

@@ -12,11 +12,11 @@
 - 🛡 **稳定错误码**：全部调用返回 `error_code / recoverable / next_actions` 三件套，模型可安全分支
 - 🔒 多会话并发安全：专用 COM 线程 + 单实例语义，实测 8 线程并发 8/8 通过
 
-![示例输出图](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/0a720e13234ca74758b5948f3cf3a202abe35680/docs/example.png)  ![3D 表面示例](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/0a720e13234ca74758b5948f3cf3a202abe35680/docs/example_3d.png)
+![示例输出图](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/398268b42f72d6b46e9dbc77cb86b26ef14a4541/docs/example.png)  ![3D 表面示例](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/398268b42f72d6b46e9dbc77cb86b26ef14a4541/docs/example_3d.png)
 
 **v2 排版示例**（3 序列 line_symbol，journal 样式 + ocean 调色板 + 语义轴标题 + 符号循环）：
 
-![排版示例](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/0a720e13234ca74758b5948f3cf3a202abe35680/docs/example_style.png)
+![排版示例](https://raw.githubusercontent.com/Fantasality/dsh-origin-plugin/398268b42f72d6b46e9dbc77cb86b26ef14a4541/docs/example_style.png)
 
 > 权威设计/验证依据见 [docs/DESIGN.md](docs/DESIGN.md)（设计蓝图 + 真机探测矩阵 + 官方文档依据）。
 > 行为细节以真机探针为准（本环境网络屏蔽 docs.originlab.com，无法抓取官方页）。

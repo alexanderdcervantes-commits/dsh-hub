@@ -12,7 +12,7 @@ DSH Web GUI 的工作区文件树插件（`dsh-ftree`）：文件浏览、多格
 - 宽度拖拽调整 + 面板开关状态持久化（localStorage）
 
 ### 预览（多标签）
-- **Markdown**：渲染 + 编辑双模式（工具栏、实时预览、自动保存、Ctrl+S），支持工作区相对路径图片（`![](https://raw.githubusercontent.com/Nothree-code/folder-tree-sh/667ac8c3a0401f44b97aaee299f0d65436e3870f/assets/a.png)` 经 host raw 路由渲染）
+- **Markdown**：渲染 + 编辑双模式（工具栏、实时预览、自动保存、Ctrl+S），支持工作区相对路径图片（`![](https://raw.githubusercontent.com/Nothree-code/folder-tree-sh/bd26b1635ae0b55ad0471d71f0fcda8cd27d769c/assets/a.png)` 经 host raw 路由渲染）
 - **代码**：30+ 语言轻量高亮
 - **CSV**：自动分隔符检测（`,` `;` Tab）+ 表格渲染
 - **图片**：缩放（Ctrl+滚轮）/ 双击复位

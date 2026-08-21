@@ -9,19 +9,19 @@
 
 主对话直接指挥已连接的服务器，右侧保留真实交互式终端，支持文件管理（SFTP）、端口转发与数据库管理：
 
-![SSH 主界面](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/9ebce99556f898a99db9ebf8cb1547d925054cd7/assets/screenshots/ssh-main-view.png)
+![SSH 主界面](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/96c974cd18e16357e5d66efdc6f902d0ff9c0aad/assets/screenshots/ssh-main-view.png)
 
-![文件管理（SFTP）](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/9ebce99556f898a99db9ebf8cb1547d925054cd7/assets/screenshots/ssh-files-tab.png)
+![文件管理（SFTP）](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/96c974cd18e16357e5d66efdc6f902d0ff9c0aad/assets/screenshots/ssh-files-tab.png)
 
-![端口转发](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/9ebce99556f898a99db9ebf8cb1547d925054cd7/assets/screenshots/ssh-tunnels-tab.png)
+![端口转发](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/96c974cd18e16357e5d66efdc6f902d0ff9c0aad/assets/screenshots/ssh-tunnels-tab.png)
 
-![数据库管理界面](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/9ebce99556f898a99db9ebf8cb1547d925054cd7/assets/screenshots/db-panel.png)
+![数据库管理界面](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/96c974cd18e16357e5d66efdc6f902d0ff9c0aad/assets/screenshots/db-panel.png)
 
-![SSH 资产管理](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/9ebce99556f898a99db9ebf8cb1547d925054cd7/assets/screenshots/ssh-resources.png)
+![SSH 资产管理](https://raw.githubusercontent.com/caoyiwei850/dsh-ssh-ops/96c974cd18e16357e5d66efdc6f902d0ff9c0aad/assets/screenshots/ssh-resources.png)
 
 ## 能做什么
 
-- 在会话右侧打开可调整宽度的 xterm.js SSH 终端。
+- 在会话右侧打开可调整宽度的 xterm.js SSH 终端；与 **DSH-better-sidebar** 同时启用时，终端会自动停靠在侧栏左边，不会覆盖文件侧栏或右上角控制按钮。
 - 在 **设置 → 插件 → SSH 资源** 中管理任意数量的服务器和分组；顶部的 **SSH** 仅显示或隐藏右侧终端。
 - 服务器名称、地址、端口、用户名、认证类型和分组保存到 DSH 本地存储；数量不设上限。
 - 密码、PEM 私钥和私钥口令仅保存到 DSH 官方本机凭据库 `~/.dsh/.credentials.yaml`（owner-only 权限）；浏览器存储、Agent 上下文、工具结果和资源列表均不会读取或显示秘密内容。
@@ -40,7 +40,9 @@
 
 DSH 自身权限机制仍然有效。本插件额外阻止 Agent 工具执行明显不可逆或破坏性操作，例如删除文件、删库、格式化磁盘、`terraform destroy`、`kubectl delete`、`docker prune`、强制 Git 清理以及重启/关机。
 
-需要执行此类高危操作时，必须由操作者在右侧 SSH 终端中亲自输入。普通运维操作（配置 SSL、安装软件包、修改配置、重载服务等）可以正常通过 DSH 的权限流程执行。
+Agent 命中上述黑名单时不会被静默拒绝：插件会创建一条一次性的**待确认**记录，并直接在右侧 SSH 面板的「终端」窗口上方显示执行卡。每条卡片都展示目标服务器、风险原因和完整命令，只有操作者点击红色「执行」才会提交；「撤销」会清掉记录和已预填的输入行。键盘 Enter 不能提交 Agent 预填的危险命令；Ctrl-C 或任何编辑都会让该记录失效，后续内容按普通人工输入处理。多条危险命令独立排队。若当时没有可安全预填的终端会话、或命令含 Tab 等控制字符，则降级为在对话中返回一张可复制的命令卡片，供操作者粘贴到终端执行。普通运维操作（配置 SSL、安装软件包、修改配置、重载服务等）可以正常通过 DSH 的权限流程执行。
+
+同样的模型覆盖 `sftp_delete`（不再由 Agent 直接删，改为将等价 `rm -rf <路径>` 加入待确认队列）和 `db_execute` 的高危 SQL（`DROP`/`TRUNCATE`/`SHUTDOWN`）：高危 SQL 保持现有模式，返回带 ```sql 代码块的卡片，供操作者粘贴到数据库面板的 SQL 编辑器手动执行。SQL 判断按**语句动词**识别（跳过字符串/注释、支持多语句），不会误杀字符串字面量里的关键字，高频增删改查正常放行。
 
 ## 安装
 

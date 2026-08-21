@@ -44,16 +44,19 @@ API 直接返回 `400 INVALID_REQUEST`，且重试时历史原封不动，反复
 如果崩溃后还有多次失败重试，日志里还会留下**多条重复的 user 消息**横在孤儿
 assistant 与注入点之间，让"补插 tool 消息"也无法满足紧邻约束。
 
-## 插件如何修复（三层防御）
+## 插件如何修复（四层防御）
 
-1. **预防（agent/pre-step，主路径）**：追踪每个会话中「已声明但从未被 tool/result
-   响应」的调用；**仅当**其声明所在的 assistant 消息就是 surface 的最后一个节点时
-   （新崩溃的典型形态），在模型请求构建前把合成 error tool-result 消息插到该步消息
-   最前面。合成消息随 decision.messages 以 `user/message` 事件落盘，
-   `deriveMessages()` 从根上恢复合法——循环构建的请求（deep-frozen、不可改写）
-   自然就合法了，**从源头杜绝 400**。
+1. **自动续跑（agent/status，主路径）**：工具调度崩溃（如 `prepare` 崩）后，趁
+   agent 回到 idle 时，把合成 error tool-result 送回报文箱并唤醒它——**把错误
+   原样上报给 LLM，下一步换工具、重试还是向用户报告，由 LLM 自己决定**。这保证
+   "AI 消息始终是最后一条、对话不卡死"。
 
-2. **治愈（agent/request-error）**：若 API 仍因 tool_calls 配对/紧邻违规返回 400
+2. **预防（agent/pre-step）**：追踪每个会话中「已声明但从未被 tool/result 响应」的
+   调用；下一轮请求构建前把合成 error tool-result 消息插到该步消息最前面（覆盖
+   重启后恢复的旧孤儿）。合成消息随 decision.messages 以 `user/message` 事件落盘，
+   `deriveMessages()` 从根上恢复合法，**从源头杜绝 400**。
+
+3. **治愈（agent/request-error）**：若 API 仍因 tool_calls 配对/紧邻违规返回 400
    （例如旧版本已污染的会话、或孤儿 assistant 后面已横着过期消息），用 **surface
    替换**完成修复，然后**强制重试一次**（重试基于修复后的日志重建请求，一次成功）：
    - 把悬空 assistant 消息改写成**不含 tool_calls** 的版本（剥离无响应的调用）；
@@ -62,7 +65,7 @@ assistant 与注入点之间，让"补插 tool 消息"也无法满足紧邻约�
    - 折叠崩溃重试留下的**重复 user 消息**。
    修复幂等：第二次遇到同一违规时无事可做，自然回退下游策略，不会无限重试。
 
-3. **兜底（llm/stream）**：对每个请求做纯数组矫正（配对 + 紧邻重排 + 孤儿/重复
+4. **兜底（llm/stream）**：对每个请求做纯数组矫正（配对 + 紧邻重排 + 孤儿/重复
    丢弃 + 空 assistant 丢弃）。循环构建的请求是冻结的，只告警不改写；
    compaction、session-title 等自建 messages 的非冻结请求直接原地替换。
 
@@ -73,6 +76,12 @@ dsh plugin --profile web add github:Leeminjing/dsh-messages-sanitizer
 ```
 
 重启 harness 即生效（插件随 profile 层栈自动加载）。
+
+更新到最新版：
+
+```bash
+dsh plugin --profile web update dsh-messages-sanitizer
+```
 
 ## 配置
 

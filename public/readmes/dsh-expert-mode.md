@@ -37,12 +37,12 @@ No custom prompts to write. No multi-config to maintain. **Just install and use.
 ## 🖼️ Demo
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Asher-2000/dsh-expert-mode/74c9d1004e4884dc7fd30ea6fc318f5bcaf5654f/assets/main-ui.jpg" alt="DSH Expert Mode main interface" width="500" /><br/>
+  <img src="https://raw.githubusercontent.com/Asher-2000/dsh-expert-mode/af2ff6be540a59e2fabdbd4dd8330db166b3b2a2/assets/main-ui.jpg" alt="DSH Expert Mode main interface" width="500" /><br/>
   <em>Select the "Expert Mode" preset in DSH workspace to use</em>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Asher-2000/dsh-expert-mode/74c9d1004e4884dc7fd30ea6fc318f5bcaf5654f/assets/expert-mode-run.jpg" alt="Expert Mode running" width="500" /><br/>
+  <img src="https://raw.githubusercontent.com/Asher-2000/dsh-expert-mode/af2ff6be540a59e2fabdbd4dd8330db166b3b2a2/assets/expert-mode-run.jpg" alt="Expert Mode running" width="500" /><br/>
   <em>5 expert subagents working in parallel, with real-time token usage and timing</em>
 </p>
 
@@ -92,6 +92,7 @@ No custom prompts to write. No multi-config to maintain. **Just install and use.
 | 🔄 **Five-Anchor Constraint** | Prevents topic drift with per-turn self-check |
 | 🤝 **Cross Review** | High-risk tasks get multi-expert independent review |
 | 💾 **Experience Pool** | Lessons learned are saved and injected next time |
+| 💬 **Subagent Communication** | Experts can communicate via send_message (continuable mode) |
 | ⚡ **Fault Recovery** | Auto-retry on timeout, strategy switch on failure |
 | 📉 **Progressive Disclosure** | Methodology injected on-demand, 28% token savings |
 | 🌐 **Bilingual** | Complete EN/ZH documentation |
@@ -187,3 +188,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) - The core framework
 - [Cordis](https://github.com/cordiverse/cordis) - Plugin system
 - [Awesome DSH Plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) - Community listing
+

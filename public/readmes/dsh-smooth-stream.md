@@ -6,11 +6,13 @@
 
 项目主页：<https://laplace-bit.github.io/dsh-smooth-stream/>
 
+[安装指南](https://laplace-bit.github.io/dsh-smooth-stream/install.html) · [工作原理与可复现基准](https://laplace-bit.github.io/dsh-smooth-stream/how-it-works.html)
+
 ## 效果
 
 左：默认 Web UI。右：dsh-smooth-stream。
 
-![左：未使用插件。右：使用 dsh-smooth-stream。](https://raw.githubusercontent.com/Laplace-bit/dsh-smooth-stream/9c3af7c65c90b02c9ccd06d5f95cffd697457fc2/docs/compare.gif)
+![左：未使用插件。右：使用 dsh-smooth-stream。](https://raw.githubusercontent.com/Laplace-bit/dsh-smooth-stream/97866e7143b844995bc7490f3a5a40f968fe9441/docs/compare.gif)
 
 ## 核心体验
 
@@ -59,12 +61,14 @@ Host 日志里应出现 `[dsh-smooth-stream] plugin loaded!`。
 
 ## 用户设置
 
-在 Web 界面打开 **设置 → 插件 → 插件配置**，会看到一张 **丝滑流式（Smooth stream）** 卡片，可切换**「自动展开思考」**：
+在 Web 界面打开 **设置 → 插件 → 插件配置**，会看到一张 **丝滑流式（Smooth stream）** 卡片，其中包含：
 
-- **开**（默认）：思考块在流式时自动展开，思考结束收起——与插件默认行为一致。
-- **关**：思考块保持折叠；仍可手动点开，且不会被流式状态抢回控制。
+- **启用丝滑流式渲染**（默认开启）：开启时由本插件接管回复和工具行的渲染与跟随；关闭后会撤销接管，完整使用 Harness 内置渲染。
+- **自动展开思考**：控制思考块在流式期间是否自动展开。主开关关闭时此选项不会生效。
 
-该设置是用户级的持久化偏好，改完即生效，无需重启；会写进 DeepSeek Harness 的用户设置文档，而不是插件的组合配置。
+“自动展开思考”开启时，思考块会在流式时自动展开、思考结束后收起；关闭后思考块保持折叠，仍可手动点开，且不会被流式状态抢回控制。
+
+这些设置是用户级的持久化偏好，改完即生效，无需重启；会写进 DeepSeek Harness 的用户设置文档，而不是插件的组合配置。
 
 ## 关于与更新
 

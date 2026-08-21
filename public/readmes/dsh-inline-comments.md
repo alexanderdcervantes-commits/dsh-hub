@@ -13,29 +13,29 @@
 
 > **交互来源说明：**本插件独立、非官方地复刻了 ChatGPT 的正文注释功能，并将这套体验带到 DeepSeek Harness。复制的是使用流程，不是 OpenAI 的源码、素材、API 或品牌；本项目与 OpenAI 无隶属或官方合作关系。
 
-> **兼容性提示：**项目要求 DeepSeek Harness `0.1.0-rc.7` 或更高的 `0.1.x` 预发布版本。DSH 仍处于预发布阶段。由于当前没有助手正文内部 Slot，本插件必须覆盖三个内置会话渲染器。升级 DSH 前请阅读[兼容性说明](docs/compatibility.md)。
+> **兼容性提示：**项目要求 DeepSeek Harness `0.1.0-rc.8` 或更高的 `0.1.x` 预发布版本。DSH 仍处于预发布阶段。由于当前没有助手正文内部 Slot，本插件必须覆盖三个内置会话渲染器。升级 DSH 前请阅读[兼容性说明](docs/compatibility.md)。
 
 ## 界面预览
 
 整个流程都留在对话里：选中原文、添加一条或多条编号注释、检查草稿，再从熟悉的 DSH 输入框发送。
 
-![DSH Inline Comments 的编号注释、就地编辑器和输入框草稿列表总览](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/afab662f1754b7c9aed80f27251f67208d27faa2/docs/assets/inline-comments-overview.png)
+![DSH Inline Comments 的编号注释、就地编辑器和输入框草稿列表总览](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/e5a812d28f66edb8834fcbd713c4d1c2a3d0edb6/docs/assets/inline-comments-overview.png)
 
 选中真正想讨论的文字，浏览器原生选区仍然保留，随时可以复制。
 
-![选中的助手回复原文及添加注释、复制操作](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/afab662f1754b7c9aed80f27251f67208d27faa2/docs/assets/inline-comments-selection.png)
+![选中的助手回复原文及添加注释、复制操作](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/e5a812d28f66edb8834fcbd713c4d1c2a3d0edb6/docs/assets/inline-comments-selection.png)
 
 趁上下文还在眼前，直接在原文旁写下意见。
 
-![助手回复旁的正文注释编辑器](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/afab662f1754b7c9aed80f27251f67208d27faa2/docs/assets/inline-comments-editor.png)
+![助手回复旁的正文注释编辑器](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/e5a812d28f66edb8834fcbd713c4d1c2a3d0edb6/docs/assets/inline-comments-editor.png)
 
 发送前可以集中检查和调整所有本地草稿。
 
-![带原文引用的正文注释草稿列表](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/afab662f1754b7c9aed80f27251f67208d27faa2/docs/assets/inline-comments-drafts.png)
+![带原文引用的正文注释草稿列表](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/e5a812d28f66edb8834fcbd713c4d1c2a3d0edb6/docs/assets/inline-comments-drafts.png)
 
 暂时不想使用注释时，可在通用设置中关闭功能，已有草稿不会丢失。
 
-![已启用的 DSH Inline Comments 设置项](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/afab662f1754b7c9aed80f27251f67208d27faa2/docs/assets/inline-comments-settings.png)
+![已启用的 DSH Inline Comments 设置项](https://raw.githubusercontent.com/ruisenbai/dsh-inline-comments/e5a812d28f66edb8834fcbd713c4d1c2a3d0edb6/docs/assets/inline-comments-settings.png)
 
 ## 功能
 
@@ -86,14 +86,14 @@ dsh web --profile web
 每个 `v*.*.*` 标签都会构建可安装 Tarball 并附加到 GitHub Release。下载后可以直接安装预构建包，无需执行仓库构建脚本：
 
 ```bash
-gh release download v0.1.0 --repo ruisenbai/dsh-inline-comments --pattern '*.tgz'
-dsh plugin --profile web add ./dsh-inline-comments-0.1.0.tgz
+gh release download v0.1.2 --repo ruisenbai/dsh-inline-comments --pattern '*.tgz'
+dsh plugin --profile web add ./dsh-inline-comments-0.1.2.tgz
 ```
 
 如果 Profile 明确允许这个可信包执行 `prepare` 构建，也可以安装固定标签的 Git 依赖：
 
 ```bash
-dsh plugin --profile web add git+https://github.com/ruisenbai/dsh-inline-comments.git#v0.1.0
+dsh plugin --profile web add git+https://github.com/ruisenbai/dsh-inline-comments.git#v0.1.2
 ```
 
 ## 设置
@@ -110,7 +110,7 @@ dsh plugin --profile web add git+https://github.com/ruisenbai/dsh-inline-comment
 
 移除的插件内“整体要求”已有内容，会在第一次成功附加时一次性迁移进官方输入框；只有官方输入框接受附加后，插件存储中的旧值才会被清除。
 
-当前 DSH 命令提交接口不透出官方输入框的图片 ID，因此输入框存在图片时无法附加注释；附加后再添加图片时，混合提交会被拒绝，且不会丢弃图片或注释草稿。
+DSH rc.8 的命令声明可选择接收序列化图片。本插件有意不启用该能力，因此输入框存在图片时无法附加注释；附加后再添加图片时，DSH 会拒绝混合提交，且不会丢弃图片或注释草稿。
 
 ## 状态定义
 
@@ -170,7 +170,7 @@ CI 会在 Node 22.19 与 24 上执行类型检查、Lint、单元测试、生产
 - 未发送草稿只存在当前浏览器，不会跨设备同步；已发送批次可从 Session 日志恢复。
 - 模型确认属于协作协议。模型遗漏或破坏标记时，状态保持“已发送”，不会猜测为“已处理”。
 - 归档任务没有活跃输入框，无法附加注释；请在可编辑任务中创建注释。
-- DSH 命令 Claim 不携带输入框图片 ID，因此图片与正文注释暂不能合并在一次提交中。
+- DSH rc.8 的命令 Claim 可选择接收序列化图片，但本插件有意不声明 `CommandClaim.images`，因此图片与正文注释暂不能合并在一次提交中。
 - CSS Custom Highlight 取决于浏览器支持；不支持时仍可使用编号标记和时间线定位。
 - 一次选区必须位于同一条助手回复内，跨消息选区会被拒绝。
 - DSH 暂无私有命令注册标记，因此经过严格校验的内部传输命令可能出现在斜杠命令目录中。

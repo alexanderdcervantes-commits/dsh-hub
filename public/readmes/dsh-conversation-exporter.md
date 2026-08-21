@@ -6,29 +6,35 @@ one click. **Select turns…** exports a chosen subset of whole conversation tur
 means the Human message or messages plus the corresponding final Assistant response;
 selected turns keep their original chronological order, and unselected turns are omitted.
 
+Listed in [Awesome DSH Plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)
+under **Sessions & Messages**.
+
 ## Demo
+
+Use **Export Chat** for the full current conversation, or **Select turns…** to export
+chosen whole turns only.
 
 ### Export directly from DSH Web
 
-![Export Chat in DeepSeek Harness](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/612ec19413cd356ccc3939315e6beaf17244bd4d/assets/dsh-export-chat.png)
+![Export Chat in DeepSeek Harness](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/a7375d3ab5ce07e202b0822f44db15fe8417edf1/assets/dsh-export-chat.png)
 
 ### Clean Markdown output
 
-![Exported DSH conversation as Markdown](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/612ec19413cd356ccc3939315e6beaf17244bd4d/assets/markdown-export-preview.png)
+![Exported DSH conversation as Markdown](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/a7375d3ab5ce07e202b0822f44db15fe8417edf1/assets/markdown-export-preview.png)
 
 ### V0.3 Selective Turn Export
 
 Choose only the whole conversation turns you want to keep.
 
-![Choose selected conversation turns](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/612ec19413cd356ccc3939315e6beaf17244bd4d/assets/select-turns.png)
+![Choose selected conversation turns](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/a7375d3ab5ce07e202b0822f44db15fe8417edf1/assets/select-turns.png)
 
 Selected turns preserve rich Markdown, including Mermaid diagrams.
 
-![Mermaid preserved in selective export](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/612ec19413cd356ccc3939315e6beaf17244bd4d/assets/selective-export-mermaid.png)
+![Mermaid preserved in selective export](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/a7375d3ab5ce07e202b0822f44db15fe8417edf1/assets/selective-export-mermaid.png)
 
 Unselected turns are omitted while the original chronological order is preserved.
 
-![Selective export result](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/612ec19413cd356ccc3939315e6beaf17244bd4d/assets/selective-export-result.png)
+![Selective export result](https://raw.githubusercontent.com/liuyuelintop/dsh-conversation-exporter/a7375d3ab5ce07e202b0822f44db15fe8417edf1/assets/selective-export-result.png)
 
 ## Export Chat vs. Session Log
 

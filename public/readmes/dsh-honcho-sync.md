@@ -1,415 +1,517 @@
-# dsh-honcho-sync — Honcho Memory Plugin for DeepSeek Harness
+# @nanpaidashi/dsh-honcho-sync
 
-[![GitHub](https://img.shields.io/badge/GitHub-nanpaidashi/dsh--honcho--sync-blue)](https://github.com/nanpaidashi/dsh-honcho-sync)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![v0.7.0](https://img.shields.io/badge/version-0.7.0-brightgreen)]()
+Honcho Memory Plugin for [DeepSeek Harness](https://github.com/DeepSeek-AI/dsh) — give your AI persistent, cross-session memory backed by a self-hosted [Honcho](https://github.com/plastic-labs/honcho) v3 service.
 
-> **Give your DeepSeek Harness AI persistent memory.**
-> Auto-sync every conversation turn to a self-hosted Honcho service, and equip the AI with **25 tools** covering the full official Honcho v3 API surface plus extended endpoints. Configure via environment variables, settings panel, or `cordis.patch.yml`.
+[中文](#中文说明) | English
 
 ---
 
-## 中文
+## What it does
 
-### 这是什么？
+- **Auto-sync**: Every conversation turn is automatically synced to Honcho (with debounce). Sync cursors persist across restarts.
+- **Hybrid recall**: Semantic search across both raw messages AND reasoned conclusions (explicit/deductive/inductive) in parallel.
+- **Memory injection**: On session start, relevant peer cards, representations, and semantic recall results are injected into the system prompt.
+- **25 tools**: Full Honcho v3 API surface exposed as DSH tools — search, profile, session management, peer management, conclusions, dreaming, queue monitoring.
 
-**DeepSeek Harness (DSH) ↔ Honcho 记忆桥接插件。** 安装后 DSH 自动将每轮对话同步到用户自建的 [Honcho](https://github.com/plastic-labs/honcho) 记忆服务（NAS、服务器或云端均可），AI 获得 **25 个内置工具**，覆盖官方 Honcho API 全量端点 + 扩展端点：检索、推理、画像、会话管理、消息收发、结论、Dream、队列监控。
+## Requirements
 
-### 功能
+- DeepSeek Harness (DSH) with web profile
+- A running Honcho v3 instance (self-hosted)
+- Node.js >= 18
 
-| 功能 | 说明 |
-|------|------|
-| **自动同步** | 每轮对话自动推送到 Honcho（debounce 3s），watermark 去重 |
-| **持久化状态** | `~/.dsh/honcho-sync-state.json` 保存同步进度，DSH 重启不丢失 cursor |
-| **Layer-1 上下文注入** | 会话首条消息时自动加载 peer card + representation + session summary |
-| **语义去重** | representation 注入前做 IP/关键词 Jaccard / 3-gram 短语重叠检测，过滤与 peer card 重复的事实 |
-| **25 个记忆工具** | 覆盖官方 API + 扩展端点：search / dialectic / profile / session / peer / message / conclude / dream / queue |
-
-### 工具清单（25 个）
-
-| 分类 | 工具 | 说明 |
-|------|------|------|
-| **记忆** | `honcho_recall` | 7 天窗口语义搜索（快，2-5s） |
-| | `honcho_ask` | 辩证推理问答（慢，2-5min） |
-| | `honcho_remember` | 保存事实到持久记忆 |
-| | `honcho_context` | 读取 session 完整上下文 |
-| **搜索** | `honcho_search` | 跨所有 session 搜索（无日期限制） |
-| | `honcho_session_search` | 在指定 session 内搜索 |
-| **画像** | `honcho_profile` | 获取 peer card（身份/属性/关系/指令） |
-| | `honcho_representation` | 获取 working representation（跨会话观察） |
-| **会话** | `honcho_session_list` | 列出 workspace 所有 session |
-| | `honcho_session_create` | 创建/获取 session |
-| | `honcho_session_clone` | 克隆 session |
-| | `honcho_session_peers` | 查看 session 关联的 peers |
-| | `honcho_session_summaries` | 获取 session 摘要 |
-| | `honcho_session_context` | 获取 session 上下文（含 summary） |
-| **Peer** | `honcho_peer_list` | 列出所有 peers |
-| | `honcho_peer_create` | 创建/获取 peer |
-| **消息** | `honcho_message_send` | 向指定 session 发送消息（扩展） |
-| | `honcho_message_get` | 按 message_id 读取单条消息（扩展） |
-| **结论** | `honcho_conclude` | 创建显式结论（高置信度事实） |
-| | `honcho_conclude_list` | 列出结论 |
-| | `honcho_conclude_query` | 语义搜索结论 |
-| **管理** | `honcho_status` | 服务器健康检查 |
-| | `honcho_dream` | 触发离线处理（card_refresh / omni） |
-| | `honcho_queue` | 查看处理队列状态 |
-
-### 自有特色功能说明
-
-#### 1. 语义去重链 (Semantic Deduplication)
-
-Layer-1 注入时，对 Honcho representation 做三级过滤：
-
-1. **时间块拆分** — 按 `[YYYY-MM-DD HH:MM:SS]` 前缀拆分为独立块
-2. **Peer Card 重叠检测** — 提取 peer card 中的 IDENTITY/ATTRIBUTE/RELATIONSHIP/INSTRUCTION 事实，与每块内容做语义重叠判断
-3. **内容哈希去重** — 基于块内容的 60-char 前缀做 `Map` 去重
-
-**`_semanticOverlap(a, b)` 判断逻辑：**
-- **IP 重叠**：双方都包含相同 `192.168.x.x` IP → 判定重复
-- **关键词 Jaccard** — 分词后计算 Jaccard 相似度 > 0.3 → 判定重复
-- **3-gram 短语重叠** — a 中任意连续 3 词出现在 b 中 → 判定重复
-
-过滤后的 representation 按时间块保留最多 N 条（默认 8 条），并将 UTC 时间转换为 CST (+8h)。
-
-#### 2. 持久化状态 (Persistence)
-
-同步进度写入 `~/.dsh/honcho-sync-state.json`，包含每个 Honcho session 的 `lastSyncedEventCount`。DSH 重启、HMR 热更新后自动恢复 sync cursor，不会重复推送已同步的消息。
-
-#### 3. 动态配置读取 (Dynamic Config)
-
-每次工具调用时通过 `resolveConfig()` 从 `_resolvedSettings` 动态读取配置，settings 面板修改后立即生效，无需重启 DSH。
-
-#### 4. 额外 Honcho API 工具
-
-| 工具 | 端点 | 说明 |
-|------|------|------|
-| `honcho_message_send` | `POST /sessions/{id}/messages` | 向指定 session 发送消息 |
-| `honcho_message_get` | `GET /sessions/{id}/messages/{msg_id}` | 按 ID 读取单条消息 |
-| `honcho_session_context` | `GET /sessions/{id}/context` | 获取 session 上下文（含 summary） |
-| `honcho_peer_list` | `POST /peers/list` | 列出所有 peers |
-
-这些端点在 Honcho v3 API 中可用但未被上游 v0.6.0 覆盖。
-
-### 安装
-
-**前提：** 已部署 [Honcho](https://github.com/plastic-labs/honcho) 记忆服务
-
-#### 方式 1：从 GitHub 直接安装（推荐）
+## Installation
 
 ```bash
+# From npm
+dsh plugin --profile web add npm:@nanpaidashi/dsh-honcho-sync dsh web
+
+# Or from GitHub
 dsh plugin --profile web add link:https://github.com/nanpaidashi/dsh-honcho-sync dsh web
 ```
 
-#### 方式 2：本地手动安装
+Then restart DSH:
 
 ```bash
-# 1. 克隆仓库
-git clone https://github.com/nanpaidashi/dsh-honcho-sync.git
-cd dsh-honcho-sync
-npm run build  # cp src/index.mjs dist/index.js
+systemctl --user restart dsh-web
+# or: dsh web --restart
+```
 
-# 2. 复制文件到 DSH profile
-cp dist/index.js ~/.dsh/profiles/web/honcho-sync.mjs
+## Upgrading
 
-# 3. 在 ~/.dsh/profiles/web/cordis.patch.yml 中添加：
-# - insert:
-#     - id: honcho-sync
-#       name: './honcho-sync.mjs'
+If you installed an earlier version (v0.6.x or v0.7.0):
 
-# 4. 重启 DSH
+```bash
+# Re-run the same install command — it pulls the latest version and overwrites
+dsh plugin --profile web add npm:@nanpaidashi/dsh-honcho-sync dsh web
+# or
+dsh plugin --profile web add link:https://github.com/nanpaidashi/dsh-honcho-sync dsh web
+
 systemctl --user restart dsh-web
 ```
 
-### 配置
+The install is idempotent: it replaces the plugin source file in place. Your configuration (settings panel) and sync state (`~/.dsh/honcho-sync-state.json`) are preserved — no data loss, no re-configuration needed.
 
-**必须配置 `HONCHO_URL` 和 `HONCHO_WORKSPACE`，二选一：**
+### v0.8.0 → v0.8.1 changelog
 
-#### 方式 1：环境变量（推荐）
+- **Context efficiency**: Reduced registered tools from 25 to 4 (`honcho_recall`, `honcho_ask`, `honcho_remember`, `honcho_context`) — saves ~7K tokens of tool schema injection per session
+- **Injection quality**: Added `_filterRepresentation()` — removes Pattern [medium]/[low] blocks, Premises/Sources provenance chains, and orphan Type/Sources lines from representation injection
+- **Injection quality**: Added `_assembleByPriority()` — assembles memory-context parts by priority (peer-card > session-summary > semantic-recall > representation) instead of fixed order
+- **Injection budget**: `injectionMaxChars` default 8000 → 4000, `reprMaxObs` default 8 → 4
+- **Tool descriptions**: Shortened all tool descriptions to ~100 chars
+
+### v0.7.x → v0.8.0 changelog
+
+- **DSH 0.1.0-rc.8 compatibility**: Added `normalizeToolParameters()` to convert legacy parameter shorthand to standard JSON Schema
+- **DSH 0.1.0-rc.8 compatibility**: Added `output.render` returning content blocks array (required by DSH >= 2026)
+- **README**: Removed settings panel references — configuration is done via environment variables in `~/.config/systemd/user/dsh-web.service`
+- Fixed `conclusions/query` requiring `filters` parameter
+- Fixed response parsing for `/search`, `/peers/list`, `/summaries`
+- Fixed `POST /conclusions` body format
+- Fixed `schedule_dream` parameter name (`dream_type`)
+- Added 4 tools: `honcho_conclude`, `honcho_conclude_list`, `honcho_conclude_query`, `honcho_message_get`
+- Hybrid recall now searches messages + conclusions in parallel
+
+## Uninstalling
 
 ```bash
-export HONCHO_URL="http://your-honcho-server:8000"   # 必填 — Honcho API 地址
-export HONCHO_WORKSPACE="hermes"                     # 必填 — Honcho workspace 名称
-export HONCHO_USER_PEER="user"                       # 可选 — 默认 "user"
-export HONCHO_AGENT_PEER="agent"                     # 可选 — 默认 "agent"
+# 1. Remove the plugin from DSH
+dsh plugin --profile web remove honcho-sync dsh web
+
+# 2. (Optional) Remove sync state file
+rm ~/.dsh/honcho-sync-state.json
+
+# 3. Restart DSH
+systemctl --user restart dsh-web
 ```
 
-然后在 `~/.dsh/profiles/web/cordis.patch.yml` 中引用：
+> **Note:** Removing the plugin does NOT delete your Honcho data. All messages, conclusions, and peer cards remain on your Honcho server. The plugin is just the bridge — your memory is safe.
 
-```yaml
-- insert:
-    - id: honcho-sync
-      name: './honcho-sync.mjs'
-      config:
-        honchoUrl: __FROM_ENV__
-        workspace: ''
-        userPeer: user
-        agentPeer: agent
-        debounceMs: 3000
-        autoRecall: true
-        recallBudget: 2000
-        autoSync: true
-        messageMaxChars: 25000
-        injectionMaxChars: 4000
+## Configuration
+
+**There is no settings panel.** All configuration is done via environment variables in your DSH service file.
+
+### Step 1: Edit the DSH service file
+
+```bash
+# For systemd (Linux)
+nano ~/.config/systemd/user/dsh-web.service
 ```
 
-其中 `honchoUrl: __FROM_ENV__` 表示从 `HONCHO_URL` 环境变量读取。
+Add these environment variables to the `[Service]` section:
 
-#### 方式 2：直接写在 cordis.patch.yml
-
-```yaml
-- insert:
-    - id: honcho-sync
-      name: './honcho-sync.mjs'
-      config:
-        honchoUrl: "http://192.168.0.4:8000"
-        workspace: "hermes"
-        userPeer: "user"
-        agentPeer: "agent"
-        debounceMs: 3000
-        autoRecall: true
-        recallBudget: 2000
-        autoSync: true
-        messageMaxChars: 25000
-        injectionMaxChars: 4000
+```ini
+[Service]
+Environment="HONCHO_URL=http://localhost:8000"
+Environment="HONCHO_WORKSPACE=my-workspace"
+Environment="HONCHO_USER_PEER=user"
+Environment="HONCHO_AGENT_PEER=agent"
 ```
 
-#### 方式 3：通过 DSH settings 服务（运行时配置）
+### Step 2: Apply the changes
 
-插件通过 DSH `settings` 服务注册了 `honcho-memory` 命名空间。如果 DSH 版本支持 settings UI，可以在设置界面直接修改：
-
-- **honchoUrl** — Honcho API 地址
-- **workspace** — Workspace 名称
-- **userPeer / agentPeer** — Peer 标识符
-- **debounceMs** — 同步防抖延迟（100ms+，默认 3000）
-- **autoRecall** — 是否自动 recall（默认 true）
-- **recallBudget** — Recall token 预算（默认 2000）
-- **autoSync** — 是否自动同步（默认 true）
-- **messageMaxChars** — 同步消息最大字符数（默认 25000）
-- **injectionMaxChars** — 首条注入最大字符数（默认 4000）
-- **reprMaxObs** — representation 保留最大观察数（默认 8）
-- **reprTimeoutMs** — representation 请求超时（默认 8000ms）
-- **cardTimeoutMs** — peer card 请求超时（默认 5000ms）
-
-### 架构
-
-```
-DSH Session
-    │
-    ├─ session/event ──→ 自动同步（debounce + watermark）──→ Honcho API (POST messages)
-    │                      ↓
-    │                  ~/.dsh/honcho-sync-state.json 持久化
-    │
-    ├─ 25 个 honcho_* 工具 ──→ AI 可调用的全量 API 封装
-    │
-    └─ 首条 user message ──→ Layer-1 注入（语义去重后的 card + representation + summary）
+```bash
+systemctl --user daemon-reload
+systemctl --user restart dsh-web
 ```
 
-### 同步策略
+### Configuration reference
 
-- **Per-day session ID**：`dsh-<cwd>-YYYY-MM-DD`，每天一个 Honcho session，保持检索空间小
-- **Watermark 去重**：记录已同步的 event count，只推送增量
-- **Debounce 3s**：避免高频写入
-- **持久化状态**：`~/.dsh/honcho-sync-state.json` 保存 sync cursor，DSH 重启不丢失
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `HONCHO_URL` | Honcho API base URL | *(required)* |
+| `HONCHO_WORKSPACE` | Honcho workspace name | *(required)* |
+| `HONCHO_USER_PEER` | Peer ID representing the user | `user` |
+| `HONCHO_AGENT_PEER` | Peer ID representing the agent | `agent` |
 
-### 参数调优建议
+> **Note:** Advanced options (debounce, recall budget, timeouts) use sensible defaults and rarely need tuning. If you do need to customize them, edit the `DEFAULTS` object at the top of `src/index.mjs`.
 
-| 参数 | 默认值 | 说明 |
-|------|--------|------|
-| `debounceMs` | 3000 | 对话结束后等待多久才推送 Honcho。多轮快速对话可适当增大 |
-| `messageMaxChars` | 25000 | 单次同步的最大消息字符数。对话很长时调大，节省 Honcho token 时调小 |
-| `recallBudget` | 2000 | Layer-1 注入时 recall 的 token 预算。peer card 通常 500-1500 tokens |
-| `injectionMaxChars` | 4000 | Layer-1 注入的最大字符数。包含 peer card + representation + session summary |
-| `reprMaxObs` | 8 | representation 注入时保留的最大观察数（语义去重后） |
-| `reprTimeoutMs` | 8000 | representation POST 请求超时（毫秒） |
-| `cardTimeoutMs` | 5000 | peer card GET 请求超时（毫秒） |
+### Honcho Server Setup
 
-### 依赖
+If you don't have Honcho running yet:
 
-- [Honcho](https://github.com/plastic-labs/honcho) — 需自行部署
-- DeepSeek Harness ≥ 0.1.0-rc.6
+```bash
+# Quick start with Docker
+docker run -d --name honcho \
+  -p 8000:8000 \
+  -e HONCHO_API_KEY="your-api-key" \
+  plasticlabs/honcho:latest
 
-### 许可证
+# Or self-host from source (recommended for production)
+# See: https://github.com/plastic-labs/honcho#self-hosting
+```
+
+Create a workspace and peers:
+
+```bash
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json"
+
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace/peers \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"id": "user"}'
+
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace/peers \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"id": "agent"}'
+```
+
+## Tools
+
+### Memory
+| Tool | Description |
+|------|-------------|
+| `honcho_recall` | Hybrid semantic search (messages + conclusions). Fast (2-5s). |
+| `honcho_ask` | Deep dialectic reasoning with a peer. Slower (2-5min) but thorough. |
+| `honcho_remember` | Save a fact/statement to Honcho memory. |
+| `honcho_context` | Get compressed conversation context for a session. |
+
+### Search
+| Tool | Description |
+|------|-------------|
+| `honcho_search` | Search across ALL sessions (no date filter). |
+| `honcho_session_search` | Search within a specific session. |
+
+### Profile
+| Tool | Description |
+|------|-------------|
+| `honcho_profile` | Get a peer's card (identity, attributes, relationships). |
+| `honcho_representation` | Get a peer's representation (compressed observations). |
+
+### Session
+| Tool | Description |
+|------|-------------|
+| `honcho_session` | List sessions. |
+| `honcho_session_create` | Create a new session. |
+| `honcho_session_clone` | Clone an existing session. |
+| `honcho_session_peers` | List/add/remove peers on a session. |
+| `honcho_session_summaries` | Get session summaries (compressed context). |
+| `honcho_session_context` | Get full conversation context. |
+
+### Peer
+| Tool | Description |
+|------|-------------|
+| `honcho_peer` | List all peers. |
+| `honcho_peer_create` | Create or get a peer. |
+| `honcho_peer_list` | List all peers (alias). |
+
+### Message
+| Tool | Description |
+|------|-------------|
+| `honcho_message_send` | Send a message to a session. |
+| `honcho_message_get` | Get a message by ID. |
+
+### Conclude
+| Tool | Description |
+|------|-------------|
+| `honcho_conclude` | Create an explicit conclusion. |
+| `honcho_conclude_list` | List conclusions. |
+| `honcho_conclude_query` | Semantic search across conclusions. |
+
+### Admin
+| Tool | Description |
+|------|-------------|
+| `honcho_status` | Health check + queue stats. |
+| `honcho_dream` | Trigger a dream (card_refresh or omni). |
+| `honcho_queue` | Check processing queue status. |
+
+## Session Strategy
+
+- **`per-directory`** (default): Each working directory gets its own Honcho session (e.g., `dsh-home-user-project`). Conversations in different directories are isolated.
+- **`global`**: All conversations share one session regardless of directory.
+
+## Auto-sync & Persistence
+
+- Messages are synced with a configurable debounce (default 3s).
+- Sync cursors are persisted to `~/.dsh/honcho-sync-state.json` — survives HMR and DSH restarts.
+- On restart, only new events since the last cursor are synced (no duplicates).
+
+## Memory Injection
+
+When `autoRecall` is enabled, on the first user message of each session:
+
+1. Peer cards (profile) for both peers are fetched
+2. Representations are fetched and deduplicated (semantic overlap removal)
+3. A semantic search query is run using the user's message as the query
+4. Results are wrapped in `<memory-context>` tags and injected into the system prompt
+
+## Privacy
+
+- All data stays on **your** Honcho server. No third-party data transmission.
+- The plugin does not log message content.
+- Configuration (URL, workspace, peer IDs) is stored in DSH settings, not in the plugin source.
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| `HONCHO_URL is required` at boot | Set via environment variable in `~/.config/systemd/user/dsh-web.service`. |
+| No sync happening | Check `autoSync` is `true`, verify Honcho URL is reachable, check logs: `journalctl --user -u dsh-web \| grep honcho` |
+| Recall returns empty | Ensure Deriver has processed messages (check `honcho_queue`), wait a few minutes after first sync |
+| `401 Unauthorized` | Check your Honcho API key in server config |
+| Session not found | Verify `workspace` name matches your Honcho workspace exactly |
+
+## License
 
 MIT
 
 ---
 
-## English
+# 中文说明
 
-### What is this?
+[English](#nanpaidashidsh-honcho-sync) | 中文
 
-**A bridge plugin connecting DeepSeek Harness to Honcho memory.** After installation, DSH auto-syncs every conversation turn to a self-hosted [Honcho](https://github.com/plastic-labs/honcho) service (NAS, server, or cloud), and the AI gains **25 built-in tools** covering the full official Honcho v3 API surface plus extended endpoints: search, dialectic reasoning, peer profiles, session management, message send/retrieve, conclusions, dream scheduling, and queue monitoring.
+Honcho 记忆插件，为 [DeepSeek Harness](https://github.com/DeepSeek-AI/dsh) 提供持久化跨会话记忆，基于自托管的 [Honcho](https://github.com/plastic-labs/honcho) v3 服务。
 
-### Tools (25)
+## 功能
 
-| Category | Tool | Description |
-|----------|------|-------------|
-| **Memory** | `honcho_recall` | 7-day window semantic search (fast, 2-5s) |
-| | `honcho_ask` | Dialectic reasoning Q&A (slow, 2-5min) |
-| | `honcho_remember` | Save facts to persistent memory |
-| | `honcho_context` | Read full session context |
-| **Search** | `honcho_search` | Cross-all-sessions search (no date filter) |
-| | `honcho_session_search` | Search within a specific session |
-| **Profile** | `honcho_profile` | Get peer card (identity/attributes/relationships) |
-| | `honcho_representation` | Get working representation (cross-session observations) |
-| **Session** | `honcho_session_list` | List all sessions in workspace |
-| | `honcho_session_create` | Create/get a session |
-| | `honcho_session_clone` | Clone a session |
-| | `honcho_session_peers` | List session peers |
-| | `honcho_session_summaries` | Get session summaries |
-| | `honcho_session_context` | Get session context with summary |
-| **Peer** | `honcho_peer_list` | List all peers |
-| | `honcho_peer_create` | Create/get a peer |
-| **Message** | `honcho_message_send` | Send message to a session (extended) |
-| | `honcho_message_get` | Get single message by ID (extended) |
-| **Conclude** | `honcho_conclude` | Create explicit conclusions |
-| | `honcho_conclude_list` | List conclusions |
-| | `honcho_conclude_query` | Semantic search across conclusions |
-| **Admin** | `honcho_status` | Server health check |
-| | `honcho_dream` | Trigger offline processing (card_refresh / omni) |
-| | `honcho_queue` | Check processing queue status |
+- **自动同步**：每轮对话自动同步到 Honcho（带防抖）。同步游标跨重启持久化。
+- **混合召回**：同时搜索原始消息和推理结论（显式/演绎/归纳），并行执行。
+- **记忆注入**：会话开始时，将相关的 peer 卡片、表征和语义召回结果注入系统提示词。
+- **25 个工具**：覆盖 Honcho v3 完整 API — 搜索、画像、会话管理、peer 管理、结论、做梦、队列监控。
 
-### Unique Features
+## 依赖
 
-#### 1. Semantic Deduplication
+- DeepSeek Harness (DSH) web profile
+- 一个运行中的 Honcho v3 实例（自托管）
+- Node.js >= 18
 
-Before injecting Honcho representation into DSH context, the plugin applies a 3-stage filter:
-
-1. **Time-block splitting** — splits representation by `[YYYY-MM-DD HH:MM:SS]` prefixes
-2. **Peer card overlap detection** — extracts IDENTITY/ATTRIBUTE/RELATIONSHIP/INSTRUCTION facts from peer cards and checks for semantic overlap with each block
-3. **Content-based deduplication** — deduplicates blocks sharing the same 60-char content prefix
-
-**`_semanticOverlap(a, b)` checks:**
-- **IP overlap** — both contain the same `192.168.x.x` IP → duplicate
-- **Keyword Jaccard similarity** — tokenized words Jaccard > 0.3 → duplicate
-- **3-gram phrase overlap** — any consecutive 3-word sequence from a found in b → duplicate
-
-Result: representation is trimmed to max N observations (default 8), with UTC times converted to CST (+8h).
-
-#### 2. Persistent State
-
-Sync progress saved to `~/.dsh/honcho-sync-state.json` with `lastSyncedEventCount` per Honcho session. Survives DSH restarts and HMR — no duplicate pushes.
-
-#### 3. Dynamic Config Resolution
-
-Each tool call reads config via `resolveConfig()` from `_resolvedSettings`. Settings panel changes take effect immediately without restarting DSH.
-
-#### 4. Extended Honcho API Tools
-
-| Tool | Endpoint | Description |
-|------|----------|-------------|
-| `honcho_message_send` | `POST /sessions/{id}/messages` | Send a message to a session |
-| `honcho_message_get` | `GET /sessions/{id}/messages/{msg_id}` | Get single message by ID |
-| `honcho_session_context` | `GET /sessions/{id}/context` | Get session context with summary |
-| `honcho_peer_list` | `POST /peers/list` | List all peers |
-
-### Installation
-
-#### Method 1: Direct from GitHub (Recommended)
+## 安装
 
 ```bash
+# 从 npm
+dsh plugin --profile web add npm:@nanpaidashi/dsh-honcho-sync dsh web
+
+# 或从 GitHub
 dsh plugin --profile web add link:https://github.com/nanpaidashi/dsh-honcho-sync dsh web
 ```
 
-#### Method 2: Manual local installation
+然后重启 DSH：
 
 ```bash
-git clone https://github.com/nanpaidashi/dsh-honcho-sync.git
-cd dsh-honcho-sync
-npm run build
-cp dist/index.js ~/.dsh/profiles/web/honcho-sync.mjs
-# Add to ~/.dsh/profiles/web/cordis.patch.yml:
-# - insert:
-#     - id: honcho-sync
-#       name: './honcho-sync.mjs'
+systemctl --user restart dsh-web
+# 或: dsh web --restart
+```
+
+## 升级
+
+如果你安装过旧版本（v0.6.x 或 v0.7.0）：
+
+```bash
+# 重跑同一条安装命令 — 会拉取最新版并覆盖
+dsh plugin --profile web add npm:@nanpaidashi/dsh-honcho-sync dsh web
+# 或
+dsh plugin --profile web add link:https://github.com/nanpaidashi/dsh-honcho-sync dsh web
+
 systemctl --user restart dsh-web
 ```
 
-### Configuration
+安装是幂等的：原地替换插件源码文件。你的配置（环境变量）和同步状态（`~/.dsh/honcho-sync-state.json`）会保留 — 无数据丢失，无需重新配置。
 
-**`HONCHO_URL` and `HONCHO_WORKSPACE` are required — configure via one of:**
+### v0.8.0 → v0.8.1 变更
 
-#### Method 1: Environment Variables (Recommended)
+- **上下文效率**：注册工具从 25 个精简到 4 个（`honcho_recall`、`honcho_ask`、`honcho_remember`、`honcho_context`）— 每会话节省约 7K tokens 的工具 schema 注入
+- **注入质量**：新增 `_filterRepresentation()` — 从表征注入中过滤 Pattern [medium]/[low] 块、Premises/Sources 溯源链、孤立 Type/Sources 行
+- **注入质量**：新增 `_assembleByPriority()` — 按优先级组装 memory-context（peer-card > session-summary > semantic-recall > representation）
+- **注入预算**：`injectionMaxChars` 默认 8000 → 4000，`reprMaxObs` 默认 8 → 4
+- **工具描述**：所有工具描述精简到 ~100 字符
+
+### v0.7.x → v0.8.0 变更
+
+- **DSH 0.1.0-rc.8 兼容**：添加 `normalizeToolParameters()` 将旧式参数简写转换为标准 JSON Schema
+- **DSH 0.1.0-rc.8 兼容**：添加 `output.render` 返回 content blocks 数组（DSH >= 2026 要求）
+- **README**：移除设置面板说明 — 配置通过 `~/.config/systemd/user/dsh-web.service` 中的环境变量完成
+- 修复 `conclusions/query` 需要 `filters` 参数
+- 修复 `/search`、`/peers/list`、`/summaries` 响应解析
+- 修复 `POST /conclusions` 请求体格式
+- 修复 `schedule_dream` 参数名（`dream_type`）
+- 新增 4 个工具：`honcho_conclude`、`honcho_conclude_list`、`honcho_conclude_query`、`honcho_message_get`
+- 混合召回现在并行搜索消息和结论
+
+## 卸载
 
 ```bash
-export HONCHO_URL="http://your-honcho-server:8000"   # Required
-export HONCHO_WORKSPACE="hermes"                     # Required
-export HONCHO_USER_PEER="user"                       # Optional, default "user"
-export HONCHO_AGENT_PEER="agent"                     # Optional, default "agent"
+# 1. 从 DSH 移除插件
+dsh plugin --profile web remove honcho-sync dsh web
+
+# 2.（可选）删除同步状态文件
+rm ~/.dsh/honcho-sync-state.json
+
+# 3. 重启 DSH
+systemctl --user restart dsh-web
 ```
 
-Then in `~/.dsh/profiles/web/cordis.patch.yml`:
+> **注意：** 卸载插件**不会**删除你的 Honcho 数据。所有消息、结论和 peer 卡片仍然保留在你的 Honcho 服务器上。插件只是桥梁 — 你的记忆是安全的。
 
-```yaml
-- insert:
-    - id: honcho-sync
-      name: './honcho-sync.mjs'
-      config:
-        honchoUrl: __FROM_ENV__
-        workspace: ''
-        debounceMs: 3000
-        autoRecall: true
-        recallBudget: 2000
-        autoSync: true
-        messageMaxChars: 25000
-        injectionMaxChars: 4000
+## 配置
+
+**没有设置面板。** 所有配置通过 DSH 服务文件中的环境变量完成。
+
+### 第一步：编辑 DSH 服务文件
+
+```bash
+# systemd (Linux)
+nano ~/.config/systemd/user/dsh-web.service
 ```
 
-`honchoUrl: __FROM_ENV__` reads from the `HONCHO_URL` environment variable.
+在 `[Service]` 部分添加环境变量：
 
-#### Method 2: Direct in cordis.patch.yml
-
-```yaml
-- insert:
-    - id: honcho-sync
-      name: './honcho-sync.mjs'
-      config:
-        honchoUrl: "http://192.168.0.4:8000"
-        workspace: "hermes"
+```ini
+[Service]
+Environment="HONCHO_URL=http://localhost:8000"
+Environment="HONCHO_WORKSPACE=my-workspace"
+Environment="HONCHO_USER_PEER=user"
+Environment="HONCHO_AGENT_PEER=agent"
 ```
 
-#### Method 3: DSH Settings Service (Runtime)
+### 第二步：应用更改
 
-The plugin registers a `honcho-memory` namespace via the DSH `settings` service. If your DSH version supports a settings UI, you can modify all parameters at runtime without restarting.
-
-### Architecture
-
-```
-DSH Session
-    │
-    ├─ session/event ──→ Auto-sync (debounce + watermark) ──→ Honcho API
-    │                      ↓
-    │                  ~/.dsh/honcho-sync-state.json persistence
-    │
-    ├─ 25 honcho_* tools ──→ Full API surface callable by AI
-    │
-    └─ First user message ──→ Layer-1 injection (deduplicated card + representation + summary)
+```bash
+systemctl --user daemon-reload
+systemctl --user restart dsh-web
 ```
 
-### Sync Strategy
+### 配置参考
 
-- **Per-day session ID**: `dsh-<cwd>-YYYY-MM-DD`, one Honcho session per day
-- **Watermark deduplication**: tracks synced event count, only pushes deltas
-- **Debounce 3s**: avoids high-frequency writes
-- **Persistent state**: `~/.dsh/honcho-sync-state.json` saves sync cursor across restarts
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `HONCHO_URL` | Honcho API 地址 | *(必填)* |
+| `HONCHO_WORKSPACE` | Honcho 工作区名称 | *(必填)* |
+| `HONCHO_USER_PEER` | 用户 peer ID | `user` |
+| `HONCHO_AGENT_PEER` | Agent peer ID | `agent` |
 
-### Parameter Tuning
+> **注意：** 高级选项（防抖、召回预算、超时）使用合理的默认值，很少需要调整。如需自定义，编辑 `src/index.mjs` 顶部的 `DEFAULTS` 对象。
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `debounceMs` | 3000 | Delay before pushing to Honcho after conversation ends |
-| `messageMaxChars` | 25000 | Max characters per sync push |
-| `recallBudget` | 2000 | Token budget for Layer-1 context recall |
-| `injectionMaxChars` | 4000 | Max chars for Layer-1 injection (card + representation + summary) |
-| `reprMaxObs` | 8 | Max observations kept after semantic deduplication |
-| `reprTimeoutMs` | 8000 | Representation POST timeout (ms) |
-| `cardTimeoutMs` | 5000 | Peer card GET timeout (ms) |
+### Honcho 服务器搭建
 
-### Dependencies
+如果你还没有运行 Honcho：
 
-- [Honcho](https://github.com/plastic-labs/honcho) — Self-hosted memory service
-- DeepSeek Harness ≥ 0.1.0-rc.6
+```bash
+# Docker 快速启动
+docker run -d --name honcho \
+  -p 8000:8000 \
+  -e HONCHO_API_KEY="your-api-key" \
+  plasticlabs/honcho:latest
 
-### License
+# 或从源码自托管（生产环境推荐）
+# 参考: https://github.com/plastic-labs/honcho#self-hosting
+```
+
+创建工作区和 peers：
+
+```bash
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json"
+
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace/peers \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"id": "user"}'
+
+curl -X POST http://localhost:8000/v3/workspaces/my-workspace/peers \
+  -H "Authorization: Bearer $HONCHO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"id": "agent"}'
+```
+
+## 工具列表
+
+### 记忆
+| 工具 | 说明 |
+|------|------|
+| `honcho_recall` | 混合语义搜索（消息 + 结论）。快（2-5秒）。 |
+| `honcho_ask` | 与 peer 深度辩证推理。慢（2-5分钟）但全面。 |
+| `honcho_remember` | 保存事实/陈述到 Honcho 记忆。 |
+| `honcho_context` | 获取会话的压缩上下文。 |
+
+### 搜索
+| 工具 | 说明 |
+|------|------|
+| `honcho_search` | 跨所有会话搜索（无日期过滤）。 |
+| `honcho_session_search` | 在特定会话内搜索。 |
+
+### 画像
+| 工具 | 说明 |
+|------|------|
+| `honcho_profile` | 获取 peer 卡片（身份、属性、关系）。 |
+| `honcho_representation` | 获取 peer 表征（压缩观察）。 |
+
+### 会话
+| 工具 | 说明 |
+|------|------|
+| `honcho_session` | 列出会话。 |
+| `honcho_session_create` | 创建新会话。 |
+| `honcho_session_clone` | 克隆现有会话。 |
+| `honcho_session_peers` | 列出/添加/移除会话中的 peer。 |
+| `honcho_session_summaries` | 获取会话摘要（压缩上下文）。 |
+| `honcho_session_context` | 获取完整对话上下文。 |
+
+### Peer
+| 工具 | 说明 |
+|------|------|
+| `honcho_peer` | 列出所有 peer。 |
+| `honcho_peer_create` | 创建或获取 peer。 |
+| `honcho_peer_list` | 列出所有 peer（别名）。 |
+
+### 消息
+| 工具 | 说明 |
+|------|------|
+| `honcho_message_send` | 向会话发送消息。 |
+| `honcho_message_get` | 按 ID 获取消息。 |
+
+### 结论
+| 工具 | 说明 |
+|------|------|
+| `honcho_conclude` | 创建显式结论。 |
+| `honcho_conclude_list` | 列出结论。 |
+| `honcho_conclude_query` | 跨结论语义搜索。 |
+
+### 管理
+| 工具 | 说明 |
+|------|------|
+| `honcho_status` | 健康检查 + 队列统计。 |
+| `honcho_dream` | 触发做梦（card_refresh 或 omni）。 |
+| `honcho_queue` | 查看处理队列状态。 |
+
+## 会话策略
+
+- **`per-directory`**（默认）：每个工作目录对应独立的 Honcho 会话（如 `dsh-home-user-project`）。不同目录的对话互相隔离。
+- **`global`**：所有对话共享一个会话，不区分目录。
+
+## 自动同步与持久化
+
+- 消息以可配置的防抖间隔同步（默认 3 秒）。
+- 同步游标持久化到 `~/.dsh/honcho-sync-state.json` — 跨 HMR 和 DSH 重启保留。
+- 重启后只同步游标之后的新事件（无重复）。
+
+## 记忆注入
+
+当 `autoRecall` 启用时，每个会话的首条用户消息触发：
+
+1. 获取两个 peer 的卡片（画像）
+2. 获取表征并去重（语义重叠移除）
+3. 以用户消息为查询执行语义搜索
+4. 结果包裹在 `<memory-context>` 标签中注入系统提示词
+
+## 隐私
+
+- 所有数据保留在**你的** Honcho 服务器上。无第三方数据传输。
+- 插件不记录消息内容。
+- 配置（URL、工作区、peer ID）通过环境变量存储在 DSH 服务文件中，不在插件源码里。
+
+## 故障排查
+
+| 症状 | 解决方案 |
+|------|----------|
+| 启动时 `HONCHO_URL is required` | 通过设置面板或环境变量配置。如果设置异步加载，此消息无害。 |
+| 没有同步发生 | 检查 `autoSync` 是否为 `true`，确认 Honcho URL 可达，查看日志：`journalctl --user -u dsh-web \| grep honcho` |
+| 召回返回空 | 确认 Deriver 已处理消息（检查 `honcho_queue`），首次同步后等待几分钟 |
+| `401 Unauthorized` | 检查 Honcho 服务器配置中的 API key |
+| Session not found | 确认 `workspace` 名与 Honcho 工作区完全一致 |
+
+## 许可
 
 MIT

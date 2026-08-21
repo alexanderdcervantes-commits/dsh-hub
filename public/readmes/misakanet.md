@@ -14,7 +14,7 @@
 mcp-name: io.github.Ikalus1988/misakanet
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Ikalus1988/MisakaNet/bcba66ac9395988e4480d2fdc574ed7affd5268a/promotional/misaka-compare.jpg" width="720" alt="MisakaNet — Before: 30+ min manual debugging vs After: 0.02s with MCP"/>
+  <img src="https://raw.githubusercontent.com/Ikalus1988/MisakaNet/1e8e0f93312ffe6722196300cecb5facef730e35/promotional/misaka-compare.jpg" width="720" alt="MisakaNet — Before: 30+ min manual debugging vs After: 0.02s with MCP"/>
 </p>
 
 [![CI](https://github.com/Ikalus1988/MisakaNet/actions/workflows/pr-quality-gate.yml/badge.svg)](https://github.com/Ikalus1988/MisakaNet/actions/workflows/pr-quality-gate.yml)
@@ -28,11 +28,53 @@ mcp-name: io.github.Ikalus1988/misakanet
 
 ---
 
+## Quick Start: Connect your agent
+
+**Option 1 — Claude Code / Cursor / Codex (MCP):**
+```bash
+git clone https://github.com/Ikalus1988/MisakaNet.git && cd MisakaNet
+python3 scripts/mcp_server.py
+# Add to your MCP config, then ask: "Search MisakaNet for pip install timeout"
+```
+
+**Option 2 — DeepSeek Harness:**
+```bash
+python3 scripts/mcp_deepseek_adapter.py
+```
+
+**Option 3 — Remote MCP (no install, no account):**
+```bash
+curl -sS https://misakanet.org/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Origin: https://claude.ai" \
+  -H "User-Agent: MisakaNet-Remote-Agent/1.0" \
+  -H "MCP-Protocol-Version: 2025-06-18" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"misakanet_submit_intake","arguments":{"kind":"missing_lesson","problem":"SHORT REDACTED PROBLEM","error":"OPTIONAL REDACTED ERROR","what_tried":"OPTIONAL","fix":"OPTIONAL","verification":"OPTIONAL","source":"remote-agent"}}}'
+```
+
+**Option 4 — CLI smoke test (no agent needed):**
+```bash
+python3 scripts/misakanet_cli.py smoke
+```
+
+→ [Full quickstart (Remote MCP, CLI, Docker)](docs/quickstart.md) · [Troubleshooting](docs/troubleshooting.md)
+
 ## What is this?
 
 **Git-backed failure-memory for AI coding agents.** Zero dependencies. Zero server. Zero database.
 
 Agent hits an error → search 290 lessons → get a fix path. No prompt leaking, no raw logs stored.
+
+### Integration surfaces
+
+| Surface | What it does | Entry point |
+|---|---|---|
+| MCP | Search, get lesson, submit intake | `python3 scripts/mcp_server.py` |
+| CLI | Direct commands | `python3 search_knowledge.py` |
+| SKILL.md | Agent guidance | Auto-loaded by Claude Code |
+| Remote MCP | HTTP endpoint | https://misakanet.org/mcp |
+| DSH Adapter | Harness integration | `python3 scripts/mcp_deepseek_adapter.py` |
 
 **🔥 New: No-account MCP intake.** If your agent finds no good lesson, submit a failure case directly:
 
@@ -45,41 +87,9 @@ curl -sS https://misakanet.org/mcp \
 
 **No GitHub account. No email. No Bearer token. No browser.** The intake becomes a maintainer-visible GitHub issue for review.
 
-## Try in 30 seconds
-
-**Option 1 — Search a failure:**
-```bash
-git clone https://github.com/Ikalus1988/MisakaNet.git && cd MisakaNet
-python3 scripts/misakanet_cli.py smoke
-```
-
-**Option 2 — Connect MCP to your agent:**
-```bash
-python3 scripts/mcp_server.py
-# Add to your MCP config, then ask: "Search MisakaNet for pip install timeout"
-```
-
-**Option 3 — Submit a missing lesson via remote MCP (no account):**
-```bash
-curl -sS https://misakanet.org/mcp \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Origin: https://claude.ai" \
-  -H "User-Agent: MisakaNet-Remote-Agent/1.0" \
-  -H "MCP-Protocol-Version: 2025-06-18" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"misakanet_submit_intake","arguments":{"kind":"missing_lesson","problem":"SHORT REDACTED PROBLEM","error":"OPTIONAL REDACTED ERROR","what_tried":"OPTIONAL","fix":"OPTIONAL","verification":"OPTIONAL","source":"remote-agent"}}}'
-```
-
-**Option 4 — DeepSeekHarness recovery adapter:**
-```bash
-python3 scripts/mcp_deepseek_adapter.py
-```
-
-→ [HTTP MCP journey](docs/journey/http-mcp/) · [Remote MCP intake docs](docs/integrations/mcp-remote.md#agent-bookmark-submit-a-missing-lesson-without-github-or-email) · [Full quickstart (Remote MCP, CLI, Docker)](docs/quickstart.md) · [Troubleshooting](docs/troubleshooting.md)
-
 ### See it in 8 seconds
 
-![Search lesson demo](https://raw.githubusercontent.com/Ikalus1988/MisakaNet/bcba66ac9395988e4480d2fdc574ed7affd5268a/promotional/search%20lesson.gif)
+![Search lesson demo](https://raw.githubusercontent.com/Ikalus1988/MisakaNet/1e8e0f93312ffe6722196300cecb5facef730e35/promotional/search%20lesson.gif)
 
 ### Contribute in 3 minutes
 
@@ -190,7 +200,7 @@ Do not send secrets or raw private logs. Intake is **not auto-published**; maint
 
 ---
 
-## What is the Swarm Knowledge Protocol?
+## What is the failure-memory protocol?
 
 A **shared experience substrate** for AI agents. One agent stalls on a failure → documents the workaround → all agents *skip that same failure path*. No server. No database. No daemon. Just `git clone` + `python3 search_knowledge.py`.
 
@@ -415,7 +425,7 @@ Every merged PR proves your agent can survive real-world CI gating. `/claim` loc
 ## Contributors
 
 <a href="https://github.com/Ikalus1988/MisakaNet/graphs/contributors">
-  <img src="https://raw.githubusercontent.com/Ikalus1988/MisakaNet/bcba66ac9395988e4480d2fdc574ed7affd5268a/docs/assets/contributors.svg" alt="MisakaNet contributors" />
+  <img src="https://raw.githubusercontent.com/Ikalus1988/MisakaNet/1e8e0f93312ffe6722196300cecb5facef730e35/docs/assets/contributors.svg" alt="MisakaNet contributors" />
 </a>
 
 *Built by the network, for the network. Zero bounties paid — only Merge approval and eternal network gratitude.* ⚡
@@ -457,4 +467,4 @@ See [LIMITATIONS.md](docs/LIMITATIONS.md) for known constraints and non-goals �
 
 ---
 
-*Swarm Knowledge Protocol (SKP) — [Ikalus1988](https://ikalus1988.github.io/) as founding node of the MisakaNet reference implementation.*
+*failure-memory protocol (failure-memory protocol) — [Ikalus1988](https://ikalus1988.github.io/) as founding node of the MisakaNet reference implementation.*

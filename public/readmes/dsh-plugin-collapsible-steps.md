@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/mervyn-teo/dsh-plugin-collapsible-steps">
-    <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-collapsible-steps/c0ff950ea0e5be8e98abcd470cee4f910cafc7c8/assets/banner.png" alt="dsh-plugin-collapsible-steps banner — fold consecutive tool &amp; thinking steps into one bracket" width="100%">
+    <img src="https://raw.githubusercontent.com/mervyn-teo/dsh-plugin-collapsible-steps/667ed25de8c3a45abe001725d6916cf5cc6a2fec/assets/banner.png" alt="dsh-plugin-collapsible-steps banner — fold consecutive tool &amp; thinking steps into one bracket" width="100%">
   </a>
 </p>
 

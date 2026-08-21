@@ -5,7 +5,7 @@
 **An AI visual workspace for e-commerce creation, built into DeepSeek Harness.**
 
 [![License](https://img.shields.io/badge/license-MIT-2ea44f.svg)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.1-282828.svg)]()
+[![Version](https://img.shields.io/badge/version-1.0.2-282828.svg)]()
 [![Platform](https://img.shields.io/badge/platform-DeepSeek%20Harness%20plugin-282828.svg)]()
 [![简体中文](https://img.shields.io/badge/Language-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-7530FE.svg)](./README.zh-CN.md)
 
@@ -14,12 +14,15 @@ Describe the result you want in natural language, and watch it appear right next
 
 [Read the Chinese README](./README.zh-CN.md) · [Get a WeShop API Key](https://www.weshop.ai/apiKey) · [Contact us](mailto:hi@weshop.ai)
 
-<img src="https://raw.githubusercontent.com/weshopai/weshop-dsh-plugin/bb01658c4707ff9a5491903f324db22da74bab3e/assets/images/weshop_header_readme.png" alt="WeShop for DeepSeek Harness" width="100%" />
+<img src="https://raw.githubusercontent.com/weshopai/weshop-dsh-plugin/c90f80ec7c23a291425de08a11adf802826b422a/assets/images/weshop_header_readme.png" alt="WeShop for DeepSeek Harness" width="100%" />
 
 </div>
 
 > [!IMPORTANT]
-> **Install and successfully run DeepSeek Harness before installing this plugin.** This repository is a Harness plugin, not a standalone application.
+> **Compatible with DeepSeek Harness v0.1.0-rc.8 and later.** WeShop is verified with Harness's native `dsh plugin` workflow, which creates the Web profile and enables the plugin bundle automatically.
+
+> [!IMPORTANT]
+> **Install DeepSeek Harness before installing this plugin.** This repository is a Harness plugin, not a standalone application.
 
 ## 📖 What is WeShop for DeepSeek Harness?
 
@@ -32,7 +35,7 @@ It is built for workflows like:
 - Swapping, extending, or cleaning up backgrounds without leaving the chat
 - Batching photography, edits, and short video from a single natural-language brief
 
-<img src="https://raw.githubusercontent.com/weshopai/weshop-dsh-plugin/bb01658c4707ff9a5491903f324db22da74bab3e/assets/images/weshop_app_preview_readme.jpg" alt="WeShop canvas preview: a generated product image on an infinite canvas, synced with the Harness conversation" width="100%" />
+<img src="https://raw.githubusercontent.com/weshopai/weshop-dsh-plugin/c90f80ec7c23a291425de08a11adf802826b422a/assets/images/weshop_app_preview_readme.jpg" alt="WeShop canvas preview: a generated product image on an infinite canvas, synced with the Harness conversation" width="100%" />
 
 ## ✨ Highlights
 
@@ -63,25 +66,17 @@ It is built for workflows like:
 
 ### Before you begin
 
-Install Node.js, then start the official Harness Web UI once:
-
-```bash
-npx @deepseek-ai/dsh web
-```
-
-Harness should open at `http://127.0.0.1:3080`. Once you see it, stop Harness before continuing.
-
-Alternatively, follow the official [DeepSeek Harness source installation instructions](https://github.com/deepseek-ai/deepseek-harness#run).
+Install Node.js. We recommend the current [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) release: it includes a native plugin manager and creates the Web profile automatically.
 
 ### First installation
 
 With Harness closed, run one command:
 
 ```bash
-npx weshop-dsh-plugin setup
+npx @deepseek-ai/dsh plugin --profile web add weshop-dsh-plugin
 ```
 
-The installer adds WeShop to the Harness Web profile, enables its bundle, and migrates old WeShop packages if it finds any. No GitHub account, access token, or manual file editing is required.
+This installs WeShop, creates the Harness Web profile when needed, and enables its bundle automatically. No GitHub account, access token, `pnpm` configuration, or manual file editing is required.
 
 Then restart Harness:
 
@@ -106,7 +101,7 @@ Then open **Settings → Plugin Market**, search for **WeShop**, and install it 
 For the simplest update, close Harness and run:
 
 ```bash
-npx weshop-dsh-plugin setup
+npx @deepseek-ai/dsh plugin --profile web update weshop-dsh-plugin
 ```
 
 If you already use the public npm package, this also works:
@@ -116,8 +111,8 @@ cd ~/.dsh/profiles/web
 pnpm update weshop-dsh-plugin
 ```
 
-> **Upgrading from an older WeShop install?**
-> If you previously installed a `.tgz` archive, `@weshop/dsh-canvas`, `@weshop/dsh-weshop-2-0`, or `@weshopai/dsh-weshop-2-0`, run `npx weshop-dsh-plugin setup` once. It replaces the old package and bundle entry automatically. After that, use either update command above.
+> **Upgrading from an older WeShop install or older Harness release?**
+> Start Harness once with `npx @deepseek-ai/dsh web`, close it, then run `npx weshop-dsh-plugin setup`. It replaces legacy `.tgz`, `@weshop/dsh-canvas`, `@weshop/dsh-weshop-2-0`, and `@weshopai/dsh-weshop-2-0` installs. Afterwards, use the update command above.
 
 ### Advanced: build a portable archive
 
@@ -132,14 +127,13 @@ pnpm build
 pnpm pack
 ```
 
-This creates a versioned file such as `weshop-dsh-plugin-1.0.1.tgz`.
+This creates a versioned file such as `weshop-dsh-plugin-1.0.2.tgz`.
 
 Install it into the Harness Web profile:
 
 ```bash
-PLUGIN_TARBALL="/absolute/path/to/weshop-dsh-plugin-1.0.1.tgz"
-cd ~/.dsh/profiles/web
-pnpm add "$PLUGIN_TARBALL"
+PLUGIN_TARBALL="/absolute/path/to/weshop-dsh-plugin-1.0.2.tgz"
+npx @deepseek-ai/dsh plugin --profile web add "$PLUGIN_TARBALL"
 ```
 
 ## ⚙️ Configure WeShop OpenAPI

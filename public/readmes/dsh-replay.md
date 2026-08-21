@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/jingxiaoshen.png" width="150" alt="Jing Xiaoshen (鲸小深), the dsh-replay mascot" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/jingxiaoshen.png" width="150" alt="Jing Xiaoshen (鲸小深), the dsh-replay mascot" />
 
 # dsh-replay
 
@@ -14,8 +14,8 @@ Replay · Audit · Cost · Fork tree · Compare — inside the DeepSeek Harness 
 
 **[🎮 Live demo](https://mingozhou.github.io/dsh-replay/)** · [中文文档](./README.zh.md) · [Install](#-quick-start) · [FAQ](#-faq--troubleshooting)
 
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/start.png" width="880" alt="overview dashboard" />
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/demo.gif" width="880" alt="dsh‑replay operation demo" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/start.png" width="880" alt="overview dashboard" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/demo.gif" width="880" alt="dsh‑replay operation demo" />
 
 </div>
 
@@ -47,9 +47,9 @@ DeepSeek Harness keeps a beautiful append-only log where *everything that reache
 | 🌏 **EN / 中文** | Whole UI switches language (findings and meta labels included); auto-detected, one-click toggle |
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/overview-light.png" width="880" alt="overview dashboard" />
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/timeline-light.png" width="880" alt="timeline replay" />
-<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/7a04f0bed633a674480be95d98e0f75b04f73198/assets/audit-light.png" width="880" alt="security audit" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/overview-light.png" width="880" alt="overview dashboard" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/timeline-light.png" width="880" alt="timeline replay" />
+<img src="https://raw.githubusercontent.com/MingoZhou/dsh-replay/930f5bc9d31d316009e2f372989c19ffd642b08d/assets/audit-light.png" width="880" alt="security audit" />
 </div>
 
 Dark mode follows the harness theme. Loading and empty states are hosted by **Jing Xiaoshen (鲸小深)**, our original whale-catgirl mascot (hide her with `.dshr-mascot { display: none }`).

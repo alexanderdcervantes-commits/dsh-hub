@@ -41,6 +41,12 @@ servers** and **Skills** into DSH with one click.
 | 🛠️ Model tools | `agent_sync_scan` / `agent_sync_do` / `agent_sync_status` / `agent_sync_config` / `agent_sync_add_skill` / `agent_sync_toggle` / `agent_sync_remove` / `agent_sync_sources` |
 | 🧩 Extensible | A generic agent registry (`AGENT_DEFS`) — adding a new agent is one line |
 
+## 📸 Screenshots
+
+| MCP/Skills 管理 | MCP/Skills 同步 | 添加技能 |
+|---|---|---|
+| ![main](https://raw.githubusercontent.com/kuaiyukuaikuai/dsh-agent-sync/d0dde63bdda9e50408a23b15fc79494f54b5fcb8/assets/screenshot-main.png) | ![sync](https://raw.githubusercontent.com/kuaiyukuaikuai/dsh-agent-sync/d0dde63bdda9e50408a23b15fc79494f54b5fcb8/assets/screenshot-sync.png) | ![add](https://raw.githubusercontent.com/kuaiyukuaikuai/dsh-agent-sync/d0dde63bdda9e50408a23b15fc79494f54b5fcb8/assets/screenshot-add.png) |
+
 ## 🚀 Quick start
 
 ### Prerequisites

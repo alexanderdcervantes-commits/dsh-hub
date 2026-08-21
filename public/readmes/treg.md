@@ -1,9 +1,9 @@
 # Treg (OpenRouter for Tools)
 
-![treg — the tool catalog for your agent](https://raw.githubusercontent.com/superdesigndev/treg/42aa5265f3ffd89cd5ce1b8fc8251365c09caed9/docs/assets/treg-hero.png)
+![treg — the tool catalog for your agent](https://raw.githubusercontent.com/superdesigndev/treg/a10e2c3591436fbd5d5c75c10ed05c6945a46723/docs/assets/treg-hero.png)
 
 **OpenRouter, but for agent tools instead of models.** Point an agent at one base URL with one token
-and it can do the job: **~2,600 catalogued endpoints across ~40 providers** — SEO and backlinks,
+and it can do the job: **~2,800 catalogued endpoints across ~56 providers** — SEO and backlinks,
 social and trends, people and company enrichment, ads, scraping — **priced per call, from a cent**,
 with no provider signup. Plus your own team's keys, skills and CLIs, callable by every teammate's
 agent without the credential ever leaving the server.

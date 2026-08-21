@@ -10,7 +10,7 @@
 
 | 会话主页(全宽) | 目录抽屉 | 设置界面 |
 | --- | --- | --- |
-| ![移动端会话主页](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/ffce2a78252cb430a77682fe5e67ccfc5585ae54/assets/hero.png) | ![目录抽屉](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/ffce2a78252cb430a77682fe5e67ccfc5585ae54/assets/drawer.png) | ![移动端设置界面](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/ffce2a78252cb430a77682fe5e67ccfc5585ae54/assets/settings.png) |
+| ![移动端会话主页](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/aa2c396e3d30949445161ace79f05b42f8cccc33/assets/hero.png) | ![目录抽屉](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/aa2c396e3d30949445161ace79f05b42f8cccc33/assets/drawer.png) | ![移动端设置界面](https://raw.githubusercontent.com/mexiaosqwq/dsh-web-mobile/aa2c396e3d30949445161ace79f05b42f8cccc33/assets/settings.png) |
 
 ## 特性
 

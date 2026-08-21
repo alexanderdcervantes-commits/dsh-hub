@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/banner.jpg" width="100%" alt="ModLens" />
+  <img src="https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/banner.jpg" width="100%" alt="ModLens" />
 </p>
 
 <h1 align="center">ModLens</h1>
@@ -10,11 +10,10 @@
 
 <p align="center">
   <a href="./README.zh-CN.md">简体中文</a> ·
-  <a href="docs/troubleshooting.md">Troubleshooting</a> ·
   <a href="skills/modlens/references/configure.md">Configuration</a> ·
-  <a href="docs/output-schema.md">Output contract</a> ·
+  <a href="docs/troubleshooting.md">Troubleshooting</a> ·
   <a href="docs/security.md">Security</a> ·
-  <a href="https://github.com/liustack/modsearch"><b>🔎 ModSearch (web search)</b></a>
+  <a href="https://github.com/liustack/modsearch"><b>🔍 ModSearch (the best free web search plugin for DSH)</b></a>
 </p>
 
 <p align="center">
@@ -30,22 +29,22 @@ The flagship DeepSeek and GLM chat models are text-only and cannot read images. 
 
 ## Talk to us
 
-Issues are welcome any time: [open one](https://github.com/liustack/modlens/issues/new/choose). And come find me on X: **[@liustack](https://x.com/liustack)**. What you built with it, which harness you are on, what should come next. New releases land there first, and a proper community space is on the way.
+Issues are welcome any time: [open one](https://github.com/liustack/modlens/issues/new/choose). Follow the liustack WeChat official account, and come find me on X: **[@liustack](https://x.com/liustack)**. What you built with it, which harness you are on, and what should come next are all shared on WeChat and X. A proper community space is on the way.
 
 ## Highlights
 
-**🥇 The most capable vision plugin for DeepSeek Harness (dsh):** one command, `npx -y @deepseek-ai/dsh plugin --profile web add @liustack/modlens@3.22.0`, and the text-only DeepSeek model behind dsh reads images through a native `modlens_read_image` tool. Updating is the same command again. The version is named rather than `@latest` on purpose: pnpm 11 holds back releases published in the last 24 hours and resolves the tag against what survives, so `@latest` would install whatever shipped a day ago ([details](docs/harness-setup.md#keeping-it-up-to-date)).
+**🥇 The most capable vision plugin for DeepSeek Harness (dsh):** install it instantly with one command: `npx -y @deepseek-ai/dsh plugin --profile web add @liustack/modlens@3.22.1`. See the [setup guide](docs/harness-setup.md) for installation and update details. If the command line is not your thing but you still want to try DSH, check out <a href="https://github.com/liustack/aimanager"><b>AIManager</b></a>, the lightest desktop wrapper for DeepSeek Harness. It gets you started with zero code or configuration and installs every dependency for you with one click.
 
 Pasting an image works two ways. **① Just paste.** On a text-only model the pasted image lands as a private temp file and its path enters the composer — the same interaction OpenCode and Pi ship — and the `modlens_read_image` tool takes it from there. **② Pick a `(modlens vision)` entry** in the model selector (it remembers your choice, so once is enough), then paste: the thumbnail stays visible in your message, closer to the Codex app feel, and the image is converted to structured evidence at request time, answered by the same underlying route. The plugin auto-discovers every provider route carrying text-only DeepSeek or GLM models and adds a wrapped entry per route (a stock install gets **`DeepSeek-V4-Flash (modlens vision)`** and **`DeepSeek-V4-Pro (modlens vision)`**; extra routes like opencode-go or zai get their own); the two families' own vision models are excluded automatically. Which paste route applies is the host's per-model call: only a model its metadata positively confirms text-only is taken over, anything unconfirmed is left alone, so vision models keep their native paste ([details](docs/harness-setup.md)).
 
-**Paste an image and it reads it.** No saving to a file and passing a path first.
+**Paste images directly in every harness.** No saving to a file and passing a path first.
 
 - **The lightest touch on the market.** No hooks, no wrappers, no local proxy daemon, not a single line changed in any harness config: on the skill harnesses it is exactly one skill folder, on dsh exactly one plugin. Uninstalling is deleting a folder, and your agents are back to stock.
-- **Zero-config start.** Reuses what Claude Code, Codex, OpenCode, or Pi already have set up: the multimodal models on your machine go straight to work. Nothing at all? Antigravity CLI is a free no-key channel, and a free Gemini key brings a read down to 5-10 seconds.
+- **Zero-config start.** Reuses existing setup in Claude Code, Codex, OpenCode, and Pi, plus other multimodal models already on your machine. Nothing installed locally? Antigravity CLI is a free no-key channel, and a free Gemini key brings a read down to 5-10 seconds. API keys from every major OpenAI-compatible provider work too.
 - **Evidence, not imagination.** Full transcription, reading-order layout regions, entity and relation lists. The model quotes specifics.
 - **Install once, use everywhere.** Verified on real machines in Claude Code, Codex, Pi, and OpenCode.
 
-## Installation
+## Install in other harnesses
 
 **Step 1, hand it to your AI.** Send it this line:
 
@@ -61,6 +60,10 @@ agy                                                           # sign in, then ex
 ```
 
 The install also inventories vision reachable through your other local harness CLIs (Codex, OpenCode, Pi) and asks, per harness, whether modlens may reuse it. Granted logins join the engine pool as equals, and every reused read is labeled with whose quota it spent.
+
+On DeepSeek Harness the command line is not the only way in. Settings → Plugins → Plugin config carries a ModLens card: switch the engine, tick which local CLIs `auto` mode may reuse, hit save and it takes effect.
+
+![The ModLens vision-engine card in the dsh settings page, shown in Chinese: switch the engine, tick which local CLIs auto mode reuses](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-dsh-settings-card.jpg)
 
 ## Usage
 
@@ -117,23 +120,23 @@ Unedited runs, all driving a text-only DeepSeek-V4-Flash.
 
 The newest one first: pasting a screenshot straight into DeepSeek Harness on the `DeepSeek-V4-Flash (modlens vision)` variant. The paste keeps its native thumbnail, the trajectory shows the image arriving "already transcribed by the modlens vision bridge", and the answer walks the UI element by element.
 
-![Pasting an image straight into DeepSeek Harness, read through the modlens vision plugin](https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/demo-dsh-paste.jpg)
+![Pasting an image straight into DeepSeek Harness, read through the modlens vision plugin](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-dsh-paste.jpg)
 
 A tweet screenshot in the Codex desktop app. It reads the author, the caption, the photo itself (down to what both people are wearing), the timestamp, and every engagement number: 5.4M views, 1.6K replies, 5.7K reposts, 116K likes.
 
-![Text-only DeepSeek reading a tweet screenshot in full detail via ModLens](https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/demo-codex-app.jpg)
+![Text-only DeepSeek reading a tweet screenshot in full detail via ModLens](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-codex-app.jpg)
 
 Three images pasted at once. The model reads them one by one, spots that they belong to one visual family, and describes each illustration's content and style.
 
-![Three images dropped together, read one by one](https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/demo-codex-batch.jpg)
+![Three images dropped together, read one by one](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-codex-batch.jpg)
 
 The stress test: a scatter plot comparing 128 AI models. It reads both axes, the log scale, the per-provider color coding, the highlighted region, and every DeepSeek model called out with dashed markers. Dense charts are where vision bridges most often fail.
 
-![The 128-model scatter plot read in full: axes, log scale, and highlighted region](https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/demo-codex-chart.jpg)
+![The 128-model scatter plot read in full: axes, log scale, and highlighted region](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-codex-chart.jpg)
 
 And the paste path, end to end, in a Claude Code terminal on DeepSeek. The pasted image arrives as a path rather than pixels, the skill triggers on its own, the guard confirms the model truly has no vision, and the slide's full content comes back: titles, layout, background, plus an honestly stated uncertainty about the truncated filename.
 
-![The skill triggering on its own in a DeepSeek Claude Code session and reading a pasted slide](https://raw.githubusercontent.com/liustack/modlens/cb481974e1154afffd3835689284d3d28e57c7e1/assets/demo-claude-paste-recovery.jpg)
+![The skill triggering on its own in a DeepSeek Claude Code session and reading a pasted slide](https://raw.githubusercontent.com/liustack/modlens/aaeb5664290f8ffa701261bce3284edbaa21a5d8/assets/demo-claude-paste-recovery.jpg)
 
 ## Documentation
 

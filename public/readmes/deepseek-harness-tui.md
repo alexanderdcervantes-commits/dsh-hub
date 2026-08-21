@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/tui-whale.svg" width="424" alt="DeepSeek Harness TUI whale" />
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/tui-whale.svg" width="424" alt="DeepSeek Harness TUI whale" />
 </p>
 
 <h1 align="center">DeepSeek Harness TUI</h1>
@@ -34,7 +34,7 @@
 不是把功能不断焊进 TUI 本体，而是让主题、视图、命令和交互都由插件组合，最终
 让 Creator 能检查、创建、运行、诊断并迭代自己的终端能力。
 
-![dsh-tui 0.2 的 DeepSeek Harness 首页](https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/screenshots/banner-v020.png)
+![dsh-tui 0.2 的 DeepSeek Harness 首页](https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/banner-v020.png)
 
 ## 快速开始
 
@@ -52,6 +52,20 @@ dsh --profile tui
 `dsh plugin ... add` 是推荐的安装与升级入口：它会自动创建 profile、安装
 TUI 及其 ACP 依赖，不需要全局安装 `dsh-tui`，也不需要另装 pnpm。
 旧包名 `@openma/deepseek-harness-tui` 会继续发布相同版本，已有安装无需立即迁移。
+
+### 从旧包名迁移
+
+`martty` 是新的推荐包名。从 `0.2.13` 开始，`martty` 和
+`@openma/deepseek-harness-tui` 由同一条 CI 以相同版本、相同产物发布；
+旧包名作为兼容别名保留。如需切换，只替换 `tui` profile 中的包规格：
+
+```sh
+dsh plugin --profile tui remove @openma/deepseek-harness-tui
+dsh plugin --profile tui add martty@latest
+```
+
+迁移不改变 `dsh-tui` / `dsb` 命令、`tui` profile 名或运行方式，也不需要
+迁移配置和会话数据。不想立即切换时，继续使用旧包名即可。
 
 这是给 AI agent 阅读的安装说明：[docs/agent-setup.md](docs/agent-setup.md)
 
@@ -111,7 +125,7 @@ dsh-tui --demo
   剪贴板，以及支持 kitty graphics protocol 的图片预览和可选 `/liang` 像素宠物。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/screenshots/agent-turn.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/agent-turn.png" width="720"
        alt="plugin 模式中的 Markdown 回复、工具视图和运行状态" />
 </p>
 
@@ -231,12 +245,12 @@ Unix 上 Node 与 Rust 使用 fd 3/4，Windows 使用带随机 token 的 loopbac
 界面内使用 `/help` 查看命令，使用 `/keys` 查看完整快捷键。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/screenshots/skills-menu.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/skills-menu.png" width="720"
        alt="内置命令与 host skills 共享的斜杠菜单" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/screenshots/image-preview.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/image-preview.png" width="720"
        alt="草稿中的图片 chip 与图片元数据预览" />
 </p>
 
@@ -250,7 +264,7 @@ Ghostty、Kitty 和 WezTerm 等支持 kitty graphics protocol 的终端会显示
 可用 `/liang on`、`/liang off` 显式控制。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/7e9bc91c29769546627bac8fd7c9660dc047225d/assets/screenshots/liang.png" width="640"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/liang.png" width="640"
        alt="输入框旁的可选小难梁像素宠物" />
 </p>
 

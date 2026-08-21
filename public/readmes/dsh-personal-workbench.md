@@ -1,5 +1,7 @@
 # dsh-personal-workbench
 
+[![npm version](https://img.shields.io/npm/v/@dely0/dsh-personal-workbench)](https://www.npmjs.com/package/@dely0/dsh-personal-workbench)
+
 A personal workbench plugin for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH) Web.
 Turn your DSH into a **calendar + task list + AI assistant workbench**.
 
@@ -28,11 +30,11 @@ Turn your DSH into a **calendar + task list + AI assistant workbench**.
 
 | 主界面 | 日历 | 任务列表 |
 |---|---|---|
-| ![主界面](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.PNG) | ![日历](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E6%97%A5%E5%8E%86%E9%A1%B5%E9%9D%A2.png) | ![任务列表](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png) |
+| ![主界面](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E4%B8%BB%E7%95%8C%E9%9D%A2.PNG) | ![日历](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E6%97%A5%E5%8E%86%E9%A1%B5%E9%9D%A2.png) | ![任务列表](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E7%95%8C%E9%9D%A2.png) |
 
 | 知识库 | 点子 | 点子王 |
 |---|---|---|
-| ![知识库](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E7%9F%A5%E8%AF%86%E5%BA%93%E7%95%8C%E9%9D%A2.png) | ![点子](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E7%82%B9%E5%AD%90%E7%95%8C%E9%9D%A2.png) | ![点子王](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/3cda91f6a1d6c235574b2e6994eb412d1abd5c2a/screenshot/%E7%82%B9%E5%AD%90%E7%8E%8B.png) |
+| ![知识库](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E7%9F%A5%E8%AF%86%E5%BA%93%E7%95%8C%E9%9D%A2.png) | ![点子](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E7%82%B9%E5%AD%90%E7%95%8C%E9%9D%A2.png) | ![点子王](https://raw.githubusercontent.com/Dely0/dsh-personal-workbench/145595c37ee7db0101d94bbe1ea9b5c11a0186d4/screenshot/%E7%82%B9%E5%AD%90%E7%8E%8B.png) |
 
 ## 功能清单
 
@@ -40,7 +42,7 @@ Turn your DSH into a **calendar + task list + AI assistant workbench**.
 - 任务字段：标题、Markdown 描述、类型、状态、优先级、截止时间、AI 策略、提醒、工作区
 - 无限层级子任务；今日 / 日历 / 列表三种视图
 - 任务页筛选/排序：关键词（标题/描述）+ 状态/优先级/类型下拉多选可组合筛选；支持截止时间/优先级/创建时间/标题升降序；筛选保留父子层级，归档列表共用
-- 任务类型、状态、优先级全部由字典表驱动，可自行扩展（编辑数据库或后续 UI）
+- 任务类型、状态、优先级全部由字典表驱动，可自行扩展（设置页“字典管理”已支持新增/编辑/停用类型、状态、优先级、点子类型，默认项受保护）
 - 已完成 / 已取消任务不可再次执行
 
 ### AI
@@ -56,6 +58,7 @@ Turn your DSH into a **calendar + task list + AI assistant workbench**.
 - **系统级桌面提醒**：任务到期时在浏览器已授权的情况下发送系统通知（页面可最小化）
 - **重复任务**：任务可设置每天/每周/每月重复，到期自动生成实例（模板归档即停止）
 - **个人知识库 / 错题集**：经验教训、决策、笔记、片段沉淀为可搜索知识条目，复盘一键沉淀，AI 可提交知识草稿
+- **知识库增强（AI 总结本地文档 + 文件链接）**：知识库页面支持弹窗浏览选择本地文件，也可直接填写本地文档路径或 `file://`；后端读取文档内容并让 AI 总结为知识草稿；知识条目可保存 `file_link` 并一键调用系统默认程序打开/追溯本地文件
 - **点子 / 点子王**：灵感卡片快速记录；AI 自动找关联生成“点子王”；AI 头脑风暴后可确认转为任务
 - **AI 复盘**：已完成任务一键复盘，结论确认后写回任务
 - 同一任务只保留一个复盘会话；重复复盘进入同一会话
@@ -74,7 +77,19 @@ Turn your DSH into a **calendar + task list + AI assistant workbench**.
 - pnpm `>=11.7.0 <12`
 - 网络可访问 npm registry（或使用镜像）
 
-### 从 GitHub 安装（推荐）
+### 从 npm 安装（推荐）
+
+```sh
+dsh plugin --profile web add @dely0/dsh-personal-workbench
+```
+
+或使用 npm 直接安装到项目：
+
+```sh
+npm install @dely0/dsh-personal-workbench
+```
+
+### 从 GitHub 安装
 
 ```sh
 dsh plugin --profile web add git+https://github.com/Dely0/dsh-personal-workbench.git
@@ -125,9 +140,12 @@ dsh plugin --profile web add link:/path/to/dsh-personal-workbench
 - [x] V2 日报/周报（0.7.0）
 - [x] V2：重复任务（0.12.0）
 - [x] V2：个人知识库 / 错题集（1.0.0）
+- [x] V2：知识库增强（AI 总结本地文档 + 文件链接）（1.2.0）
 - [x] V2：今日计划面板长列表优化（sticky 统计卡 / 固定高度内部滚动 / 展开收起 / 面板内完成·推迟）（1.4.0）
 - [x] V2：AI 会话前自定义提示词输入（除快速录入外，默认提示词 + 用户输入追加）（1.5.0）
 - [x] V2：今日/日历计划面板手动编辑（上下移、改备注、从今日任务增删计划项；保留 AI 生成 + 确认 + 完成/推迟）（1.5.0）
+- [x] V2：UI 美化（卡片/列表/表单/点子关联展示统一）
+- [x] V2：任务类型自定义 UI（设置页字典管理：类型/状态/优先级/点子类型）
 - [ ] V2：定时自动化
 - [ ] 未来：多端同步、任务拖拽排序、数据导入导出
 
@@ -160,6 +178,9 @@ All task data is stored locally under `~/.dsh/workbench`.
 ## Install
 
 ```sh
+# From npm (recommended)
+dsh plugin --profile web add @dely0/dsh-personal-workbench
+
 # From source or release tarball
 dsh plugin --profile web add git+https://github.com/Dely0/dsh-personal-workbench.git
 dsh plugin --profile web add file:/path/to/dsh-personal-workbench-<version>.tgz

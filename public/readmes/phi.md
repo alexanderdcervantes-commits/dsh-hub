@@ -17,9 +17,9 @@ A minimal terminal coding agent harness in Go — a sibling to Pi.
   <a href="https://github.com/pulseaiclub/phi/releases"><img src="https://img.shields.io/github/v/release/pulseaiclub/phi?style=flat&colorA=222222&colorB=8957E5" alt="Release"></a>
 </p>
 
-![phi welcome](https://raw.githubusercontent.com/pulseaiclub/phi/dc0be1f805e5091582a9916c7a73a5cbc4598437/assets/phi.png)
+![phi welcome](https://raw.githubusercontent.com/pulseaiclub/phi/f18c66719b5a094c30adbaebe90e5c62ba81bf53/assets/phi.png)
 
-![phi TUI](https://raw.githubusercontent.com/pulseaiclub/phi/dc0be1f805e5091582a9916c7a73a5cbc4598437/assets/image.png)
+![phi TUI](https://raw.githubusercontent.com/pulseaiclub/phi/f18c66719b5a094c30adbaebe90e5c62ba81bf53/assets/image.png)
 
 - [Quick start](#quick-start)
 - [Footprint](#footprint)
@@ -80,8 +80,8 @@ On first start, phi automatically creates `~/.phi/{bin,skills,hooks,session}`. S
 tools (`fd`, `rg`) download into `~/.phi/bin` in the background when missing.
 
 The TUI gives the model four core tools — `read`, `write`, `edit`, and
-`bash` — plus `grep`, `glob`, `list`, and `fetch`. The model uses these to
-fulfill your requests.
+`bash` — plus `grep`, `find`, and `ls`. The model uses these to
+fulfill your requests. External HTTP fetch is available via MCP when configured.
 
 ## Footprint
 
@@ -108,7 +108,7 @@ phi reads `~/.phi/config.yaml` (standard YAML). Environment variables
 override it for one-off runs. `phi config` opens an HTML editor for the same
 file in your browser.
 
-![phi config](https://raw.githubusercontent.com/pulseaiclub/phi/dc0be1f805e5091582a9916c7a73a5cbc4598437/assets/config.png)
+![phi config](https://raw.githubusercontent.com/pulseaiclub/phi/f18c66719b5a094c30adbaebe90e5c62ba81bf53/assets/config.png)
 
 ```yaml
 # ~/.phi/config.yaml
@@ -136,10 +136,6 @@ permissions:
       - "go test ./..."
     deny:
       - "rm -rf *"
-  fetch:
-    default: allow
-    allowed_hosts:
-      - "github.com"
 ```
 
 Environment overrides:
@@ -295,7 +291,7 @@ Modes:
 | `headless-strict`  | Fold `ask` → deny (used by `phi run`).              |
 
 Per-tool rules: `bash.default` / `bash.allow` / `bash.deny` (exact command
-prefix matching) and `fetch.default` / `fetch.allowed_hosts`. Global keys:
+prefix matching). Global keys:
 `workspace_only_writes` (default true), `ask_timeout_sec`, and
 `dangerously_allow_all` (default false).
 
@@ -401,13 +397,11 @@ Built-in tools the model can call (see `internal/tools/`):
 | `write`        | Write a file (gated by permissions)          |
 | `edit`         | Targeted edit of a file                      |
 | `grep`         | Regex search across files                    |
-| `glob`         | File patterns                                |
-| `list`         | Directory listing                            |
-| `fetch`        | HTTP fetch (host-gated by permissions)       |
+| `find`         | File patterns (fd)                           |
+| `ls`           | Directory listing                            |
 | `agent_spawn`  | Start an isolated sub-agent job (async)      |
 | `agent_wait`   | Wait for a job; returns short summary only   |
 | `agent_list`   | List jobs                                    |
-| `agent_log`    | Tail a job's event log                       |
 | `agent_cancel` | Cancel a running job                         |
 
 Sub-agent transcripts live under `~/.phi/jobs/<id>/` and are **not** injected

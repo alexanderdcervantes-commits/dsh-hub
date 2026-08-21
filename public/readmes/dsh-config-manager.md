@@ -45,11 +45,11 @@ DSH is your AI assistant workbench — it holds your settings: model configs, pl
 
 | Export | Import Preview |
 |:---:|:---:|
-| ![One-click Export](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/4151c8dfc1d991fe101261ba5390fba8b15f7bf3/assets/screenshot-export.png) | ![Import Preview](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/4151c8dfc1d991fe101261ba5390fba8b15f7bf3/assets/screenshot-import-preview.png) |
+| ![One-click Export](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-export.png) | ![Import Preview](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-import-preview.png) |
 
 | Snapshot Restore | Remote Sync |
 |:---:|:---:|
-| ![Snapshot Restore](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/4151c8dfc1d991fe101261ba5390fba8b15f7bf3/assets/screenshot-snapshots.png) | ![Remote Sync](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/4151c8dfc1d991fe101261ba5390fba8b15f7bf3/assets/screenshot-sync.png) |
+| ![Snapshot Restore](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-snapshots.png) | ![Remote Sync](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-sync.png) |
 
 ---
 

@@ -1,4 +1,4 @@
-# dsh-pdf
+# @zhtx2026/dsh-pdf
 
 > PDF parsing toolkit for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — three agent-facing tools (`pdf_info` / `pdf_extract_text` / `pdf_render_page`) with hybrid engines, including system-font rendering for PDFs with non-embedded CJK fonts (e.g. EasyEDA / JLC EDA schematic exports).
 
@@ -9,7 +9,7 @@
 ## Install
 
 ```sh
-dsh plugin --profile web add github:zhtx2024/dsh-pdf
+dsh plugin --profile web add @zhtx2026/dsh-pdf
 ```
 
 Or from a local checkout during development:

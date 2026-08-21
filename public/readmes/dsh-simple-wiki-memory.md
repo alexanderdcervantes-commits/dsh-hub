@@ -30,7 +30,7 @@ DSH 在**每个会话第一个请求前**自动注入 `~/.dsh/AGENTS.md`（记�
 
 `reference/` 里就是按主题命名的 md 文件，一个主题一个文件，像这样：
 
-![reference 目录示例](https://raw.githubusercontent.com/rainow/dsh-simple-wiki-memory/563989ac70783acb41f712d2bcd605b0befc1f6f/assets/reference-dir-example.png)
+![reference 目录示例](https://raw.githubusercontent.com/rainow/dsh-simple-wiki-memory/3f10d31cc50013e89ba4626f2c4b2a7376f5bdbd/assets/reference-dir-example.png)
 
 每个文件是一个主题的完整细节（如 `DOCKER-NAS.md`、`INFRA-SERVERS.md`、`HOME-ASSISTANT-CONTROL.md`），由 `AGENTS.md` 索引条目指向；任务需要时才 read 对应文件，平时只加载索引，不占上下文。
 
@@ -48,6 +48,18 @@ DSH 在**每个会话第一个请求前**自动注入 `~/.dsh/AGENTS.md`（记�
 - 已用 DSH 10.33.0（web profile，`dsh-agent-instructions` 基线注入）验证。
 - 最后验证日期：2026-08-18。
 - 依赖 DSH 原生 `dsh-agent-instructions` 机制（`dsh-base` bundle 默认启用）；若你的部署禁用了它，记忆注入将不生效。
+
+### 与锚定模式的已知冲突（liangshen / Anchored Standard）
+
+**liangshen 模式**（梁神模式）和 **Anchored Standard 模式**会在会话首轮清空运行时上下文、只保留你的直接消息，从而**屏蔽 `dsh-agent-instructions` 对 `~/.dsh/AGENTS.md` 的自动注入**。DSWM 的记忆索引与六条规则正是靠这个注入生效的，因此在上述模式下，会话开头不会自动加载记忆。
+
+这不是 bug，而是锚定模式的**刻意设计**（用最小上下文锚定推理轨迹）。解决方式很简单：
+
+- 需要读取/维护记忆时，**手动让 agent 读 `AGENTS.md`** 即可，例如说：
+  - `先读一下 ~/.dsh/AGENTS.md 再开始`
+  - 或直接说 `按 AGENTS.md 里的记忆规则处理`
+- liangshen 模式在首块锚定晋升（进入"we can"模式）后，也**可以**手动让 agent 读 `AGENTS.md`，之后记忆规则即按 DSWM 正常运作。
+- 其余会话（非锚定模式）不受影响，记忆照常自动注入。
 
 ## 安装
 
@@ -89,7 +101,7 @@ dsh plugin --profile web remove dsh-simple-wiki-memory
 
 下次新会话开始时，agent 会自动提醒你待确认的记忆（写入是实时的，所以 `/new` 或关页面都不丢）：
 
-![pending 汇报示例](https://raw.githubusercontent.com/rainow/dsh-simple-wiki-memory/563989ac70783acb41f712d2bcd605b0befc1f6f/assets/pending-report-example.png)
+![pending 汇报示例](https://raw.githubusercontent.com/rainow/dsh-simple-wiki-memory/3f10d31cc50013e89ba4626f2c4b2a7376f5bdbd/assets/pending-report-example.png)
 
 ## 配置
 

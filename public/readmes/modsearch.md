@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liustack/modsearch/a5bd55aa09e259e0c34e7f86377c0c4c6f295e55/assets/banner.jpg" width="100%" alt="ModSearch" />
+  <img src="https://raw.githubusercontent.com/liustack/modsearch/05ee10dbc9c99508914e42616ba16790fd642031/assets/banner.jpg" width="100%" alt="ModSearch" />
 </p>
 
 <h1 align="center">ModSearch</h1>
@@ -36,7 +36,7 @@ Something broken, or something missing? [Open an issue](https://github.com/liust
 
 ## Features
 
-- **🥇 The most powerful web search plugin for DeepSeek Harness (dsh):** one command, `npx -y @deepseek-ai/dsh plugin --profile web add @liustack/modsearch@5.6.0`, and dsh's built-in `web_search` runs on the modsearch engine chain with no API key, keeping its native citation cards. Two tools dsh does not have land beside it: `x_search` for X (Twitter) and `read_page` for focused single-page reading. Updating is the same command again. The version is named rather than `@latest` because pnpm 11 holds back releases published in the last 24 hours and resolves the tag against the older versions that remain. Details in [harness setup](docs/harness-setup.md#deepseek-harness-dsh).
+- **🥇 The most powerful web search plugin for DeepSeek Harness (dsh):** one command, `npx -y @deepseek-ai/dsh plugin --profile web add @liustack/modsearch@5.8.0`, and dsh's built-in `web_search` runs on the modsearch engine chain with no API key, keeping its native citation cards. Two tools dsh does not have land beside it: `x_search` for X (Twitter) and `read_page` for focused single-page reading. Updating is the same command again. The version is named rather than `@latest` because pnpm 11 holds back releases published in the last 24 hours and resolves the tag against the older versions that remain. Details in [harness setup](docs/harness-setup.md#deepseek-harness-dsh).
 - **Free out of the box, no signup.** Search and page fetch run on Firecrawl Keyless by default: [1,000 free credits/month](https://www.firecrawl.dev/blog/firecrawl-keyless-launch), no account, no API key, no card. Every fallback channel is free too: Antigravity CLI needs only a browser sign-in, and Tavily, Exa, and a free Firecrawl key each add their own monthly quota with no card required.
 - **Automatic failover.** When a channel fails or exhausts its quota, the next one takes over.
 - **Searches X (Twitter).** With Grok Build installed, ModSearch queries the corpus that web indexes cannot reach.
@@ -55,7 +55,7 @@ Firecrawl works with zero setup; every other engine is one command away. Keys ar
 | Grok Build | X (Twitter) search | rides SuperGrok or X Premium | install `grok` and sign in |
 | local | page fetch | built in, nothing to install | nothing |
 
-Keys can also come from the environment (`TAVILY_API_KEY`, `EXA_API_KEY`, `FIRECRAWL_API_KEY`). Multiple engines configured means automatic failover, best first. Using a Tavily-, Exa-, or Firecrawl-compatible third-party or self-hosted endpoint? Point the engine at it: `modsearch config set tavily.baseURL <url>`. Every knob, engine by engine, is in the [configuration guide](skills/modsearch/references/configure.md).
+Keys can also come from the environment (`TAVILY_API_KEY`, `EXA_API_KEY`, `FIRECRAWL_API_KEY`). Multiple engines configured means automatic failover, best first. Every engine participates by default. Exclude one with `modsearch config set tavily.enabled false`. Using a Tavily-, Exa-, or Firecrawl-compatible third-party or self-hosted endpoint? Point the engine at it: `modsearch config set tavily.baseURL <url>`. Official endpoints stay built into the code and are never written as default config. Every knob, engine by engine, is in the [configuration guide](skills/modsearch/references/configure.md).
 
 ## Installation
 
@@ -72,6 +72,10 @@ agy                                                           # sign in, then ex
 
 Chose a key instead? Send it to your AI with one line: "set my tavily key to tvly-...".
 
+On DeepSeek Harness there is a route that skips the command line entirely. Settings → Plugins → Plugin config carries a ModSearch card: pick the preferred engine, fill in an API key or a self-hosted endpoint, tick which engines join the failover chain, hit save and it takes effect.
+
+![The ModSearch card in the dsh settings page, shown in Chinese: pick the preferred engine, fill in an API key and endpoint, tick the engines that join failover](https://raw.githubusercontent.com/liustack/modsearch/05ee10dbc9c99508914e42616ba16790fd642031/assets/demo-dsh-settings-card.jpg)
+
 ## Usage
 
 Once installed, just chat. Ask anything that needs checking, or paste a URL, and the skill triggers on its own: it picks an engine, runs the search or fetch, and the answer comes back with sources.
@@ -82,11 +86,11 @@ Both screenshots are unedited runs from the Codex desktop app, driving a DeepSee
 
 Give it a blog link and ask what the post says. Twenty-five seconds later: a structured summary of the whole post, with no browser involved.
 
-![Text-only DeepSeek summarising a blog link through ModSearch](https://raw.githubusercontent.com/liustack/modsearch/a5bd55aa09e259e0c34e7f86377c0c4c6f295e55/assets/demo-codex-fetch.png)
+![Text-only DeepSeek summarising a blog link through ModSearch](https://raw.githubusercontent.com/liustack/modsearch/05ee10dbc9c99508914e42616ba16790fd642031/assets/demo-codex-fetch.png)
 
 Give it no target at all, just "anything interesting in AI today?". Thirty-six seconds later: six sourced stories, with a closing note on which details came from aggregation and deserve a second look. The note comes from the `uncertainty` field.
 
-![An open-ended question comes back as six sourced stories with a stated confidence caveat](https://raw.githubusercontent.com/liustack/modsearch/a5bd55aa09e259e0c34e7f86377c0c4c6f295e55/assets/demo-codex-search.png)
+![An open-ended question comes back as six sourced stories with a stated confidence caveat](https://raw.githubusercontent.com/liustack/modsearch/05ee10dbc9c99508914e42616ba16790fd642031/assets/demo-codex-search.png)
 
 ## Documentation
 

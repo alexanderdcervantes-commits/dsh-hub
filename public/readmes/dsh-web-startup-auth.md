@@ -4,7 +4,7 @@
 
 DSH（DeepSeek Harness）远程 Web 启动 + 用户名/密码认证插件。
 
-![登录页](https://raw.githubusercontent.com/GDWhisper/dsh-web-startup-auth/70f08b45bffefebd680e0f0c3dc501c75ed9ce9e/docs/login-page.png)
+![登录页](https://raw.githubusercontent.com/GDWhisper/dsh-web-startup-auth/795cbb02e6e2f752c0f37d7bb2ea4cefb16eb5b5/docs/login-page.png)
 
 原版 `@deepseek-ai/dsh-web-app/startup` 出于安全考虑**硬拒绝 `--host 0.0.0.0`**；本插件替换它，并配一个带登录/注册页的认证插件，让 `dsh web` 可以在局域网（或任何非回环接口）上安全暴露浏览器界面。
 
@@ -13,11 +13,11 @@ DSH（DeepSeek Harness）远程 Web 启动 + 用户名/密码认证插件。
 - **远程启动**：`--host 0.0.0.0` 可用，替代原版启动器的硬性拒绝。
 - **登录/注册页**：首次访问引导设置管理员账号密码，之后进入登录页；与 DSH 黑白蓝风格一致。
 - **会话认证**：登录后下发签名 cookie（`dsh_sid`，14 天有效，`HttpOnly` + `SameSite=Lax`）。
-- **API 保护**：所有 `/api/*` 路由（除 `/api/auth/*`）必须携带有效会话，否则返回 401。
+- **API 保护**：所有注册路由（`/api/*` 及第三方插件的 RPC 路由，除 `/api/auth/*` 与 `/login`）必须携带有效会话，否则返回 401/拒绝握手。
 - **设置面板「认证」标签页**：向 DSH 设置面板注入"认证"页，提供**退出登录**与**修改密码**两个操作。
 - **远程场景修复**（局域网 HTTP 访问的两个坑）：
   - `crypto.randomUUID` polyfill —— 非安全上下文下该 API 缺失，会导致所有 RPC 失败。
-  - 特权 API 回环放行 —— DSH 将 `settings.*` / `credentials.*` 等敏感域强制限制在回环地址；认证通过后本插件以回环身份放行。
+  - 特权 API 回环放行 —— DSH 将 `settings.*` / `credentials.*` 等敏感域、`authority: "loopback"` 的第三方 RPC channel（如 `/dsh-automation`、技能管理器）以及 WebSocket 事件流全部限制为仅回环 Host 可访问；认证通过后本插件以回环身份放行（Host/Origin 改写覆盖所有注册路由与升级握手，含先于本插件激活的第三方路由）。
 
 ## 安装
 
@@ -31,8 +31,8 @@ npm install        # 安装构建依赖（typescript 等）
 npm run build      # 编译 src/ 到 lib/（插件运行时加载 lib/ 下的产物）
 dsh plugin --profile web add .
 
-# 方式二：从 npm registry 安装
-dsh plugin --profile web add dsh-web-startup-auth
+# 方式二：从 npm registry 安装（已装过旧版本时执行同一条命令即可升级）
+dsh plugin --profile web add dsh-web-startup-auth@latest
 ```
 
 > `dsh plugin` 是 pnpm 转发器，`--profile <name>` 必填；`add .` 会把当前目录以 `link:` 方式装进 profile。
@@ -73,6 +73,7 @@ dsh web --host 0.0.0.0
 - **登录防护**：登录失败按客户端 IP 限速——连续 5 次失败锁定 30 秒（纯内存、无持久化）；注册要求密码至少 8 个字符。限速覆盖 `/api/auth/login` 与 `/api/auth/change-password`（旧密码错误同样计次）。如需更严格防护请在反向代理层增加通用限速。
 - **凭据文件权限**：`~/.dsh/web-auth.json`（含密码哈希与会话签名密钥）以 `0600` 保存，目录以 `0700` 创建；插件启动时会自动修复旧版本遗留的过宽权限。
 - **`--trusted-host`**：该参数仅为与原版 CLI 兼容而保留透传，**不参与本插件认证判断**——远程客户端一律需要有效会话，不存在"受信主机免登录"。
+- **上游兼容层（dsh ≥ rc.8）**：dsh rc.8 起，设置面板依赖**前端 settings mirror** 的功能（提供方目录、插件配置表单）在远程浏览器下原本会报 `settings are unavailable in this browser`——DSH 前端用**浏览器地址栏 hostname** 判定是否回环，远程访问恒为非回环，mirror 走内存模式不发 RPC，插件配置卡片整个不渲染。本插件通过 `webServer.tapIndex` 向 SPA 注入脚本：在模块系统就绪后包装每个前端插件的 `apply`，于 connection 插件激活返回的瞬间把 `connection.isLoopback` 覆盖为恒 `true`（配合后端回环放行）——**早于任何 settings scope 的绑定**，因此 mirror 与所有配置 scope 都以 host 模式创建，无需刷新页面。前端插件另保留一份防御性覆盖与 mirror 兜底。该兼容层依赖 dsh 内部结构（`window.__ModuleLoader__`、`settingsScope.mirror`），以 rc.8 为准验证，上游改动可能需要同步更新。
 
 ## 开发
 
@@ -89,4 +90,4 @@ npm run build       # tsc -p tsconfig.json + tsdown，产物输出到 lib/
 
 ## 许可证
 
-[MIT](./LICENSE)（仓库内未含 LICENSE 文件时，默认按 package.json 的 MIT 声明授权）
+[MIT](./LICENSE)

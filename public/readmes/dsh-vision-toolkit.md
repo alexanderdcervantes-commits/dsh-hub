@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/hero-v2.png" alt="DSH Vision Toolkit helps text-only DeepSeek Harness agents understand images and complete visual tasks" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/hero-v2.png" alt="DSH Vision Toolkit helps text-only DeepSeek Harness agents understand images and complete visual tasks" />
 </p>
 
 <div align="center">
@@ -64,8 +64,8 @@ dsh plugin --profile web add @anionex/dsh-vision-toolkit
 
 <table>
 <tr>
-<td width="220"><a href="https://aihubmix.com/?aff=5wj6sgx8"><img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/logo_aihubmix.png" alt="AIHubMix" height="48"></a></td>
-<td>Thanks to <a href="https://aihubmix.com/?aff=5wj6sgx8">AIHubMix</a> for sponsoring this project! AIHubMix is a stable, high-concurrency AI model API gateway that connects Claude, GPT, Gemini, DeepSeek, and other mainstream models through a single API key, compatible with multiple protocols, with <b>free model options</b> available. Users in China can use it via the <a href="https://inferera.com/?aff=5wj6sgx8">China entry</a>, and users abroad via the <a href="https://aihubmix.com/?aff=5wj6sgx8">Global entry</a>.</td>
+<td width="220"><a href="https://inferera.com/?aff=5wj6sgx8"><img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/logo_aihubmix.png" alt="AIHubMix" height="48"></a></td>
+<td>Thanks to <a href="https://inferera.com/?aff=5wj6sgx8">AIHubMix</a> for sponsoring this project! AIHubMix is a stable, high-concurrency AI model API gateway that connects Claude, GPT, Gemini, DeepSeek, and other mainstream models through a single API key, compatible with multiple protocols, with <b>free model options</b> available. Use the <a href="https://inferera.com/?aff=5wj6sgx8">Inferera entry</a> to sign up.</td>
 </tr>
 </table>
 
@@ -86,10 +86,10 @@ dsh plugin --profile web add @anionex/dsh-vision-toolkit
 
 ## Recent updates
 
+- **2026-08-20 · AIHubMix setup guide:** Added a screenshot-based guide for getting an API key through the Inferera entry and using the free Gemini 3.7 Flash vision model; Settings now links directly to this guide.
 - **2026-08-19 · Transparent routing by default:** The model selector keeps one entry per model with the original name, and image input (paste, history, `read_image`) works without manually switching to a `(Vision Toolkit)` variant. Disable “Transparent variant routing” in advanced settings → image input to restore the explicit entries.
 - **2026-08-16 · Windows Python:** Added Microsoft Store Python support, fixing first-time isolated-runtime setup failures for affected Windows users.
 - **2026-08-17 · Free vision upgrade:** Switched the built-in no-key service to Gemini 3.7 Flash and fixed Qwen/Gemini bounding-box coordinate order.
-- **2026-08-16 · Better free vision:** Switched the built-in no-key service to Groq Qwen3.6, improving image understanding without adding setup steps.
 - **2026-08-16 · Image paste:** Text-only routes now switch to a `(Vision Toolkit)` variant and keep a workspace path, fixing blocked pastes and images that could not be reused later.
 - **2026-08-16 · More shared capacity:** Expanded the free service capacity to reduce peak-time `429` responses.
 - **2026-08-16 · Real model test:** Added a full image-request test in Settings, fixing the false confidence caused by a successful `/models` request to a model that still cannot process images.
@@ -114,7 +114,7 @@ The bundled `vision-skills` Skill carries the complete upstream playbooks, expla
 ### Paste an image directly into DSH
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/dsh-view-example.png" width="82%" alt="A text-only DeepSeek model answering a question about a pasted image through Vision Toolkit in DSH Web" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/dsh-view-example.png" width="82%" alt="A text-only DeepSeek model answering a question about a pasted image through Vision Toolkit in DSH Web" />
 </p>
 
 *Paste an image into the conversation. A text-only model can switch to its `Vision Toolkit` variant and inspect the image in the context of the user's question.*
@@ -122,8 +122,8 @@ The bundled `vision-skills` Skill carries the complete upstream playbooks, expla
 ### Screenshot to editable page
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/infographic-reference.webp" width="49%" alt="Reference infographic screenshot used for restoration" />
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/infographic-result.webp" width="49%" alt="Editable HTML and CSS reconstruction created from the reference screenshot" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/infographic-reference.webp" width="49%" alt="Reference infographic screenshot used for restoration" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/infographic-result.webp" width="49%" alt="Editable HTML and CSS reconstruction created from the reference screenshot" />
 </p>
 
 > Prompt example: “(Use vision-skills) Rebuild this image into HTML.”
@@ -133,8 +133,8 @@ The bundled `vision-skills` Skill carries the complete upstream playbooks, expla
 ### Sketch to working interface
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/ui-sketch.webp" width="49%" alt="Hand-drawn JupyterLab interface used as the restoration reference" />
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/ui-result.webp" width="49%" alt="Working JupyterLab-style interface reconstructed from the sketch" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/ui-sketch.webp" width="49%" alt="Hand-drawn JupyterLab interface used as the restoration reference" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/ui-result.webp" width="49%" alt="Working JupyterLab-style interface reconstructed from the sketch" />
 </p>
 
 *Left: a hand-drawn reference. Right: the working interface reconstructed from it.*
@@ -144,8 +144,8 @@ The bundled `vision-skills` Skill carries the complete upstream playbooks, expla
 ### Fast UI restoration: an approximate first pass
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/ui-fast-restore-reference.webp" width="49%" alt="Original YouMind homepage used as the fast UI restoration reference" />
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/ui-fast-restore-result.webp" width="49%" alt="Approximate YouMind homepage produced with fast UI restoration mode" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/ui-fast-restore-reference.webp" width="49%" alt="Original YouMind homepage used as the fast UI restoration reference" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/ui-fast-restore-result.webp" width="49%" alt="Approximate YouMind homepage produced with fast UI restoration mode" />
 </p>
 
 > Prompt example: “(Use vision-skills) Quickly rebuild this image into HTML.”
@@ -180,7 +180,7 @@ For the full Desktop install, update, and troubleshooting walkthrough, see [Inst
 
 Restart a running Web Profile, then open **Settings → Vision Toolkit**. The free provider is already configured; run **Test vision model** to confirm it is reachable.
 
-The first start prepares an isolated runtime: the plugin prefers a system Python 3.11+; when none is found, it downloads a hash-verified standalone Python (about 35 MB) from a pinned release source on first use. A normal installation does not require an `agent-vision-toolkit` source checkout or a local path setting.
+The first start prepares an isolated runtime: the plugin prefers a system Python 3.11+; when none is found, it downloads a hash-verified standalone Python (about 35 MB) from the domestic mirror (`dsh-vision-python-bootstrap-1317715800.cos.ap-guangzhou.myqcloud.com`) on first use, falling back to the GitHub release when the mirror is unreachable. The locked runtime dependencies (Pillow, NumPy, vtracer) are installed from the Tencent Cloud PyPI mirror (`mirrors.cloud.tencent.com/pypi/simple`) first and fall back to the official PyPI index. A normal installation does not require an `agent-vision-toolkit` source checkout or a local path setting.
 
 ### 3. Paste an image and describe the outcome you want
 
@@ -223,8 +223,8 @@ The plugin keeps image understanding and deterministic local image processing in
 Most vision bridges for text-only models ask a multimodal model for a generic description and hand it to the text model, adding a semantic layer where information is lost. Vision Toolkit instead recovers **why the agent wants to look at the image**: the user message or the model's stated reason becomes a focus hint passed to the vision model. The result is a task-aware description that emphasizes what matters for the current step — with fewer tokens, higher accuracy, and faster responses.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/focus-hint-comparison-1.webp" width="49%" alt="Generic image descriptions compared with task-aware vision using a focus hint - part 1" />
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/upstream/focus-hint-comparison-2.webp" width="49%" alt="Generic image descriptions compared with task-aware vision using a focus hint - part 2" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/focus-hint-comparison-1.webp" width="49%" alt="Generic image descriptions compared with task-aware vision using a focus hint - part 1" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/upstream/focus-hint-comparison-2.webp" width="49%" alt="Generic image descriptions compared with task-aware vision using a focus hint - part 2" />
 </p>
 
 **Architecture and image-input behavior**
@@ -285,7 +285,7 @@ Existing clients that still send `api_key="free"` remain compatible.
 
 For higher quotas, private endpoints, or another model, change the provider in **Settings → Vision Toolkit** and store the API key as a DSH Credential. Settings stores the Credential reference and never reads the saved secret back into the browser.
 
-**Step-by-step Groq tutorial:** [Get a free Groq API key and use Qwen3.6-27B for image understanding](docs/groq-qwen3.6-vision.md). It includes screenshots for account/API-key setup, the exact Vision Toolkit settings, and working cURL and Python examples.
+**Step-by-step AIHubMix tutorial:** [Get an AIHubMix API key and use free Gemini 3.7 Flash for vision](docs/aihubmix-gemini-vision.md). It includes screenshots for account/API-key setup, the exact Vision Toolkit settings, free-model selection, and troubleshooting.
 
 You can also configure a Profile patch:
 
@@ -305,7 +305,7 @@ For a trusted internal endpoint that uses a self-signed certificate or MITM prox
 
 ### Configure the Python runtime
 
-Most users never need to configure the Python runtime: the plugin prefers a system Python 3.11+ and otherwise downloads a pinned standalone Python automatically.
+Most users never need to configure the Python runtime: the plugin prefers a system Python 3.11+ and otherwise downloads a pinned standalone Python automatically from the domestic mirror, falling back to GitHub when the mirror is unreachable.
 
 For advanced setups — overriding `runtime.python`, using `runtime.mode: external`, verifying the runtime, or allowing additional input directories — see [Python runtime configuration](docs/python-runtime.md).
 
@@ -318,7 +318,7 @@ For advanced setups — overriding `runtime.python`, using `runtime.mode: extern
 | The free service returns 429 | Wait for the `Retry-After` interval, or switch to your own endpoint when you need stable higher volume |
 | The image exceeds a size or pixel limit | Crop or resize it first; the error identifies whether bytes or decoded pixels caused the rejection |
 | A custom Credential is missing | Enter the API key in **Settings → Vision Toolkit** and confirm the Credential name matches the provider configuration |
-| First-time runtime setup fails | The standalone-Python download needs network and disk access. Check connectivity or package-cache access, or install Python 3.11+ / configure `runtime.python` in Settings, then retry the model test |
+| First-time runtime setup fails | The standalone-Python download needs network and disk access (domestic mirror first, GitHub fallback). Check connectivity or package-cache access, or install Python 3.11+ / configure `runtime.python` in Settings, then retry the model test |
 | Chrome is not found | Install Chrome, Chromium, or Edge. Only HTML screenshot rendering is unavailable; the other tools still work |
 | DSH Desktop says `dsh` is not recognized, or its built-in marketplace install fails | Open **DSH Terminal** from the tray, run `dsh plugin --profile desktop add @anionex/dsh-vision-toolkit`, then restart DSH Desktop. The Desktop 2.0.1 marketplace has known install issues, so the terminal command is the reliable path for now |
 | An artifact cannot be previewed | Use **Open file** or the workspace path in the result. Preview URLs exist only while the Web route is available |
@@ -333,7 +333,7 @@ No. Each inspection sends only the necessary intent and the image to the multimo
 
 If this project is valuable to you, you are welcome to buy the developer a coffee ☕️
 
-<img width="240" alt="WeChat reward code" src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/wechat-reward.png" />
+<img width="240" alt="WeChat reward code" src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/wechat-reward.png" />
 
 ## Development and community
 
@@ -344,7 +344,7 @@ If this project is valuable to you, you are welcome to buy the developer a coffe
 - Visit upstream [agent-vision-toolkit](https://github.com/Anionex/agent-vision-toolkit) for the general toolkit, cross-agent integrations, and visual-task playbooks.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/4c6f70dfead1e9b47b0ba5d2a73d4f8be620dabe/assets/community-group-qr.png" alt="QR code for the agent-vision-toolkit community group" width="240" />
+  <img src="https://raw.githubusercontent.com/Anionex/dsh-vision-toolkit/ca07cda11c5e5a9454203eb829098c6fb44f17f1/assets/community-group-qr.png" alt="QR code for the agent-vision-toolkit community group" width="240" />
 </p>
 
 I'm [anionex](https://anionex.me/), an AI-native developer who once ranked **No. 3** on GitHub's global developer trending list, with more than 16k stars across my projects. If you would like to follow my future work, [follow me on GitHub](https://github.com/Anionex).

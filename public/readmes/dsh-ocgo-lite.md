@@ -5,7 +5,7 @@
 聊天输入框下方（composer dock）**常驻展开**显示 OpenCode Go 套餐余量、token 消耗与花费，零外部依赖。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/overview.png" alt="常驻条总览" width="700">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/overview.png" alt="常驻条总览" width="700">
 </p>
 
 ## ✨ 功能
@@ -15,7 +15,7 @@
 点击弹出账户卡片：登录状态、套餐、配额概览、API Key 掩码 + **一键复制**（复制成功有 toast 提示）。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/go-account.png" alt="GO 账户卡片" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/go-account.png" alt="GO 账户卡片" width="360">
 </p>
 
 ### 滚动 / 周 / 月：套餐配额
@@ -23,7 +23,7 @@
 官方配额百分比圆环（健康色：蓝/黄/红），点击弹出三窗口进度条 + 重置倒计时。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/quota.png" alt="配额详情" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/quota.png" alt="配额详情" width="360">
 </p>
 
 ### 范围：全部 / 本次会话 / 最近对话
@@ -31,7 +31,7 @@
 点击切换统计范围——**全部**（所有 DSH 会话合计）/ **本次会话**（仅当前聊天）/ **最近对话**（最近活跃会话的**最后一次任务**执行消耗，按 turn 细分，含子代理/后台任务）；切到限定会话时若只有 1 个模型自动选中该模型。每个会话的「范围 + 模型」选择会被**记忆**，切走再切回原样恢复。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/scope.png" alt="范围选择" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/scope.png" alt="范围选择" width="360">
 </p>
 
 ### 模型：按模型联动
@@ -39,7 +39,7 @@
 点击弹出模型选择器——范围=本次会话时只列出本次会话用过的模型；选中后状态条 token/花费联动显示该模型（范围+模型双层联动）。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/model.png" alt="模型选择" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/model.png" alt="模型选择" width="360">
 </p>
 
 ### token：消耗明细
@@ -47,7 +47,7 @@
 完整数字 + 详情卡片（输入/输出/推理/缓存读/写 + 按模型分组明细，标题随范围显示「总消耗 token / 本次会话总消耗」）；选中模型时只显示该模型口径。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/token.png" alt="token 详情" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/token.png" alt="token 详情" width="360">
 </p>
 
 ### 花费：金额排行
@@ -55,7 +55,7 @@
 详情卡片：累计金额 + 按模型花费排行（占比条 + 各模型官方定价，随范围/模型联动）。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/34423a70f2ac345f99305a21c72f61f5fb6a12fa/screenshots/money.png" alt="花费详情" width="360">
+  <img src="https://raw.githubusercontent.com/OK-wx/dsh-ocgo-lite/96314bcd7966c88b6907fe5797719793a9b014e9/screenshots/money.png" alt="花费详情" width="360">
 </p>
 
 - 点击页面空白处关闭详情卡片
@@ -71,7 +71,7 @@
 |---|---|---|
 | **配额余量** | 官方 `https://opencode.ai/zen/go/v1/usage`（Bearer auth.json key） | **账户级**（含其他设备/软件），不受范围切换影响 |
 | **token / 花费** | DSH 会话事件（`assistant/message` 的 usage，按 provider 分组统计） | **DSH 会话全部 provider**（opencode-go / deepseek-official / 其他套餐，自动识别切换），范围=全部/本次会话/最近对话 |
-| **金额** | 按官方定价表估算（per 1M tokens） | 输入 $0.14 / 输出 $0.28 / 缓存读 $0.0028（deepseek-v4-flash）；**无官方定价的模型金额不计入，显示「定价未知」** |
+| **金额** | 按官方定价表估算（per 1M tokens） | 输入 $0.44 / 输出 $1.32 / 缓存读 $0.014（deepseek-v4-flash Peak 档）；官方表自动跟随（含新增 MiMo/Muse 等模型）；**无官方定价的模型金额不计入，显示「定价未知」** |
 
 ### 实时性
 

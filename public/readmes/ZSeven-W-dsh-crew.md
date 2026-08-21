@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/bf955c76f7b14e5ab434bb8a8c4cb5f72b6d65e1/docs/images/dsh-crew-logo.png" alt="DSH Crew" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-logo.png" alt="DSH Crew" width="120" />
 </p>
 
 <h1 align="center">DSH Crew</h1>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-crew</code> &middot; Current plugin release: <code>0.1.0-rc.2</code> &middot; Tested with DSH <code>0.1.0-rc.6</code></sub>
+  <sub>npm: <code>@zseven-w/dsh-crew</code> &middot; Current plugin release: <code>0.1.0-rc.3</code> &middot; Tested with DSH <code>0.1.0-rc.6</code></sub>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/bf955c76f7b14e5ab434bb8a8c4cb5f72b6d65e1/docs/images/dsh-crew-overview.png" alt="DSH Crew — settings page" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-overview.png" alt="DSH Crew — settings page" width="100%" />
 </p>
 <p align="center"><sub>The DSH Crew settings page — host integrations, dispatch policy, execution and the multimodal bridge</sub></p>
 
@@ -101,12 +101,12 @@ Claude Code / Codex (orchestrator, keeps its own model)
 Dispatch fans out. Below, eighteen workers translate this README in parallel: the host counts them as its own subagents, while the harness runs them as real sessions.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/bf955c76f7b14e5ab434bb8a8c4cb5f72b6d65e1/docs/images/dsh-crew-host.png" alt="Claude Code" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-host.png" alt="Claude Code" width="100%" />
 </p>
 <p align="center"><sub>Claude Code sees dsh-crew workers as native subagents, with a statusline segment tracking running tiers, elapsed time and tokens.</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/bf955c76f7b14e5ab434bb8a8c4cb5f72b6d65e1/docs/images/dsh-crew-jobs.png" alt="DSH Crew" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-jobs.png" alt="DSH Crew" width="100%" />
 </p>
 <p align="center"><sub>The DSH Crew panel sees the same run from the harness side: which host dispatched each job, its tier and effort, live progress and token usage.</sub></p>
 
@@ -332,7 +332,7 @@ This package is also a valid DSH bundle (`dsh.bundle` + `cordis.patch.yml`). Aft
 
 - Codex role can theoretically try `model_provider` pointing directly to DeepSeek (unverified); this bridge doesn't depend on it
 - Image generation output is flat bitmap; layer editing requires OpenPencil
-- **Runtime dependencies**: Only `@modelcontextprotocol/sdk` and `zod`; `@deepseek-ai/*` are peerDependencies (provided by DSH host)
+- **Runtime dependencies**: Only `@modelcontextprotocol/sdk` and `zod`; `@deepseek-ai/*` are host runtime, provided by the DSH host (a plain npm install never pulls them)
 - **Codex must configure**: `default_tools_approval_mode = "approve"`, otherwise tool calls are auto-cancelled
 
 ## Develop
@@ -345,10 +345,11 @@ node scripts/build-client.mjs   # wraps the bundle for the DSH module loader
 node scripts/smoke.mjs          # dispatches one real flash task end to end
 ```
 
-Runtime dependencies are only `@modelcontextprotocol/sdk` and `zod`; every `@deepseek-ai/*` package is a peer dependency provided by the DSH host, which keeps the plugin inside the host's single module realm.
+Runtime dependencies are only `@modelcontextprotocol/sdk` and `zod`; every `@deepseek-ai/*` package is host runtime provided by the DSH host (documented in the package's dshHostRuntime field, not in peerDependencies, so a plain npm install never pulls them), which keeps the plugin inside the host's single module realm.
 
 ## Ecosystem
 
+- [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
 - [DSH Noema](https://github.com/ZSeven-W/dsh-noema) — long-term memory for DSH
 - [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) — inspect and edit `.op` design documents inside a conversation
 

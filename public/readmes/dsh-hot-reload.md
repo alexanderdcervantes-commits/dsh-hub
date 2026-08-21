@@ -41,6 +41,27 @@ Two cases produce no reload, by design:
   You are told **once per version**, not once per check — so if you still see
   the same version reported after the plugin has had time to start, restart dsh.
 
+### Upgrading dsh-hot-reload itself
+
+`dsh-hot-reload` can hot-reload **itself** too. When its own package is
+upgraded, the running instance imports the new module, commits its own version
+and persists it, closes its watcher, and then swaps its own fiber in place. The
+new instance re-reads the state file and opens its own watcher — the old watcher
+is closed before the new one opens, so there is never more than one live watcher.
+
+To make that handoff — and a plain restart — safe, the plugin keeps its tracked
+state in a file: `profileDir/.dsh-hot-reload-state.json`. It holds the committed
+`versions`, the never-retried `failedVersions`, and the once-announced
+`noticedVersions`. The file is written **atomically** — a `.tmp` file is written
+and then renamed over the target, so a crash mid-write never leaves a truncated
+file — and read back at startup, so a fresh instance inherits what the previous
+one committed instead of treating already-loaded plugins as new and re-reloading
+them.
+
+This state file is **required**. If it cannot be written at startup, the plugin
+refuses to start (it throws) rather than running with in-memory-only state that
+a later self-reload or restart would lose.
+
 It **never restarts dsh for you** — restarting is left to you (and your
 supervisor, if any).
 
@@ -50,7 +71,7 @@ The plugin writes every result to dsh's log. But dsh does not print its log to
 your terminal, so those lines are easy to miss. Two extra places show you what
 happened.
 
-**1. One line in your terminal, for each reload that worked.** You get this in
+**1. One line in your terminal, for every outcome.** You get this in
 every profile:
 
 ```
@@ -88,9 +109,10 @@ reload the page to start again.
 
 ### If you want every line in your terminal
 
-The terminal line above only covers reloads that worked. To see everything this
-plugin writes to the log, including failures, add dsh's console logger to your
-profile. It is a separate package:
+The terminal line above covers every reload outcome — reloaded, failed, and
+stale (not attempted — the old code is still running). To see everything else this plugin writes to the log (its warnings and
+diagnostics), add dsh's console logger to your profile. It is a separate
+package:
 
 ```sh
 dsh plugin --profile web add @deepseek-ai/cordis-plugin-logger-console
@@ -220,6 +242,19 @@ live fiber to swap). It does **not** detect *silent* leaks:
   numbers. dsh already shows those through its plugin list, so this adds no new
   secret. But if you bind dsh to `0.0.0.0`, count it as one more address that
   anyone on your network can open.
+
+- A plugin that loads **after** `dsh-hot-reload` in the bundle order is reloaded
+  once — to its current version — on the first lockfile write after boot, even
+  when that write was for an unrelated package. Until this plugin has tracked the
+  package across one cycle, it cannot tell whether the running code is the old or
+  the current version, so it reloads rather than adopting a version that may
+  never have run. For an HMR-safe plugin this is a harmless single redundant
+  reload.
+
+- The state file is **required**. The plugin writes its tracked state to
+  `profileDir/.dsh-hot-reload-state.json`. If that file cannot be written — for
+  example because the profile directory is read-only — the plugin refuses to
+  start (it throws) rather than running with in-memory-only state.
 
 Scope note: this handles **upgrades of already-loaded plugins**. Installing a
 *brand-new* plugin is a separate concern (adding its row to `cordis.patch.yml`,
