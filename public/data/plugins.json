@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-08-21",
- "count": 1862,
+ "updatedAt": "2026-08-21T15:18:01Z",
+ "count": 1863,
  "plugins": [
   {
    "slug": "dsh-web-ui",
@@ -77643,6 +77643,39 @@
     }
    ],
    "auto_ingested": true
+  },
+  {
+   "slug": "liang-wenfeng-gu",
+   "name": "liang-wenfeng-gu",
+   "repo": "chunfeng11221/liang-wenfeng-gu",
+   "url": "https://github.com/chunfeng11221/liang-wenfeng-gu",
+   "description_zh": "梁文峰/梁文谷双模式 harness 适配器：按北京时间自动切换回复模式——工作时段（9-12/14-18 点）梁文峰极简模式只留必要结论，其余时间梁文谷正常回复；08:50-09:00 准时提醒「快到梁文峰时间了，建议停下」，带模式提示框，零第三方依赖。",
+   "description_en": "A Liang Wenfeng / Liang Wengu dual-mode harness adapter: auto-switches reply style by Beijing time — terse Liang-Wenfeng mode during work hours (9-12/14-18), normal Liang-Wengu mode otherwise, with a punctual 08:50 'Liang Wenfeng time is coming' warning and a mode banner. Zero third-party deps.",
+   "stars": 1,
+   "forks": 0,
+   "category_zh": "抽象整活",
+   "category_en": "Absurd",
+   "is_meme": true,
+   "meme_section": "absurd",
+   "meme_caption_zh": "上班极简下班话痨，08:50 准时催你收工",
+   "meme_caption_en": "Terse at work, chatty after hours — clock out on Liang time",
+   "image": null,
+   "install_cmd": "pip install -e . && python -m liang_mode.cli",
+   "pushed_at": "2026-08-17",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": false,
+   "topics": [],
+   "description_zh_TW": "梁文峰/梁文谷雙模式 harness 適配器：按北京時間自動切換回覆模式——工作時段（9-12/14-18 點）梁文峰極簡模式只留必要結論，其餘時間梁文谷正常回覆；08:50-09:00 準時提醒「快到梁文峰時間了，建議停下」，帶模式提示框，零第三方依賴。",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "上班極簡下班話癆，08:50 準時催你收工",
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/1/chunfeng11221/liang-wenfeng-gu",
+     "w": null,
+     "h": null
+    }
+   ]
   }
  ]
 }
