@@ -1,64 +1,102 @@
 <script setup lang="ts">
-// 插件详情页主体（自 pages/plugins/[slug].vue 原样迁出：路由层改为分发器后，
-// 详情逻辑整体住在这里，功能不变——画廊/安装命令/OG 兜底/SoftwareApplication schema 全保留）。
+// 插件/整活详情页主体（双轨合一）。variant='plugin'（默认）保持原 plugins/[slug]
+// 行为不变；variant='meme' 由 pages/meme/[slug].vue 薄壳传入，叠加梗图注/点赞/
+// 同分区推荐/CreativeWork schema 等 meme 身份元素。共享区块（画廊/安装命令/
+// 双语描述/证据卡/editorial/README）只留一份实现。
 import type { DshPlugin } from '~/composables/usePlugins'
 
-const props = defineProps<{ plugin: DshPlugin }>()
-// 分发器已保证 plugin 存在且页面级恒定（一页一插件），无需响应式解包
+const props = withDefaults(defineProps<{ plugin: DshPlugin, variant?: 'plugin' | 'meme' }>(), { variant: 'plugin' })
+// 分发器已保证 plugin 存在且页面级恒定（一页一插件），无需响应式解包；variant 同理
 const plugin = props.plugin
+const isMeme = props.variant === 'meme'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const config = useRuntimeConfig()
-const { related, catOf, emojiOf, descOf } = usePlugins()
+const { related, catOf, emojiOf, descOf, captionOf, memes } = usePlugins()
 
 const siteUrl = config.public.siteUrl as string
 const desc = computed(() => descOf(plugin, locale.value))
-const pageUrl = computed(() => `${siteUrl}${localePath(`/plugins/${plugin.slug}`)}`)
+const caption = computed(() => captionOf(plugin, locale.value))
+const pageUrl = computed(() =>
+  `${siteUrl}${localePath(isMeme ? `/meme/${plugin.slug}` : `/plugins/${plugin.slug}`)}`)
 const ogImage = computed(() => `${siteUrl}${plugin.image ?? '/images/dsh-deep-whale.webp'}`)
 
-const title = computed(() =>
-  t('meta.pluginDetailTitle', { name: plugin.name, category: catOf(plugin, locale.value) }))
+const title = computed(() => isMeme
+  ? t('meta.memeDetailTitle', { name: plugin.name, caption: caption.value })
+  : t('meta.pluginDetailTitle', { name: plugin.name, category: catOf(plugin, locale.value) }))
+// meme 轨描述带梗图注前缀（原 meme 页行为）；og:description 用 caption
+const metaDescription = computed(() => isMeme ? `${caption.value} — ${desc.value}` : desc.value)
+const ogDescription = computed(() => isMeme ? caption.value : desc.value)
 
-useHead({
-  title,
+// schema 双身份：plugins 轨 SoftwareApplication / meme 轨 CreativeWork(genre:'meme')，
+// 避免双轨同类型被判重复内容
+const jsonLd = computed(() => {
+  if (isMeme) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: plugin.name,
+      description: caption.value,
+      url: pageUrl.value,
+      inLanguage: locale.value,
+      genre: 'meme',
+      about: plugin.name,
+      author: { '@type': 'Person', name: plugin.repo.split('/')[0] },
+    }
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: plugin.name,
+    description: desc.value,
+    url: pageUrl.value,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cross-platform',
+    softwareVersion: 'community',
+    author: { '@type': 'Person', name: plugin.repo.split('/')[0] },
+    codeRepository: plugin.url,
+    installUrl: plugin.url,
+    ...(plugin.license ? { license: `https://spdx.org/licenses/${plugin.license}.html` } : {}),
+    aggregateRating: plugin.stars > 0
+      ? {
+          '@type': 'AggregateRating',
+          ratingValue: Number(Math.min(5, 3.5 + Math.log10(plugin.stars + 1) / 2).toFixed(1)),
+          bestRating: '5',
+          ratingCount: plugin.stars,
+        }
+      : undefined,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  }
+})
+
+useHead(() => ({
+  title: title.value,
   meta: [
-    { name: 'description', content: desc.value },
+    { name: 'description', content: metaDescription.value },
     { property: 'og:title', content: plugin.name },
-    { property: 'og:description', content: desc.value },
+    { property: 'og:description', content: ogDescription.value },
     { property: 'og:image', content: ogImage.value },
     { property: 'og:url', content: pageUrl.value },
-    { property: 'og:type', content: 'website' },
+    // 原 meme 页无 og:type，仅在 plugin 轨输出（保持两轨 head 均与迁移前一致）
+    ...(isMeme ? [] : [{ property: 'og:type', content: 'website' }]),
   ],
   script: [{
     type: 'application/ld+json',
-    innerHTML: JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: plugin.name,
-      description: desc.value,
-      url: pageUrl.value,
-      applicationCategory: 'DeveloperApplication',
-      operatingSystem: 'Cross-platform',
-      softwareVersion: 'community',
-      author: { '@type': 'Person', name: plugin.repo.split('/')[0] },
-      codeRepository: plugin.url,
-      installUrl: plugin.url,
-      ...(plugin.license ? { license: `https://spdx.org/licenses/${plugin.license}.html` } : {}),
-      aggregateRating: plugin.stars > 0
-        ? {
-            '@type': 'AggregateRating',
-            ratingValue: Number(Math.min(5, 3.5 + Math.log10(plugin.stars + 1) / 2).toFixed(1)),
-            bestRating: '5',
-            ratingCount: plugin.stars,
-          }
-        : undefined,
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    }),
+    innerHTML: JSON.stringify(jsonLd.value),
   }],
-})
+}))
 
 const rel = computed(() => related(plugin, 4))
+/** meme 轨：同分区推荐 ×3（按 star 倒序），plugin 轨恒空不渲染 */
+const relMemes = computed(() => !isMeme
+  ? []
+  : memes().filter(x => x.slug !== plugin.slug && x.meme_section === plugin.meme_section)
+      .sort((a, b) => b.stars - a.stars).slice(0, 3))
+
+// 本地点赞（仅 meme 轨渲染按钮；load 读 localStorage 必须等客户端挂载）
+const likes = useLikes()
+onMounted(() => likes.load())
 
 // 「本站点评」人工字段:数据源尚未注入(editorial_zh/editorial_en 均可选),类型上
 // 局部扩展而非改 DshPlugin;zh 系(含 zh-TW,同 descOf 惯例)取中文、缺省兜底英文
@@ -74,15 +112,22 @@ const editorial = computed(() => {
   <div class="container">
     <div class="detail-head">
       <div class="breadcrumb">
-        <NuxtLink :to="localePath('/plugins')">{{ t('nav.plugins') }}</NuxtLink>
-        / {{ catOf(plugin, locale) }}
+        <template v-if="isMeme">
+          <NuxtLink :to="localePath('/meme')">🤪 {{ t('meme.title') }}</NuxtLink>
+          / {{ t(`meme.sections.${plugin.meme_section}`) }}
+        </template>
+        <template v-else>
+          <NuxtLink :to="localePath('/plugins')">{{ t('nav.plugins') }}</NuxtLink>
+          / {{ catOf(plugin, locale) }}
+        </template>
       </div>
       <h1>{{ plugin.name }}</h1>
+      <p v-if="isMeme" class="lead" style="font-style:italic">「{{ caption }}」</p>
       <p class="lead">{{ desc }}</p>
       <div class="filter-bar" style="margin-bottom:0">
         <span class="stars" style="font-size:15px">{{ plugin.stars.toLocaleString() }} {{ t('plugin.stars') }}</span>
-        <span class="chip">{{ emojiOf(plugin) }} {{ catOf(plugin, locale) }}</span>
-        <span v-if="plugin.is_meme" class="chip orange">🔥 meme</span>
+        <span v-if="!isMeme" class="chip">{{ emojiOf(plugin) }} {{ catOf(plugin, locale) }}</span>
+        <span v-if="isMeme || plugin.is_meme" class="chip orange">🔥 meme</span>
         <a class="btn" :href="plugin.url" target="_blank" rel="noopener">{{ t('plugin.viewOnGithub') }} ↗</a>
         <a v-if="plugin.video_url" class="btn" :href="plugin.video_url" target="_blank" rel="noopener">📺 {{ t('plugin.watchDemo') }} ↗</a>
       </div>
@@ -114,10 +159,21 @@ const editorial = computed(() => {
         <!-- 仓库 README 全文(fetch-readmes.mjs 管道产物,无文件时组件自身不渲染) -->
         <PluginReadme :slug="plugin.slug" />
 
-        <section v-if="rel.length" class="section">
+        <section v-if="rel.length && !isMeme" class="section">
           <div class="section-head"><h2>{{ t('plugin.related') }}</h2></div>
           <div class="grid cols-2">
             <PluginCard v-for="p in rel" :key="p.slug" :plugin="p" />
+          </div>
+        </section>
+
+        <!-- meme 轨：同分区推荐(MemeCard,种子赞 = stars/50) -->
+        <section v-if="relMemes.length" class="section">
+          <div class="section-head"><h2>{{ t(`meme.sections.${plugin.meme_section}`) }}</h2></div>
+          <div class="grid cols-3">
+            <MemeCard
+              v-for="p in relMemes" :key="p.slug" :plugin="p"
+              :seed-likes="Math.floor(p.stars / 50)"
+            />
           </div>
         </section>
       </div>
@@ -126,6 +182,15 @@ const editorial = computed(() => {
         <div class="side-card">
           <h3>{{ t('plugin.install') }}</h3>
           <AppCopyCmd :cmd="plugin.install_cmd" />
+          <!-- meme 轨：本地点赞(localStorage 计数,种子底数 = stars/50) -->
+          <div v-if="isMeme" style="margin-top:14px;display:flex;gap:10px">
+            <button
+              class="btn" :class="{ liked: likes.liked(plugin.slug) }"
+              @click="likes.toggle(plugin.slug)"
+            >
+              {{ likes.liked(plugin.slug) ? '💚' : '🤍' }} {{ likes.liked(plugin.slug) ? t('meme.liked') : t('meme.like') }} {{ likes.countOf(plugin.slug, Math.floor(plugin.stars / 50)) }}
+            </button>
+          </div>
         </div>
 
         <div class="side-card">
