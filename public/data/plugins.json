@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-08-22",
- "count": 1863,
+ "updatedAt": "2026-08-22T03:54:56Z",
+ "count": 1864,
  "plugins": [
   {
    "slug": "dsh-web-ui",
@@ -77808,6 +77808,42 @@
    "screenshots": [
     {
      "url": "https://opengraph.githubassets.com/dfa69dab0978c0b4f5e3cdfb06ee11df9f24898e/chunfeng11221/liang-wenfeng-gu",
+     "w": null,
+     "h": null
+    }
+   ]
+  },
+  {
+   "slug": "dsh-gov-portal",
+   "name": "dsh-gov-portal",
+   "repo": "ExElectron/dsh-gov-portal",
+   "url": "https://github.com/ExElectron/dsh-gov-portal",
+   "description_zh": "政务风综合智能办事平台：把 DSH 装进中国地方政务门户的皮——深蓝渐变导航、红头通知跑马灯、DVD 弹窗飘窗、访问计数器「本站已被访问 xxxxxx 次」、办结时盖「准予办结」红章动画。皮是 2008 年的，里子是 1:1 对接全部真实 Agent 能力（会话/模型/权限/统计/审批零硬编码）。",
+   "description_en": "A Chinese government-portal-skin WebUI for DSH on port 3081: deep-blue gradient nav, red-header notice tickers, DVD-screensaver popups, a 'visited 000001 times' counter, and a translucent 'APPROVED' stamp animation when the stream finishes. The chrome is 2008; the guts are a full 1:1 proxy to real agent capabilities (sessions/models/permissions/stats/approvals, zero hardcoding).",
+   "stars": 20,
+   "forks": 3,
+   "category_zh": "抽象整活",
+   "category_en": "Absurd",
+   "is_meme": true,
+   "meme_section": "absurd",
+   "meme_caption_zh": "办事大厅风外壳，办的是你的 token——准予办结，盖章！",
+   "meme_caption_en": "Government-service-desk chrome for your tokens — APPROVED, stamp it",
+   "image": null,
+   "install_cmd": "dsh plugin --profile web add github:ExElectron/dsh-gov-portal",
+   "pushed_at": "2026-08-20",
+   "license": "MIT",
+   "language": "JavaScript",
+   "has_manifest": true,
+   "topics": [
+    "deepseek-harness",
+    "dsh-plugin"
+   ],
+   "description_zh_TW": "政務風綜合智慧辦事平台：把 DSH 裝進中國地方政務門戶的皮——深藍漸變導航、紅頭通知跑馬燈、DVD 彈窗飄窗、訪問計數器「本站已被訪問 xxxxxx 次」、辦結時蓋「准予辦結」紅章動畫。皮是 2008 年的，裡子是 1:1 對接全部真實 Agent 能力（會話/模型/權限/統計/審批零硬編碼）。",
+   "category_zh_TW": "抽象整活",
+   "meme_caption_zh_TW": "辦事大廳風外殼，辦的是你的 token——准予辦結，蓋章！",
+   "screenshots": [
+    {
+     "url": "https://opengraph.githubassets.com/1/ExElectron/dsh-gov-portal",
      "w": null,
      "h": null
     }
