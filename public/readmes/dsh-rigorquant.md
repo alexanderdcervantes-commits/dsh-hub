@@ -3,7 +3,7 @@
 **English** | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/linxichen/dsh-rigorquant/5efea3fc9d48d94b3012c32b0c96a4a50a60d23c/docs/figs/edgesworth-box.png" alt="Edgeworth box with contract curve and Pareto optimum" width="70%">
+  <img src="https://raw.githubusercontent.com/linxichen/dsh-rigorquant/ca70cecc682957f5563297afe3d56e98eabc2e39/docs/figs/edgesworth-box.png" alt="Edgeworth box with contract curve and Pareto optimum" width="70%">
 </p>
 <p align="center"><sub>
   <a href="docs/figs/edgesworth-box.png">Edgeworth box</a> — hand-drawn in
@@ -106,8 +106,8 @@ layer). Shipped defaults:
 
 | Role | Primary | Fallback |
 | --- | --- | --- |
-| Ground-truth oracle | `deepseek-v4-pro` @ high | `deepseek-v4-flash` @ high |
-| Adversary | `deepseek-v4-pro` @ high | `deepseek-v4-flash` @ high |
+| Ground-truth oracle | `deepseek-v4-pro` @ high | `deepseek-v4-flash` @ low |
+| Adversary | `deepseek-v4-pro` @ high | `deepseek-v4-flash` @ low |
 | Root, explorers, literature roles | inherit (root follows the chatbox picker) | — |
 
 On a terminal primary failure (no adapter / HTTP 4xx) the role degrades to its
@@ -127,7 +127,6 @@ agent-presets/rigorquant/   preset composition + persona + bundled skills
   .../scripts/rq_check.py   the meta-validator (single canonical copy)
   .../schemas/              study.json + registry.json JSON Schemas, which the
                             validator loads — so schema and checker cannot drift
-  skills/j-space/           J-Space cognition suite (SKILL.md + modules/ + references/ + scripts/)
 env/                        pinned uv compute lane (sympy/cvxpy/hypothesis/…)
 mcp/jacobian.md             escalation lane wiring
 docs/architecture.md        grilled decision record + sources

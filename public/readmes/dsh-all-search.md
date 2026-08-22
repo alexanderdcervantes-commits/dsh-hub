@@ -1,10 +1,12 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/RealAlexandreAI/dsh-all-search/d7a724cc7f96842f9043d9729eb5acbf9bd52890/assets/readme/hero.svg" alt="dsh-all-search — AnySearch web search for DeepSeek Harness" width="100%">
+  <img src="https://raw.githubusercontent.com/RealAlexandreAI/dsh-all-search/d289cfe20459b1547b665c585b1968439f8f5318/assets/readme/hero.svg" alt="dsh-all-search — AnySearch web search for DeepSeek Harness" width="100%">
 </p>
 
 # dsh-all-search
 
 Adds an **AnySearch** web-search provider to DeepSeek Harness, registered into `ctx.web`. AnySearch is a single MCP gateway that aggregates exa / tavily / firecrawl / context7 behind **one API key**.
+
+With an optional `firecrawl_api_key`, developer-intent queries (repo / issue / PR / commit / skill) are answered by the **Firecrawl Developer Index** first — a semantic artifact index over READMEs, issues, PRs, OpenAPI specs and skills — falling back to AnySearch when it fails or returns nothing.
 
 > Port of [pi-all-search](https://github.com/RealAlexandreAI/pi-all-search).
 
@@ -33,6 +35,7 @@ The provider registers as `anysearch` on `ctx.web` — the built-in `web_search`
 |---|---|---|
 | `api_key` | ✅ | your AnySearch key |
 | `base_url` | – | MCP endpoint override |
+| `firecrawl_api_key` | – | enables the Firecrawl Developer Index branch for repo/issue/PR/skill queries |
 
 Without a key the provider reports `available() = false` and the seam skips it.
 

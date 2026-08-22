@@ -53,19 +53,19 @@ dsh plugin --profile web add /absolute/path/to/dsh-session-manager-0.2.2.tgz
 
 设置页「会话管理」分栏（工作区分组、行操作与回收站）：
 
-![设置页会话管理](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/settings-section.png)
+![设置页会话管理](https://raw.githubusercontent.com/dream12347/dsh-session-manager/6f00ab01fd97c4283ed94c15dd993bd6882367b9/assets/settings-section.png)
 
 对话顶部快捷入口（对话管理 / 回收站 / 删除本对话）：
 
-![对话顶部快捷入口](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/header-buttons.png)
+![对话顶部快捷入口](https://raw.githubusercontent.com/dream12347/dsh-session-manager/6f00ab01fd97c4283ed94c15dd993bd6882367b9/assets/header-buttons.png)
 
 会话管理抽屉（工作区分组、图钉固定、点击外部收起）：
 
-![会话管理抽屉](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/session-drawer.png)
+![会话管理抽屉](https://raw.githubusercontent.com/dream12347/dsh-session-manager/6f00ab01fd97c4283ed94c15dd993bd6882367b9/assets/session-drawer.png)
 
 通用设置「上下文压缩阈值」（17%–90%，滑块刻度）：
 
-![上下文压缩阈值](https://raw.githubusercontent.com/dream12347/dsh-session-manager/751059bb0425ab03f43b8f46f6bfecec5e699a6b/assets/general-settings.png)
+![上下文压缩阈值](https://raw.githubusercontent.com/dream12347/dsh-session-manager/6f00ab01fd97c4283ed94c15dd993bd6882367b9/assets/general-settings.png)
 
 ## 使用
 
@@ -122,7 +122,7 @@ dsh plugin --profile web add /absolute/path/to/dsh-session-manager-0.2.2.tgz
 
 ## 兼容性
 
-当前版本适配 DSH `0.1.0-rc.6`（依赖 `settings.section` / `settings.general.item` / `conversation.session.header.utilities` 插槽与 `ctx.sessionPersistence` / `ctx.workspaceRegistry` / `ctx.agents` / `ctx.storageDomain` / `ctx.agentPresets` 服务）。DSH 版本升级后如插槽或服务 API 变化，需要同步适配。
+当前版本适配 DSH `0.1.1-rc.1`（依赖 `settings.section` / `settings.general.item` / `conversation.session.header.utilities` 插槽与 `ctx.sessionPersistence` / `ctx.workspaceRegistry` / `ctx.agents` / `ctx.storageDomain` / `ctx.agentPresets` 服务）。DSH 版本升级后如插槽或服务 API 变化，需要同步适配。
 
 ## 开发
 

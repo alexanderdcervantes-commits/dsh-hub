@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/xiaoshihou514/dsh-vision/8011d89bd2a358db0d80029628f1c84571e4c578/assets/logo.png" width="160" alt="dsh-vision logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/xiaoshihou514/dsh-vision/3357371427ae7ac1b456dd88af466215ab051453/assets/logo.png" width="160" alt="dsh-vision logo"></p>
 <h1 align="center">dsh-vision</h1>
 
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness): vision!

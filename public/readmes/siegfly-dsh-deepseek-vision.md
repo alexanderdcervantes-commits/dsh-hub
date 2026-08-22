@@ -47,8 +47,11 @@
   OpenAI 风格 `/chat/completions` 网关（DashScope、vLLM、OpenRouter、LM Studio…）。
 - **失败语义明确：** 默认 fail-closed，稳定错误码（`AUTH` / `TIMEOUT` / `TRANSPORT` /
   `IMAGE_TOO_LARGE`…），或 `placeholder` 降级为文字占位继续。
-- **跨版本不锁死：** 发布版不锁定官方 dsh 版本——目标机安装时用**自己的** dsh 重建，
-  构建成功即兼容证明；装前检查分级提示，绝不静默失败。
+- **跨版本不锁死：** 发布版不锁定官方 dsh 版本。无 CLI 复刻路径（`pnpm
+  install-profile`）在目标机用**自己的** dsh 重建，构建成功即兼容证明，装前分级
+  提示、绝不静默失败；官方 CLI 路径（`dsh plugin add`）直接安装发布产物，不在
+  目标机重建——运行时依赖经 healed fallback 解析，但兼容性未经目标机验证
+  （见[版本对齐](#版本对齐)）。
 
 ## 为什么选它
 
@@ -90,13 +93,15 @@ npx @deepseek-ai/dsh web               # 不装全局：CLI 只在 npx 缓存里
 > ⚠️ 用 `npx` 方式时 `dsh` **不会**进入 PATH——新开终端直接敲 `dsh` 会报
 > "command not found"。要么全局安装，要么所有命令都带 `npx @deepseek-ai/dsh` 前缀。
 
-**第二步：安装**（npm 发布版，推荐方式）：
+**第二步：安装**（git 形式，锁 commit，推荐）：
 
 ```sh
-dsh plugin --profile web add dsh-deepseek-vision
+dsh plugin --profile web add github:siegfly/dsh-deepseek-vision#<sha>
 # 没装全局、走 npx 时：
-npx @deepseek-ai/dsh plugin --profile web add dsh-deepseek-vision
+npx @deepseek-ai/dsh plugin --profile web add github:siegfly/dsh-deepseek-vision#<sha>
 ```
+
+已发布的 npm 版（0.1.5）同样可用：把 spec 换成 `dsh-deepseek-vision` 即可。
 
 **部署使用：** 重启一次 `dsh web` → Models 页选 **DeepSeek + Vision** → 设置 → 插件 →
 插件配置里填 VL 密钥 → 聊天窗贴图，发消息。
@@ -113,7 +118,7 @@ headless profile、其他 spec 形式（git / 目录 / tarball）、无 CLI 的�
 
 聊天窗里选中 **DeepSeek + Vision** provider 之后：
 
-| ![模型选择器里的 DeepSeek + Vision provider](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/provider-picker.png) | ![聊天窗贴图，图片被描述后发送给 DeepSeek](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/chat.png) |
+| ![模型选择器里的 DeepSeek + Vision provider](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/3527812e8a47807ef60da65a9eb32c4359dd76cf/docs/images/provider-picker.png) | ![聊天窗贴图，图片被描述后发送给 DeepSeek](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/3527812e8a47807ef60da65a9eb32c4359dd76cf/docs/images/chat.png) |
 | :---: | :---: |
 
 - **粘贴 / 拖入图片** → 被配置好的视觉模型先描述成文字（逐字提取代码、报错、日志、
@@ -167,7 +172,7 @@ DeepSeek wire；reasoning efforts / context 窗口 / 默认 maxTokens / retry po
 的"DeepSeek + Vision（视觉语言桥接）"卡片（`vl.*` 全字段 + VL 密钥）、Web Models 页
 （`deepseek.*` 子段由可配置 provider 目录接管）、`settings.yaml`（两个子段都可写）。
 
-![插件设置卡片](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/28d2b62e66706b7bcec3bc6008581ac8da5ef8ce/docs/images/plugin-settings.png)
+![插件设置卡片](https://raw.githubusercontent.com/siegfly/dsh-deepseek-vision/3527812e8a47807ef60da65a9eb32c4359dd76cf/docs/images/plugin-settings.png)
 
 `provider` / `displayName` 是注册期事实，修改即时生效（adapter 路由 + 可配置 provider
 目录原子重注册，不需重启）；改成已被占用的路由 id 时两个注册表保留旧值并记日志。
@@ -204,11 +209,11 @@ Agent 循环 / 网页搜索）同机制、同交互（暂存草稿、覆盖状�
 manifest 的 `dsh.profile.bundles` 层栈，loader 启动时按层挂载——**不需要手工往
 `cordis.patch.yml` 加任何行**（旧版本加过的受管块会在下次安装/卸载时自动迁移移除）。
 
-四种 spec 任选：
+四种 spec 任选（日常推荐 git 形式，锁 commit）：
 
 ```sh
-dsh plugin --profile web add dsh-deepseek-vision                          # npm（推荐）
-dsh plugin --profile web add github:siegfly/dsh-deepseek-vision#<sha>       # git，锁 commit
+dsh plugin --profile web add github:siegfly/dsh-deepseek-vision#<sha>       # git（推荐），锁 commit
+dsh plugin --profile web add dsh-deepseek-vision                          # npm（已发布 0.1.5）
 dsh plugin --profile web add file:<本仓库路径>                        # 本地目录（开发）
 dsh plugin --profile web add ./dsh-deepseek-vision-<version>.tgz              # tarball
 ```
@@ -217,14 +222,17 @@ headless 同理：`dsh plugin --profile headless add dsh-deepseek-vision`（客�
 web 生效）。验证 bundle 层已挂载：`dsh --profile web --dump-config | grep llm-vl-gateway`。
 卸载与安装一一对应：`dsh plugin --profile <name> remove dsh-deepseek-vision`。
 
-无 CLI 的机器用等价复刻（需 Node 22.19+ 或 24+、PATH 里有 `pnpm`；init 布局 → pnpm add → bundles 对账）：
+无 CLI 的机器用等价复刻（需 Node 22.19+ 或 24+、PATH 里有 `pnpm`；init 布局 → 目标机
+重建 → 兼容门禁 → pnpm add → bundles 对账）：
 
 ```powershell
 pnpm install        # 只装 devDeps（typescript/vitest），不会装 @deepseek-ai/*
 pnpm install-profile          # 或 node scripts/install-profile.mjs [profile] [dshHome]
 ```
 
-两种方式做同样的事：
+这是唯一在目标机重建的安装路径：`install-profile` 先用目标机自己的 dsh 类型重新构建
+插件并通过 `check-compat.mjs` 门禁，再装入 profile（见[版本对齐](#版本对齐)）。
+两条路径都做下面两件事：
 
 - 把 `dsh-deepseek-vision` 链接进 profile 的 node_modules（运行时 `@deepseek-ai/*` 依赖经
   官方 healed fallback 解析到**同一个** dsh 安装，共享同一个 cordis 实例，无双实例问题）；
@@ -240,17 +248,28 @@ pnpm install-profile          # 或 node scripts/install-profile.mjs [profile] [
 
 ## 版本对齐
 
-插件的运行时 `@deepseek-ai/*` 依赖从**目标机器自己的 dsh 安装**解析（healed fallback），
-且安装脚本在检查之前会**先在目标机器上用目标机器自己的 dsh 类型重新构建**插件。因此：
+两条安装路径的兼容性策略不同：
 
-> **发布版不锁定任何官方版本**——目标机器用比锚点更新（或更旧）的官方 dsh 都可以安装；
-> 构建成功本身就是兼容性证明。若新官方版改了本插件用到的 API，构建会自然失败并给出明确
-> 的 tsc 错误，那时才需要发新版适配。**作者无需跟随官方每次升级重新发布。**
+- **官方 CLI 路径**（`dsh plugin add`，npm / git / tarball）：直接安装发布产物——
+  npm 包在作者发布时构建，git 形式使用提交的 `lib/`，tarball 是作者打包的产物，
+  **都不在目标机重建，也没有兼容门禁**。运行时 `@deepseek-ai/*` 依赖从目标机自己的
+  dsh 安装解析（healed fallback）；若目标机官方 dsh 的 API 与本插件编译产物不匹配，
+  安装不会提前失败，问题会在启动或调用时显现。装前请自行确认目标 dsh 与
+  `dshCompat.anchorVersion` 声明的代际大致一致。
+- **无 CLI 复刻路径**（`pnpm install-profile`）：安装前**先在目标机用目标机自己的
+  dsh 类型重新构建**插件，再跑 `check-compat.mjs` 分级门禁。只有这条路径提供
+  “构建成功即兼容证明”：
+
+> 无 CLI 复刻路径下，发布版不锁定任何官方版本——目标机器用比锚点更新（或更旧）的
+> 官方 dsh 都可以安装；构建成功本身就是兼容性证明。若新官方版改了本插件用到的 API，
+> 构建会自然失败并给出明确的 tsc 错误，那时才需要发新版适配。**作者无需跟随官方每次
+> 升级重新发布。**
 
 - `dshCompat.anchorVersion` 只声明提交的 `lib/` 的**构建出处**（出处声明，不是安装
   许可）；`pnpm build` 写入的 `lib/build-anchor.json` 让出处无法撒谎。
 - `node scripts/check-compat.mjs [dshHome]` 安装前对目标机分级：完全一致 = exit 0；
   **任何不一致 = exit 1 提示并放行**；残缺发布 / 复刻漂移 = 拒绝（有环境变量强制开关）。
+  该检查**只在 `install-profile` 里运行**，官方 CLI 路径不会调用它。
 
 完整策略、退出码分级与发版触发条件：[docs/VERSIONING.md](docs/VERSIONING.md)。
 
@@ -297,7 +316,7 @@ dsh-deepseek-vision`——插件本身装在 profile 里，与 CLI 从哪来无�
 复刻脚本需要 Node 22.19+ / 24+ 和 PATH 里的 `pnpm`。
 
 **`#<sha>` 是什么？** git spec 形式的占位符——替换成具体 commit 哈希可锁死精确代码快照；
-日常使用走 npm 形式即可。
+不加 `#<sha>` 则安装默认分支最新提交。
 
 **支持 CLI（headless）吗？** 支持。网关路由在两个 profile 行为一致；设置卡片是 web
 专属，headless 用 `settings.yaml` 配置。
@@ -305,8 +324,8 @@ dsh-deepseek-vision`——插件本身装在 profile 里，与 CLI 从哪来无�
 **卸载后，含图历史会话选不了模型？** 属预期行为：官方 `selectModel` 按
 `inputModalities` 拒绝文本模型接入含图会话。新会话不受影响，重装即恢复。
 
-**为什么图片不直接发给 DeepSeek？** 官方 DeepSeek 接口是纯文本的（会拒绝
-`image_url`），所以先由 VL 模型描述成文字再转发——不换模型、不丢信息。
+**为什么图片不直接发给 DeepSeek？** 官方 DeepSeek 接口对纯文本模型会拒绝
+`image_url`，所以先由 VL 模型描述成文字再转发——不换模型、不丢信息。
 
 ## 许可
 

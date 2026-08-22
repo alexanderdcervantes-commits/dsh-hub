@@ -6,7 +6,7 @@
 
 DeepSeek Harness (DSH) Web GUI 的 AI 生图插件。它通过宿主进程安全地代理 OpenAI 兼容的图像生成接口，为 DSH 提供文生图、图生图编辑、生成历史、提示词模板库和一体化设置页。
 
-> 默认模型为 `gpt-image-2`，也兼容提供 `/images/generations` 和 `/images/edits` 的 OpenAI 兼容端点。
+> 默认模型为 `gpt-image-2`，也内置对 xAI `grok-imagine-image`（Grok Imagine）的支持；同时兼容提供 `/images/generations` 和 `/images/edits` 的 OpenAI 兼容端点。
 
 ## 效果预览
 
@@ -16,31 +16,39 @@ DeepSeek Harness (DSH) Web GUI 的 AI 生图插件。它通过宿主进程安全
 
 **四图结果布局**
 
-![AI 生图工作台四图结果布局](https://raw.githubusercontent.com/dickpy/dsh-imagegen/9807242f692c0b07999de75898ded787743dd920/docs/images/image-generation-studio-four.png)
+![AI 生图工作台四图结果布局](https://raw.githubusercontent.com/dickpy/dsh-imagegen/26e6520da8f788451338e7c31c2697fbc0c0935f/docs/images/image-generation-studio-four.png)
 
 **单图结果布局**
 
-![AI 生图工作台单图结果布局](https://raw.githubusercontent.com/dickpy/dsh-imagegen/9807242f692c0b07999de75898ded787743dd920/docs/images/image-generation-studio-single.png)
+![AI 生图工作台单图结果布局](https://raw.githubusercontent.com/dickpy/dsh-imagegen/26e6520da8f788451338e7c31c2697fbc0c0935f/docs/images/image-generation-studio-single.png)
 
 ### 提示词模板库
 
 模板库提供 441 个 `gpt-image-2` 案例的展示图、分类筛选和完整提示词；打开详情后可以复制提示词，或一键回填到生图输入框。
 
-![提示词模板库展示](https://raw.githubusercontent.com/dickpy/dsh-imagegen/9807242f692c0b07999de75898ded787743dd920/docs/images/prompt-template-library.png)
+![提示词模板库展示](https://raw.githubusercontent.com/dickpy/dsh-imagegen/26e6520da8f788451338e7c31c2697fbc0c0935f/docs/images/prompt-template-library.png)
 
 ### 独立配置卡片
 
 在 DSH 的“设置 -> 插件 -> 可配置”中填写 API 地址和密钥。密钥只保存在宿主侧设置文件，浏览器端不会获取明文。
 
-![插件配置卡片（显示当前版本）](https://raw.githubusercontent.com/dickpy/dsh-imagegen/9807242f692c0b07999de75898ded787743dd920/docs/images/plugin-settings.png)
+![插件配置卡片（显示当前版本）](https://raw.githubusercontent.com/dickpy/dsh-imagegen/26e6520da8f788451338e7c31c2697fbc0c0935f/docs/images/plugin-settings.png)
+
+### 画廊工作区
+
+画廊标签页提供左侧分类筛选和右侧作品墙：可在瀑布流与整齐网格之间切换，纵向滚动浏览收藏，点击任意图片打开大图预览。
+
+![画廊工作区：分类筛选、瀑布流和大图预览](https://raw.githubusercontent.com/dickpy/dsh-imagegen/26e6520da8f788451338e7c31c2697fbc0c0935f/docs/images/gallery-workspace.png)
 
 ## 功能
 
 - **文生图与图生图**：输入提示词生成图片，或上传 PNG、JPG、WEBP 参考图进行编辑。
+- **Grok Imagine 支持**：支持 xAI `grok-imagine-image` 文生图与图生图；将 API 地址设置为 `https://api.x.ai/v1` 即可使用官方比例、分辨率和 JSON 图片协议。
 - **可调生成参数**：尺寸、清晰度、生成数量和细节等级均可在界面中选择；未指定的参数保持自动。
 - **结果操作**：结果区固定为四分格：单图铺满，双图占上排，三图占三格，四图为 2×2；支持下载、全屏预览、可滚动缩放、前后切换、复制优化提示词，以及一键将当前图片添加到图生图。
+- **画廊收藏**：结果卡片、全屏预览与历史记录条目上都有「加入画廊」，可把满意的图片收藏起来；切到画廊后进入左侧分类筛选、右侧瀑布流/整齐网格的作品墙，支持按生成模式、模型、画面比例筛选、按发布时间排序、预览、移出、清空与恢复参数。画廊持久化在宿主侧 `~/.dsh/dsh-imagegen/gallery/`，无数量上限，且内容相同的图片不会重复加入。
 - **持久化历史**：保存提示词、参数和图片；支持查看、恢复、单条删除和清空，最多保留 50 条。
-- **跨设备查看**：历史保存在 DSH 宿主侧，连接同一 DSH 的浏览器或设备共享同一份记录。
+- **跨设备查看**：历史与画廊都保存在 DSH 宿主侧，连接同一 DSH 的浏览器或设备共享同一份记录。
 - **提示词模板库**：提示词框左下角可打开模板库，浏览 441 个 `gpt-image-2` 案例的展示图；支持搜索、分类筛选、查看完整提示词、复制，以及一键将模板回填到生图输入框。参考图通过宿主同源代理按需加载并缓存，也可手动缓存全部图片供离线浏览。
 - **原生 DSH 体验**：侧栏入口、主题适配和设置卡片均遵循 DSH Web GUI 的 UI 规范。
 - **在线更新**：插件会检查 GitHub Releases，发现新版本时在工作台显示在线更新按钮；安装完成后重启 DSH 即可加载新版本。
@@ -69,10 +77,10 @@ dsh 会自动把插件注册进 profile 的 bundle 清单（无需手动改 cord
 ### 方式三：聚合包（tarball）安装
 
 从 [GitHub Releases](https://github.com/dickpy/dsh-imagegen/releases) 下载发布产物
-（如 `dickpy-dsh-imagegen-1.0.9.tgz`），然后：
+（如 `dickpy-dsh-imagegen-1.0.20.tgz`），然后：
 
 ```bash
-dsh plugin --profile web add <下载路径>/dickpy-dsh-imagegen-1.0.9.tgz
+dsh plugin --profile web add <下载路径>/dickpy-dsh-imagegen-1.0.20.tgz
 ```
 
 重启 dsh web。
@@ -109,16 +117,24 @@ dsh plugin --profile web add link:/绝对路径/dsh-imagegen
 | 场景 | 请求 |
 | --- | --- |
 | 文生图 | `POST {api_url}/images/generations`，JSON 请求体 |
-| 图生图 | `POST {api_url}/images/edits`，`multipart/form-data`，包含 `image`、`prompt`、`model` 与参数 |
+| 图生图 | `POST {api_url}/images/edits`。OpenAI 模型走 `multipart/form-data`（含 `image`、`prompt`、`model` 与参数）；Grok Imagine 模型走官方 JSON 协议（`image: { url, type: "image_url" }`，接受 base64 data URI） |
 | 响应 | 支持 OpenAI 兼容的 `{ data: [{ b64_json | url }] }`；URL 图片由宿主下载并转为 base64，再返回浏览器 |
 
 `detail` 是透传参数，部分 `gpt-image-2` 网关支持。官方 OpenAI 端点若不接受该字段，请保持界面中的“自动”。
+
+Grok Imagine 模型（`grok-imagine-image` / `grok-imagine-image-2.0`）的请求会按官方规范发送：界面尺寸即宽高比（1:1 / 3:4 / 4:3 / 9:16 / 2:3 / 3:2 / 16:9 / 21:9），直接作为 `aspect_ratio`（21:9 映射为官方文档中的 20:9 超宽）；清晰度 1k / 2k / 4k 作为 `resolution`（官方文档当前仅支持 1k / 2k，选 4k 时自动回落为 2k）；并固定 `response_format: "b64_json"`（结果 URL 为临时签名链接，直接取 base64 更稳定）。OpenAI 兼容端点则将宽高比映射为最接近的像素尺寸（如 1:1→1024×1024、16:9→1792×1024），清晰度映射为 `quality` 档位（1k→low、2k→medium、4k→high）。API 地址填 xAI 的 `https://api.x.ai/v1` 即可使用。
+
+## 画廊与 Grok Imagine
+
+画廊提供独立的作品浏览工作区：左侧按生成模式、模型和画面比例筛选，右侧以纵向瀑布流或整齐网格展示收藏图片，支持发布时间排序、持续向下滚动、点击卡片打开大图预览、恢复参数、移出和清空。收藏数据由 DSH 宿主持久化到 `~/.dsh/dsh-imagegen/gallery/`，同一图片内容不会重复保存。
+
+插件原生支持 xAI `grok-imagine-image`。将 API 地址设置为 `https://api.x.ai/v1` 后，文生图使用 `/images/generations`，图生图按 Grok Imagine 的 JSON `image_url` 协议调用 `/images/edits`；界面中的比例和清晰度会分别映射为 `aspect_ratio` 与 `resolution`。
 
 ## 数据与安全
 
 - API 请求由 DSH 宿主进程代理，浏览器不直接连接上游 API，因此不暴露 API 密钥，也没有浏览器 CORS 问题。
 - API 密钥保存在宿主侧 `~/.dsh/settings.yaml`；设置桥会对密钥进行脱敏。
-- 历史数据存放在 `~/.dsh/dsh-imagegen/`：图片独立落盘，`index.json` 保存索引。
+- 历史与画廊数据存放在 `~/.dsh/dsh-imagegen/`：历史图片独立落盘于 `images/`（`index.json` 为索引），画廊在 `gallery/` 子目录（`gallery/index.json` 为索引，按图片内容去重）。
 - 模板库的提示词快照随插件发布；展示图从 `vibeui.top` 通过本机宿主按需拉取，并缓存到 `~/.dsh/dsh-imagegen/template-images/`。模板库仅在手动刷新或首次加载展示图时访问该站点。
 - 插件通过专用 loopback 路由 `/api/dsh-imagegen/settings/{describe,mutate}` 访问设置，不需要修改 DSH 源码或依赖第三方命名空间白名单。
 

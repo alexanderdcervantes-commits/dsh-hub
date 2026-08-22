@@ -15,11 +15,12 @@ DSH Web UI 的常驻像素鲸鱼伙伴插件：会话标题栏（标题行右侧
 | `v0.3.0` | `snapshots/20260806T160212Z`（snapshot0806） | 0806 构建 + 睡觉动画（连续空闲 10 s 入睡） |
 | `v0.3.1` | `snapshots/20260806T160212Z`（snapshot0806） | 睡觉 Z 改 5 帧循环 `0-1-2-3-4-5-1-…`；尾巴加一帧改 `0-1-2-3-4-3-2-1-0` |
 | `v0.3.2` | `snapshots/20260806T160212Z`（snapshot0806） | 修正睡觉 Z 浮动轨迹（重新定位 睡觉2~5 的 Z 位置） |
-| `v0.3.3`（默认） | `snapshots/20260810T155924Z`（snapshot0810） | 兼容性构建：客户端插件元数据从顶层 `dshClient` 迁移为嵌套 `dsh.client`（0810 的 ClientModuleHostService 只读该字段；顶层 `dshClient` 被静默忽略），inject/platform 原样保留 |
+| `v0.3.3` | `snapshots/20260810T155924Z`（snapshot0810） | 兼容性构建：客户端插件元数据从顶层 `dshClient` 迁移为嵌套 `dsh.client`（0810 的 ClientModuleHostService 只读该字段；顶层 `dshClient` 被静默忽略），inject/platform 原样保留 |
+| `v0.3.4`（默认） | npm `@deepseek-ai/dsh@0.1.1-rc.1` | 0.1.1-rc.1 实机 boot 验证通过（boot 清单 + client.js 200），依赖的槽位/服务不变 |
 
 > **兼容性说明**：上表构建均基于 snapshot0806 开发，同时兼容 snapshot0807（`snapshots/20260807T130646Z`）、snapshot0808（`snapshots/20260808T121140Z`）、snapshot0809（`snapshots/20260809T140917Z`）、snapshot0810（`snapshots/20260810T155924Z`）、snapshot0811（`snapshots/20260811T152241Z`）与最终快照 snapshot0812（`snapshots/20260812T172954Z-final`）——0807~0812 用户直接安装默认版本（`v0.3.3`）即可（0811 与 0812 实机 boot 验证通过，见下）。
 
-> **npm 发版兼容**：兼容 DSH npm 发版 `@deepseek-ai/dsh@0.0.1-rc.5`（dist-tag `next`，即最终快照 snapshot0812 的 npm 发版；`npm exec -p @deepseek-ai/dsh@0.0.1-rc.5 -- dsh --profile web --port <port>` 可访问指定版本并启动，lib 生产模式），同时保持兼容 `@deepseek-ai/dsh@0.0.1-rc.2`（snapshot0811 的 npm 发版）。实测（npm rc.5 基线）：`dsh web` 启动后 `window.__DSH_BOOT__` 清单包含 `@dsh-external/dsh-ui-whale`（inject: `dsh-client-locale`/`dsh-client-runtime`/`dsh-client-ui-conversation`），`/plugins/@dsh-external/dsh-ui-whale/client.js` 返回 200；src 对 rc.5 基线构建产物 typecheck 全绿（本插件已把 cordis 类型导入与 peer 迁移至 `@deepseek-ai/cordis`，见下）。注意：0811 起 vendored cordis 更名为 `@deepseek-ai/cordis`（npm 发版不再发布 `cordis` 名义的 vendored 包），本插件已迁移（peer 声明 `@deepseek-ai/cordis: ^4.0.1-rc.1`，npm rc.5 基线上为 `4.0.1-rc.4`），纯 `npm install` 不再报 ERESOLVE。
+> **npm 发版兼容**：兼容 DSH npm 发版 `@deepseek-ai/dsh@0.1.1-rc.1`（v0.3.4 实机 boot 验证通过：`dsh --profile web` 启动后 boot 清单包含 `@dsh-external/dsh-ui-whale`，`/plugins/@dsh-external/dsh-ui-whale/client.js` 返回 200；`conversation.session.header.actions` 槽位与 `locale`/`invariants` 服务在 0.1.1-rc.1 上保持不变），同时兼容 `@deepseek-ai/dsh@0.0.1-rc.5`（dist-tag `next`，即最终快照 snapshot0812 的 npm 发版；`npm exec -p @deepseek-ai/dsh@0.0.1-rc.5 -- dsh --profile web --port <port>` 可访问指定版本并启动，lib 生产模式），同时保持兼容 `@deepseek-ai/dsh@0.0.1-rc.2`（snapshot0811 的 npm 发版）。实测（npm rc.5 基线）：`dsh web` 启动后 `window.__DSH_BOOT__` 清单包含 `@dsh-external/dsh-ui-whale`（inject: `dsh-client-locale`/`dsh-client-runtime`/`dsh-client-ui-conversation`），`/plugins/@dsh-external/dsh-ui-whale/client.js` 返回 200；src 对 rc.5 基线构建产物 typecheck 全绿（本插件已把 cordis 类型导入与 peer 迁移至 `@deepseek-ai/cordis`，见下）。注意：0811 起 vendored cordis 更名为 `@deepseek-ai/cordis`（npm 发版不再发布 `cordis` 名义的 vendored 包），本插件已迁移（peer 声明 `@deepseek-ai/cordis: ^4.0.1-rc.1`，npm rc.5 基线上为 `4.0.1-rc.4`），纯 `npm install` 不再报 ERESOLVE。
 
 > git 依赖方式固定 tag：`pnpm add '@dsh-external/dsh-ui-whale@github:lhh010/dsh-ui-whale#v0.3.3'`（0810/0811 用户；0806~0809 用户用 `#v0.3.2`，0805 用户用 `#v0.1.0`）。
 
@@ -48,13 +49,13 @@ DSH Web UI 的常驻像素鲸鱼伙伴插件：会话标题栏（标题行右侧
 
 ## 演示 Demo
 
-![dsh-ui-whale 完整演示](https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/dsh-ui-whale-demo.gif)
+![dsh-ui-whale 完整演示](https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/dsh-ui-whale-demo.gif)
 
 各动作 GIF：
 
-<img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E7%9C%A8%E7%9C%BC.gif" alt="眨眼" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E6%91%86%E5%B0%BE%E5%B7%B4.gif" alt="摆尾巴" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E6%91%86%E8%85%B9%E9%B3%8D.gif" alt="摆腹鳍" width="200">
+<img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E7%9C%A8%E7%9C%BC.gif" alt="眨眼" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E6%91%86%E5%B0%BE%E5%B7%B4.gif" alt="摆尾巴" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E6%91%86%E8%85%B9%E9%B3%8D.gif" alt="摆腹鳍" width="200">
 
-<img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E5%96%B7%E6%B0%B4%E8%8A%B1.gif" alt="喷水花" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E5%86%92%E7%88%B1%E5%BF%83.gif" alt="冒爱心" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/c11c322986cfbad243bd9bbda7c30228bae70ca5/docs/%E7%9D%A1%E8%A7%89.gif" alt="睡觉" width="200">
+<img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E5%96%B7%E6%B0%B4%E8%8A%B1.gif" alt="喷水花" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E5%86%92%E7%88%B1%E5%BF%83.gif" alt="冒爱心" width="200"> <img src="https://raw.githubusercontent.com/lhh010/dsh-ui-whale/ba1f21013ff749ebe95bf0414ffcc7fbb6ca596f/docs/%E7%9D%A1%E8%A7%89.gif" alt="睡觉" width="200">
 
 > 完整视频：[docs/dsh-ui-whale-demo.mp4](docs/dsh-ui-whale-demo.mp4)
 

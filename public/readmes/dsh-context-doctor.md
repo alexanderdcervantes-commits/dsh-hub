@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License BSD-3-Clause" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg?style=for-the-badge"></a>
-  <a href="https://github.com/Zhenyu98/dsh-context-doctor/releases"><img alt="Version 0.5.0" src="https://img.shields.io/badge/Version-0.5.0-green.svg?style=for-the-badge"></a>
+  <a href="https://github.com/Zhenyu98/dsh-context-doctor/releases"><img alt="Version 0.5.2" src="https://img.shields.io/badge/Version-0.5.2-green.svg?style=for-the-badge"></a>
   <a href="https://github.com/deepseek-ai/awesome-deepseek-agent"><img alt="For DeepSeek Harness" src="https://img.shields.io/badge/For-DeepSeek%20Harness-8257D0.svg?style=for-the-badge"></a>
 </p>
 
@@ -27,7 +27,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Zhenyu98/dsh-context-doctor/a15e68d68f511db5ae4057c96ae1c727e21bf1b1/docs/assets/context-doctor-preview.png" alt="Context Doctor native composer panel preview" width="86%">
+  <img src="https://raw.githubusercontent.com/Zhenyu98/dsh-context-doctor/957d5de09402f882a18e556cae37076ee420b868/docs/assets/context-doctor-preview.png" alt="Context Doctor native composer panel preview" width="86%">
 </p>
 
 <p align="center">
@@ -46,6 +46,8 @@ DSH 会话里，模型每个请求都自动携带一批注入物：层层叠加�
 | 看到告警只能手工翻文件找线索 | 模型可直接调用 `context_audit` 拿到分节报告与按严重度排序的裁剪建议 |
 
 ## Quick Start
+
+> **宿主版本要求**：DSH `>= 0.1.0-rc.6`。`@deepseek-ai/cordis` 与 `@deepseek-ai/dsh-tools` 是 peer 依赖，由宿主 profile 提供；插件不自带这两份运行时（自带会铸造第二个工具调度器，见 [#2](https://github.com/Zhenyu98/dsh-context-doctor/issues/2)）。
 
 ```sh
 # 1. 安装（官方 bundle 插件机制；构建产物已入库，git 源安装无需构建）
@@ -67,7 +69,7 @@ dsh --profile web --dump-config | grep context-doctor
 #       name: 'dsh-context-doctor'
 ```
 
-重启后，在**已有会话**的发送按钮左侧出现 `Context Doctor` 原生替代控件，或模型调用 `context_audit` 返回分节报告，即安装成功。面板以英文呈现，并沿用 DSH 的浅色 / 深色 / 跟随系统主题；新会话尚未分配 `sessionId` 时不会显示会话级控件。
+重启后，在**已有会话**的发送按钮左侧出现 `Context Doctor` 控件，或模型调用 `context_audit` 返回分节报告，即安装成功。面板以英文呈现，并沿用 DSH 的浅色 / 深色 / 跟随系统主题；新会话尚未分配 `sessionId` 时不会显示会话级控件。
 
 ## Agent Setup
 
@@ -86,7 +88,7 @@ dsh --profile web --dump-config | grep context-doctor
 
 ### 两种形态
 
-1. **Web UI `Context Doctor` 面板**（已有会话的发送按钮左侧）：原生替代 DSH 的上下文计量控件，圆环显示常驻上下文估算 token（指令链 + 技能目录 + 工具 schema），颜色按严重度分级（绿 &lt;10k / 黄 &lt;30k / 红 ≥30k）。界面使用轻量等宽字体、低饱和语义色、英文指标和建议卡片；点击后展开 `Instruction chain` / `Skills catalog` / `Tool schemas` / `MCP tools` 明细与手动刷新。面板自动跟随 DSH 的浅色、深色与系统主题，并会在窄视窗内滚动以保持完整可用。数据经 `GET /api/context-doctor/audit`（host 侧 60s 缓存）拉取。
+1. **Web UI `Context Doctor` 面板**（已有会话的发送按钮左侧，与内置计量条并列）：圆环显示常驻上下文估算 token（指令链 + 技能目录 + 工具 schema），颜色按严重度分级（绿 &lt;10k / 黄 &lt;30k / 红 ≥30k）。界面使用轻量等宽字体、低饱和语义色、英文指标和建议卡片；点击后展开 `Instruction chain` / `Skills catalog` / `Tool schemas` / `MCP tools` 明细与手动刷新。面板自动跟随 DSH 的浅色、深色与系统主题，并会在窄视窗内滚动以保持完整可用。数据经 `GET /api/context-doctor/audit`（host 侧 60s 缓存）拉取。
 2. **`context_audit` 模型工具**：完整审计报告（含 rank shadow 冲突与按严重度排序的建议），模型可自主调用并执行建议。
 
 ### 审计内容
@@ -158,7 +160,9 @@ context-doctor:
 
 **装了之后圆环没出现？**
 
-重启 `dsh web` 后进入已有会话的 composer；新会话在分配 `sessionId` 前不会显示会话级控件。原生替代位置要求 DSH 提供 `conversation.input.context` 插槽；本仓库随附的本机 DSH 补丁已启用该插槽。仍没有则先确认 `dsh --profile web --dump-config` 含 context-doctor 条目，且浏览器半区构建产物存在（改过源码必须重新 `./scripts/build.sh`）。
+重启 `dsh web` 后进入已有会话的 composer；新会话在分配 `sessionId` 前不会显示会话级控件。仍没有则先确认 `dsh --profile web --dump-config` 含 context-doctor 条目，且浏览器半区构建产物存在（改过源码必须重新 `./scripts/build.sh`）。
+
+> v0.5.0 及更早版本把控件注册到 `conversation.input.context`——那个插槽任何已发布的 DSH 都没有，控件因此被静默丢弃（[#4](https://github.com/Zhenyu98/dsh-context-doctor/issues/4)）。v0.5.2 起改用原生插槽 `conversation.input.right`，无需给 DSH 打补丁。
 
 **没有 Web 界面（headless / CLI）能用吗？**
 
@@ -188,11 +192,11 @@ node --test 'tests/*.test.ts'  # node --test（Node ≥ 22.19，原生 TS 支持
 ./scripts/build.sh             # setup + tsc（lib/types）+ tsdown（lib/index.js + lib/client.js）
 ```
 
-测试 25 个用例：token 估算、重复块/描述检测、rank shadow、MCP 分组、指令链端到端（真实临时文件系统 + fake FileSystem）、插件入口与完整 execute 报告链路、会话工作目录路由、HTTP 路由（方法检查 + 真实审计响应 + 缓存上限淘汰）、headless 无 httpServer 环境。
+测试 28 个用例：发布产物纯度守卫（宿主运行时必须外置，见 [#2](https://github.com/Zhenyu98/dsh-context-doctor/issues/2)）、token 估算、重复块/描述检测、rank shadow、MCP 分组、指令链端到端（真实临时文件系统 + fake FileSystem）、插件入口与完整 execute 报告链路、会话工作目录路由、HTTP 路由（方法检查 + 真实审计响应 + 缓存上限淘汰）、headless 无 httpServer 环境。
 
 ## 已知限制（v0.5）
 
-- 原生替代 DSH 上下文计量控件依赖 `conversation.input.context` 插槽；未包含该插槽的 DSH 版本仍可使用 `context_audit` 工具，但不会显示此 UI。
+- 控件与 DSH 内置的上下文计量条并列显示，不替代它——`conversation.input.right` 是 `kind: 'list'` 插槽，落座不挤占任何既有控件。
 - 指令链重复检测只做"完全相同的段落块"，不做语义相似度；跨文件引用同一事实的不同表述暂不识别。
 - MCP 工具 schema 按 `name + description` 估算，未计入 JSON Schema 参数细节。
 - 技能正文统计默认关闭（加载正文有成本），catalog 摘要成本始终统计。

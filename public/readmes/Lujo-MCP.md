@@ -21,9 +21,9 @@
 
 > Lujo-MCP 是 AI coding assistant 的「眼睛」与 Debug Context Infrastructure —— **不是另一个 Agent**，不替代 LLM 推理，而是把真实运行现场喂给宿主 AI。
 
-![Lujo-MCP Runtime Context Architecture](https://raw.githubusercontent.com/lujoai/Lujo-MCP/7de60fa0d520b790e34205b0a458ff3a4d3e66a4/docs/public/images/lujo-runtime-context-architecture.svg)
+![Lujo-MCP Runtime Context Architecture](https://raw.githubusercontent.com/lujoai/Lujo-MCP/0c2a6e8886c971da2b98cbece909f5159b5aeee5/docs/public/images/lujo-runtime-context-architecture.svg)
 
-> Lujo-MCP = **Context Provider**，不是 Agent：为 AI coding agent 提供 Runtime Debug Context，推理与修复决策由宿主 AI（Claude / Cursor / Trae）完成。
+> Lujo-MCP = **Context Provider**，不是 Agent：为 AI coding agent 提供 Runtime Debug Context，推理与修复决策由宿主 AI（Claude / Cursor / Trae 等）完成。
 
 ## Features
 
@@ -52,7 +52,7 @@ npm install -g @lujoai/lujo-mcp
 
 ## Quick Start
 
-在 MCP 客户端（Claude Desktop / Cursor / Trae）配置：
+在 MCP 客户端（Claude Desktop / Cursor / Trae 等）配置：
 
 ```json
 {
@@ -71,9 +71,10 @@ npm install -g @lujoai/lujo-mcp
 
 ## 当前状态（Current Status）
 
-**Lujo-MCP v0.5.5**（npm `@lujoai/lujo-mcp@0.5.5`，开箱即用）
+**Lujo-MCP v0.6.0**（npm `@lujoai/lujo-mcp@0.6.0`，开箱即用）
 
-> 版本统一：app / npm / README / CHANGELOG / MCP serverInfo / git tag 均为 `0.5.5`。
+> 版本统一：app / npm / README / CHANGELOG / MCP serverInfo / git tag 均为 `0.6.0`。
+> v0.6.0 为架构重构与生产就绪里程碑：god object 拆分、Prometheus 细粒度业务指标、生产部署套件。
 > 架构冻结（Architecture Frozen）：允许 Agent → RAG；禁止 Runtime → RAG/Agent/LLM/MCP、RAG → Agent/Runtime/LLM/MCP。
 
 ## 能力分层（Capability Tiers）
@@ -324,6 +325,11 @@ Lujo-MCP 作为 MCP Server，通过 **stdio**（进程管道）或 **Streamable 
 - 配置位置：`claude_desktop_config.json`（应用菜单 Settings → Developer → Edit Config）
 - 填入上述 stdio 或 HTTP 配置模板中的 `mcpServers` 段
 
+### MCP Desktop 客户端（Cursor / Trae 等）
+
+- 配置位置：各客户端的 MCP 设置文件（如 Cursor 的 `.cursor/mcp.json`、Trae 的 MCP 配置面板等）
+- 填入上述 stdio 或 HTTP 配置模板中的 `mcpServers` 段
+
 ### Cursor
 
 - 配置位置：项目根 `.cursor/mcp.json` 或全局 `~/.cursor/mcp.json`
@@ -346,7 +352,7 @@ Lujo-MCP 作为 MCP Server，通过 **stdio**（进程管道）或 **Streamable 
 
 ### AI 调用 MCP 工具获取 Debug Context
 
-接入后，宿主 AI（Claude / Cursor / Trae）可在调试对话中直接调用 MCP 工具，拿到真实运行现场辅助定位：
+接入后，宿主 AI（Claude / Cursor / Trae 等）可在调试对话中直接调用 MCP 工具，拿到真实运行现场辅助定位：
 
 ```text
 你（AI Agent）：调用 lujo.get_debug_context

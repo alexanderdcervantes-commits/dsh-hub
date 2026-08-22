@@ -2,18 +2,18 @@
 
 English | [中文](README.zh.md)
 
-Notice ⚠️: As DSH has been updated, I am unable to promptly update the plugin with the new ID due to my academic commitments. Please use an alternative agent to replace or repair it yourself to avoid crashes when installing this plugin.
+# Notice ⚠️: As DSH has been updated, I am unable to promptly update the plugin with the new APIdue to my academic commitments. Please use an alternative agent to replace or repair it yourself to avoid crashes when installing this plugin.
 
 
 Aqua is a highly customizable glassmorphism theme for the DeepSeek Harness web UI. The header, sidebar, composer, stats line, and trajectory view all become panes of frosted glass. you can put video for wallpaper and Switch it off and the stock UI comes back exactly, with no source changes to DSH itself.
 
-![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/27ebacb504f43c31c29c4b700b54f902a26da978/assets/1.png)
+![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/d94431a95bd147c11ef3fe95fa1915d1e96b028b/assets/1.png)
 
-![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/27ebacb504f43c31c29c4b700b54f902a26da978/assets/2.png)
+![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/d94431a95bd147c11ef3fe95fa1915d1e96b028b/assets/2.png)
 
-![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/27ebacb504f43c31c29c4b700b54f902a26da978/assets/3.png)
+![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/d94431a95bd147c11ef3fe95fa1915d1e96b028b/assets/3.png)
 
-![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/27ebacb504f43c31c29c4b700b54f902a26da978/assets/4.png)
+![](https://raw.githubusercontent.com/WYH66666666/DSH-Transparent-UI-Plugin/d94431a95bd147c11ef3fe95fa1915d1e96b028b/assets/4.png)
 
 ## Features
 

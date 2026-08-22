@@ -53,15 +53,15 @@ not real tokens or secrets.
 
 **Telegram: Bot Token and access whitelist**
 
-![Telegram settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/a9528a0a05a4abdcfd441f5900681bcdf84270e3/docs/images/settings-guidance-telegram.png)
+![Telegram settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/46d9059d874ac3df646de8fcaa20836c1a135053/docs/images/settings-guidance-telegram.png)
 
 **Feishu: App ID, App Secret, and Open ID whitelist**
 
-![Feishu settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/a9528a0a05a4abdcfd441f5900681bcdf84270e3/docs/images/settings-guidance-feishu.png)
+![Feishu settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/46d9059d874ac3df646de8fcaa20836c1a135053/docs/images/settings-guidance-feishu.png)
 
 **WeCom: enterprise ID, application credentials, and callback Token**
 
-![WeCom settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/a9528a0a05a4abdcfd441f5900681bcdf84270e3/docs/images/settings-guidance-wecom.png)
+![WeCom settings with labels, guidance, and examples](https://raw.githubusercontent.com/ThreeBody6666/dsh-im-hub/46d9059d874ac3df646de8fcaa20836c1a135053/docs/images/settings-guidance-wecom.png)
 
 ### Option B — YAML (`cordis.patch.yml`)
 

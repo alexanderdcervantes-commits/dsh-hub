@@ -9,7 +9,7 @@ English | [简体中文](https://github.com/Johnny-xuan/dsh-paste-to-path/blob/m
 Paste, drop, or choose images, PDFs, Word and Excel documents, archives, code, logs, and other files, then review and manage them together before sending.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Johnny-xuan/dsh-paste-to-path/9f9563ed05a1f053be252387f5184b408f400252/assets/demo.png" alt="dsh-paste-to-path attachment dock" width="100%">
+  <img src="https://raw.githubusercontent.com/Johnny-xuan/dsh-paste-to-path/d68fb104ca25a663ba3912bb17f8c2ab32d60e37/assets/demo.png" alt="dsh-paste-to-path attachment dock" width="100%">
 </p>
 
 <p align="center"><em>Images, PDFs, archives, and other formats share one attachment Dock.</em></p>
@@ -39,7 +39,7 @@ The plugin owns **attachment intake, management, and path delivery**. Your Agent
 ## Path flow at a glance
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Johnny-xuan/dsh-paste-to-path/9f9563ed05a1f053be252387f5184b408f400252/assets/dsh-paste-to-path-poster-4k.png" alt="How dsh-paste-to-path works" width="100%">
+  <img src="https://raw.githubusercontent.com/Johnny-xuan/dsh-paste-to-path/d68fb104ca25a663ba3912bb17f8c2ab32d60e37/assets/dsh-paste-to-path-poster-4k.png" alt="How dsh-paste-to-path works" width="100%">
 </p>
 
 <p align="center"><em>The file is saved on the DSH Host, then its path is given to the Agent.</em></p>
@@ -280,7 +280,7 @@ Default configuration is provided by `cordis.patch.yml`:
 | `maxBytes` | 25 MiB | Maximum size of one attachment |
 | `editableTextMaxBytes` | 1 MiB | Maximum text-file size editable in the Dock |
 
-On DSH `0.1.0-rc.7` and newer, these values are also available under **Settings → Plugins → Paste to Path**. Version `0.0.3` uses DSH's official third-party settings scope; changes are persisted through DSH settings and apply without restarting the plugin. The reset button returns all six values to the profile defaults shown above.
+On DSH `0.1.0-rc.7` and newer, these values are also available under **Settings → Plugins → Paste to Path**. Version `0.0.4` uses DSH's official third-party settings scope; changes are persisted through DSH settings and apply without restarting the plugin. The reset button returns all six values to the profile defaults shown above.
 
 The attachment Dock, notifications, and settings card follow DSH's **Language** preference and include English and Simplified Chinese. The path instructions serialized for the Agent remain stable English protocol text and do not change with the UI language.
 
@@ -368,7 +368,7 @@ The plugin therefore does not:
 
 ## Compatibility
 
-Version `0.0.3` is tested with:
+Version `0.0.4` is tested with:
 
 ```text
 DeepSeek Harness 0.1.0-rc.6
@@ -376,6 +376,6 @@ DeepSeek Harness 0.1.0-rc.7
 DeepSeek Harness 0.1.0-rc.8
 ```
 
-The attachment Dock works across all three versions. On rc.6, edit plugin configuration in `cordis.patch.yml`; the visual settings card requires rc.7 or newer. Version `0.0.3` registers both the legacy list-slot `id` and the newer keyed-slot namespace so the same package can load on rc.6 through rc.8.
+The attachment Dock works across all three versions. On rc.6, edit plugin configuration in `cordis.patch.yml`; the visual settings card requires rc.7 or newer. Version `0.0.4` registers both the legacy list-slot `id` and the newer keyed-slot namespace so the same package can load on rc.6 through rc.8.
 
 DSH is currently a developer preview. Changes to its extension interfaces may require a corresponding plugin update.

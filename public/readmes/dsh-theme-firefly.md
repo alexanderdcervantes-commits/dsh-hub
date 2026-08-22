@@ -9,26 +9,26 @@
 
 ### 动态 / 静态壁纸
 
-![壁纸](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/7937bc94872955ea0c6eb8842fc7b388e629ed52/docs/screenshots/01-wallpaper.jpg)
+![壁纸](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/0b80edeb88a9aab056de42aace617a40e8f52927/docs/screenshots/01-wallpaper.jpg)
 
 ### 开屏变身动画
 
-![开屏动画](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/7937bc94872955ea0c6eb8842fc7b388e629ed52/docs/screenshots/02-boot.jpg)
+![开屏动画](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/0b80edeb88a9aab056de42aace617a40e8f52927/docs/screenshots/02-boot.jpg)
 
 ### 萤火氛围粒子
 
-![萤火粒子](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/7937bc94872955ea0c6eb8842fc7b388e629ed52/docs/screenshots/03-firefly.jpg)
+![萤火粒子](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/0b80edeb88a9aab056de42aace617a40e8f52927/docs/screenshots/03-firefly.jpg)
 
 ### 背景音乐播放器
 
-![背景音乐](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/7937bc94872955ea0c6eb8842fc7b388e629ed52/docs/screenshots/04-music.jpg)
+![背景音乐](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/0b80edeb88a9aab056de42aace617a40e8f52927/docs/screenshots/04-music.jpg)
 
 ### 表情包彩蛋
 
-![表情包](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/7937bc94872955ea0c6eb8842fc7b388e629ed52/docs/screenshots/05-emote.jpg)
+![表情包](https://raw.githubusercontent.com/Liu-ZA-81/dsh-theme-firefly/0b80edeb88a9aab056de42aace617a40e8f52927/docs/screenshots/05-emote.jpg)
 
 > 🎬 演示视频（B 站）：
-https://www.bilibili.com/video/BV1VLba6WEAr/?vd_source=573abae8b62b8edf27edc7cb8933e1b6
+https://www.bilibili.com/video/BV1nF8B6QEEj/?spm_id_from=333.1387.homepage.video_card.click&vd_source=573abae8b62b8edf27edc7cb8933e1b6
 
 ---
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/77f3a0c426440499d96b2cf9b7fa0c9ca3b5f4a6/docs/images/dsh-noema-logo.png" alt="DSH Noema" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/9cc3ab1ee00de04bf318be9cf2b102ae668ceeb2/docs/images/dsh-noema-logo.png" alt="DSH Noema" width="120" />
 </p>
 
 <h1 align="center">DSH Noema</h1>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <a href="https://www.npmjs.com/package/@zseven-w/dsh-noema"><code>@zseven-w/dsh-noema</code></a> · Current plugin release: <code>0.1.0-rc.2</code> · Tested with DSH <code>0.1.0-rc.6</code></sub>
+  <sub>npm: <a href="https://www.npmjs.com/package/@zseven-w/dsh-noema"><code>@zseven-w/dsh-noema</code></a> · Current plugin release: <code>0.1.0-rc.3</code> · Tested with DSH <code>0.1.1-rc.1</code></sub>
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/77f3a0c426440499d96b2cf9b7fa0c9ca3b5f4a6/docs/images/dsh-noema-overview.png" alt="DSH Noema — memory settings page" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-noema/9cc3ab1ee00de04bf318be9cf2b102ae668ceeb2/docs/images/dsh-noema-overview.png" alt="DSH Noema — memory settings page" width="100%" />
 </p>
 <p align="center"><sub>The Noema Memory settings page — import sources, memory management, and live server status</sub></p>
 
@@ -200,6 +200,7 @@ The e2e test runs against `noema/target/debug/noema-mcp` when present (it is ski
 
 ## Ecosystem
 
+- [DSH Android](https://github.com/ZSeven-W/dsh-android) — a live Android emulator or USB device inside the conversation, driven entirely through adb
 - [DSH Crew](https://github.com/ZSeven-W/dsh-crew) — dispatch work to DSH agents from Claude Code / Codex
 - [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
 - [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) — inspect and edit `.op` design documents inside a conversation

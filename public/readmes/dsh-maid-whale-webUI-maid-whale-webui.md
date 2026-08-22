@@ -10,7 +10,7 @@ DeepSeek Harness Web UI 的鲸鱼女仆主题插件，包含亮暗模式、海�
 
 | 亮色模式 | 暗色模式 |
 |---|---|
-| [![亮色模式](https://raw.githubusercontent.com/yunxiiQwQ/dsh-maid-whale-webUI/f574f151bdfde7e8569797962eb8ff6aad4b3bf1/maid-whale-webui/preview/light.webp)](preview/light.webp) | [![暗色模式](https://raw.githubusercontent.com/yunxiiQwQ/dsh-maid-whale-webUI/f574f151bdfde7e8569797962eb8ff6aad4b3bf1/maid-whale-webui/preview/dark.webp)](preview/dark.webp) |
+| [![亮色模式](https://raw.githubusercontent.com/yunxiiQwQ/dsh-maid-whale-webUI/6ab5e7499ddf76c4fcf6d83421c08e967db1c2bc/maid-whale-webui/preview/light.webp)](preview/light.webp) | [![暗色模式](https://raw.githubusercontent.com/yunxiiQwQ/dsh-maid-whale-webUI/6ab5e7499ddf76c4fcf6d83421c08e967db1c2bc/maid-whale-webui/preview/dark.webp)](preview/dark.webp) |
 
 ## 安装
 

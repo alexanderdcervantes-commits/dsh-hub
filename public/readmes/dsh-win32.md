@@ -10,6 +10,8 @@ Run DSH Minimal mode on Windows with the sandboxed preset.
 npx dsh-win32 setup --sandboxed
 ```
 
+DeepSeek Harness already runs natively on Windows with PowerShell. dsh-win32 adds persistent Minimal presets, including one that survives Workspace Write.
+
 This preset uses busybox ash, so Git Bash and WSL are not required.
 
 [中文](./README.zh.md) · [Windows details](./docs/windows-details.md)
@@ -26,11 +28,11 @@ This preset uses busybox ash, so Git Bash and WSL are not required.
 
 **Illustrated installation reproduction. This is not a real capture.**
 
-![Illustrated dsh-win32 installation reproduction](https://raw.githubusercontent.com/sjh9714/dsh-win32/0eb47d0217f5745ddccf0d04c274fd0ec5e4c3d4/assets/demo.gif)
+![Illustrated dsh-win32 installation reproduction](https://raw.githubusercontent.com/sjh9714/dsh-win32/07eb4fda852c7bcf2b318a6c2d1bd0347e20e499/assets/demo.gif)
 
 **Real Windows session.**
 
-![A real Windows session fixes a failing test in Workspace Write](https://raw.githubusercontent.com/sjh9714/dsh-win32/0eb47d0217f5745ddccf0d04c274fd0ec5e4c3d4/assets/shot-persistent-sandboxed.png)
+![A real Windows session fixes a failing test in Workspace Write](https://raw.githubusercontent.com/sjh9714/dsh-win32/07eb4fda852c7bcf2b318a6c2d1bd0347e20e499/assets/shot-persistent-sandboxed.png)
 
 The real session runs a failing test, reads the source, applies a fix, and reruns it to `all tests passed` in `Workspace Write`.
 
@@ -40,6 +42,14 @@ After setup, start DSH, add a workspace, and choose the preset.
 
 - **Minimal (Windows, sandboxed)** uses busybox ash inside `Workspace Write`. Install it with `npx dsh-win32 setup --sandboxed`.
 - **Minimal (Windows)** uses Git Bash and needs `danger-full-access`. Install it with `npx dsh-win32 setup` after installing [Git for Windows](https://git-scm.com).
+
+Using DSH Desktop instead of the Web profile?
+
+```powershell
+npx dsh-win32 setup --sandboxed --profile desktop --no-shortcut
+```
+
+Restart DSH Desktop after setup, then choose **Minimal (Windows, sandboxed)**.
 
 ## Doctor
 

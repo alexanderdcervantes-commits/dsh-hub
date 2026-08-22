@@ -2,11 +2,11 @@
 
 一个嵌入 DSH 设置页的皮肤市场，可以浏览、安装、使用、停用、更新和卸载社区皮肤。
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/2715913f8a93b91ec71a25d0334b8d176e6ae1ca/docs/assets/skin-market-liang.png" alt="DSH 设置中的皮肤市场发现页" width="70%">
+  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/6cd79fa827d5acc69917ea25e3be99b70be9e925/docs/assets/skin-market-liang.png" alt="DSH 设置中的皮肤市场发现页" width="70%">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/2715913f8a93b91ec71a25d0334b8d176e6ae1ca/docs/assets/skin-market-deep-whale.png" alt="DSH 皮肤市场中的 Deep Whale 皮肤详情弹窗" width="70%">
+  <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-skin-market/6cd79fa827d5acc69917ea25e3be99b70be9e925/docs/assets/skin-market-deep-whale.png" alt="DSH 皮肤市场中的 Deep Whale 皮肤详情弹窗" width="70%">
 </p>
 
 ### 在线预览
@@ -15,7 +15,7 @@
 
 ### 近期收录
 
-- 2026-08-19：[CAPTAIN1275/dsh-ui-web](https://github.com/CAPTAIN1275/dsh-ui-web)（`0.2.7`）——7 款皮肤一次收录：极光 Aurora、蓝色幻想、龙之继承者、初音未来、Minecraft、鲸吟、Windows XP
+- 2026-08-21：[UniverFV/dsh-Furina-theme](https://github.com/UniverFV/dsh-Furina-theme)（`0.1.0`）——芙宁娜主题 Furina Theme
 - 更多请查看[收录日志](./docs/recently-added.md)
 
 
@@ -229,6 +229,23 @@ DSH_SKIN_MARKET_LOCAL_CATALOG=1 dsh web
 该开关只影响当前进程的目录读取；安装、激活、停用、更新和卸载仍然经过本地市场的完整生命周期。未设置时保持线上行为：优先读取远程目录，并在失败时回退到缓存和内置目录。
 
 本地条目验证完成后，再删除该环境变量运行 DSH，确认远程目录行为没有被改变。
+
+### 本地验证生成的 WebP
+
+WebP 是独立的市场静态资源，catalog 中的 `media` 字段会让插件和在线页默认直接请求 GitHub Pages 上的 preview/full；没有对应 WebP 或请求失败时，继续使用原始 PNG/JPG。需要重新生成资源时，先安装 `cwebp`（macOS 可用 `brew install webp`），然后运行：
+
+```bash
+npm run registry
+npm run media:build
+```
+
+本地调试默认也请求线上 WebP。只有需要关闭 WebP 对比原图时，才在地址后追加：
+
+```text
+?dsh-media=0
+```
+
+对应仓库图片更新后，媒体脚本会重新下载并更新同一内容键；图片资源先发布到 ops 和 public market，插件代码可以单独发布。
 
 常用检查命令：
 

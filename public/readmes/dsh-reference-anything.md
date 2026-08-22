@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/logo.png" alt="dsh-reference-anything logo" width="180" />
+<img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/logo.png" alt="dsh-reference-anything logo" width="180" />
 
 <h1>dsh-reference-anything</h1>
 
@@ -14,18 +14,20 @@ One `@` for them all.
 
 [![][github-version-shield]][github-version-link]
 [![][typescript-shield]][typescript-link]
-[![][dsh-plugin-shield]][repository-link]<br/>
+[![][dsh-plugin-shield]][repository-link]
+<br/>
 [![][github-stars-shield]][github-stars-link]
 [![][github-forks-shield]][github-forks-link]
 [![][github-issues-shield]][github-issues-link]
 [![][github-license-shield]][github-license-link]<br/>
 ![awesome · DSH plugin](https://awesome-dsh-plugin.com/badge.svg)
+[![][npm-downloads-shield]][npm-package-link]
 
 </div>
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/demo.gif" alt="dsh-reference-anything demo" width="800" />
+<img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/demo.gif" alt="dsh-reference-anything demo" width="800" />
 
 </div>
 
@@ -38,7 +40,7 @@ Use one `@` menu to reference:
 - DSH commands and Skills
 - Workspace files and folders
 - DSH session history
-- Historical conversations from ChatGPT, Claude, Gemini, DeepSeek, Grok, and Kimi
+- ✨ **NEW: Historical conversations from online chatbots like ChatGPT, Claude, Gemini, DeepSeek, Grok, and Kimi**
 
 Beyond extending what `@` can reference, Reference Anything also enhances the `@` menu itself:
 
@@ -53,8 +55,8 @@ Beyond extending what `@` can reference, Reference Anything also enhances the `@
     <th width="50%">Reference Anything icon enhancements</th>
   </tr>
   <tr>
-    <td width="50%"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-files-native-comparison.png" alt="Native DSH file list" width="100%" /></td>
-    <td width="50%"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-files-enhanced-comparison.png" alt="Reference Anything file-type icon enhancements" width="100%" /></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-files-native-comparison.png" alt="Native DSH file list" width="100%" /></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-files-enhanced-comparison.png" alt="Reference Anything file-type icon enhancements" width="100%" /></td>
   </tr>
 </table>
 
@@ -106,6 +108,9 @@ For development, the repository can still be installed from a local path:
 dsh plugin --profile web add .
 ```
 
+> [!NOTE]
+> To restore DSH's original `@` menu appearance, simply uninstall this plugin.
+
 After installing the DSH plugin, open `Settings → Reference Anything → Availability check` in DSH Web (restart DSH first if this settings entry is not yet visible), then click **One-click setup**. It discovers OpenCLI; installs or upgrades it globally through npm when it is missing or older than `1.8.6`; installs the bundled adapters for all six platforms; starts or refreshes Browser Bridge; and opens the OpenCLI Browser Bridge page in the [Chrome Web Store](https://chromewebstore.google.com/detail/opencli/ildkmabpimmkaediidaifkhjpohdnifk). Confirm the extension installation, then return and click **Recheck setup**. Any remaining failed check displays its own recovery action.
 
 You can also install OpenCLI and the conversation adapter manually, then start Browser Bridge:
@@ -141,19 +146,19 @@ The `@` menu contains five groups: `Commands`, `Skills`, `Files and folders`, `D
 
 To browse commands, use `@commands`; selecting one hands `/command` back to DSH's native slash pipeline.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-commands.png" alt="Browse DSH commands from the @ menu" width="800" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-commands.png" alt="Browse DSH commands from the @ menu" width="800" /></p>
 
 #### 🛠️ @Skills — DSH skill library
 
 To browse skills, use `@skills:`; selecting one inserts `/skill` for DSH's native skill handling.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-skills.png" alt="Browse DSH skills from the @ menu" width="800" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-skills.png" alt="Browse DSH skills from the @ menu" width="800" /></p>
 
 #### 📁 @Files and folders — workspace files and directories
 
 Type `@files:` in the input box to browse files and folders through DSH's official file-reference Remote.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-files.png" alt="Browse workspace files and folders from the @ menu" width="800" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-files.png" alt="Browse workspace files and folders from the @ menu" width="800" /></p>
 
 **Features:**
 - Uses the official `@path` / `@"path with spaces"` grammar and canonical file candidate service
@@ -164,7 +169,7 @@ Type `@files:` in the input box to browse files and folders through DSH's offici
 
 Type `@sessions:` to browse DSH sessions through the official session-reference Remote.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-sessions.png" alt="Browse DSH sessions from the @ menu" width="800" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-sessions.png" alt="Browse DSH sessions from the @ menu" width="800" /></p>
 
 Selected sessions use DSH's canonical `dsh-session:` mention and native session appearance. Snapshot preparation and resolution remain owned by DSH rather than this plugin.
 
@@ -172,7 +177,7 @@ Selected sessions use DSH's canonical `dsh-session:` mention and native session 
 
 Supports historical conversations from ChatGPT, Claude, Gemini, DeepSeek, Grok, and Kimi.
 
-<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/333051d2a6bf52a5a360787546049211b88c91e7/images/at-external-conversations.png" alt="Browse external conversations from the @ menu" width="800" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chael-Chael/dsh-reference-anything/bfd7cc82303a068446e34dcb6cf7d1205064ab75/images/at-external-conversations.png" alt="Browse external conversations from the @ menu" width="800" /></p>
 
 **Platform filtering:**
 - Use `@chatgpt:cache` or `@claude:refactor` to filter a specific platform
@@ -280,6 +285,8 @@ This project is licensed under the [MIT License](./LICENSE). Third-party copyrig
 [dsh-plugin-shield]: https://img.shields.io/badge/DSH-plugin-ffffff?labelColor=black&style=flat-square
 [github-version-shield]: https://img.shields.io/github/package-json/v/Chael-Chael/dsh-reference-anything/main?color=369eff&label=version&labelColor=black&style=flat-square
 [github-version-link]: https://github.com/Chael-Chael/dsh-reference-anything/blob/main/package.json
+[npm-downloads-shield]: https://img.shields.io/npm/dt/dsh-reference-anything?color=cb3837&label=downloads&labelColor=black&style=flat-square
+[npm-package-link]: https://www.npmjs.com/package/dsh-reference-anything
 [github-stars-link]: https://github.com/Chael-Chael/dsh-reference-anything/stargazers
 [github-stars-shield]: https://img.shields.io/github/stars/Chael-Chael/dsh-reference-anything?color=ffcb47&labelColor=black&style=flat-square
 [github-forks-link]: https://github.com/Chael-Chael/dsh-reference-anything/forks

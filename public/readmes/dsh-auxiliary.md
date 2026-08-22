@@ -1,6 +1,6 @@
 <div align="center">
 
-![Banner](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/6f21b8b917e5f3c6c90f0cbae339c78698bc28e7/docs/banner.png)
+![Banner](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/27a04de87a69ad324e4db9bfbb0615f226f57f79/docs/banner.png)
 
 # dsh-auxiliary
 
@@ -279,7 +279,7 @@ All fields are optional; defaults are shown.
 
 ### Settings page: Auxiliary Models
 
-![Auxiliary Models settings page](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/6f21b8b917e5f3c6c90f0cbae339c78698bc28e7/docs/image.png)
+![Auxiliary Models settings page](https://raw.githubusercontent.com/dsh-plugins/dsh-auxiliary/27a04de87a69ad324e4db9bfbb0615f226f57f79/docs/image.png)
 
 The plugin ships a web settings section (**Settings → Auxiliary Models**).
 Configure providers and models in the **Models** page first, then use the

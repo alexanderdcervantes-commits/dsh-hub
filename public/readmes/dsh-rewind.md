@@ -24,16 +24,14 @@ Each user message gains a compact **↶ rewind** action in its action row. Click
 
 <table>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/5afb8db824d0085d0ebab2a4cabe6bc3c1c0ce15/assets/screenshots/rewind-button.png" width="440" alt="Per-message ↶ rewind button"><br><sub>Per-message ↶ rewind button</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/5afb8db824d0085d0ebab2a4cabe6bc3c1c0ce15/assets/screenshots/mode-popover.png" width="440" alt="Mode-selection popover"><br><sub>Mode-selection popover</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/eb31373c7d4f10da8078410edb167ac6e436001e/assets/screenshots/rewind-button.png" width="440" alt="Per-message ↶ rewind button"><br><sub>Per-message ↶ rewind button</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/eb31373c7d4f10da8078410edb167ac6e436001e/assets/screenshots/mode-popover.png" width="440" alt="Mode-selection popover"><br><sub>Mode-selection popover</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/5afb8db824d0085d0ebab2a4cabe6bc3c1c0ce15/assets/screenshots/impact-list.png" width="440" alt="Impact list"><br><sub>"Conversation and code" impact list</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/5afb8db824d0085d0ebab2a4cabe6bc3c1c0ce15/assets/screenshots/guard-hint.png" width="440" alt="Manual /rewind guard hint"><br><sub>Manual /rewind guard hint</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/eb31373c7d4f10da8078410edb167ac6e436001e/assets/screenshots/impact-list.png" width="440" alt="Impact list"><br><sub>"Conversation and code" impact list</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/SiriLee/dsh-rewind/eb31373c7d4f10da8078410edb167ac6e436001e/assets/screenshots/rewind-candidates.png" width="440" alt="/rewind candidate picker"><br><sub>/rewind candidate picker</sub></td>
   </tr>
 </table>
-
-Manual `/rewind` input in the composer is intercepted — submitting shows a transient hint pointing at the ↶ button.
 
 ## Install
 
@@ -53,7 +51,11 @@ For contributors: install from a local checkout or a pinned commit — `dsh plug
 2. **Click it.** The target is that message; a small popover offers the two modes ("conversation and code" is hidden when no tracked file changes exist after the target).
 3. The rewind executes as an in-session command; a result message confirms, and the withdrawn message's text is filled back into the composer for editing and re-sending.
 
-The ↶ button appears on user messages rendered in the **current session view** — switch to another session before rewinding it. A rewind can itself be rewound (its marker enters the log), but the file-restore action is not re-backed up.
+**Command-line entry**: type a bare `/rewind` and press Enter to open the candidate picker; selecting a target continues the same flow as the button.
+
+Both the candidate picker and the mode popover support the keyboard: ↑↓ to move, Enter to confirm, Esc to cancel/back.
+
+Rewinds can be repeated (each appends a marker to the log). A rewind cannot be undone through the plugin, but the withdrawn messages can be recovered by manually editing the session log. The file-restore action is not re-backed up.
 
 ## How it works
 
@@ -84,7 +86,6 @@ Backups persist across host restarts, bounded to the newest 100 anchor groups pe
 - **Whole-tree / git-first snapshots** — only write-class tool edits are backed up. `bash`, other tools, and external edits are not tracked and cannot be restored: the same limitation as Claude Code, which defers such rollbacks to the user's git.
 - **Subagent edits** — not tracked (same as Claude Code): a subagent runs its own session, so its backups could never be restored by a rewind of the parent session.
 - **Fork / branch rewind and `/compact`** — the harness already provides these ("branch in new chat", compact).
-- **Keyboard shortcuts** (esc+esc rewind menu) — planned as a follow-up.
 
 ## Comparison with similar projects
 
@@ -117,6 +118,8 @@ Full instructions: [docs/troubleshooting.md](docs/troubleshooting.md)
 ## Security
 
 This plugin only appends rewind-marker events to the session log; it never deletes or rewrites logged history. File writes happen only when you choose "conversation and code" — before-backups and restores stay under `~/.dsh/rewind-snapshots/`. It never touches your git repository, makes no network requests, and accesses no credentials.
+
+> **Note:** a rewind only hides messages from view — the exported session log (`/export`) still contains them, and this plugin cannot alter exports. To remove a conversation completely, delete its session file.
 
 ## Development
 

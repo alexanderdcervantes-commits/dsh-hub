@@ -9,7 +9,7 @@
 [![opencode](https://img.shields.io/badge/themes-opencode%20v1.18.12-orange)](https://github.com/anomalyco/opencode)
 [![tests](https://img.shields.io/badge/tests-20%2F20-green)]()
 
-![hero](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/hero-zh.svg)
+![hero](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/hero-zh.svg)
 ## 一条命令完成安装
 
 需要 **DSH CLI**（DeepSeek Harness 命令行工具）。如果还没有，先安装：
@@ -57,11 +57,11 @@ DeepSeek Harness 默认只有一套外观。装上它之后，你可以让整个
 
 **设置 → 插件 → OpenCode 调色板**（英文界面为 **Settings → Plugins → Opencode Palette**）：
 
-![setup panel](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/setup-panel-zh.svg)
+![setup panel](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/setup-panel-zh.svg)
 
 点任意主题色块，界面立即换色：
 
-![theme switch](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/theme-switch-zh.svg)
+![theme switch](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/theme-switch-zh.svg)
 
 ## 功能详解
 
@@ -69,17 +69,17 @@ DeepSeek Harness 默认只有一套外观。装上它之后，你可以让整个
 
 每个名字背后都有一段来历：
 
-![theme stories](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/theme-stories-zh.svg)
+![theme stories](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/theme-stories-zh.svg)
 
 ### 34 款官方主题，忠实还原
 
 每个主题都能一眼看到它最核心的 7 种颜色 —— `背景 · 文字 · 主色 · 强调 · 错误 · 警告 · 成功`：
 
-![palette strips](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/palette-strips-zh.svg)
+![palette strips](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/palette-strips-zh.svg)
 
 34 款一览：
 
-![palette matrix](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/e7460a9651e19ea02a7e9bc789810ab8b2a1d5e0/assets/palette-matrix-zh.svg)
+![palette matrix](https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/palette-matrix-zh.svg)
 
 ### 排印独立于主题
 
@@ -124,3 +124,9 @@ npm run assets  # 重新生成本 README 中的 SVG 图
 ## 许可与归属
 
 MIT © FeatherHunter。主题定义来自 [opencode](https://github.com/anomalyco/opencode)（MIT）及其上游主题项目 —— 见 [THIRD_PARTY_NOTICES](src/themes/THIRD_PARTY_NOTICES.md)。
+
+## 反馈与联系
+
+遇到问题或有改进建议，欢迎直接 [提交 Issue](https://github.com/FeatherHunter/dsh-opencode-palette/issues)；也欢迎扫码添加作者飞书，备注 `dsh-opencode-palette`，一起交流。
+
+<img src="https://raw.githubusercontent.com/FeatherHunter/dsh-opencode-palette/11a3c01ff4e6cd22239e990fb8964d8421b04b01/assets/feishu-qr.png" alt="作者飞书二维码" width="260" />

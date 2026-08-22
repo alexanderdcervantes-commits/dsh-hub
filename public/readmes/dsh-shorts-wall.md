@@ -83,7 +83,7 @@
 
 | 浮窗模式 | 贴边模式 | 最小化 |
 | --- | --- | --- |
-| ![浮窗模式](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/8d821901ee0325ed85983cbffef19facca8d51d4/docs/screenshot-float.png) | ![贴边模式](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/8d821901ee0325ed85983cbffef19facca8d51d4/docs/screenshot-stick.png) | ![最小化](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/8d821901ee0325ed85983cbffef19facca8d51d4/docs/screenshot-minimized.png) |
+| ![浮窗模式](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/6f861e73e9334227c555daf96fd356c070f15e6c/docs/screenshot-float.png) | ![贴边模式](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/6f861e73e9334227c555daf96fd356c070f15e6c/docs/screenshot-stick.png) | ![最小化](https://raw.githubusercontent.com/imkingjh999/dsh-shorts-wall/6f861e73e9334227c555daf96fd356c070f15e6c/docs/screenshot-minimized.png) |
 
 ## 安装
 

@@ -51,7 +51,7 @@ ln -sfn ../../plugins/lan-access "$PROFILE/node_modules/@dsh-profile/lan-access"
 
 ## Usage
 
-The plugin is **self-contained**: its bundle patch sets the webserver bind host to `0.0.0.0` directly (the CLI flag `--host 0.0.0.0` is hard-rejected for safety on newer harness versions, but the webserver config still accepts it — so **no source changes and no `--host` flag are needed**; the CLI `--port` flag still works).
+The plugin is **self-contained**: its bundle patch sets the webserver bind host to `0.0.0.0` directly (the CLI flag `--host 0.0.0.0` is hard-rejected for safety on newer harness versions, but the webserver config still accepts it — so **no source changes and no `--host` flag are needed**; the CLI `--port` flag still works). It also widens the `/api` trust fence automatically.
 
 1. **Install the plugin, then start normally** — without `--host`:
 
@@ -59,11 +59,11 @@ The plugin is **self-contained**: its bundle patch sets the webserver bind host 
    dsh --profile web --port 3080
    ```
 
-   When bound to `0.0.0.0`, the harness automatically adds every local non-internal IPv4 to the `/api` trust fence (`resolveLanTrust`) — **LAN IP access needs no extra config**.
+   The bundle patch re-derives the `/api` trust fence from **every non-internal IPv4** the host currently has — LAN (`192.168.x`), **Tailscale (`100.x`)**, and VPN interfaces — and merges in whatever `resolveLanTrust` already computed. So as long as the remote interface is up when `dsh web` starts (Tailscale usually autostarts first), **LAN and Tailscale IP access need zero extra config**: open `http://<server-ip>:3080` or `http://<tailscale-ip>:3080` and sessions/models load.
 
    > If you prefer NOT to let the plugin take over the bind host (e.g. you want loopback + a port forward), keep the `webserver` row override out of your tree and instead forward a port (socat / rinetd / Tailscale serve) from `127.0.0.1:3080`, adding the forwarded address to `trustedHosts` manually.
 
-2. **Domains / remote (e.g. Tailscale)** — add your own authorities to `trustedHosts`:
+2. **MagicDNS hostnames (e.g. `xxx.tailXXXX.ts.net`)** — the fence can't discover hostnames, only IP literals, so add your own names if you want to browse by name instead of IP. Patch the **`web-runtime` row**, whose `trustedHosts` feed *into* the fence computation (`resolveLanTrust` merges them), so your entries stack on top of the auto-discovered IPs:
 
    ```yaml
    - id: web-runtime
@@ -71,10 +71,13 @@ The plugin is **self-contained**: its bundle patch sets the webserver bind host 
        trustedHosts:
          - <short-name>            # e.g. myhost — MUST be listed separately!
          - <name>.tailXXXX.ts.net  # full domain
-         - 100.x.x.x               # tailnet IP
    ```
 
-   ⚠️ The fence compares the `Host` header **literally**: a MagicDNS short name (`http://myhost:3080`) is *not* the full domain — list the short name on its own line, or every `/api` call returns 403 (page shell loads, sessions/models absent).
+   Or skip file editing entirely with the repeatable CLI flag (same injection path): `dsh --profile web --trusted-host myhost --trusted-host myhost.tailXXXX.ts.net`. Use one mechanism or the other — a static list replaces the row's default expression, so it will not merge with `--trusted-host`.
+
+   ⚠️ The fence compares the `Host` header **literally**: a MagicDNS short name (`http://myhost:3080`) is *not* the full domain — list the short name on its own line, or every `/api` call returns 403 (page shell loads, sessions/models absent). Tailscale / LAN IP literals need no entry here — they stay covered automatically.
+
+   > ⚠️ Do not retarget this block at the `connection` row: patch layers compose by whole-key replacement in application order (bundle layers first, then your profile's `cordis.patch.yml`), so a plain literal array on `connection.config.trustedHosts` would silently replace the bundle's dynamic fence expression — names would work, but the auto-derived LAN/Tailscale IP trust would vanish. If you truly need `connection`, copy the full concatenation expression from the plugin's bundle patch and append your literals; never write a plain list there.
 
 ## Known limitation: privileged API methods
 

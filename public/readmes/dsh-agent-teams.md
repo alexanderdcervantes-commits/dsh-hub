@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/fe854d19d20c88d9436d13338f86257f741955c9/assets/readme/hero.svg" width="100%" alt="dsh-agent-teams turns one DeepSeek Harness session into a coordinated multi-agent team">
+  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/0c21e5d2f45ec1ea7c9ee89ffc4ee77d1cb9262e/assets/readme/hero.svg" width="100%" alt="dsh-agent-teams turns one DeepSeek Harness session into a coordinated multi-agent team">
 </p>
 
 <p align="center">
@@ -19,8 +19,12 @@
 Ask in natural language. The plugin provides the team protocol, ten coordination tools, persistent state, an automatic shared-task scheduler, and a live Web UI—without requiring a separate workflow engine.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/fe854d19d20c88d9436d13338f86257f741955c9/assets/ui.png" width="100%" alt="DeepSeek Harness conversation with the AgentTeams live activity panel, members, tasks, dependencies, and reports">
+  <img src="https://raw.githubusercontent.com/NanmiCoder/dsh-agent-teams/0c21e5d2f45ec1ea7c9ee89ffc4ee77d1cb9262e/assets/ui.png" width="100%" alt="DeepSeek Harness conversation with the AgentTeams live activity panel, members, tasks, dependencies, and reports">
 </p>
+
+## Releases
+
+Read the [latest release notes](https://github.com/NanmiCoder/dsh-agent-teams/releases/latest) or browse the [complete release history](https://github.com/NanmiCoder/dsh-agent-teams/releases). The same Markdown notes are included in the npm package under `release-notes/`.
 
 ## Why AgentTeams?
 
@@ -91,10 +95,11 @@ command), describe the goal, and press Enter.
 /agent-teams research the pricing pages of three competitors
 ```
 
-The line is claimed by the command pipeline and never reaches the model as
-plain text — the handler queues one deterministic activation message as an
-ordinary follow-up turn, so the captain protocol starts immediately. The
-invocation is durably logged (`command/run` / `command/done`).
+The command pipeline claims the line, then preserves that exact input as an
+ordinary user follow-up so it remains visible in the main chat. The gesture
+boundary adds the deterministic activation directive at pre-step, so the
+captain protocol still starts immediately. The invocation is also durably
+logged (`command/run` / `command/done`).
 
 Surfaces without command adjudication (for example the headless CLI) get the
 same deterministic activation through a gesture boundary: any genuine user

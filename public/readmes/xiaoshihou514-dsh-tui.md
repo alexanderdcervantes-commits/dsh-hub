@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/xiaoshihou514/dsh-tui/ceb0eb056b311e66a351eec40c1ba5258524ab49/assets/logo.png" width="160" alt="dsh-tui logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/xiaoshihou514/dsh-tui/8b58105741f7e5400724393fcaa1b9640a31fe89/assets/logo.png" width="160" alt="dsh-tui logo"></p>
 <h1 align="center">dsh-tui</h1>
 <p align="center"><a href="https://github.com/deepseek-ai/deepseek-harness">DeepSeek Harness</a>: TUI!</p>
 

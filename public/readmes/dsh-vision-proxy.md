@@ -14,6 +14,8 @@
   <a href="https://github.com/Flyvhidbwo/dsh-vision-proxy"><img src="https://img.shields.io/github/stars/Flyvhidbwo/dsh-vision-proxy?style=flat-square" alt="GitHub stars" /></a>
 </p>
 
+> ⚠️ **兼容性与定位（2026-08）**：本插件已适配 dsh 0.1.1-rc.2（adapter prepareCall 接口）。dsh 0.1.1 起原生支持多模态（DeepSeek-V4-Flash-Vision-Exp 等官方视觉模型）——**如果你用官方视觉模型，直接发图即可，不需要本插件**。本插件适用于：非多模态模型的转译桥接、本地 Ollama（图片不出本机、免费）、或自定义 OpenAI 兼容 VLM 场景。
+
 ## 为什么需要它
 
 DeepSeek Harness 原生按模型声明的 `inputModalities` 决定是否放行图片附件。DeepSeek 的 chat-completions 线路是纯文本的，所以选中 DeepSeek 时附加图片会被原生拒绝。已有的视觉插件提供 `view_image` 等*工具*（适用于文件路径），但 **GUI 图片附件对纯文本模型依然失败**。
@@ -94,8 +96,8 @@ dsh plugin --profile web add dsh-vision-proxy   # 批准后重跑
 一段 `deepseek-vision` 路由上的真实对话（DeepSeek-V4-Flash 作为大脑）：用户粘贴了一张表情包并问 **"你看到了什么"**，图片被 VLM 自动转译，DeepSeek 基于文字完整作答——单步，约 7.6 秒。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Flyvhidbwo/dsh-vision-proxy/2fa60286a95fa6d254a131d9f4866a02532828fc/assets/demo-selector.png" width="49%" alt="模型选择器：DeepSeek + 自动识图 路由已选中" />
-  <img src="https://raw.githubusercontent.com/Flyvhidbwo/dsh-vision-proxy/2fa60286a95fa6d254a131d9f4866a02532828fc/assets/demo-reply.png" width="49%" alt="DeepSeek 基于转译内容的完整回答" />
+  <img src="https://raw.githubusercontent.com/Flyvhidbwo/dsh-vision-proxy/d246d8511822b2441eb4841ec854981dc3e055e4/assets/demo-selector.png" width="49%" alt="模型选择器：DeepSeek + 自动识图 路由已选中" />
+  <img src="https://raw.githubusercontent.com/Flyvhidbwo/dsh-vision-proxy/d246d8511822b2441eb4841ec854981dc3e055e4/assets/demo-reply.png" width="49%" alt="DeepSeek 基于转译内容的完整回答" />
 </p>
 
 *左图：模型选择器显示 `deepseek-vision` 路由（**DeepSeek + 自动识图**）已选中——这正是图片附件得以放行的原因。右图：DeepSeek 基于转译文字给出的完整回答。*

@@ -31,11 +31,11 @@ The model catalog starts collapsed and lists one row per model: a drag handle re
 
 Cloud usage and the complete weekly model activity list:
 
-![Ollama Cloud connection and usage](https://raw.githubusercontent.com/NOirBRight/dsh-llm-ollama/2eb1be47dcce6058a82172c8a4c500362b28e0f0/docs/images/ollama-cloud-usage.png)
+![Ollama Cloud connection and usage](https://raw.githubusercontent.com/NOirBRight/dsh-llm-ollama/aa01d082318c31318b364450d664f81b07017162/docs/images/ollama-cloud-usage.png)
 
 Sortable model catalog:
 
-![Ollama Cloud sortable model catalog](https://raw.githubusercontent.com/NOirBRight/dsh-llm-ollama/2eb1be47dcce6058a82172c8a4c500362b28e0f0/docs/images/ollama-model-catalog.png)
+![Ollama Cloud sortable model catalog](https://raw.githubusercontent.com/NOirBRight/dsh-llm-ollama/aa01d082318c31318b364450d664f81b07017162/docs/images/ollama-model-catalog.png)
 
 The Models page lists saved ollama-cloud models and can select them. Current Harness releases do not expose a third-party editor slot inside that page, so this package owns its editor under Plugin configuration.
 

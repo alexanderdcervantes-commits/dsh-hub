@@ -4,7 +4,7 @@
 
 提示词优化插件，把一句随手写的话自动改写成专业、可直接使用的提示词，体验与 Qoder、Codex 一致。
 
-优化结果默认为无标题纯文本提示词（`outputStyle: 'plain'`，更省 token），可配置为四段结构化提示词（`outputStyle: 'sections'`，`## Role` / `## Task` / `## Context` / `## Format`），
+优化结果默认为四段结构化提示词（`outputStyle: 'sections'`，`## Role` / `## Task` / `## Context` / `## Format`），可配置为无标题纯文本（`outputStyle: 'plain'`，更省 token），
 由内置元提示词驱动，经 harness 的 `LLM` 服务完成（不直连任何 API、不触碰凭据）。
 
 ## 功能
@@ -42,8 +42,8 @@
   （`OptimizeResult.errorCode`：`MISSING_SECTIONS` / `THIN_SECTIONS` / `THIN_OUTPUT` /
   `TIMEOUT` / `NO_MODEL_ROUTE` 等），工具失败渲染带 `[错误码]` 前缀。
 - 输出恒为完整可执行的提示词（四段或 plain 正文）；空输入报错；超长输入截断护栏；取消信号透传。
-![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/43ef15fdda933525c0ee6bb4ab5a776f5f254e98/1.png)
-![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/43ef15fdda933525c0ee6bb4ab5a776f5f254e98/2.png)
+![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/50dd9205a9aa1dc969a310515f34000fe7060acb/1.png)
+![项目截图](https://raw.githubusercontent.com/seven282/oss-prompt-optimizer/50dd9205a9aa1dc969a310515f34000fe7060acb/2.png)
 
 ## 输入框 ✨ 图标
 
@@ -97,10 +97,14 @@
 
 `/template <场景>` 直接返回一个**可填写四段模板**（Role / Task / Context /
 Format 骨架 + 占位符）——**不调用模型、零延迟零 token**，适合"要个周报模板 /
-邮件模板 / 部署清单"这类常见场景。场景覆盖 21 个子类（周报 / 邮件 / 文案 /
-翻译 / 创作 / **润色 / 简历 / 演讲** / 数据分析 / 研究 / 评估 / 预测 /
+邮件模板 / 部署清单"这类常见场景。场景覆盖 22 个子类（周报 / 邮件 / 文案 /
+翻译 / 创作 / **润色 / 简历 / 演讲 / 演示** / 数据分析 / 研究 / 评估 / 预测 /
 bug 修复 / 新功能 / 重构 / 审查 / 脚本 / 部署 / 安装 / 排查 / 运维），
-支持中英文场景名与关键词匹配；个性化需求仍走 `/optimize`（1.5.1，场景扩展 1.5.2）。
+支持中英文场景名与关键词匹配；个性化需求仍走 `/optimize`（1.5.1，场景扩展 1.5.2/1.6.4）。
+
+**预填版（1.5.6）**：`/template <场景> <指令>`（如 `/template 周报 总结本周进展`）
+返回**已填充的四段成品**——指令经本地门控通过时用纯函数层本地渲染（同样
+**零 token、~5ms**）；指令无可抽取信号时回退骨架并提示走 `/optimize`。
 
 ## 自动优化钩子
 
@@ -172,7 +176,7 @@ dsh plugin --profile web remove oss-prompt-optimizer
 | `maxInputTokens` | int ≥0 | `3000` | 原始指令截断上限（估算 token；优先用 harness tokenMeter，缺失回退启发式；`0` 关闭） |
 | `timeoutMs` | int ≥1 | `60000` | 单次调用超时预算（毫秒） |
 | `outputLanguage` | string | `'auto'` | 输出语言；`'auto'` 跟随指令语言，其他值（如 `'英文'`）固定输出语言 |
-| `outputStyle` | `'sections'` \| `'plain'` | `'plain'` | 输出风格：无标题连贯正文（默认，更省 token）或四段标题 |
+| `outputStyle` | `'sections'` \| `'plain'` \| `'role-task-goal'` | `'sections'` | 输出风格：四段标题（`## Role`/`## Task`/`## Context`/`## Format`，默认，也是优化时的内部参考框架）、无标题连贯正文（更省 token）、或三要素标签（1.6.5 `role-task-goal`：`角色：/任务：/目标：` 或 `Role:/Task:/Goal:`，便于下游自动解析为角色/任务/目标；目标行合并背景约束与产出规格） |
 | `metaPromptLanguage` | `'auto'` \| `'中文'` \| `'英文'` | `'auto'` | 优化器角色文档（元提示词）的语言；`'auto'` 按指令语言自动检测（汉字占比 ≥30% 用中文文档，否则英文），`'中文'`/`'英文'` 固定。输出语言仍由 `outputLanguage` 独立控制。运行时可用 `/optimizer-language auto\|中文\|英文` 固定或恢复自动 |
 | `extraInstructions` | string | 无 | 追加到元提示词的部署自定义规则（如领域要求/风格） |
 | `examples` | array | 内置回退 | few-shot 示例对 `[{input, output}]`，注入元提示词示范（仅 `sections` 模式注入）；未配置时按任务类型 + 角色文档语言自动注入 1 对内置示例（code/writing/analysis/ops，中英各 4 对，`other` 回落文案类；1.5.4 起子类命中优先——如 `code-bugfix` 用「根因→最小修复→回归验证」专用示例），显式配置覆盖内置 |
@@ -200,6 +204,8 @@ dsh plugin --profile web remove oss-prompt-optimizer
 | `contextMaxTokens` | int ≥0 | `800` | 上下文 token 预算；超出截断到最长前缀并附标记；`0` 关闭截断（精简默认） |
 | `outputLengthMaxTokens` | int ≥0 | `800` | 优化结果建议长度上限（token，软约束：仅指导模型尽量精简，不阻断、不重试）；`0` 关闭。与 `maxTokens`（模型调用硬上限）相互独立 |
 | `situationProfileLevel` | `'full'` \| `'minimal'` \| `'off'` | `'full'` | 情境画像（`{{情境画像}}` 块）注入预算：`full` 角色+目标+约束全量；`minimal` 仅目标/约束（不含角色信号，更省 token）；`off` 不注入。只影响情境块，`{{任务类型}}` 提示不受影响 |
+| `localTemplate` | `'auto'` \| `'on'` \| `'off'` \| `'hybrid'` | `'auto'` | 本地模板路径（1.5.6 起）：结构化子类场景（周报/邮件/数据分析/部署等）先用纯函数层渲染四段**参考模板（seed）**（零 token、~5ms），再由 LLM 优化。`auto`（默认，1.6.2）**seed 优化**——本地参考模板 + 目标画像喂给 LLM 感知目标优化，输出经目标对齐校验，输入侧实测 ~270–310 tokens（省 ~75%）；`on` 本地渲染即成品直接返回（0 token 模板形态）；`off` 完全关闭走完整管线；`hybrid`（1.6.1）目标锚点对齐直接返回（0 token）、未对齐走 seed 优化 |
+| `hybridAlignThreshold` | number 0–1 | `0.4` | `hybrid` 档目标锚点对齐阈值：`goalAnchorsScore`（目标/约束/受众/角色锚点加权）低于此值 → 本地成品走精修；≥ 此值直接返回。`0.4` = 仅对无任何目标锚点的裸指令精修；调高到 `0.8` 则几乎全部精修 |
 | `goalAlignmentRetry` | boolean | `true` | 目标/约束未对齐（`goalAlignment` 失败）时是否消耗校验重试预算再试一次：`true` 保留目标保真（1.3.0 起默认行为）；`false` 直接接受结构有效的输出，省一次调用。`optimizationProfile: 'fast'` 时强制关闭 |
 | `optimizationProfile` | `'balanced'` \| `'fast'` | `'balanced'` | 时长档位：`balanced` 保留全部质量门（校验重试/目标对齐重试/selfRefine）；`fast` 跳过校验与目标对齐重试、禁用 selfRefine——一次结构有效即接受，最坏时长显著下降，返工率上升（显式选择才生效） |
 | `earlyStop` | boolean | `false` | 流式早期终止（**默认关闭**——输出完整优先；1.4.5 起改为 false，防半句截断）。显式开启时：每段实质字符 ≥40 且总长 ≥120 才进入收尾期判定，仅在句子边界（句号/换行）且连续 16 个 chunk 增量 < 24 字符才提前停流；`false` 始终消费完整流 |

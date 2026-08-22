@@ -1,6 +1,6 @@
 # dsh-team — DeepSeek Harness 的 Agent Team
 
-![团队协作室运行截图](https://raw.githubusercontent.com/huxint/dsh-team/4b881ecb196ac626fcbea76e472853ffa56013ab/screenshots/image.png)
+![团队协作室运行截图](https://raw.githubusercontent.com/huxint/dsh-team/3e99af9fa9b74fcd20e773bd5ffe4226733e6d5c/screenshots/image.png)
 
 给 dsh 加一支可以指挥的团队：主会话作为 **leader**，可以派生若干**常驻队友（teammate）**，队友有自己的会话、记忆与工具；成员之间通过**邮箱**互发消息（消息成为收件人的下一个 turn），共享一份**任务列表**；会话视图环里多出一个 **Agent 团队**页签，把花名册、协作关系与消息流画成一间能看见的协作室。设计理念参考 Claude Code 的 agent team（共享任务列表 + 邮箱直连 + 成员自协调），实现完全走 dsh 的能力缝。
 
@@ -155,7 +155,7 @@ pnpm run check       # 三件一起
 
 构建产物（`dist/`）与 `dsh-manifest.json` 是提交进仓库的：仓库本身即插件规范要求的「元数据声明 + 预构建产物」形态，改完源码记得把新的 `dist/` 一起提交。
 
-构建与类型针对 npm 上的 `@deepseek-ai/dsh@0.1.0-rc.6`。遵循 harness 的插件纪律：注册即 effect、能力缝三角色、事件全 JSON 整值、模型可见即落日志、配置无硬编码。
+构建与类型针对 npm 上的 `@deepseek-ai/dsh@0.1.1-rc.2`。遵循 harness 的插件纪律：注册即 effect、能力缝三角色、事件全 JSON 整值、模型可见即落日志、配置无硬编码。
 
 ## License
 

@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://memorax-ai.github.io/dsh-harmony/">
-    <img width="132" alt="Harmony" src="https://raw.githubusercontent.com/CH4ACKO3/dsh-harmony/45ce69f0410675c96e0f0aa0fcec72a3e3240eb5/assets/harmony-icon.png">
+    <img width="132" alt="Harmony" src="https://raw.githubusercontent.com/CH4ACKO3/dsh-harmony/bbb5ec886db40b01e5b4bda7062272cb9a78acf6/assets/harmony-icon.png">
   </a>
 
   <h1>dsh-harmony</h1>
@@ -25,6 +25,7 @@
     <a href="https://www.npmjs.com/package/dsh-harmony"><img alt="npm version" src="https://img.shields.io/npm/v/dsh-harmony.svg?style=flat&amp;color=0b63f6"></a>
     <a href="https://github.com/memorax-ai/dsh-harmony/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/memorax-ai/dsh-harmony?style=flat&amp;color=0b63f6"></a>
     <a href="https://awesome-dsh-plugin.com"><img alt="Awesome DSH Plugin" src="https://awesome-dsh-plugin.com/badge.svg"></a>
+    <a href="https://memorax-ai.github.io/dsh-harmony/"><img alt="Harmony" src="https://memorax-ai.github.io/dsh-harmony/harmony-powered.svg"></a>
   </p>
 
   [简体中文](README.zh-CN.md) / [English](README.md)
@@ -74,10 +75,10 @@ Load [`use-dsh-harmony`](https://github.com/memorax-ai/dsh-harmony/blob/main/.ag
 
 ## Install
 
-Requires Node.js `^22.22.3` or `>=24.11.1` and `@deepseek-ai/dsh@0.1.0-rc.8`.
+Requires Node.js `^22.22.3` or `>=24.11.1` and either `@deepseek-ai/dsh@0.1.0-rc.8` or `@deepseek-ai/dsh@0.1.1-rc.1`.
 
 ```sh
-npm install -g @deepseek-ai/dsh@0.1.0-rc.8
+npm install -g @deepseek-ai/dsh@0.1.1-rc.1
 npm install -g dsh-harmony
 dsh web
 ```
@@ -171,6 +172,16 @@ To let later Component Patches modify the same definition, Harmony rewrites a fu
 | React-aware patches with `dsh-harmony-react` | [React integration](https://memorax-ai.github.io/dsh-harmony/integrations/react) |
 | Studio previews | [Studio integration](https://memorax-ai.github.io/dsh-harmony/integrations/studio) |
 | Commands, limitations, and failures | [CLI](https://memorax-ai.github.io/dsh-harmony/reference/cli) · [Limitations](https://memorax-ai.github.io/dsh-harmony/reference/limitations) · [Troubleshooting](https://memorax-ai.github.io/dsh-harmony/help/troubleshooting) |
+
+## Powered by Harmony
+
+If your plugin uses Harmony, you’re welcome to use this badge to show your support!
+
+[![Powered by Harmony](https://memorax-ai.github.io/dsh-harmony/harmony-powered.svg)](https://memorax-ai.github.io/dsh-harmony/)
+
+```md
+[![Powered by Harmony](https://memorax-ai.github.io/dsh-harmony/harmony-powered.svg)](https://memorax-ai.github.io/dsh-harmony/)
+```
 
 ## Development
 

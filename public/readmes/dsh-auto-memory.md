@@ -1,7 +1,7 @@
 # dsh-auto-memory — DSH Auto Memory Plugin / DSH 自动记忆与人性化交互插件
 
 <p align="center">
-  <img width="820" alt="dsh-auto-memory banner" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/banner.jpg">
+  <img width="820" alt="dsh-auto-memory banner" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/banner.jpg">
 </p>
 
 A cache-friendly three-layer memory engine for the DeepSeek Harness Web GUI — lean auto injection, per-turn AI consolidation, on-demand reads and cross-tool memory inheritance — wrapped in human touches: proactive calendar reminders, warm AI greetings, and a daily journal that writes itself.
@@ -161,24 +161,24 @@ All screenshots below are real captures of the plugin running inside the DSH Web
 
 ### Memory panel overview — away greeting & AI period summaries
 
-<img width="480" alt="Memory panel overview" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/overview-zh.png">
+<img width="480" alt="Memory panel overview" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/overview-zh.png">
 
 ### Connect — inherit global memory & history sessions from other AI agents
 
-<img width="480" alt="Connect tab" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/connect-zh.png">
+<img width="480" alt="Connect tab" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/connect-zh.png">
 
 ### Calendar — AI adds items, toggles status and marks completion from context
 
-<img width="480" alt="Calendar tab" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/calendar-zh.png">
+<img width="480" alt="Calendar tab" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/calendar-zh.png">
 
 ### Workspace mind map — auto-generated, workspace-centered cross-workspace overview
 
-<img width="480" alt="Workspace mind map" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/workspace-map-zh.png">
+<img width="480" alt="Workspace mind map" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/workspace-map-zh.png">
 
 ### Settings — highly customizable, covers most technical details
 
-<img width="480" alt="Auto Memory settings" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/settings-zh.png">
-<img width="480" alt="Auto Memory settings (2)" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/72660743af23adef4e2b4a060e7a240d30b2b9d8/docs/screenshots/settings-2-zh.png">
+<img width="480" alt="Auto Memory settings" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/settings-zh.png">
+<img width="480" alt="Auto Memory settings (2)" src="https://raw.githubusercontent.com/Aik358/dsh-auto-memory/2e5ce9cb760e81e7e662db75783c64bc598dfe8d/docs/screenshots/settings-2-zh.png">
 
 ## Beyond the screenshots
 

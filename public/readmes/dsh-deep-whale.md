@@ -8,8 +8,8 @@ DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。
 
 | 皮肤 | 亮色模式 | 暗色模式 |
 |---|---|---|
-| maid-atelier | [![maid-atelier 亮色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/0a3d03251d1e88a08de79e27fb884ed9200913ad/maid-atelier/preview/light.webp)](maid-atelier/preview/light.webp) | [![maid-atelier 暗色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/0a3d03251d1e88a08de79e27fb884ed9200913ad/maid-atelier/preview/dark.webp)](maid-atelier/preview/dark.webp) |
-| orca-link | [![orca-link 亮色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/0a3d03251d1e88a08de79e27fb884ed9200913ad/orca-link/preview/light.png)](orca-link/preview/light.png) | [![orca-link 暗色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/0a3d03251d1e88a08de79e27fb884ed9200913ad/orca-link/preview/dark.png)](orca-link/preview/dark.png) |
+| maid-atelier | [![maid-atelier 亮色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/51ff7b80ee163596672b98194d8877e196ac460b/maid-atelier/preview/light.webp)](maid-atelier/preview/light.webp) | [![maid-atelier 暗色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/51ff7b80ee163596672b98194d8877e196ac460b/maid-atelier/preview/dark.webp)](maid-atelier/preview/dark.webp) |
+| orca-link | [![orca-link 亮色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/51ff7b80ee163596672b98194d8877e196ac460b/orca-link/preview/light.png)](orca-link/preview/light.png) | [![orca-link 暗色模式](https://raw.githubusercontent.com/Small-tailqwq/dsh-deep-whale/51ff7b80ee163596672b98194d8877e196ac460b/orca-link/preview/dark.png)](orca-link/preview/dark.png) |
 
 ## 住户
 
@@ -17,6 +17,7 @@ DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。
 |---|---|---|---|
 | [maid-atelier](maid-atelier/) | `@dsh-external/dsh-client-ui-skin-maid-atelier` | 深海女仆工坊:双女仆背景、深海蓝蕾丝界面与 Q 版侧栏 | CC BY-NC-SA 4.0 |
 | [orca-link](orca-link/) | `@dsh-external/dsh-client-ui-skin-orca-link` | 虎鲸链路:珍珠白机械舱、黑曜虎鲸操作员与电蓝链路信号 | CC BY-NC-SA 4.0 |
+| [skin-manager](skin-manager/) | `@dsh-external/dsh-client-ui-skin-deep-whale-manager` | 通用皮肤发现、切换与皮肤自声明配置面板 | MIT |
 
 ## 版权所有人
 
@@ -41,14 +42,18 @@ dsh 会按 `dsh-skin-install` 技能走完整流程：列出全部皮肤、交�
 
 ```sh
 git clone https://github.com/Small-tailqwq/dsh-deep-whale   # clone 到任意位置
+dsh plugin --profile web add <clone 的绝对路径>/skin-manager   # 常驻皮肤管理面板
 dsh plugin --profile web add <clone 的绝对路径>/maid-atelier   # 深海女仆工坊
 dsh plugin --profile web add <clone 的绝对路径>/orca-link      # 虎鲸链路
 ```
 
 Windows 示例（正斜杠与反斜杠均可，pnpm 会自动规范化）：
 ```powershell
+dsh plugin --profile web add C:/Users/<你>/code/dsh-deep-whale/skin-manager
 dsh plugin --profile web add C:/Users/<你>/code/dsh-deep-whale/maid-atelier
 ```
+
+安装管理器和任意皮肤包并刷新后，打开 DSH 的“设置 → 皮肤管理”。面板会自动发现当前 Web profile 中所有带有效 `skin.json` 的皮肤；皮肤支持 v1 自定义协议时，还会显示它自行声明的配置项。“不那么二次元模式”可设置多个显示或隐藏时段，配置均保存在当前浏览器。
 
 ### 相对路径的规则（容易踩坑）
 
@@ -76,6 +81,25 @@ dsh --profile web --dump-config        # 皮肤行在组合配置中，disabled 
 ### 懒人版 · 自带技能
 
 本仓库自带 `dsh-skin-install` 技能（`.agents/skills/`）。dsh 在仓库目录内运行时自动发现该技能；对你的 dsh 说"安装一下这个皮肤包"或"切换皮肤"，它会列出仓库全部皮肤、询问你要激活哪一套，并交代作者署名链与许可边界后再安装。无需自行克隆到 dsh 源码里，皮肤开关走配置热重载，无需重启。
+
+## 贡献者
+
+感谢以下开发者对 dsh-deep-whale 的贡献：
+
+<a href="https://github.com/Small-tailqwq/dsh-deep-whale/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Small-tailqwq/dsh-deep-whale" />
+</a>
+
+### 有价值但未合入的 PR
+
+以下 PR 因与现有上游实现冲突未能合入，但其功能需求已在仓库中落地，特此致谢：
+
+- **@yaoyiqun** — 按所选模型切换角色位置（#15）
+- **@Chartreuse310** — 对话区衬线字体（#22）
+- **@Vergemesh** — 原版/鲸鱼娘皮肤即时切换（#27）
+- **@joejojoking-cloud** — top-trim 装饰层级（#26）、字符舞台层级（#31）修复
+
+> 本节由人工维护，新增此类 PR 时请同步更新。
 
 ## 许可
 

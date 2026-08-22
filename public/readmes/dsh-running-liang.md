@@ -7,7 +7,7 @@ English | [中文](README.zh.md)
 
 > Developed 100% via vibe coding by DeepSeek Harness + DeepSeek-V4-Flash. For fun only.
 
-![Liangda Runner gameplay](https://raw.githubusercontent.com/skiuniverse/dsh-running-liang/438923ce41e2176c07cc8bae097c9ed4ded23f30/assets/screenshot.png)
+![Liangda Runner gameplay](https://raw.githubusercontent.com/skiuniverse/dsh-running-liang/657ff6d58bd94a39070cc0ce5265d88cd342838e/assets/screenshot.png)
 
 A Chrome-dino-style mini-game for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web: while the agent is replying, a progress strip sits above the input bar (same row as the goal bar) with a play key — click it, run, jump (`Space`/`↑`), duck (`↓`), score from **梁子** toward **梁圣**, and watch the progress bar survive the game and every reply.
 
@@ -56,7 +56,7 @@ npm run build       # lib/index.js (host) + lib/client.js (browser bundle)
 npm run check       # pre-publish self-check
 ```
 
-Architecture notes: the client registers into the official DSH slots — `conversation.input.dock` (the strip + growing game panel, same flow as the goal bar) and `settings.plugin.item` (the settings card under Plugins → plugin configuration); the host registers a `webServer` route `/dsh-running-liang/avatars` (list / serve / upload). Long-lived state lives in localStorage; avatar files live on disk so they survive browser storage wipes.
+Architecture notes: the client registers into the official DSH slots — `conversation.input.dock` (the strip + growing game panel, same flow as the goal bar) and `settings.plugin.item` (the settings card under Plugins → plugin configuration). The settings-card registration carries the legacy list `id` and the current keyed-slot `key`; the host serves the matching settings namespace so current DSH versions can discover the card. The host also registers a `webServer` route `/dsh-running-liang/avatars` (list / serve / upload). Long-lived state remains in localStorage; avatar files live on disk so they survive browser storage wipes.
 
 ## License
 

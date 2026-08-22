@@ -12,17 +12,17 @@
 - **开箱即用**：安装和启用插件后，在 DSH 中直接使用，无需额外配置。
 
 
-![WorkBuddy 模型出现在 DSH 模型选择器中](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/e10a94491b92869ce3048da9a0c4bfc41b4c56f8/assets/1.png)
+![WorkBuddy 模型出现在 DSH 模型选择器中](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/8021e8f6aee6a8b011cac413b7bd59ddcc64bb88/assets/1.png)
 
 
 - **信息查看**：设置 → 插件 → DSH WorkBuddy Connect 卡片
 
 
-![设置卡片显示插件](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/e10a94491b92869ce3048da9a0c4bfc41b4c56f8/assets/2.png)
+![设置卡片显示插件](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/8021e8f6aee6a8b011cac413b7bd59ddcc64bb88/assets/2.png)
 
 卡片展开后，可查看账号信息、令牌有效期与剩余积分。
 
-![设置卡片显示账号与剩余积分](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/e10a94491b92869ce3048da9a0c4bfc41b4c56f8/assets/3.png)
+![设置卡片显示账号与剩余积分](https://raw.githubusercontent.com/corrinehu/dsh-workbuddy-connect/8021e8f6aee6a8b011cac413b7bd59ddcc64bb88/assets/3.png)
 
 ## 安装
 

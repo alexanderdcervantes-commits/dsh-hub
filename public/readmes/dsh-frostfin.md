@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/logo.png" alt="月芒霜鳍鲸 logo" width="180"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/logo.png" alt="月芒霜鳍鲸 logo" width="180"></p>
 
 # dsh-frostfin（月芒霜鳍鲸）：Kimi Code as DSH Agent Loop
 
@@ -6,7 +6,7 @@
 
 > 「受月矩力影响而发生变化的奇妙水生动物。」—— 提瓦特生物志
 
-<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/frostfin-moonglow.gif" alt="月芒霜鳍鲸（Moonglow Frostfin Whale）" width="720"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/frostfin-moonglow.gif" alt="月芒霜鳍鲸（Moonglow Frostfin Whale）" width="720"></p>
 
 **Kimi Code 的大脑，DeepSeek Harness 的躯体。**
 
@@ -27,12 +27,12 @@ frostfin 是一个 DSH loop 插件：把 DSH 会话的驱动者整个换成 **Ki
 
 **第三层：彩蛋是闭环的。** 月芒霜鳍鲸栖息的「霜月」地图，它的背面正是「月之暗面」区域——两者同属 6.7「月之八」，是同一个版本抵达的[^3][^5]。点亮「月之暗面」的地图时，跳出的成就叫「为你喜爱的色彩」（Any Colour You Like）[^5]——致敬的正是《The Dark Side of the Moon》专辑里的那首曲子。米哈游埋的梗，和月之暗面公司名字的出处，是同一张 1973 年的唱片。三条致敬链，在半个世纪前闭环。
 
-<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/dark-side-of-the-moon.jpg" alt="月之暗面（霜月背面的区域）" width="640"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/dark-side-of-the-moon.jpg" alt="月之暗面（霜月背面的区域）" width="640"></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/frostfin.gif" alt="霜鳍鲸" width="270">
-  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/frostfin-pink.gif" alt="粉色霜鳍鲸" width="270">
-  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/frostfin-moonglow.gif" alt="月芒霜鳍鲸" width="270"><br>
+  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/frostfin.gif" alt="霜鳍鲸" width="270">
+  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/frostfin-pink.gif" alt="粉色霜鳍鲸" width="270">
+  <img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/frostfin-moonglow.gif" alt="月芒霜鳍鲸" width="270"><br>
   <sub>霜鳍鲸（本种 · 挪德卡莱）｜ 粉色霜鳍鲸（异色个体）｜ 月芒霜鳍鲸（受月矩力影响 · 霜月）<br>形象来自《原神》游戏内生物志，版权属米哈游，仅作命名由来示意</sub>
 </p>
 
@@ -43,7 +43,7 @@ frostfin 是一个 DSH loop 插件：把 DSH 会话的驱动者整个换成 **Ki
 <details>
 <summary>落选的名字（都有各自的道理）</summary>
 
-<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/d391edcf7845a96f17c61de423965af23abde693/assets/moontide-sea.jpg" alt="月荡海（Moontide Sea）" width="640"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pzc2004/dsh-frostfin/1d86efcbc218698a58225e3381bc76b5b600baed/assets/moontide-sea.jpg" alt="月荡海（Moontide Sea）" width="640"></p>
 
 - `dsh-moontide`（月潮）——月引潮汐、潮载鲸；后来才知道，6.7 的月球地图上真有一片海叫月荡海（Moontide Sea）[^5]
 - `dsh-moonwhale`（月鲸）——两个吉祥物直接合体，最直白
@@ -150,7 +150,9 @@ npx @deepseek-ai/dsh plugin --profile web add .
 
 装好后：新模式「月芒霜鳍鲸」自动成为默认模式；会话视图环多出「月芒霜鳍鲸」tab（kimi 会话列表，一键接入）；无需任何模型配置——DSH 的模型门禁由名义路由喂饱。**完整功能手册（面板/远程/命令/权限模式/FAQ）见 [docs/guide.md](docs/guide.md)。**
 
-**headless 也想要**：`npx @deepseek-ai/dsh plugin --profile headless add dsh-frostfin`
+**无界面运行（headless）**：脚本/CI 等不带 Web UI 的场景，换装到 headless profile——`npx @deepseek-ai/dsh plugin --profile headless add dsh-frostfin`。此时只有宿主半身生效（agent loop 照常由 kimi 驱动），面板端点与输入区按钮不出现。
+
+**升级**：`npx @deepseek-ai/dsh plugin --profile web update dsh-frostfin`，然后重启 `dsh web` 生效。`dsh plugin` 的参数原样转发给 pnpm——所以 `add dsh-frostfin@latest` 或指定版本 `add dsh-frostfin@0.2.0` 也可以。
 
 **卸载**：`npx @deepseek-ai/dsh plugin --profile web remove dsh-frostfin`——卸载会自动撤销一切注册，并把同步进 kimi `config.toml` 的托管块摘除（你的 kimi 配置原样恢复）。`~/.frostfin/` 下的会话绑定与模型缓存会保留以便重装续聊；想彻底清除再 `rm -rf ~/.frostfin`。
 

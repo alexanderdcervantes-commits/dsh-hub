@@ -72,7 +72,7 @@ npx @deepseek-ai/dsh plugin --profile web update @wingsky-1/dsh-notifier
 - **错误提醒**：任务出错（`agent/error`）时通知，含任务标题、出错轮次/步骤、错误信息（前 300 字符）；同类错误 60 秒窗口内自动合并
 - **轮次完成**（默认关）：`agent/turn-stopping` 时通知
 - **双通道**：
-  - 系统通知：Windows 原生 toast（内嵌 PowerShell WinRT 脚本，零依赖）；macOS 用 `osascript`（display notification，零依赖）；Linux 用 `notify-send`（存在才调用）
+  - 系统通知：Windows 原生 toast（内嵌 PowerShell WinRT 脚本）；macOS 用 `osascript`（display notification）；Linux 用 `notify-send`（存在才调用），均无需额外安装
   - 浏览器通知：SSE 推帧 + Notification API（仅在页面隐藏时弹出）
 - **非安全上下文降级**：局域网 HTTP 访问时浏览器禁止系统级弹窗——自动降级为「页面内横幅 + 提示音 + 标题提醒」
 - **免打扰时段**：支持跨午夜（如 22:00 → 08:00）；可设**紧急例外**（`allowKinds`：免打扰期间仍提醒审批/提问/出错）
@@ -113,20 +113,36 @@ npx @deepseek-ai/dsh plugin --profile web update @wingsky-1/dsh-notifier
 | `/api/dsh-notifier/history` | GET / **DELETE** | GET 最近通知记录（最多 200 条，`historyMaxAgeDays` 过滤 / 被免打扰拦截的标记 `suppressed`）；**DELETE 清空** |
 | `/api/dsh-notifier/health` | GET | 健康检查 |
 
+## 类型依赖
+
+宿主端类型来自官方 `@deepseek-ai/*` 包（`dsh-agent` / `dsh-session` / `dsh-host-webserver`
+等，版本统一锁在仓库 `pnpm-workspace.yaml` catalog，随 DSH 发布节奏升级）：
+**仅 `import type` 编译期使用**，编译产物零官方运行时导入，运行时对象全部由 dsh
+宿主注入。包以 optional peerDependencies 声明这一宿主耦合；对插件做类型检查的
+消费者需可解析这些官方包（跳过类型检查则无影响）。
+
 ## 安全与边界
 
 - 通知文本只含任务标题/工具名/申请理由等元信息，**不含工具参数**（防敏感信息外泄）
-- **错误通知文本经脱敏**：用户路径/长令牌/密钥赋值会先打码（`<path>`/`<token>`/`<redacted>`）再截断 300 字符，降低错误消息内嵌命令回显、路径与凭据片段的外泄面
+- **错误通知文本经脱敏**：进入通知与历史前按有序规则表打码再截断 300 字符，降低错误消息内嵌命令回显、路径与凭据片段的外泄面。覆盖类别与占位符：
+  - 用户路径（`/home` `/Users` `/root` `/etc` `C:\Users`）→ `<path>`
+  - PEM 私钥块（含只有 BEGIN 头的截断形态）→ `<private-key>`
+  - 数据库/消息队列连接串凭据（postgres/mysql/mongodb/redis/amqps 等，scheme 保留；密码含 `<>`/引号等 URL 应编码字符时不脱敏，属已知局限）→ `scheme://<redacted>@host`
+  - 各类令牌：JWT、AWS AKIA、GitHub PAT（classic 与 fine-grained）、≥24 位 hex / ≥32 位 base64 长串 → `<token>`
+  - 密钥字段赋值（`password=`/`token=`/`api_key=`…，须带显式 `=`/`:` 分隔符）→ `键名=<redacted>`
+  - 邮箱 → `<email>`
+  - **审批理由与提问文本**同样经脱敏（120 字符截断）——这两类文本最常内嵌命令回显与凭据片段
+  - 已证伪不收录（高频误伤）：IPv4（UA 版本号同形）、手机号（订单号同形）、信用卡（13 位毫秒时间戳 100% 命中）
 - 系统通知失败静默（仅日志），不影响主流程；原生二进制缺失/不可执行（ENOENT 等）
   会被 `error` 事件接住，**绝不冒泡成 unhandled error 把宿主进程打挂**（见 issue #1）
 - **两个通道到达的机器不同（别混淆）**：
   - **浏览器通知**推到**你正在用的浏览器客户端**（Mac/手机都算），由浏览器 Notification API 弹出原生通知；需要授权、且默认页面隐藏时才弹（面板可开「页面可见也弹」）。无论 dsh web 跑在哪台机器，只要浏览器通知允许，你都能在自己的 Mac 上收到。
-  - **系统通知（宿主 toast）**弹在 **dsh web 运行的宿主机器**桌面：若 dsh web 跑在 Linux 服务器（headless，无桌面会话）或别的机器上，toast 会出现在**那台服务器**而不是你的 Mac——面板/health 会体现该通道是否可用。想让系统 toast 也出现在你的 Mac 上，需把 dsh web 直接跑在你的 Mac 上（此时走 macOS 的 `osascript`）；macOS 无 `notify-send`，系统通知已用 `osascript` 实现（零依赖，无需安装）
+  - **系统通知（宿主 toast）**弹在 **dsh web 运行的宿主机器**桌面：若 dsh web 跑在 Linux 服务器（headless，无桌面会话）或别的机器上，toast 会出现在**那台服务器**而不是你的 Mac——面板/health 会体现该通道是否可用。想让系统 toast 也出现在你的 Mac 上，需把 dsh web 直接跑在你的 Mac 上（此时走 macOS 的 `osascript`）；macOS 无 `notify-send`，系统通知已用系统自带的 `osascript` 实现（无需安装）
 - **iOS 差异**：Safari 普通标签页无 Web Notifications API（「添加到主屏幕」的 PWA
   才有）；iOS 上可用通道为「页面可见时横幅 + 提示音」及 HTTPS+A2HS 后的系统通知
 - 浏览器通知需要**安全上下文**（HTTPS 或 localhost）；局域网 HTTP 访问自动走降级通道（横幅/提示音/标题提醒）
 - 浏览器通知权限为手势内请求（点击侧边栏「通知」入口或面板按钮时）
-- Windows 系统通知通过 PowerShell WinRT 脚本实现，命令以参数数组传递（无 shell 拼接面）
+- Windows 系统通知通过 PowerShell WinRT 脚本实现，命令以参数数组传递（无 shell 拼接面）；脚本启动时幂等注册 AppUserModelId（HKCU，无需管理员权限）——未注册的 AUMID 在 Win10/11 上 toast 会被系统静默丢弃
 
 ## 验证
 

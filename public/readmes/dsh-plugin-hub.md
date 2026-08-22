@@ -15,9 +15,22 @@
 [![topic: dsh-plugin](https://img.shields.io/badge/topic-dsh_plugin-4D6BFE?style=flat-square)](https://github.com/topics/dsh-plugin)
 
 A **plugin management panel** for the DeepSeek Harness (DSH) Web GUI: one-click
-enable/disable of installed plugins, plus a **multi-source plugin marketplace**
-(GitHub / Gitee / custom sources) with one-click install — and an **auto-collected
-static plugin & skill index** refreshed by CI every 6 hours.
+enable/disable of installed plugins, a **multi-source plugin marketplace**
+(GitHub / Gitee / custom sources) with one-click install, an **auto-collected
+static plugin & skill index** refreshed by CI every 6 hours, skill install/disable,
+suite one-click assembly, and **one-click framework upgrade** (online install with
+auto-rollback).
+
+> ## 🎯 One-click framework upgrade (v0.3.13 highlight)
+>
+> Open the "Plugin Console" panel → **Plugin Marketplace** → the
+> `deepseek-ai/deepseek-harness` card → click **"Framework Upgrade → vX"**:
+> **backup config & framework (rollback point) → online install (service stays up) →
+> version verification → auto-rollback on failure → auto-restart**.
+>
+> After upgrade, framework packages are **auto-relinked** (fixes pnpm top-level link
+> staleness that caused mixed versions, e.g. an old model plugin missing vision models).
+> Tested: 0.1.0-rc.8 → **0.1.1-rc.2** end-to-end automatic, rollback-safe.
 
 <!-- TOC -->
 - [Highlights](#highlights)
@@ -66,14 +79,18 @@ static plugin & skill index** refreshed by CI every 6 hours.
 The plugin declares a `dsh.bundle` manifest, so a single command installs and enables it:
 
 ```sh
+# npm release (recommended: prebuilt, no git / build authorization needed)
+dsh plugin --profile web add @noob-stupid/dsh-plugin-console
+
+# or install from GitHub source (needs git; allowBuilds authorization on first add)
 dsh plugin --profile web add github:Noob-stupid/dsh-plugin-hub
 ```
 
 Uninstall / reinstall (update):
 
 ```sh
-dsh plugin --profile web remove github:Noob-stupid/dsh-plugin-hub
-dsh plugin --profile web add github:Noob-stupid/dsh-plugin-hub
+dsh plugin --profile web remove @noob-stupid/dsh-plugin-console
+dsh plugin --profile web add @noob-stupid/dsh-plugin-console
 ```
 
 Then restart the dsh service → refresh the page → Settings → Plugins → Plugin Console.
@@ -101,7 +118,7 @@ idempotently appends an enable entry to `cordis.patch.yml`. Afterwards:
 
 ### Option 3: hand it to an AI in one sentence
 
-> Install the DSH plugin hub (dsh-plugin-hub): run `dsh plugin --profile web add github:Noob-stupid/dsh-plugin-hub`; if there is no dsh CLI, clone https://github.com/Noob-stupid/dsh-plugin-hub to `~/.dsh/profiles/web/node_modules/` and register it in `cordis.patch.yml` (id: plugin-console, name: @deepseek-ai/dsh-plugin-console). Restart dsh web afterwards.
+> Install the DSH plugin hub (dsh-plugin-hub): run `dsh plugin --profile web add @noob-stupid/dsh-plugin-console` (npm release); if there is no dsh CLI, clone https://github.com/Noob-stupid/dsh-plugin-hub to `~/.dsh/profiles/web/node_modules/` and register it in `cordis.patch.yml` (id: plugin-console, name: @noob-stupid/dsh-plugin-console). Restart dsh web afterwards.
 
 Requires: DSH ≥ 0.1.0-rc.6 (web profile, with `dsh-client-modules` / `dsh-host-plugin-inventory`).
 

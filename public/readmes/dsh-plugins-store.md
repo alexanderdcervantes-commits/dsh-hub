@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DshMarketPlace/dsh-plugins-store/a771a77e22a95c1a531c7a4863650ab5a03a2378/.github/assets/banner.jpg" alt="DSH Marketplace — install DeepSeek Harness plugins without leaving DSH" width="100%">
+  <img src="https://raw.githubusercontent.com/DshMarketPlace/dsh-plugins-store/8354d9a0a1ad49ad12075d8ec0c2bf44f4349856/.github/assets/banner.jpg" alt="DSH Marketplace — install DeepSeek Harness plugins without leaving DSH" width="100%">
 </p>
 
 <p align="center">

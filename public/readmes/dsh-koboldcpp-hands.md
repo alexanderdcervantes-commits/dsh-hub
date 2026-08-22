@@ -128,7 +128,7 @@ Returns `{ text, reasoning?, model, images, usage, elapsedMs }`.
 
 ## Current limitation: text-only main models — images arrive by link or local path only
 
-**In the current release (plugin 0.1.0, harness 0.1.0-rc.8), when your main model is text-only, `koboldcpp_vision` can only receive images through the two explicit channels: `image_paths` (local file paths) and `image_urls` (online / `data:` links).** The conversation-attachment source is unavailable in that setup — and this is a hard limit of the harness, not of this plugin:
+**In the current release (plugin 0.1.0, harness 0.1.1-rc.1), when your main model is text-only, `koboldcpp_vision` can only receive images through the two explicit channels: `image_paths` (local file paths) and `image_urls` (online / `data:` links).** The conversation-attachment source is unavailable in that setup — and this is a hard limit of the harness, not of this plugin:
 
 1. When you paste or drop an image while a text-only model is selected, dsh **rejects the message before it ever enters the session** with `attachment-error / MODEL_DOES_NOT_SUPPORT_IMAGES` (the UI shows "当前模型不支持图片，请切换支持图片的模型"). The check lives in `dsh-host-apiproxy`: the selected model's declared input modalities (from the pi-ai model catalog) must include `image`; a model catalogued as `input: ["text"]` (e.g. `deepseek-v4-flash` / `deepseek-v4-pro` on the `opencode-go` route) is refused.
 2. Even if an image part got through, `dsh-llm-pi-ai`'s streaming adapter rejects image content for the same text-only models (`UNSUPPORTED_CONTENT`), and subagent continuation sessions block images in the browser client entirely.
@@ -196,7 +196,7 @@ Removing the plugin is as clean as installing it:
 | Component | Version |
 | --- | --- |
 | This plugin | `0.1.0` |
-| DeepSeek Harness | `0.1.0-rc` series (tested against npm `@deepseek-ai/*` `0.1.0-rc.8`) |
+| DeepSeek Harness | `0.1.0-rc` series (tested against npm `@deepseek-ai/*` `0.1.0-rc.8` / `0.1.1-rc.1`) |
 | Node.js | ≥ 20 |
 | KoboldCpp | any release exposing `/v1/chat/completions` |
 

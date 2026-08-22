@@ -12,22 +12,48 @@
 
 ## Screenshot
 
-![dsh-file-upload in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-upload/c4e41b09aa63434fe0ec764fe60ac15197df06b5/assets/screenshot.png)
+![dsh-file-upload in action](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-upload/8a413a45216eba424de9b4010feaf22ae02879eb/assets/screenshot.png)
 
-The upload icon button in the composer tool row (official DSH design tokens, follows dark/light theme); the picked file's path (blurred in the screenshot) is inserted into the input box automatically, ready to send.
+The upload icon button in the composer tool row (official DSH design tokens, follows dark/light theme); either the file's path is inserted into the input box, or — for supported images — the image lands in the official attachment rail (auto `file_id` reuse).
 
 ## Features
 
 | Action | Effect |
 |---|---|
-| Click upload icon | System file picker (multi-select) → save → path into the input box |
-| Drag a file into the window | Images & any file type are taken over (no "unsupported" toast) → save → path into the input box |
-| Send the message | The model / vision tool reads the file by absolute path |
-| Switch sessions | Button follows the current session; files land in that session's project `uploads/` |
+| Click upload icon | System file picker (multi-select) → smart routing → attachment rail and/or path text |
+| Drag a file into the window | Images & any file type are taken over (no "unsupported" toast) → smart routing |
+| Drag a folder into the window | Recursively reads the whole folder → rebuilds it under the attachment library with its original layout → only the folder path goes into the draft (contents not expanded) |
+| **Image** (PNG/JPEG/WebP/GIF) | ① archived to the **attachment directory** (by-day folders) ② added to the **official draft attachment rail** → sent with automatic DeepSeek Files API `file_id` (same image reuses the id; 7-day expiry auto-reuploads) |
+| **Any other file** | Archived to the library's `files/` subfolder, `<prefix> <path>` text goes into the draft |
+| Model without image support | Image falls back to archive + path text (never sent as an image block, no 400) |
 
-- Single-file limit: 25 MB (frontend) / 30 MB (backend)
-- Filenames keep Chinese/space characters; a timestamp prefix avoids collisions
+- Single-file limit: **64 MB** (DeepSeek Files API hard limit; the local attachment store defaults to 20 MB — see *Large images* below)
+- Everything lands in the **attachment library**: `~/Documents/DSH/Attachments/images/<YYYY-MM-DD>/` (images) or `.../files/<YYYY-MM-DD>/` (other files) — configurable in Settings
 - Button shows busy state while uploading; failures surface as Chinese notices
+
+## Settings card
+
+![Settings card](https://raw.githubusercontent.com/a903067276-rgb/dsh-file-upload/8a413a45216eba424de9b4010feaf22ae02879eb/assets/settings.png)
+
+- **Attachment directory** (`~/Documents/DSH/Attachments` default, `~` supported) — only used for image archives
+- **Path prefix** (`[上传文件]` default) — text prepended to paths in the draft; clear it to send bare paths
+- **Images via official attachment** (default on) — off = images follow the old path-text logic
+- **Archive images to the attachment directory** (default on) — off = official attachment only (saves disk; if the official channel is unavailable, the image is still force-archived)
+- Read-only display: current image size limit from the host
+
+## Large images (20–64 MB)
+
+DeepSeek accepts up to **64 MB per image**. DSH's local attachment store defaults to **20 MB**; images above that (and ≤64 MB) are archived + path-text referenced (the model can still read them via `read_image`, which follows the same store limit).
+
+To let large images through the official attachment path too, add this to `~/.dsh/profiles/web/cordis.patch.yml` and restart `dsh web`:
+
+```yaml
+- id: attachment-local
+  config:
+    maxImageBytes: 67108864   # 20 MiB → 64 MiB (DeepSeek hard limit)
+```
+
+Note: the whole config row is replaced, so keep every key you need; re-check against the DSH version after upgrades. The model always sees the harness-normalized version (≤2048px / ≤4 MiB, ≤384 tokens per image) regardless of the original size.
 
 ## Install
 
@@ -43,9 +69,11 @@ Manual mount (fallback): see [docs/install.md](docs/install.md) — symlink into
 
 ## Usage
 
-1. Click the upload icon and pick files (multi-select), or drag files anywhere into the window.
-2. The file is saved to the current project's `uploads/` directory; the input box gets `[上传文件] <absolute path>` lines — e.g. `[上传文件] /path/to/uploads/xxx.png` — and your existing draft text is kept.
-3. Press send; the model — or any attached vision tool — reads the file by path.
+1. Click the upload icon and pick files (multi-select), or drag files/folders anywhere into the window.
+2. **Images** (when the current model accepts images): archived to the attachment directory *and* shown in the official attachment rail — send, and the model sees the image (DeepSeek Files API `file_id`, auto-reused).
+3. **Images when the model does not accept images** (or you turned the official path off): archived to `images/`, then `<prefix> <absolute path>` lines go into the draft — e.g. `[上传文件] /path/to/Attachments/images/xxx.png` — and your existing draft text is kept.
+4. **Other files**: archived to `files/`, path text goes into the draft. Press send; the model reads the file by path.
+5. **Folders**: drag one in and it is rebuilt under the attachment library with its original layout; only the folder path (one line) goes into the draft.
 
 ## Platform support
 
@@ -57,25 +85,32 @@ Manual mount (fallback): see [docs/install.md](docs/install.md) — symlink into
 
 ## Requirements
 
-- DSH web (run with `dsh web`)
+- DSH web >= 0.1.0-rc.7 (run with `dsh web`)
+- **Version compatibility** (best effort — new features verified locally on 0.1.1-rc.2; on 0.1.0-rc.7/rc.8 the official image rail can't be fully checked, **not guaranteed**):
+- **Maintenance policy**: this plugin keeps evolving with the latest DSH releases; compatibility with older DSH versions is best-effort only and not guaranteed going forward.
+
+| Your DSH version | Install this | Note |
+|---|---|---|
+| 0.1.1-rc.1 and newer | `main` (v0.1.5+) | Full features (including the official image rail) |
+| 0.1.0-rc.7 – 0.1.0-rc.8 | `main` (v0.1.5+) | Works fine; the official image rail auto-degrades to path text unless the session model accepts images. Conservative fallback: `v0.1.4` — `dsh plugin add github:a903067276-rgb/dsh-file-upload#v0.1.4` |
+| 0.1.0-rc.6 and older | `v0.1.2` — `dsh plugin add github:a903067276-rgb/dsh-file-upload#v0.1.2` | Last release without the settings card (the card uses the rc.7+ keyed slot contract) |
+
 - No extra shell needed: the host half is pure Node (`node:fs`), no system commands required on any platform.
 
 ## How it works
 
-- **Host** (`lib/index.js`): one route `POST /api/file-upload/save` — validates the session and size, then writes the base64 payload to `<session cwd>/uploads/` with **pure Node** (`node:fs`, no system command dependency, cross-platform); the returned path is built via `node:path` and follows the platform separator.
-- **Client** (`lib/client.js`): registers the upload icon button in the `conversation.input.left` seat (visually distinct from the default "+" command button); a capture-phase document listener takes over file drags before the official InputBar's bubble-phase listener (which would reject images); `FileReader` reads base64, uploads it, then the path text is appended to the input draft (`inputActions.setDraft`).
+- **Host** (`lib/index.js`): `POST /api/file-upload/save` — validates the session and size, writes the base64 payload to `<library>/images/<YYYY-MM-DD>/` (`mode=image`) or `<library>/files/<YYYY-MM-DD>/` (`mode=file`) with **pure Node**; `POST /api/file-upload/save-folder` — takes a relative-path + base64 list and rebuilds the tree under `<library>/files/<date>/<timestamp>-<folder>/` (each segment sanitized, `..` rejected to prevent traversal); `GET/POST /api/file-upload/config` reads/writes the settings (official `settings` service) and exposes the host image limit plus whether the current session's model accepts images (`llm.resolveModel` `inputModalities` — same source the adapter uses).
+- **Client** (`lib/client.js`): registers the upload icon in the `conversation.input.left` seat; capture-phase document listener takes over file drags and reads dragged folders via `webkitGetAsEntry`; routing: supported image + official on + model supports + within host limit → archive + `conversation.createDraftImages` + `inputActions.addImages` (the official InputBar's own mechanism) → official attachment rail (no path text); anything else degrades to archive + path text; >64 MB is refused with a notice.
 - **Error boundary**: a render crash degrades to a small "⚠ upload component error" chip instead of unmounting the whole composer.
 
 ## Notes
 
-- The `uploads/` directory only grows; it is **never cleaned automatically** (we don't delete your files) — remove files manually when needed.
+- The attachment library only grows; it is **never cleaned automatically** (we don't delete your files) — remove files manually when needed.
 - After modifying the plugin, restart `dsh web` for changes to take effect (client-side edits apply on a page refresh; host edits need a restart).
 
 ## Why this plugin exists
 
-DSH natively rejects dragged-in images when the current model doesn't support them (official toast: "the current model does not support images"). This plugin saves the file to disk first and puts a **path text** into the conversation instead — a plain-text message that passes the model's image check and works with any model or vision plugin.
-
-**Vision-plugin agnostic**: the message only carries a local absolute path (plain text), so it works with dsh-vision's `view_image`, any other model/tool that can read local paths, or no vision at all. It bypasses DSH's native image rejection because no image block is ever submitted.
+DSH natively rejects dragged-in images when the current model doesn't support them. This plugin routes images through the **official attachment path** when the model can see them (so they ride the DeepSeek Files API with `file_id` reuse), keeps a **user-accessible archive copy** you can find later, and falls back to plain **path text** otherwise — a plain-text message that passes the model's image check and works with any model or vision plugin (it bypasses DSH's native image rejection because no image block is ever submitted on the fallback path).
 
 ## License
 

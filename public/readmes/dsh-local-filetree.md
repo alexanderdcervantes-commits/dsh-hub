@@ -1,4 +1,5 @@
 # dsh-local-filetree
+（作者找到了更好的侧边栏，所以暂时不更新了）
 
 DSH Web UI 右侧文件树插件（静态 bundle，本地安装）。
 

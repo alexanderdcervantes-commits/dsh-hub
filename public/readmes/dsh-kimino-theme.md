@@ -3,7 +3,7 @@
 中文 | [English](README.en.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/0a17159ecc9cf61834bac3265f5c8dab333431e9/assets/logo/your-name-movie-logo-blue.svg" alt="Kimi no Na wa" width="460">
+  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/4c01c9701690c5e4ccfe0253225f4cba9254414f/assets/logo/your-name-movie-logo-blue.svg" alt="Kimi no Na wa" width="460">
 </p>
 
 <p align="center">
@@ -45,7 +45,7 @@ dsh-kimino-theme 把 DSH Web GUI 变成新海诚《你的名字。》的模样�
 | 还原 | — | 卸载即完全还原 |
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/0a17159ecc9cf61834bac3265f5c8dab333431e9/docs/screenshots/home-hero.png" alt="主页：居中大尺寸电影 Logo" width="760">
+  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/4c01c9701690c5e4ccfe0253225f4cba9254414f/docs/screenshots/home-hero.png" alt="主页：居中大尺寸电影 Logo" width="760">
 </p>
 
 ## 主题细节
@@ -61,8 +61,8 @@ dsh-kimino-theme 把 DSH Web GUI 变成新海诚《你的名字。》的模样�
 - 首页（hero）标题替换为居中大尺寸 Logo。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/0a17159ecc9cf61834bac3265f5c8dab333431e9/docs/screenshots/sidebar.png" alt="侧边栏：展开态的电影品牌标识" width="123">
-  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/0a17159ecc9cf61834bac3265f5c8dab333431e9/docs/screenshots/chat-main.png" alt="主界面：壁纸上的玻璃拟态会话视图" width="676">
+  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/4c01c9701690c5e4ccfe0253225f4cba9254414f/docs/screenshots/sidebar.png" alt="侧边栏：展开态的电影品牌标识" width="123">
+  <img src="https://raw.githubusercontent.com/niiang/dsh-kimino-theme/4c01c9701690c5e4ccfe0253225f4cba9254414f/docs/screenshots/chat-main.png" alt="主界面：壁纸上的玻璃拟态会话视图" width="676">
 </p>
 
 ### 输入卡与占位文案

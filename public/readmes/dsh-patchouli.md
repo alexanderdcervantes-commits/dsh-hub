@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100%" alt="Patchouli" src="https://raw.githubusercontent.com/memorax-ai/dsh-patchouli/2307d6c42cc9ce6ca852089e93f87c83ce92337f/assets/patchouli-banner-en.png">
+  <img width="100%" alt="Patchouli" src="https://raw.githubusercontent.com/memorax-ai/dsh-patchouli/aadd26c4c9d87d5942019ce0a3dfc8e4ea178b70/assets/patchouli-banner-en.png">
 
   <h1>Patchouli</h1>
   <p>
@@ -10,6 +10,7 @@
 
   **English** · [简体中文](README.zh-CN.md)
 
+  [![Powered by Harmony](https://memorax-ai.github.io/dsh-harmony/harmony-powered.svg)](https://memorax-ai.github.io/dsh-harmony/)
   [![Documentation](https://img.shields.io/badge/docs-read-75439a?logo=readthedocs&logoColor=white)](https://memorax-ai.github.io/dsh-patchouli/)
   [![CI](https://github.com/memorax-ai/dsh-patchouli/actions/workflows/ci.yml/badge.svg)](https://github.com/memorax-ai/dsh-patchouli/actions/workflows/ci.yml)
   [![License: MIT](https://img.shields.io/badge/license-MIT-2f6f4e.svg)](LICENSE)

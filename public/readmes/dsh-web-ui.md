@@ -3,7 +3,7 @@
 中文 | [English](README.en.md)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/dsh-web-ui-banner.png" alt="dsh-web-ui" width="100%">
+  <img src="https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/dsh-web-ui-banner.png" alt="dsh-web-ui" width="100%">
 </p>
 
 <p align="center">
@@ -39,7 +39,7 @@ dsh-web-ui 继承 DeepSeek Harness（DSH）「一切皆开发、一切皆插件�
 
 「一切皆插件」还贯彻到了皮肤本身：皮肤中心 v2 重构后，一款皮肤不再是耦合官方 DSH 的 npm 包，而是一个纯资产目录——一份 skin.json 清单加上样式、贴图与可选特效脚本，交由皮肤中心这一唯一加载器即时加载。皮肤与官方彻底解耦、只与皮肤中心耦合：官方升级不再牵动任何皮肤，新增一款皮肤也只需落一个目录，无需发布、无需安装。插件负责逻辑，皮肤负责外观，边界从此清晰。
 
-![DSH Web UI 主界面](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/13-hero-main.png)
+![DSH Web UI 主界面](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/13-hero-main.png)
 
 | 能力 | 原生 dsh web | dsh-web-ui 全家桶 |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ dsh-web-ui 继承 DeepSeek Harness（DSH）「一切皆开发、一切皆插件�
 | 移动端远程 | 无 | 扫码配对，SSE 实时同步；同一链接也可配对 PC 浏览器远程使用完整 Web GUI |
 | 远程服务器运维 | 无 | SSH 面板：终端 / 传输 / 隧道 / 集群 |
 | 图像理解 | 无 | `describe_image` 视觉工具 |
-| 主题皮肤 | 默认主题 | 皮肤中心 12 款，先试穿再应用 |
+| 主题皮肤 | 默认主题 | 皮肤中心 17 款，先试穿再应用 |
 
 ## 功能插件
 
@@ -58,7 +58,7 @@ dsh-web-ui 继承 DeepSeek Harness（DSH）「一切皆开发、一切皆插件�
 
 DeepSeek V4 Pro 对首轮工具目录很敏感。社区评测里，官方 Standard / PTC 预设只有 91 / 92 分，Minimal 能到 99 / 96，但 Minimal 只有两个工具。梁神模式把这两步拼起来：新建会话时在预设选择器里选「梁神模式」，首轮按 Minimal 开局（只暴露持久 `bash` 与 `str_replace_editor`，只放行你自己的消息），轨迹锚定后自动切到 PTC Mode，完整工具注册表、workspace 指令和 skill 目录随后恢复。Windows 原生环境实测（DeepSeek V4 Pro）98 / 99，均值 98.5，不是抽卡，也不需要牺牲完整工具能力。
 
-![梁神模式两阶段锚定效果对比（示意图，模拟渲染）](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/images/liangshen-mode.png)
+![梁神模式两阶段锚定效果对比（示意图，模拟渲染）](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/images/liangshen-mode.png)
 
 原理、稳定化控制与限制详见 [dsh-liangshen README](packages/dsh-liangshen/README.zh.md)。
 
@@ -70,13 +70,13 @@ DeepSeek V4 Pro 对首轮工具目录很敏感。社区评测里，官方 Standa
 
 | 多列看板 | 定时执行 |
 | --- | --- |
-| ![任务看板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/09-task-board.png) | ![任务定时执行](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/10-task-board-detail-cron.png) |
+| ![任务看板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/09-task-board.png) | ![任务定时执行](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/10-task-board-detail-cron.png) |
 
 ### Git 图谱
 
 输入框上方有分支选择器，可以切分支、翻提交历史；Git 图谱把分支泳道和提交历史画出来，仓库再大也能顺着时间线找到变更。
 
-![Git 图谱](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/04-git-graph.png)
+![Git 图谱](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/04-git-graph.png)
 
 ### 移动端远程
 
@@ -86,9 +86,9 @@ DeepSeek V4 Pro 对首轮工具目录很敏感。社区评测里，官方 Standa
 
 | 工作区列表 | 会话列表与新建会话 |
 | --- | --- |
-| ![移动端工作区](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/20-mobile-workspaces.png) | ![移动端会话列表](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/21-mobile-sessions.png) |
+| ![移动端工作区](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/20-mobile-workspaces.png) | ![移动端会话列表](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/21-mobile-sessions.png) |
 | 聊天（折叠的深度思考与工具调用） | 模型与思考强度选择 |
-| ![移动端聊天](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/22-mobile-chat.png) | ![模型选择](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/23-mobile-model-sheet.png) |
+| ![移动端聊天](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/22-mobile-chat.png) | ![模型选择](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/23-mobile-model-sheet.png) |
 
 ### 远程连接
 
@@ -108,7 +108,7 @@ DeepSeek V4 Pro 对首轮工具目录很敏感。社区评测里，官方 Standa
 
 右侧面板由外部插件 [dsh-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) 提供（聚合包已集成并默认启用），支持其内置功能与第三方插件注册，详见其 [README](https://github.com/omdsh-dev/DSH-better-sidebar)。
 
-![右侧面板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/19-right-panel.png)
+![右侧面板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/19-right-panel.png)
 
 > 此前的 aionui-panel 右侧面板已**停止支持**：默认关闭，不再维护、测试或接受修复，后续版本将从全家桶移除；设置 → Web UI 插件 → 侧边卡片 卡内嵌其常用设置。
 
@@ -118,53 +118,53 @@ DeepSeek V4 Pro 对首轮工具目录很敏感。社区评测里，官方 Standa
 
 | 陪伴工作 | 互动面板 |
 | --- | --- |
-| ![鲸鱼娘宠物](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/11-pet-new-chat.png) | ![宠物互动面板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/12-pet-panel.png) |
+| ![鲸鱼娘宠物](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/11-pet-new-chat.png) | ![宠物互动面板](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/12-pet-panel.png) |
 
 ## 皮肤
 
-皮肤中心有 12 款皮肤，都支持先试穿再应用：试穿即时生效、退出完全还原，满意再一键应用。
+皮肤中心有 17 款皮肤，都支持先试穿再应用：试穿即时生效、退出完全还原，满意再一键应用。
 
-![皮肤中心](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/03-settings-skin-center.png)
+![皮肤中心](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/03-settings-skin-center.png)
 
-12 款皮肤一览；Maid Atelier 预览见下方：
+17 款皮肤一览；Maid Atelier 预览见下方：
 
-![12 款皮肤一览](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/images/skins-montage.png)
+![17 款皮肤一览](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/images/skins-montage.png)
 
 ### Windows XP（Luna）
 
 还原 Luna 经典界面：蓝色渐变窗口条、绿色「开始」按钮、Bliss 蓝天桌面，全局直角风格。
 
-![Windows XP 皮肤](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/16-skin-xp-light.png)
+![Windows XP 皮肤](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/16-skin-xp-light.png)
 
 ### Blue Fantasy 蓝色幻想
 
 鲸鱼插画垫在半透明面板下面，靛蓝色调贯穿全局，暗色主题下更明显。
 
-![Blue Fantasy 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/17-skin-blue-fantasy-dark.png)
+![Blue Fantasy 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/17-skin-blue-fantasy-dark.png)
 
 ### 鲸吟（Whale Song）
 
 深海鲸语女神主题：无文字纯氛围背景画（蓝发女神与鲸群居左、冰蓝星座网格与金色细线点缀、右侧大量留白）垫在半透明面板下面，冰蓝 / 浅青 / 深海军蓝 / 钴蓝冷色体系贯穿全局，暗色变体是深海夜航调。
 
-![鲸吟 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/24-skin-whale-song-light.png) · ![鲸吟 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/25-skin-whale-song-dark.png)
+![鲸吟 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/24-skin-whale-song-light.png) · ![鲸吟 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/25-skin-whale-song-dark.png)
 
 ### 夕港（Harbor）
 
 黄昏港口主题：动漫少女港口背景（暮光蓝天空渐入日落橙）垫在半透明面板下面，深暮蓝底与日落橙主色贯穿全局，亮色是薄暮纱、暗色是深海夜航纱。
 
-![夕港 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/26-skin-harbor-light.png) · ![夕港 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/27-skin-harbor-dark.png)
+![夕港 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/26-skin-harbor-light.png) · ![夕港 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/27-skin-harbor-dark.png)
 
 ### 深海女仆工坊（Maid Atelier）
 
 深海蓝工坊主题，包含双角色图层与响应式侧边栏装饰。本皮肤单独采用 CC BY-NC-SA 4.0，仅限非商业使用。
 
-![深海女仆工坊 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/packages/skins/skin-center/skins/maid-atelier/preview/light.png) · ![深海女仆工坊 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/packages/skins/skin-center/skins/maid-atelier/preview/dark.png)
+![深海女仆工坊 亮色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/packages/skins/skin-center/skins/maid-atelier/preview/light.png) · ![深海女仆工坊 暗色](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/packages/skins/skin-center/skins/maid-atelier/preview/dark.png)
 
 ### Wallpaper Engine 壁纸
 
 皮肤中心可直接把本机 Wallpaper Engine 壁纸库用作 GUI 背景，支持导入动态与静态壁纸：视频与网页壁纸动态渲染，场景壁纸以静态帧呈现，任意类型也能用「静态帧」模式钉成零动画开销的图片。单张壁纸可导入 `skin-center/wallpapers/`，脱离 Steam 库也能用，并检测创意工坊原作更新；没有 Wallpaper Engine（如 macOS）时，手动目录可把任意 `.mp4`/`.webm` 视频文件夹或壁纸项目文件夹加为壁纸库。壁纸都是本机文件，从不上传或再分发。
 
-![Wallpaper Engine 壁纸](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/screenshots/29-skin-wallpaper-engine.png)
+![Wallpaper Engine 壁纸](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/screenshots/29-skin-wallpaper-engine.png)
 
 ## 快速开始
 
@@ -228,6 +228,7 @@ dsh plugin --profile web add @linxin666/dsh-client-ui-task-board@latest    # 任
 dsh plugin --profile web add @linxin666/dsh-ssh@latest                     # 远程连接（SSH）
 dsh plugin --profile web add @linxin666/dsh-tool-describe-image@latest     # 图像理解工具
 dsh plugin --profile web add @linxin666/dsh-pet@latest                     # 鲸鱼娘宠物
+dsh plugin --profile web add @linxin666/dsh-doctor@latest                 # 救助模式（默认关闭，设置中启用）
 dsh plugin --profile web add dsh-better-sidebar@latest                     # 右侧面板（推荐；资源管理器/编辑器/终端/Git/浏览器）
 dsh plugin --profile web add @linxin666/dsh-client-ui-aionui-panel@latest  # 旧右侧面板（aionui-panel，已停止支持，仅过渡保留）
 ```
@@ -315,7 +316,7 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
 
 社区交流群在这里，和开发者、其他用户一起聊用法、报问题、提想法。QQ 扫码加入「DSH Web UI 交流群」：
 
-![DSH Web UI 交流群](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/37ae632cd0b698485cc122bfd65197684912d2a0/docs/community-center.jpg)
+![DSH Web UI 交流群](https://raw.githubusercontent.com/zhu1090093659/dsh-web-ui/7b67fd658d4874e6dd4181f277a920091b25d8f6/docs/community-center.jpg)
 
 也可以加 [Discord 社区](https://discord.gg/6v4gm9u4S)，或直接到 [GitHub Issues](https://github.com/zhu1090093659/dsh-web-ui/issues) 报 Bug / 提需求。
 
@@ -329,8 +330,8 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
 - [dsh-data-agent](https://github.com/omdsh-dev/dsh-data-agent) —— 为 DSH 定义专用 Data Agent 预设，让 AI 帮你查询、更新、分析数据。
 - [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) —— Claude Code 风格全屏交互终端插件，补位官方缺失的终端 TUI：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。
 - [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) —— 基于官方 DeepSeek Harness 的交互式终端 UI 插件，在官方基础上增加 TDD 与证据门等工作流。
-- [dsh-genui](https://github.com/omdsh-dev/dsh-genui) —— 助手回复内联渲染生成式 UI（dsh-ui fence）：布局、图表、表单、Mermaid、3D 与面板停靠，组件交互回传模型。
-- [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) —— DSH Web 选中批注插件：选文字、写批注、随消息发送，模型按 Annotation N 逐条对照回复。
+- [dsh-genui](https://github.com/omdsh-dev/dsh-genui) —— 助手回复内联渲染生成式 UI（dsh-ui fence）：布局、图表、表格、表单、Mermaid、3D 与原生音视频，双通道渲染兼容原版 DSH 与新构建，支持流式渲染、面板停靠与组件交互回传模型。
+- [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) —— DSH Web 选中批注插件：选文字、写批注、随消息发送，模型按 Annotation N 逐条对照回复；UI 与批注块跟随 DSH 语言切换 zh/en，Cmd/Ctrl+Enter 直发纯批注，斜杠命令原样放行。
 
 </details>
 
@@ -349,10 +350,11 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
 
 | 包 | 来源 | 版权 |
 | --- | --- | --- |
-| dsh-task-board / dsh-git-graph / dsh-aionui-panel / dsh-pet / dsh-remote-web-ui / dsh-web-ui-settings / dsh-liangshen / dsh-skins / dsh-web-ui-all / skins | 作者 zhu1090093659 个人开发 | Apache-2.0（zhu1090093659） |
+| dsh-task-board / dsh-git-graph / dsh-aionui-panel / dsh-pet / dsh-remote-web-ui / dsh-web-ui-settings / dsh-liangshen / dsh-doctor / dsh-skins / dsh-web-ui-all / skins | 作者 zhu1090093659 个人开发 | Apache-2.0（zhu1090093659） |
 | dsh-client-ui-skin-matrix | 贡献者原创（Matrix 深夜护眼暗色皮肤） | Apache-2.0（贡献者 seanchen 声明） |
 | dsh-tool-describe-image | 移植自 [whitelonng/dsh-plugin-describe-image](https://github.com/whitelonng/dsh-plugin-describe-image)（deepseek-harness `packages/vision/tool-describe-image`） | Apache-2.0（zhu1090093659） |
 | dsh-better-sidebar | 外部集成插件 [omdsh-dev/DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar)（右侧面板，npm 依赖引用） | MIT（omdsh-dev） |
+| dsh-archive-manager | 外部集成插件 [z953218350/dsh-archive-manager](https://github.com/z953218350/dsh-archive-manager)（设置页归档管理，npm 依赖引用） | MIT（z953218350） |
 
 ## 贡献者
 
@@ -364,17 +366,18 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
   <a href="https://github.com/mkloveyy"><img src="https://github.com/mkloveyy.png?size=64" width="48" height="48" alt="mkloveyy" title="mkloveyy" /></a>
   <a href="https://github.com/stushansusu"><img src="https://github.com/stushansusu.png?size=64" width="48" height="48" alt="stushansusu" title="stushansusu" /></a>
   <a href="https://github.com/whitelonng"><img src="https://github.com/whitelonng.png?size=64" width="48" height="48" alt="whitelonng" title="whitelonng" /></a>
+  <a href="https://github.com/Aa728848"><img src="https://github.com/Aa728848.png?size=64" width="48" height="48" alt="Aa728848" title="Aa728848" /></a>
   <a href="https://github.com/SnowNightt"><img src="https://github.com/SnowNightt.png?size=64" width="48" height="48" alt="SnowNightt" title="SnowNightt" /></a>
   <a href="https://github.com/ch1bug"><img src="https://github.com/ch1bug.png?size=64" width="48" height="48" alt="ch1bug" title="ch1bug" /></a>
-  <a href="https://github.com/Qiuner"><img src="https://github.com/Qiuner.png?size=64" width="48" height="48" alt="Qiuner" title="Qiuner" /></a>
-  <a href="https://github.com/Aa728848"><img src="https://github.com/Aa728848.png?size=64" width="48" height="48" alt="Aa728848" title="Aa728848" /></a>
-  <a href="https://github.com/Menghuan1918"><img src="https://github.com/Menghuan1918.png?size=64" width="48" height="48" alt="Menghuan1918" title="Menghuan1918" /></a>
   <a href="https://github.com/Nath-Vikky"><img src="https://github.com/Nath-Vikky.png?size=64" width="48" height="48" alt="Nath-Vikky" title="Nath-Vikky" /></a>
+  <a href="https://github.com/Qiuner"><img src="https://github.com/Qiuner.png?size=64" width="48" height="48" alt="Qiuner" title="Qiuner" /></a>
+  <a href="https://github.com/Menghuan1918"><img src="https://github.com/Menghuan1918.png?size=64" width="48" height="48" alt="Menghuan1918" title="Menghuan1918" /></a>
   <a href="https://github.com/wingsky-1"><img src="https://github.com/wingsky-1.png?size=64" width="48" height="48" alt="wingsky-1" title="wingsky-1" /></a>
+  <a href="https://github.com/EricWang1358"><img src="https://github.com/EricWang1358.png?size=64" width="48" height="48" alt="EricWang1358" title="EricWang1358" /></a>
   <a href="https://github.com/Qinling-Melon-Farmers"><img src="https://github.com/Qinling-Melon-Farmers.png?size=64" width="48" height="48" alt="Qinling-Melon-Farmers" title="Qinling-Melon-Farmers" /></a>
+  <a href="https://github.com/Xeehho"><img src="https://github.com/Xeehho.png?size=64" width="48" height="48" alt="Xeehho" title="Xeehho" /></a>
   <a href="https://github.com/isdoge"><img src="https://github.com/isdoge.png?size=64" width="48" height="48" alt="isdoge" title="isdoge" /></a>
   <a href="https://github.com/TiankunDai"><img src="https://github.com/TiankunDai.png?size=64" width="48" height="48" alt="TiankunDai" title="TiankunDai" /></a>
-  <a href="https://github.com/EricWang1358"><img src="https://github.com/EricWang1358.png?size=64" width="48" height="48" alt="EricWang1358" title="EricWang1358" /></a>
   <a href="https://github.com/guo6x"><img src="https://github.com/guo6x.png?size=64" width="48" height="48" alt="guo6x" title="guo6x" /></a>
   <a href="https://github.com/LittleDarkZero"><img src="https://github.com/LittleDarkZero.png?size=64" width="48" height="48" alt="LittleDarkZero" title="LittleDarkZero" /></a>
   <a href="https://github.com/z953218350"><img src="https://github.com/z953218350.png?size=64" width="48" height="48" alt="z953218350" title="z953218350" /></a>
@@ -384,43 +387,46 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
   <a href="https://github.com/ads4395-prog"><img src="https://github.com/ads4395-prog.png?size=64" width="48" height="48" alt="ads4395-prog" title="ads4395-prog" /></a>
   <a href="https://github.com/Small-tailqwq"><img src="https://github.com/Small-tailqwq.png?size=64" width="48" height="48" alt="Small-tailqwq" title="Small-tailqwq" /></a>
   <a href="https://github.com/Grivn"><img src="https://github.com/Grivn.png?size=64" width="48" height="48" alt="Grivn" title="Grivn" /></a>
-  <a href="https://github.com/Xeehho"><img src="https://github.com/Xeehho.png?size=64" width="48" height="48" alt="Xeehho" title="Xeehho" /></a>
+  <a href="https://github.com/chemmy-11"><img src="https://github.com/chemmy-11.png?size=64" width="48" height="48" alt="chemmy-11" title="chemmy-11" /></a>
   <a href="https://github.com/JsonFish"><img src="https://github.com/JsonFish.png?size=64" width="48" height="48" alt="JsonFish" title="JsonFish" /></a>
   <a href="https://github.com/Abyss-Seeker"><img src="https://github.com/Abyss-Seeker.png?size=64" width="48" height="48" alt="Abyss-Seeker" title="Abyss-Seeker" /></a>
   <a href="https://github.com/YEYUbaka"><img src="https://github.com/YEYUbaka.png?size=64" width="48" height="48" alt="YEYUbaka" title="YEYUbaka" /></a>
   <a href="https://github.com/xohmai"><img src="https://github.com/xohmai.png?size=64" width="48" height="48" alt="xohmai" title="xohmai" /></a>
+  <a href="https://github.com/Zacklinkk"><img src="https://github.com/Zacklinkk.png?size=64" width="48" height="48" alt="Zacklinkk" title="Zacklinkk" /></a>
+  <a href="https://github.com/weike-zhang"><img src="https://github.com/weike-zhang.png?size=64" width="48" height="48" alt="weike-zhang" title="weike-zhang" /></a>
+  <a href="https://github.com/BlessedWithLuck1105"><img src="https://github.com/BlessedWithLuck1105.png?size=64" width="48" height="48" alt="BlessedWithLuck1105" title="BlessedWithLuck1105" /></a>
   <a href="https://github.com/RevolutionLA"><img src="https://github.com/RevolutionLA.png?size=64" width="48" height="48" alt="RevolutionLA" title="RevolutionLA" /></a>
   <a href="https://github.com/Richard-Peng402"><img src="https://github.com/Richard-Peng402.png?size=64" width="48" height="48" alt="Richard-Peng402" title="Richard-Peng402" /></a>
-  <a href="https://github.com/BlessedWithLuck1105"><img src="https://github.com/BlessedWithLuck1105.png?size=64" width="48" height="48" alt="BlessedWithLuck1105" title="BlessedWithLuck1105" /></a>
-  <a href="https://github.com/weike-zhang"><img src="https://github.com/weike-zhang.png?size=64" width="48" height="48" alt="weike-zhang" title="weike-zhang" /></a>
-  <a href="https://github.com/Zacklinkk"><img src="https://github.com/Zacklinkk.png?size=64" width="48" height="48" alt="Zacklinkk" title="Zacklinkk" /></a>
-  <a href="https://github.com/YeqingTang"><img src="https://github.com/YeqingTang.png?size=64" width="48" height="48" alt="YeqingTang" title="YeqingTang" /></a>
-  <a href="https://github.com/taekchef"><img src="https://github.com/taekchef.png?size=64" width="48" height="48" alt="taekchef" title="taekchef" /></a>
-  <a href="https://github.com/Aik358"><img src="https://github.com/Aik358.png?size=64" width="48" height="48" alt="Aik358" title="Aik358" /></a>
-  <a href="https://github.com/chemmy-11"><img src="https://github.com/chemmy-11.png?size=64" width="48" height="48" alt="chemmy-11" title="chemmy-11" /></a>
-  <a href="https://github.com/Chimney"><img src="https://github.com/Chimney.png?size=64" width="48" height="48" alt="Chimney" title="Chimney" /></a>
-  <a href="https://github.com/ma15803216102"><img src="https://github.com/ma15803216102.png?size=64" width="48" height="48" alt="ma15803216102" title="ma15803216102" /></a>
-  <a href="https://github.com/dongwenxiu83-web"><img src="https://github.com/dongwenxiu83-web.png?size=64" width="48" height="48" alt="dongwenxiu83-web" title="dongwenxiu83-web" /></a>
-  <a href="https://github.com/dickpy"><img src="https://github.com/dickpy.png?size=64" width="48" height="48" alt="dickpy" title="dickpy" /></a>
-  <a href="https://github.com/wang-kaopu"><img src="https://github.com/wang-kaopu.png?size=64" width="48" height="48" alt="wang-kaopu" title="wang-kaopu" /></a>
-  <a href="https://github.com/kop022"><img src="https://github.com/kop022.png?size=64" width="48" height="48" alt="kop022" title="kop022" /></a>
-  <a href="https://github.com/logan0116"><img src="https://github.com/logan0116.png?size=64" width="48" height="48" alt="logan0116" title="logan0116" /></a>
-  <a href="https://github.com/nicecx"><img src="https://github.com/nicecx.png?size=64" width="48" height="48" alt="nicecx" title="nicecx" /></a>
-  <a href="https://github.com/lpreterite"><img src="https://github.com/lpreterite.png?size=64" width="48" height="48" alt="lpreterite" title="lpreterite" /></a>
-  <a href="https://github.com/rainow"><img src="https://github.com/rainow.png?size=64" width="48" height="48" alt="rainow" title="rainow" /></a>
   <a href="https://github.com/sclass53"><img src="https://github.com/sclass53.png?size=64" width="48" height="48" alt="sclass53" title="sclass53" /></a>
+  <a href="https://github.com/rainow"><img src="https://github.com/rainow.png?size=64" width="48" height="48" alt="rainow" title="rainow" /></a>
+  <a href="https://github.com/lpreterite"><img src="https://github.com/lpreterite.png?size=64" width="48" height="48" alt="lpreterite" title="lpreterite" /></a>
+  <a href="https://github.com/nicecx"><img src="https://github.com/nicecx.png?size=64" width="48" height="48" alt="nicecx" title="nicecx" /></a>
+  <a href="https://github.com/logan0116"><img src="https://github.com/logan0116.png?size=64" width="48" height="48" alt="logan0116" title="logan0116" /></a>
+  <a href="https://github.com/kop022"><img src="https://github.com/kop022.png?size=64" width="48" height="48" alt="kop022" title="kop022" /></a>
+  <a href="https://github.com/wang-kaopu"><img src="https://github.com/wang-kaopu.png?size=64" width="48" height="48" alt="wang-kaopu" title="wang-kaopu" /></a>
+  <a href="https://github.com/dickpy"><img src="https://github.com/dickpy.png?size=64" width="48" height="48" alt="dickpy" title="dickpy" /></a>
+  <a href="https://github.com/dongwenxiu83-web"><img src="https://github.com/dongwenxiu83-web.png?size=64" width="48" height="48" alt="dongwenxiu83-web" title="dongwenxiu83-web" /></a>
+  <a href="https://github.com/ma15803216102"><img src="https://github.com/ma15803216102.png?size=64" width="48" height="48" alt="ma15803216102" title="ma15803216102" /></a>
+  <a href="https://github.com/Chimney"><img src="https://github.com/Chimney.png?size=64" width="48" height="48" alt="Chimney" title="Chimney" /></a>
+  <a href="https://github.com/taekchef"><img src="https://github.com/taekchef.png?size=64" width="48" height="48" alt="taekchef" title="taekchef" /></a>
+  <a href="https://github.com/YeqingTang"><img src="https://github.com/YeqingTang.png?size=64" width="48" height="48" alt="YeqingTang" title="YeqingTang" /></a>
   <a href="https://github.com/starryrbs"><img src="https://github.com/starryrbs.png?size=64" width="48" height="48" alt="starryrbs" title="starryrbs" /></a>
   <a href="https://github.com/suyicon"><img src="https://github.com/suyicon.png?size=64" width="48" height="48" alt="suyicon" title="suyicon" /></a>
   <a href="https://github.com/user-A100"><img src="https://github.com/user-A100.png?size=64" width="48" height="48" alt="user-A100" title="user-A100" /></a>
   <a href="https://github.com/v833"><img src="https://github.com/v833.png?size=64" width="48" height="48" alt="v833" title="v833" /></a>
   <a href="https://github.com/wsy222"><img src="https://github.com/wsy222.png?size=64" width="48" height="48" alt="wsy222" title="wsy222" /></a>
   <a href="https://github.com/wszhoho"><img src="https://github.com/wszhoho.png?size=64" width="48" height="48" alt="wszhoho" title="wszhoho" /></a>
+  <a href="https://github.com/xiaobin"><img src="https://github.com/xiaobin.png?size=64" width="48" height="48" alt="xiaobin" title="xiaobin" /></a>
+  <a href="https://github.com/yiyueawa"><img src="https://github.com/yiyueawa.png?size=64" width="48" height="48" alt="yiyueawa" title="yiyueawa" /></a>
   <a href="https://github.com/zxkk97984-creator"><img src="https://github.com/zxkk97984-creator.png?size=64" width="48" height="48" alt="zxkk97984-creator" title="zxkk97984-creator" /></a>
   <a href="https://github.com/DDDMUC"><img src="https://github.com/DDDMUC.png?size=64" width="48" height="48" alt="DDDMUC" title="DDDMUC" /></a>
+  <a href="https://github.com/ShiroEirin"><img src="https://github.com/ShiroEirin.png?size=64" width="48" height="48" alt="ShiroEirin" title="ShiroEirin" /></a>
   <a href="https://github.com/AngleNaris"><img src="https://github.com/AngleNaris.png?size=64" width="48" height="48" alt="AngleNaris" title="AngleNaris" /></a>
   <a href="https://github.com/JAVA-LW"><img src="https://github.com/JAVA-LW.png?size=64" width="48" height="48" alt="JAVA-LW" title="JAVA-LW" /></a>
+  <a href="https://github.com/Aik358"><img src="https://github.com/Aik358.png?size=64" width="48" height="48" alt="Aik358" title="Aik358" /></a>
   <a href="https://github.com/AmethystLuna"><img src="https://github.com/AmethystLuna.png?size=64" width="48" height="48" alt="AmethystLuna" title="AmethystLuna" /></a>
   <a href="https://github.com/Beverly621"><img src="https://github.com/Beverly621.png?size=64" width="48" height="48" alt="Beverly621" title="Beverly621" /></a>
+  <a href="https://github.com/ch3n4y"><img src="https://github.com/ch3n4y.png?size=64" width="48" height="48" alt="ch3n4y" title="ch3n4y" /></a>
   <a href="https://github.com/DamonKoy"><img src="https://github.com/DamonKoy.png?size=64" width="48" height="48" alt="DamonKoy" title="DamonKoy" /></a>
   <a href="https://github.com/DavidWanm"><img src="https://github.com/DavidWanm.png?size=64" width="48" height="48" alt="DavidWanm" title="DavidWanm" /></a>
   <a href="https://github.com/farobute"><img src="https://github.com/farobute.png?size=64" width="48" height="48" alt="farobute" title="farobute" /></a>
@@ -434,6 +440,7 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
   <a href="https://github.com/NikolaFC"><img src="https://github.com/NikolaFC.png?size=64" width="48" height="48" alt="NikolaFC" title="NikolaFC" /></a>
   <a href="https://github.com/Scotlight"><img src="https://github.com/Scotlight.png?size=64" width="48" height="48" alt="Scotlight" title="Scotlight" /></a>
   <a href="https://github.com/Signalight"><img src="https://github.com/Signalight.png?size=64" width="48" height="48" alt="Signalight" title="Signalight" /></a>
+  <a href="https://github.com/Twelveeee"><img src="https://github.com/Twelveeee.png?size=64" width="48" height="48" alt="Twelveeee" title="Twelveeee" /></a>
   <a href="https://github.com/Walvez"><img src="https://github.com/Walvez.png?size=64" width="48" height="48" alt="Walvez" title="Walvez" /></a>
   <a href="https://github.com/wanpan11"><img src="https://github.com/wanpan11.png?size=64" width="48" height="48" alt="wanpan11" title="wanpan11" /></a>
   <a href="https://github.com/CCMKCCMK"><img src="https://github.com/CCMKCCMK.png?size=64" width="48" height="48" alt="CCMKCCMK" title="CCMKCCMK" /></a>
@@ -443,7 +450,6 @@ A: 可以。聚合包的行 id 统一带 `web-ui-` 前缀（如 `web-ui-describe
   <a href="https://github.com/Starfie1d1272"><img src="https://github.com/Starfie1d1272.png?size=64" width="48" height="48" alt="Starfie1d1272" title="Starfie1d1272" /></a>
   <a href="https://github.com/great-man2096"><img src="https://github.com/great-man2096.png?size=64" width="48" height="48" alt="great-man2096" title="great-man2096" /></a>
   <a href="https://github.com/cncolder"><img src="https://github.com/cncolder.png?size=64" width="48" height="48" alt="cncolder" title="cncolder" /></a>
-  <a href="https://github.com/Twelveeee"><img src="https://github.com/Twelveeee.png?size=64" width="48" height="48" alt="Twelveeee" title="Twelveeee" /></a>
 </p>
 <p align="center">
   <sub><a href="https://github.com/zhu1090093659/dsh-web-ui/graphs/contributors">查看全部贡献者</a></sub>

@@ -41,11 +41,11 @@ to the Internet. For composition details, see
 
 | Desktop control panel | Mobile workspace |
 |---|---|
-| ![Desktop control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-desktop.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile.png) |
+| ![Desktop control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-desktop.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-mobile.png) |
 
 | Phone confirmation sheet | Remote desktop confirmation |
 |---|---|
-| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-desktop.png) |
+| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-remote-confirm-desktop.png) |
 
 ## Problem
 
@@ -198,8 +198,13 @@ flowchart LR
 - Tool approvals, `ask_user_question` option lists, and plan reviews
   appear as a confirmation sheet on the remote page: a bottom drawer
   on a phone, a centered card on a wider remote window. You can choose
-  and submit there; you do not have to go back to the host. The
-  official composer still only sits on the current session
+  and submit there; you do not have to go back to the host. Custom
+  answers wrap; `Shift+Enter` inserts a newline. The official composer
+  still only sits on the current session
+- Image paste/drop for `deepseek-v4-flash-vision-exp` (and other
+  image-capable routes) goes through the same authenticated `/api`
+  path. The default body cap is 160 MiB, matching Harness. Raster
+  image responses are not gzipped
 - For a phone-friendly layout (full-width session area, directory drawer,
   adapted dialogs), pair it with a mobile-layout plugin such as
   [dsh-web-mobile](https://github.com/mexiaosqwq/dsh-web-mobile)
@@ -208,7 +213,8 @@ flowchart LR
 
 - Node.js `^22.19.0 || >=24`
 - A DeepSeek Harness **web** profile. The plugin depends on `webServer`
-  and is not intended for headless profiles.
+  and is not intended for headless profiles. Verified against
+  **0.1.1-rc.1** (npm dist-tags `latest` and `next`).
 
 ## Installation
 
@@ -289,7 +295,7 @@ dsh plugin --profile web update --latest dsh-full-remote
 
 Then restart `dsh web`. `--latest` ignores the current range, installs the
 newest version, and rewrites `package.json`. For a specific version use
-`dsh plugin --profile web update dsh-full-remote@0.3.5`.
+`dsh plugin --profile web update dsh-full-remote@0.3.7`.
 
 ## Screenshots
 
@@ -303,17 +309,17 @@ address, recommended setup, tunnel target, one-click quick tunnel,
 one-time invite QR, access token, connected devices with source IPs
 (inline rename), and the audit viewer.
 
-![Reverse proxy control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-desktop.png)
+![Reverse proxy control panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-desktop.png)
 
 | One-time phone invite (QR) | Connected devices with inline rename |
 |---|---|
-| ![Phone invite](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-invite.png) | ![Connected devices](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-devices.png) |
+| ![Phone invite](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-invite.png) | ![Connected devices](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-devices.png) |
 
 ### Mobile
 
 | Login page | Control panel | Add workspace |
 |---|---|---|
-| ![Mobile login](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile-login.png) | ![Mobile panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile-panel.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-mobile.png) |
+| ![Mobile login](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-mobile-login.png) | ![Mobile panel](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-mobile-panel.png) | ![Mobile workspace](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-mobile.png) |
 
 ### Remote confirmation
 
@@ -323,7 +329,7 @@ look at the host display.
 
 | Phone bottom sheet | Remote desktop card |
 |---|---|
-| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-remote-confirm-desktop.png) |
+| ![Phone confirmation sheet](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-remote-confirm-mobile.png) | ![Remote desktop confirmation](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-remote-confirm-desktop.png) |
 
 ### Gate pages
 
@@ -332,7 +338,7 @@ itself, and the first-visit approval wait page.
 
 | Device home | Waiting for approval |
 |---|---|
-| ![Device home](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-home.png) | ![Waiting for approval](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/627880eb6cc3993fbe9eac53c294f5bc5de5285d/docs/screenshots/preview-wait.png) |
+| ![Device home](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-home.png) | ![Waiting for approval](https://raw.githubusercontent.com/JUANWANG-BUAA/dsh-full-remote/83d3957c9f2f1b61a51621af0ff4d82707155eb1/docs/screenshots/preview-wait.png) |
 
 ## Configuration
 
@@ -351,7 +357,9 @@ Common options:
     upgradeMaxAttempts: 10       # failed WebSocket upgrades before lockout
     upgradeLockoutSeconds: 300   # lockout for repeated failed WebSocket upgrades
     headersTimeoutMs: 15000      # timeout for request headers
-    requestTimeoutMs: 120000     # timeout for the complete request; effective value is >= headersTimeoutMs
+    requestTimeoutMs: 300000     # timeout for the complete request (headers + body); covers remote vision uploads
+    upstreamTimeoutMs: 15000     # TCP connect + first POST byte after the body; not applied to SSE GET
+    maxRequestBytes: 167772160   # 160 MiB; matches the Harness /api image envelope
     sessionIdleSeconds: 0        # 0: off; otherwise idle timeout in seconds
     auditLog: true
     allowTokenRead: false        # safer default; enable only for local token re-read
@@ -408,8 +416,11 @@ side of the tunnel. For LAN use without a tunnel, set
   only be performed from the local Harness window, not from the tunnel
   URL.
 - Settings persistence on a remote page relies on a temporary trust pin
-  until Harness provides a proper deployment trust field. "Open on host"
-  from a phone acts on the machine running Harness.
+  until Harness provides a proper deployment trust field. On Harness
+  `0.1.0-rc.8` and later, that pin must survive the official ModuleLoader
+  `create()` replacing `load`; otherwise Settings → Models shows
+  `settings are unavailable in this browser`. "Open on host" from a phone
+  acts on the machine running Harness.
 - `allowTokenRead` defaults to `false`. When explicitly enabled, `GET /token`
   is served over loopback HTTP, so any local process that sends the control
   header can read the token; rotation always returns the replacement token.
@@ -440,7 +451,7 @@ side of the tunnel. For LAN use without a tunnel, set
 
 ```sh
 pnpm pack
-dsh plugin --profile web add ./dsh-full-remote-0.3.5.tgz
+dsh plugin --profile web add ./dsh-full-remote-0.3.7.tgz
 ```
 
 Git installs run the `prepare` build. On pnpm ≥ 10 allow it:

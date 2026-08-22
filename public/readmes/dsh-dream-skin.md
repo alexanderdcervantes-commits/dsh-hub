@@ -1,5 +1,5 @@
 <p align="center">
-  <strong>中文</strong> · <a href="./README.en.md">English</a> · <a href="./README.ja.md">日本語</a> · <a href="./README.ko.md">한국어</a> · <a href="./README.es.md">Español</a> · <a href="./README.fr.md">Français</a> · <a href="./README.de.md">Deutsch</a> · <a href="./README.ru.md">Русский</a>
+  <strong>中文</strong> · <a href="./docs/i18n/README.en.md">English</a> · <a href="./docs/i18n/README.ja.md">日本語</a> · <a href="./docs/i18n/README.ko.md">한국어</a> · <a href="./docs/i18n/README.es.md">Español</a> · <a href="./docs/i18n/README.fr.md">Français</a> · <a href="./docs/i18n/README.de.md">Deutsch</a> · <a href="./docs/i18n/README.ru.md">Русский</a>
 </p>
 
 <div align="center">
@@ -19,7 +19,7 @@
 
 ✨ **Design Philosophy — [一份关于「什么算高级」的设计声明](./docs/design-philosophy.md)** · 以 iOS / Linear 的审美为基准，把「高级感」建立在材质的准确与配色的克制上。
 
-[English](./README.en.md) · [变更日志](./CHANGELOG.md) · [项目说明](./docs/PROJECT.md) · [设计哲学](./docs/design-philosophy.md) · [发布指引](./docs/publishing-to-npm.md)
+[English](./docs/i18n/README.en.md) · [变更日志](./CHANGELOG.md) · [项目说明](./docs/PROJECT.md) · [设计哲学](./docs/design-philosophy.md) · [发布指引](./docs/publishing-to-npm.md)
 
 ![npm version](https://img.shields.io/npm/v/dsh-dream-skin?color=4f83f2&label=npm)
 ![license](https://img.shields.io/github/license/RevolutionLA/dsh-dream-skin?color=34d399)
@@ -59,9 +59,9 @@ dsh plugin --profile web add dsh-dream-skin && dsh web
 > 真机效果，非概念图。左：应用某套皮肤后的 DSH 界面；右：设置里的「外观 / Theme」分节。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/screenshots/preview.png" alt="DSH 皮肤实机预览" width="46%"/>
+  <img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/screenshots/preview.png" alt="DSH 皮肤实机预览" width="46%"/>
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/screenshots/settings.png" alt="设置中的外观分节" width="46%"/>
+  <img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/screenshots/settings.png" alt="设置中的外观分节" width="46%"/>
 </p>
 
 ---
@@ -103,6 +103,7 @@ dsh plugin --profile web add dsh-dream-skin && dsh web
 | 📦 **主题包格式 + 导入/导出** | 一个 `*.dsh-theme.json` 主题包 = 格式标记 + 版本 + manifest（id/name/作者/色系/accent/tokens）。可**导入文件**、**一键应用**、**复制分享链接**（编码进 URL hash） |
 | 🌈 **每用户强调色 Accent** | 为当前皮肤叠加一个自定义品牌强调色（`overrideTokens` 层，不动皮肤本身），**12 个典型色块一键选色** + 选色盘 + 随机 + 恢复主题色 |
 | 🖼️ **壁纸 2.0** | 本地图 / **图片 URL** / **渐变预设**，每套皮肤**自动建议**一张渐变，可**自动弱化**（聚焦任务时降低干扰）；**最近使用**（最多 5 张）一键换回 |
+| 🪟 **弹窗不透明度** | 设置 → 外观 →「弹窗不透明度」滑块（0–100%），控制下拉菜单 / 浮层 / 弹窗的底填充透明度——调高文字更清晰，调低可透出背后内容，跟随持久化保存 |
 | 🧩 **本地主题包库** | 你导入的自定义主题包集中展示，**应用 / 收藏 / 移除** 一键完成（内置 8 套皮肤在「皮肤」行选择） |
 | ✅ **清晰选中反馈** | 切换皮肤时选中态（✓ + 边框）**即时跟随**，不再残留模糊的白色高亮框 |
 | 🎲 **换一个试试（surprise me）** | 随机挑一个和你当前不同的主题 |
@@ -136,16 +137,16 @@ DeepSeek Harness 的口号是「一切皆插件」：模型、工具、沙箱、
 
 <table>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/abyss.svg" width="220" alt="abyss"/><br/><b>abyss</b> · 沉静蓝</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/aurora.svg" width="220" alt="aurora"/><br/><b>aurora</b> · 极光青</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/nebula.svg" width="220" alt="nebula"/><br/><b>nebula</b> · 星云紫</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/ember.svg" width="220" alt="ember"/><br/><b>ember</b> · 余烬橙</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/abyss.svg" width="220" alt="abyss"/><br/><b>abyss</b> · 沉静蓝</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/aurora.svg" width="220" alt="aurora"/><br/><b>aurora</b> · 极光青</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/nebula.svg" width="220" alt="nebula"/><br/><b>nebula</b> · 星云紫</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/ember.svg" width="220" alt="ember"/><br/><b>ember</b> · 余烬橙</td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/midnight.svg" width="220" alt="midnight"/><br/><b>midnight</b> · 午夜黑</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/ivory.svg" width="220" alt="ivory"/><br/><b>ivory</b> · iOS 扁平</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/mist.svg" width="220" alt="mist"/><br/><b>mist</b> · 液态玻璃</td>
-    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/7334b77169cc3ffbfc7f052c7c883ae33b2f9446/docs/previews/rose.svg" width="220" alt="rose"/><br/><b>rose</b> · Material 粉</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/midnight.svg" width="220" alt="midnight"/><br/><b>midnight</b> · 午夜黑</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/ivory.svg" width="220" alt="ivory"/><br/><b>ivory</b> · iOS 扁平</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/mist.svg" width="220" alt="mist"/><br/><b>mist</b> · 液态玻璃</td>
+    <td align="center"><img src="https://raw.githubusercontent.com/RevolutionLA/dsh-dream-skin/96fe8c5494d626dc322e97475591fdc73fc72771/docs/previews/rose.svg" width="220" alt="rose"/><br/><b>rose</b> · Material 粉</td>
   </tr>
 </table>
 

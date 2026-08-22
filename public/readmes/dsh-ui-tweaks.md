@@ -6,13 +6,13 @@
 
 | | |
 |---|---|
-| ![对话时间线](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/timeline.png) | ![Claude Desktop 表格样式](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/table.png) |
+| ![对话时间线](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/timeline.png) | ![Claude Desktop 表格样式](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/table.png) |
 | **对话时间线**：右侧竖轨，悬停展开消息预览、点击跳转、随滚动高亮当前位置，自动避让右侧边栏 | **表格样式**：Claude Desktop 浅灰圆角卡片风格 |
-| ![对话框宽度](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/dialog_box.png) | ![设置面板](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/settings.png) |
+| ![对话框宽度](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/dialog_box.png) | ![设置面板](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/settings.png) |
 | **对话框宽度**：消息列、输入框、统计栏同步变宽 | **设置面板**：字体大小 / 表格样式 / 对话框宽度 / 时间线 / Git 状态栏 |
-| ![GitBar](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/git.png) | |
+| ![GitBar](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/git.png) | |
 | **GitBar**：输入框工具行内的 git 状态胶囊（分支在权限旁、差异在模型前），支持分支切换、删除、推送到远程，差异面板内可直接提交 | |
-| ![归档管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/archive.png) | ![MCP 管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/af9bf3d00e1f6891d357c4cdaae90be0738b2202/assets/mcp.png) |
+| ![归档管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/archive.png) | ![MCP 管理](https://raw.githubusercontent.com/wlj521/dsh-ui-tweaks/2933da2ad77ca5c88fb86f8e953051fe861ca22e/assets/mcp.png) |
 | **归档管理**：设置中的「归档」页面，列出所有已归档会话（标题 / 工作区 / 相对时间），支持恢复与彻底删除 | **MCP 管理**：设置中的「MCP 管理」页面，列出所有配置的 MCP 服务器及其运行状态，支持添加 / 编辑 / 启用停用 / 删除 / 重启 |
 
 ## 功能

@@ -13,7 +13,7 @@ Return to the same Harness session from whichever device is with you. Harness ke
 ## What you can do
 
 - Follow an active session and review its latest progress
-- Send new instructions or change direction
+- Send new instructions, including images on Harness `dsh-v0.1.1-rc.2`, or change direction
 - Answer questions and respond to permission requests
 - Open workspaces from any connected computer
 - Preview files from a remote workspace with the optional `dsh-file-viewer` plugin
@@ -43,19 +43,24 @@ dsh plugin --profile web add ds-harness-remote
 
 Package: [npm](https://www.npmjs.com/package/ds-harness-remote) · [GitHub](https://github.com/liguobao/deepseek-harness-remote)
 
-To pin a GitHub release instead, install `github:liguobao/deepseek-harness-remote#v0.3.19`.
+To pin a GitHub release instead, install `github:liguobao/deepseek-harness-remote#v0.3.27`.
 
 Restart Harness after installation.
 
-The `0.3.19` Client remains compatible with `0.3.15` Hosts for Remote
+The `0.3.27` Client remains compatible with `0.3.15` Hosts for Remote
 workspaces and sessions. Features introduced later, such as the remote command
-catalog and file viewing, are enabled only when the selected Host supports
-them.
+catalog, file viewing, and chunked image transport, are enabled only when the
+selected Host supports them.
+
+The Android APK is attached to each [GitHub Release](https://github.com/liguobao/deepseek-harness-remote/releases/latest).
+Its interface supports English and Simplified Chinese, can follow the Android system language, and
+lets you override that choice in Settings. The same page also shows the installed version plus the
+open-source repository and latest-update addresses.
 
 ## Sign in and connect
 
 1. Open **Remote** from the Harness sidebar.
-2. Sign in with Zhihu authorization, or use your account and password. New password accounts can register with invitation code [NRAE-NUUM-C9UY](https://dsh.r2049.cn/app/register?invite_code=NRAE-NUUM-C9UY).
+2. Sign in by scanning a GitHub or Zhihu QR code, or use your account and password. New password accounts can register with invitation code [NRAE-NUUM-C9UY](https://dsh.r2049.cn/app/register?invite_code=NRAE-NUUM-C9UY).
 3. Enable remote control for the current computer to make it available from your other devices, or select another online computer to control it directly.
 4. Choose an existing workspace or browse remote directories to open one.
 
@@ -66,19 +71,27 @@ them.
 Enable **Allow control of this device** in Remote settings to make the current computer available as a Host.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/setting.png" alt="Remote settings showing an authorized and online Host" width="520">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/setting.png" alt="Remote settings showing an authorized and online Host" width="520">
 </p>
 
 Open **Remote** on another computer, select an online Host, then choose or browse for a workspace.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/host-list.png" alt="Remote workspace picker listing online Hosts" width="900">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/host-list.png" alt="Remote workspace picker listing online Hosts" width="900">
 </p>
 
 The workspace opens in the native Harness interface, with the active Host and encrypted connection status shown in the header.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/7e24c9cf0571f66b9e7bf4c807c6620f43229256/docs/images/remote.png" alt="A Harness conversation running through an encrypted remote connection" width="900">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/remote.png" alt="A Harness conversation running through an encrypted remote connection" width="900">
+</p>
+
+On Android, select an available computer, open a workspace, and send text or image prompts from the same conversation.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/mobile-list.jpg" alt="Android client listing online and offline computers" width="30%">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/image-msg.jpg" alt="Sending an image prompt from the Android client" width="30%">
+  <img src="https://raw.githubusercontent.com/liguobao/deepseek-harness-remote/c049c8eb669765f82f90266c9f9c3a0166a7d734/docs/images/image-result.jpg" alt="Viewing the image response in the Android client" width="30%">
 </p>
 
 ## Secure by design

@@ -9,7 +9,7 @@
 
 <p align="center">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg">
-  <img alt="Version" src="https://img.shields.io/badge/version-0.4.9-green.svg">
+  <img alt="Version" src="https://img.shields.io/badge/version-0.5.0-green.svg">
 </p>
 
 ---
@@ -20,7 +20,7 @@
 
 还内置可选的 **AI 中间层**（`autoManage`）：开启中间层时，停用的 MCP 立即释放上下文，被中间层接管；模型需要MCP工具时，由中间层**临时开启**MCP，按需调用工具，由用户手动打开的 MCP 全程对模型保持可见以维持高灵敏调用 —— 上下文占用完全由你的开关决定。
 
-![MCP 管理面板](https://raw.githubusercontent.com/lilyblessing/dsh-mcp-skill-panel/bac75d1f1e3359d4f39cb9894a63906a3af33d07/docs/images/mcp-panel.jpg)
+![MCP 管理面板](https://raw.githubusercontent.com/lilyblessing/dsh-mcp-skill-panel/fd30bf9dccad401639cd742478c696af93b1bf80/docs/images/mcp-panel.jpg)
 
 ## 🎯 核心能力
 
@@ -35,6 +35,7 @@
 | ⚡ **响应快** | 开关点击即翻转（乐观更新 + 服务端确认），分域缓存 + 事件驱动失效（`tools/change` / `skills/change`），MCP 页不触发 skill 目录扫描 |
 | 🌐 **双语界面** | 全部文案 zh/en 双语，跟随 DSH 界面语言；明暗主题适配 |
 | 🪶 **零上下文占用** | 插件自身不注册任何模型工具，不消耗模型注入面（开关关闭时与未安装无异） |
+| ⏱️ **生效时机选项** | 手动开关可选「立即生效」或「下次会话生效」，后者零缓存失效、零额外费用；AI 中间层按需调用始终不触发缓存 miss |
 
 ## 🏗️ 两种形态（面板上的「AI 中间层」开关）
 
@@ -74,6 +75,37 @@ flowchart TD
     F --> G[需要时: mcp_search 检索 / mcp_call 按需调用]
 ```
 
+## ⏱️ 生效时机：立即生效 vs 下次会话生效
+
+面板为手动开关提供「生效时机」选项（位于开关旁的下拉菜单），两档：**立即生效**（默认）和 **下次会话生效**。理解两者区别对 Prompt Cache 费用有直接影响。
+
+### 手动开关的两种模式
+
+- **立即生效**（默认）：切换在**下一轮对话**即生效，该轮起工具前缀变更 → **前缀 KV-Cache 100% 失效**，该轮按 miss 费率计费（约为 hit 的 **5 ~ 12.5 倍**）。适合需要马上释放/恢复上下文的场景。
+
+- **下次会话生效**：仅记录意图，当前会话全程工具集不变 → **零缓存失效、零额外费用**。直到以下边界之一到来才真正应用：
+  - 新会话首次请求前（`agent/session-start` 阶段）；
+  - DSH 重启（启动早期 `syncPresetFiles` 物化到预设组合文件）。
+
+  面板提供 **「立即应用待生效变更」** 按钮，作为"已知晓费用"的强制生效出口——点击后立即生效（等同于选择"立即生效"并应用）。
+
+### AI 中间层按需调用：天然免缓存失效
+
+开启 AI 中间层（`autoManage`）后，模型经 `mcp_search` / `mcp_call` 按需调用已停用的 MCP——这种临时启用**不会造成缓存 miss**。原因：每回合的装配过滤（`system-prompt/assemble` Waterfall）让临时启用的 server 工具对模型保持不可见，前缀恒定，KV-Cache 持续命中。
+
+### 默认值与生效边界
+
+| 项目 | 说明 |
+| --- | --- |
+| 默认值 | `immediate`（维持历史行为） |
+| 选择 `next-session` | 需在面板显式切换 |
+| 生效边界 | 新会话首次请求前 + DSH 重启 |
+| 当前会话 | 已开会话的后续轮次不受影响 |
+
+### 一句话结论
+
+> 想省费用又不急着释放上下文 → 用 **下次会话生效**；要当前会话立刻释放/拿回工具 → **立即生效**（理解该轮会 miss 一次缓存）。
+
 ## 📦 安装
 
 ```sh
@@ -83,6 +115,8 @@ dsh plugin --profile web add "github:lilyblessing/dsh-mcp-skill-panel#main"
 产物已入库（`lib/`），git 源一行安装，无需构建授权。安装后**重启 `dsh web`**（bundle 层在启动时合成，热更新无效），设置页即出现「MCP 与技能管理面板」入口。
 
 > 📦 已发布到 **npm**：`dsh-mcp-skill-panel`（[npm 页面](https://www.npmjs.com/package/dsh-mcp-skill-panel)）。npm 版为预构建产物，安装可跳过 `allowBuilds` 构建授权，也可直接以包名安装；git 源方式始终可用。
+
+> ⬆️ **升级**：git 源用户请在 DSH profile 目录执行 `pnpm update dsh-mcp-skill-panel`（`pnpm add` 对相同 spec 不会重解析 git 分支）；npm 用户 `pnpm add dsh-mcp-skill-panel@0.5.0` 即可。
 
 ## 🚀 使用
 
@@ -206,6 +240,7 @@ node 半区 tsdown 必须 `external: [/^@deepseek-ai\//]`：内联 dsh-tools 会
 
 | 版本 | 内容 |
 | --- | --- |
+| 0.5.0 | Prompt Cache 优化（P0+P1，issue #1）：中途开关必现 miss 警示条（大包红色 severe 变体、12s 自动消失）；生效时机选项 immediate / next-session（后者记意图待生效队列，新会话 `agent/session-start` 或重启物化时统一应用，当前会话零 miss）；开关 400ms 合并为单次 toggleBatch（单次 invalidateMcp）；applyPendingMcp 增加 state.json 残留兜底（重启/热重载后 desired 与 live 不一致的行自动补齐，外部修改行尊重并清除残留）+ 新增 selftest-pending 链路自测（CI 纳入）；toggleBatch 单项失败不阻断整批；UI 封面更新 |
 | 0.4.9 | 依赖对齐 DSH rc.8 系（rc.8 全链路实测通过）：devDeps 中 10 个 `@deepseek-ai/*` 由 0.1.0-rc.6 → 0.1.0-rc.8，peers 收紧（cordis ^4.0.1 稳定版 / schemastery ^3.18.1 / dsh-scope ^0.1.0-rc.8）；已发布至 npm（0.4.8 首次上架，repository 指回本仓库）+ 新增 Trusted Publishing 自动发布流水线（publish.yml，OIDC 免 token）|
 | 0.4.8 | 构建工程自包含 + CI：14 个 `@deepseek-ai/*` 并入 devDependencies（pin 到 rc.6 系，纯 registry 安装即可 typecheck/build/selftest，无需本机 DSH 闭包）；新增 GitHub Actions 流水线（typecheck→build→verify→selftest；main push 自动重建并 `[skip ci]` 回写 lib 产物）|
 | 0.4.7 | 安全与健壮性加固：toggle 端点校验目标行必须是 MCP 行（防停用任意 loader 行）；全部写端点加进程级 token 鉴权（`x-panel-token`，阻断跨源/DNS-rebinding 盲写）；readBody 限长 64KB；waitRegistered 绑定上下文销毁/AbortSignal（卸载不再挂起 mcp_call）；移除硬编码 DEFAULT_SUMMARY（能力摘要只列真实 server）；client 统一新 API 前缀并自动携带 token；build 顺序修复使 lib/types 产物入库（types 声明不再悬空）；空 package-lock.json 修复 |

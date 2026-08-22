@@ -3,17 +3,17 @@
 
 <p align="center">
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0B7285?style=flat-square" alt="MIT"></a>
-<img src="https://img.shields.io/badge/release-v1.1.0-5B4CF0?style=flat-square" alt="v1.1.0">
+<img src="https://img.shields.io/badge/release-v1.1.2-5B4CF0?style=flat-square" alt="v1.1.2">
 <img src="https://img.shields.io/badge/DSH-Web%20Profile-5B4CF0?style=flat-square" alt="DSH Web Profile">
 </p>
 
 | 会话列表主屏 | 会话页 | 会话信息卡 |
 | --- | --- | --- |
-| ![会话列表主屏](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/f28448e4f3f939465f2b836123c260d2f408b961/assets/home.png) | ![会话页](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/f28448e4f3f939465f2b836123c260d2f408b961/assets/session.png) | ![会话信息卡](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/f28448e4f3f939465f2b836123c260d2f408b961/assets/info.png) |
+| ![会话列表主屏](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/d5b44a70035479ed4cf1972e70bbda6b4ae47d86/assets/home.png) | ![会话页](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/d5b44a70035479ed4cf1972e70bbda6b4ae47d86/assets/session.png) | ![会话信息卡](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/d5b44a70035479ed4cf1972e70bbda6b4ae47d86/assets/info.png) |
 
 | composer 权限 sheet | 公网设备看到的配对页 |
 | --- | --- |
-| ![composer 权限 sheet](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/f28448e4f3f939465f2b836123c260d2f408b961/assets/sheet.png) | ![配对页](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/f28448e4f3f939465f2b836123c260d2f408b961/assets/pairing.png) |
+| ![composer 权限 sheet](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/d5b44a70035479ed4cf1972e70bbda6b4ae47d86/assets/sheet.png) | ![配对页](https://raw.githubusercontent.com/KyoMio/dsh-zen-remote/d5b44a70035479ed4cf1972e70bbda6b4ae47d86/assets/pairing.png) |
 
 > 截图为 390×844 手机视口、浅色主题；深浅主题均适配。配对页是网关自绘页面，固定深色设计。
 
@@ -39,7 +39,7 @@ dsh plugin add dsh-zen-remote
 ```jsonc
 {
   "dependencies": {
-    "dsh-zen-remote": "^1.1.0"        // 本地开发换成 "link:/path/to/dsh-zen-remote"
+    "dsh-zen-remote": "^1.1.2"        // 本地开发换成 "link:/path/to/dsh-zen-remote"
   },
   "dsh": { "profile": { "bundles": [
     "@deepseek-ai/dsh-base",
@@ -191,6 +191,16 @@ open http://127.0.0.1:3088/lan-gate/admin
 
 上传大小上限（默认 20MB）在插件行的 `config.maxUploadBytes` 里改。
 
+想在电脑端也启用回合过程折叠（默认只在手机宽度生效），在插件行的 `config.turnFoldDesktop` 里设 `true`——即在 profile 的 `cordis.patch.yml` 加一条：
+
+```yaml
+- id: dsh-zen-remote
+  config:
+    turnFoldDesktop: true
+```
+
+改完重启 `dsh web`。不改服务端配置的话，单个浏览器也可以访问一次 `?mobile-nav-turn-fold=1` 自己开启（`=0` 关闭，按浏览器记忆）。
+
 ---
 
 ## 通知什么时候会响
@@ -271,6 +281,8 @@ open http://127.0.0.1:3088/lan-gate/admin
 ## 已知问题
 
 **iOS 26.x 独立 PWA 视口缩水**：加到主屏后视口底部会少掉一条状态栏高度，普通 Safari 标签页正常。这是 iOS 系统缺陷，缺掉的区域在文档之外，CSS 够不着；本插件做了三层缓解（浅色 manifest 背景 + 安全区补偿 + 强制重排），能减轻但不保证复原。彻底恢复只能整个 App 退出重开。
+
+**个别环境软键盘对浏览器完全不可见，输入框抬升靠估算兜底**：部分组合（实测过：某些第三方输入法 + Chrome；小米浏览器安装的 PWA 壳）里，键盘弹出/收起时系统不把键盘高度告知页面——视口不变、无任何事件（visualViewport、VirtualKeyboard API 一并失效，均已实测排除）。插件的兜底是：聚焦后探测约 1.2 秒，判定「键盘不可见」就按估计高度抬升输入框（判定按浏览器记忆，之后聚焦即时抬升）。代价有两条：抬升高度是估算的，可能与实际键盘有几十像素出入；键盘收起同样无信号，输入框要等你点击或滑动输入框以外的区域才回落。正常环境完全不走这条路径，不受影响。
 
 **经反代访问时设置页打不开（插件配置列表空白、模型卡片报「settings are unavailable in this browser」）**：直连 `127.0.0.1:3080/3088` 正常。
 

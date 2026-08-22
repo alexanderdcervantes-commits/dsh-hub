@@ -47,11 +47,11 @@ DSH 版的「[Codex Appshots](https://developers.openai.com/codex/appshots)」�
 
 | 触发前（正在操作的前台窗口） | 触发后（自动截取并挂入 Composer） |
 | :---: | :---: |
-| ![触发前](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/67a279d981d59ee6f60a07745dd34b80c32616ce/docs/assets/before-double-command.png) | ![触发后](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/67a279d981d59ee6f60a07745dd34b80c32616ce/docs/assets/after-double-command.png) |
+| ![触发前](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/88579c71fe26ca36201a33ba12abda4dacf8ede0/docs/assets/before-double-command.png) | ![触发后](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/88579c71fe26ca36201a33ba12abda4dacf8ede0/docs/assets/after-double-command.png) |
 
 3. 截图已挂载在当前会话 Composer 草稿中（可点击打开查看大图，或连续触发追加多张）；
 
-![在 DSH 桌面端查看 Appshot 截图](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/67a279d981d59ee6f60a07745dd34b80c32616ce/docs/assets/open-app-shot-in-dsh-desktop.png)
+![在 DSH 桌面端查看 Appshot 截图](https://raw.githubusercontent.com/TaurusWood/dsh-plugin-appshot/88579c71fe26ca36201a33ba12abda4dacf8ede0/docs/assets/open-app-shot-in-dsh-desktop.png)
 
 4. 输入描述（如「分析当前界面上的这个报错」）后点击发送，截图随文本一起提交。
 

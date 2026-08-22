@@ -2,24 +2,24 @@
 
 English | [中文](README.zh.md)
 
-Qwen-MM capabilities as an installable DSH profile bundle. The package keeps the Qwen-MM implementation small and explicit: it fetches each selected Agent Skill at a configured upstream ref, starts its MCP server through the existing DSH client in required-initial-discovery mode, and mounts the skill only after tool discovery succeeds.
+Qwen-MM capabilities as an explicit DSH profile bundle. The package fetches selected Agent Skills at an exact upstream ref, starts each MCP server through the current DSH client, waits for initial tool discovery, and mounts the skill only after its tools are ready.
 
 ## Repository shape
 
 ```text
-package.json              # runtime package and dsh.bundle manifest
-cordis.patch.yml          # opt-in profile layer
-src/                      # Cordis plugin and invariant companion
-lib/                      # generated install artifact
-legacy/                   # source-compatible host integration patch for older DSH snapshots
-tests/                    # plugin and composition tests
+package.json              # runtime package, dsh bundle, and browser metadata
+cordis.patch.yml          # disabled opt-in row plus Stent patch stub
+src/                      # host plugin, browser Stent client, and invariant
+lib/                      # generated installation artifacts
+legacy/                   # obsolete host patch kept only for migration history
+tests/                    # unit, browser Stent, and Loader composition tests
 ```
 
 The package is intentionally private and can be installed from a Git checkout or linked into a profile. It does not vendor the Qwen-MM Python implementation.
 
 ## Bundle behavior
 
-Installing the bundle adds a disabled `qwen-mm` row. This is deliberate: enabling it starts remote Git fetches and external MCP processes, so the deployment must provide the exact Qwen-MM ref, capability list, and any capability environment explicitly in its profile layer.
+Installing the bundle adds a disabled `qwen-mm` row. Enabling it is an explicit deployment decision because it performs Git fetches and starts external MCP processes.
 
 ```yaml
 - id: qwen-mm
@@ -32,11 +32,31 @@ Installing the bundle adds a disabled `qwen-mm` row. This is deliberate: enablin
       - id: video-memory
 ```
 
-The bundle patch only composes the plugin row. Image content blocks, MCP image results, model modality checks, token accounting, compaction, replay, and Web summaries must be provided by the DSH version used by the profile; the old host patch is retained under `legacy/` only as a migration artifact for snapshots that do not yet provide those seams.
+The runtime owns the capability registry, exact source/ref, sparse-checkout cache, MCP-before-skill ordering, per-capability cleanup, and strict/best-effort failure policy. The current `@deepseek-ai/dsh-mcp-client` contract is used (`failOnStartupError: true`); the obsolete `requireInitialDiscovery` option is not used. `toolCallTimeoutMs` defaults to 60,000 ms and can be configured per bundle instance.
+
+## New Stent integration
+
+This package is a dual-face Stent consumer, not a replacement for DSH image infrastructure.
+
+- `cordis.patch.yml` places the static `qwen-mm/result-text` descriptor under the row's `config.stent.patches`. The row remains disabled in ordinary profiles.
+- The host half mounts `StentCompatService` from `@oh-my-dsh/stent-api` and serves the UI-tool bundle through `serveBundle(..., fallback: 'raw')` when a Web server exists.
+- The browser half registers the trusted handler through `ctx.stent.register` and renders durable image references as bounded `[image: WIDTHxHEIGHT MIME]` text. Non-image blocks delegate to the original renderer.
+- The browser artifact is a closure-factory `./client` export and declares `@oh-my-dsh/stent` in `dsh.client.inject`; it does not bundle a second Stent runtime or the target UI-tool package.
+
+Use the Stent carrier and launcher for a Stent profile. The profile supplies the bootstrap and the browser `stent` row:
+
+```sh
+dsh plugin --profile web add @oh-my-dsh/stent-pack
+stent-dsh --profile web --port 8000
+```
+
+A plain `dsh` launch leaves Stent-required Qwen rows disabled. Do not enable the Qwen row on a plain host that does not provide the scoped Stent peers and bootstrap.
+
+The DSH host remains authoritative for `ImageBlock`, attachment persistence, MCP image validation and projection, model-route `inputModalities` admission, token accounting, compaction/replay, provider mapping, and ordinary Web rendering. Qwen-MM does not copy the obsolete base64 image, LLM, MCP, or compaction changes from `legacy/qwen-mm-host-integration.patch`.
 
 ## Capabilities
 
-The plugin currently recognizes:
+The plugin recognizes:
 
 ```text
 core
@@ -47,33 +67,40 @@ freecad
 edu-agent
 ```
 
-Each capability can override its command, arguments, environment, and working directory. `strict: true` turns a per-capability warning into a load failure; the default skips only the failed capability.
+Each capability can override its command, arguments, environment, and working directory. `strict: true` turns a per-capability warning into a load failure; the default skips only the failed capability after cleaning up any partial stage.
 
 ## Development
 
-A full typecheck expects sibling checkouts:
-
-```text
-~/git/deepseek-harness
-~/git/Qwen-MM-Plugins
-```
+The package resolves all host APIs from registry packages; it has no sibling-checkout TypeScript references.
 
 ```sh
 pnpm install
 pnpm run typecheck
 pnpm test
 pnpm run build
+pnpm pack --dry-run --json
 ```
 
-The `prepare` script uses a source-only tsdown configuration so a Git install can build `lib/` without a DSH sibling checkout or project references. pnpm 10 may require the profile to allow the package's `prepare` script; only approve a pinned, trusted checkout.
+The `prepare` script uses the source-only host and browser builds for a Git install. It requires a pinned, trusted checkout and a profile that permits the package's build script.
 
 ## Model Experience
 
-The plugin contributes no fixed prompt text. Its selected Agent Skills and MCP tools become model-visible through the authoritative DSH skill and tool services, which own logging, lifecycle, cancellation, and result rendering.
+### Capability tools and skills
+
+The selected Agent Skills and MCP tools become model-visible through DSH's authoritative skill and tool registries. Tool discovery completes before the paired skill is registered, so a failed server cannot expose a tool-less skill. The package adds no fixed prompt text.
+
+### Image content
+
+Image-producing Qwen capabilities use the DSH image vocabulary and durable attachment references. The native host validates MIME, bytes, dimensions, and model-route modality support; Qwen-MM only supplies the capability and the browser's bounded display fallback.
+
+### Token and KV-cache effects
+
+Attachment references keep image bytes out of ordinary model-visible text and replay payloads. Native DSH compaction projects image references to bounded text markers before summarization. The Qwen browser patch does not change provider requests or token accounting.
 
 ## Known Limitations and Deferred Work
 
 - External capability fetches require `git`; default MCP launches require `uvx` and the capability's Python environment.
-- Capabilities that produce images require a resolved model route that declares image-input support.
-- The bundle does not silently forward credential-shaped environment variables; capability credentials must be configured explicitly.
-- The real Loader composition checks require a DSH `mcp-client` build whose async plugin load performs required initial discovery; older synchronous host snapshots skip those checks because they can mount the skill before tools are ready.
+- The Stent browser summary requires a current `@deepseek-ai/dsh-client-ui-tool` bundle whose `lib/client.js` still contains `resultText`; `fallback: 'raw'` keeps the Web app usable when the transform cannot match.
+- The profile must install the Stent carrier separately and must use the Stent bootstrap when enabling this Stent-required row.
+- Capabilities that produce images still require a resolved model route that declares image-input support.
+- `legacy/qwen-mm-host-integration.patch` is not a supported installation path and is not applied by the bundle.

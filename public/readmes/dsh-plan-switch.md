@@ -12,7 +12,7 @@ A one-click **enter/exit Plan mode** button for the DSH web input bar (a quick-c
 
 ## Screenshot
 
-![dsh-plan-switch plan button in the input bar](https://raw.githubusercontent.com/a903067276-rgb/dsh-plan-switch/e900beae23afe7e4986bd6b5bf2d373428e4575b/assets/plan-button.png)
+![dsh-plan-switch plan button in the input bar](https://raw.githubusercontent.com/a903067276-rgb/dsh-plan-switch/e06fa21078df9e6a839306cc748814c8965632a4/assets/plan-button.png)
 
 The checklist icon button at the left end of the input tool row (official DSH design tokens, follows dark/light theme).
 
@@ -49,13 +49,22 @@ A checklist icon button appears at the left end of the input tool row (official 
 
 ## Requirements
 
-- DSH web (run with `dsh web`)
+- DSH web >= 0.1.0-rc.6 (run with `dsh web`) — the code calls `commands.execute` with the 3-argument contract (rc.8+) and auto-degrades to the 2-argument one on rc.6/rc.7
+- **Version compatibility**:
+- **Maintenance policy**: this plugin keeps evolving with the latest DSH releases; compatibility with older DSH versions is best-effort only and not guaranteed going forward.
+
+| Your DSH version | Install this | Note |
+|---|---|---|
+| 0.1.0-rc.6 and newer (incl. 0.1.1-rc.1/rc.2) | `main` (v0.3.2+) | **Best effort** — 3-arg call with auto-degrade to 2 args on rc.6/rc.7 (verified locally on rc.6/rc.8, not guaranteed) |
+| 0.1.0-rc.8 and newer (conservative) | `v0.3.1` — `dsh plugin add github:a903067276-rgb/dsh-plan-switch#v0.3.1` | Last build without the degrade logic |
+| 0.1.0-rc.6 – 0.1.0-rc.7 (conservative) | `v0.3.0` — `dsh plugin add github:a903067276-rgb/dsh-plan-switch#v0.3.0` | 2-argument `commands.execute` contract |
+
 - No host-side setup: the host half is a no-op — the whole plugin is a client-side button that runs the official `/plan` command, so nothing extra is required on any platform.
 
 ## How it works
 
 - **Host** (`lib/index.js`): no behavior — this is a pure UI plugin; the client half is discovered through the `dsh.client` declaration in `package.json` (`exports["./client"]`).
-- **Client** (`lib/client.js`): registers the checklist icon button in the `conversation.input.left` seat using official DSW design tokens (follows dark/light theme); reads plan state live through `useProjection("plan")`; clicking executes the official `/plan` command via `ctx.remote.commands.execute(sessionId, "/plan")` — the whole flow stays on the official command chain.
+- **Client** (`lib/client.js`): registers the checklist icon button in the `conversation.input.left` seat using official DSW design tokens (follows dark/light theme); reads plan state live through `useProjection("plan")`; clicking executes the official `/plan` command via `ctx.remote.commands.execute(sessionId, "/plan", [])` — the whole flow stays on the official command chain.
 - **State handling**: the effective plan state mirrors the official PlanChip algorithm (`pending ? !active : active`). While plan mode is active the button returns `null` (hidden — the official plan card owns the indicator, no duplicate); while a toggle is pending the button is disabled so a second click can't reverse the switch; command failures turn the button error-colored with the message in its tooltip.
 
 ## Notes

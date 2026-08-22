@@ -2,7 +2,7 @@
 
 Session manager for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
-[中文说明](README.zh.md) · [MIT License](LICENSE)
+[中文](README.zh.md) · [MIT License](LICENSE)
 
 `dsh-session-manager` gives the Harness Web UI a full session-management surface: browse **all** sessions and the **archived** ones, restore (unarchive) archived sessions back to their original workspace, archive any session, delete sessions with a two-step confirmation, and preview conversation content — all from the Settings panel, with **zero modification to official packages**.
 
@@ -52,7 +52,7 @@ The repository ships plain-JS `lib/` artifacts with no build step, so git-source
 
 ### Web UI
 
-![Session manager (settings page)](https://raw.githubusercontent.com/wuxiangru915/dsh-session-manager/2050471867d6e6e8c6cb81b2e99e00318d31056c/assets/session-manager.png)
+![Session manager (settings page)](https://raw.githubusercontent.com/wuxiangru915/dsh-session-manager/902bae8ea3e8fdd7fc7be40bc0d04ea8b4571f6f/assets/session-manager.png)
 
 Open **Settings → Session manager**:
 

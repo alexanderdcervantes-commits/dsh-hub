@@ -23,7 +23,7 @@ This plugin belongs to the **`@max-null/*` family** — a set of plugins that to
 
 | Installed / 已安装 | Market / 市场 | Updates / 更新 |
 | :---: | :---: | :---: |
-| ![已安装插件](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/44d107530aefd5aa707f7a0ca50fed39193ff9ef/assets/screenshot-installed.png) | ![社区市场](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/44d107530aefd5aa707f7a0ca50fed39193ff9ef/assets/screenshot-market.png) | ![更新检测](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/44d107530aefd5aa707f7a0ca50fed39193ff9ef/assets/screenshot-updates.png) |
+| ![已安装插件](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/8dc3f56d728b7435072ee5bfdd404df76850771b/assets/screenshot-installed.png) | ![社区市场](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/8dc3f56d728b7435072ee5bfdd404df76850771b/assets/screenshot-market.png) | ![更新检测](https://raw.githubusercontent.com/Max-Null/dsh-plugin-center/8dc3f56d728b7435072ee5bfdd404df76850771b/assets/screenshot-updates.png) |
 
 ## Install / 安装
 

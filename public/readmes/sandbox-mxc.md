@@ -2,29 +2,35 @@
 
 English | [中文](README.zh.md)
 
-The MXC sandbox provider extracted from the DSH `feat-mxc` implementation as one standalone external bundle. The repository keeps two delivery faces in one Git repository:
+A Stent sidecar that runs the DSH bash, PowerShell, and persistent-terminal payloads through MXC without modifying DeepSeek Harness source files. The package is an explicit opt-in bundle: DSH keeps ownership of `ctx.sandbox`, subprocess I/O, deadlines, signals, terminal sessions, and teardown; Stent supplies the controlled load-time hooks that replace only the consumer call paths.
 
-- `main` contains the registry-backed provider from DSH `feat-mxc`.
-- `feat-mxc-vendor-sdk` carries the same provider with the pinned SDK and native executors in `vendor-sdk/` for offline packed-install rehearsal.
-
-## Repository shape
+## Package surface
 
 ```text
-package.json              # standalone provider package and dsh.bundle manifest
-cordis.patch.yml          # explicit sandbox-mxc profile row
-src/                      # provider, invariant, and Windows environment helpers
-tests/                    # unit, parity, and publish-path tests
-lib/                      # generated install artifacts
-vendor-sdk/               # vendor branch only: SDK runtime and native executors
-docs/                     # detailed provider documentation
-legacy/                   # DSH host integration patch for older snapshots
+package.json              # publishable bundle and public dependencies
+cordis.patch.yml          # row plus config.stent.patches descriptors
+src/stent-entry.ts        # named Stent function plugin: name/inject/Config/apply
+src/stent-handlers.ts     # descriptors and lifecycle-safe handlers
+src/index.ts              # MXC policy compiler and compatibility provider
+src/invariant.ts          # package invariant companion
+tests/                    # policy, provider, hook, and publish-path tests
+legacy/                   # historical host patch, never applied by this bundle
 ```
 
-The package exports `@deepseek-ai/dsh-sandbox-mxc` and its invariant companion. Its runtime peers are the DSH sandbox seam, subprocess environment helper, invariants package, and Cordis. The patched `@dsh-external/mxc-sdk` remains a runtime dependency: `main` resolves the `dsh` release tag from GitHub Packages, while the vendor branch replaces it with `file:./vendor-sdk`.
+The package root is the Stent function plugin and deliberately has no default export. The compatibility provider and policy compiler are also available from `@deepseek-ai/dsh-sandbox-mxc/provider`; new profiles should load the package root through the bundle row.
 
-## Bundle behavior
+The MXC runtime is the public `@omdsh-dev/mxc-sdk` `0.7.0` GitHub Release asset:
 
-The bundle contributes an explicit, disabled opt-in row:
+```text
+https://github.com/omdsh-dev/sandbox-mxc/releases/download/v0.7.0/omdsh-dev-mxc-sdk-0.7.0.tgz
+sha256: ffd9a83b9f6a509ee99a59e60ab6bd68889c106d5d8f14d1fa402efd157e8c72
+```
+
+The package keeps the immutable v0.7.0 release URL in `dependencies` and lists `@omdsh-dev/mxc-sdk` in `bundleDependencies`. `npm pack` therefore places the SDK, its native executors, and its denial-capture assets under `node_modules/@omdsh-dev/mxc-sdk` inside the published tarball; consumers do not need to resolve the GitHub URL again.
+
+## Stent bundle behavior
+
+The row is disabled in ordinary profiles. `stent-dsh` reads the descriptors under `config.stent.patches`, installs transformations before target modules load, and enables the row only for the Stent composition:
 
 ```yaml
 - id: sandbox-mxc
@@ -33,33 +39,49 @@ The bundle contributes an explicit, disabled opt-in row:
   config:
     enabled: true
     useResultEnvelope: true
+    stent:
+      patches:
+        # The complete descriptor list is shipped in cordis.patch.yml.
 ```
 
-Enable the row in a profile only after the target DSH host supplies the prepare/settlement sandbox seam and the patched MXC SDK is available. The bundle does not silently replace an existing `sandbox` row; `legacy/mxc-host-integration.patch` contains the host cutover for DSH snapshots that need it.
+Handlers cover the existing public seams:
 
-The provider remains fail-closed. `prepare()` refuses to run unless `enabled: true`, and functional qualification must prove the exact bundled executor before a launch is returned. The provider compiles complete file-effect policy, preserves the exact payload argv/cwd/environment, settles versioned result envelopes, and releases per-run capture artifacts.
+- foreground and background `@deepseek-ai/dsh-bash-sandbox` calls;
+- foreground and background `@deepseek-ai/dsh-pwsh-sandbox` calls;
+- process settlement hooks in the local bash and PowerShell executors;
+- `terminal-bash` backend creation immediately before the local terminal primitive spawns;
+- `dsh-subprocess-local.spawnTerminal` argument replacement;
+- `@deepseek-ai/dsh-sandbox-local.confine` terminal-only bypass, preventing the original terminal path from wrapping the MXC launch a second time.
+
+Each confined call prepares one MXC controller with exact argv, cwd, and the scrubbed-plus-explicit environment. The controller settles from the versioned result envelope and is disposed exactly once. The host subprocess or terminal service still owns the process tree, timeout, signal, stdio, and quiescence operations. `danger-full-access` delegates to the original host call and never invokes MXC. Any MXC qualification or runner failure raises `SANDBOX_UNAVAILABLE`; it never falls back to an unconfined payload.
+
+The workspace uses pnpm's `nodeLinker: hoisted` because pnpm cannot materialize `bundleDependencies` from an isolated linker. Keep this setting for development installs. Use `npm pack`/`npm publish` for the final bundled artifact; the current pnpm packer normalizes nested bundled executable modes.
 
 ## Development
-
-A full source-plane check uses a sibling DSH checkout. For the latest extracted implementation, point `external-plugins/deepseek-harness` at the compatible `feat-mxc` checkout, install the SDK or use the vendor branch, then run:
 
 ```sh
 pnpm install
 pnpm run typecheck
+pnpm run build
 pnpm test
 pnpm run prepare
-pnpm pack --dry-run
+npm pack --dry-run
+pnpm run test:e2e
 ```
 
-The `prepare` script builds directly from `src/`, so a Git installation does not require DSH project references at runtime. `pnpm test:e2e` runs the packed-install and real-executor rehearsals when the platform, SDK, and native executor are available.
+The real-executor suites self-skip when the platform-specific binary is unavailable. The release asset contains the native executor and denial-capture files; no GitHub Packages credentials or `.npmrc` scope override is required.
 
 ## Model Experience
 
-This provider adds no model-visible prompt, tool, or result text. It supplies the sandbox capability consumed by DSH bash and PTY plugins; the sandbox seam owns the `SANDBOX_UNAVAILABLE` error and any user-facing denial semantics.
+This package adds no model-visible prompt, tool, or result text. Existing DSH bash and terminal consumers retain their rendering and error semantics; the sandbox seam owns the `SANDBOX_UNAVAILABLE` diagnostic.
+
+#### KV Cache effect
+
+No direct invalidation. The existing consumer owns any request-prefix changes.
 
 ## Known Limitations and Deferred Work
 
-- Linux MXC qualification requires usable Bubblewrap/user namespaces.
-- macOS and Windows acceptance remains platform-dependent; Windows Tier 3 requires explicit host DACL permission.
-- The registry-backed `main` branch requires GitHub Packages access to resolve `@dsh-external/mxc-sdk@dsh`; use `feat-mxc-vendor-sdk` for the tracked offline carrier.
-- Older DSH snapshots require `legacy/mxc-host-integration.patch` because a bundle cannot add missing sandbox prepare/settlement APIs by itself.
+- MXC qualification requires a usable Bubblewrap/user-namespace host on Linux; macOS and Windows acceptance remains platform-dependent, and Windows Tier 3 requires explicit host DACL permission.
+- The SDK release is Public Preview. Its policy schema and native backends may change in a later SDK minor version; upgrading requires a deliberate dependency and policy-version review.
+- The Stent descriptors are optional because DSH profiles choose bash or PowerShell by platform. A profile that enables the bundle without loading a matching consumer does not receive a hook; the host must still compose a supported sandbox consumer.
+- `legacy/mxc-host-integration.patch` is historical evidence only. It is not read, applied, or required by the Stent bundle.

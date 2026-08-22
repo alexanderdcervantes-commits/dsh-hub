@@ -29,8 +29,10 @@ over the ACP wire.
 
 ### Zed deep integration
 
-- **Tool cards**: expand to see each call's full arguments and result preview
-  (`rawInput` / `rawOutput`), with per-kind icons
+- **Tool cards**: one-line summary in the collapsed header — `Read <path>`, the
+  executed command, `Search: <pattern>`, `Fetch: <url>`, etc. — with the full
+  arguments and result preview (`rawInput` / `rawOutput`) one click away, plus
+  per-kind icons
 - **Zed files & terminal**: `zed_read_text_file` / `zed_write_text_file` / `zed_terminal`
   put file edits into Zed's "edited files" area (diff + accept/reject) and commands into a
   real Zed terminal
@@ -63,9 +65,9 @@ over the ACP wire.
 
 After picking **dsh-acp-enhanced** in Zed's AI Agent panel:
 
-<img src="https://raw.githubusercontent.com/grunmin/dsh-acp-enhanced/6c3fa171453e7057ef7d29293a04d3afcc9b0ca9/assets/screenshots/approval-config-context.png" width="560">
+<img src="https://raw.githubusercontent.com/grunmin/dsh-acp-enhanced/0118f33fdc88b8c69a84a3d624bc15b5c099acfb/assets/screenshots/approval-config-context.png" width="560">
 
-<img src="https://raw.githubusercontent.com/grunmin/dsh-acp-enhanced/6c3fa171453e7057ef7d29293a04d3afcc9b0ca9/assets/screenshots/tool-cards-elicitation.png" width="560">
+<img src="https://raw.githubusercontent.com/grunmin/dsh-acp-enhanced/0118f33fdc88b8c69a84a3d624bc15b5c099acfb/assets/screenshots/tool-cards-elicitation.png" width="560">
 
 ## Quick start
 

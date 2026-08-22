@@ -33,19 +33,19 @@
 
 **统计弹窗 · 总览**（主界面侧边栏卡片点开）
 
-![统计弹窗总览](https://raw.githubusercontent.com/940842546/dsh-usage-billing/7161748b6c2e69517375747ab9fd8497f6ed191e/assets/screenshots/02-stats-dialog-overview.png)
+![统计弹窗总览](https://raw.githubusercontent.com/940842546/dsh-usage-billing/5c6ef5b0d3d10653429bbba67dcf98877125bb92/assets/screenshots/02-stats-dialog-overview.png)
 
 **统计弹窗 · 图表区**（分段占比 + 用量热力图，支持 ¥/USD 切换）
 
-![统计弹窗图表](https://raw.githubusercontent.com/940842546/dsh-usage-billing/7161748b6c2e69517375747ab9fd8497f6ed191e/assets/screenshots/03-stats-dialog-charts.png)
+![统计弹窗图表](https://raw.githubusercontent.com/940842546/dsh-usage-billing/5c6ef5b0d3d10653429bbba67dcf98877125bb92/assets/screenshots/03-stats-dialog-charts.png)
 
 **美元模式**（弹窗右上角一键切换，汇率换算）
 
-![美元模式](https://raw.githubusercontent.com/940842546/dsh-usage-billing/7161748b6c2e69517375747ab9fd8497f6ed191e/assets/screenshots/07-stats-dialog-usd.png)
+![美元模式](https://raw.githubusercontent.com/940842546/dsh-usage-billing/5c6ef5b0d3d10653429bbba67dcf98877125bb92/assets/screenshots/07-stats-dialog-usd.png)
 
 **设置页 · 用量统计**
 
-![设置页概览](https://raw.githubusercontent.com/940842546/dsh-usage-billing/7161748b6c2e69517375747ab9fd8497f6ed191e/assets/screenshots/04-settings-usage-overview.png)
+![设置页概览](https://raw.githubusercontent.com/940842546/dsh-usage-billing/5c6ef5b0d3d10653429bbba67dcf98877125bb92/assets/screenshots/04-settings-usage-overview.png)
 
 ## 安装
 
@@ -98,6 +98,8 @@ npm 包：https://www.npmjs.com/package/dsh-usage-billing
 | 8/17 后·高峰 | v4-flash | 0.10 | 3.0 | 9.0 |
 | 8/17 后·空闲 | v4-pro | 0.15 | 4.5 | 13.5 |
 | 8/17 后·高峰 | v4-pro | 0.30 | 9.0 | 27.0 |
+
+> 模型按名称子串归类计价：名字含 `flash`（含 `deepseek-v4-flash-vision-exp` 等视觉变体，官方同价）按 flash 档，含 `pro` 按 pro 档，其余归入「未定价/免费」。
 
 参考：[DeepSeek API 定价](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)
 

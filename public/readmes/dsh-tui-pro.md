@@ -8,7 +8,7 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/lk251066/dsh-tui-pro/ci.yml?branch=master&style=flat-square&label=CI)](https://github.com/lk251066/dsh-tui-pro/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](LICENSE)
 
-![dsh-tui-pro switching between persistent project sessions in one terminal workbench](https://raw.githubusercontent.com/lk251066/dsh-tui-pro/64fd1218d075642e739407a0209470f9ee3608a7/packages/dsh-tui/assets/session-workbench.gif)
+![dsh-tui-pro switching between persistent project sessions in one terminal workbench](https://raw.githubusercontent.com/lk251066/dsh-tui-pro/74287021abb6681706b1b79e8d35c947a4e3631f/packages/dsh-tui/assets/session-workbench.gif)
 
 [Install](#quick-start) · [Latest release](https://github.com/lk251066/dsh-tui-pro/releases/latest) · [dshfind](https://dshfind.com/zh/plugins/lk251066/dsh-tui-pro) · [Report an issue](https://github.com/lk251066/dsh-tui-pro/issues/new/choose)
 
@@ -46,6 +46,8 @@ The Assistant is one durable session outside every project workspace. It keeps a
 ### A stable full-screen canvas
 
 Only the transcript scrolls. The editor, current plan, live status, model, context usage, and active sessions remain in place while user messages, Markdown, thinking, tools, diffs, plans, todos, and subagents use distinct compact treatments.
+
+The terminal title keeps the mounted session name visible. While work is active, a low-frequency spinner and the total number of running sessions appear in the title, and supported terminals also expose a taskbar progress state.
 
 ### Native DeepSeek Harness composition
 
@@ -115,7 +117,7 @@ See the [package reference](packages/dsh-tui/README.md) for the supported entry 
 
 This plugin follows the developer-preview dsh release line. Each release is checked from source, from its packed npm artifact, through a clean public dsh profile, and through a real Linux PTY before publication.
 
-![Complete dsh-tui-pro workbench with structured tool output and plan progress](https://raw.githubusercontent.com/lk251066/dsh-tui-pro/64fd1218d075642e739407a0209470f9ee3608a7/packages/dsh-tui/assets/overview.png)
+![Complete dsh-tui-pro workbench with structured tool output and plan progress](https://raw.githubusercontent.com/lk251066/dsh-tui-pro/74287021abb6681706b1b79e8d35c947a4e3631f/packages/dsh-tui/assets/overview.png)
 
 ## License
 

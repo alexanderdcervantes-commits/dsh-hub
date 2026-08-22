@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Physicolor/harness-widgets/25432aab6dbfe5496deb9bdb2d3bacaec5b68c33/docs/screenshots/cover.jpeg" alt="Harness Widgets preview" width="100%">
+  <img src="https://raw.githubusercontent.com/Physicolor/harness-widgets/ae5daefc5970c2d05f2aae4692e8cc3f2f4b501b/docs/screenshots/cover.jpeg" alt="Harness Widgets preview" width="100%">
 </p>
 
 Harness Widgets is a **persistent DSH bundle plugin** built on the Cordis composition model. It provides a customizable multi-column widget rail on the right side of the conversation page — real-time session insights, usage monitoring, and quick actions — with an extensible declarative registry.
@@ -56,7 +56,8 @@ In both modes the magnified deck is painted by a fixed overlay **outside** the r
 | Context waterline | system/tool/message segment bars + breakdown; 2×2 and 2×4 supported |
 | One-click compact | context usage % + round corner button (double-click to compact) |
 | Tasks | in-progress / done / todo counts |
-| Usage heatmap | GitHub-style calendar heatmap, self-tracked daily usage |
+| Usage heatmap | GitHub-style calendar heatmap, self-tracked daily usage; 2×2 = ~3-month calendar, 2×4 = half-year all-points view |
+| Last-7-days bars | vertical bars for the last 7 days; bar area height matches the calendar grid |
 | Quote of the day | random motivational quote; text/alignment/wrapping customizable |
 
 ### Component Marketplace
@@ -110,6 +111,29 @@ pnpm run check      # typecheck + tests + build
 
 ## Changelog
 
+### v1.1.2
+**Fixed**
+- 🔢 Token-usage heatmap now accounts **per assistant step by its own start time** (v2), with a cumulative-anchor fallback when a host omits per-node `usage`. A day's cell = exactly the tokens of steps that began that day (LOCAL time), so sessions spanning midnight split correctly across both days; element dedup by `turn:step:start` keeps remounts / session switches / compaction idempotent.
+- 🧹 **Boot-time repair**: a one-shot fix clears polluted live-day values (8/22 had shown 145M–181M from a fixed seed double-counting with live accumulation) and resets the dedup set, so the live path rebuilds the day exactly; a marker keeps it one-shot so later live values are never wiped.
+- 📚 Non-live past days (8/14–8/21: 74.32M / 367.79M / 1195.70M / 161.49M / 292.34M / 352.36M / 214.85M / 44.55M) are backfilled from the authoritative per-event session logs (official delta algorithm, LOCAL-time attribution), whose sessions have ended — never double-counted. 8/22 is live-accumulated (≈114.87M and growing). Manual one-shot recovery: `docs/heatmap-recovery.js`.
+
+### v1.1.1
+**Fixed**
+- 🔢 Token-usage heatmap accounting reworked to **per-conversation-step crediting**: every assistant step is credited exactly once, by its OWN start time (`timing.stepStartTime`), so a day's cell holds exactly the tokens of steps that *began* that day — the old daily-reset-baseline diffing credited yesterday's whole total (e.g. 47M→117M) to today whenever a session continued across midnight. Steps are deduped by `turn:step:start` (remounts, session switches, compaction, cross-midnight sessions all behave). A cumulative-anchor fallback covers hosts where the folded surface omits per-node `usage`, re-anchoring only on a genuine cumulative reset (new session), never on a bare day change.
+- ⚠️ Migration previously rebuilt the table keeping only the demo seed (8/14–16), discarding real history on other days. The migration is now **preservation-only + backfill**: existing day values are kept untouched; non-live past days (8/14–8/21, whose sessions have ended) are backfilled from the authoritative per-event session logs (official delta algorithm, attributed by each usage event's LOCAL time). The live day (8/22) is NOT seeded — the real-time per-step accounting accumulates it, so no double count (a prior version seeded 8/22 and produced 145M–181M). A one-shot repair clears polluted 8/21/8/22 values, resets the dedup set, then re-backfills 8/21 so live accumulation rebuilds 8/22 exactly. Manual one-shot recovery: `docs/heatmap-recovery.js`.
+
+### v1.1.0
+**New**
+- Usage-heatmap widget now supports **2×4**: a ~7-month (30-week) rolling grid showing every recent token-usage point, derived fresh from the raw daily log, horizontally centred with the today/window figures on the title row's right.
+- New **last-7-days bar chart** widget (`heatmap-bars`, 2×2): vertical bars for the past 7 days, whose bar area height exactly matches the 2×2 calendar grid's content height (so the bars occupy the same vertical footprint as the day-rows they replace).
+
+**Changed**
+- Bar chart axis labels are now short month.day dates (e.g. `8.28`) instead of weekday chars; bars are ~1.5× wider with a fuller corner radius; the legend is two plain figures (today / 7-day total, no "今日/近7天" words); only the first and last date labels are drawn on the bottom corners (no x-axis baseline). The widget is now named **用量柱状图** (was 近7日柱状).
+- Heatmap legend drops the "今日" prefix (two figures: today / window total), and the chart's bottom-left/right corners show the window's earliest date and today's date.
+- The 2×4 heatmap grid is wider (30 weeks) and horizontally centred; its figures move to the title row's right end.
+- The 2×4 **token heatmap** and **context waterline** charts are now bottom-aligned (a title-row headRight figure no longer forces top alignment).
+- The rail's top padding grows 2px → 4px so the first card keeps clear of the enhancer rounded-card's top shadow; the magnify overlay mirrors it. No header rules live here anymore — the header's opaque rectangle (masking the rail's top) is harness-ui-enhancer's job.
+
 ### v1.0.0
 **New**
 - Settings → 组件: add a "无极变化（连续跟随）" switch exposing the real-time continuous magnification mode (peak follows the pointer every animation frame).
@@ -160,6 +184,7 @@ pnpm run check      # typecheck + tests + build
 
 The widget registry (`WIDGETS` descriptors) already lays the foundation for more — adding a widget is just one descriptor.
 
+- **Heatmap range/period controls**: let the 2×4 heatmap and bars pick custom ranges (weekly/monthly/etc.) beyond the current half-year / 7-day defaults;
 - **Multi-platform usage widgets**: Z.ai, DeepSeek balance, etc., reusing the host same-origin proxy + credentials pattern;
 - **Utility widgets**: one-click compact (needs DSH official compaction) and more;
 - **External integrations**: Feishu / WeChat push & interaction, keys strictly via DSH credentials;

@@ -6,7 +6,7 @@
 <br>
 
 <div align="center">
- <img width="640" src="https://raw.githubusercontent.com/0xsline/awesome-deepseek-harness/40bafed97c913190ba3c9655ef67b2fb9fdcf435/assets/banner.jpg" alt="Awesome DeepSeek Harness">
+ <img width="640" src="https://raw.githubusercontent.com/0xsline/awesome-deepseek-harness/b154ebd5d7df3db32953ea6efcb24f6dd4ae6492/assets/banner.jpg" alt="Awesome DeepSeek Harness">
 </div>
 
 # Awesome DeepSeek Harness [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
@@ -107,6 +107,8 @@ Management panel: Settings → Plugins.
 - [Saktawdi/dsh-ha-orchestrator](https://github.com/Saktawdi/dsh-ha-orchestrator) - Model high-availability failover (quarantine, circuit breaking, probe recovery) plus subagent orchestration (fanout/pipeline/supervisor) with a bilingual settings UI.
 - [dsh-background-agents](https://github.com/PerryLink/dsh-background-agents) - Durable background child agents on the official subagent seam: start from any session, watch progress in the Web UI sidebar, message and interrupt any time, with per-child tool scoping, persona and delegation-depth caps.
 - [zoahdev/dsh-kirocrew](https://github.com/zoahdev/dsh-kirocrew) - Bridge a DSH agent to a persistent, self-evolving KiroCrew development workspace over ACP (JSON-RPC 2.0 over stdio) via a single `kiro_send` tool.
+- [bpc-oss/dsh-routed-subagent](https://github.com/bpc-oss/dsh-routed-subagent) - Run a one-shot subagent fully mounted on any agent preset from any session, with per-call model/provider override, model pre-check, and external CLI engines (codex / claude / codebuddy) with background jobs, live progress, kill, and continuable sessions.
+- [bpc-oss/dsh-fork-to-preset](https://github.com/bpc-oss/dsh-fork-to-preset) - Fork any session into a different agent preset from the conversation header: a preset picker creates a new child session mounted on the chosen preset, inheriting the source session's completed turns.
 
 ## Context & Search
 
@@ -228,6 +230,7 @@ Management panel: Settings → Plugins.
 - [dsh-markdown-preview](https://github.com/GitHubJiKe/dsh-markdown-preview) - In-chat preview for produced files: click a produced-file chip to render Markdown (markdown-it + highlight.js), images, or plain text in the conversation, with system-app open kept one click away.
 - [dsh-i18n](https://github.com/Semidia/dsh-i18n) - Chinese localization for tool results: intercepts tool execution output and translates English markers (`[exit code]`, `[timed out]`, `[sandbox: ...]`, etc.) into Chinese, with a settings toggle.
 - [dsh-settings-tuner](https://github.com/Semidia/dsh-settings-tuner) - System parameter adjustment UI: grouped settings page for timeouts, parallelism, LLM retry policy, model params, web search, permissions and presets; safe profile-config editing with line-level YAML matching and post-write validation.
+- [dsh-llm-compat-healer](https://github.com/Semidia/dsh-llm-compat-healer) - LLM compatibility auto-healer: detects 400 errors from incorrectly declared model capabilities (thinking/reasoning) on transit/gateway providers, then idempotently patches `llm-pi-ai` config and suppresses thinking on the next request — no restart needed. Full settings UI for every pi-ai compat field.
 - [dsh-workspace-menu](https://github.com/0imzero/dsh-workspace-menu) - Workspace/chat context menu for the DSH home page: pin, rename, open in file explorer, archive, fork, copy, and open in a new window.
 - [dsh-mobileweb-adapter](https://github.com/dsh-external/dsh-mobileweb-adapter) - Mobile/PWA layout adaptation + LAN WebSocket fix.
 - [dsh-split-panes](https://github.com/dsh-external/dsh-split-panes) - Split panes.

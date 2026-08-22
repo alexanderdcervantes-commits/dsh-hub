@@ -36,12 +36,8 @@ dsh plugin --profile web add 'github:kingOfSoySauce/dsh-liang-skin'
 
 <table>
   <tr>
-    <td width="50%" align="center">
-      <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-liang-skin/f65bf387a4a3e3f4680dd6bb63e7f30d20455543/docs/preview.png" alt="滑动变祖皮肤效果截图" width="100%">
-      <br>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-liang-skin/f65bf387a4a3e3f4680dd6bb63e7f30d20455543/docs/demo.gif" alt="滑动变祖交互演示" width="100%">
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/kingOfSoySauce/dsh-liang-skin/976fcbf9b4a91b79f14b90c16cbe0d3f553c2bd3/docs/preview.png" alt="滑动变祖皮肤效果截图" width="100%">
       <br>
     </td>
   </tr>
@@ -82,10 +78,10 @@ dsh --profile web --dump-config | grep -B1 -A2 liang-intensity
 
 ### 方式二：从 GitHub Release tarball 安装
 
-从本仓库 [Releases](https://github.com/kingOfSoySauce/dsh-liang-skin/releases) 页面下载 `dsh-client-liang-intensity-skin-0.1.6.tgz`（包内已包含构建好的 `lib/client.js`，安装时不需要执行任何 prepare 脚本），然后：
+从本仓库 [Releases](https://github.com/kingOfSoySauce/dsh-liang-skin/releases) 页面下载 `dsh-client-liang-intensity-skin-0.1.7.tgz`（包内已包含构建好的 `lib/client.js`，安装时不需要执行任何 prepare 脚本），然后：
 
 ```sh
-dsh plugin --profile web add ./dsh-client-liang-intensity-skin-0.1.6.tgz
+dsh plugin --profile web add ./dsh-client-liang-intensity-skin-0.1.7.tgz
 ```
 
 

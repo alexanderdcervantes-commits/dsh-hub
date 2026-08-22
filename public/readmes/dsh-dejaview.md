@@ -20,11 +20,15 @@ no LLM provider of its own.
 
 ## Relationship to DejaView
 
+**[DejaView · 项目照妖镜](https://github.com/jiang4wqy/dejaview)** — [**live demo ↗**](https://jiang4wqy.github.io/dejaview/)
+
 DejaView is a web app that answers "is this project already built?" with an
-evidence-first pipeline and three report tones (镀金 / 毒舌 / 彩虹). `dsh-dejaview`
-ports that one question, and the six-dimension + three-tone framing, into a dsh
-tool scoped to the plugin ecosystem. The retrieval and scoring are reimplemented
-here in TypeScript; the verdict framing is handed to the model as guidance.
+evidence-first pipeline and three report personas — **镀金·华尔街 / 毒舌·马戏团 /
+彩虹·夸夸群** — under one rule: *the bite can be subjective, the facts cannot;
+roast the project, never the developer.* `dsh-dejaview` ports that one question,
+and the six-dimension + three-persona framing, into a dsh tool scoped to the
+plugin ecosystem. The retrieval and scoring are reimplemented here in
+TypeScript; the verdict framing is handed to the model as guidance.
 
 ## The tool
 

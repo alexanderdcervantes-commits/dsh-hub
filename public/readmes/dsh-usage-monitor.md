@@ -4,7 +4,7 @@ English | [中文](README.zh.md)
 
 Usage dashboard for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness). It folds provider-reported token usage out of session logs and charts it in Settings.
 
-![Settings → Usage: tiles, stacked chart, and provider table](https://raw.githubusercontent.com/NOirBRight/dsh-usage-monitor/b0b9510d809ac15576576b8b9fe4b810cd856894/docs/screenshots/settings-usage.png)
+![Settings → Usage: tiles, stacked chart, and provider table](https://raw.githubusercontent.com/NOirBRight/dsh-usage-monitor/74ed24a2840449fb5be54d844d7f0bf081c824b4/docs/screenshots/settings-usage.png)
 
 ## What it shows
 

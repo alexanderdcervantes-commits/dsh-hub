@@ -2,7 +2,7 @@
 
 Incremental diff reviewer for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
-[中文说明](README.zh.md) · [MIT License](LICENSE)
+[中文](README.zh.md) · [MIT License](LICENSE)
 
 `dsh-review-loop` turns code review of agent work into an incremental, closed-loop process: after you approve a batch of changes, a checkpoint is recorded and the next review shows only the changes made afterward — never a re-review of what you already saw. Review feedback is injected back to the agent through the harness's normal message channel, without interrupting its work.
 
@@ -54,7 +54,7 @@ The repository ships prebuilt `lib/` artifacts, so git-source installs work with
 
 ### Web UI
 
-![Review panel (English)](https://raw.githubusercontent.com/wuxiangru915/dsh-review-loop/fc67d8ae8d5989fd35625b7305f5c2634cc6b85b/assets/review-panel.en.png)
+![Review panel (English)](https://raw.githubusercontent.com/wuxiangru915/dsh-review-loop/eb4190498ef76daec21dfcf5c24c44f337a61ed3/assets/review-panel.en.png)
 
 In any session whose workspace is a git repository, a review panel appears above the composer:
 

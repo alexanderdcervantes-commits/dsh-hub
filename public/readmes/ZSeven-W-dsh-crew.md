@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-logo.png" alt="DSH Crew" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/b1cb3667dcc595e233796126a0c4427784fd9fd3/docs/images/dsh-crew-logo.png" alt="DSH Crew" width="120" />
 </p>
 
 <h1 align="center">DSH Crew</h1>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-crew</code> &middot; Current plugin release: <code>0.1.0-rc.3</code> &middot; Tested with DSH <code>0.1.0-rc.6</code></sub>
+  <sub>npm: <code>@zseven-w/dsh-crew</code> &middot; Current plugin release: <code>0.1.0-rc.4</code> &middot; Tested with DSH <code>0.1.1-rc.1</code></sub>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-overview.png" alt="DSH Crew — settings page" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/b1cb3667dcc595e233796126a0c4427784fd9fd3/docs/images/dsh-crew-overview.png" alt="DSH Crew — settings page" width="100%" />
 </p>
 <p align="center"><sub>The DSH Crew settings page — host integrations, dispatch policy, execution and the multimodal bridge</sub></p>
 
@@ -101,12 +101,12 @@ Claude Code / Codex (orchestrator, keeps its own model)
 Dispatch fans out. Below, eighteen workers translate this README in parallel: the host counts them as its own subagents, while the harness runs them as real sessions.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-host.png" alt="Claude Code" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/b1cb3667dcc595e233796126a0c4427784fd9fd3/docs/images/dsh-crew-host.png" alt="Claude Code" width="100%" />
 </p>
 <p align="center"><sub>Claude Code sees dsh-crew workers as native subagents, with a statusline segment tracking running tiers, elapsed time and tokens.</sub></p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/6eace6f69525da7c984427dd7b97d629a904ae3e/docs/images/dsh-crew-jobs.png" alt="DSH Crew" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-crew/b1cb3667dcc595e233796126a0c4427784fd9fd3/docs/images/dsh-crew-jobs.png" alt="DSH Crew" width="100%" />
 </p>
 <p align="center"><sub>The DSH Crew panel sees the same run from the harness side: which host dispatched each job, its tier and effort, live progress and token usage.</sub></p>
 
@@ -349,6 +349,7 @@ Runtime dependencies are only `@modelcontextprotocol/sdk` and `zod`; every `@dee
 
 ## Ecosystem
 
+- [DSH Android](https://github.com/ZSeven-W/dsh-android) — a live Android emulator or USB device inside the conversation, driven entirely through adb
 - [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
 - [DSH Noema](https://github.com/ZSeven-W/dsh-noema) — long-term memory for DSH
 - [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) — inspect and edit `.op` design documents inside a conversation

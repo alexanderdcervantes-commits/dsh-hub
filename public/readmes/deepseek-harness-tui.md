@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/tui-whale.svg" width="424" alt="DeepSeek Harness TUI whale" />
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/tui-whale.svg" width="424" alt="DeepSeek Harness TUI whale" />
 </p>
 
 <h1 align="center">DeepSeek Harness TUI</h1>
@@ -34,7 +34,7 @@
 不是把功能不断焊进 TUI 本体，而是让主题、视图、命令和交互都由插件组合，最终
 让 Creator 能检查、创建、运行、诊断并迭代自己的终端能力。
 
-![dsh-tui 0.2 的 DeepSeek Harness 首页](https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/banner-v020.png)
+![dsh-tui 0.2 的 DeepSeek Harness 首页](https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/screenshots/banner-v020.png)
 
 ## 快速开始
 
@@ -89,7 +89,8 @@ DSH_TUI_BIN=$(pwd)/target/release/dsh-tui dsh-tui --agent dsh-acp
 
 第三方能力是 client 树上的普通 Cordis 插件：声明所需 service，在 `apply` 中
 注册贡献，并随 fiber 卸载自动撤销。当前已经开放主题、根级右栏、本地命令、
-slider overlay、当前 ACP Session 配置事务和包内 Host/Client RPC；完整契约见
+slider / single-select / view overlay、UI Plugin、当前 ACP Session 配置事务和包内
+Host/Client RPC；完整契约见
 [插件 API](docs/plugins.md)，完整方向见
 [完全插件化与自进化](#完全插件化与自进化)。`--demo-skin` 只挂载 gallery 包
 `ember`，不代表主题逻辑写进了本体。
@@ -125,7 +126,7 @@ dsh-tui --demo
   剪贴板，以及支持 kitty graphics protocol 的图片预览和可选 `/liang` 像素宠物。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/agent-turn.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/screenshots/agent-turn.png" width="720"
        alt="plugin 模式中的 Markdown 回复、工具视图和运行状态" />
 </p>
 
@@ -146,8 +147,8 @@ dsh-tui --demo
   坐标；替换 renderer 不应改变插件 ABI。
 - **动态预览与持久组合分开：** `define/run` 负责即时预览，`stop/update/rollback`
   负责运行期生命周期；确认后的 Package 可以持久化。`AgentPreset` 继续只组合
-  agent 侧能力，未来由独立的 `ViewPreset` 组合 client/UI 插件。两者可以一起选择，
-  但分别存储、分别切换。
+  agent 侧能力；独立的 `UI Plugin` 组合 theme、欢迎页 slot、pet 等 client/UI
+  contribution。两者分别存储、分别切换。
 - **Creator 闭环：** Creator 先 inspect 当前 Host/Client 的真实 service、slot、
   token 和 schema，再生成 `code.host`、`code.client` 或两者，运行后观察装载错误和
   渲染错误，继续修复、更新、回滚或保存。这才是“自进化”，不是让模型直接操作
@@ -158,15 +159,18 @@ dsh-tui --demo
 现在已经落地的是 ACP client 分层，以及同一条动态 Package 生命周期上的这些原语：
 
 - `tuiTheme` 与 `/theme` 单选 Plugin 席位；
-- `tuiSlots`、`chrome.right` 和 schema 校验后的 `TuiNode`；
-- 生命周期归属的本地 slash command 与原生 slider overlay；
+- `tuiSlots`、`welcome.hero`、`welcome.info`、两个 composer dock、`chrome.right`
+  和 schema 校验后的 `TuiNode`；
+- 生命周期归属的本地 slash command、可更新的参数候选，以及原生
+  slider / single-select / view overlay；
+- 持久化 `UI Plugin`，内置 Martty 与 DeepSeek 两套欢迎页组合；
 - 从标准 ACP `configOptions` 投影出的当前 Session 配置目录和事务；
 - Client inspect/run、Package stop/start/retract，以及包内 Host/Client RPC；
 - 只在 Creator preset 中可见、但不依赖 ACP 注入的 TUI 开发 skill。
 
 这些能力同时服务静态插件与动态 `code.client`，不是为某个 demo 单独开的通道。
-仍在迁移的是更多 shell/conversation slot、form 等其他通用输入组件、完整的运行期
-诊断和 `ViewPreset`。因此“完全插件化”仍是目标架构；逐阶段状态以
+仍在迁移的是更多 shell/conversation slot、更多 form 字段类型和完整的运行期
+诊断。因此“完全插件化”仍是目标架构；逐阶段状态以
 [迁移计划](docs/migration.md) 为准。
 
 ### 与 Web 插件平台对照
@@ -176,10 +180,10 @@ dsh-tui --demo
 | Client runtime | 成熟的 React Cordis tree | Node Cordis client tree 已落地；Rust 只做语义 renderer，不成为第三棵树 |
 | UI 扩展 | 类型化 slot tree，覆盖会话、设置、工具卡等大量页面区域 | 当前开放 `chrome.right`；目标是用 `tuiSlots` 覆盖 shell 与 conversation，而不暴露终端坐标 |
 | Theme | `ThemeRuntime` 注册主题、叠加 token、运行时切换并持久化内置偏好 | `/theme` 作为单选 Plugin 开关，整体加载/替换贡献 palette 与其他能力的 Theme Plugin |
-| 交互组件 | 插件可贡献 React component | 已开放受 schema 约束的 `TuiNode`、本地 command 和 slider overlay；form 等继续按通用终端语义补齐 |
+| 交互组件 | 插件可贡献 React component | 已开放受 schema 约束的 `TuiNode`、本地 command 参数候选，以及 slider / single-select / view overlay；更多表单字段继续按通用终端语义补齐 |
 | 动态插件 | `code.host` + `code.client` 双半 Package，共用 Loader/fiber，支持 run、stop、update、rollback | inspect/run、主题、右栏、命令、overlay、配置事务与包内 RPC 已走统一 DSH Cordis ACP 扩展；继续补齐诊断与持久组合 |
 | 诊断与修复 | Client 装载和 React 渲染失败可回传 Creator，继续生成新版本 | 目标对齐相同闭环：装载、schema、绘制错误可观察且能更新或回滚 |
-| Preset | `AgentPreset` 组合 agent；Client 插件另行持久化 | 保持 AgentPreset 边界，新增独立 `ViewPreset` 管理终端视图组合 |
+| Preset | `AgentPreset` 组合 agent；Client 插件另行持久化 | 保持 AgentPreset 边界；独立 `UI Plugin` 已可组合并持久切换终端 UI contribution |
 
 Web 今天的插件面更广、实现也更成熟。TUI 要对齐的是 Cordis 的组合方式、生命周期
 和 Creator 创造闭环，而不是把 React 或浏览器 DOM 搬进终端。
@@ -225,8 +229,9 @@ Unix 上 Node 与 Rust 使用 fd 3/4，Windows 使用带随机 token 的 loopbac
 | `ctrl+x` | 不取消当前回合，立即 steer 当前 agent |
 | `esc` | 打断当前回合（保留草稿）；空闲时清空草稿 |
 | `ctrl+c` | 有草稿先清除；空闲连按 2 次、运行中连按 5 次退出；不中断当前回合 |
-| `/` | 打开命令菜单并按前缀过滤；agent 广告的 skills 也在其中，选中后仍以 `/name ` prompt 发送 |
-| `/model` · `/agent` | 选择 agent 广告的模型和 agent preset；`option+a` 不弹表单，直接轮换 agent |
+| `/` | 打开上拉命令菜单并按前缀过滤；输入 `/命令 ` 后同一菜单切成参数候选。Enter 选中并执行，Tab 只补全；agent 广告的 skills 仍以 `/name ` prompt 发送 |
+| `/ui` · `/ui ` | 直接回车打开普通 UI Plugin 单选表单；尾随空格显示 Martty / DeepSeek 等上拉候选 |
+| `/model` · `/agent` | 选择 agent 广告的模型和 agent preset；`ctrl+shift+a` 不弹表单，直接轮换 agent |
 | `/auth` | ACP 登录（多种方法时弹出选择；否则 Terminal Auth 或 `authenticate` `_meta`）；会话中途 `auth_required` 也会打开同一界面；agent 的 `/login` 仍当 prompt |
 | `/permission` · `shift+tab` | 选择或轮换 agent 广告的权限模式 |
 | `/effort` · `/plan` | 设置推理力度或把 plan 模式传给宿主 |
@@ -234,8 +239,9 @@ Unix 上 Node 与 Rust 使用 fd 3/4，Windows 使用带随机 token 的 loopbac
 | `/clip [text]` · `ctrl+v` | 暂存剪切板图片（可多次，最多 8 张同行）；macOS/Linux |
 | 图片 chip | 以 `[image n]` 内联在草稿文字里（无 icon）；退格整个删除，hover 或光标停在上面弹出预览（kitty 缩略图 + 尺寸/大小/类型） |
 | `ctrl+o` · `ctrl+t` | 展开输出 · 切换主题 |
+| `ctrl+k`（空输入） · `/keys` | 打开完整快捷键弹窗 |
 | `pgup/pgdn` · `ctrl+u/d`（空输入） | 滚动；`end` 回到实时尾部 |
-| readline 编辑 | `home/ctrl+e` 行首尾 · `ctrl+k/u` 删至尾/首 · `ctrl+w` 删词 |
+| readline 编辑 | `home/ctrl+e` 行首尾 · 输入时 `ctrl+k/u` 删至尾/首 · `ctrl+w` 删词 |
 | macOS | `⌘←/→` 行首尾 · `⌥←/→` 跳词 · `⌘⌫` 删至行首 · `⌥⌫` 删词（直接读物理键状态，任意终端可用） |
 | Linux/Windows | `ctrl+←/→` 跳词 · `ctrl+⌫` 删词 |
 | 点击工具 · 滚轮 | 点击工具展开/折叠输出；滚轮始终滚动整个对话 |
@@ -244,13 +250,55 @@ Unix 上 Node 与 Rust 使用 fd 3/4，Windows 使用带随机 token 的 loopbac
 
 界面内使用 `/help` 查看命令，使用 `/keys` 查看完整快捷键。
 
+欢迎页使用可组合的 UI Plugin。内置 `default`（Martty）与 `deepseek` 都由两个
+独立 slot 构成：居中的 `welcome.hero`（`logo + hint`）和左下的
+`welcome.info`（版本、模型、workspace、session、凭据、访问说明与帮助）。两套
+UI Plugin 当前复用同一套动态信息 renderer，但该区域可由插件独立替换。
+`/ui` 打开原生 UI Plugin 单选表单；输入 `/ui ` 会在 composer 上方复用 slash
+菜单显示候选。也可直接用 `/ui deepseek` 打开经典
+DeepSeek Harness 大鲸鱼与 wordmark，`/ui default`
+切回 Martty；选择持久化到 `$MARTTY_HOME/settings.json`，不写入对话记录。Martty 的
+`MAR` 使用海洋蓝白渐变，`TTY` 使用终端主题的黑/白前景色。
+
+### UI Plugin 与 Agent Preset
+
+两者都借鉴同一种“把多个插件 contribution 收敛成一个可选组合”的方式，但作用在
+不同的 Cordis 树上，不能混为一个概念：
+
+| | Agent Preset | UI Plugin |
+|---|---|---|
+| 组合什么 | Host/Agent 的 system prompt、工具、skills 与运行能力 | Client UI 的 slot、pet、chrome 等结构性贡献 |
+| 切换入口 | `/agent` | `/ui` |
+| 当前内置 | standard、code、minimal、cordis 等 Agent 组合 | `default`（Martty）、`deepseek` |
+| 持久化 | 会话/Agent 选择 | `$MARTTY_HOME/settings.json` 中的界面选择 |
+
+Creator 模式可以 inspect `UiPresets`、`Theme`、`Slots`、`Commands` 和 `Overlay`
+的真实契约，生成包含 `code.client` 的动态 Package，并在其中调用
+`tuiPresets.register({ id, label }, mount)` 创建新的 UI Plugin。`UiPresets`、
+`tuiPresets` 与 settings 的 `uiPreset` 是兼容性内部名；新 artifact 使用 `kind: "ui"`。
+`mount` 组合该 Plugin 所需的欢迎页 slot、pet 或其他结构性 UI contribution；Package 保存并挂载后，
+新 Plugin 自动进入 `/ui` 表单和 `/ui ` 上拉候选，也沿用同一套切换、持久化与卸载
+生命周期。Creator 创建的是普通 Client Plugin 组合，不会取得 TTY、绝对坐标或绕过
+slot/overlay 协议。
+
+#### 回到经典 DeepSeek View
+
+启动 `dsh --profile tui` 后，可以直接输入 `/ui deepseek`；也可以输入 `/ui` 后回车，
+在普通单选表单中选择 DeepSeek。若在 `/ui` 后再输入一个空格（即 `/ui `），候选会在
+composer 上方弹出，选中 DeepSeek 即可。
+
+经典 View 会恢复旧 DeepSeek Harness 的响应式鲸鱼、`DEEPSEEK HARNESS` wordmark 和
+提示文字，同时保留当前 Martty 的插件化壳、ACP 会话与动态信息区。选择会持久化，
+下次启动仍是 DeepSeek。使用 `/ui default`（或在 `/ui` 表单选择 Martty）即可切回
+蓝白 `MARTTY`。旧实验命令 `/deepseeklogo` 已收敛为 UI Plugin，不再使用。
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/skills-menu.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/screenshots/skills-menu.png" width="720"
        alt="内置命令与 host skills 共享的斜杠菜单" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/image-preview.png" width="720"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/screenshots/image-preview.png" width="720"
        alt="草稿中的图片 chip 与图片元数据预览" />
 </p>
 
@@ -264,7 +312,7 @@ Ghostty、Kitty 和 WezTerm 等支持 kitty graphics protocol 的终端会显示
 可用 `/liang on`、`/liang off` 显式控制。
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/4c0b75c823d2652089c027088e153408141ea097/assets/screenshots/liang.png" width="640"
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-tui/30c8e03fbd64c674f3293fd8620843cda07358ff/assets/screenshots/liang.png" width="640"
        alt="输入框旁的可选小难梁像素宠物" />
 </p>
 

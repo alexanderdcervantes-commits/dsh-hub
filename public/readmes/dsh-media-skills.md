@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/docs/social-preview.png" alt="dsh-media-skills — free image reading & generation for DeepSeek Harness" width="100%">
+<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/docs/social-preview.png" alt="dsh-media-skills — free image reading & generation for DeepSeek Harness" width="100%">
 
 <br>
 
@@ -11,11 +11,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
 [![DeepSeek Harness](https://img.shields.io/badge/DeepSeek%20Harness-Skill-4D6BFE)](https://github.com/topics/dsh-plugin)
-[![Free vision](https://img.shields.io/badge/vision-GLM%2BGemini-2EA44F)](docs/SETUP_VISION_EN.md)
-[![Free generation](https://img.shields.io/badge/generation-Kolors-2EA44F)](docs/FREE_VISION_PROVIDERS_EN.md)
+[![Free vision](https://img.shields.io/badge/vision-GLM%2BDeepSeek%2BGemini-2EA44F)](docs/SETUP_VISION_EN.md)
+[![Free generation](https://img.shields.io/badge/generation-SenseNova%2BKolors-2EA44F)](docs/FREE_VISION_PROVIDERS_EN.md)
 [![No hardcoded keys](https://img.shields.io/badge/keys-never%20in%20repo-8B5CF6)](README.md#-keys--privacy)
 [![Docs](https://img.shields.io/badge/docs-9%20languages-4D6BFE)](docs/lang/README_ZH.md)
-[![Harness](https://img.shields.io/badge/Harness-rc.7%20%2B%20rc.8-4D6BFE)](docs/HARNESS_PATCH_EN.md)
+[![Harness](https://img.shields.io/badge/Harness-rc.7%20%2F%20rc.8%20%2F%20v0.1.1%20rc.1-4D6BFE)](docs/HARNESS_PATCH_EN.md)
 
 <br>
 
@@ -24,7 +24,7 @@ DeepSeek Harness is brilliant at reasoning — but a text-only model can't see t
 - 📎 **Paste to read** — paste, drag, or pick an image in any session; the free vision model turns it into text your current model understands. *(Powered by the DeepSeek Harness core auto-description path — see [docs/HARNESS_PATCH_EN.md](docs/HARNESS_PATCH_EN.md); this bundle contributes the vision model route and the skill it relies on.)*
 - 👁️ **`vision-review`** — analyze images and screenshots, catch UI visual bugs, detect watermarks, turn images into text.
 - 🎨 **`media-tools`** — generate illustrations, avatars, backgrounds and banners with a free, watermark-free model.
-- 🔀 **Engine failover** — GLM-4V-Flash → SiliconFlow Qwen3-VL → Google Gemini ([AI Studio](https://aistudio.google.com)) → any OpenAI-compatible endpoint, with ModLens-style structured evidence output.
+- 🔀 **Engine failover** — GLM-4V-Flash (free) → **DeepSeek-V4-Flash-Vision-Exp** (same key as your agent, higher quality) → SiliconFlow Qwen3-VL → SenseNova → Google Gemini ([AI Studio](https://aistudio.google.com)) → any OpenAI-compatible endpoint, with ModLens-style structured evidence output.
 
 No hardcoded keys, no paid API, no file saving, no session switching.
 
@@ -42,8 +42,8 @@ Most DSH vision plugins only **read** images — and many push you through a sha
 
 | | This bundle | Typical vision-only plugin |
 |---|---|---|
-| Read images for free | ✅ Zhipu GLM-4V-Flash | ✅ |
-| **Generate** images for free | ✅ SiliconFlow Kolors | ❌ usually absent |
+| Read images for free | ✅ GLM-4V-Flash (free) · DeepSeek-V4-Flash-Vision-Exp (v0.1.1 default, same key) | ✅ |
+| **Generate** images for free | ✅ SenseNova U1 Fast → SiliconFlow Kolors | ❌ usually absent |
 | Auto model route in the picker | ✅ installed automatically | sometimes |
 | Keys committed to the repo | ❌ never — keys stay local | ⚠️ often required |
 | Docs in multiple languages | ✅ 9 languages | ❌ usually English only |
@@ -51,14 +51,16 @@ Most DSH vision plugins only **read** images — and many push you through a sha
 
 **Why bring your own free key instead of a built-in anonymous endpoint?** Privacy and reliability. Your images go only to the provider you choose, under your account and your rate limits — no shared third-party service in the middle.
 
+**New-version adaptation**: on DeepSeek Harness **≥ v0.1.1-rc.1**, the deepseek-official route ships **DeepSeek-V4-Flash-Vision-Exp** natively — paste-image transcription and the vision model route pick it up automatically with the key your agent already uses (**zero extra keys**). rc.7 / rc.8 apply the bundled patches (see [HARNESS_PATCH](docs/HARNESS_PATCH.md)).
+
 ## ✨ What you get
 
 | Capability | What it does | Model | Cost |
 |---|---|---|---|
-| 🖼️ Paste-image reading | In a **text-only** session, paste, drag, or pick (add-image button, restored by the client-ux patch) an image into the composer; it is described by the vision model (GLM-4V-Flash with SiliconFlow Qwen3-VL failover, 15s per route) and handed to the current model as text beside a live thumbnail. *(Harness-core feature on rc.7/rc.8: requires the api-proxy admission patch + the rc.8 client-ux patch — see [docs/HARNESS_PATCH.md](docs/HARNESS_PATCH.md) / [HARNESS_PATCH_EN.md](docs/HARNESS_PATCH_EN.md), both patch files included for rc.8; this bundle supplies the vision route + skill it depends on)* | GLM-4V-Flash + Qwen3-VL | Free |
-| 🧠 Vision model route | 「智谱 GLM-4V-Flash（视觉）」 appears in the model selector automatically — pick it for a new conversation and talk about images directly | Zhipu GLM-4V-Flash | Free |
-| 👁️ `vision-review` | Analyze / recognize / describe images & screenshots; catch UI visual bugs (overlap, overflow, misalignment); detect watermarks/logos; turn images into text. Optional `--structured` mode returns ModLens-style evidence JSON (summary, full OCR, reading-order layout, entities/relations, uncertainty). Engine failover chain: GLM-4V-Flash → SiliconFlow Qwen3-VL / Google Gemini (auto-join with free keys) → any OpenAI-compatible endpoint | GLM-4V-Flash + Qwen3-VL + Gemini | Free |
-| 🎨 `media-tools` | Generate images, illustrations, avatars, backgrounds, banners | SiliconFlow Kolors | Free, no watermark |
+| 🖼️ Paste-image reading | In a **text-only** session, paste, drag, or pick (add-image button, restored by the client-ux patches) an image into the composer; it is described by the vision model (**v0.1.1: DeepSeek-V4-Flash-Vision-Exp by default**; rc.7/rc.8: GLM-4V-Flash with SiliconFlow Qwen3-VL failover, 15s per route) and handed to the current model as text beside a live thumbnail. *(Harness-core feature on rc.7/rc.8: requires the api-proxy admission patch + the rc.8 client-ux patch — see [docs/HARNESS_PATCH.md](docs/HARNESS_PATCH.md) / [HARNESS_PATCH_EN.md](docs/HARNESS_PATCH_EN.md), patch files included for rc.7, rc.8 and v0.1.1-rc.1; this bundle supplies the vision route + skill it depends on)* | v0.1.1: DeepSeek-Vision-Exp · rc.7/8: GLM-4V-Flash + Qwen3-VL | GLM free; DeepSeek billed to your balance (v0.1.1 default) |
+| 🧠 Vision model route | 「智谱 GLM-4V-Flash（视觉）」 appears in the model selector automatically; on **v0.1.1** the deepseek route also ships **DeepSeek-V4-Flash-Vision-Exp** natively (same key) — pick either for a new conversation and talk about images directly | Zhipu GLM-4V-Flash · DeepSeek-V4-Flash-Vision-Exp (v0.1.1) | GLM free; DeepSeek billed |
+| 👁️ `vision-review` | Analyze / recognize / describe images & screenshots; catch UI visual bugs (overlap, overflow, misalignment); detect watermarks/logos; turn images into text. Optional `--structured` mode returns ModLens-style evidence JSON (summary, full OCR, reading-order layout, entities/relations, uncertainty). Engine failover chain: GLM-4V-Flash → DeepSeek-V4-Flash-Vision-Exp / SiliconFlow Qwen3-VL / SenseNova / Google Gemini (auto-join with keys) → any OpenAI-compatible endpoint | GLM-4V-Flash + DeepSeek-Vision-Exp + Qwen3-VL + SenseNova + Gemini | GLM/SiliconFlow free; DeepSeek uses your API balance (optional) |
+| 🎨 `media-tools` | Generate images, illustrations, avatars, backgrounds, banners | SenseNova U1 Fast → SiliconFlow Kolors | Free, no watermark |
 
 ## ⚡ Quick start
 
@@ -66,10 +68,9 @@ Most DSH vision plugins only **read** images — and many push you through a sha
 dsh plugin --profile <name> add github:MJorgin/dsh-media-skills
 ```
 
-1. **Get two free keys** (~2 minutes, no payment):
-   - Zhipu — [open.bigmodel.cn](https://open.bigmodel.cn) → **API Keys** (`glm-4v-flash` is free)
-   - SiliconFlow — [siliconflow.cn](https://siliconflow.cn) → **API Keys** (Kolors is free)
-   - *(optional third)* Google Gemini — [aistudio.google.com](https://aistudio.google.com) → **Get API key**; joins the vision failover chain automatically
+1. **Keys**:
+   - **v0.1.1-rc.1+**: zero extra keys — paste reading and the vision route run on your agent's existing `DEEPSEEK_API_KEY` (DeepSeek-V4-Flash-Vision-Exp).
+   - **rc.7 / rc.8** (or to add the free engines): Zhipu — [open.bigmodel.cn](https://open.bigmodel.cn) → **API Keys** (`glm-4v-flash` is free); SiliconFlow — [siliconflow.cn](https://siliconflow.cn) → **API Keys** (Kolors is free); *(optional)* Google Gemini — [aistudio.google.com](https://aistudio.google.com) → **Get API key**; joins the vision failover chain automatically
 2. **Add them** in the Web GUI (**Settings → Models** → the zhipu-vision provider's **API Key** field), or use the credentials file:
 
    ```sh
@@ -87,11 +88,11 @@ Full walkthrough and troubleshooting: [docs/SETUP_VISION_EN.md](docs/SETUP_VISIO
 
 *Paste an image in a text-only session → the free vision model describes it → your model answers. The same bundle also generates new images on demand.*
 
-<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/docs/screenshots/demo-paste.png" alt="Demo: paste an image into a text-only DeepSeek Harness session, the vision model reads it, and the model answers; the same bundle can also generate images" width="100%">
+<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/docs/screenshots/demo-paste.png" alt="Demo: paste an image into a text-only DeepSeek Harness session, the vision model reads it, and the model answers; the same bundle can also generate images" width="100%">
 
 *How it works in one picture:*
 
-<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/docs/screenshots/how-it-works.png" alt="How paste-image reading works: paste → vision model describes → text description arrives at the current model" width="100%">
+<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/docs/screenshots/how-it-works.png" alt="How paste-image reading works: paste → vision model describes → text description arrives at the current model" width="100%">
 
 
 ## 🚀 Usage
@@ -143,7 +144,7 @@ Yes — SiliconFlow Kolors is free and watermark-free. If a model is temporarily
 
 Sample material to try instantly — 6 AI-generated images with their prompts, plus a purpose-built vision test card (title, buttons, bar-chart values) for checking reading accuracy:
 
-<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/examples/generated/fox-forest.jpg" width="30%"> <img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/examples/generated/cat-astronaut.jpg" width="30%"> <img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/ba14421767784f79a7f75539cb83b054daf0dc71/examples/vision-test-card.png" width="30%">
+<img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/examples/generated/fox-forest.jpg" width="30%"> <img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/examples/generated/cat-astronaut.jpg" width="30%"> <img src="https://raw.githubusercontent.com/MJorgin/dsh-media-skills/60f58ead184830949599e0290a232060241986a6/examples/vision-test-card.png" width="30%">
 
 → [examples/README.md](examples/README.md)
 

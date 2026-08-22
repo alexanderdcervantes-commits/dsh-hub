@@ -2,6 +2,8 @@
 
 [English](README.en.md) | [中文](README.md)
 
+> 🆕 **没用过命令行？先看这里：[小白向使用指南（新手快速上手）→](README.beginner.md)** —— 给完全没接触过命令行的用户准备的简化说明。
+
 一个 DSH bundle，把你电脑上的 **Wallpaper Engine** 壁纸变成 **DSH 网页界面（`dsh web`）的背景**。
 
 它会自动发现你本机的 Wallpaper Engine 安装，列出你的壁纸，并把*可移植*的类型渲染到 DSH 对话界面的后方，配以 **iOS 风格液态玻璃**效果：Video（`.mp4`）动态播放、Web/HTML 以 iframe 加载，**Scene（场景）提取主纹理作为静态帧**。v0.2 起还支持：
@@ -16,8 +18,12 @@
 - **整个设置窗口液态玻璃化**（v0.3.2）：一键把 **DSH 原生设置窗口整体**（对话框 + 左侧导航 + General / 模型 / 插件等**全部原生分区**）换成液态玻璃 + 自定义配色 —— 开启「设置窗口液态玻璃」开关后，窗口背景、导航选中/悬停、按钮、开关、链接等全部跟随 **配色** 与 **玻璃透明度**，关闭则恢复原生样式。
 - **玻璃调节统一**（v0.3.3–v0.3.5）：设置窗口的玻璃模糊与**对话栏共用同一套调节参数**（「玻璃」滑动条 0–60 px 同时控制设置窗口与输入栏/气泡的模糊半径，饱和度/亮度/对比度配方一致）；新增「**玻璃颜色**」—— 设置窗口玻璃的**底色色调**可自定义（6 预设 + 自定义取色，默认浅色白 / 深色深夜蓝，选定后两种主题统一使用该色），与「配色」（交互元素）分工：**配色管控件、玻璃颜色管玻璃本身**。
 - **设置持久化到宿主端文件**（v0.4.0）：全部设置（已选壁纸、配色、透明度、布局、轮播、隐藏、倍速/翻转等）改存 `~/.dsh-wallpaper-engine/config.json`，不再依赖浏览器 localStorage —— **重启、换端口（含 DSH Desktop 的随机端口）、清浏览器数据、换浏览器都不再丢失**；旧版 localStorage 配置首次启动自动迁移。
+- **Edge 兼容渲染**：Edge（且仅 Edge）会在页面里任何"可见的 `<video>`"上绘制浏览器自带的「下载 / 投屏」悬浮工具栏，且没有官方开关可以关闭；插件因此在 Edge 中默认把视频壁纸改为 **canvas 渲染**来规避。「紧凑布局」同一行右侧新增「**Edge 兼容**」开关（默认开启），关闭后所有浏览器一律回退到原生 `<video>`。
+- **媒体流句柄修复 + 扫描提速**（v0.4.1）：媒体/预览/场景帧流在客户端断开时**立即释放文件句柄**（修复反复切壁纸/刷新累积句柄、Windows 上壁纸文件被锁无法删除/移动的问题）；壁纸库扫描改**全异步**（fs.promises 线程池），不再阻塞事件循环（WSL / 大壁纸库下启动明显更快）；**WSL 支持**：自动探测 `/mnt/<盘符>` 挂载的 Windows Steam 库，WSL 里也能发现壁纸。
+- **遮挡暂停（省电三档）**：类似 Wallpaper Engine 的「被遮挡时暂停」——最小化 / 切页、窗口失焦、使用电池供电时自动暂停视频壁纸，**解码引擎直接归零**；回到界面 / 接通电源自动继续（网页壁纸仅随页面隐藏被浏览器节流）。三档开关均持久保存。
+- **解码帧率上限（抽帧转码）**：高帧率源（如 4K120 H.264）的硬解是 GPU 占用大头（4060 实测 1.0x 达 ~60% Video Decode）。「壁纸效果」区设置 **帧率上限**（无限制 / 60 / 48 / 30 / 24 fps），宿主端用 ffmpeg 一次性重编码为上限帧率（时间线保持 1.0x **正常速度**、与倍速完全解耦），输出 **4K 保留 + AV1**，带**下载 / 转码实时进度条**；实测 4K120→24fps 后占用从 ~60% 降至 **~15%**。ffmpeg 三档供给：显式指定 → **自动下载**（npmmirror + GitHub 双源竞速，跨平台资产表已验证）→ 系统 PATH。
 
-![基础效果展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/showcase.png)
+![基础效果展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/showcase.png)
 
 > 壁纸 + 磨砂遮罩 + iOS 液态玻璃，渲染在 DSH 界面后方。
 
@@ -60,6 +66,9 @@ Scene 壁纸的 3D 场景（shader/粒子/几何）本身无法在浏览器里�
      - `POST /wallpaper-engine/upload-dir` → 更改上传目录（持久化到 `~/.dsh-wallpaper-engine/config.json`，自动迁移已有文件）
      - `GET /wallpaper-engine/settings` → 读取插件设置（v0.4.0）
      - `PUT /wallpaper-engine/settings` → 保存插件设置（v0.4.0，写入 `~/.dsh-wallpaper-engine/config.json`）
+     - `GET /wallpaper-engine/media-info/<token>` → 媒体元数据（分辨率 / 编码 / 帧率 / 时长，moov 探测）
+     - `GET /wallpaper-engine/transcoded/<token>?fps=N` → 抽帧转码流（ffmpeg 一次性重编码，磁盘缓存）
+     - `GET /wallpaper-engine/transcode-progress/<token>?fps=N` → 下载 / 转码进度（进度条轮询）
 - **Client 端**（`lib/client.js`）：一个浏览器模块，拉取壁纸列表，把选中壁纸渲染到应用三列**后方**的固定图层，并在「设置」里注册一个**一级设置页**「Wallpaper Engine」（含液态玻璃卡片、选择弹窗、隐藏/恢复、倍速/翻转、配色/透明度与自定义壁纸管理）。
 - **自定义壁纸存储**：上传的文件写入插件管理的本地目录（默认 `~/.dsh-wallpaper-engine/uploads`，可在设置里改到任意盘符），经同一套 `/media`、`/preview` 路由服务——与 WE 媒体走完全相同的管道，天然跨重启持久、无浏览器配额限制。
 
@@ -148,11 +157,11 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 4. 用 **暂停/播放** 暂停视频壁纸，用 **关闭** 清除壁纸。
    选择会保存在浏览器的 `localStorage`（键 `dsh-wallpaper-engine:selection`）中。
 
-![设置界面功能展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/features.png)
+![设置界面功能展示](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/features.png)
 
 > 设置界面：液态玻璃卡片（「外观」配色/透明度）、当前壁纸卡片、「自定义壁纸」「轮播列表」「壁纸效果」分区。
 
-![壁纸选择弹窗与壁纸仓库](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/wallpaper-library.png)
+![壁纸选择弹窗与壁纸仓库](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/wallpaper-library.png)
 
 > 选择弹窗：浏览全部壁纸缩略图，支持批量隐藏与已隐藏恢复。
 
@@ -176,17 +185,48 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 - **紧凑布局**：设置页顶部有一个**滑动开关**。开启后为 **CD 架效果** —— 卡片像 CD 盒一样纵向层叠（下排上沿盖住上排下沿、左右不遮挡），鼠标悬停放大置顶；网格更紧凑（每行约 7 个）且**一页到底不翻页**。关闭则为常规网格（固定高度防重叠 + 分页，默认）。选择保存在浏览器 `localStorage`。
 - **黑胶唱片**：选择壁纸界面旁边有一个**旋转的黑胶唱片**，把当前选中壁纸的封面当作唱片标签展示 —— 播放时旋转、暂停即停（系统开启「减少动态效果」时停用动画）。弹窗头部也保留小号黑胶。该效果在**经典与新版两种卡片样式下都显示**。
 
-![紧凑布局壁纸仓库（CD 架效果）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/compact-wallpaper-library.png)
+![紧凑布局壁纸仓库（CD 架效果）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/compact-wallpaper-library.png)
 
 > 紧凑布局：CD 架式层叠网格，悬停放大置顶，一页到底不翻页。
 
-![旋转的黑胶唱片（黑胶 CD 壁纸展示）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/vinyl-record.gif)
+![旋转的黑胶唱片（黑胶 CD 壁纸展示）](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/vinyl-record.gif)
 
 > 黑胶唱片：当前选中壁纸的封面作为唱片标签，播放时旋转、暂停即停。
 
 ### 视频倍速与水平翻转
 
 选中视频壁纸后，「壁纸效果」区出现 **倍速** 档位（0.5x / 0.75x / 1x / 1.25x / 1.5x / 2x）——基于浏览器原生 `playbackRate`，即时生效、不重载不黑屏（壁纸视频本就静音，无需担心音画同步）。**水平翻转** 开关对视频、网页与上传的图片/视频都生效，镜像通过 CSS `scaleX(-1)` 完成，零主线程开销。
+
+### 遮挡暂停（省电三档）
+
+类似 Wallpaper Engine 的「被遮挡时暂停」——桌面端大部分时间 GPU≈0 的主因。浏览器无法直接探测"被窗口遮挡"，插件用三个最接近的信号（「壁纸效果」区开关，即时生效、持久保存）：
+
+| 开关 | 默认 | 行为 |
+|---|---|---|
+| **最小化/切页时暂停** | 开 | 页面隐藏（窗口最小化 / 切走标签页）时暂停视频，解码引擎直接归零——浏览器对后台页的节流并不保证停解码，显式 `pause` 才彻底 |
+| **窗口失焦时暂停** | 关 | 切到其它应用（壁纸很可能被遮挡）时暂停 |
+| **使用电池时暂停** | 关 | `navigator.getBattery` 判定在电池供电时暂停（不支持的浏览器自动无操作） |
+
+恢复可见 / 聚焦 / 接通电源后自动继续（除非用户手动暂停过）。仅对视频壁纸生效——网页（iframe）壁纸无法从外部暂停，仅随页面隐藏被浏览器节流。
+
+### 解码帧率上限（抽帧转码）
+
+高帧率源（如 4K120 H.264）的硬解是 GPU 占用大头（4060 实测 1.0x 可达 60% Video Decode 占用）。「壁纸效果」区的 **帧率上限**（无限制 / 60 / 48 / 30 / 24 fps）通过**宿主端一次性抽帧重编码**解决：ffmpeg 把源视频转为上限帧率（时间线保持 1.0x **正常速度**，与倍速完全解耦），输出 **4K 保留 + AV1**（NVDEC 上 AV1 解码吞吐约为 H.264 的两倍）并缓存到 `~/.dsh-wallpaper-engine/cache/transcodes/`。
+
+- 播放时**先播原片、转好自动切换**；设置页显示**实时进度条**（下载 ffmpeg % → 转码 % 含预计剩余秒数 → 收尾 → 自动切换），首次约几十秒（含可能的 ffmpeg 下载），之后同壁纸秒开
+- 源帧率 ≤ 上限自动跳过；转码失败自动回退原片，不影响任何现有功能
+- 实测 4K120 → 24fps AV1 后 GPU 占用从 ~60% 降至 **~15%**
+- 转码按 路径+mtime+上限帧率 缓存，轮转里每张壁纸只付一次成本
+
+**ffmpeg 供给（三档，按顺序自动探测）**：
+
+| 档位 | 说明 |
+|---|---|
+| **显式指定** | 环境变量 `DSH_WE_FFMPEG` 指向任意 ffmpeg 可执行文件；或把 ffmpeg 放进插件目录的 `ffmpeg/`（如 `./ffmpeg/ffmpeg.exe`），两者优先 |
+| **自动下载** | 无本地 ffmpeg 时，首次使用自动从**双源竞速**下载对应平台单文件（Windows x64 / Linux x64·arm64 / macOS x64·arm64 等，资产表已验证）：`npmmirror`（国内快）与 GitHub release（海外快）**并发下载、先完成者胜**，流式落盘 + 魔数/体积校验 + 每源 5 分钟超时，缓存到 `~/.dsh-wallpaper-engine/ffmpeg/` 后复用。可用 `DSH_WE_FFMPEG_URL` 环境变量替换下载源（自建镜像 / 代理加速） |
+| **系统 PATH** | 以上都没有时使用系统 `ffmpeg`；仍不可用则该壁纸静默保持原片 |
+
+> 转码使用 **NVENC**（`av1_nvenc`，自动回退 `h264_nvenc`），要求 NVIDIA 显卡与驱动；无 NVIDIA 时功能自动关闭（或回退 H.264 纯软件编码，速度较慢）。本机无 ffmpeg 或转码失败时功能自动关闭，无副作用。
 
 ### 自定义壁纸
 
@@ -217,7 +257,7 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 
 > 开启「设置窗口液态玻璃」后，**General、模型、插件等所有原生分区**和左侧导航都会变成同一套液态玻璃 + 配色（通过覆盖设置对话框作用域内的 shell token 实现，不侵入其他界面）。设置窗口的玻璃模糊与**对话栏使用同一套调节参数**：「玻璃」滑动条（0–60 px）同时控制设置窗口与输入栏/气泡的模糊半径，饱和度/亮度/对比度配方完全一致；**玻璃颜色**决定玻璃底色本身的色调（默认浅色白/深色深夜蓝，选定后两种主题统一使用该色），**玻璃透明度**决定浓淡，越高越"透"（壁纸颜色更清晰地透过面板），越低越接近实色。不支持 `backdrop-filter` 的浏览器自动回退到高不透明实色，保证文字可读。所有控件即时生效并保存在浏览器 `localStorage`，刷新不丢。
 
-![液态玻璃全新设置窗口](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/liquid-glass-window.png)
+![液态玻璃全新设置窗口](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/liquid-glass-window.png)
 
 > 液态玻璃：整个设置窗口统一玻璃质感，跟随「配色」「玻璃颜色」与「玻璃透明度」。
 
@@ -238,17 +278,27 @@ dsh plugin --profile web add link:./dsh-wallpaper-engine
 
 本插件不会向模型暴露任何工具或提示文本，对 agent 零 token 开销。选择、隐藏、轮播列表等状态都保存在浏览器 `localStorage`，不写入任何持久化 DSH 设置。唯一的本地落盘数据是**自定义壁纸文件**（存于你设置的上传目录）与记录该目录位置的 `~/.dsh-wallpaper-engine/config.json`（约百字节）。
 
+**环境变量**：
+
+| 变量 | 作用 |
+|---|---|
+| `DSH_WE_FFMPEG` | 指定 ffmpeg 可执行文件（解析链最高优先） |
+| `DSH_WE_FFMPEG_URL` | 替换自动下载源（自建镜像 / 代理加速） |
+| `DSH_WE_CACHE_DIR` | 覆盖缓存根目录（抽帧转码缓存 / 场景静态帧缓存） |
+
 ## 与 dsh-better-sidebar 的兼容适配
 
 本插件的液态玻璃效果对 dsh-better-sidebar 的侧边栏面板做了专门适配（毛玻璃、高光与层级统一），让侧边栏与对话区共享同一套「壁纸 + 遮罩」背景，三列视觉一致、不再割裂。
 
-![dsh-better-sidebar 兼容适配](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/71a67ef3666bc0296211e9660640f2eb7efc031e/docs/images/better-sidebar.png)
+![dsh-better-sidebar 兼容适配](https://raw.githubusercontent.com/elysia395/dsh-wallpaper-engine/053770de24ff0e0810fcdc6f136d7f41b533f64f/docs/images/better-sidebar.png)
 
 ## 已知限制
 
 - Scene（原生 3D）和 Application 壁纸无法内嵌，不会显示在缩略图选择器和轮播候选中；它们的动态渲染仍是 Wallpaper Engine 在桌面上的工作。
 - 浏览器需能自动播放静音 `<video>`（DSH 跑在 loopback，现代浏览器允许静音自动播放）。
 - 媒体从你本机的 Wallpaper Engine 安装路径提供；host 只提供它已枚举过的文件，不会暴露任意文件系统。自定义上传的文件同样只存在于本机，不上传任何服务器。
+- **抽帧转码依赖 ffmpeg 与 NVIDIA NVENC**（`av1_nvenc` → `h264_nvenc` 回退）：无 ffmpeg（含自动下载不可用，如 musl/Alpine 等未覆盖平台）或无 NVIDIA 显卡时，帧率上限功能自动关闭，壁纸保持原片播放，不影响其它任何功能。
+- **遮挡暂停仅对视频壁纸生效**：网页（iframe）壁纸无法从外部暂停，只能随页面隐藏被浏览器节流。
 - 选择器文案为中英混合（本 bundle 尚未接入 DSH 的 locale 命名空间）。
 
 ## 开发 / 重建

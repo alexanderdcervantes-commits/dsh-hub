@@ -55,25 +55,25 @@
 
 **嵌入式主面板**：停靠在输入框上方，指数卡 + 自选股行情 + 四个功能页签：
 
-![主面板](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/panel.png)
+![主面板](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/panel.png)
 
 **个股详情**：16 项行情数据 + K线蜡烛图（成交量柱 / MA5-10-20 均线 / 十字光标）+ 财务指标 + 热议用户：
 
-![个股详情](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/detail.png)
+![个股详情](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/detail.png)
 
 **迷你行情区域**：四大指数 + 自选 12 只两列平铺，⤡ 手柄调宽度，点击开合面板，可拖动：
 
-![迷你行情区域](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/badge.png)
+![迷你行情区域](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/badge.png)
 
 **Agent 工具调用卡片**（对话内直接问行情，结果渲染为专属卡片而非 JSON）：
 
 | `xueqiu_quote` 行情表 | `xueqiu_kline` 蜡烛图 |
 | --- | --- |
-| ![quote](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/quote.png) | ![kline](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/kline.png) |
+| ![quote](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/toolcards/quote.png) | ![kline](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/toolcards/kline.png) |
 
 | `xueqiu_hot` 热榜 | `xueqiu_news` 快讯时间线 |
 | --- | --- |
-| ![hot](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/hot.png) | ![news](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/252b14eaf7cf7a9e40be77def92ce2d214a42b72/assets/toolcards/news.png) |
+| ![hot](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/toolcards/hot.png) | ![news](https://raw.githubusercontent.com/kangjinghang/dsh-xueqiu/c75a0e9ac542be08a8de054a417a438e47171e9a/assets/toolcards/news.png) |
 
 ## 📦 安装
 
@@ -110,7 +110,7 @@ dsh plugin --profile web add ./dsh-xueqiu
 - 输入框下方的**指数条**点击也可展开面板。
 - 点击自选股、指数卡或热榜行 → 个股详情：16 项行情数据 + K线/分时切换（悬停图表看十字光标详情）+ 财务指标（ROE/毛利率/净利同比等）+ 热议用户。
 - **面板高度**：拖动面板底边的手柄上下调整（160px ~ 85% 视口高度），**双击手柄复位**；高度会被记忆。
-- **登录雪球（可选）**：点面板右上「👤 登录」，按提示从浏览器复制 Cookie 整行粘贴即可。登录后自选股切换为你的**雪球云端自选股**；「同步云端自选」可随时手动拉取，加/删自选会尽力同步云端（失败自动回退本地）。Cookie 只保存在本机，退出登录即清除。
+- **登录雪球（可选）**：点面板右上「👤 登录」，按提示从浏览器复制 Cookie 整行粘贴即可。登录后自选股切换为你的**雪球云端自选股（云端为准，10 分钟自动同步）**；「同步云端自选」可随时手动拉取；加/删自选双端同步（`portfolio/stock/add.json` / `cancel.json`）。Cookie 只保存在本机，退出登录即清除。
 - 刷新频率：盘中行情 20s、内容 60s；收盘后自动降为 60s / 3min。
 
 ## 🔧 稳定性设计
@@ -125,6 +125,8 @@ dsh plugin --profile web add ./dsh-xueqiu
 - **渐进渲染**：详情页报价 + K线先行上屏，分时/财务/KOL 异步到达后增量合并。
 
 ## 🧪 质量与测试
+
+> **平台要求**：macOS / Linux / Windows。macOS/Linux 走 POSIX shell curl；Windows 走 DSH 的 PowerShell 层显式调用 `curl.exe`（Win10+ 自带），引号语义天然兼容，已在 GitHub Actions `windows-latest` 上真连雪球全量验证（含匿名 Cookie 播种链路）。
 
 三套互补的自动化测试，每次发版前全部通过（最近一次实测 2026-08-20，macOS + dsh web 3080 端口）：
 
@@ -188,6 +190,21 @@ dsh-xueqiu/
 
 ## 📋 更新日志
 
+- **1.21.0**（2025-08-21）
+  - 新增：**Windows 支持**。DSH 在 Windows 上的 shell 层是 PowerShell（`pwsh -Command`），单引号字面量语义与 POSIX 一致——原先"cmd 引号不兼容"的障碍实际不存在。三处适配：① 显式调用 `curl.exe`（绕开 PS 5.1 中 `curl` = `Invoke-WebRequest` 别名，Win10+ 自带 curl.exe）；② Cookie 播种的 `-o /dev/null` 在 Windows 换成 `NUL`；③ Cookie 请求头剥离引号字符防注入。测试桩 `realShell` 平台对齐（win32 走 pwsh，同 DSH win32 层）。CI 新增 `windows-latest` 任务：单测 + cookie 测试 + live.mjs 真连雪球（51 断言，含匿名播种链路）全绿。README 平台要求同步更正为 macOS / Linux / Windows。
+- **1.20.6**（2025-08-21）
+  - 测试：**雪球云端自选接口契约测试进 CI**（`qa/contract.mjs`，7 断言）——直连真实端点验证 `portfolio/list.json` / `portfolio/stock/list.json` / `add.json` / `cancel.json` 契约（含真实 add→cancel 往返后还原）。每日定时（UTC 21:00）用 `XQ_COOKIE` secret 真跑，雪球改接口时这里最先失败，防止 `watch.json` 类"虚构端点"事故重演；无 secret 时（push/PR）自动 skip，同一定时任务顺带跑 live.mjs（51 断言）。需在仓库 Settings → Secrets 配置 `XQ_COOKIE`（浏览器完整 Cookie 请求头，含 `xq_a_token`）。
+- **1.20.5**（2025-08-21）
+  - 修复：**云端自选双写从未生效**——此前调用的 `watch.json` 是不存在的端点（WAF 对未知路径统一 403，曾误判为"雪球封禁第三方写入"）。真实端点是 `portfolio/stock/add.json` / `cancel.json`（POST form，symbols 参数）。已修正并经真实账号完整往返验证：插件加自选 → 云端 116 只 ✓ → 插件移除 → 云端还原 115 只 ✓。本地加/删自选恢复真正的双端同步，账号面板与 README 文案同步更正。
+- **1.20.4**（2025-08-21）
+  - 修复：**host 内存缓存无淘汰**——K 线 begin 参数按分钟取整使缓存 key 持续增长，长开实例会无界泄漏；现在写入时清理过期条目并设 200 条容量上限（写入即清，无后台任务）。
+  - 修正：**云端自选写入已被雪球风控封禁**（读接口正常、写接口 openresty 403）——账号面板与 README 文案如实说明「云端为准：本地加/删会在下次同步时被云端覆盖，改自选请去雪球网页/App」。
+  - 测试：看门狗 30s 超时路径单测（挂起请求精确 30s 释放、槽位归零）；缓存淘汰单测（230 条→钳 200）；云端同步真实往返 E2E；agent 工具真实会话 E2E（自然语言→选工具→卡片渲染→结构化回复，数据与直连一致）。
+- **1.20.3**（2025-08-21）
+  - 修复：**徽标位置视口钳制**——窗口缩小/分辨率变化后徽标不再滞留屏幕外；挂载时按真实渲染尺寸（含边框）钳制，resize 实时重钳制（浏览器实测 375px/320px 视口均不溢出）。
+  - 加固：`/xq-rpc` 请求体 1MB 上限（超出 413），防失控本地进程 OOM。
+  - 声明：README 明确平台要求 macOS / Linux（POSIX shell curl，Windows 暂不支持）。
+  - 测试：完成浏览器级 UI 走查（徽标/面板 4 tab/搜索/详情/K线十字光标/登录三档错误路径）与动态分支协议验证，登录态备份-恢复全程无损。
 - **1.20.2**（2025-08-21）
   - 修复：**完整 QA 测试轮发现的 3 个缺陷**——① `login.status` 在登录文件缺 uid/screenName 字段时不再返回空，回退到 JWT 解码值；② K 线查询无效代码的错误文案不再误导为「cookie 不完整」，明确提示检查代码格式；③ `xueqiu_news` 的 count 参数现在真正生效（上游固定每页 ~10 条并忽略 count，工具层用 max_id 自动翻页补足，最多 3 页）。
   - 新增：**离线单测套件 `qa/`**（mock shell，不发网络）并接入 GitHub Actions——覆盖调度节流/TTL 缓存/重试链/云端同步语义/cookie 双 URL 回退/命令注入防护等 40 项断言；另有本地 live 套件 `qa/live.mjs` 对真实 API 做 51 项数据正确性验证。

@@ -1,6 +1,18 @@
 # 🎒 DSH Config Manager
 
-**Pack up your DSH configuration and take it anywhere — restore your whole environment on a new machine with one click.**
+**DeepSeek Harness Backup, Restore & Migration Plugin.**
+
+Backup, restore, export, import, migrate and sync your complete DeepSeek Harness (DSH) configuration — settings, model providers, plugins, MCP servers, skills, agent presets and workspaces — and restore your whole environment on a new machine with one click.
+
+- 🔄 **Backup & Restore** DeepSeek Harness configuration
+- 📦 **Export / Import** complete DSH configuration
+- 🚚 **Migrate** DSH to another machine
+- 🔌 Backup installed **plugins** and plugin configuration
+- 🧩 Backup **MCP servers** and **Skills**
+- 🔐 Encrypted backups with optional credentials
+- ☁️ **Git / WebDAV** configuration sync
+- 🛒 **Configuration market** — browse & one-click install shared configs
+- ↩️ Automatic snapshot and rollback before restore
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
@@ -23,6 +35,30 @@ DSH is your AI assistant workbench — it holds your settings: model configs, pl
 
 ---
 
+## 🎯 Use Cases
+
+### Backup DeepSeek Harness configuration
+
+Create a portable backup of your DSH settings, model providers, plugins, MCP servers, skills, agent presets, profiles and workspace — one ZIP file, no secret values included by default.
+
+### Restore DeepSeek Harness on another machine
+
+Export your current DSH environment as a single ZIP and import it on a new Windows, macOS or Linux machine. One click brings back settings, plugins, MCP servers, skills and global instructions (AGENTS.md).
+
+### Migrate DSH configuration to a new computer
+
+Move your complete DeepSeek Harness setup without manually reinstalling plugins, MCP servers and skills. Dead absolute paths are detected and remapped automatically (batch prefix mapping supported).
+
+### Sync DSH configuration across machines
+
+Keep portable configuration synchronized between machines through a private Git repository or WebDAV — secrets never sync.
+
+### Discover & install configurations from the marketplace
+
+Browse the built-in official market for ready-made configurations (model providers, plugins, MCP servers, skills, agent presets…), preview what would be imported (dry-run), and install with one click — supply-chain warnings are always shown and every section must be explicitly approved before anything is written.
+
+---
+
 ## ✨ Highlights
 
 | Icon | Feature | In one line |
@@ -36,6 +72,7 @@ DSH is your AI assistant workbench — it holds your settings: model configs, pl
 | ↩️ | **Automatic rollback** | Failed import restores everything automatically |
 | 📸 | **Snapshot restore** | Undo an import: whole-file restore + uninstall added plugins (CLI & GUI) |
 | 🔄 | **Remote Sync** | Push/pull portable config via **Git private repo or WebDAV** (secrets never sync) |
+| 🛒 | **Config Marketplace** | Browse & one-click install community configs — supply-chain warnings + per-section approval |
 | 🗂️ | **Profiles** | Save multiple setups (Work / Personal) and switch anytime |
 | 🌐 | **Bilingual UI** | Interface, reports and error details follow the DSH app language (中文 / English) |
 
@@ -45,11 +82,15 @@ DSH is your AI assistant workbench — it holds your settings: model configs, pl
 
 | Export | Import Preview |
 |:---:|:---:|
-| ![One-click Export](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-export.png) | ![Import Preview](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-import-preview.png) |
+| ![One-click Export](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/cbac337c64e269edb3ac9a828016338af29fa663/assets/screenshot-export.png) | ![Import Preview](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/cbac337c64e269edb3ac9a828016338af29fa663/assets/screenshot-import-preview.png) |
 
 | Snapshot Restore | Remote Sync |
 |:---:|:---:|
-| ![Snapshot Restore](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-snapshots.png) | ![Remote Sync](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/c9d4dc60f441ea2bd4dd33bacada4e8d70819ca7/assets/screenshot-sync.png) |
+| ![Snapshot Restore](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/cbac337c64e269edb3ac9a828016338af29fa663/assets/screenshot-snapshots.png) | ![Remote Sync](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/cbac337c64e269edb3ac9a828016338af29fa663/assets/screenshot-sync.png) |
+
+| Configuration Market |
+|:---:|
+| ![Configuration Market](https://raw.githubusercontent.com/xiajiajun516/dsh-config-manager/cbac337c64e269edb3ac9a828016338af29fa663/assets/screenshot-market.png) |
 
 ---
 
@@ -81,17 +122,17 @@ It's a standard **DSH plugin** — two steps:
 
 ```bash
 # ① Install the plugin
-dsh plugin --profile web add dsh-config-manager@latest --config.auto-install-peers=false
+dsh plugin --profile web add dsh-config-manager@latest
 
 # ② Restart DSH (a "Backup & Migration" entry appears in Settings)
 ```
 
-> 💡 Just copy-paste the command: `--config.auto-install-peers=false` skips a few DSH core packages that aren't on the public registry yet (the DSH runtime provides them), and `@latest` ensures you get the newest build.
+> 💡 Just copy-paste the command: `@latest` ensures you get the newest build.
 >
 > 🐛 **`@latest` installed an old version?** That's pnpm 11's `minimumReleaseAge` supply-chain policy, not a cache issue: versions published less than ~30 days ago are excluded from resolution until whitelisted. Two fixes:
 > - Install an exact version once (it auto-whitelists, then `@latest` works):
 >   ```bash
->   dsh plugin --profile web add dsh-config-manager@0.1.8 --config.auto-install-peers=false
+>   dsh plugin --profile web add dsh-config-manager@0.1.8
 >   ```
 > - Or disable the age gate with a one-liner (adds `minimumReleaseAge: 0` at the top of the profile's `pnpm-workspace.yaml`):
 >   ```powershell
@@ -194,6 +235,16 @@ Push / pull your portable config between machines through **either of two channe
 - **Switching channels starts fresh**: Git and WebDAV do **not** share snapshots or a common ancestor. When you switch transport, sync begins again from the new remote's empty baseline — push a fresh snapshot first.
 - **WebDAV auth** uses HTTP Basic: the `username` is stored in the config and may be echoed back into the UI, while the `password` is read live from the DSH credentials slot `DSH_CONFIG_MANAGER_SYNC_WEBDAV_PASSWORD` — it never appears in any sync file or log.
 - **Plugins auto-install**: when pulling diffs, plugins that are new in the backup are **installed automatically** on confirm — no manual per-item ticking in the diff list. Only **version-conflict** plugins still ask you to pick "Keep Current / Use Imported".
+
+### 🛒 Configuration Marketplace
+
+Browse and install ready-made configurations (model providers, plugins, MCP servers, skills, agent presets…) shared by the community:
+
+- **Built-in official market** — read-only, bound to the official public repo (official badge shown, not editable); first open auto-refreshes, manual refresh also available
+- **Search & filter** — keyword search, category filter, source filter (Official / Community), sorting (recently updated / most starred / name A–Z), and a ⭐ badge showing the **source repo's** star count (queried anonymously, no token involved)
+- **Supply-chain warnings always shown** — source repo URL, "not officially reviewed", download time; **per-section approval** — high-risk sections (sessions / arbitrary files) are banned from listing outright, and every remaining section must be explicitly approved before the import is confirmed
+- **Install reuses the safe import pipeline** — analyze → preview → auto-backup → apply → rollback; nothing is written before you confirm
+- **"My Configs"** — sign in with GitHub (device flow), upload a config to **your own public repo** in one click, and an **auto listing PR** is opened against the official market repo; manage your listings (status badges: not listed / PR pending / listed), update in one click, install back locally, or delist (auto de-listing PR)
 
 ### 🗂️ Profiles
 

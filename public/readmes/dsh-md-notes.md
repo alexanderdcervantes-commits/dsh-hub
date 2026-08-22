@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/XieZongChen/dsh-md-notes/f5d744c3bf84d7d33bbb074aae030b49c9abc18d/assets/dsh-md-notes.png" width="96" alt="dsh-md-notes" />
+  <img src="https://raw.githubusercontent.com/XieZongChen/dsh-md-notes/7121f08b20cb7f1f712bb0452306bedef0a01363/assets/dsh-md-notes.png" width="96" alt="dsh-md-notes" />
 </p>
 
 <h1 align="center">dsh-md-notes</h1>
@@ -37,7 +37,7 @@ A note-taking plugin for [DeepSeek Harness](https://github.com/deepseek-ai/deeps
 ## Compatibility
 
 - **Verified plugin version**: 0.6.0 (see [CHANGELOG.md](CHANGELOG.md) for history).
-- **Verified dsh version**: deepseek-harness mainline `0.1.0-rc.8`.
+- **Verified dsh version**: deepseek-harness mainline `0.1.1-rc.2`.
 - The plugin is not pinned to a specific mainline commit; pin the plugin version at install time if you need a fixed combination. Runtime dependencies (`@deepseek-ai/*`, `react`) are declared as optional peer dependencies and resolve from the dsh installation.
 
 ## Install / Uninstall

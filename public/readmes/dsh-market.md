@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dsh-market/dsh-market/263665cfc34970ac80e2cd4455cbb58a4e1214b5/assets/logo.svg" width="96" alt="dsh-market logo">
+  <img src="https://raw.githubusercontent.com/dsh-market/dsh-market/f2172056fd25f4665de9b44a1983a7297f6de927/assets/logo.svg" width="96" alt="dsh-market logo">
 </p>
 
 # dsh-market
@@ -13,7 +13,7 @@ English | [中文](README.zh.md)
 
 The plugin market inside DeepSeek Harness. Open Settings → **Plugin Market** → browse, search, one-click install.
 
-![dsh-market](https://raw.githubusercontent.com/dsh-market/dsh-market/263665cfc34970ac80e2cd4455cbb58a4e1214b5/assets/demo-en.png)
+![dsh-market](https://raw.githubusercontent.com/dsh-market/dsh-market/f2172056fd25f4665de9b44a1983a7297f6de927/assets/demo-en.png)
 
 One-click themes: install, switch live, no restart.
 
@@ -88,6 +88,14 @@ Installs prefer npm tarballs over full-repo GitHub downloads whenever a plugin p
 ## Data source
 
 Fetched live on every open from [awesome-dsh-plugin.com/plugins.json](https://awesome-dsh-plugin.com/plugins.json) — curated entries, npm mapping, and star counts refreshed daily by CI, with no stale cache behind it. A failure reports the actual reason and elapsed time, with a Retry button.
+
+There is deliberately no bundled snapshot to fall back on: for a catalog that grows daily, a stale answer is not a degraded one but a wrong one — a plugin published this morning would read as "does not exist".
+
+**If that host is unreachable from your network**, point the market at a mirror instead. Set `DSHM_REGISTRY_URL` in the environment dsh runs in, to anything serving the same `plugins.json` shape:
+
+```sh
+DSHM_REGISTRY_URL=https://your-mirror.example/plugins.json dsh web
+```
 
 ## Friends
 

@@ -120,7 +120,7 @@ Agent one-glance guide: [mcp/AGENT_GUIDE.md](mcp/AGENT_GUIDE.md)
 
 ## 🖥️ UI Workbench (dsh-quant-ui)
 
-![dsh-quant UI](https://raw.githubusercontent.com/pengpengyi92/dsh-quant/156d94d88c3eac934f2d7d31cd2ee8625da2c477/demos/ui-demo-preview.png)
+![dsh-quant UI](https://raw.githubusercontent.com/pengpengyi92/dsh-quant/9aee6b45e7de75ab3091331cdb016e3d37765c54/demos/ui-demo-preview.png)
 
 [dsh-quant-ui](https://github.com/pengpengyi92/dsh-quant-ui): candlesticks + MA
 overlays + trade markers, equity curves, fund NAV / management-fee / performance-fee
@@ -262,6 +262,8 @@ results append after the reusable prefix.
 
 | Version | Date | Notes |
 |---|---|---|
+| 0.82.0 | 2026-08-22 | TYO_QUANT — Tokyo yen-rates-center census (~9 firms, $30M talent war, Capula stronghold), 48 reports total |
+| 0.81.0 | 2026-08-20 | CHI_QUANT — Chicago market-making city census (~14 firms, exchange-gene, UChicago pipeline, Citadel exit), 47 reports total |
 | 0.80.0 | 2026-08-20 | QUANT_PEOPLE_CN + QUANT_PEOPLE_GLOBAL — 101st-release quant headcount estimates (CN ~30-50k, 4-city ~25-38k, global ~80-120k), 46 reports total |
 | 0.79.0 | 2026-08-20 | QUANT_WORLD_MAP — 100th-release special: global quant world map (5-city axis, 9 paths, talent trees, 4-city census synthesis), 44 reports total |
 | 0.78.0 | 2026-08-20 | NYC_FOREIGN_QUANT — New York hedge-fund-universe census (~28 firms, 12 HQs, CT suburb dark core, NY-LDN twin), 43 reports total |
@@ -417,7 +419,7 @@ cd deepseek-harness && pnpm exec tsx ../quant-indicators/consumer-test/boot.ts
 
 If dsh-quant helps your research, a ⭐ makes the project visible to more dsh users.
 
-<p align="center"><img src="https://raw.githubusercontent.com/pengpengyi92/dsh-quant/156d94d88c3eac934f2d7d31cd2ee8625da2c477/demos/whale-trading.png" alt="dsh whale trading on a holographic screen" width="420" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pengpengyi92/dsh-quant/9aee6b45e7de75ab3091331cdb016e3d37765c54/demos/whale-trading.png" alt="dsh whale trading on a holographic screen" width="420" /></p>
 
 This whale stands for DeepSeek Harness (dsh) — trading on its holographic screen 🐋
 

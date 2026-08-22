@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-acp/0cf5797d2a42418417410072edbceb38773c8adc/assets/acp-x-deepseek.svg" width="520" alt="Agent Client Protocol × DeepSeek Harness" />
+  <img src="https://raw.githubusercontent.com/openma-ai/deepseek-harness-acp/89995bcecfdbd9846ccaf0a65c7a477793dc2c1a/assets/acp-x-deepseek.svg" width="520" alt="Agent Client Protocol × DeepSeek Harness" />
 </p>
 
 <h1 align="center">deepseek-harness-acp</h1>
@@ -103,6 +103,28 @@ owns the composition.
 ## Plugin and extension model
 
 There are two independent ways to extend an ACP-backed surface.
+
+To use portable Agent Plugins, Codex plugins, Claude Code plugins, or Pi
+packages through an ACP client, add the
+[Agent Plugins Bridge](https://github.com/openma-ai/dsh-agents-plugins-bridge) to the
+same profile:
+
+```sh
+dsh plugin --profile acp add @openma/dsh-agents-plugins-bridge@latest
+```
+
+The Bridge contributes ordinary Host rows. Imported commands, skills, tools,
+hooks, MCP connections, agents, and Pi extensions therefore reach ACP through
+this adapter's existing projections; there is no ACP-specific plugin import
+runtime. The Bridge's Web management panel and MCP Apps HTML renderer remain
+Web surfaces and are not sent over ACP.
+
+For extensions that need a session-owned background lifecycle without an open
+terminal UI, use
+[Martty owner](https://github.com/openma-ai/deepseek-harness-tui/blob/main/README.en.md#martty-owner-long-lived-headless-acp--pi-rpc).
+It is a generic ACP `rpc` client: this package remains the server/transport,
+while Martty owns the long-lived Session and explicit startup/shutdown slash
+commands.
 
 ### Extend the Host composition
 

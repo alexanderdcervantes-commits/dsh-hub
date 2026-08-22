@@ -12,9 +12,9 @@
 
 ## Screenshot
 
-![Auto button in the composer tool row](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/37c58be26a2b2b035bc041f685386240cecbf1c2/assets/screenshot-auto-button.png)
+![Auto button in the composer tool row](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/dcd8835c8ebd291ada31f96a60b2b4e46a6adc71/assets/screenshot-auto-button.png)
 
-![Auto Permissions settings page](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/37c58be26a2b2b035bc041f685386240cecbf1c2/assets/screenshot-settings.png)
+![Auto Permissions settings page](https://raw.githubusercontent.com/a903067276-rgb/dsh-perm-guard/dcd8835c8ebd291ada31f96a60b2b4e46a6adc71/assets/screenshot-settings.png)
 
 ## Features
 
@@ -78,8 +78,12 @@ Switching modes resets the category switches to that mode's defaults (adjustable
 
 ## Requirements
 
-- DSH web (the approval system this plugin guards)
+- DSH web >= 0.1.0-rc.6 (the approval system this plugin guards)
+- **Version compatibility** (best effort — the settings card uses dual-field `key`+`id` registration to satisfy both rc.6 (`id`) and rc.7+ (`key`); verified locally on rc.6/rc.8/0.1.1-rc.2, **not guaranteed on every DSH version**):
+  - DSH 0.1.0-rc.6 and newer (incl. 0.1.1-rc.1/rc.2): try `main` (default).
+  - Conservative fallbacks (the last pre-0.1.1 build): DSH 0.1.0-rc.7/rc.8 → `v0.2.7` (`dsh plugin add github:a903067276-rgb/dsh-perm-guard#v0.2.7`); DSH 0.1.0-rc.6 → frozen `rc6-compat` tag (no maintenance).
 - `pnpm` in PATH — `dsh plugin` is a pnpm forwarder (needed for install/update)
+- **Maintenance policy**: this plugin keeps evolving with the latest DSH releases; compatibility with older DSH versions is best-effort only and not guaranteed going forward.
 
 ## How it works
 

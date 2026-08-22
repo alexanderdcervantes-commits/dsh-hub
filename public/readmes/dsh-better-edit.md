@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Rianico/dsh-better-edit/d66754b803f2469ca904e00224cdfd6d7b97bdf0/assets/logo.svg" alt="dsh-better-edit" width="200">
+  <img src="https://raw.githubusercontent.com/Rianico/dsh-better-edit/c2b993cefda1e4e6987603210b35527c13687a7d/assets/logo.svg" alt="dsh-better-edit" width="200">
 </p>
 
 <h1 align="center">dsh-better-edit</h1>
@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.3.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/version-0.3.1-blue.svg" alt="Version">
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License">
   <img src="https://img.shields.io/badge/DeepSeek_Harness-Plugin-blueviolet.svg" alt="DeepSeek Harness Plugin">
   <img src="https://img.shields.io/npm/v/dsh-better-edit" alt="npm version">
@@ -38,7 +38,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Rianico/dsh-better-edit/d66754b803f2469ca904e00224cdfd6d7b97bdf0/assets/banner.svg" alt="file.ts → read → hashed lines → edit by hash → diff" width="900">
+  <img src="https://raw.githubusercontent.com/Rianico/dsh-better-edit/c2b993cefda1e4e6987603210b35527c13687a7d/assets/banner.svg" alt="file.ts → read → hashed lines → edit by hash → diff" width="900">
 </p>
 
 ---
@@ -440,7 +440,7 @@ npm run build       # tsc → lib/
 ### Releasing (tag-first)
 
 ```sh
-npm run release -- 0.3.0                 # bump + CHANGELOG move + commit + tag + push → GitHub release
+npm run release -- 0.3.1                 # bump + CHANGELOG move + commit + tag + push → GitHub release
 npm publish --registry https://registry.npmjs.org   # blocked until the version is tagged
 ```
 
@@ -484,11 +484,11 @@ Upstream is the source of truth for reproducibility: [`pi-better-edit/benchmark/
 
 ## Roadmap
 
-**Current state (0.3.0):** hashline `edit` with merged payload `{path, edits:[[hash,hash,text]]}`, whitespace-insensitive anchors, orphan healing, per-workspace store, 674 tests.
+**Current state (0.3.1):** hashline `edit` with merged payload `{path, edits:[[hash,hash,text]]}`, whitespace-insensitive anchors, orphan healing, per-workspace store, 674 tests.
 
 <details><summary>Next</summary>
 
-- Verify 0.3.0 live in a dsh session after the orphan-healing + canon changes.
+- Verify 0.3.1 live in a dsh session after the orphan-healing + canon changes.
 - Keep benchmark reference in sync with upstream releases (algorithm is shared).
 - Re-check plugin wiring against the next dsh release (pinned to `0.1.0-rc.6`; dsh is in developer preview and promises breaking changes).
 

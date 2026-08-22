@@ -4,7 +4,7 @@
 
 # 🔐 dsh-coding-subscription-oauth
 
-**v0.5.6** · formerly `dsh-grok-build`
+**v0.5.8** · formerly `dsh-grok-build`
 
 **Coding-subscription OAuth for [DeepSeek Harness](https://github.com/deepseek-ai/dsh).** Use SuperGrok / X Premium (Grok Build), ChatGPT Plus/Pro (Codex), Kimi Code, Claude Pro/Max and Google Antigravity inside DSH — without a second API-key bill and **without pasting any token into chat.**
 
@@ -23,7 +23,7 @@ Published first as **`dsh-grok-build`** when it only covered Grok Build. The cur
 
 | | Use this | Still works |
 |---|---|---|
-| npm (recommended) | Current release is `0.5.6`: `dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.6` | No legacy npm package was published |
+| npm (recommended) | Current release is `0.5.8`: `dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.8` | No legacy npm package was published |
 | GitHub / development | [`dsh-coding-subscription-oauth`](https://github.com/lninghaha/dsh-coding-subscription-oauth) | Previous GitHub repo `dsh-grok-build` was removed |
 | CLI | `dsh-coding-oauth` | `dsh-grok-build` |
 | Cordis plugin id | `llm-grok-build-oauth` | unchanged |
@@ -77,7 +77,7 @@ Grok Build device login, live `/v1/models-v2` and Responses streaming are verifi
 
 ```bash
 # 1. install the current npm release into the web profile
-dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.6
+dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.8
 
 # 2. optional — Google Antigravity (pinned, reviewed version)
 dsh plugin --profile web add dsh-agy@0.1.2
@@ -118,7 +118,7 @@ Requires DeepSeek Harness `0.1.0-rc.6+` and Node.js 22.19+. Full details in the 
 
 ```bash
 # current npm release
-dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.6
+dsh plugin --profile web add dsh-coding-subscription-oauth@0.5.8
 
 # development / alternative: from GitHub
 dsh plugin --profile web add github:lninghaha/dsh-coding-subscription-oauth
@@ -148,15 +148,15 @@ Open **Settings → Coding OAuth**. The page uses segmented tabs — **Accounts*
 <table>
   <tr>
     <td align="center" valign="top" width="33%">
-      <a href="media/settings_accounts.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/c50ebda48b553a7d01603350ba34c46e51a698fc/media/settings_accounts.png" alt="Coding OAuth Accounts tab" width="280" /></a><br />
+      <a href="media/settings_accounts.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/df2590a7d3b74e0e17e9dc6a4e78333d8f204f94/media/settings_accounts.png" alt="Coding OAuth Accounts tab" width="280" /></a><br />
       <sub>Accounts</sub>
     </td>
     <td align="center" valign="top" width="33%">
-      <a href="media/settings_gateway.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/c50ebda48b553a7d01603350ba34c46e51a698fc/media/settings_gateway.png" alt="Coding OAuth Gateway tab" width="280" /></a><br />
+      <a href="media/settings_gateway.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/df2590a7d3b74e0e17e9dc6a4e78333d8f204f94/media/settings_gateway.png" alt="Coding OAuth Gateway tab" width="280" /></a><br />
       <sub>Gateway</sub>
     </td>
     <td align="center" valign="top" width="33%">
-      <a href="media/settings_capabilities.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/c50ebda48b553a7d01603350ba34c46e51a698fc/media/settings_capabilities.png" alt="Coding OAuth Capabilities tab" width="280" /></a><br />
+      <a href="media/settings_capabilities.png"><img src="https://raw.githubusercontent.com/lninghaha/dsh-coding-subscription-oauth/df2590a7d3b74e0e17e9dc6a4e78333d8f204f94/media/settings_capabilities.png" alt="Coding OAuth Capabilities tab" width="280" /></a><br />
       <sub>Capabilities</sub>
     </td>
   </tr>

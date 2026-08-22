@@ -12,9 +12,9 @@ A **HUD status panel** plugin for [DeepSeek Harness](https://github.com/deepseek
 
 ## Screenshot
 
-![dsh-hud gauge button in the input toolbar](https://raw.githubusercontent.com/a903067276-rgb/dsh-hud/8aba218555252d2e35e9ea4f970fa660c0386839/assets/hud-button.png)
+![dsh-hud gauge button in the input toolbar](https://raw.githubusercontent.com/a903067276-rgb/dsh-hud/2370b0f7609a44431c53baa9fbda47453d0dff63/assets/hud-button.png)
 
-![dsh-hud panel](https://raw.githubusercontent.com/a903067276-rgb/dsh-hud/8aba218555252d2e35e9ea4f970fa660c0386839/assets/hud-panel.png)
+![dsh-hud panel](https://raw.githubusercontent.com/a903067276-rgb/dsh-hud/2370b0f7609a44431c53baa9fbda47453d0dff63/assets/hud-panel.png)
 
 The gauge button in the input toolbar opens the floating panel showing git status, commit history, MCP servers, skills and official usage info (tokens, cache hit rate, turns/steps, LLM & tool time, context usage).
 
@@ -69,7 +69,16 @@ the panel is closed, only the lightweight git badge keeps polling).
 
 ## Requirements
 
-- DSH web (run with `npx @deepseek-ai/dsh web`)
+- DSH web >= 0.1.1-rc.1 (run with `npx @deepseek-ai/dsh web`)
+- **Version compatibility** (the per-model usage projection uses the DSH 0.1.1+ contract; 0.1.0-rc.7/rc.8 still use the old one):
+- **Maintenance policy**: this plugin keeps evolving with the latest DSH releases; compatibility with older DSH versions is best-effort only and not guaranteed going forward.
+
+| Your DSH version | Install this | Note |
+|---|---|---|
+| 0.1.1-rc.1 and newer | `main` (v1.2.14+) | Full features |
+| 0.1.0-rc.7 – 0.1.0-rc.8 | `v1.2.11` — `dsh plugin add github:a903067276-rgb/dsh-hud#v1.2.11` | Last release with the pre-0.1.1 projection contract |
+| 0.1.0-rc.6 and older | `rc6-compat` — `dsh plugin add github:a903067276-rgb/dsh-hud#rc6-compat` | Frozen, no maintenance — upgrade recommended |
+
 - `git` CLI on PATH
 - No extra shell needed: DSH's `shell` service executes everything via `bash -c` on all
   platforms (Git Bash on Windows), so if DSH runs, this plugin runs.

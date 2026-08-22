@@ -6,7 +6,7 @@
 ![node](https://img.shields.io/badge/node-%3E%3D22-339933.svg)
 ![pnpm](https://img.shields.io/badge/pnpm-%3E%3D10-f69220.svg)
 ![dsh tui](https://img.shields.io/badge/dsh%20tui-compatible-4B32C3.svg)
-![dsh](https://img.shields.io/badge/DSH-0.1.0--rc.8-4B32C3.svg)
+![dsh](https://img.shields.io/badge/DSH-0.1.1--rc.2-4B32C3.svg)
 [![dshfind](https://dshfind.com/api/badge/omdsh-dev/dsh-llm-fallbacks?lang=en)](https://dshfind.com/zh/plugins/omdsh-dev/dsh-llm-fallbacks?ref=badge)
 
 Automatic provider/model fallback chains for dsh (DeepSeek Harness): when an agent's LLM requests keep failing — retries exhausted, auth errors, quota exceeded, rate limiting (429) — the plugin switches provider/model along the fallback chain for the current role, and the current step/turn continues on the target model: tasks are not interrupted by model problems.
@@ -17,7 +17,7 @@ Works in both dsh front ends: the **web** profile (Settings → Plugins → Fall
 
 Time slots rotate the **effective root chain** by wall-clock windows: each slot row carries its own fallback chain, and the first row whose window contains the current moment replaces the all-day chain for the next root request — the all-day chain stays as the last resort when no slot matches. Peak and valley windows can therefore use different chains while the failure walk (fallback switch) remains untouched.
 
-![Time slots](https://raw.githubusercontent.com/btspoony/dsh-llm-fallbacks/b6c2bccd869999b0319d902c27a25680a3b384ab/docs/assets/screenshot-1-en.png)
+![Time slots](https://raw.githubusercontent.com/btspoony/dsh-llm-fallbacks/f0d4c91c6cfad9b9aba781bef2e77d7f04193686/docs/assets/screenshot-1-en.png)
 
 Four frozen UTC+8 presets (windows are code constants; preset rows lock `tz` to Asia/Shanghai):
 

@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg">
-    <img src="https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/1d2af1e82651478743e8c6b32e1565c28c7702b3/docs/banner.svg" alt="dsh-auto-continue" width="720">
+    <img src="https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/e865b0b179331769cdce4a1e407a488056c1633d/docs/banner.svg" alt="dsh-auto-continue" width="720">
   </picture>
 </p>
 
@@ -33,7 +33,7 @@
 
 For [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh web`): whenever a request in the web GUI gets interrupted by a **non-human cause**, the plugin simulates the user typing **「继续」** and sends it, so the agent keeps working without manual intervention. The message enters the session log exactly like a manual prompt — the model sees it, and the interrupted work resumes. Since 0.8.0 the engine runs **inside the host process** (single instance), so it keeps watching even with every browser tab closed, and multiple open tabs can never double-send.
 
-![demo](https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/1d2af1e82651478743e8c6b32e1565c28c7702b3/docs/demo.svg)
+![demo](https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/e865b0b179331769cdce4a1e407a488056c1633d/docs/demo.svg)
 
 **Smart recovery** (all configurable):
 
@@ -162,8 +162,6 @@ auto-continue:
   scanOnBoot: true
   scanLimit: 8
   freshMs: 900000
-  reconnectScanDelayMs: 5000
-  reconnectBackoffMs: 3000
   verbose: true
   classify: true
   backoffFactor: 2
@@ -180,7 +178,7 @@ auto-continue:
 
 **How the card works:**
 
-![Stats & paused sessions](https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/1d2af1e82651478743e8c6b32e1565c28c7702b3/docs/screenshots/07-card-panels.png)
+![Stats & paused sessions](https://raw.githubusercontent.com/HsiangNianian/dsh-auto-continue/e865b0b179331769cdce4a1e407a488056c1633d/docs/screenshots/07-card-panels.png)
 
 - Edits are **staged** — nothing reaches the disk until you hit **Save**; an unsaved badge marks the card while drafts are pending, and **Discard** drops them
 - A field you changed shows an **Overridden** badge with a per-field **Reset to default** button that restores the built-in value
@@ -210,8 +208,6 @@ auto-continue:
 | Scan on load / reconnect | `on` | Scan recently interrupted sessions on load / reconnect |
 | Scan limit | `8` | Max sessions scanned (running / subagent sessions excluded) |
 | Scan window (ms) | `900000` | Scan only considers interruptions inside this window |
-| Reconnect scan delay (ms) | `5000` | Legacy — unused since the engine moved into the host (kept for config compatibility) |
-| Reconnect backoff (ms) | `3000` | Legacy — unused since the engine moved into the host (kept for config compatibility) |
 | Verbose logs | `on` | `[auto-continue]` console logs |
 | Classify errors | `on` | Auto-resume transient failures only; auth / balance / model errors are skipped and notified |
 | Backoff factor | `2` | Cooldown multiplier per consecutive failure (2 = 20s → 40s → 80s…) |

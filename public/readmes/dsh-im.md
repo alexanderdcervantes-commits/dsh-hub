@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/xmanrui/dsh-im/60a364118eebb72b216286afeeae580575c665f9/assets/logo-dsh-im-connecting-readme-3x2.png" alt="DSH-IM — Connecting DeepSeek Harness" width="420" height="280" align="middle">&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/xmanrui/dsh-im/60a364118eebb72b216286afeeae580575c665f9/assets/logo-plugin-phone.png" alt="DSH-IM phone logo" width="280" height="280" align="middle">
+  <img src="https://raw.githubusercontent.com/xmanrui/dsh-im/b9ceac0779aa531c986013f837687e9d79701181/assets/logo-dsh-im-connecting-readme-3x2.png" alt="DSH-IM — Connecting DeepSeek Harness" width="420" height="280" align="middle">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/xmanrui/dsh-im/b9ceac0779aa531c986013f837687e9d79701181/assets/logo-plugin-phone.png" alt="DSH-IM phone logo" width="280" height="280" align="middle">
 </p>
 
 ---
@@ -42,7 +42,7 @@ Connect IM bots to DeepSeek Harness by scanning a QR code, using an App Manifest
 
 ## 界面
 
-![IM机器人页面](https://raw.githubusercontent.com/xmanrui/dsh-im/60a364118eebb72b216286afeeae580575c665f9/docs/images/imbot.png)
+![IM机器人页面](https://raw.githubusercontent.com/xmanrui/dsh-im/b9ceac0779aa531c986013f837687e9d79701181/docs/images/imbot.png)
 
 ## 当前内置渠道
 
@@ -95,7 +95,7 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 | 默认行为 | 说明 |
 | --- | --- |
 | 机器人工作区 | 每个机器人独立保存工作区。新机器人默认使用 Host 当时的工作目录；之后可在机器人卡片中修改。 |
-| Agent Preset | 新会话默认继承 Harness 的 `agent-presets.default`；渠道显式配置优先，已有会话不受后续修改影响。 |
+| Agent Preset | 每个机器人可在设置页卡片中选择 Agent Preset。未选择时跟随 Host 的 `agent-presets.default`；渠道级 `config.agentPreset` 只作为该渠道之后新接入机器人的默认值。切换不会修改或清空已有会话；若当前聊天已有会话，需先发送 `/new`，再发送一条普通消息，才会按新选择创建会话。 |
 
 每个 Telegram 机器人都可以在自己的卡片中切换访问模式。旧机器人和新接入机器人均默认使用**兼容模式**：私聊直接响应，群聊仅在提及机器人或回复机器人消息时响应。只有主动切换到**安全模式（私聊白名单）**后，机器人才会忽略全部群聊，并只接受该机器人白名单中的数字 User ID。白名单每行一个 ID、按机器人独立保存；切回兼容模式时会保留但不使用，再切回安全模式即可继续使用。安全模式的空白名单会拒绝该机器人的所有入站消息。
 
@@ -109,6 +109,10 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 | `/models` | 按序号列出当前配置的全部可用模型。 |
 | `/model` | 查看当前聊天绑定会话正在使用的模型。 |
 | `/model <序号或 Provider/模型ID>` | 切换当前聊天绑定会话的模型。 |
+| `/presetlist` | 按序号列出 Host 当前可用的 Agent Preset，并标记 Host 默认项和当前机器人的选择。 |
+| `/preset` | 查看当前机器人的新会话 Agent Preset 设置。 |
+| `/preset <序号或 Preset ID>` | 设置当前机器人的 Agent Preset；纯数字 ID 使用 `/preset id:<ID>`。 |
+| `/preset --default` | 清除当前机器人的显式选择，让后续新 Session 跟随 Host 默认。 |
 | `/stop` | 立即停止当前聊天正在运行的任务，并保留尚未开始的排队消息。 |
 | `/steer <补充指令>` | 把补充指令立即加入当前聊天正在运行的任务。 |
 | `/compact` | 立即压缩当前聊天绑定会话的较早上下文。 |
@@ -119,7 +123,9 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 | 交互式提问 | 回复选项序号、选项文字或自定义文字；多选时用逗号分隔。 |
 | 远程审批 | 回复 `批准` / `拒绝` / `同意` / `不同意` / `yes` / `no`。 |
 
-示例：先发送 `/models`，再发送 `/model 2` 切换到列表中的第 2 个模型。其他命令示例：`/help`、`/new`、`/status`、`/model deepseek-official/deepseek-v4-pro`、`/steer 只检查配置文件`、`/stop`、`/compact`、`/workspace /Users/alice/projects/my-app`、`/sessionlist 2`、`/sessionlist /Users/alice/projects/my-app` 或 `/session session-id`
+示例：先发送 `/models`，再发送 `/model 2` 切换到列表中的第 2 个模型；先发送 `/presetlist`，再发送 `/preset 2` 为当前机器人选择第 2 个 Agent Preset。其他命令示例：`/help`、`/new`、`/status`、`/model deepseek-official/deepseek-v4-pro`、`/preset marketing-jeep`、`/preset --default`、`/steer 只检查配置文件`、`/stop`、`/compact`、`/workspace /Users/alice/projects/my-app`、`/sessionlist 2`、`/sessionlist /Users/alice/projects/my-app` 或 `/session session-id`
+
+Slack 桌面端若未注册同名的原生 Slash Command，会拦截直接以 `/` 开头的消息。此时请加一个前导空格发送，例如 ` /presetlist` 或 ` /preset 2`；插件命令层会去除首尾空白，执行效果与无空格命令相同。
 
 ### 命令说明
 
@@ -129,6 +135,10 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 - `/models` 不需要参数，也不会创建会话。它为 Harness 当前配置的全部可用模型分配序号，同时显示可稳定复制的 `Provider/模型ID`；某个 Provider 查询失败时，其他 Provider 的结果仍会显示。
 - `/model` 不带参数时只查看当前会话模型；带参数时接受 `/models` 列出的序号或完整模型 ID，例如 `/model 2`。完整 ID 必须精确匹配。聊天尚无会话时，有效的切换命令会创建并绑定一个空白会话，但不会触发模型回复。切换只影响当前会话；Harness 还会尝试把它保存为以后新会话的默认模型，已有其他会话不受影响。
 - 正在运行任务或等待审批、问题回答时不能切换模型；请等待完成，或先使用 `/stop`。含图片的会话无法切换到不支持图片输入的模型。
+- `/presetlist` 不需要参数，也不会创建会话。它每次都读取 Host 当前可用的 Agent Preset，显示名称、稳定 ID、Host 默认项和当前机器人的选择；已删除或损坏的当前选择会保留并标记为“已不可用”，不会被自动清除。列表只公开安全的名称和 ID，不公开 Preset 路径、错误或其他 Host 内部字段。
+- `/preset` 不带参数时查看当前机器人的“新会话设置”，不是查看或修改当前 Session。带参数时接受最近一次 `/presetlist` 在当前聊天中显示的序号或完整 ID；纯数字 ID 使用 `/preset id:<ID>`。选择序号时会先按该次列表解析 ID，再用 Host 最新目录复验，目录已经变化时会要求重新列出。
+- `/preset --default` 清除当前机器人的显式覆盖值，让以后新建的 Session 在创建时跟随 Host 当前默认；显式选择一个恰好等于 Host 默认的 ID 则会固定该 ID。目录暂时不可读时仍可恢复为跟随 Host 默认。
+- Agent Preset 修改是机器人级配置，会影响该机器人所有聊天以后创建的新 Session，但不会修改、停止、解绑或重建已有 Session，也不会自动执行 `/new`。若当前聊天已有会话，继续发送消息仍使用原 Session；发送 `/new` 后的下一条普通消息才会按新设置创建 Session。任务正在运行或等待交互时也可查询或修改 Preset，因为命令不会触碰当前 Session。
 - `/stop` 和 `/steer` 只控制当前聊天自己发起的运行任务，即使多个聊天绑定同一个 Session，也不会有意控制其他聊天的任务。`/stop` 不删除会话或历史，并保留尚未开始的排队消息；重复发送是安全的。
 - `/steer` 只接受文字，可包含多行；它不会创建新会话或第二个任务。没有运行任务时请直接发送普通消息；等待审批或问题回答时请先处理交互，或使用 `/stop`。
 - `/compact` 只作用于当前聊天已经绑定的 Harness 会话，不会把命令发送给模型。当前聊天尚未创建会话、会话正在生成回复或没有可压缩历史时，机器人会直接返回对应状态。
@@ -140,6 +150,7 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 - `/session` 会自动定位会话唯一所属的工作区。同工作区绑定只替换当前聊天的映射；跨工作区绑定会切换该机器人的工作区、清除该机器人所有聊天的旧会话映射，再绑定当前聊天，因此会影响该机器人的其他聊天。已经开始生成的回复仍可完成。
 - 工作区切换和会话绑定只会清除或替换 dsh-im 的聊天映射，不会删除、清空或归档任何旧 Session 内容；旧 Session 仍可再次列出和绑定。
 - 任何已在对应平台可见范围内、能够正常向机器人发消息的用户都可以执行这些命令，不区分管理员和普通用户。Telegram 兼容模式遵循原有私聊及群聊提及/回复规则；安全模式只允许当前机器人白名单中的私聊用户执行，群聊命令始终忽略。
+- Agent Preset 名称和 ID 来自同一个 Harness Host，且任何有命令权限的用户都能修改该机器人所有聊天未来新 Session 的 Preset；请只向可信用户开放 `/presetlist` 和 `/preset`。
 - 工作区列表来自 Harness Host 的全局登记信息，可能包含其他机器人、其他渠道或非 IM 项目的本机绝对路径。请将机器人可见范围限制给可信用户。
 - 会话列表同样来自该全局 Harness Host；会话 ID 和标题可能属于其他机器人、其他渠道或非 IM 项目，并可能包含敏感元数据。开放命令前请确保所有可见用户都可信。
 - 任何能执行 `/session` 的用户都能接续所选会话，并通过后续消息写入会话或触发其可用工具。请只向可信用户开放机器人及其会话列表。
@@ -150,9 +161,10 @@ GitHub 源安装会直接拉取并构建 Git 依赖；pnpm 10 及以上版本可
 
 - **图片识别**：九个内置渠道都可以把 JPEG、PNG、WebP，以及以图片文件方式发送的 GIF 交给 Harness；图片可以附带文字说明。单张图片上限为 5 MB，单条消息中的图片总大小上限为 20 MB。
 - **在机器人卡片切换工作区**：设置页中的每张机器人卡片都会显示当前 Harness 工作区。可以直接填写已有目录的绝对路径，也可以打开目录选择器。切换只清除该机器人的旧聊天映射，不会删除、清空或归档旧 Session；已经开始的回复可以继续完成，后续消息使用新工作区。
+- **在机器人卡片选择 Agent Preset**：设置页中的每张机器人卡片都可以选择 Host 已有的 Agent Preset，或跟随 Host 默认。切换只作用于该机器人，并且只影响之后新建的会话；已有会话和正在生成的回复不受影响。
 - **检查连接并发送测试消息**：机器人在线时，点击卡片上的「检查连接」会检查平台连接，并向该机器人最近记录的私聊发送一条“DeepSeek Harness 连接测试成功”消息；WhatsApp 会发送到账号自聊。测试消息不会创建 Harness Session，也不会调用模型。机器人必须至少收到过一条私聊才能记住测试目标，否则页面会提示尚无可用的测试会话。
 - **重试连接和移除接入**：机器人离线时，卡片上的操作会变为「重试连接」；不再使用时可以点击「移除接入」。这些操作都只作用于所选机器人，不影响其他机器人或渠道。
-- **多机器人独立管理**：同一渠道可以接入多个机器人。每个机器人分别保存凭据、连接状态、工作区和聊天会话映射，卡片上的工作区、连接检查、重试和移除操作互不影响。
+- **多机器人独立管理**：同一渠道可以接入多个机器人。每个机器人分别保存凭据、连接状态、工作区、Agent Preset 和聊天会话映射，卡片上的工作区、Preset、连接检查、重试和移除操作互不影响。
 - **流式回复和进度提示**：插件会按各平台能力显示正在思考、工具执行和逐步生成的回答；不支持原生流式接口的平台会通过编辑消息、卡片更新或最终消息完成回复。
 
 ## 设计
@@ -201,10 +213,10 @@ IM 管理 RPC 默认仅接受回环浏览器。如果 Web profile 在受信任�
       <a href="mailto:longmanr307@gmail.com">longmanr307@gmail.com</a>
     </td>
     <td align="center" valign="top">
-      <a href="docs/images/weixin.jpg"><img src="https://raw.githubusercontent.com/xmanrui/dsh-im/60a364118eebb72b216286afeeae580575c665f9/docs/images/weixin.jpg" alt="微信二维码" width="240"></a>
+      <a href="docs/images/weixin.jpg"><img src="https://raw.githubusercontent.com/xmanrui/dsh-im/b9ceac0779aa531c986013f837687e9d79701181/docs/images/weixin.jpg" alt="微信二维码" width="240"></a>
     </td>
     <td align="center" valign="top">
-      <a href="docs/images/xhs.jpg"><img src="https://raw.githubusercontent.com/xmanrui/dsh-im/60a364118eebb72b216286afeeae580575c665f9/docs/images/xhs.jpg" alt="小红书二维码" width="240"></a>
+      <a href="docs/images/xhs.jpg"><img src="https://raw.githubusercontent.com/xmanrui/dsh-im/b9ceac0779aa531c986013f837687e9d79701181/docs/images/xhs.jpg" alt="小红书二维码" width="240"></a>
     </td>
   </tr>
 </table>

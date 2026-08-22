@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/0475b8d130357a973ac34e6da2c0000afff1f217/docs/images/dsh-openpencil-logo.png" alt="DSH OpenPencil" width="120" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/e3eb3bfdb5262db0659c3c6e567fe209199c3eb2/docs/images/dsh-openpencil-logo.png" alt="DSH OpenPencil" width="120" />
 </p>
 
 <h1 align="center">DSH OpenPencil</h1>
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <a href="https://www.npmjs.com/package/@zseven-w/dsh-openpencil"><code>@zseven-w/dsh-openpencil</code></a> · Current plugin release: <code>0.1.0-rc.1</code> · Tested with DSH <code>0.1.0-rc.6</code></sub>
+  <sub>npm: <a href="https://www.npmjs.com/package/@zseven-w/dsh-openpencil"><code>@zseven-w/dsh-openpencil</code></a> · Current plugin release: <code>0.1.0-rc.2</code> · Tested with DSH <code>0.1.1-rc.1</code></sub>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/0475b8d130357a973ac34e6da2c0000afff1f217/docs/images/dsh-openpencil-overview.png" alt="DSH OpenPencil — multi-frame preview and sidebar editor" width="100%" />
+  <img src="https://raw.githubusercontent.com/ZSeven-W/dsh-openpencil/e3eb3bfdb5262db0659c3c6e567fe209199c3eb2/docs/images/dsh-openpencil-overview.png" alt="DSH OpenPencil — multi-frame preview and sidebar editor" width="100%" />
 </p>
 <p align="center"><sub>Exact multi-frame <code>.op</code> previews with an interactive canvas and the managed editor workbench</sub></p>
 
@@ -108,7 +108,7 @@ The tool card and managed editor follow DSH's Chinese/English locale and light/d
 DSH is a separate package. Install it once if you do not already have it:
 
 ```sh
-npm install -g @deepseek-ai/dsh@0.1.0-rc.6
+npm install -g @deepseek-ai/dsh@0.1.1-rc.1
 ```
 
 Then add the plugin to a profile and start the web app:
@@ -121,8 +121,8 @@ dsh web
 Prefer not to install DSH globally? Run the same two steps through `pnpm dlx`:
 
 ```sh
-pnpm dlx --package=@deepseek-ai/dsh@0.1.0-rc.6 dsh plugin --profile web add @zseven-w/dsh-openpencil@latest
-pnpm dlx --package=@deepseek-ai/dsh@0.1.0-rc.6 dsh web
+pnpm dlx --package=@deepseek-ai/dsh@0.1.1-rc.1 dsh plugin --profile web add @zseven-w/dsh-openpencil@latest
+pnpm dlx --package=@deepseek-ai/dsh@0.1.1-rc.1 dsh web
 ```
 
 > The OpenPencil plugin is public and requires no npm token. If the DSH prerelease itself requires registry authentication, keep that credential in a user-level or temporary npm config outside the checkout. This repository intentionally contains no registry credentials.
@@ -193,14 +193,14 @@ The model-visible result stays plain JSON. Browser-only `presentationMeta.$dshOp
 
 The result also records `renderer`, `rendererBinary`, `fidelity`, and any warnings. Existing PNG-only schema-v1 messages remain renderable.
 
-DSH `0.1.0-rc.6` does not persist browser presentation metadata for tools nested under PTC/Code Mode. The plugin recovers that UI-only projection through a same-origin, session-bound endpoint: the browser sends only the session id, call id, and immutable document SHA-256, while the host resolves the authoritative result from the durable DSH session log and uses a short-lived in-process marker only to authorize recent live editing. Signed preview/editor capabilities never enter the canonical tool result or model context. Durable history can restore read-only previews; editor grants are issued only for recent, trusted live results.
+DSH `0.1.1-rc.1` does not persist browser presentation metadata for tools nested under PTC/Code Mode. The plugin recovers that UI-only projection through a same-origin, session-bound endpoint: the browser sends only the session id, call id, and immutable document SHA-256, while the host resolves the authoritative result from the durable DSH session log and uses a short-lived in-process marker only to authorize recent live editing. Signed preview/editor capabilities never enter the canonical tool result or model context. Durable history can restore read-only previews; editor grants are issued only for recent, trusted live results.
 
 For bounded replay, nested metadata recovery accepts up to 128 top-level frames; larger Code Mode results remain available through their canonical JSON fallback.
 
 ## Current Limits
 
 - Follow-up edits to an existing canvas require an already-open managed editor. Changes remain unsaved until the user invokes its Save action.
-- The lightweight Web SDK canvas is read-only; full editing uses the separate managed editor surface. On DSH `0.1.0-rc.6`, the plugin uses the resizable right workbench with a full-screen option.
+- The lightweight Web SDK canvas is read-only; full editing uses the separate managed editor surface. On DSH `0.1.1-rc.1`, the plugin uses the resizable right workbench with a full-screen option.
 - The exact gallery covers top-level frames on the active page; the interactive canvas remains the way to inspect inactive pages and nested nodes.
 - Render and snapshot caches still need a product-level retention policy.
 
@@ -241,7 +241,7 @@ Builds require Node 24.11 or newer and pnpm. DSH host/client packages are peer d
 For a private DSH prerelease, keep the issued npm credential outside this repository (for example in a user-level or temporary `.npmrc`) and run the requested version directly:
 
 ```sh
-pnpm dlx --package=@deepseek-ai/dsh@0.1.0-rc.6 dsh web
+pnpm dlx --package=@deepseek-ai/dsh@0.1.1-rc.1 dsh web
 ```
 
 Never commit `.npmrc`, `NPM_TOKEN`, or copied registry credentials. This repository ignores local npm configuration by default.
@@ -263,6 +263,7 @@ DSH OpenPencil is the DeepSeek Harness plugin for **[OpenPencil](https://github.
 
 Sibling DSH plugins:
 
+- [DSH Android](https://github.com/ZSeven-W/dsh-android) — a live Android emulator or USB device inside the conversation, driven entirely through adb
 - [DSH Crew](https://github.com/ZSeven-W/dsh-crew) — dispatch work to DSH agents from Claude Code / Codex
 - [DSH iOS](https://github.com/ZSeven-W/dsh-ios) — a live iOS Simulator and a USB-connected iPhone, inside the conversation
 - [DSH Noema](https://github.com/ZSeven-W/dsh-noema) — long-term memory for DSH

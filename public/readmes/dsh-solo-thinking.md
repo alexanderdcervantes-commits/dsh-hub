@@ -4,7 +4,7 @@
 
 > Solo-style isolated brainstorm branches, automatic Handoffs, and a visual thinking tree for DeepSeek Harness.
 
-![DSH Solo Thinking 默认完整头脑风暴 Tab](https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/a4ad3f133efb37f1412cdf364764700bc7766d4f/docs/assets/solo-thinking-full-tab.png)
+![DSH Solo Thinking 默认完整头脑风暴 Tab](https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/a77f3bb45ae8557df8a849e03ca0ed0b2d1a9e5d/docs/assets/solo-thinking-full-tab.png)
 
 > [!NOTE]
 > 上图是 Solo Thinking 自带的完整“头脑风暴”Tab，只安装本插件即可使用。对话右侧栏是可选增强，需要同时安装 [Better Sidebar](https://github.com/omdsh-dev/DSH-better-sidebar)。
@@ -60,12 +60,12 @@ irm https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/i
 固定版本或先预览：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.sh | bash -s -- 0.1.18
-curl -fsSL https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.sh | bash -s -- 0.1.18 --dry-run
+curl -fsSL https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.sh | bash -s -- 0.1.19
+curl -fsSL https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.sh | bash -s -- 0.1.19 --dry-run
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm 'https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.ps1'))) -Version 0.1.18 -DryRun
+& ([scriptblock]::Create((irm 'https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/scripts/install.ps1'))) -Version 0.1.19 -DryRun
 ```
 
 ### 不执行远程脚本：官方 CLI 单行安装（固定版本）
@@ -73,7 +73,7 @@ curl -fsSL https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/main/sc
 仓库提交了预构建 `lib/`，因此也可以直接固定 GitHub tag 安装；macOS、Linux 和 Windows 通用，不执行插件构建脚本：
 
 ```bash
-dsh plugin --profile web add github:fredalxin/dsh-solo-thinking#v0.1.18
+dsh plugin --profile web add github:fredalxin/dsh-solo-thinking#v0.1.19
 ```
 
 安装完成后启动或重启 DSH，再硬刷新浏览器：
@@ -87,10 +87,10 @@ dsh --profile web
 
 ### 下载后离线安装
 
-下载 Release 中的 `dsh-plugin-solo-thinking-0.1.18.tgz` 后执行：
+下载 Release 中的 `dsh-plugin-solo-thinking-0.1.19.tgz` 后执行：
 
 ```bash
-dsh plugin --profile web add ./dsh-plugin-solo-thinking-0.1.18.tgz
+dsh plugin --profile web add ./dsh-plugin-solo-thinking-0.1.19.tgz
 dsh --profile web
 ```
 
@@ -100,7 +100,7 @@ dsh --profile web
 npm ci
 npm run verify
 npm pack
-dsh plugin --profile web add ./dsh-plugin-solo-thinking-0.1.18.tgz
+dsh plugin --profile web add ./dsh-plugin-solo-thinking-0.1.19.tgz
 ```
 
 卸载：
@@ -114,7 +114,7 @@ dsh plugin --profile web remove dsh-plugin-solo-thinking
 > [!IMPORTANT]
 > 以下“对话 + 右侧头脑风暴”界面只有在 Better Sidebar 已安装并启用时才会出现。只安装 Solo Thinking 时，请使用对话顶部的完整“头脑风暴”Tab。
 
-![DSH 对话与 Better Sidebar 头脑风暴右栏](https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/a4ad3f133efb37f1412cdf364764700bc7766d4f/docs/assets/solo-thinking-better-sidebar.png)
+![DSH 对话与 Better Sidebar 头脑风暴右栏](https://raw.githubusercontent.com/fredalxin/dsh-solo-thinking/a77f3bb45ae8557df8a849e03ca0ed0b2d1a9e5d/docs/assets/solo-thinking-better-sidebar.png)
 
 推荐安装命令已经包含 [DSH Better Sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) `0.12.1+`。如果只安装了 Solo Thinking，可以单独补装：
 
@@ -140,6 +140,7 @@ Agent 会调用 `thinking_start`，随后在适合分裂时调用一次 `thinkin
 - `＋ 分裂`：只填写方向名称；父 Agent 自动为新节点准备定向 Handoff。
 - `● 进展`：让当前分支从自己的完整对话整理 Current State，供兄弟分支下一次模型轮读取。
 - `✓ 回传`：分支 Agent 撰写最终 Handoff，返回父节点并封存当前分支。
+- `■ 结束`：结束并清空当前思考空间的界面状态；历史 Session 与 Handoff 保留，随后可重新开启一棵独立的新树。
 - `进入对话`：显式导航到该 Session；单击节点本身只选择，不跳转。
 - 分支输入框：给非当前分支发消息，主会话仍停留在中间。
 
@@ -159,6 +160,7 @@ Handoff 使用简短 Markdown，覆盖目标、已确认结论、证据、风险
 | `thinking_fork_handoff` | 为人工创建的待继承节点补齐父分支 Handoff |
 | `thinking_checkpoint` | 发布本分支 Current State |
 | `thinking_return` | 向父分支提交最终 Handoff 并封存 |
+| `thinking_end` | 结束整棵树并允许原 Session 重新开始 |
 | `thinking_status` | 读取当前节点和整棵树状态 |
 
 ## 数据与安全边界

@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/docs/assets/logo.svg" alt="dsh-TUI - DeepSeek Harness terminal interface" width="560">
+  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/docs/assets/logo.svg" alt="dsh-TUI - DeepSeek Harness terminal interface" width="560">
 </p>
 <p align="center">
   <strong>简体中文</strong> | <a href="README_EN.md">English</a>
@@ -36,13 +36,13 @@
 本插件被 **DeepSeek Harness 官方公众号** 推文收录，作为"内测用户精选插件"展示：
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-official.png" alt="DeepSeek Harness 官方公众号推文收录 dsh-TUI" width="560">
+  <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/wechat-official.png" alt="DeepSeek Harness 官方公众号推文收录 dsh-TUI" width="560">
 </p>
 
-同时也被 [dshfind](https://dshfind.com/ccch1mneyyy/dsh-TUI) 插件目录收录：
+同时也被 [dshfind](https://dshfind.com/zh/plugins/ccch1mneyyy/dsh-TUI) 插件目录收录：
 
 <p align="center">
-  <a href="https://dshfind.com/ccch1mneyyy/dsh-TUI"><img src="https://dshfind.com/api/card/ccch1mneyyy/dsh-TUI?lang=zh" alt="dsh-TUI on dshfind"></a>
+  <a href="https://dshfind.com/zh/plugins/ccch1mneyyy/dsh-TUI"><img src="https://dshfind.com/api/card/ccch1mneyyy/dsh-TUI?lang=zh" alt="dsh-TUI on dshfind"></a>
 </p>
 
 ## 核心能力
@@ -61,9 +61,9 @@
 
 ## 界面预览
 
-![首屏：像素鲸鱼顶栏](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/splash.png)
+![首屏：像素鲸鱼顶栏](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/splash.png)
 
-![工作状态行 + 上下文进度条](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/working-line.png)
+![工作状态行 + 上下文进度条](https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/working-line.png)
 
 ## 快速开始
 
@@ -320,7 +320,7 @@ registry 包：`dsh plugin --profile dsh-tui add @deepseek-harness-tui/dsh-tui`�
 
 | 微信群 | QQ 群（群号 572549239） | 微信三群 |
 | :---: | :---: | :---: |
-| <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-group.jpg" alt="dsh-TUI 社区交流群微信群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/qq-group.png" alt="dsh-TUI 社区交流群 QQ 群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/8c8e955ab1d015901f49e3b6a61fea100eb9b120/screenshots/wechat-group3.jpg" alt="dsh-TUI 社区交流群微信三群二维码" width="200"> |
+| <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/wechat-group.jpg" alt="dsh-TUI 社区交流群微信群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/qq-group.png" alt="dsh-TUI 社区交流群 QQ 群二维码" width="200"> | <img src="https://raw.githubusercontent.com/ccch1mneyyy/dsh-cc-tui/52ae21c4b27dcdea1db5f3f6a655bea77891fe99/screenshots/wechat-group3.jpg" alt="dsh-TUI 社区交流群微信三群二维码" width="200"> |
 
 > 微信群二维码约 7 天过期一次，如遇失效请走 QQ 群（572549239），或开个 issue 提醒我们更新。
 
